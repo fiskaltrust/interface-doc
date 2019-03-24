@@ -1,19 +1,53 @@
-# Starter pipeline
-# Start with a minimal pipeline that you can customize to build and deploy your code.
-# Add steps that build, run tests, deploy, and more:
-# https://aka.ms/yaml
-
 trigger:
 - master
+- release/*
+
 
 pool:
-  vmImage: 'Ubuntu-16.04'
+  vmImage: 'VS2017-Win2016'
 
 steps:
-- script: echo Hello, world!
-  displayName: 'Run a one-line script'
+- powershell: |
+    $majorMinor,$prerelease = Get-Content "major.minor"
+    $version = "$majorMinor.$(Get-Date -UFormat "%y")$("{0:D3}" -f (Get-Date).DayofYear).$env:BUILD_BUILDID"
+    $date = Get-Date -format dd.MM.yyyy
 
-- script: |
-    echo Add other tasks to build, test, and deploy your project.
-    echo See https://aka.ms/yaml
-  displayName: 'Run a multi-line script'
+    (Get-Content cover.html).replace('[[VERSION]]', $version) | Set-Content cover.html
+    (Get-Content cover.html).replace('[[TODAY]]', $date) | Set-Content cover.html
+  displayName: 'Set version in cover page'
+
+- powershell: |
+    $i = 0
+    Get-Content .\doc\toc.md | ForEach-Object {
+        $success = $_ -match "#\s*\[(.*?)\]\((?<filename>.*?)\)"
+        if ($success) {
+            $path = Join-Path "doc" $matches['filename']
+            "<style>body {counter-reset: h1 $i}</style>`n" + (Get-Content $path -Raw) | Set-Content $path
+            $i++;
+        }
+    }
+  displayName: 'Set chapter header counters'
+
+- powershell: |
+    # The current latest version 0.12.5 contains a bug that prevents the creation of TOCs
+    # Specific version can be removed as soon as 0.12.6 is released
+    choco install wkhtmltopdf --version 0.12.4.20170325 --allow-downgrade -y
+  displayName: 'Install wkhtmltopdf'
+
+- task: NuGetToolInstaller@0
+  displayName: 'Use NuGet'
+
+- powershell: |
+    nuget install DocFx.Plugins.PlantUml -ExcludeVersion -OutputDirectory .
+  displayName: 'Install PlantUml Plugin'
+
+- task: chrismason.vsts-docfxtasks.docfx-extension-build-task.DocFxTask@0
+  displayName: 'Create DocFx Documentation'
+  inputs:
+    solution: docfx.json
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: documentation'
+  inputs:
+    PathtoPublish: '_site_pdf/'
+    ArtifactName: documentation

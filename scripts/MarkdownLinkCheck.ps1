@@ -2,7 +2,7 @@
 { throw "This script requires node.js and the package markdown-link-check!"}
 
 [Console]::OutputEncoding = [System.Text.Encoding]::UTF8
-Set-Location ..\..\doc
+Set-Location ..\doc
 
 $files = Get-ChildItem -Path *.md -Recurse
 $errors = @()

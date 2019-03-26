@@ -1,8 +1,8 @@
 # Appendix: FR - BOI-TVA-DECL 30-10-30
-This appendix expands on the information provided in the [General Part](general/general.md) by adding details specific to the French market. This additional information is provided only where applicable. The remaining chapters, for which there is no additional information required, were omitted. The link to the relevant paragraph in the French law regarding the secured cash desk software: [http://bofip.impots.gouv.fr/bofip/10693-PGP?branch=2](http://bofip.impots.gouv.fr/bofip/10693-PGP?branch=2)
+This appendix expands on the information provided in the [General Part](../general/general.md) by adding details specific to the French market. This additional information is provided only where applicable. The remaining chapters, for which there is no additional information required, were omitted. The link to the relevant paragraph in the French law regarding the secured cash desk software: [http://bofip.impots.gouv.fr/bofip/10693-PGP?branch=2](http://bofip.impots.gouv.fr/bofip/10693-PGP?branch=2)
 
 ## Version History
-Please refer to the [General Part](general/general.md)
+Please refer to the [General Part](../general/general.md)
 
 ## Terminology
 This table expands on the descriptions of all general terms and abbreviations provided in Table 2 of the General Part with information specific to the French market.
@@ -17,7 +17,7 @@ This table expands on the descriptions of all general terms and abbreviations pr
 [Table 0.] Defintion of Terms and Abbreviations (FR – BOI-TVA-DECL 30-10-30)
 
 ## Cash Register Integration
-This chapter describes the cash register integration in accordance with the French law. The general rules for cash register integration are described the [General Part](general/general.md).
+This chapter describes the cash register integration in accordance with the French law. The general rules for cash register integration are described the [General Part](../general/general.md).
 
 ### Receipt creation process
 #### The fiskaltrust.SecurityMechanism
@@ -34,7 +34,7 @@ The regular workflow of the fiskaltrust.SecurityMechanism in the French market d
 - return the whole data to the POS system
 
 ### Receipt for special functions
-This section expands on the descriptions from *Receipts for special functions* in the [General Part](general/general.md) and describes the receipt types used for special functions on the French market.
+This section expands on the descriptions from *Receipts for special functions* in the [General Part](../general/general.md) and describes the receipt types used for special functions on the French market.
 
 In accordance with the Official Bulletin BOI-CF-COM-10-80-20160803 from August 3, 2016 and paragraph 3 bis of Article 286 of the French Tax Code, the proof of payment of a non-taxable person to a taxable person for a sale or service must be signed electronically and chained to ensure unalterability. There are additional requirements specified by law, which can be fulfilled by creating the following special receipts.
 
@@ -94,7 +94,7 @@ Receipt journals are JSON exports of internal structured data related to receipt
 Action journals are JSON exports of internal structured data related to special actions traced by the service. There are journals related to different actions, e.g: a journal for the periodical counters, a journal for archiving, or a journal for a technical action log.
 
 ## Data Structures
-This chapter expands on the descriptions of the data structures covered in *Data structure* of the [General Part](general/general.md), with country specific information applicable to the French market.
+This chapter expands on the descriptions of the data structures covered in *Data structure* of the [General Part](../general/general.md), with country specific information applicable to the French market.
 
 ### Receipt Request
 There are no special requirements or laws for the French market.

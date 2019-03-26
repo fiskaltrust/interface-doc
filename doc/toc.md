@@ -4,3 +4,4 @@
 # [Appendix: FR - BOI-TVA-DECL 30-10-30](appendix-fr-boi-tva-decl-30-10-30/appendix-fr-boi-tva-decl-30-10-30.md)
 # [Appendix: FR](appendix-fr/appendix-fr.md)
 # [Appendix: DE – GdPdU](appendix-de-gdpdu/appendix-de-gdpdu.md)
+# [Appendix: DE – KassSichV](appendix-de-kasssichv/appendix-de-kasssichv.md)

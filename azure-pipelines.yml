@@ -28,6 +28,20 @@ steps:
     }
   displayName: 'Set chapter header counters'
 
+- task: NodeTool@0
+  inputs:
+    versionSpec: '8.x'
+  displayName: 'Install Node.js'
+
+- script: 'npm install -g markdown-link-check'
+  displayName: 'Install markdown-link-check'
+   
+- task: PowerShell@1
+  displayName: 'Check links'
+  inputs:
+    scriptName: 'scripts/MarkdownLinkCheck.ps1'
+    workingFolder: scripts'
+
 - powershell: |
     # The current latest version 0.12.5 contains a bug that prevents the creation of TOCs
     # Specific version can be removed as soon as 0.12.6 is released
@@ -41,10 +55,15 @@ steps:
     nuget install DocFx.Plugins.PlantUml -ExcludeVersion -OutputDirectory .
   displayName: 'Install PlantUml Plugin'
 
-- task: chrismason.vsts-docfxtasks.docfx-extension-build-task.DocFxTask@0
-  displayName: 'Create DocFx Documentation'
-  inputs:
-    solution: docfx.json
+- powershell: |
+    Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    choco install docfx -y
+    docfx
+
+#- task: chrismason.vsts-docfxtasks.docfx-extension-build-task.DocFxTask@0
+#  displayName: 'Create DocFx Documentation'
+#  inputs:
+#    solution: docfx.json
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: documentation'

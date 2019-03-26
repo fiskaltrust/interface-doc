@@ -55,10 +55,15 @@ steps:
     nuget install DocFx.Plugins.PlantUml -ExcludeVersion -OutputDirectory .
   displayName: 'Install PlantUml Plugin'
 
-- task: chrismason.vsts-docfxtasks.docfx-extension-build-task.DocFxTask@0
-  displayName: 'Create DocFx Documentation'
-  inputs:
-    solution: docfx.json
+- powershell: |
+    Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
+    choco install docfx -y
+    docfx
+
+#- task: chrismason.vsts-docfxtasks.docfx-extension-build-task.DocFxTask@0
+#  displayName: 'Create DocFx Documentation'
+#  inputs:
+#    solution: docfx.json
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: documentation'

@@ -17,7 +17,7 @@ This table expands on the descriptions of all general terms and abbreviations pr
 [Table 0.] Defintion of Terms and Abbreviations (FR – BOI-TVA-DECL 30-10-30)
 
 ## Cash Register Integration
-This chapter describes the cash register integration in accordance with the French law. The general rules for cash register integration are described the [General Part](.../general/general.md).
+This chapter describes the cash register integration in accordance with the French law. The general rules for cash register integration are described the [General Part](../general/general.md).
 
 ### Receipt creation process
 #### The fiskaltrust.SecurityMechanism

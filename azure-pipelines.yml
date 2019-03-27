@@ -3,8 +3,8 @@ trigger:
 - release/*
 
 
-pool:
-  vmImage: 'VS2017-Win2016'
+queue:
+  name: Hosted VS2017
 
 steps:
 - powershell: |

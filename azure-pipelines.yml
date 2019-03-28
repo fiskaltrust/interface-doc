@@ -39,7 +39,7 @@ steps:
   displayName: 'Check links'
   inputs:
     scriptName: 'scripts/MarkdownLinkCheck.ps1'
-    workingFolder: scripts'
+    workingFolder: doc
 
 - task: NuGetToolInstaller@0
   displayName: 'Use NuGet'

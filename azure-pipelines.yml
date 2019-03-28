@@ -2,7 +2,6 @@ trigger:
 - master
 - release/*
 
-
 pool:
   vmImage: 'VS2017-Win2016'
 
@@ -42,31 +41,29 @@ steps:
     scriptName: 'scripts/MarkdownLinkCheck.ps1'
     workingFolder: scripts'
 
-- powershell: |
-    # The current latest version 0.12.5 contains a bug that prevents the creation of TOCs
-    # Specific version can be removed as soon as 0.12.6 is released
-    choco install wkhtmltopdf --version 0.12.4.20170325 --allow-downgrade -y
-  displayName: 'Install wkhtmltopdf'
-
 - task: NuGetToolInstaller@0
   displayName: 'Use NuGet'
 
 - powershell: |
+    # The current latest version 0.12.5 contains a bug that prevents the creation of TOCs
+    # Specific version can be removed as soon as 0.12.6 is released
+    choco install wkhtmltopdf --version 0.12.4.20170325 --allow-downgrade -y
+    choco install docfx -y
     nuget install DocFx.Plugins.PlantUml -ExcludeVersion -OutputDirectory .
-  displayName: 'Install PlantUml Plugin'
+  displayName: 'Install prerequisites'
 
 - powershell: |
-    Set-ExecutionPolicy Bypass -Scope Process -Force; iex ((New-Object System.Net.WebClient).DownloadString('https://chocolatey.org/install.ps1'))
-    choco install docfx -y
-    docfx
-
-#- task: chrismason.vsts-docfxtasks.docfx-extension-build-task.DocFxTask@0
-#  displayName: 'Create DocFx Documentation'
-#  inputs:
-#    solution: docfx.json
+    Start-Process docfx -Wait -RedirectStandardError $(Build.ArtifactStagingDirectory)/docfx-err.log -RedirectStandardOutput $(Build.ArtifactStagingDirectory)/docfx-out.log
+  displayName: Run docfx
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: documentation'
   inputs:
     PathtoPublish: '_site_pdf/'
     ArtifactName: documentation
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: logs'
+  inputs:
+    ArtifactName: logs
+

@@ -14,6 +14,7 @@ This table expands on the descriptions of all general terms and abbreviations pr
 | JCD              | Journal which holds all technical information sent by a cash register. (Journal de capture de données)
 | BOFIP            | Official tax bulletin of French tax authorities. (Bulletin Officiel des Finances Publiques-Impôts)
 | CGI              | General Tax Code (Code général des impôts) |
+
 [Table 0.] Defintion of Terms and Abbreviations (FR – BOI-TVA-DECL 30-10-30)
 
 ## Cash Register Integration
@@ -101,17 +102,21 @@ There are no special requirements or laws for the French market.
 
 ### Receipt Response
 This table describes additional fields of the Receipt Response applicable to the French market.
+
 | Field name | Data type | Default Value | Mandatory Field | Description | Version |
 |----------- |---------- |-------------- |---------------- |------------ | --------|
 | ftCashBoxIdentification | string | | mandatory | Cash register identification | 0- |
 | ftReceiptIdentification | string | | mandatory | Allocated through fiskaltrust.SecurityMechanism upcounting receipt number depending on the receipt type. | 0-|
+
 [Table 0.] Receipt Response
 
 ### Charge Items Entry
 Charge Items entriy is defined accordingly to the French law. This entry determines which counter will be used to sum up the value of the sales tax field (normal, discount-ed-1, discounted-2, zero or special) for the individual services. It is required for signature creation. This table describes additional fields of the Charge Items Entry applicable to the French market.
+
 | Field name | Data type | Default Value | Mandatory Field | Description | Version |
 |----------- |---------- |-------------- |---------------- |------------ | --------|
 | Description | string | empty-string | mandatory | Name or description of customary indication or type of other service. | 0- |
+
 [Table 0.] Charge Items Entry (ftChargeItems)
 
 ### Pay Items Entry
@@ -126,6 +131,7 @@ Furthermore, but only in the case when receipts with special functions are used,
 |----------- |---------- |-------------- |---------------- |------------ | --------|
 | ftSignatureFormat | Int64 | 0 | mandatory | Format for displaying signature data according to the [reference table](#app_fr_reference_tables). | 0- |
 | ftSignatureType | Int64 | 0 |mandatory | Type of signature according to the reference table in the appendix, for example signature according to the RKSV or FinanzOnline notification. | 0- |
+
 [Table 0.] Signature Entry
 
 ## Function Structures
@@ -219,21 +225,25 @@ For France (FR) the country code is <code>0x4652</code>. Thus, the value for an 
 | 0x4652000000000014 |Protocol / Custom<br>Does not need to be signed<br>Sign: No<br>Chain and national numbering: No<br>ReceiptIdentification e.g. fta12b#<br>Details:<br>Can be used by the POS system to log custom data. | 1.2 |
 | 0x4652000000000015 | Archive<br>Has to be Signed<br>Sign: Yes<br>Chain and national numbering: A<br>Details:<br>Will trigger automatically a daily closing. | 1.2 |
 | 0x4652000000000016 | Copy<br>Has to be Signed<br>Sign: Yes<br>Chain and national numbering: C<br>Details:<br>In a request the cbPrevi-ousReceiptReference is mandatory. It contains the receiptnumber of the cash register which was handed out as a copy. | | 1.2 |
+
 [Table 0.] Type of Receipt: ftReceiptCase (FR – BOI-TVA-DECL 30-10-30)
 
 #### ftReceiptCaseFlag
 Diverse business transactions according to the French law and regulations can result in certain combinations of types of receipts. For this, bytes 6, 5, 4 and 3 are used as com-binable codes. These codes can be added with the help of the logic operator „OR“.
+
 | Value              | Description             | Service-Version |
 |------------------- |------------------------ | ----------------|
 | 0x0000000000010000 | „out of service“<br>The transferred receipt contains data which has been cre-ated during an outage of the connection between the POS System and the fiskaltrust.Service. The original receipts are avaiable in handwritten or digital format and are now transferred and subsequently consolidated and signed via zero receipt. This can be necessary for example after a power or server outage. | 1.2 |
 | 0x0000000000020000 | „training receipt“<br>All requests issued with this flag are chained and signed in a separate chain. For national numbering “X” is used.<br>GT counters are not raised. | 1.2 |
 | 0x0000000000040000 | „reverse receipt“ or “voided receipt” <br>Common behaviour | 1.2 | 
 | 0x0000800000000000 | “receipt request”<br>Common behaviour | 1.2 |
+
 [Table 0.] Type of Receipt: ftReceiptCase Flags (FR – BOI-TVA-DECL 30-10-30)
 
 ### Type of Service: ftChargeItemCase
 The ftChargeItemCase defines the type of service in charge item blocks and thus how fiskaltrust.SecurityMechanism processes individual receipts with regards to receipt gen-eration and the accordance to the French law. 
 For France (FR) the country code is 0x4652. Thus, the value for an unknown ftChargeI-temCase in France is 0x4652000000000000.
+
 | Value             | Description             | Service-Version |
 ------------------- |------------------------ | ----------------|
 | 0x4652000000000000 | „unknown type of service for FR“<br>With help of the VAT-rates table saved within fiskaltrust.SecurityMechanisms, an allocation to standard /reduced-1 /reduced-2 / super-reduced/zero is attempted. | 1.2 |
@@ -271,6 +281,7 @@ For France (FR) the country code is 0x4652. Thus, the value for an unknown ftCha
 | 0x4652000000000020 | „prepayment zero“<br>For processing, see (0x4652000000000005) | 1.2 |
 | 0x4652000000000021 | „account of a third party/ third party name/ collection“<br>For processing, see (0x4652000000000007) | 1.2 |
 | 0x4652000000000022 | Obligation ??? | 1.2 |
+
 [Table 0.]Type of Service: ftChargeItemCase (FR – BOI-TVA-DECL 30-10-30)
 
 In the following there are further guidelines for using ftChargeItemCase.
@@ -301,10 +312,12 @@ The ftPayItemCase defines the type of payment within the pay items block and thu
 | 0x4652000000000011 | „internal/ material consumption“<br>Can be used for bill
 internal | 1.2 |
 | 0x4652000000000012 | „change“<br>tip<br>cash | 1.2 |
+
 [Table 0.] Type of Payment: ftPayItemCase (FR - BOI-TVA-DECL 30-10-30)
 
 ### Type of Signature: ftSignatureType
 The ftSignatureType indicates type and origin of the signature.
+
 |              Value | Description             | Version         |
 |------------------- |------------------------ | ----------------|
 | 0x4652000000000000 | unknown FR              | 1.2             |
@@ -315,6 +328,7 @@ The ftSignatureType indicates type and origin of the signature.
 | 0x4652000000000005 | Year Closing Sum        | 1.2             |
 | 0x4652000000000006 | Archive Totals Sum      | 1.2             |
 | 0x465200000000000X | TBD in future by certification |          | 
+
 [Table 0.] Type of Signature: ftSignatureType (FR - BOI-TVA-DECL 30-10-30)
 
 ### Type of Journal: ftJournalType
@@ -332,4 +346,5 @@ The ftJournalType is used in connection with the journal function and defines th
 | 0x4652000000000009 | Log (“L” group) export           | 1.2     |
 | 0x465200000000000A | Copy (“C” group) export          | 1.2     |
 | 0x465200000000000B | Training (“X” group) export      | 1.2     |
+
 [Table 0.] Type of Journal: ftJournalType (FR - BOI-TVA-DECL 30-10-30)

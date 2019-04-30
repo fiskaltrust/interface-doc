@@ -1,6 +1,7 @@
 trigger:
 - master
 - release/*
+- refs/tags/*
 
 pool:
   vmImage: 'VS2017-Win2016'

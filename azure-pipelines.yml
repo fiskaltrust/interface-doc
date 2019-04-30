@@ -48,7 +48,7 @@ steps:
     # The current latest version 0.12.5 contains a bug that prevents the creation of TOCs
     # Specific version can be removed as soon as 0.12.6 is released
     choco install wkhtmltopdf --version 0.12.4.20170325 --allow-downgrade -y
-    choco install docfx -y
+    choco install docfx --version 2.41 -y
     nuget install DocFx.Plugins.PlantUml -ExcludeVersion -OutputDirectory .
   displayName: 'Install prerequisites'
 

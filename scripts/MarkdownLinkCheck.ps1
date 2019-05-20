@@ -21,12 +21,13 @@ $errors = @()
 foreach ($file in $files) {   
     ($res = markdown-link-check -v $file) 2> $null
     $text = [system.String]::Join("`n", $res)
-    if ($text.Contains("✖")) {
+    if ($text.Contains("Error")) {
         for ($i = 0; $i -le $res.Count - 1; $i++) {
-            if ($res[$i].Contains("✖") -and -not (ContainsExcludedUri $res[$i])) {
+            if ($res[$i].Contains("Error") -and -not (ContainsExcludedUri $res[$i])) {
                 # check if HTML Status beginns with 2 (success)
-                $res[$i] -match '→ Status: .';
-                if ($Matches[0][$matches[0].Length - 1] -eq '2') {
+                # `u{2192} = → https://www.fileformat.info/info/unicode/char/2192/index.htm
+                $res[$i] -match "`u{2192} Status: .";
+                if ($Matches[0][$matches[0].Length - 1] -eq "2") {
                     continue;
                 }
                 else {

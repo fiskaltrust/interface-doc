@@ -10,7 +10,7 @@
                 h1 {
                     text-align: center;
                     font-size: 20px;
-                    font-family: "Trebuchet MS"	!important;
+                    font-family: "Trebuchet MS" !important;
                 }
 
                 div {border-bottom: 1px dashed rgb(200,200,200); }

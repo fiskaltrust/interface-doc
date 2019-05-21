@@ -1,8 +1,17 @@
+
 .TocHeader, .TocNavigationVertical {
     display: none !important;
 }
 
-body {counter-reset: h1}
+body {
+    counter-reset: h1;
+    font-family: 'Trebuchet MS' !important;
+}
+
+p {
+    letter-spacing: 2px !important;  /* https://github.com/wkhtmltopdf/wkhtmltopdf/issues/4068 */
+}
+
 h1 {counter-reset: h2}
 h2 {counter-reset: h3}
 h3 {counter-reset: h4}

@@ -9,7 +9,7 @@ body {
 }
 
 p {
-    letter-spacing: 2px !important;  /* https://github.com/wkhtmltopdf/wkhtmltopdf/issues/4068 */
+    letter-spacing: 1.5px !important;  /* https://github.com/wkhtmltopdf/wkhtmltopdf/issues/4068 */
 }
 
 h1 {counter-reset: h2}

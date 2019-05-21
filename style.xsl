@@ -10,7 +10,7 @@
                 h1 {
                     text-align: center;
                     font-size: 20px;
-                    font-family: arial;
+                    font-family: "Trebuchet MS"	!important;
                 }
 
                 div {border-bottom: 1px dashed rgb(200,200,200); }
@@ -18,8 +18,9 @@
                 li {list-style: none; margin: 5px 0;}
 
                 ul {
-                    font-size: 20px;
-                    font-family: arial;
+                    font-size: 14px;
+                    font-family: "Trebuchet MS"	!important;
+                    letter-spacing: 1.5px !important;  /* https://github.com/wkhtmltopdf/wkhtmltopdf/issues/4068 */
                 }
 
                 ul ul {font-size: 100%; }

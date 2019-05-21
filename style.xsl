@@ -20,7 +20,6 @@
                 ul {
                     font-size: 14px;
                     font-family: "Trebuchet MS"	!important;
-                    letter-spacing: 1.5px !important;  /* https://github.com/wkhtmltopdf/wkhtmltopdf/issues/4068 */
                 }
 
                 ul ul {font-size: 100%; }

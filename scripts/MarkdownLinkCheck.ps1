@@ -1,8 +1,8 @@
 $excludedUris = @(
-    "https://signaturcloud.fiskaltrust.at", 
-    "https://signaturcloud.fiskaltrust.fr", 
-    "https://helipad.fiskaltrust.cloud",
-    "https://packages.fiskaltrust.cloud"
+    #"https://signaturcloud.fiskaltrust.at", 
+    #"https://signaturcloud.fiskaltrust.fr", 
+    #"https://helipad.fiskaltrust.cloud",
+    #"https://packages.fiskaltrust.cloud"
 );
 
 function ContainsExcludedUri($line) {
@@ -10,40 +10,28 @@ function ContainsExcludedUri($line) {
 }
 
 function AddError($res, $i) {    
-    if(!$global:errors.Contains("$($res[1])`n$($res[$i])`n")){
-        $global:errors += ,"$($res[1])`n$($res[$i])`n";
-    }
+    $global:errors += ,"$($res[1])`n$($res[$i])`n";
 }
 
-function CheckFile($file, [int]$tries) {
-    # get string array [1]Filename [2+]Links + Status
+function CheckFile($file) {
+    # get string array [0]is empty [1]Filename [2+]Links + Status
     ($res = markdown-link-check -v $file) 2> $null
-    
-    $text = [string]$res
-    if ($text.Contains("Error")) {
-        for ($i = 0; $i -le $res.Count - 1; $i++) {
-            if ($res[$i].Contains("Error") -and -not (ContainsExcludedUri $res[$i])) {
-                # check if HTML Status beginns with 2 (success)
-                # `u{2192} = → https://www.fileformat.info/info/unicode/char/2192/index.htm
-                $res[$i] -match "\u2192 Status: .";
-                if ($Matches[0][$matches[0].Length - 1] -eq "2") {
-                    continue;
-                }
-                # Status 0 Error: read ECONNRESET -> Node Js socket failed with TCP connection 
-                elseif ($Matches[0][$matches[0].Length - 1] -eq "0") {
-                    #retry
-                    if($tries -lt 3){ 
-                        CheckFile $file ($tries + 1)
-                    }
-                    else{
-                        AddError $res $i
-                    }
-                }
-                else {
-                    AddError $res $i
-                }     
-            }
+
+    for ($i = 2; $i -le $res.Count - 1; $i++) {
+        if (ContainsExcludedUri $res[$i]) {
+            $res[$i] + " is an excluded url."
         }
+        else{
+            # check if HTML Status beginns with 2 (success)
+            # `u{2192} = → https://www.fileformat.info/info/unicode/char/2192/index.htm
+            ($res[$i] -match "\u2192 Status: .") > $null
+            if($Matches.Length -gt 0){
+                if ($Matches[0][$matches[0].Length - 1] -ne "2")
+                {
+                    AddError $res $i
+                }              
+            }
+        }       
     }   
 }
 
@@ -58,9 +46,10 @@ $files = Get-ChildItem -Path *.md -Recurse
 $global:errors = @()
 
 foreach ($file in $files) {   
-    CheckFile($file, 0);
+    CheckFile($file);
 }
 
 if ($errors.Count -ge 1) {
     throw $errors;
 }
+

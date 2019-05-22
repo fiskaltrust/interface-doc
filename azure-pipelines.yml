@@ -53,6 +53,10 @@ steps:
     nuget install DocFx.Plugins.PlantUml -ExcludeVersion -OutputDirectory .
   displayName: 'Install prerequisites'
 
+- task: PowerShell@2
+  inputs:
+    filePath: 'set-chapter-numbers.ps1'
+
 - powershell: |
     Start-Process docfx -Wait -RedirectStandardError $(Build.ArtifactStagingDirectory)/docfx-err.log -RedirectStandardOutput $(Build.ArtifactStagingDirectory)/docfx-out.log
   displayName: Run docfx

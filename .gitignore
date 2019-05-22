@@ -21,6 +21,7 @@ target/
 .vscode/
 .vs/
 _exported_templates/
+tools/
 
 ###############
 #  temp file  #

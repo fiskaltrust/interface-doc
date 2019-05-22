@@ -20,7 +20,7 @@
   "pdf": {
     "keepRawFiles": true,
     "wkhtmltopdf": {
-      "additionalArguments": "--footer-center [page] --margin-top 25 --margin-bottom 25 --margin-left 30 --margin-right 30 cover cover.html toc --xsl-style-sheet style.xsl"
+      "additionalArguments": "--dpi 200 --zoom 0.78 --footer-center [page] --margin-top 25 --margin-bottom 25 --margin-left 30 --margin-right 30 cover cover.html toc --xsl-style-sheet style.xsl"
     },
     "content": [
       {

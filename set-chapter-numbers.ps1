@@ -4,4 +4,4 @@ Invoke-WebRequest -Uri https://github.com/TSchmiedlechner/DocFxChapterNumbers/re
 Expand-Archive "./tools/DocFxChapterNumbers.zip" -DestinationPath "./tools/DocFxChapterNumbers" -Force
 
 Rename-Item ./doc ./doc_prev
-./tools/DocFxChapterNumbers/DocFxChapterNumbers.exe ./doc_prev ./doc --force
+./tools/DocFxChapterNumbers/DocFxChapterNumbers.exe ./doc_prev/toc.md ./doc --force

@@ -26,18 +26,6 @@
                 ul {padding-left: 0em;}
                 ul ul {padding-left: 1em;}
                 a {text-decoration:none; color: black;}
-
-                
-                body ul {
-                    counter-reset: item;
-                }
-
-
-                li div a:before {
-                    content: counters(item, ".") ". ";
-                    counter-increment: item;
-                }
-
             </style>
         </head>
         <body>

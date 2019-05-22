@@ -6,10 +6,6 @@ body, h3, h4, h5, h6 {
     font-family: "Trebuchet MS" !important;
 }
 
-code, p {
-    font-size: .78em !important;
-}
-
 .hljs {
     font-size: 1.5em !important;
 }

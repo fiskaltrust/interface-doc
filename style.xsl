@@ -18,7 +18,7 @@
                 li {list-style: none; margin: 5px 0;}
 
                 ul {
-                    font-size: 14px;
+                    font-size: 18px;
                     font-family: "Trebuchet MS"	!important;
                 }
 

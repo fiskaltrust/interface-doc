@@ -95,15 +95,8 @@ For Germany (DE) the country code is `0x4445`. Thus, the value for an unknown ft
 
 | **Value** | **Description** | **Service- Version** |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------|---------------------|
-| `0x4445000000000000` | "default value"<br />unknown payment type: automatic processing through the fiskaltrust.SecurityMechanisms settings is attempted. | 0-                  |
-| `0x4445000000000000` | "unknown payment type for DE"<br />This is handled like a Start Receipt.                                                          | 0-                  |
-| `0x4445000000000001` | "Start Transaction"                                                                                                               | 0-                  |
-| `0x4445000000000002` | "Update Transaction"                                                                                                              | 0-                  |
-| `0x4445000000000003` | "Delta Transaction"                                                                                                               | 0-                  |
-| `0x4445000000000004` | "End Transaction"                                                                                                                 | 0-                  |
-| `0x4445000000000005` | "Start Receipt"                                                                                                                   | 0-                  |
-| `0x4445000000000006` | "Stop Receipt"                                                                                                                    | 0-                  |
-| `0x4445000000000007` | "Daily Closing Receipt"                                                                                                           | 0-                  |
+| `0x4445000000000000` | "default value"<br />unknown payment type: automatic processing through the fiskaltrust.SecurityMechanisms settings is attempted. | 1.3-                |
+| `0x4445000000000000` | "unknown payment type for DE"<br />This is handled like a Start Receipt.                                                          | 1.3-                |
 
 #### ftReceiptCaseFlag
 
@@ -119,42 +112,42 @@ This table expands on the values provided in Table 12 on chapter x.y.z on page p
 
 | **Value**            | **Description**                                                                            | **Service-Version** |
 |----------------------|--------------------------------------------------------------------------------------------|---------------------|
-| `0x4445000000000000` | "unknown type of service for DE"<br />With help of the VAT-rates table saved within fiskaltrust.SecurityMechanisms, an allocation to normal /discounted-1 /discounted-2/zero is attempted.                                                                                                  | 0-                  |
-| `0x4445000000000001` | "undefined type of service for DE discounted-1"                                            | 0-                  |
-| `0x4445000000000002` | "undefined type of service for DE discounted-2"                                            | 0-                  |
-| `0x4445000000000003` | "undefined type of service for DE normal"                                                  | 0-                  |
-| `0x4445000000000004` | "undefined type of service for DE special"                                                 | 0-                  |
-| `0x4445000000000005` | "undefined type of service for DE zero"                                                    | 0-                  |
-| `0x4445000000000006` | "reverse charge"                                                                           | 0-                  |
-| `0x4445000000000007` | "not own sales"                                                                            | 0-                  |
-| `0x4445000000000008` | "delivery discounted-1"<br />For processing, see (0x4445000000000001)                      | 0-                  |
-| `0x4445000000000009` | "delivery discounted-2"<br />For processing, see (0x4445000000000002)                      | 0-                  |
-| `0x444500000000000A` | "delivery normal"<br />For processing, see (0x4445000000000003)                            | 0-                  |
-| `0x444500000000000B` | "delivery special"<br />For processing, see (0x4445000000000004)                           | 0-                  |
-| `0x444500000000000C` | "delivery zero"<br />For processing, see (0x4445000000000005)                              | 0-                  |
-| `0x444500000000000D` | "other services discounted-1"<br />For processing, see (0x4445000000000001)                | 0-                  |
-| `0x444500000000000E` | "other services discounted-2"<br />For processing, see (0x4445000000000002)                | 0-                  |
-| `0x444500000000000F` | "other services normal"<br />For processing, see (0x4445000000000003)                      | 0-                  |
-| `0x4445000000000010` | "other services special"<br />For processing, see (0x4445000000000004)                     | 0-                  |
-| `0x4445000000000011` | "other services zero"<br />For processing, see (0x4445000000000005)                        | 0-                  |
-| `0x4445000000000012` | "catalogue services discounted-1"<br />For processing, see (0x4445000000000001)            | 0-                  |
-| `0x4445000000000013` | "catalogue services discounted-2"<br />For processing, see (0x4445000000000002)            | 0-                  |
-| `0x4445000000000014` | "catalogue services normal"<br />For processing, see (0x4445000000000003)                  | 0-                  |
-| `0x4445000000000015` | "catalogue services special"<br />For processing, see (0x4445000000000004)                 | 0-                  |
-| `0x4445000000000016` | "catalogue services zero"<br />For processing, see (0x4445000000000005)                    | 0-                  |
-| `0x4445000000000017` | "own consumption discounted-1"<br />For processing, see (0x4445000000000001)               | 0-                  |
-| `0x4445000000000018` | "own consumption discounted-2"<br />For processing, see (0x4445000000000002)               | 0-                  |
-| `0x4445000000000019` | "own consumption normal"<br />For processing, see (0x4445000000000003)                     | 0-                  |
-| `0x444500000000001A` | "own consumption special"<br />For processing, see (0x4445000000000004)                    | 0-                  |
-| `0x444500000000001B` | "own consumption zero"<br />For processing, see (0x4445000000000005)                       | 0-                  |
-| `0x444500000000001C` | "down payment discounted-1"<br />For processing, see (0x4445000000000001)                  | 0-                  |
-| `0x444500000000001D` | "down payment discounted-2"<br />For processing, see (0x4445000000000002)                  | 0-                  |
-| `0x444500000000001E` | "down payment normal"<br />For processing, see (0x4445000000000003)                        | 0-                  |
-| `0x444500000000001F` | "down payment special"<br />For processing, see (0x4445000000000004)                       | 0-                  |
-| `0x4445000000000020` | "down payment zero"<br />For processing, see (0x4445000000000005)                          | 0-                  |
-| `0x4445000000000021` | "account of a third party/ third party name/ collection"<br />For processing, see (0x4445000000000007)                                                                                                                                                                                        | 0-                  |
-| `0x4445000000000022` | "obligation with signature requirement"<br />Obligations are to be equalized with pay items. If however, it is for technical reasons necessary to transfer obligations in the charge items block, then this code should be used for obligations with German law requirement. The gross amount due is recorded in the signature field, set zero, according to the German law.<br />For example, a receipt for a voucher issuance, for which the voucher is indicated as item in the charge items block and the corresponding cash amount is indicated in the pay items block.<br />An example for this would be a voucher intake via charge items block, or a payment of an outgoing invoice.                                                                                                                                                                                                 | 0-                  |
-| `0x4445000000000023` | "obligation without signature requirement"<br />Obligations are to be equalized with pay items. If however, it is systematically necessary to transfer obligations in the charge items block, then this code should be used for obligations without German law requirement. The gross amount due is recorded in the signature field, set zero, according to the German law. For processing, also see (0x4445000000000007).                                                                      | 0-                  |
+| `0x4445000000000000` | "unknown type of service for DE"<br />With help of the VAT-rates table saved within fiskaltrust.SecurityMechanisms, an allocation to normal /discounted-1 /discounted-2/zero is attempted.                                                                                                  | 1.3-                  |
+| `0x4445000000000001` | "undefined type of service for DE discounted-1"                                            | 1.3-                  |
+| `0x4445000000000002` | "undefined type of service for DE discounted-2"                                            | 1.3-                  |
+| `0x4445000000000003` | "undefined type of service for DE normal"                                                  | 1.3-                  |
+| `0x4445000000000004` | "undefined type of service for DE special"                                                 | 1.3-                  |
+| `0x4445000000000005` | "undefined type of service for DE zero"                                                    | 1.3-                  |
+| `0x4445000000000006` | "reverse charge"                                                                           | 1.3-                  |
+| `0x4445000000000007` | "not own sales"                                                                            | 1.3-                  |
+| `0x4445000000000008` | "delivery discounted-1"<br />For processing, see (0x4445000000000001)                      | 1.3-                  |
+| `0x4445000000000009` | "delivery discounted-2"<br />For processing, see (0x4445000000000002)                      | 1.3-                  |
+| `0x444500000000000A` | "delivery normal"<br />For processing, see (0x4445000000000003)                            | 1.3-                  |
+| `0x444500000000000B` | "delivery special"<br />For processing, see (0x4445000000000004)                           | 1.3-                  |
+| `0x444500000000000C` | "delivery zero"<br />For processing, see (0x4445000000000005)                              | 1.3-                  |
+| `0x444500000000000D` | "other services discounted-1"<br />For processing, see (0x4445000000000001)                | 1.3-                  |
+| `0x444500000000000E` | "other services discounted-2"<br />For processing, see (0x4445000000000002)                | 1.3-                  |
+| `0x444500000000000F` | "other services normal"<br />For processing, see (0x4445000000000003)                      | 1.3-                  |
+| `0x4445000000000010` | "other services special"<br />For processing, see (0x4445000000000004)                     | 1.3-                  |
+| `0x4445000000000011` | "other services zero"<br />For processing, see (0x4445000000000005)                        | 1.3-                  |
+| `0x4445000000000012` | "catalogue services discounted-1"<br />For processing, see (0x4445000000000001)            | 1.3-                  |
+| `0x4445000000000013` | "catalogue services discounted-2"<br />For processing, see (0x4445000000000002)            | 1.3-                  |
+| `0x4445000000000014` | "catalogue services normal"<br />For processing, see (0x4445000000000003)                  | 1.3-                  |
+| `0x4445000000000015` | "catalogue services special"<br />For processing, see (0x4445000000000004)                 | 1.3-                  |
+| `0x4445000000000016` | "catalogue services zero"<br />For processing, see (0x4445000000000005)                    | 1.3-                  |
+| `0x4445000000000017` | "own consumption discounted-1"<br />For processing, see (0x4445000000000001)               | 1.3-                  |
+| `0x4445000000000018` | "own consumption discounted-2"<br />For processing, see (0x4445000000000002)               | 1.3-                  |
+| `0x4445000000000019` | "own consumption normal"<br />For processing, see (0x4445000000000003)                     | 1.3-                  |
+| `0x444500000000001A` | "own consumption special"<br />For processing, see (0x4445000000000004)                    | 1.3-                  |
+| `0x444500000000001B` | "own consumption zero"<br />For processing, see (0x4445000000000005)                       | 1.3-                  |
+| `0x444500000000001C` | "down payment discounted-1"<br />For processing, see (0x4445000000000001)                  | 1.3-                  |
+| `0x444500000000001D` | "down payment discounted-2"<br />For processing, see (0x4445000000000002)                  | 1.3-                  |
+| `0x444500000000001E` | "down payment normal"<br />For processing, see (0x4445000000000003)                        | 1.3-                  |
+| `0x444500000000001F` | "down payment special"<br />For processing, see (0x4445000000000004)                       | 1.3-                  |
+| `0x4445000000000020` | "down payment zero"<br />For processing, see (0x4445000000000005)                          | 1.3-                  |
+| `0x4445000000000021` | "account of a third party/ third party name/ collection"<br />For processing, see (0x4445000000000007)                                                                                                                                                                                        | 1.3-                  |
+| `0x4445000000000022` | "obligation with signature requirement"<br />Obligations are to be equalized with pay items. If however, it is for technical reasons necessary to transfer obligations in the charge items block, then this code should be used for obligations with German law requirement. The gross amount due is recorded in the signature field, set zero, according to the German law.<br />For example, a receipt for a voucher issuance, for which the voucher is indicated as item in the charge items block and the corresponding cash amount is indicated in the pay items block.<br />An example for this would be a voucher intake via charge items block, or a payment of an outgoing invoice.                                                                                                                                                                                                 | 1.3-                  |
+| `0x4445000000000023` | "obligation without signature requirement"<br />Obligations are to be equalized with pay items. If however, it is systematically necessary to transfer obligations in the charge items block, then this code should be used for obligations without German law requirement. The gross amount due is recorded in the signature field, set zero, according to the German law. For processing, also see (0x4445000000000007).                                                                      | 1.3-                  |
 
 ### Type of Payment: ftPayItemCase
 
@@ -162,24 +155,24 @@ This table expands on the values provided in table Table 13 on chapter x.y.z on 
 
 | **Value**            | **Description**                                                                                                                   | **Service-Version** |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------|---------------------|
-| `0x4445000000000000` | "default value"<br />unknown payment type: automatic processing through the fiskaltrust.SecurityMechanisms settings is attempted. | 0-                  |
-| `0x4445000000000000` | "unknown payment type for DE"<br />This is handled like a cash payment in national currency.                                      | 0-                  |
-| `0x4445000000000001` | "cash payment in national currency"                                                                                               | 0-                  |
-| `0x4445000000000002` | "cash payment in foreign currency"                                                                                                | 0-                  |
-| `0x4445000000000003` | "crossed cheque"                                                                                                                  | 0-                  |
-| `0x4445000000000004` | "debit card payment"                                                                                                              | 0-                  |
-| `0x4445000000000005` | "credit card payment"                                                                                                             | 0-                  |
-| `0x4445000000000006` | "voucher payment (coupon)"                                                                                                        | 0-                  |
-| `0x4445000000000007` | "online payment"                                                                                                                  | 0-                  |
-| `0x4445000000000008` | "customer card payment"                                                                                                           | 0-                  |
-| `0x4445000000000009` | "other debit card"                                                                                                                | 0-                  |
-| `0x444500000000000A` | "other credit card"                                                                                                               | 0-                  |
-| `0x444500000000000B` | "account receivable"<br />delivery note/ settlement in foreign currency                                                           | 0-                  |
-| `0x444500000000000C` | "SEPA transfer"                                                                                                                   | 0-                  |
-| `0x444500000000000D` | "other transfer"                                                                                                                  | 0-                  |
-| `0x444500000000000E` | "cash book expense"                                                                                                               | 0-                  |
-| `0x444500000000000F` | "cash book contribution"                                                                                                          | 0-                  |
-| `0x4445000000000010` | "levy"<br />DE: Anzahlung                                                                                                         | 0-                  |
-| `0x4445000000000011` | "internal/ material consumption"                                                                                                  | 0-                  |
-| `0x4445000000000012` | "change"<br />tip                                                                                                                 | 0-                  |
+| `0x4445000000000000` | "default value"<br />unknown payment type: automatic processing through the fiskaltrust.SecurityMechanisms settings is attempted. | 1.3-                  |
+| `0x4445000000000000` | "unknown payment type for DE"<br />This is handled like a cash payment in national currency.                                      | 1.3-                  |
+| `0x4445000000000001` | "cash payment in national currency"                                                                                               | 1.3-                  |
+| `0x4445000000000002` | "cash payment in foreign currency"                                                                                                | 1.3-                  |
+| `0x4445000000000003` | "crossed cheque"                                                                                                                  | 1.3-                  |
+| `0x4445000000000004` | "debit card payment"                                                                                                              | 1.3-                  |
+| `0x4445000000000005` | "credit card payment"                                                                                                             | 1.3-                  |
+| `0x4445000000000006` | "voucher payment (coupon)"                                                                                                        | 1.3-                  |
+| `0x4445000000000007` | "online payment"                                                                                                                  | 1.3-                  |
+| `0x4445000000000008` | "customer card payment"                                                                                                           | 1.3-                  |
+| `0x4445000000000009` | "other debit card"                                                                                                                | 1.3-                  |
+| `0x444500000000000A` | "other credit card"                                                                                                               | 1.3-                  |
+| `0x444500000000000B` | "account receivable"<br />delivery note/ settlement in foreign currency                                                           | 1.3-                  |
+| `0x444500000000000C` | "SEPA transfer"                                                                                                                   | 1.3-                  |
+| `0x444500000000000D` | "other transfer"                                                                                                                  | 1.3-                  |
+| `0x444500000000000E` | "cash book expense"                                                                                                               | 1.3-                  |
+| `0x444500000000000F` | "cash book contribution"                                                                                                          | 1.3-                  |
+| `0x4445000000000010` | "levy"<br />DE: Anzahlung                                                                                                         | 1.3-                  |
+| `0x4445000000000011` | "internal/ material consumption"                                                                                                  | 1.3-                  |
+| `0x4445000000000012` | "change"<br />tip                                                                                                                 | 1.3-                  |
 

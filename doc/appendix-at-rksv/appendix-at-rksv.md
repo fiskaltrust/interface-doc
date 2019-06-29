@@ -265,7 +265,7 @@ In case of the Austrian product SignaturCloud, there is a special condition when
 
 #### Sign Function
 
-The sign function meets the RKSV requirements when the fiskaltrust.SecurityMechanism is run in the following mode: the country set for creating the queue is AT and the cbReceiptCase has the flag `0x4154000000000000`.
+The sign function meets the RKSV requirements when the fiskaltrust.SecurityMechanism is run in the following mode: the country set for creating the queue is AT and the ftReceiptCase has the flag `0x4154000000000000`.
 
 #### Journal Function
 

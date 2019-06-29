@@ -103,8 +103,7 @@ For Germany (DE) the country code is `0x4445`. Thus, the value for an unknown ft
 | `0x444500000000xxxx` | pos-receipt<br />main kind of receipt processed on a pos-system. creates turnover and/or change in amout of cash in the till or similar operations. <br />using the ChargeItems and PayItems to hand over details for processing. independent from used flow (explicit/implicit) the ChargeItems and PayItems should contain the full final state of the receipt. the duration of the action is calculated using the minimum and maximum of datetime over ReceiptRequest/ChargeItems/PayItems.  | 1.3- |
 | `0x444500000000xxxx` | start-receipt<br />initializing a new fiskaltrust.SecurityMachanism. this includes also the initialization of the used TSE in the background. Depending on the TSE-Type used this includes different actions.<br />On successfull initializaiont a notification is created which includes the queue-id, scu-id, certificate/public-key, tse-serialnumber=hash(public-key). this notification need to be reported to tax administration.<br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | 1.3- |
 | `0x444500000000xxxx` | stop-receipt<br />disabling a fiskaltrust.SecurityMachanism. this includes also the deactivation of the used TSE in the background. Depending on the TSE-Type used this includes different actions.<br />On successfull deactivation a notification is created which includes the queue-id, scu-id, certificate/public-key, tse-serialnumber=hash(public-key). this notification need to be reported to tax administration. <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | 1.3- |
-| `0x444500000000xxxx` | zero-receipt<br />used for communication and functional test of the fiskaltrust.SecurityMechanism. In addition a detailed statusinformation is responded on the used TSE-Device.<br />Also TSE data are unloaded, what may cause a long running request.<br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception.<br />if you want to end a ongoing transaction without turnover (e.g. all items on a receipt are voided) then use a regular ReceiptCase.<br />
-Informations returned:<br />- List of cbReceiptReference <-> Transaction-ID<br />- Statusdata of TSE, serialnumber, available/free memory, available number of signatures left, ...| 1.3- |
+| `0x444500000000xxxx` | zero-receipt<br />used for communication and functional test of the fiskaltrust.SecurityMechanism. In addition a detailed statusinformation is responded on the used TSE-Device.<br />Also TSE data are unloaded, what may cause a long running request.<br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception.<br />if you want to end a ongoing transaction without turnover (e.g. all items on a receipt are voided) then use a regular ReceiptCase.<br /> Informations returned:<br />- List of cbReceiptReference <-> Transaction-ID<br />- Statusdata of TSE, serialnumber, available/free memory, available number of signatures left, ...| 1.3- |
 | `0x444500000000xxxx` | daily-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | 1.3- |
 | `0x444500000000xxxx` | monthly-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | 1.3- |
 | `0x444500000000xxxx` | yearly-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | 1.3- |
@@ -116,6 +115,11 @@ Informations returned:<br />- List of cbReceiptReference <-> Transaction-ID<br /
 - register new terminal (TerminalID)
 - unregister a terminal (TerminalID)
 
+@startuml
+
+POS -> Queue : ReceiptRequest
+
+@enduml
 
 
 

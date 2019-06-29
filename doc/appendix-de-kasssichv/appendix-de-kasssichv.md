@@ -96,10 +96,30 @@ For Germany (DE) the country code is `0x4445`. Thus, the value for an unknown ft
 | **Value** | **Description** | **Service- Version** |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------|---------------------|
 | `0x4445000000000000` | "default value"<br />unknown payment type: automatic processing through the fiskaltrust.SecurityMechanisms settings is attempted. | 1.3-                |
-| `0x4445000000000000` | "unknown payment type for DE"<br />This is handled like a Start Receipt.                                                          | 1.3-                |
+| `0x4445000000000000` | "unknown payment type for DE"<br />This is handled like a pos-receipt.                                                          | 1.3-                |
+| `0x444500000000xxxx` | start-transaction<br />starts a new, unfinised action. use ChargeItems and PayItems to hand over already known details for final receipt. using the same cbTerminalID and cbReceiptReferece in further calls connects the action items. <br />this works only on explicit flow. calling with the ReceiptCaseFlag 0xyyyy ends up in an exception. | 1.3- |
+| `0x444500000000xxxx` | update-transaction<br />updates an ongoing action. use ChargeItems and PayItems to hand over all details for final receipt. using the same cbTerminalID and cbReceiptReferece in further calls connects the action items. <br />this works only on explicit flow. calling with the ReceiptCaseFlag 0xyyyy ends up in an exception. | 1.3- |
+| `0x444500000000xxxx` | delat-transaction<br />updates an ongoing action. use ChargeItems and PayItems to hand changes for final receipt. using the same cbTerminalID and cbReceiptReferece in further calls connects the action items. <br />this works only on explicit flow. calling with the ReceiptCaseFlag 0xyyyy ends up in an exception. | 1.3- |
+| `0x444500000000xxxx` | pos-receipt<br />main kind of receipt processed on a pos-system. creates turnover and/or change in amout of cash in the till or similar operations. <br />using the ChargeItems and PayItems to hand over details for processing. independent from used flow (explicit/implicit) the ChargeItems and PayItems should contain the full final state of the receipt. the duration of the action is calculated using the minimum and maximum of datetime over ReceiptRequest/ChargeItems/PayItems.  | 1.3- |
 | `0x444500000000xxxx` | start-receipt<br />initializing a new fiskaltrust.SecurityMachanism. this includes also the initialization of the used TSE in the background. Depending on the TSE-Type used this includes different actions.<br />On successfull initializaiont a notification is created which includes the queue-id, scu-id, certificate/public-key, tse-serialnumber=hash(public-key). this notification need to be reported to tax administration.<br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | 1.3- |
 | `0x444500000000xxxx` | stop-receipt<br />disabling a fiskaltrust.SecurityMachanism. this includes also the deactivation of the used TSE in the background. Depending on the TSE-Type used this includes different actions.<br />On successfull deactivation a notification is created which includes the queue-id, scu-id, certificate/public-key, tse-serialnumber=hash(public-key). this notification need to be reported to tax administration. <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | 1.3- |
-| `0x444500000000xxxx` | zero-receipt<br />used for communication and functional test of the fiskaltrust.SecurityMechanism. In addition a detailed statusinformation is responded on the used TSE-Device.<br />Also TSE data are unloaded, what may cause a long running request.<br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception.<br />if you want to end a ongoing transaction without turnover (e.g. all items on a receipt are voided) then use a regular ReceiptCase. | 1.3- |
+| `0x444500000000xxxx` | zero-receipt<br />used for communication and functional test of the fiskaltrust.SecurityMechanism. In addition a detailed statusinformation is responded on the used TSE-Device.<br />Also TSE data are unloaded, what may cause a long running request.<br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception.<br />if you want to end a ongoing transaction without turnover (e.g. all items on a receipt are voided) then use a regular ReceiptCase.<br />
+Informations returned:<br />
+- List of cbReceiptReference <-> Transaction-ID<br />
+- Statusdata of TSE, serialnumber, available/free memory, available number of signatures left, ...
+| 1.3- |
+| `0x444500000000xxxx` | daily-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | 1.3- |
+| `0x444500000000xxxx` | monthly-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | 1.3- |
+| `0x444500000000xxxx` | yearly-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | 1.3- |
+
+
+
+##### actions where a receiptcase has to be defined
+
+- register new terminal (TerminalID)
+- unregister a terminal (TerminalID)
+
+
 
 
 #### ftReceiptCaseFlag
@@ -116,11 +136,11 @@ This table expands on the values provided in Table 12 on chapter x.y.z on page p
 
 | **Value**            | **Description**                                                                            | **Service-Version** |
 |----------------------|--------------------------------------------------------------------------------------------|---------------------|
-| `0x4445000000000000` | "unknown type of service for DE"<br />With help of the VAT-rates table saved within fiskaltrust.SecurityMechanisms, an allocation to normal /discounted-1 /discounted-2/zero is attempted.                                                                                                  | 1.3-                  |
-| `0x4445000000000001` | "undefined type of service for DE discounted-1"                                            | 1.3-                  |
-| `0x4445000000000002` | "undefined type of service for DE discounted-2"                                            | 1.3-                  |
-| `0x4445000000000003` | "undefined type of service for DE normal"                                                  | 1.3-                  |
-| `0x4445000000000004` | "undefined type of service for DE special"                                                 | 1.3-                  |
+| `0x4445000000000000` | "unknown type of service for DE"<br />With help of the VAT-rates table saved within fiskaltrust.SecurityMechanisms, an allocation to normal /discounted-1 /discounted-2/special/zero is attempted.                                                                                                  | 1.3-                  |
+| `0x4445000000000001` | "undefined type of service for DE discounted-1" <br /> 1.1.2019: 7%     | 1.3-                  |
+| `0x4445000000000002` | "undefined type of service for DE discounted-2" <br /> 1.1.2019: not used          | 1.3-                  |
+| `0x4445000000000003` | "undefined type of service for DE normal" <br /> 1.1.2019: 19%   | 1.3-                  |
+| `0x4445000000000004` | "undefined type of service for DE special" <br /> 1.1.2019: not used        | 1.3-                  |
 | `0x4445000000000005` | "undefined type of service for DE zero"                                                    | 1.3-                  |
 | `0x4445000000000006` | "reverse charge"                                                                           | 1.3-                  |
 | `0x4445000000000007` | "not own sales"                                                                            | 1.3-                  |

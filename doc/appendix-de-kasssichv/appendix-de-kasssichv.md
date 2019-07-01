@@ -12,6 +12,14 @@ The links to regulations and further information, can be found at:
 
 <https://www.bsi.bund.de/DE/Presse/Kurzmeldungen/Meldungen/news_sicherheitseinrichtungen_elektr_kassen_08062018.html>
 
+## Terminology
+
+| term | description |
+|---|---|
+| Process (DE: Vorgang) | The term "process" within the meaning of the KassenSichV is to be understood in the following as a related recording process which, when using or configuring an electronic recording system, must trigger logging by the certified technical safety device. A procedure can comprise one or more business transactions as well as other procedures |
+| Transaction | In the context of the logging of a transaction at least one transaction must be generated within the certified technical safety device. While the term "process" refers to the processes in the recording system, the term "transaction" describes the safeguarding steps within the certified technical security device (at least at the beginning and end of the process) to the process in the respective recording system. |
+| Business transaction (DE: Geschäftsvorfall) | Business transactions are all legal and economic transactions that document, influence or change the profit or loss or the asset composition of an enterprise within a certain period of time |
+
 ## Cash Register Integration
 
 This chapter describes the cash register integration in accordance with the German law. The general rules for cash register integration are described in General Part of this document.

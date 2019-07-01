@@ -127,13 +127,6 @@ For Germany (DE) the country code is `0x4445`. Thus, the value for an unknown ft
 - register new terminal (TerminalID)
 - unregister a terminal (TerminalID)
 
-```startuml
-
-POS -> Queue : ReceiptRequest
-
-```enduml
-
-
 
 #### ftReceiptCaseFlag
 
@@ -142,17 +135,14 @@ This table expands on the values provided in table 10 of chapter x.y.z on page p
 | Value | Description | Service-Version |
 |---|---|---|
 | 0x0000000000010000 | out of service | 1.3- |
-| 0x0000000000020000  || training receipt<br /> DSFinV-K: overrides BON_TYP=AVTraining  | 1.3- |
-| 0x0000000000040000 | | reverse/voided receipt<br /> DSFinV-K: overrides BON_TYP=AVBelegstorno  | 1.3- |
-| 0x0000000000080000  || handwritten receipt | 1.3- |
-| 0x0 |0000000ffff00 |00 | Implicit Transaction. No Start-Transaction call to ´Sign´ is required, it is done implicit. If the unique ident |ifier set in  |property ´cbReceiptIdentification´ already started a transaction, this will throw an exception. | 1.3-  | | | | | | ||
+| 0x0000000000020000  | training receipt<br /> DSFinV-K: overrides BON_TYP=AVTraining  | 1.3- |
+| 0x0000000000040000 | reverse/voided receipt<br /> DSFinV-K: overrides BON_TYP=AVBelegstorno  | 1.3- |
+| 0x0000000000080000  | paper/handwritten receipt | 1.3- |
+| 0x00000000ffff0000 | Implicit Transaction. No Start-Transaction call to ´Sign´ is required, it is done implicit. If the unique identifier set in property ´cbReceiptIdentification´ already started a transaction, this will throw an exception. | 1.3-  |
 
+### Type of Service: ftChargeItemCase
 
- | |
-## | |# Type of Service: ftChargeItemCase
-
-This table expands on the values provide| d in Table 12 on chapter x.y.z on page p with values applicable to the German market| | | | | | | .
-
+This table expands on the values provided in Table 12 on chapter x.y.z on page p with values applicable to the German market
 | ID | USt-Satz | Beschreibung |
 |---|---|---|
 | 1 | 19,00% | Regelsteuersatz |

@@ -169,17 +169,17 @@ ab 1000 individuelle Sachverhalte (Altsteuersätze, § 13b UStG, o.ä.)
 |---|---|---|---|---|
 | `0x4445000000000000` | unknown type of service for DE | 7 | Umsatz | 1.3- |
 
-| `0x4445000000000001` | "undefined type of service for DE discounted-1" <br /> 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Umsatz   | 1.3-|
-| `0x4445000000000002` | "undefined type of service for DE special-2" <br /> 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Umsatz         | 1.3- |
-| `0x4445000000000003` | "undefined type of service for DE normal" <br /> 1.1.2019: 19,00% (DE: Regelsteuersatz) <br /> |1|Umsatz  | 1.3- |
-| `0x4445000000000004` | "undefined type of service for DE special-1" <br /> 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |4|Umsatz     | 1.3- |
-| `0x4445000000000005` | "undefined type of service for DE zero"     <br />|6|Umsatz | 1.3- |
+| `0x4445000000000001` | "undefined type of service for DE discounted-1" <br /> 1.1.2019: 7% (DE: Ermäßigter Steuersatz) | 2 | Umsatz   | 1.3- |
+| `0x4445000000000002` | "undefined type of service for DE special-2" <br /> 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) | 4 | Umsatz         | 1.3- |
+| `0x4445000000000003` | "undefined type of service for DE normal" <br /> 1.1.2019: 19,00% (DE: Regelsteuersatz) <br /> | 1 | Umsatz  | 1.3- |
+| `0x4445000000000004` | "undefined type of service for DE special-1" <br /> 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  | 4 | Umsatz     | 1.3- |
+| `0x4445000000000005` | "undefined type of service for DE zero"     <br /> | 6 | Umsatz | 1.3- |
 
-| `0x4445000000000006` | "reverse charge" |5|Umsatz | 1.3- |
-| `0x4445000000000007` | "not own sales" |5|Umsatz  | 1.3- |
+| `0x4445000000000006` | "reverse charge" | 5 | Umsatz | 1.3- |
+| `0x4445000000000007` | "not own sales" | 5 | Umsatz  | 1.3- |
 
-| `0x4445000000000008` | "delivery discounted-1"<br />For processing, see (0x4445000000000001)  |2|Umsatz   | 1.3- |
-| `0x4445000000000009` | "delivery special-2"<br />For processing, see (0x4445000000000002) |4|Umsatz  | 1.3- |
+| `0x4445000000000008` | "delivery discounted-1"<br />For processing, see (0x4445000000000001)  | 2 | Umsatz   | 1.3- |
+| `0x4445000000000009` | "delivery special-2"<br />For processing, see (0x4445000000000002) | 4 | Umsatz  | 1.3- |
 | `0x444500000000000A` | "delivery normal"<br />For processing, see (0x4445000000000003)  | 1.3- |
 | `0x444500000000000B` | "delivery special-1"<br />For processing, see (0x4445000000000004)  | 1.3- |
 | `0x444500000000000C` | "delivery zero"<br />For processing, see (0x4445000000000005) | 1.3- |

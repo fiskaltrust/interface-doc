@@ -127,11 +127,11 @@ For Germany (DE) the country code is `0x4445`. Thus, the value for an unknown ft
 - register new terminal (TerminalID)
 - unregister a terminal (TerminalID)
 
-@startuml
+```startuml
 
 POS -> Queue : ReceiptRequest
 
-@enduml
+```enduml
 
 
 
@@ -219,7 +219,6 @@ This table expands on the values provide| d in Table 12 on chapter x.y.z on page
 | `0x444500000000cccc` | extra charge not taxable |5|Aufschlag | 1.3- |
 | `0x444500000000cccc` | extra charge unknown vat |7|Aufschlag  | 1.3- |
 | `0x444500000000cccc` | real grant not taxable  | 5 |ZuschussEcht | 1.3- |
-
 | `0x444500000000cccc` | unreal grant discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|ZuschussUnecht   | 1.3-|
 | `0x444500000000cccc` | unreal grant special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|ZuschussUnecht         | 1.3- |
 | `0x444500000000cccc` | unreal grant normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|ZuschussUnecht  | 1.3- |
@@ -235,7 +234,6 @@ This table expands on the values provide| d in Table 12 on chapter x.y.z on page
 | `0x444500000000cccc` | tip to owner not taxable |5|TrinkgeldAG | 1.3- |
 | `0x444500000000cccc` | tip to owner unknown vat |7|TrinkgeldAG  | 1.3- |
 | `0x444500000000cccc` | tip to employee no vat  | 5 |TrinkgeldAN | 1.3- |
-
 | `0x444500000000cccc` | coupon sales discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|EinzweckgutscheinKauf   | 1.3-|
 | `0x444500000000cccc` | coupon sales special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|EinzweckgutscheinKauf         | 1.3- |
 | `0x444500000000cccc` | coupon sales normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|EinzweckgutscheinKauf  | 1.3- |
@@ -243,7 +241,6 @@ This table expands on the values provide| d in Table 12 on chapter x.y.z on page
 | `0x444500000000cccc` | coupon sales zero  |6|EinzweckgutscheinKauf | 1.3- |
 | `0x444500000000cccc` | coupon sales not taxable |5|EinzweckgutscheinKauf | 1.3- |
 | `0x444500000000cccc` | coupon sales unknown vat |7|EinzweckgutscheinKauf  | 1.3- |
-
 | `0x444500000000cccc` | coupon redeem discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|EinzweckgutscheinEinloesung   | 1.3-|
 | `0x444500000000cccc` | coupon redeem special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|EinzweckgutscheinEinloesung         | 1.3- |
 | `0x444500000000cccc` | coupon redeem normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|EinzweckgutscheinEinloesung  | 1.3- |
@@ -289,7 +286,6 @@ This table expands on the values provide| d in Table 12 on chapter x.y.z on page
 | `0x444500000000cccc` | cash transfer to cash book  no vat  | 5 | Einzahlung | 1.3- |
 | `0x444500000000cccc` | cash transfer from cash book  no vat  | 5 | Auszahlung | 1.3- |
 | `0x444500000000cccc` | cash amount difference from/to till  no vat  | 5 | DifferenzSollIst | 1.3- |
-
 | `0x444500000000cccc` | reverse charge | 5 | Umsatz | 1.3- |
 | `0x444500000000cccc` | not own sales | 5 | Umsatz  | 1.3- |
 
@@ -298,26 +294,26 @@ This table expands on the values provide| d in Table 12 on chapter x.y.z on page
 
 This table expands on the values provided in table Table 13 on chapter x.y.z on page p with values applicable to the German market.
 
-| **Value**            | **Description**                                                                                                                   | **Service-Version** |
-|----------------------|-----------------------------------------------------------------------------------------------------------------------------------|---------------------|
-| `0x4445000000000000` | "default value"<br />unknown payment type: automatic processing through the fiskaltrust.SecurityMechanisms settings is attempted. | 1.3-                  |
-| `0x4445000000000000` | "unknown payment type for DE"<br />This is handled like a cash payment in national currency.                                      | 1.3-                  |
-| `0x4445000000000001` | "cash payment in national currency"                                                                                               | 1.3-                  |
-| `0x4445000000000002` | "cash payment in foreign currency"                                                                                                | 1.3-                  |
-| `0x4445000000000003` | "crossed cheque"                                                                                                                  | 1.3-                  |
-| `0x4445000000000004` | "debit card payment"                                                                                                              | 1.3-                  |
-| `0x4445000000000005` | "credit card payment"                                                                                                             | 1.3-                  |
-| `0x4445000000000006` | "voucher payment (coupon)"                                                                                                        | 1.3-                  |
-| `0x4445000000000007` | "online payment"                                                                                                                  | 1.3-                  |
-| `0x4445000000000008` | "customer card payment"                                                                                                           | 1.3-                  |
-| `0x4445000000000009` | "other debit card"                                                                                                                | 1.3-                  |
-| `0x444500000000000A` | "other credit card"                                                                                                               | 1.3-                  |
-| `0x444500000000000B` | "account receivable"<br />delivery note/ settlement in foreign currency                                                           | 1.3-                  |
-| `0x444500000000000C` | "SEPA transfer"                                                                                                                   | 1.3-                  |
-| `0x444500000000000D` | "other transfer"                                                                                                                  | 1.3-                  |
-| `0x444500000000000E` | "cash book expense"                                                                                                               | 1.3-                  |
-| `0x444500000000000F` | "cash book contribution"                                                                                                          | 1.3-                  |
-| `0x4445000000000010` | "down payment"<br />DE: Anzahlung                                                                                                 | 1.3-                  |
-| `0x4445000000000011` | "internal/ material consumption"                                                                                                  | 1.3-                  |
-| `0x4445000000000012` | "change"<br />tip                                                                                                                 | 1.3-                  |
+| **Value**  | **Description** | **ZAHLART_TYP (DSFinV-K)** | **Service-Version** |
+|---|---|---|---|
+| `0x4445000000000000` | default value<br />unknown payment type: automatic processing through the fiskaltrust.SecurityMechanisms settings is attempted. | Bar | 1.3-  |
+| `0x4445000000000000` | unknown payment type for DE<br />This is handled like a cash payment in national currency. | Bar | 1.3- |
+| `0x4445000000000001` | cash payment in national currency | Bar | 1.3- |
+| `0x4445000000000002` | cash payment in foreign currency | Bar | 1.3-  |
+| `0x4445000000000003` | crossed cheque | Unbar | 1.3-  |
+| `0x4445000000000004` | debit card payment | ECKarte | 1.3- |
+| `0x4445000000000005` | credit card payment  | Kreditkarte | 1.3- |
+| `0x4445000000000006` | voucher payment (coupon) | Guthabenkarte  | 1.3-                  |
+| `0x4445000000000007` | online payment | ElZahlungsdienstleister | 1.3-                  |
+| `0x4445000000000008` | customer card payment | Guthabenkarte  | 1.3-                  |
+| `0x4445000000000009` | other debit card  | ECKarte  | 1.3-                  |
+| `0x444500000000000A` | other credit card | Kreditkarte | 1.3-                  |
+| `0x444500000000000B` | account receivable<br />delivery note/ settlement in foreign currency | Keine | 1.3-                  |
+| `0x444500000000000C` | SEPA transfer   | Unbar | 1.3-  |
+| `0x444500000000000D` | other transfer | Unbar | | 1.3- |
+| `0x444500000000000E` | cash book expense | Bar | 1.3- |
+| `0x444500000000000F` | "cash book contribution" | Bar | 1.3- |
+| `0x4445000000000010` | "down payment"<br />DE: Anzahlung  |Keine | 1.3-                  |
+| `0x4445000000000011` | "internal/ material consumption" | Keine | 1.3-                  |
+| `0x4445000000000012` | "change"<br />tip | Bar | 1.3-           |
 

@@ -239,44 +239,44 @@ This table expands on the values provided in Table 12 on chapter x.y.z on page p
 | `0x444500000000cccc` | coupon redeem zero  |6|EinzweckgutscheinEinloesung | 1.3- |
 | `0x444500000000cccc` | coupon redeem not taxable |5|EinzweckgutscheinEinloesung | 1.3- |
 | `0x444500000000cccc` | coupon redeem unknown vat |7|EinzweckgutscheinEinloesung  | 1.3- |
-| `0x444500000000cccc` | voucher sale no vat  | 5 |MehrzweckgutscheinKauf | 1.3- |
-| `0x444500000000cccc` | voucher redeem no vat  | 5 |MehrzweckgutscheinEinloesung | 1.3- |
+| `0x444500000000cccc` | voucher sale not taxable  | 5 |MehrzweckgutscheinKauf | 1.3- |
+| `0x444500000000cccc` | voucher redeem not taxable  | 5 |MehrzweckgutscheinEinloesung | 1.3- |
 | `0x444500000000cccc` | receiveable creation discounted-1 . 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Forderungsentstehung   | 1.3-|
 | `0x444500000000cccc` | receiveable creation  special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Forderungsentstehung         | 1.3- |
 | `0x444500000000cccc` | receiveable creation  normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Forderungsentstehung  | 1.3- |
-| `0x444500000000cccc` | receiveable creation  special-1. 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |4|Forderungsentstehung     | 1.3- |
+| `0x444500000000cccc` | receiveable creation  special-1. 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Forderungsentstehung     | 1.3- |
 | `0x444500000000cccc` | receiveable creation  zero  |6|Forderungsentstehung | 1.3- |
-| `0x444500000000cccc` | receiveable creation  no vat |5|Forderungsentstehung | 1.3- |
+| `0x444500000000cccc` | receiveable creation  not taxable |5|Forderungsentstehung | 1.3- |
 | `0x444500000000cccc` | receiveable creation  unknown vat |7|Forderungsentstehung  | 1.3- |
 | `0x444500000000cccc` | receiveable reduction discounted-1 . 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Forderungsaufloesung   | 1.3-|
 | `0x444500000000cccc` | receiveable reduction  special-2 . 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Forderungsaufloesung         | 1.3- |
 | `0x444500000000cccc` | receiveable reduction  normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Forderungsaufloesung  | 1.3- |
-| `0x444500000000cccc` | receiveable reduction  special-1" . 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |4|Forderungsaufloesung     | 1.3- |
+| `0x444500000000cccc` | receiveable reduction  special-1" . 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Forderungsaufloesung     | 1.3- |
 | `0x444500000000cccc` | receiveable reduction  zero  |6|Forderungsaufloesung | 1.3- |
-| `0x444500000000cccc` | receiveable reduction  no vat |5|Forderungsaufloesung | 1.3- |
+| `0x444500000000cccc` | receiveable reduction  not taxable |5|Forderungsaufloesung | 1.3- |
 | `0x444500000000cccc` | receiveable reduction  unknown vat |7|Forderungsaufloesung  | 1.3- |
 | `0x444500000000cccc` | down payment creation discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Anzahlungseinstellung   | 1.3-|
 | `0x444500000000cccc` | down payment creation special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Anzahlungseinstellung         | 1.3- |
 | `0x444500000000cccc` | down payment creation normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Anzahlungseinstellung  | 1.3- |
-| `0x444500000000cccc` | down payment creation special-1". 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |4|Anzahlungseinstellung     | 1.3- |
+| `0x444500000000cccc` | down payment creation special-1". 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Anzahlungseinstellung     | 1.3- |
 | `0x444500000000cccc` | down payment creation zero  |6|Anzahlungseinstellung | 1.3- |
-| `0x444500000000cccc` | down payment creation no vat |5|Anzahlungseinstellung | 1.3- |
+| `0x444500000000cccc` | down payment creation not taxable |5|Anzahlungseinstellung | 1.3- |
 | `0x444500000000cccc` | down payment creation unknown vat |7|Anzahlungseinstellung  | 1.3- |
 | `0x444500000000cccc` | down payment reduction discounted-1 . 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Anzahlungsaufloesung   | 1.3-|
 | `0x444500000000cccc` | down payment reduction special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Anzahlungsaufloesung         | 1.3- |
 | `0x444500000000cccc` | down payment reduction normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Anzahlungsaufloesung  | 1.3- |
-| `0x444500000000cccc` | down payment reduction special-1" . 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |4|Anzahlungsaufloesung     | 1.3- |
+| `0x444500000000cccc` | down payment reduction special-1" . 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Anzahlungsaufloesung     | 1.3- |
 | `0x444500000000cccc` | down payment reduction zero  |6|Anzahlungsaufloesung | 1.3- |
-| `0x444500000000cccc` | down payment reduction no vat |5|Anzahlungsaufloesung | 1.3- |
+| `0x444500000000cccc` | down payment reduction not taxable |5|Anzahlungsaufloesung | 1.3- |
 | `0x444500000000cccc` | down payment reduction unknown vat |7|Anzahlungsaufloesung  | 1.3- |
-| `0x444500000000cccc` | cash transfer to empty till  no vat  | 5 |Anfangsbestand | 1.3- |
-| `0x444500000000cccc` | cash transfer from till to owner no vat  | 5 |Privatentnahme | 1.3- |
-| `0x444500000000cccc` | cash transfer from owner to till no vat  | 5 |Privateinlage | 1.3- |
-| `0x444500000000cccc` | cash transfer from/to till  no vat  | 5 |Geldtransit | 1.3- |
-| `0x444500000000cccc` | cash transfer from till to employee no vat  | 5 |Lohnzahlung | 1.3- |
-| `0x444500000000cccc` | cash transfer to cash book  no vat  | 5 | Einzahlung | 1.3- |
-| `0x444500000000cccc` | cash transfer from cash book  no vat  | 5 | Auszahlung | 1.3- |
-| `0x444500000000cccc` | cash amount difference from/to till  no vat  | 5 | DifferenzSollIst | 1.3- |
+| `0x444500000000cccc` | cash transfer to empty till not taxable  | 5 |Anfangsbestand | 1.3- |
+| `0x444500000000cccc` | cash transfer from till to owner not taxable  | 5 |Privatentnahme | 1.3- |
+| `0x444500000000cccc` | cash transfer from owner to till not taxable  | 5 |Privateinlage | 1.3- |
+| `0x444500000000cccc` | cash transfer from/to till not taxable  | 5 |Geldtransit | 1.3- |
+| `0x444500000000cccc` | cash transfer from till to employee not taxable  | 5 |Lohnzahlung | 1.3- |
+| `0x444500000000cccc` | cash transfer to cash book not taxable | 5 | Einzahlung | 1.3- |
+| `0x444500000000cccc` | cash transfer from cash book not taxable  | 5 | Auszahlung | 1.3- |
+| `0x444500000000cccc` | cash amount difference from/to till not taxable  | 5 | DifferenzSollIst | 1.3- |
 | `0x444500000000cccc` | reverse charge | 5 | Umsatz | 1.3- |
 | `0x444500000000cccc` | not own sales | 5 | Umsatz  | 1.3- |
 

@@ -1,6 +1,6 @@
 ## Cash Register Integration
 
-This chapter describes the cash register integration in accordance with the French law. The general rules for cash register integration are described in chapter <span class="underline">6.3</span> of this document.
+This chapter describes the cash register integration in accordance with the French law. The general rules for cash register integration are described in Chapter <!-- TODO: Chapter reference --> <span class="underline">6.3</span> of this document.
 
 ### Receipt creation process
 
@@ -21,7 +21,7 @@ The regular workflow of the fiskaltrust.SecurityMechanism in the French market d
 
 ### Receipt for special functions
 
-This section expands on the descriptions from chapter <span class="underline">6.3.2</span> and describes the receipt types used for special functions on the French market.
+This section expands on the descriptions from Chapter <!-- TODO: Chapter reference --> <span class="underline">6.3.2</span> and describes the receipt types used for special functions on the French market.
 
 In accordance with the Official Bulletin BOI-CF-COM-10-80-20160803 from August 3, 2016 and paragraph 3 bis of Article 286 of the French Tax Code, the proof of payment of a non-taxable person to a taxable person for a sale or service must be signed electronically and chained to ensure unalterability. There are additional requirements specified by law, which can be fulfilled by creating the following special receipts.
 

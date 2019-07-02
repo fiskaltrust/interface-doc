@@ -1,6 +1,6 @@
 ## Terminology
 
-Table 2 contains descriptions and explanations of all general terms and abbreviations used in this document. For specifications or provisions of national law, please refer to the appropriate appendix.
+table <!-- TODO: table references --> 2 contains descriptions and explanations of all general terms and abbreviations used in this document. For specifications or provisions of national law, please refer to the appropriate appendix.
 
 | **Term**                      | **Description**                                                                                                                                                                                                                                          |
 |-------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

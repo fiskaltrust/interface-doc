@@ -1,10 +1,10 @@
 ## Reference Tables
 
-This chapter expands on the reference tables covered in chapter 6.10 of the General Part on page 50, with country specific information applicable to the Austrian market.
+This chapter expands on the reference tables covered in Chapter <!-- TODO: Chapter reference --> 6.10 of the General Part on page 5 <!-- TODO: page references -->0, with country specific information applicable to the Austrian market.
 
 ### Service Status: ftState
 
-The table below describes supported statuses for the ftState field in accordance with the Austrian law. These codes can be added through the logic operator "OR".
+The table <!-- TODO: table references --> below describes supported statuses for the ftState field in accordance with the Austrian law. These codes can be added through the logic operator "OR".
 
 The country specific code, is made of the country’s code value following the ISO-3166-1-ALPHA-2 standard, converted from ASCII into hex. For Austria (AT) this is `0x4154`, which results in `0x4154000000000000` as the value for the "ready" status.
 
@@ -51,7 +51,7 @@ For Austria (AT) the country code is `0x4154`. Thus, the value for an unknown ft
 
 #### ftReceiptCaseFlag
 
-This table expands on the values provided in table 10 of chapter 6.10.2.1 on page 51 with values applicable to the Austrian market.
+This table expands on the values provided in table <!-- TODO: table references --> 10 of Chapter <!-- TODO: Chapter reference --> 6.10.2.1 on page 5 <!-- TODO: page references -->1 with values applicable to the Austrian market.
 
 | Value                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                       | Service-Version |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-----------------|
@@ -68,7 +68,7 @@ This table expands on the values provided in table 10 of chapter 6.10.2.1 on pag
 
 ### Type of Service: ftChargeItemCase
 
-This table expands on the values provided in Table 12 on page 53 with values applicable to the Austrian market.
+This table expands on the values provided in table <!-- TODO: table references --> 12 on page 5 <!-- TODO: page references -->3 with values applicable to the Austrian market.
 
 | **Value**            | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | **Service-Version** |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|
@@ -113,7 +113,7 @@ This table expands on the values provided in Table 12 on page 53 with values app
 
 ### Type of Payment: ftPayItemCase
 
-This table expands on the values provided in table Table 13 on page 53 with values applicable to the Austrian market.
+This table expands on the values provided in table <!-- TODO: table references --> table <!-- TODO: table references --> 13 on page 5 <!-- TODO: page references -->3 with values applicable to the Austrian market.
 
 | **Value**            | **Description**                                                                                                                   | **Service-Version** |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------|---------------------|
@@ -142,9 +142,9 @@ This table expands on the values provided in table Table 13 on page 53 with valu
 
 ### Type of Signature: ftSignatureFormat
 
-This table expands on the values provided in table Table 14 on page 54 with values applicable to the Austrian market.
+This table expands on the values provided in table <!-- TODO: table references --> table <!-- TODO: table references --> 14 on page 5 <!-- TODO: page references -->4 with values applicable to the Austrian market.
 
-According to the RKSV, there is one exception: if the fiskaltrust.SecurityMechanism responds with a QR code but the printer, through which the receipt is supposed to be printed (or electronically issued), cannot display QR codes, it is allowed to convert the signature value and display it as bar code, link, or in OCR typeface on the receipt. This requirement and a sample code can be found in <span class="underline">7.10.8</span> on page 84.
+According to the RKSV, there is one exception: if the fiskaltrust.SecurityMechanism responds with a QR code but the printer, through which the receipt is supposed to be printed (or electronically issued), cannot display QR codes, it is allowed to convert the signature value and display it as bar code, link, or in OCR typeface on the receipt. This requirement and a sample code can be found in <span class="underline">7.10.8</span> on page 8 <!-- TODO: page references -->4.
 
 | **Value** | **Description**                             |
 |-----------|---------------------------------------------|
@@ -166,7 +166,7 @@ According to the RKSV, there is one exception: if the fiskaltrust.SecurityMechan
 
 ### Type of Signature: ftSignatureType
 
-This table expands on the values provided in table <span class="underline">6.10.6</span> on page 54 with values applicable to the Austrian market.
+This table expands on the values provided in table <!-- TODO: table references --> <span class="underline">6.10.6</span> on page 5 <!-- TODO: page references -->4 with values applicable to the Austrian market.
 
 | **Value**            | **Description**                                                                                                                                       | **Version** |
 |----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
@@ -179,7 +179,7 @@ This table expands on the values provided in table <span class="underline">6.10.
 
 ### Type of Journal: ftJournalType
 
-This table expands on the values provided in table of chapter xxx on page xxx with values applicable to the Austrian market.
+This table expands on the values provided in table of Chapter <!-- TODO: Chapter reference --> xxx on page xxx with values applicable to the Austrian market.
 <!-- PVO: chapter references-->
 
 | **Value**            | **Description**                | **Version** |

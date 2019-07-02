@@ -33,7 +33,7 @@ The following diagram illustrates the regular creation of a receipt with fiskalt
 
 #### Workflow - special receipts
 
-The following diagram illustrates the creation of a special receipt with fiskaltrust.Service. For a general description of special receipts, please refer to Receipt for special functions chapter, on page 23. For national laws on receipts, refer to the appropriate appendix.
+The following diagram illustrates the creation of a special receipt with fiskaltrust.Service. For a general description of special receipts, please refer to Receipt for special functions Chapter <!-- TODO: Chapter reference -->, on page 2 <!-- TODO: page references -->3. For national laws on receipts, refer to the appropriate appendix.
 
 ![](./images/03-special-receipts.png)
 

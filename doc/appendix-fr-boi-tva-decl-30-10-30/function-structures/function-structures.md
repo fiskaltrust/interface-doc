@@ -21,4 +21,4 @@ Stream stream = proxy.Journal(ftJournalType, 0, DateTime.UtcNow.Ticks);
 
 <span id="_Toc527986842" class="anchor"></span>*Code 18. Call of iPos Journal (FR – BOI-TVA-DECL 30-10-30)*
 
-A list with various possibilities for the request parameter ftJournalType is included in the reference table on page 102.
+A list with various possibilities for the request parameter ftJournalType is included in the reference table on page 1 <!-- TODO: page references -->02.

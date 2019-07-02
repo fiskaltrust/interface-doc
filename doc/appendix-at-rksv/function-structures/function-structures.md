@@ -1,6 +1,6 @@
 ## Function Structures
 
-This chapter expands on the descriptions of the function structures covered in chapter 6.5 of the General Part, with country specific information applicable to the Austrian market.
+This chapter expands on the descriptions of the function structures covered in Chapter <!-- TODO: Chapter reference --> 6.5 of the General Part, with country specific information applicable to the Austrian market.
 
 ### iPOS Interface
 
@@ -14,7 +14,7 @@ The sign function meets the RKSV requirements when the fiskaltrust.SecurityMecha
 
 #### Journal Function
 
-A list with possible values for the request parameter ftJournalType for the Austrian market is provided in the reference table on page 84.
+A list with possible values for the request parameter ftJournalType for the Austrian market is provided in the reference table <!-- TODO: table references --> on page 8 <!-- TODO: page references -->4.
 
 ### RKSV-DEP Export
 

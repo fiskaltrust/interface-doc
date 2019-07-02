@@ -19,10 +19,38 @@ If you want to contribute to this documentation, please review this README file 
 All documentation files are stored within the `/doc` folder in this repository (markdown, images, other static content).
 
 - One sub-directory and one or more markdown file(s) per chapter should be created (e.g. `general/general.md`.)
+  - 1st and 2nd level headings should be split into separate file.
 - Each chapter markdown file must be included into the table of contents in `/doc/toc.md`. DocFx will scan this file to compose the PDF documentation.
   - The order from the toc file is used to define the chapter order in the PDF file.
   - You may also use multiple files per chapter, but keep in mind that a page-break is created by DocFx after every markdown file.
 - Images must be stored within a folder called `images`. Multiple image folders in different sub-directories are supported, DocFx just scans for the directory name.
+
+#### References
+A reference to a markdown file can be created like this: `[Reference Text](./path-to-file/filename.md)`.
+
+If you want to reference something specific inside a markdown file you need to create a anchor where you want your reference to point to.
+Anchors can be created like this: `<span id="anchor-name">Referenced Item</span>`.
+
+The anchor id should adhere to the following convention: `<prefix>-<name>-<linenumber>`
+
+The `<prefix>` shows what is referenced (`c` for a chapter, `t` for a table, `i` for an illustration and `l` for a code listing).
+The `<name>` is the name of the referenced item in lowercase letters with `-` instead of whitespaces.
+The `<linenumber>` is the linenumber of the anchor at the time of writing. This serves the prevention of duplicate names in a markdown file.
+
+An anchor could look like this:
+````
+```
+some code
+```
+<span id="l-example-for-an-anchor-on-a-codelisting-43">Example for an anchor on a codelisting</span>
+````
+
+You can referencte an anchored item like this: `[Reference Text](#anchor-name)`.
+
+You can also reference anchors in other files like this:
+```
+[This](./path-to-file/filename.md#l-example-for-an-anchor-on-a-codelisting-43) is an example for a reference to the codelisting from the previous example.
+```
 
 ### Tools
 

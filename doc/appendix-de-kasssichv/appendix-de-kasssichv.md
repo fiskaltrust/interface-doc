@@ -91,7 +91,7 @@ For Germany (DE) the country code is `0x4445`. Thus, the value for an unknown ft
 
 | **Value** | **Description** | **BON_TYP (DSFinV-K)** | **Service- Version** |
 |---|---|---|---|
-| `0x4445000000000000` | unknown type for country-code "DE"<br />This is handled like a pos-receipt (`0x4445000000000000`). | Beleg | 1.3- |
+| `0x4445000000000000` | unknown type for country-code "DE"<br />This is handled like a pos-receipt (`0x4445000000000001`). | Beleg | 1.3- |
 | `0x44450000000000001` | pos-receipt<br />main kind of receipt processed on a pos-system. creates turnover and/or change in amout of cash in the till or similar operations. <br />using the ChargeItems and PayItems to hand over details for processing. independent from used flow (explicit/implicit) the ChargeItems and PayItems should contain the full final state of the receipt. the duration of the action is calculated using the minimum and maximum of datetime over ReceiptRequest/ChargeItems/PayItems.<br /> DSFinV-K: BON_TYP=Beleg, can be overwritten by ftReceiptCaseFlag  | Beleg | 1.3- |
 | `0x4445000000000002` | zero-receipt<br />used for communication and functional test of the fiskaltrust.SecurityMechanism. In addition a detailed statusinformation is responded on the used TSE-Device. Is only valid when charge items block (ftChargeItems) and pay items block (ftPayItems) in the ReceiptRequest are empty arrays.<br />Also TSE data are unloaded, what may cause a long running request.<br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception.<br />if you want to end a ongoing transaction without turnover (e.g. all items on a receipt are voided) then use a regular ReceiptCase.<br /> Informations returned:<br />- List of cbReceiptReference <-> Transaction-ID<br />- Statusdata of TSE, serialnumber, available/free memory, available number of signatures left, ...<br /> DSFinV-K: BON_TYP=AVSonstige, ChargeItems and PayItems have to be empty | AVSonstige | 1.3- |
 | `0x4445000000000003` | initial operation receipt / start-receipt<br />The request ist only valid with the same properties requirements, like a zero-receipt. initializing a new fiskaltrust.SecurityMachanism. this includes also the initialization of the used TSE in the background. Depending on the TSE-Type used this includes different actions.<br />On successfull initializaiont a notification is created which includes the queue-id, scu-id, certificate/public-key, tse-serialnumber=hash(public-key). this notification need to be reported to tax administration.<br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception.<br /> DSFinV-K: BON_TYP=AVSonstige, ChargeItems and PayItems have to be empty | AVSonstige | 1.3- |
@@ -137,6 +137,132 @@ This table expands on the values provided in table 10 of chapter x.y.z on page p
 
 This table expands on the values provided in Table 12 on chapter x.y.z on page p with values applicable to the German 
 
+| **Value** | **Description** | **UST_SCHLUESSEL (DSFinV-K)** | **GV_TYP (DSFinV-K)** | **Service-Version** |
+|---|---|---|---|---|
+| `0x4445000000000000` | unknown type of service for DE | 7 | Umsatz | 1.3- |
+| `0x4445000000000001` | undefined type of service for DE normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) | 1 | Umsatz  | 1.3- |
+| `0x4445000000000002` | undefined type of service for DE discounted-1<br /> 1.1.2019: 7% (DE: Ermäßigter Steuersatz) | 2 | Umsatz   | 1.3- |
+| `0x4445000000000003` | undefined type of service for DE special-1".  1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  | 3 | Umsatz     | 1.3- |
+| `0x4445000000000004` | undefined type of service for DE special-2". 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) | 4 | Umsatz         | 1.3- |
+| `0x4445000000000005` | undefined type of service for DE not taxable   | 5 | Umsatz | 1.3- |
+| `0x4445000000000006` | undefined type of service for DE zero   | 6 | Umsatz | 1.3- |
+| `0x4445000000000007` | undefined type of service for DE unknown vat   | 7 | Umsatz | 1.3- |
+| `0x4445000000000011` | delivery normal. For processing, see (0x4445000000000003) | 1 | Umsatz   | 1.3- |
+| `0x4445000000000012` | delivery discounted-1. For processing, see (0x4445000000000001)  | 2 | Umsatz   | 1.3- |
+| `0x4445000000000013` | delivery special-1. For processing, see (0x4445000000000004)  | 3 | Umsatz | 1.3- |
+| `0x4445000000000014` | delivery special-2. For processing, see (0x4445000000000002) | 4 | Umsatz  | 1.3- |
+| `0x4445000000000015` | delivery not taxable. For processing, see (0x4445000000000005) | 5 | Umsatz | 1.3- |
+| `0x4445000000000016` | delivery zero. For processing, see (0x4445000000000005) | 6 | Umsatz | 1.3- |
+| `0x4445000000000017` | delivery unknown vat. For processing, see (0x4445000000000005) | 7 | Umsatz | 1.3- |
+| `0x4445000000000019` | other services normal. For processing, see (0x4445000000000003) | 1 | Umsatz  | 1.3- |
+| `0x444500000000001A` | other services discounted-1.For processing, see (0x4445000000000001) | 2 | Umsatz  | 1.3- |
+| `0x444500000000001B` | other services special-1. For processing, see (0x4445000000000004)  | 3 | Umsatz | 1.3- |
+| `0x444500000000001C` | other services special-2. For processing, see (0x4445000000000002) | 4 | Umsatz  | 1.3- |
+| `0x444500000000001D` | other services not taxable. For processing, see (0x4445000000000005)  | 5 | Umsatz | 1.3- |
+| `0x444500000000001E` | other services zero. For processing, see (0x4445000000000005)  | 6 | Umsatz | 1.3- |
+| `0x444500000000001F` | other services unknown vat. For processing, see (0x4445000000000005)  | 7 | Umsatz | 1.3- |
+| `0x4445000000000021` | returnable normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Pfand  | 1.3- |
+| `0x4445000000000022` | returnable discounted-1.  1.1.2019: 7% (DE: Ermäßigter Steuersatz) | 2 | Pfand  | 1.3- |
+| `0x4445000000000023` | returnable special-1. 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Pfand  | 1.3- |
+| `0x4445000000000024` | returnable special-2.  1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Pfand  | 1.3- |
+| `0x4445000000000025` | returnable not taxable |5|Pfand  1.3- |
+| `0x4445000000000026` | returnable zero |6|Pfand | 1.3- |
+| `0x4445000000000027` | returnable vat unknown |7|Pfand  1.3- |
+| `0x4445000000000029` | returnable reverse normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|PfandRueckzahlung  | 1.3- |
+| `0x444500000000002A` | returnable reverse discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|PfandRueckzahlung  | 1.3- |
+| `0x444500000000002B` | returnable reverse special-1. 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|PfandRueckzahlung  | 1.3- |
+| `0x444500000000002C` | returnable reverse special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|PfandRueckzahlung  | 1.3- |
+| `0x444500000000002D` | returnable reverse not taxable|5|PfandRueckzahlung  |1.3- |
+| `0x444500000000002E` | returnable reverse zero|6|PfandRueckzahlung  |1.3- |
+| `0x444500000000002F` | returnable reverse vat unknown|7|PfandRueckzahlung  |1.3- |
+| `0x4445000000000031` | discount normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Rabatt  | 1.3- |
+| `0x4445000000000032` | discount discounted-1 . 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Rabatt   | 1.3-|
+| `0x4445000000000033` | discount special-1". 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Rabatt     | 1.3- |
+| `0x4445000000000034` | discount special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Rabatt         | 1.3- |
+| `0x4445000000000035` | discount not taxable |5|Rabatt | 1.3- |
+| `0x4445000000000036` | discount zero  |6|Rabatt | 1.3- |
+| `0x4445000000000037` | discount unknown vat |7|Rabatt  | 1.3- |
+| `0x4445000000000039` | extra charge normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Aufschlag  | 1.3- |
+| `0x444500000000003A` | extra charge discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Aufschlag   | 1.3-|
+| `0x444500000000003B` | extra charge special-1". 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Aufschlag     | 1.3- |
+| `0x444500000000003C` | extra charge special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Aufschlag         | 1.3- |
+| `0x444500000000003D` | extra charge not taxable |5|Aufschlag | 1.3- |
+| `0x444500000000003E` | extra charge zero  |6|Aufschlag | 1.3- |
+| `0x444500000000003F` | extra charge unknown vat |7|Aufschlag  | 1.3- |
+| `0x4445000000000041` | unreal grant normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|ZuschussUnecht  | 1.3- |
+| `0x4445000000000042` | unreal grant discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|ZuschussUnecht   | 1.3-|
+| `0x4445000000000043` | unreal grant special-1". 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|ZuschussUnecht     | 1.3- |
+| `0x4445000000000044` | unreal grant special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|ZuschussUnecht         | 1.3- |
+| `0x4445000000000045` | unreal grant not taxable |5|ZuschussUnecht | 1.3- |
+| `0x4445000000000046` | unreal grant zero  |6|ZuschussUnecht | 1.3- |
+| `0x4445000000000047` | unreal grant unknown vat |7|ZuschussUnecht  | 1.3- |
+| `0x4445000000000049` | real grant not taxable  | 5 |ZuschussEcht | 1.3- |
+| `0x4445000000000051` | tip to owner normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|TrinkgeldAG  | 1.3- |
+| `0x4445000000000052` | tip to owner discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|TrinkgeldAG   | 1.3-|
+| `0x4445000000000053` | tip to owner special-1". 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|TrinkgeldAG     | 1.3- |
+| `0x4445000000000054` | tip to owner special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|TrinkgeldAG         | 1.3- |
+| `0x4445000000000055` | tip to owner not taxable |5|TrinkgeldAG | 1.3- |
+| `0x4445000000000056` | tip to owner zero  |6|TrinkgeldAG | 1.3- |
+| `0x4445000000000057` | tip to owner unknown vat |7|TrinkgeldAG  | 1.3- |
+| `0x4445000000000059` | tip to employee no vat  | 5 |TrinkgeldAN | 1.3- |
+| `0x4445000000000060` | voucher sale not taxable  | 5 |MehrzweckgutscheinKauf | 1.3- || `0x4445000000000061` | coupon sales normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|EinzweckgutscheinKauf  | 1.3- |
+| `0x4445000000000062` | coupon sales discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|EinzweckgutscheinKauf   | 1.3-|
+| `0x4445000000000063` | coupon sales special-1". 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|EinzweckgutscheinKauf     | 1.3- |
+| `0x4445000000000064` | coupon sales special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|EinzweckgutscheinKauf         | 1.3- |
+| `0x4445000000000065` | coupon sales not taxable |5|EinzweckgutscheinKauf | 1.3- |
+| `0x4445000000000066` | coupon sales zero  |6|EinzweckgutscheinKauf | 1.3- |
+| `0x4445000000000067` | coupon sales unknown vat |7|EinzweckgutscheinKauf  | 1.3- |
+| `0x4445000000000068` | voucher redeem not taxable  | 5 |MehrzweckgutscheinEinloesung | 1.3- |
+| `0x4445000000000069` | coupon redeem normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|EinzweckgutscheinEinloesung  | 1.3- |
+| `0x444500000000006A` | coupon redeem discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|EinzweckgutscheinEinloesung   | 1.3-|
+| `0x444500000000006B` | coupon redeem special-1". 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|EinzweckgutscheinEinloesung     | 1.3- |
+| `0x444500000000006C` | coupon redeem special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|EinzweckgutscheinEinloesung         | 1.3- |
+| `0x444500000000006D` | coupon redeem not taxable |5|EinzweckgutscheinEinloesung | 1.3- |
+| `0x444500000000006E` | coupon redeem zero  |6|EinzweckgutscheinEinloesung | 1.3- |
+| `0x444500000000006F` | coupon redeem unknown vat |7|EinzweckgutscheinEinloesung  | 1.3- |
+| `0x4445000000000071` | receiveable creation  normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Forderungsentstehung  | 1.3- |
+| `0x4445000000000072` | receiveable creation discounted-1 . 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Forderungsentstehung   | 1.3-|
+| `0x4445000000000073` | receiveable creation  special-1. 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Forderungsentstehung     | 1.3- |
+| `0x4445000000000074` | receiveable creation  special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Forderungsentstehung         | 1.3- |
+| `0x4445000000000075` | receiveable creation  not taxable |5|Forderungsentstehung | 1.3- |
+| `0x4445000000000076` | receiveable creation  zero  |6|Forderungsentstehung | 1.3- |
+| `0x4445000000000077` | receiveable creation  unknown vat |7|Forderungsentstehung  | 1.3- |
+| `0x4445000000000079` | receiveable reduction  normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Forderungsaufloesung  | 1.3- |
+| `0x444500000000007A` | receiveable reduction discounted-1 . 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Forderungsaufloesung   | 1.3-|
+| `0x444500000000007B` | receiveable reduction  special-1" . 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Forderungsaufloesung     | 1.3- |
+| `0x444500000000007C` | receiveable reduction  special-2 . 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Forderungsaufloesung         | 1.3- |
+| `0x444500000000007D` | receiveable reduction  not taxable |5|Forderungsaufloesung | 1.3- |
+| `0x444500000000007E` | receiveable reduction  zero  |6|Forderungsaufloesung | 1.3- |
+| `0x444500000000007F` | receiveable reduction  unknown vat |7|Forderungsaufloesung  | 1.3- |
+| `0x4445000000000081` | down payment creation normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Anzahlungseinstellung  | 1.3- |
+| `0x4445000000000082` | down payment creation discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Anzahlungseinstellung   | 1.3-|
+| `0x4445000000000083` | down payment creation special-1". 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Anzahlungseinstellung     | 1.3- |
+| `0x4445000000000084` | down payment creation special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Anzahlungseinstellung         | 1.3- |
+| `0x4445000000000085` | down payment creation not taxable |5|Anzahlungseinstellung | 1.3- |
+| `0x4445000000000086` | down payment creation zero  |6|Anzahlungseinstellung | 1.3- |
+| `0x4445000000000087` | down payment creation unknown vat |7|Anzahlungseinstellung  | 1.3- |
+| `0x4445000000000089` | down payment reduction normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Anzahlungsaufloesung  | 1.3- |
+| `0x444500000000008A` | down payment reduction discounted-1 . 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Anzahlungsaufloesung   | 1.3-|
+| `0x444500000000008B` | down payment reduction special-1" . 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Anzahlungsaufloesung     | 1.3- |
+| `0x444500000000008C` | down payment reduction special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Anzahlungsaufloesung         | 1.3- |
+| `0x444500000000008D` | down payment reduction not taxable |5|Anzahlungsaufloesung | 1.3- |
+| `0x444500000000008E` | down payment reduction zero  |6|Anzahlungsaufloesung | 1.3- |
+| `0x444500000000008F` | down payment reduction unknown vat |7|Anzahlungsaufloesung  | 1.3- |
+| `0x4445000000000090` | cash transfer to empty till not taxable  | 5 |Anfangsbestand | 1.3- |
+| `0x4445000000000091` | cash transfer from till to owner not taxable  | 5 |Privatentnahme | 1.3- |
+| `0x4445000000000092` | cash transfer from owner to till not taxable  | 5 |Privateinlage | 1.3- |
+| `0x4445000000000093` | cash transfer from/to till not taxable  | 5 |Geldtransit | 1.3- |
+| `0x4445000000000094` | cash transfer from till to employee not taxable  | 5 |Lohnzahlung | 1.3- |
+| `0x4445000000000095` | cash transfer to cash book not taxable | 5 | Einzahlung | 1.3- |
+| `0x4445000000000096` | cash transfer from cash book not taxable  | 5 | Auszahlung | 1.3- |
+| `0x4445000000000097` | cash amount difference from/to till not taxable  | 5 | DifferenzSollIst | 1.3- |
+| `0x44450000000000A1` | reverse charge | 5 | Umsatz | 1.3- |
+| `0x44450000000000A2` | not own sales | 5 | Umsatz  | 1.3- |
+
+#### Table with vat rate reference numbers defined in DSFinV-K
+
+This table will be removed in the future / replaced by a reference
+
 | ID | USt-Satz | Beschreibung |
 |---|---|---|
 | 1 | 19,00% | Regelsteuersatz |
@@ -150,137 +276,12 @@ This table expands on the values provided in Table 12 on chapter x.y.z on page p
 | ab 1000 | | individuelle Sachverhalte (Altsteuersätze, § 13b UStG, o.ä.) |
 
 
-| **Value** | **Description** | **UST_SCHLUESSEL (DSFinV-K)** | **GV_TYP (DSFinV-K)** | **Service-Version** |
-|---|---|---|---|---|
-| `0x4445000000000000` | unknown type of service for DE | 7 | Umsatz | 1.3- |
-| `0x4445000000000001` | undefined type of service for DE discounted-1<br /> 1.1.2019: 7% (DE: Ermäßigter Steuersatz) | 2 | Umsatz   | 1.3- |
-| `0x4445000000000002` | undefined type of service for DE special-2". 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) | 4 | Umsatz         | 1.3- |
-| `0x4445000000000003` | undefined type of service for DE normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) | 1 | Umsatz  | 1.3- |
-| `0x4445000000000004` | undefined type of service for DE special-1".  1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  | 3 | Umsatz     | 1.3- |
-| `0x4445000000000005` | undefined type of service for DE zero   | 6 | Umsatz | 1.3- |
-| `0x444500000000cccc` | undefined type of service for DE not taxable   | 5 | Umsatz | 1.3- |
-| `0x444500000000cccc` | undefined type of service for DE unknown vat   | 7 | Umsatz | 1.3- |
-| `0x4445000000000008` | delivery discounted-1. For processing, see (0x4445000000000001)  | 2 | Umsatz   | 1.3- |
-| `0x4445000000000009` | delivery special-2. For processing, see (0x4445000000000002) | 4 | Umsatz  | 1.3- |
-| `0x444500000000000A` | delivery normal. For processing, see (0x4445000000000003) | 1 | Umsatz   | 1.3- |
-| `0x444500000000000B` | delivery special-1. For processing, see (0x4445000000000004)  | 3 | Umsatz | 1.3- |
-| `0x444500000000000C` | delivery zero. For processing, see (0x4445000000000005) | 6 | Umsatz | 1.3- |
-| `0x444500000000000C` | delivery not taxable. For processing, see (0x4445000000000005) | 5 | Umsatz | 1.3- |
-| `0x444500000000000C` | delivery unknown vat. For processing, see (0x4445000000000005) | 7 | Umsatz | 1.3- |
-| `0x444500000000000D` | other services discounted-1.For processing, see (0x4445000000000001) | 2 | Umsatz  | 1.3- |
-| `0x444500000000000E` | other services special-2. For processing, see (0x4445000000000002) | 4 | Umsatz  | 1.3- |
-| `0x444500000000000F` | other services normal. For processing, see (0x4445000000000003) | 1 | Umsatz  | 1.3- |
-| `0x4445000000000010` | other services special-1. For processing, see (0x4445000000000004)  | 3 | Umsatz | 1.3- |
-| `0x4445000000000011` | other services zero. For processing, see (0x4445000000000005)  | 6 | Umsatz | 1.3- |
-| `0x4445000000000011` | other services not taxable. For processing, see (0x4445000000000005)  | 5 | Umsatz | 1.3- |
-| `0x4445000000000011` | other services unknown vat. For processing, see (0x4445000000000005)  | 7 | Umsatz | 1.3- |
-| `0x444500000000cccc` | returnable discounted-1.  1.1.2019: 7% (DE: Ermäßigter Steuersatz) | 2 | Pfand  | 1.3- |
-| `0x444500000000cccc` | returnable special-2.  1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Pfand  | 1.3- |
-| `0x444500000000cccc` | returnable normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Pfand  | 1.3- |
-| `0x444500000000cccc` | returnable special-1. 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Pfand  | 1.3- |
-| `0x444500000000cccc` | returnable zero |6|Pfand | 1.3- |
-| `0x444500000000cccc` | returnable not taxable |5|Pfand  1.3- |
-| `0x444500000000cccc` | returnable vat unknown |7|Pfand  1.3- |
-| `0x444500000000cccc` | returnable reverse discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|PfandRueckzahlung  | 1.3- |
-| `0x444500000000cccc` | returnable reverse special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|PfandRueckzahlung  | 1.3- |
-| `0x444500000000cccc` | returnable reverse normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|PfandRueckzahlung  | 1.3- |
-| `0x444500000000cccc` | returnable reverse special-1. 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|PfandRueckzahlung  | 1.3- |
-| `0x444500000000cccc` | returnable reverse zero|6|PfandRueckzahlung  |1.3- |
-| `0x444500000000cccc` | returnable reverse not taxable|5|PfandRueckzahlung  |1.3- |
-| `0x444500000000cccc` | returnable reverse vat unknown|7|PfandRueckzahlung  |1.3- |
-| `0x444500000000cccc` | discount discounted-1 . 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Rabatt   | 1.3-|
-| `0x444500000000cccc` | discount special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Rabatt         | 1.3- |
-| `0x444500000000cccc` | discount normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Rabatt  | 1.3- |
-| `0x444500000000cccc` | discount special-1". 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Rabatt     | 1.3- |
-| `0x444500000000cccc` | discount zero  |6|Rabatt | 1.3- |
-| `0x444500000000cccc` | discount not taxable |5|Rabatt | 1.3- |
-| `0x444500000000cccc` | discount unknown vat |7|Rabatt  | 1.3- |
-| `0x444500000000cccc` | extra charge discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Aufschlag   | 1.3-|
-| `0x444500000000cccc` | extra charge special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Aufschlag         | 1.3- |
-| `0x444500000000cccc` | extra charge normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Aufschlag  | 1.3- |
-| `0x444500000000cccc` | extra charge special-1". 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Aufschlag     | 1.3- |
-| `0x444500000000cccc` | extra charge zero  |6|Aufschlag | 1.3- |
-| `0x444500000000cccc` | extra charge not taxable |5|Aufschlag | 1.3- |
-| `0x444500000000cccc` | extra charge unknown vat |7|Aufschlag  | 1.3- |
-| `0x444500000000cccc` | real grant not taxable  | 5 |ZuschussEcht | 1.3- |
-| `0x444500000000cccc` | unreal grant discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|ZuschussUnecht   | 1.3-|
-| `0x444500000000cccc` | unreal grant special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|ZuschussUnecht         | 1.3- |
-| `0x444500000000cccc` | unreal grant normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|ZuschussUnecht  | 1.3- |
-| `0x444500000000cccc` | unreal grant special-1". 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|ZuschussUnecht     | 1.3- |
-| `0x444500000000cccc` | unreal grant zero  |6|ZuschussUnecht | 1.3- |
-| `0x444500000000cccc` | unreal grant not taxable |5|ZuschussUnecht | 1.3- |
-| `0x444500000000cccc` | unreal grant unknown vat |7|ZuschussUnecht  | 1.3- |
-| `0x444500000000cccc` | tip to owner discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|TrinkgeldAG   | 1.3-|
-| `0x444500000000cccc` | tip to owner special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|TrinkgeldAG         | 1.3- |
-| `0x444500000000cccc` | tip to owner normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|TrinkgeldAG  | 1.3- |
-| `0x444500000000cccc` | tip to owner special-1". 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|TrinkgeldAG     | 1.3- |
-| `0x444500000000cccc` | tip to owner zero  |6|TrinkgeldAG | 1.3- |
-| `0x444500000000cccc` | tip to owner not taxable |5|TrinkgeldAG | 1.3- |
-| `0x444500000000cccc` | tip to owner unknown vat |7|TrinkgeldAG  | 1.3- |
-| `0x444500000000cccc` | tip to employee no vat  | 5 |TrinkgeldAN | 1.3- |
-| `0x444500000000cccc` | coupon sales discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|EinzweckgutscheinKauf   | 1.3-|
-| `0x444500000000cccc` | coupon sales special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|EinzweckgutscheinKauf         | 1.3- |
-| `0x444500000000cccc` | coupon sales normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|EinzweckgutscheinKauf  | 1.3- |
-| `0x444500000000cccc` | coupon sales special-1". 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|EinzweckgutscheinKauf     | 1.3- |
-| `0x444500000000cccc` | coupon sales zero  |6|EinzweckgutscheinKauf | 1.3- |
-| `0x444500000000cccc` | coupon sales not taxable |5|EinzweckgutscheinKauf | 1.3- |
-| `0x444500000000cccc` | coupon sales unknown vat |7|EinzweckgutscheinKauf  | 1.3- |
-| `0x444500000000cccc` | coupon redeem discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|EinzweckgutscheinEinloesung   | 1.3-|
-| `0x444500000000cccc` | coupon redeem special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|EinzweckgutscheinEinloesung         | 1.3- |
-| `0x444500000000cccc` | coupon redeem normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|EinzweckgutscheinEinloesung  | 1.3- |
-| `0x444500000000cccc` | coupon redeem special-1". 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|EinzweckgutscheinEinloesung     | 1.3- |
-| `0x444500000000cccc` | coupon redeem zero  |6|EinzweckgutscheinEinloesung | 1.3- |
-| `0x444500000000cccc` | coupon redeem not taxable |5|EinzweckgutscheinEinloesung | 1.3- |
-| `0x444500000000cccc` | coupon redeem unknown vat |7|EinzweckgutscheinEinloesung  | 1.3- |
-| `0x444500000000cccc` | voucher sale not taxable  | 5 |MehrzweckgutscheinKauf | 1.3- |
-| `0x444500000000cccc` | voucher redeem not taxable  | 5 |MehrzweckgutscheinEinloesung | 1.3- |
-| `0x444500000000cccc` | receiveable creation discounted-1 . 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Forderungsentstehung   | 1.3-|
-| `0x444500000000cccc` | receiveable creation  special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Forderungsentstehung         | 1.3- |
-| `0x444500000000cccc` | receiveable creation  normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Forderungsentstehung  | 1.3- |
-| `0x444500000000cccc` | receiveable creation  special-1. 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Forderungsentstehung     | 1.3- |
-| `0x444500000000cccc` | receiveable creation  zero  |6|Forderungsentstehung | 1.3- |
-| `0x444500000000cccc` | receiveable creation  not taxable |5|Forderungsentstehung | 1.3- |
-| `0x444500000000cccc` | receiveable creation  unknown vat |7|Forderungsentstehung  | 1.3- |
-| `0x444500000000cccc` | receiveable reduction discounted-1 . 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Forderungsaufloesung   | 1.3-|
-| `0x444500000000cccc` | receiveable reduction  special-2 . 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Forderungsaufloesung         | 1.3- |
-| `0x444500000000cccc` | receiveable reduction  normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Forderungsaufloesung  | 1.3- |
-| `0x444500000000cccc` | receiveable reduction  special-1" . 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Forderungsaufloesung     | 1.3- |
-| `0x444500000000cccc` | receiveable reduction  zero  |6|Forderungsaufloesung | 1.3- |
-| `0x444500000000cccc` | receiveable reduction  not taxable |5|Forderungsaufloesung | 1.3- |
-| `0x444500000000cccc` | receiveable reduction  unknown vat |7|Forderungsaufloesung  | 1.3- |
-| `0x444500000000cccc` | down payment creation discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Anzahlungseinstellung   | 1.3-|
-| `0x444500000000cccc` | down payment creation special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Anzahlungseinstellung         | 1.3- |
-| `0x444500000000cccc` | down payment creation normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Anzahlungseinstellung  | 1.3- |
-| `0x444500000000cccc` | down payment creation special-1". 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Anzahlungseinstellung     | 1.3- |
-| `0x444500000000cccc` | down payment creation zero  |6|Anzahlungseinstellung | 1.3- |
-| `0x444500000000cccc` | down payment creation not taxable |5|Anzahlungseinstellung | 1.3- |
-| `0x444500000000cccc` | down payment creation unknown vat |7|Anzahlungseinstellung  | 1.3- |
-| `0x444500000000cccc` | down payment reduction discounted-1 . 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Anzahlungsaufloesung   | 1.3-|
-| `0x444500000000cccc` | down payment reduction special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Anzahlungsaufloesung         | 1.3- |
-| `0x444500000000cccc` | down payment reduction normal". 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Anzahlungsaufloesung  | 1.3- |
-| `0x444500000000cccc` | down payment reduction special-1" . 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Anzahlungsaufloesung     | 1.3- |
-| `0x444500000000cccc` | down payment reduction zero  |6|Anzahlungsaufloesung | 1.3- |
-| `0x444500000000cccc` | down payment reduction not taxable |5|Anzahlungsaufloesung | 1.3- |
-| `0x444500000000cccc` | down payment reduction unknown vat |7|Anzahlungsaufloesung  | 1.3- |
-| `0x444500000000cccc` | cash transfer to empty till not taxable  | 5 |Anfangsbestand | 1.3- |
-| `0x444500000000cccc` | cash transfer from till to owner not taxable  | 5 |Privatentnahme | 1.3- |
-| `0x444500000000cccc` | cash transfer from owner to till not taxable  | 5 |Privateinlage | 1.3- |
-| `0x444500000000cccc` | cash transfer from/to till not taxable  | 5 |Geldtransit | 1.3- |
-| `0x444500000000cccc` | cash transfer from till to employee not taxable  | 5 |Lohnzahlung | 1.3- |
-| `0x444500000000cccc` | cash transfer to cash book not taxable | 5 | Einzahlung | 1.3- |
-| `0x444500000000cccc` | cash transfer from cash book not taxable  | 5 | Auszahlung | 1.3- |
-| `0x444500000000cccc` | cash amount difference from/to till not taxable  | 5 | DifferenzSollIst | 1.3- |
-| `0x444500000000cccc` | reverse charge | 5 | Umsatz | 1.3- |
-| `0x444500000000cccc` | not own sales | 5 | Umsatz  | 1.3- |
-
-
 ### Type of Payment: ftPayItemCase
 
 This table expands on the values provided in table Table 13 on chapter x.y.z on page p with values applicable to the German market.
 
 | **Value**  | **Description** | **ZAHLART_TYP (DSFinV-K)** | **Service-Version** |
 |---|---|---|---|
-| `0x4445000000000000` | default value<br />unknown payment type: automatic processing through the fiskaltrust.SecurityMechanisms settings is attempted. | Bar | 1.3-  |
 | `0x4445000000000000` | unknown payment type for DE<br />This is handled like a cash payment in national currency. | Bar | 1.3- |
 | `0x4445000000000001` | cash payment in national currency | Bar | 1.3- |
 | `0x4445000000000002` | cash payment in foreign currency | Bar | 1.3-  |

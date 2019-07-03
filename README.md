@@ -69,7 +69,7 @@ usage:
 ```
 markdown-link-check ./general/general.md
 ```
-This tool does not find dead references inside a file.
+> Please note thst this tool does not find dead references inside a file. Only dead references to nonexisting files / unreachable urls.
 
 #### PlantUML
 - This documentation supports the PlantUML notation, which will be converted to SVG images and embedded into the PDF during the build.

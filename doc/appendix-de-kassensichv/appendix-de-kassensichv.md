@@ -140,7 +140,12 @@ This table expands on the values provided in table 10 of chapter x.y.z on page p
 | 0x0000000000020000  | training receipt<br /> DSFinV-K: overrides BON_TYP=AVTraining  | 1.3- |
 | 0x0000000000040000 | reverse/voided receipt<br /> DSFinV-K: overrides BON_TYP=AVBelegstorno  | 1.3- |
 | 0x0000000000080000  | paper/handwritten receipt | 1.3- |
-| 0x00000000ffff0000 | Implicit Transaction. No Start-Transaction call to ´Sign´ is required, it is done implicit. If the unique identifier set in property ´cbReceiptIdentification´ already started a transaction, this will throw an exception. | 1.3-  |
+| 0x0000000000100000  | small business, not taxable sales. TBD: law reference | 1.3- |
+| 0x0000000000200000  | receiver is a company | 1.3- |
+| 0x0000000000200000  | contains characteristics related to UStG. TBD: law reference | 1.3- |
+| 0x0000000100000000 | Implicit Transaction. No Start-Transaction call to ´Sign´ is required, it is done implicit. If the unique identifier set in property ´cbReceiptIdentification´ already started a transaction, this will throw an exception. | 1.3-  |
+| 0x0000800000000000  | Receipt request. Common behaviour. | 1.3- |
+
 
 ### Type of Service: ftChargeItemCase
 

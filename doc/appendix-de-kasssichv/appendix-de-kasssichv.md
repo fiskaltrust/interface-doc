@@ -62,17 +62,13 @@ In the following chapters you can find examples of special cases of zero receipt
 
 #### Start Receipt (Initial Receipt)
 
-There is a number of requirements for the implementation of a new, or a replaced security mechanism (TSE).
-
-TBD ...
-
-This receipt must be archived.
+There is a number of requirements for the implementation of a new, or a replaced german security mechanism (TSE). This kind of Receipt can be used once in a lifetime of the queue/scu combination and initializes also the underlaying german security mechanism (TSE) for usage.
+This receipt must be archived. On successfull operation a notification to the tax authority is also created, which reports the active usage of the ftCashboxIdentification and the serialnumber of the german security mechanism (TSE).
 
 #### Stop Receipt (Closing Receipt)
 
-TBD ...
-
-Once the queue has been closed with a stop receipt, no hashing and signing of receipts will be done for that queue.
+Once the queue has been closed with a stop receipt, the usage of the german secuirty mechanism is deactivated.
+On successfull operation a notification to the tax authority is also created, which reports the deactivation.
 
 ## Reference Tables
 
@@ -95,31 +91,28 @@ For Germany (DE) the country code is `0x4445`. Thus, the value for an unknown ft
 
 | **Value** | **Description** | **BON_TYP (DSFinV-K)** | **Service- Version** |
 |---|---|---|---|
-| `0x4445000000000000` | "default value"<br />unknown payment type: automatic processing through the fiskaltrust.SecurityMechanisms settings is attempted. | Beleg | 1.3-  |
-| `0x4445000000000000` | "unknown payment type for DE"<br />This is handled like a pos-receipt. | Beleg | 1.3- |
-| `0x444500000000xxxx` | start-transaction<br />starts a new, unfinised action. use ChargeItems and PayItems to hand over already known details for final receipt. using the same cbTerminalID and cbReceiptReferece in further calls connects the action items. <br />this works only on explicit flow. calling with the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
-| `0x444500000000xxxx` | update-transaction<br />updates an ongoing action. use ChargeItems and PayItems to hand over all details for final receipt. using the same cbTerminalID and cbReceiptReferece in further calls connects the action items. <br />this works only on explicit flow. calling with the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
-| `0x444500000000xxxx` | dela-transaction<br />updates an ongoing action. use ChargeItems and PayItems to hand changes for final receipt. using the same cbTerminalID and cbReceiptReferece in further calls connects the action items. <br />this works only on explicit flow. calling with the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
-| `0x444500000000xxxx` | fail-transaction<br />stopps/fails an ongoing action. tries to finish an open transaction (accepts fail, continue on fail). clears cbReceiptReferece <-> Transaction-ID relation. <br /> DSFinV-K: BON_TYP=AVBelegabbruch | AVSonstige | 1.3- |
-| `0x444500000000xxxx` | pos-receipt<br />main kind of receipt processed on a pos-system. creates turnover and/or change in amout of cash in the till or similar operations. <br />using the ChargeItems and PayItems to hand over details for processing. independent from used flow (explicit/implicit) the ChargeItems and PayItems should contain the full final state of the receipt. the duration of the action is calculated using the minimum and maximum of datetime over ReceiptRequest/ChargeItems/PayItems.<br /> DSFinV-K: BON_TYP=Beleg, can be overwritten by ftReceiptCaseFlag  | Beleg | 1.3- |
-| `0x444500000000xxxx` | start-receipt<br />initializing a new fiskaltrust.SecurityMachanism. this includes also the initialization of the used TSE in the background. Depending on the TSE-Type used this includes different actions.<br />On successfull initializaiont a notification is created which includes the queue-id, scu-id, certificate/public-key, tse-serialnumber=hash(public-key). this notification need to be reported to tax administration.<br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception.<br /> DSFinV-K: BON_TYP=AVSonstige, ChargeItems and PayItems have to be empty | AVSonstige | 1.3- |
-| `0x444500000000xxxx` | stop-receipt<br />disabling a fiskaltrust.SecurityMachanism. this includes also the deactivation of the used TSE in the background. Depending on the TSE-Type used this includes different actions.<br />On successfull deactivation a notification is created which includes the queue-id, scu-id, certificate/public-key, tse-serialnumber=hash(public-key). this notification need to be reported to tax administration. <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception.<br /> DSFinV-K: BON_TYP=AVSonstige, ChargeItems and PayItems have to be empty | AVSonstige | 1.3- |
-| `0x444500000000xxxx` | zero-receipt<br />used for communication and functional test of the fiskaltrust.SecurityMechanism. In addition a detailed statusinformation is responded on the used TSE-Device.<br />Also TSE data are unloaded, what may cause a long running request.<br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception.<br />if you want to end a ongoing transaction without turnover (e.g. all items on a receipt are voided) then use a regular ReceiptCase.<br /> Informations returned:<br />- List of cbReceiptReference <-> Transaction-ID<br />- Statusdata of TSE, serialnumber, available/free memory, available number of signatures left, ...<br /> DSFinV-K: BON_TYP=AVSonstige, ChargeItems and PayItems have to be empty | AVSonstige | 1.3- |
-| `0x444500000000xxxx` | daily-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
-| `0x444500000000xxxx` | monthly-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
-| `0x444500000000xxxx` | yearly-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
-| `0x444500000000xxxx` | b2b-invoice<br /> TBD: <br /> DSFinV-K: BON_TYP=Beleg, can be overwritten by ftReceiptCaseFlag  | Beleg | 1.3- |
-| `0x444500000000xxxx` | b2c-invoice<br /> TBD: <br /> DSFinV-K: BON_TYP=Beleg, can be overwritten by ftReceiptCaseFlag  | Beleg | 1.3- |
-| `0x444500000000xxxx` | info-invoice<br /> TBD: <br /> DSFinV-K: BON_TYP=AVRechnung | AVRechnung | 1.3- |
-| `0x444500000000xxxx` | info-delivery-note<br /> TBD: <br /> DSFinV-K: BON_TYP=AVTransfer | AVTransfer | 1.3- |
-| `0x444500000000xxxx` | info-order<br /> TBD: <br /> DSFinV-K: BON_TYP=AVBestellung | AVBestellung | 1.3- |
-| `0x444500000000xxxx` | cash deposit / cash pay-in / cash pay-out / exchange<br /> TBD: <br /> DSFinV-K: BON_TYP=Beleg, can be overwritten by ftReceiptCaseFlag | Beleg | 1.3- |
-| `0x444500000000xxxx` | material consumption<br /> TBD: <br /> DSFinV-K: BON_TYP=AVSachbezug | AVSachbezung | 1.3- |
-| `0x444500000000xxxx` | info-internal<br /> TBD: <br /> DSFinV-K: BON_TYP=AVSonstige | AVSonstige | 1.3- |
-| `0x444500000000xxxx` | protocol<br /> TBD: <br /> DSFinV-K: BON_TYP=AVSonstige | AVSonstige  | 1.3- |
-| `0x444500000000xxxx` | foreign sales<br /> TBD: <br /> DSFinV-K: BON_TYP=AVSonstige | AVSonstige | 1.3- |
-
-
+| `0x4445000000000000` | unknown type for country-code "DE"<br />This is handled like a pos-receipt (`0x4445000000000000`). | Beleg | 1.3- |
+| `0x44450000000000001` | pos-receipt<br />main kind of receipt processed on a pos-system. creates turnover and/or change in amout of cash in the till or similar operations. <br />using the ChargeItems and PayItems to hand over details for processing. independent from used flow (explicit/implicit) the ChargeItems and PayItems should contain the full final state of the receipt. the duration of the action is calculated using the minimum and maximum of datetime over ReceiptRequest/ChargeItems/PayItems.<br /> DSFinV-K: BON_TYP=Beleg, can be overwritten by ftReceiptCaseFlag  | Beleg | 1.3- |
+| `0x4445000000000002` | zero-receipt<br />used for communication and functional test of the fiskaltrust.SecurityMechanism. In addition a detailed statusinformation is responded on the used TSE-Device. Is only valid when charge items block (ftChargeItems) and pay items block (ftPayItems) in the ReceiptRequest are empty arrays.<br />Also TSE data are unloaded, what may cause a long running request.<br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception.<br />if you want to end a ongoing transaction without turnover (e.g. all items on a receipt are voided) then use a regular ReceiptCase.<br /> Informations returned:<br />- List of cbReceiptReference <-> Transaction-ID<br />- Statusdata of TSE, serialnumber, available/free memory, available number of signatures left, ...<br /> DSFinV-K: BON_TYP=AVSonstige, ChargeItems and PayItems have to be empty | AVSonstige | 1.3- |
+| `0x4445000000000003` | initial operation receipt / start-receipt<br />The request ist only valid with the same properties requirements, like a zero-receipt. initializing a new fiskaltrust.SecurityMachanism. this includes also the initialization of the used TSE in the background. Depending on the TSE-Type used this includes different actions.<br />On successfull initializaiont a notification is created which includes the queue-id, scu-id, certificate/public-key, tse-serialnumber=hash(public-key). this notification need to be reported to tax administration.<br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception.<br /> DSFinV-K: BON_TYP=AVSonstige, ChargeItems and PayItems have to be empty | AVSonstige | 1.3- |
+| `0x4445000000000004` | out of operation receipt / stop-receipt<br />The request ist only valid with the same properties requirements, like a zero-receipt. disabling a fiskaltrust.SecurityMachanism. this includes also the deactivation of the used TSE in the background. Depending on the TSE-Type used this includes different actions.<br />On successfull deactivation a notification is created which includes the queue-id, scu-id, certificate/public-key, tse-serialnumber=hash(public-key). this notification need to be reported to tax administration. <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception.<br /> DSFinV-K: BON_TYP=AVSonstige, ChargeItems and PayItems have to be empty | AVSonstige | 1.3- |
+| `0x4445000000000005` | monthly-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
+| `0x4445000000000006` | yearly-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
+| `0x4445000000000007` | daily-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
+| `0x4445000000000008` | start-transaction-receipt<br />starts a new, unfinised action. use ChargeItems and PayItems to hand over already known details for final receipt. using the same cbTerminalID and cbReceiptReferece in further calls connects the action items. <br />this works only on explicit flow. calling with the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
+| `0x4445000000000009` | update-transaction-receipt<br />updates an ongoing action. use ChargeItems and PayItems to hand over all details for final receipt. using the same cbTerminalID and cbReceiptReferece in further calls connects the action items. <br />this works only on explicit flow. calling with the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
+| `0x444500000000000A` | delta-transaction-receipt<br />updates an ongoing action. use ChargeItems and PayItems to hand changes for final receipt. using the same cbTerminalID and cbReceiptReferece in further calls connects the action items. <br />this works only on explicit flow. calling with the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
+| `0x444500000000000B` | fail-transaction-receipt<br />stopps/fails an ongoing action. tries to finish an open transaction (accepts fail, continue on fail). clears cbReceiptReferece <-> Transaction-ID relation. <br /> DSFinV-K: BON_TYP=AVBelegabbruch | AVSonstige | 1.3- |
+| `0x444500000000000C` | b2b-invoice<br /> TBD: <br /> DSFinV-K: BON_TYP=Beleg, can be overwritten by ftReceiptCaseFlag  | Beleg | 1.3- |
+| `0x444500000000000D` | b2c-invoice<br /> TBD: <br /> DSFinV-K: BON_TYP=Beleg, can be overwritten by ftReceiptCaseFlag  | Beleg | 1.3- |
+| `0x444500000000000E` | info-invoice<br /> TBD: <br /> DSFinV-K: BON_TYP=AVRechnung | AVRechnung | 1.3- |
+| `0x444500000000000F` | info-delivery-note<br /> TBD: <br /> DSFinV-K: BON_TYP=AVTransfer | AVTransfer | 1.3- |
+| `0x4445000000000010` | info-order<br /> TBD: <br /> DSFinV-K: BON_TYP=AVBestellung | AVBestellung | 1.3- |
+| `0x4445000000000011` | cash deposit / cash pay-in / cash pay-out / exchange<br /> TBD: <br /> DSFinV-K: BON_TYP=Beleg, can be overwritten by ftReceiptCaseFlag | Beleg | 1.3- |
+| `0x4445000000000012` | material consumption<br /> TBD: <br /> DSFinV-K: BON_TYP=AVSachbezug | AVSachbezung | 1.3- |
+| `0x4445000000000013` | info-internal<br /> TBD: <br /> DSFinV-K: BON_TYP=AVSonstige | AVSonstige | 1.3- |
+| `0x4445000000000014` | protocol<br /> TBD: <br /> DSFinV-K: BON_TYP=AVSonstige | AVSonstige  | 1.3- |
+| `0x4445000000000015` | foreign sales<br /> TBD: <br /> DSFinV-K: BON_TYP=AVSonstige | AVSonstige | 1.3- |
 
 
 ##### actions where a receiptcase has to be defined

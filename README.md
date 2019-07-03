@@ -63,6 +63,14 @@ Use either chocolatey or nuget.exe to install DocFx, as described [here](https:/
 [wkhtmltopdf](https://wkhtmltopdf.org/) is used internally by DocFx to convert HTML files to PDF. Download and install it from the website linked above.
 > Please note that wkhtmltopdf 0.12.5 has a bug that prevents the creation of TOCs. Use either the previous (0.12.4) or any newer version.
 
+#### markdown-link-check
+With [markdown-link-ckeck](https://www.npmjs.com/package/markdown-link-check) you can check a markdown file for incorrect links.
+usage:
+```
+markdown-link-check ./general/general.md
+```
+This tool does not find dead references inside a file.
+
 #### PlantUML
 - This documentation supports the PlantUML notation, which will be converted to SVG images and embedded into the PDF during the build.
 - Please add the `skinparam shadowing false` to your diagram. wkhtmltopdf has currently some issues with the transparency caused by the shading.

@@ -1,6 +1,6 @@
 ## Data Structures
 
-This chapter expands on the descriptions of the data structures covered in Chapter <!-- TODO: Chapter reference --> 6.4 of the General Part on page 2 <!-- TODO: page references -->5, with country specific information applicable to the Austrian market.
+This chapter expands on the descriptions of the data structures covered in the Chapter ["Data Structures"](../../general/data-structures/data-structures.md) of the General Part, with country specific information applicable to the Austrian market.
 
 ### Receipt Request
 
@@ -35,7 +35,7 @@ There are no special requirements or laws for the Austrian market.
 
 ### Signature Entry
 
-In addition to the description provided in Chapter <!-- TODO: Chapter reference --> 6.4.5 of the General part, a Signature Entry for Austrian market may contain a FinanzOnline notification, which can be sent back depending on the operating mode. This is in particular the case for receipts with special functions.
+In addition to the description provided in the Chapter ["Signature Entry"](../../general/data-structures/data-structures.md#signature-entry) of the General part, a Signature Entry for Austrian market may contain a FinanzOnline notification, which can be sent back depending on the operating mode. This is in particular the case for receipts with special functions.
 
 | **Field Name**      | **Data Type** | **Default Value**<br />**Mandatory Field** | **Description**                                                                                                                                                                       | **Version** |
 |---------------------|---------------|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|

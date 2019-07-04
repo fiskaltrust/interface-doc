@@ -1,6 +1,6 @@
 ## Receipt Case Definitions
 
-This chapter expands on the definitions of Receipt Cases covered in Chapter <!-- TODO: Chapter reference --> 6.9 of the General Part on page 4 <!-- TODO: page references -->9, with country specific information applicable to the Austrian market.
+This chapter expands on the definitions of Receipt Cases covered in Chapter ["Receipt Case Definitions"](../../general/receipt-case-definitions/receipt-case-definitions.md) of the General Part, with country specific information applicable to the Austrian market.
 
 ### Voucher (Service/Product)
 

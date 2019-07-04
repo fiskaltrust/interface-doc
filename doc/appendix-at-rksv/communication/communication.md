@@ -1,6 +1,6 @@
 ## Communication
 
-This chapter expands on the descriptions of the ways to communicate with the fiskaltrust.Service covered in Chapter <!-- TODO: Chapter reference --> 6.6 of the General Part on page 3 <!-- TODO: page references -->7, with country specific information applicable to the Austrian market.
+This chapter expands on the descriptions of the ways to communicate with the fiskaltrust.Service covered in the Chapter ["Communication"](../../general/communication/communication.md) of the General Part, with country specific information applicable to the Austrian market.
 
 ### WCF Web Service
 

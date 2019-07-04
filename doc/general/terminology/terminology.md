@@ -1,6 +1,6 @@
 ## Terminology
 
-table <!-- TODO: table references --> 2 contains descriptions and explanations of all general terms and abbreviations used in this document. For specifications or provisions of national law, please refer to the appropriate appendix.
+The table below contains descriptions and explanations of all general terms and abbreviations used in this document. For specifications or provisions of national law, please refer to the appropriate appendix.
 
 | **Term**                      | **Description**                                                                                                                                                                                                                                          |
 |-------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
@@ -18,4 +18,4 @@ table <!-- TODO: table references --> 2 contains descriptions and explanations o
 | CashBox AccessToken           | API access credential Token for the CashBox. Can be found on the CashBox Configuration page in the portal.                                                                                                                                               |
 | CashBoxIdentification         | Value to identify the Queue. Can be found on the Queue Configuration page in the portal.                                                                                                                                                                 |
 
-<span id="_Ref527824596" class="anchor"></span>*Table 2. Definition of Terms and Abbreviations (general)*
+<span id="t-definition-of-terms-and-abbreviations-21">*Table 2. Definition of Terms and Abbreviations (general)*</span>

@@ -15,4 +15,4 @@ Interface specification is provided by fiskaltrust.Interface nuget package, whic
 
 For specifications or provisions of national law, please refer to the appropriate appendix.
 
-Version History on Page 1 <!-- TODO: page references -->6.
+The Version History can be found in the Chapter ["Version History"](../../general/version-history/version-history.md) of the general part.

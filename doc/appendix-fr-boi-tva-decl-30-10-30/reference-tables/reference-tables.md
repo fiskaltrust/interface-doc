@@ -157,5 +157,5 @@ The ftJournalType is used in connection with the journal function and defines th
 | `0x465200000000000A` | Copy ("C" group) export          |             |
 | `0x465200000000000B` | Training ("X" group) export      |             |
 
-<span id="_Ref522603781" class="anchor"></span>*Table 38. Type of Journal: ftJournalType (FR - BOI-TVA-DECL 30-10-30)*
+<span id="t-type-of-journal-ftjournaltype-160">*Table 38. Type of Journal: ftJournalType (FR - BOI-TVA-DECL 30-10-30)*</span>
 

@@ -19,9 +19,9 @@ The table below describes supported statuses for the ftState field. Those codes 
 | `0xXXXX000000000040` | Message Pending<br />Use Zero-Receipt to show Message on Receipt                                    | 1.0                 |
 | `0xXXXX000000000080` | Reserved                                                                                            |                     |
 
-<span id="_Ref510009131" class="anchor"></span>*Table 9. Service Status: ftState*
+<span id="t-service-status-ftstate-22">*Table 9. Service Status: ftState*</span>
 
-<span id="_Type_of_Receipt:" class="anchor"></span>Example of reading ftState parameter
+Example of reading ftState parameter
 
 The following example shows how to extract the value of a flag into the ftState property.
 
@@ -46,7 +46,7 @@ The ftReceiptCase indicates the receipt type and defines how it should be proces
 |----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|
 | `0x0000000000000000` | "default value"<br />Unknown type of receipt.<br />Automatic processing through the localization setting of the fiskaltrust.Service is attempted. | 1.1                 |
 
-<span id="_Toc510009097" class="anchor"></span>*Table 10. Type of Receipt: ftReceiptCase*
+<span id="t-type-of-receipt-ftreceiptcase-49">*Table 10. Type of Receipt: ftReceiptCase*</span>
 
 #### ftReceiptCaseFlag
 
@@ -54,7 +54,7 @@ Business transactions can result in combinations of receipt types, which would b
 
 | **Value**            | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | **Service Version** |
 |----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|
-| `0x0000000000010000` | "failed receipt"<br />Receipt was created and handed out in a moment when the communication between the fiskaltrust.Service and the cash register terminal was not possible.<br />The transferred receipt contains data, which has been created during an outage of the fiskaltrust.Service. The original receipts are available in handwritten or digital format and are to be transferred. The first ReceiptRequest including this flag sets the fiskaltrust.Service in a "late signing mode". In order to leave this mode, an "end of failure" Receipt Request has to be made by the cash register terminal using a Zero Receipt. This can be necessary e.g. after a power or server outage.<br />Zero Receipt section on page 2 <!-- TODO: page references -->3. | 1.0                 |
+| `0x0000000000010000` | "failed receipt"<br />Receipt was created and handed out in a moment when the communication between the fiskaltrust.Service and the cash register terminal was not possible.<br />The transferred receipt contains data, which has been created during an outage of the fiskaltrust.Service. The original receipts are available in handwritten or digital format and are to be transferred. The first ReceiptRequest including this flag sets the fiskaltrust.Service in a "late signing mode". In order to leave this mode, an "end of failure" Receipt Request has to be made by the cash register terminal using a Zero Receipt. This can be necessary e.g. after a power or server outage.<br />["Zero Receipt"](../cash-register-integration/cash-register-integration.md#zero-receipt) section. | 1.0                 |
 | `0x0000000000020000` | "training receipt"<br />Used to separate the normal usage of the cash register system from the training mode. This flag can be added to each Receipt Request when training/testing is performed. This receipt will not produce any tax relevant changes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               | 1.0                 |
 | `0x0000000000040000` | "reverse receipt" or "voided receipt"<br />Used to separate regular receipts from the receipts which were voided by setting the negative values for Amount and Quantity in Chargeitems and Payitems of the receipt. The cbPreviousReceiptReference should be set to the ReceiptReference of the Receipt which should be voided.                                                                                                                                                                                                                                                                                                                                                                                                                        | 1.0                 |
 | `0x0000000000080000` | "handwritten receipt "<br />The transferred receipt contains data which has been collected in a handwritten receipt. There is no requirement for a precise time annotation on a handwritten receipt; we recommend using 12:00 for this purpose.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                        | 1.0                 |
@@ -75,7 +75,7 @@ For definitions regarding national laws, please refer to the appropriate country
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------------|---------------------|
 | `0xXXXX000000000000` | "default value"<br />Unknown type of service: Automatic processing through the localization setting of the fiskaltrust.Service is attempted. | 1.0                 |
 
-*Table 12, Type of Service: ftChargeItemCase*
+<span id="t-type-of-service-ftchargeitemcase">*Table 12. Type of Service: ftChargeItemCase*</span>
 
 ### Type of Payment: ftPayItemCase
 
@@ -87,7 +87,7 @@ For definitions regarding national laws, please refer to the appropriate appendi
 |----------------------|-------------------------------------------------------------------------------------------------------------------------------------------|---------------------|
 | `0xXXXX000000000000` | "default value"<br />unknown payment type: Automatic processing through the localization setting of the fiskaltrust.Service is attempted. | 1.0                 |
 
-<span id="_Ref527917002" class="anchor"></span>*Table 13. Type of Payment: ftPayItemCase*
+<span id="t-type-of-payment-ftpayitemcase-90">*Table 13. Type of Payment: ftPayItemCase*</span>
 
 ### Format of Signature: ftSignatureFormat
 
@@ -109,7 +109,7 @@ The ftSignatureFormat tells the cash register or input station which display for
 | `0x0B`    | UPC-A (Barcode)                                                 | 1.0                 |
 | `0x0C`    | Code39 (Barcode, possible for Base32 data)                      | 1.0                 |
 
-<span id="_Ref527917004" class="anchor"></span>*Table 14. Format of Signature: ftSignatureFormat*
+<span id="t-type-of-signature-ftsignatureformat-112">*Table 14. Format of Signature: ftSignatureFormat*</span>
 
 ### Type of Signature: ftSignatureType
 
@@ -124,7 +124,7 @@ For definitions regarding national laws, please refer to the appropriate appendi
 | `0x0000000000002000` | alert notification       | 1.0                 |
 | `0x0000000000003000` | failure notification     | 1.0                 |
 
-<span id="_Toc527986667" class="anchor"></span>*Table 15. Type of Signature: ftSignatureType*
+<span id="t-type-of-signature-ftsignaturetype-127">*Table 15. Type of Signature: ftSignatureType*</span>
 
 ### Type of Journal: ftJournalType
 
@@ -139,5 +139,5 @@ For definitions regarding national laws, please refer to the appropriate appendi
 | `0x0000000000000002` | ReceiptJournal in internal format   | 1.1                 |
 | `0x0000000000000003` | QueueItemJournal in internal format | 1.1                 |
 
-<span id="_Ref522604996" class="anchor"></span>*Table 16. Type of Journal: ftJournalType*
+<span id="t-type-of-journal-ftjournaltype-142">*Table 16. Type of Journal: ftJournalType*</span>
 

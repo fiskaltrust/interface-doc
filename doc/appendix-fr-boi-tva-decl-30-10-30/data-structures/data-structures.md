@@ -1,6 +1,6 @@
 ## Data Structures
 
-This chapter expands on the descriptions of the data structures covered in Chapter <!-- TODO: Chapter reference --> <span class="underline">6.4</span> of the General Part on page 2 <!-- TODO: page references -->5, with country specific information applicable to the French market.
+This chapter expands on the descriptions of the data structures covered in the Chapter ["Data structures"](../../general/data-structures/data-structures.md) of the General Part, with country specific information applicable to the French market.
 
 ### Receipt Request
 

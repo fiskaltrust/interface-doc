@@ -81,7 +81,7 @@ On successful operation, a notification to the tax authority is also created, wh
 
 ## Reference Tables
 
-This chapter expands on the reference tables covered in [General Part](../general/general.md#reference-tables), with country-specific information applicable to the German market.
+This chapter expands on the reference tables covered in [Reference Tables in General Part](../general/general.md#reference-tables), with country-specific information applicable to the German market.
 
 ### Service Status: ftState
 
@@ -132,7 +132,7 @@ For Germany (DE) the country code is `0x4445`. Thus, the value of an unknown ftR
 
 #### ftReceiptCaseFlag
 
-This table expands on the values provided in table 10 of chapter x.y.z on page p with values applicable to the German market.
+This table expands on the values provided in table [ftReceiptCaseFlag in General Part](../general/general.md#ftreceiptcaseflag) with values applicable to the German market.
 
 | Value | Description | Service-Version |
 |---|---|---|
@@ -142,14 +142,14 @@ This table expands on the values provided in table 10 of chapter x.y.z on page p
 | 0x0000000000080000  | paper/handwritten receipt | 1.3- |
 | 0x0000000000100000  | small business, not taxable sales. TBD: law reference | 1.3- |
 | 0x0000000000200000  | receiver is a company | 1.3- |
-| 0x0000000000200000  | contains characteristics related to UStG. TBD: law reference | 1.3- |
-| 0x0000000100000000 | Implicit Transaction. No Start-Transaction call to ´Sign´ is required, it is done implicit. If the unique identifier set in property ´cbReceiptIdentification´ already started a transaction, this will throw an exception. | 1.3-  |
+| 0x0000000000400000  | contains characteristics related to UStG. TBD: law reference | 1.3- |
+| 0x0000000100000000 | Implicit Transaction. No Start-Transaction call to ´Sign´ is required, it is done implicitly. If the unique identifier set in property ´cbReceiptIdentification´ already started a transaction, this will throw an exception. | 1.3-  |
 | 0x0000800000000000  | Receipt request. Common behaviour. | 1.3- |
 
 
 ### Type of Service: ftChargeItemCase
 
-This table expands on the values provided in Table 12 on chapter x.y.z on page p with values applicable to the German 
+This table expands on the values provided in Table [ftChargeItemCase in General Part](../general/general.md#type-of-service-ftchargeitemcase) with values applicable to the German 
 
 | **Value** | **Description** | **UST_SCHLUESSEL (DSFinV-K)** | **GV_TYP (DSFinV-K)** | **Service-Version** |
 |---|---|---|---|---|
@@ -235,20 +235,20 @@ This table expands on the values provided in Table 12 on chapter x.y.z on page p
 | `0x444500000000006D` | coupon redeem not taxable |5|EinzweckgutscheinEinloesung | 1.3- |
 | `0x444500000000006E` | coupon redeem zero  |6|EinzweckgutscheinEinloesung | 1.3- |
 | `0x444500000000006F` | coupon redeem unknown vat |7|EinzweckgutscheinEinloesung  | 1.3- |
-| `0x4445000000000071` | receiveable creation  normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Forderungsentstehung  | 1.3- |
+| `0x4445000000000071` | receiveable creation normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Forderungsentstehung  | 1.3- |
 | `0x4445000000000072` | receiveable creation discounted-1 . 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Forderungsentstehung   | 1.3-|
-| `0x4445000000000073` | receiveable creation  special-1. 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Forderungsentstehung     | 1.3- |
-| `0x4445000000000074` | receiveable creation  special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Forderungsentstehung         | 1.3- |
-| `0x4445000000000075` | receiveable creation  not taxable |5|Forderungsentstehung | 1.3- |
-| `0x4445000000000076` | receiveable creation  zero  |6|Forderungsentstehung | 1.3- |
-| `0x4445000000000077` | receiveable creation  unknown vat |7|Forderungsentstehung  | 1.3- |
-| `0x4445000000000079` | receiveable reduction  normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Forderungsaufloesung  | 1.3- |
+| `0x4445000000000073` | receiveable creation special-1. 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Forderungsentstehung     | 1.3- |
+| `0x4445000000000074` | receiveable creation special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Forderungsentstehung         | 1.3- |
+| `0x4445000000000075` | receiveable creation not taxable |5|Forderungsentstehung | 1.3- |
+| `0x4445000000000076` | receiveable creation zero  |6|Forderungsentstehung | 1.3- |
+| `0x4445000000000077` | receiveable creation unknown vat |7|Forderungsentstehung  | 1.3- |
+| `0x4445000000000079` | receiveable reduction normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Forderungsaufloesung  | 1.3- |
 | `0x444500000000007A` | receiveable reduction discounted-1 . 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Forderungsaufloesung   | 1.3-|
-| `0x444500000000007B` | receiveable reduction  special-1 . 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Forderungsaufloesung     | 1.3- |
-| `0x444500000000007C` | receiveable reduction  special-2 . 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Forderungsaufloesung         | 1.3- |
-| `0x444500000000007D` | receiveable reduction  not taxable |5|Forderungsaufloesung | 1.3- |
-| `0x444500000000007E` | receiveable reduction  zero  |6|Forderungsaufloesung | 1.3- |
-| `0x444500000000007F` | receiveable reduction  unknown vat |7|Forderungsaufloesung  | 1.3- |
+| `0x444500000000007B` | receiveable reduction special-1 . 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Forderungsaufloesung     | 1.3- |
+| `0x444500000000007C` | receiveable reduction special-2 . 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Forderungsaufloesung         | 1.3- |
+| `0x444500000000007D` | receiveable reduction not taxable |5|Forderungsaufloesung | 1.3- |
+| `0x444500000000007E` | receiveable reduction zero  |6|Forderungsaufloesung | 1.3- |
+| `0x444500000000007F` | receiveable reduction unknown vat |7|Forderungsaufloesung  | 1.3- |
 | `0x4445000000000081` | down payment creation normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Anzahlungseinstellung  | 1.3- |
 | `0x4445000000000082` | down payment creation discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Anzahlungseinstellung   | 1.3-|
 | `0x4445000000000083` | down payment creation special-1. 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Anzahlungseinstellung     | 1.3- |
@@ -294,7 +294,7 @@ This table will be removed in the future / replaced by a reference
 
 ### Type of Payment: ftPayItemCase
 
-This table expands on the values provided in table Table 13 on chapter x.y.z on page p with values applicable to the German market.
+This table expands on the values provided in table [ftPayItemCase in General Part](../general/general.md#type-of-payment-ftpayitemcase) with values applicable to the German market.
 
 | **Value**  | **Description** | **ZAHLART_TYP (DSFinV-K)** | **Service-Version** |
 |---|---|---|---|

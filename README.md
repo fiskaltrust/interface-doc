@@ -19,7 +19,7 @@ If you want to contribute to this documentation, please review this README file 
 All documentation files are stored within the `/doc` folder in this repository (markdown, images, other static content).
 
 - One sub-directory and one or more markdown file(s) per chapter should be created (e.g. `general/general.md`.)
-  - 1st and 2nd level headings should be split into separate file.
+  - 1st and 2nd level headings should be split into separate files.
 - Each chapter markdown file must be included into the table of contents in `/doc/toc.md`. DocFx will scan this file to compose the PDF documentation.
   - The order from the toc file is used to define the chapter order in the PDF file.
   - You may also use multiple files per chapter, but keep in mind that a page-break is created by DocFx after every markdown file.
@@ -27,6 +27,7 @@ All documentation files are stored within the `/doc` folder in this repository (
 
 #### References
 A reference to a markdown file can be created like this: `[Reference Text](./path-to-file/filename.md)`.
+> Note that reference paths should be relative.
 
 If you want to reference something specific inside a markdown file you need to create a anchor where you want your reference to point to.
 Anchors can be created like this: `<span id="anchor-name">Referenced Item</span>`.
@@ -58,6 +59,8 @@ You can also reference anchors in other files like this:
 [DocFx](https://dotnet.github.io/docfx) is a documentation generation tool that creates HTML and PDF documentation from markdown files. It's e.g. be used by Microsoft to generate docs.microsoft.com.
 
 Use either chocolatey or nuget.exe to install DocFx, as described [here](https://github.com/docascode/docfx-seed/blob/master/README.md).
+
+Docfx will produce warnings for incorrect markdown (including incorrect references).
 
 #### wkhtmltopdf
 [wkhtmltopdf](https://wkhtmltopdf.org/) is used internally by DocFx to convert HTML files to PDF. Download and install it from the website linked above.

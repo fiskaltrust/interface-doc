@@ -542,7 +542,7 @@ With [`<basicHttpBinding>`](https://msdn.microsoft.com/en-us/library/system.serv
 
 **C# call for signing with SOAP:**
 ```cs
-//create proxy and establish authentification
+//create proxy and establish authentication
 throw new NotImplementedException();
 //call for signing receipt
 ifPOS.v0.ReceiptRequest req;

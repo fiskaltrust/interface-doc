@@ -10,7 +10,7 @@
                 h1 {
                     text-align: center;
                     font-size: 20px;
-                    font-family: arial;
+                    font-family: "Trebuchet MS" !important;
                 }
 
                 div {border-bottom: 1px dashed rgb(200,200,200); }
@@ -18,26 +18,14 @@
                 li {list-style: none; margin: 5px 0;}
 
                 ul {
-                    font-size: 20px;
-                    font-family: arial;
+                    font-size: 18px;
+                    font-family: "Trebuchet MS"	!important;
                 }
 
                 ul ul {font-size: 100%; }
                 ul {padding-left: 0em;}
                 ul ul {padding-left: 1em;}
                 a {text-decoration:none; color: black;}
-
-                
-                body ul {
-                    counter-reset: item;
-                }
-
-
-                li div a:before {
-                    content: counters(item, ".") ". ";
-                    counter-increment: item;
-                }
-
             </style>
         </head>
         <body>

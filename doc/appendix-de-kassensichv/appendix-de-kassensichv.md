@@ -18,8 +18,8 @@ The links to regulations and further information, can be found at:
 | term | description |
 |---|---|
 | Action (DE: Vorgang) | an "action" within the meaning of the KassenSichV is a related recording process of an electronic recording system. An action can comprise one or more business-actions as well as other procedures, occurrences and events. Each action must trigger at least one transaction logged by the certified technical safety device (DE: TSE).  |
-| Transaction (DE: Transaktion) | In the context of the logging of a action at least one transaction must be generated within the certified technical safety device (DE: TSE). While an "action" refers to the processes in the recording system, a "transaction" describes the safeguarding steps within the certified technical security device (at least at the beginning and end of the action) to the action in the respective recording system. |
-| Business-action (DE: Geschäftsvorfall) | Business-actions are all legal and economic transactions that document, influence or change the profit or loss or the asset composition of an enterprise within a certain period of time |
+| Transaction (DE: Transaktion) | In the context of the logging of an action at least one transaction must be generated within the certified technical safety device (DE: TSE). While an "action" refers to the processes in the recording system, a "transaction" describes the safeguarding steps within the certified technical security device (at least at the beginning and end of the action) to the action in the respective recording system. |
+| Business-action (DE: Geschäftsvorfall) | Business-actions are all legal and economic transactions that document, influence or change the profit or loss or the asset composition of an enterprise within a certain period of time. |
 
 ## Cash Register Integration
 
@@ -27,11 +27,11 @@ This chapter describes the cash register integration in accordance with the Germ
 
 ### Receipt Creation Process
 
-This chapter describes the general process of creating receipts with fiskaltrust.Service and its workflow, in accordance with the German law. It requires to give a scope to an ongoing action over time. This scope is named a transaction. Calls to fiskaltrust.Service are processed just in time and cannot be async over multiple minutes. Therefore and in accordance with German law a single call is maybe not able to scope a complete transaction. To solve this, multiple calls are used, scoping the same transaction.
+This chapter describes the general process of creating receipts with fiskaltrust.Service and its workflow, in accordance with the German law. It requires to give a scope to an ongoing action over time. This scope is named a transaction. Calls to fiskaltrust.Service are processed just in time and cannot be async over multiple minutes. Therefore and in accordance with German law, a single call is maybe not able to scope a complete transaction. To solve this, multiple calls are used, scoping the same transaction.
 
 #### The fiskaltrust.SecurityMechanism explicit transaction
 
-The regular workflow for actions running longer than (german max transaction update time delta) 45s of the fiskaltrust.SecurityMechanism in the German market defines the steps required for creation of a receipt as follows:
+The regular workflow of the fiskaltrust.SecurityMechanism in the German market for actions running longer than 45s (German max transaction update time delta), defines the steps required for the creation of a receipt as follows:
 
 ##### Start-Transaction
 
@@ -40,12 +40,12 @@ According to the German law and BSI TR-03153 a call to the ´Sign´ method using
 
 ##### Update-Transaction
 
-Changes of ongoing actions have to be tracked. This is done by a special call to the ´Sign´ method using the ´ReceiptCase´ "Update-Transaction". Details of the ´ReceiptRequest´ should show up the current over all ´ChargeItems´ and ´PayItems´ of the ongoing action. To identify the action/transaction once again the unique identifier used in "Start-Transaction", handed over by the property ´cbReceiptIdentification´ is used. Calling the ´Sign´ method using an unique identifier that wasn't used to create a transaction or was already used to finalize a transaction will end up in an exception. According to the German law and BSI TR-03153 a call to the ´Sign´ method using the ´ReceiptCase´ "Update-Transaction" take care of updating a transaction inside the TSE. The same transaction number as responded at the call of "Start-Transaction" is responded behind the hash-tag in the property ´ftReceiptIdentification´ of ´ReceiptResponse´ prefixed by "UT".  
+Changes in ongoing actions have to be tracked. This is done by a special call to the ´Sign´ method using the ´ReceiptCase´ "Update-Transaction". Details of the ´ReceiptRequest´ should show up the current overall ´ChargeItems´ and ´PayItems´ of the ongoing action. To identify the action/transaction once again the unique identifier used in "Start-Transaction", handed over by the property ´cbReceiptIdentification´ is used. Calling the ´Sign´ method using an unique identifier that wasn't used to create a transaction or was already used to finalize a transaction will end up in an exception. According to the German law and BSI TR-03153 a call to the ´Sign´ method using the ´ReceiptCase´ "Update-Transaction" take care of updating a transaction inside the TSE. The same transaction number as responded at the call of "Start-Transaction" is responded behind the hash-tag in the property ´ftReceiptIdentification´ of ´ReceiptResponse´ prefixed by "UT".  
 It is not mandatory to call ´Sign´ using ´ReceiptCase´ "Update-Transaction" before you finalize a transaction. It is also possible to call ´Sign´ using ´ReceiptCase´ "Update-Transaction" multiple times for a single unique identifier/for a single transaction.
 
 ##### Delta-Transaction
 
-The main functionality is the same as it is when calling ´Sign´ method using ´ReceiptCase´ "Update-Transaction". The difference are the details used in ´ChargeItems´ and ´PayItems´, they show up exactly the delta happend until last call using ´Start-Transaction´ or last call using ´Delta-Transaction´. For all the implementation there should be a system wide decision taken to use only one of the ´ReceiptCases´, ´Update-Transaction´ or this one.  
+The main functionality is the same as it is when calling ´Sign´ method using ´ReceiptCase´ "Update-Transaction". The differences are the details used in ´ChargeItems´ and ´PayItems´, they show up exactly the delta happened until last call using ´Start-Transaction´ or last call using ´Delta-Transaction´. For all the implementation there should be a system-wide decision taken to use only one of the ´ReceiptCases´, ´Update-Transaction´ or this one.  
 According to the German law and BSI TR-03153 a call to the ´Sign´ method using the ´ReceiptCase´ "Delta-Transaction" take care of updating a transaction inside the TSE. The same transaction number as responded at the call of "Start-Transaction" is responded behind the hash-tag in the property ´ftReceiptIdentification´ of ´ReceiptResponse´ prefixed by "DT".  
 It is not mandatory to call ´Sign´ using ´ReceiptCase´ "Delta-Transaction" before you finalize a transaction. It is also possible to call ´Sign´ using ´ReceiptCase´ "Delta-Transaction" multiple times for a single unique identifier/for a single transaction.
 
@@ -57,8 +57,8 @@ The transaction number defined in TR-03153 is responded behind hash-tag in prope
 
 #### The fiskaltrust.SecurityMechanism implicit transaction
 
-The regular workflow for actions running immediatly of the fiskaltrust.SecurityMechanism in the German market have same requirements like long running ones. In details this means, according to BSI TR-03153, there has to be a "Start-Transaction" and a "Finish-Transaction" executed against the TSE. To speed up this two steps into one call to the ´Sign´ method the is a special ´ReceiptCaseFlag´ introduced. Each time this is used in combination with a usual ´ReceiptCase´ a "Start-Transaction" is done behind the scense upfront to the final call using the given ´ReceiptCase´.
-Using a unique identifier in `cbReceiptIdentification´ that was already used with a´Sign´ call with ´ReceiptCase´ "Start-Transaction" will end up in an exception.
+The regular workflow of the fiskaltrust.SecurityMechanism in the German market for actions running immediately has the same requirements as long-running ones. In details, this means, according to BSI TR-03153, there has to be a "Start-Transaction" and a "Finish-Transaction" executed against the TSE. To speed up these two steps into one call to the ´Sign´ method there is a special ´ReceiptCaseFlag´ introduced. Each time this is used in combination with a usual ´ReceiptCase´ a "Start-Transaction" is done behind the scenes upfront to the final call using the given ´ReceiptCase´.
+Using a unique identifier in `cbReceiptIdentification´ that was already used with a ´Sign´ call with ´ReceiptCase´ "Start-Transaction" will end up in an exception.
 The up-counting transaction number defined in TR-03153 is responded behind hash-tag in property ´ftReceiptIdentification´ of ´ReceiptResponse´ prefixed by "IT".
 
 ### Receipt for special functions
@@ -67,27 +67,27 @@ This section describes receipt types used for special functions on the German ma
 
 #### Zero Receipt
 
-In the following chapters you can find examples of special cases of zero receipts applicable to the German market.
+In the following chapters, you can find examples of special cases of zero receipts applicable to the German market.
 
 #### Start Receipt (Initial Receipt)
 
-There is a number of requirements for the implementation of a new, or a replaced german security mechanism (TSE). This kind of Receipt can be used once in a lifetime of the queue/scu combination and initializes also the underlaying german security mechanism (TSE) for usage.
-This receipt must be archived. On successfull operation a notification to the tax authority is also created, which reports the active usage of the ftCashboxIdentification and the serialnumber of the german security mechanism (TSE).
+There is a number of requirements for the implementation of a new, or a replaced German security mechanism (TSE). This kind of receipt can be used once in a lifetime of the queue/scu combination and initializes also the underlying German security mechanism (TSE) for usage.
+This receipt must be archived. On successful operation, a notification to the tax authority is also created, which reports the active usage of the ftCashboxIdentification and the serial number of the German security mechanism (TSE).
 
 #### Stop Receipt (Closing Receipt)
 
-Once the queue has been closed with a stop receipt, the usage of the german secuirty mechanism is deactivated.
-On successfull operation a notification to the tax authority is also created, which reports the deactivation.
+Once the queue has been closed with a stop receipt, the usage of the German security mechanism is deactivated.
+On successful operation, a notification to the tax authority is also created, which reports the deactivation.
 
 ## Reference Tables
 
-This chapter expands on the reference tables covered in chapter x.y of the General Part on page p, with country specific information applicable to the German market.
+This chapter expands on the reference tables covered in [Reference Tables in General Part](../general/general.md#reference-tables), with country-specific information applicable to the German market.
 
 ### Service Status: ftState
 
 The table below describes supported statuses for the ftState field in accordance with the German law. These codes can be added through the logic operator "OR".
 
-The country specific code, is made of the country’s code value following the ISO-3166-1-ALPHA-2 standard, converted from ASCII into hex. For Germany (DE) this is `0x4445`, which results in `0x4445000000000000` as the value for the "ready" status.
+The country-specific code is made of the country’s code value following the ISO-3166-1-ALPHA-2 standard, converted from ASCII into hex. For Germany (DE) this is `0x4445`, which results in `0x4445000000000000` as the value for the "ready" status.
 
 | **Value** | **Description** | **Service-Version** |
 |---|---|---|
@@ -96,21 +96,21 @@ The country specific code, is made of the country’s code value following the I
 
 The ftReceiptCase indicates the receipt type and defines how it should be processed by the fiskaltrust.SecurityMechanism in accordance with the German law.
 
-For Germany (DE) the country code is `0x4445`. Thus, the value for an unknown ftReceiptCase in Germany is `0x4445000000000000`.
+For Germany (DE) the country code is `0x4445`. Thus, the value of an unknown ftReceiptCase in Germany is `0x4445000000000000`.
 
 | **Value** | **Description** | **BON_TYP (DSFinV-K)** | **Service- Version** |
 |---|---|---|---|
 | `0x4445000000000000` | unknown type for country-code "DE"<br />This is handled like a pos-receipt (`0x4445000000000001`). | Beleg | 1.3- |
-| `0x44450000000000001` | pos-receipt<br />main kind of receipt processed on a pos-system. creates turnover and/or change in amout of cash in the till or similar operations. <br />using the ChargeItems and PayItems to hand over details for processing. independent from used flow (explicit/implicit) the ChargeItems and PayItems should contain the full final state of the receipt. the duration of the action is calculated using the minimum and maximum of datetime over ReceiptRequest/ChargeItems/PayItems.<br /> DSFinV-K: BON_TYP=Beleg, can be overwritten by ftReceiptCaseFlag  | Beleg | 1.3- |
-| `0x4445000000000002` | zero-receipt<br />used for communication and functional test of the fiskaltrust.SecurityMechanism. In addition a detailed statusinformation is responded on the used TSE-Device. Is only valid when charge items block (ftChargeItems) and pay items block (ftPayItems) in the ReceiptRequest are empty arrays.<br />Also TSE data are unloaded, what may cause a long running request.<br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception.<br />if you want to end a ongoing transaction without turnover (e.g. all items on a receipt are voided) then use a regular ReceiptCase.<br /> Informations returned:<br />- List of cbReceiptReference <-> Transaction-ID<br />- Statusdata of TSE, serialnumber, available/free memory, available number of signatures left, ...<br /> DSFinV-K: BON_TYP=AVSonstige, ChargeItems and PayItems have to be empty | AVSonstige | 1.3- |
-| `0x4445000000000003` | initial operation receipt / start-receipt<br />The request ist only valid with the same properties requirements, like a zero-receipt. initializing a new fiskaltrust.SecurityMachanism. this includes also the initialization of the used TSE in the background. Depending on the TSE-Type used this includes different actions.<br />On successfull initializaiont a notification is created which includes the queue-id, scu-id, certificate/public-key, tse-serialnumber=hash(public-key). this notification need to be reported to tax administration.<br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception.<br /> DSFinV-K: BON_TYP=AVSonstige, ChargeItems and PayItems have to be empty | AVSonstige | 1.3- |
-| `0x4445000000000004` | out of operation receipt / stop-receipt<br />The request ist only valid with the same properties requirements, like a zero-receipt. disabling a fiskaltrust.SecurityMachanism. this includes also the deactivation of the used TSE in the background. Depending on the TSE-Type used this includes different actions.<br />On successfull deactivation a notification is created which includes the queue-id, scu-id, certificate/public-key, tse-serialnumber=hash(public-key). this notification need to be reported to tax administration. <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception.<br /> DSFinV-K: BON_TYP=AVSonstige, ChargeItems and PayItems have to be empty | AVSonstige | 1.3- |
-| `0x4445000000000005` | monthly-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
-| `0x4445000000000006` | yearly-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
-| `0x4445000000000007` | daily-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
-| `0x4445000000000008` | start-transaction-receipt<br />starts a new, unfinised action. use ChargeItems and PayItems to hand over already known details for final receipt. using the same cbTerminalID and cbReceiptReferece in further calls connects the action items. <br />this works only on explicit flow. calling with the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
-| `0x4445000000000009` | update-transaction-receipt<br />updates an ongoing action. use ChargeItems and PayItems to hand over all details for final receipt. using the same cbTerminalID and cbReceiptReferece in further calls connects the action items. <br />this works only on explicit flow. calling with the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
-| `0x444500000000000A` | delta-transaction-receipt<br />updates an ongoing action. use ChargeItems and PayItems to hand changes for final receipt. using the same cbTerminalID and cbReceiptReferece in further calls connects the action items. <br />this works only on explicit flow. calling with the ReceiptCaseFlag 0xyyyy ends up in an exception. | AVSonstige | 1.3- |
+| `0x44450000000000001` | pos-receipt<br />main kind of receipt processed on a pos-system. creates a turnover and/or change in the amount of cash in the till or similar operations. <br />using the ChargeItems and PayItems to hand over details for processing. independent from the used flow (explicit/implicit), the ChargeItems and PayItems should contain the full final state of the receipt. the duration of the action is calculated using the minimum and maximum of datetime over ReceiptRequest/ChargeItems/PayItems.<br /> DSFinV-K: BON_TYP=Beleg, can be overwritten by ftReceiptCaseFlag  | Beleg | 1.3- |
+| `0x4445000000000002` | zero-receipt<br />used for communication and functional test of the fiskaltrust.SecurityMechanism. In addition a detailed status information is responded on the used TSE-Device. Is only valid when charge items block (ftChargeItems) and pay items block (ftPayItems) in the ReceiptRequest are empty arrays.<br />Also TSE data are unloaded, what may cause a long running request.<br />this works only on implicit flow. calling without the ReceiptCaseFlag 0x0000000100000000 ends up in an exception.<br />if you want to end a ongoing transaction without turnover (e.g. all items on a receipt are voided) then use a regular ReceiptCase.<br /> Informations returned:<br />- List of cbReceiptReference <-> Transaction-ID<br />- Statusdata of TSE, serialnumber, available/free memory, available number of signatures left, ...<br /> DSFinV-K: BON_TYP=AVSonstige, ChargeItems and PayItems have to be empty | AVSonstige | 1.3- |
+| `0x4445000000000003` | initial operation receipt / start-receipt<br />The request is only valid with the same property requirements as a zero-receipt. initializing a new fiskaltrust.SecurityMachanism, this includes also the initialization of the used TSE in the background. Depending on the TSE-Type used this includes different actions.<br />On successful initialization, a notification is created which includes the queue-id, scu-id, certificate/public-key, tse-serialnumber=hash(public-key). this notification need to be reported to tax administration.<br />this works only on implicit flow. calling without the ReceiptCaseFlag 0x0000000100000000 ends up in an exception.<br /> DSFinV-K: BON_TYP=AVSonstige, ChargeItems and PayItems have to be empty | AVSonstige | 1.3- |
+| `0x4445000000000004` | out of operation receipt / stop-receipt<br />The request is only valid with the same property requirements as a zero-receipt. disabling a fiskaltrust.SecurityMachanism, this includes also the deactivation of the used TSE in the background. Depending on the TSE-Type used this includes different actions.<br />On successful deactivation, a notification is created which includes the queue-id, scu-id, certificate/public-key, tse-serialnumber=hash(public-key). this notification needs to be reported to tax administration. <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0x0000000100000000 ends up in an exception.<br /> DSFinV-K: BON_TYP=AVSonstige, ChargeItems and PayItems have to be empty | AVSonstige | 1.3- |
+| `0x4445000000000005` | monthly-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0x0000000100000000 ends up in an exception. | AVSonstige | 1.3- |
+| `0x4445000000000006` | yearly-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0x0000000100000000 ends up in an exception. | AVSonstige | 1.3- |
+| `0x4445000000000007` | daily-closing<br /> TBD: close all open cbReceiptReference <-> Transaction-ID  <br />this works only on implicit flow. calling without the ReceiptCaseFlag 0x0000000100000000 ends up in an exception. | AVSonstige | 1.3- |
+| `0x4445000000000008` | start-transaction-receipt<br />starts a new, unfinished action. use ChargeItems and PayItems to hand over already known details for final receipt. using the same cbTerminalID and cbReceiptReferece in further calls connects the action items. <br />this works only on explicit flow. calling with the ReceiptCaseFlag 0x0000000100000000 ends up in an exception. | AVSonstige | 1.3- |
+| `0x4445000000000009` | update-transaction-receipt<br />updates an ongoing action. use ChargeItems and PayItems to hand over all details for final receipt. using the same cbTerminalID and cbReceiptReferece in further calls connects the action items. <br />this works only on explicit flow. calling with the ReceiptCaseFlag 0x0000000100000000 ends up in an exception. | AVSonstige | 1.3- |
+| `0x444500000000000A` | delta-transaction-receipt<br />updates an ongoing action. use ChargeItems and PayItems to hand changes for final receipt. using the same cbTerminalID and cbReceiptReferece in further calls connects the action items. <br />this works only on explicit flow. calling with the ReceiptCaseFlag 0x0000000100000000 ends up in an exception. | AVSonstige | 1.3- |
 | `0x444500000000000B` | fail-transaction-receipt<br />stopps/fails an ongoing action. tries to finish an open transaction (accepts fail, continue on fail). clears cbReceiptReferece <-> Transaction-ID relation. <br /> DSFinV-K: BON_TYP=AVBelegabbruch | AVSonstige | 1.3- |
 | `0x444500000000000C` | b2b-invoice<br /> TBD: <br /> DSFinV-K: BON_TYP=Beleg, can be overwritten by ftReceiptCaseFlag  | Beleg | 1.3- |
 | `0x444500000000000D` | b2c-invoice<br /> TBD: <br /> DSFinV-K: BON_TYP=Beleg, can be overwritten by ftReceiptCaseFlag  | Beleg | 1.3- |
@@ -132,7 +132,7 @@ For Germany (DE) the country code is `0x4445`. Thus, the value for an unknown ft
 
 #### ftReceiptCaseFlag
 
-This table expands on the values provided in table 10 of chapter x.y.z on page p with values applicable to the German market.
+This table expands on the values provided in table [ftReceiptCaseFlag in General Part](../general/general.md#ftreceiptcaseflag) with values applicable to the German market.
 
 | Value | Description | Service-Version |
 |---|---|---|
@@ -142,14 +142,14 @@ This table expands on the values provided in table 10 of chapter x.y.z on page p
 | 0x0000000000080000  | paper/handwritten receipt | 1.3- |
 | 0x0000000000100000  | small business, not taxable sales. TBD: law reference | 1.3- |
 | 0x0000000000200000  | receiver is a company | 1.3- |
-| 0x0000000000200000  | contains characteristics related to UStG. TBD: law reference | 1.3- |
-| 0x0000000100000000 | Implicit Transaction. No Start-Transaction call to ´Sign´ is required, it is done implicit. If the unique identifier set in property ´cbReceiptIdentification´ already started a transaction, this will throw an exception. | 1.3-  |
+| 0x0000000000400000  | contains characteristics related to UStG. TBD: law reference | 1.3- |
+| 0x0000000100000000 | Implicit Transaction. No Start-Transaction call to ´Sign´ is required, it is done implicitly. If the unique identifier set in property ´cbReceiptIdentification´ already started a transaction, this will throw an exception. | 1.3-  |
 | 0x0000800000000000  | Receipt request. Common behaviour. | 1.3- |
 
 
 ### Type of Service: ftChargeItemCase
 
-This table expands on the values provided in Table 12 on chapter x.y.z on page p with values applicable to the German 
+This table expands on the values provided in Table [ftChargeItemCase in General Part](../general/general.md#type-of-service-ftchargeitemcase) with values applicable to the German 
 
 | **Value** | **Description** | **UST_SCHLUESSEL (DSFinV-K)** | **GV_TYP (DSFinV-K)** | **Service-Version** |
 |---|---|---|---|---|
@@ -235,20 +235,20 @@ This table expands on the values provided in Table 12 on chapter x.y.z on page p
 | `0x444500000000006D` | coupon redeem not taxable |5|EinzweckgutscheinEinloesung | 1.3- |
 | `0x444500000000006E` | coupon redeem zero  |6|EinzweckgutscheinEinloesung | 1.3- |
 | `0x444500000000006F` | coupon redeem unknown vat |7|EinzweckgutscheinEinloesung  | 1.3- |
-| `0x4445000000000071` | receiveable creation  normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Forderungsentstehung  | 1.3- |
+| `0x4445000000000071` | receiveable creation normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Forderungsentstehung  | 1.3- |
 | `0x4445000000000072` | receiveable creation discounted-1 . 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Forderungsentstehung   | 1.3-|
-| `0x4445000000000073` | receiveable creation  special-1. 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Forderungsentstehung     | 1.3- |
-| `0x4445000000000074` | receiveable creation  special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Forderungsentstehung         | 1.3- |
-| `0x4445000000000075` | receiveable creation  not taxable |5|Forderungsentstehung | 1.3- |
-| `0x4445000000000076` | receiveable creation  zero  |6|Forderungsentstehung | 1.3- |
-| `0x4445000000000077` | receiveable creation  unknown vat |7|Forderungsentstehung  | 1.3- |
-| `0x4445000000000079` | receiveable reduction  normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Forderungsaufloesung  | 1.3- |
+| `0x4445000000000073` | receiveable creation special-1. 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Forderungsentstehung     | 1.3- |
+| `0x4445000000000074` | receiveable creation special-2. 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Forderungsentstehung         | 1.3- |
+| `0x4445000000000075` | receiveable creation not taxable |5|Forderungsentstehung | 1.3- |
+| `0x4445000000000076` | receiveable creation zero  |6|Forderungsentstehung | 1.3- |
+| `0x4445000000000077` | receiveable creation unknown vat |7|Forderungsentstehung  | 1.3- |
+| `0x4445000000000079` | receiveable reduction normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Forderungsaufloesung  | 1.3- |
 | `0x444500000000007A` | receiveable reduction discounted-1 . 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Forderungsaufloesung   | 1.3-|
-| `0x444500000000007B` | receiveable reduction  special-1 . 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Forderungsaufloesung     | 1.3- |
-| `0x444500000000007C` | receiveable reduction  special-2 . 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Forderungsaufloesung         | 1.3- |
-| `0x444500000000007D` | receiveable reduction  not taxable |5|Forderungsaufloesung | 1.3- |
-| `0x444500000000007E` | receiveable reduction  zero  |6|Forderungsaufloesung | 1.3- |
-| `0x444500000000007F` | receiveable reduction  unknown vat |7|Forderungsaufloesung  | 1.3- |
+| `0x444500000000007B` | receiveable reduction special-1 . 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Forderungsaufloesung     | 1.3- |
+| `0x444500000000007C` | receiveable reduction special-2 . 1.1.2019: 5,50% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG)) |4|Forderungsaufloesung         | 1.3- |
+| `0x444500000000007D` | receiveable reduction not taxable |5|Forderungsaufloesung | 1.3- |
+| `0x444500000000007E` | receiveable reduction zero  |6|Forderungsaufloesung | 1.3- |
+| `0x444500000000007F` | receiveable reduction unknown vat |7|Forderungsaufloesung  | 1.3- |
 | `0x4445000000000081` | down payment creation normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) |1|Anzahlungseinstellung  | 1.3- |
 | `0x4445000000000082` | down payment creation discounted-1. 1.1.2019: 7% (DE: Ermäßigter Steuersatz) |2|Anzahlungseinstellung   | 1.3-|
 | `0x4445000000000083` | down payment creation special-1. 1.1.2019: 10,70% (DE: Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle)  |3|Anzahlungseinstellung     | 1.3- |
@@ -294,7 +294,7 @@ This table will be removed in the future / replaced by a reference
 
 ### Type of Payment: ftPayItemCase
 
-This table expands on the values provided in table Table 13 on chapter x.y.z on page p with values applicable to the German market.
+This table expands on the values provided in table [ftPayItemCase in General Part](../general/general.md#type-of-payment-ftpayitemcase) with values applicable to the German market.
 
 | **Value**  | **Description** | **ZAHLART_TYP (DSFinV-K)** | **Service-Version** |
 |---|---|---|---|

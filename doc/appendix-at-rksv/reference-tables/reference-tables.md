@@ -194,7 +194,7 @@ In the case that no QR code can be issued, it is allowed to place text using OCR
 
 For example, the following signature value is converted in the way described above. Whereby the following output BASE64 (bold) is:
 
-```
+```nohighlight
 _R1-AT0_DEMO-CASH-BOX426_776730_2015-10-14T18:20:23_0,00_0,00_0,00_0,00_0,00_0gJTFI8/zqc=_968935007593160625_fP7/PMP-SnQ0=_Xh5wNe0akaTOVvMgLVrCcRh2xmIyP91ogbxc5xv4Rrw64lpQsqLm+1GZxuCz4D1sZl9WCv3wMMoE0p+gyLaufg==
 ```
 
@@ -202,7 +202,7 @@ _R1-AT0_DEMO-CASH-BOX426_776730_2015-10-14T18:20:23_0,00_0,00_0,00_0,00_0,00_0gJ
 
 The BASE32 display in accordance with the RKSV for this OCR text output in BASE32 (bold) looks as follows:
 
-```
+```nohighlight
 _R1-AT0_DEMO-CASH-BOX426_776730_2015-10-14T18:20:23_0,00_0,00_0,00_0,00_0,00_2IBFGFEPH7HKO===_968935007593160625_PT7P6PGD2KOQ2===_LYPHANPNDKI2JTSW6MQC2WWCOEMHNRTCGI7522EBXROOOG7YI26DVYS2KCZKFZX3KGM4NYFT4A6WYZS7KYFP34BQZICNFH5AZC3K47Q=
 ```
 

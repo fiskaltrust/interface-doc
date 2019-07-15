@@ -1,6 +1,6 @@
 ## Version History
 
-Please refer to the general General Part
+Please refer to the General Part
 
 The technical specification of the data interface described in this document provides information regarding the following areas:
 

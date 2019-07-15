@@ -35,7 +35,7 @@ There are no special requirements or laws for the Austrian market.
 
 ### Signature Entry
 
-In addition to the description provided in the Chapter ["Signature Entry"](../../general/data-structures/data-structures.md#signature-entry) of the General part, a Signature Entry for Austrian market may contain a FinanzOnline notification, which can be sent back depending on the operating mode. This is in particular the case for receipts with special functions.
+In addition to the description provided in the Chapter ["Signature Entry"](../../general/data-structures/data-structures.md#c-signature-entry-224) of the General part, a Signature Entry for Austrian market may contain a FinanzOnline notification, which can be sent back depending on the operating mode. This is in particular the case for receipts with special functions.
 
 | **Field Name**      | **Data Type** | **Default Value**<br />**Mandatory Field** | **Description**                                                                                                                                                                       | **Version** |
 |---------------------|---------------|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|

@@ -46,7 +46,7 @@ In Windows, all data is saved per default in `C:\ProgramData\fiskaltrust\service
 
 <span id="_Toc527986811" class="anchor"></span>*Illustration 10. Screen Shot console in test mode*
 
-#### Windows Servic/e
+#### Windows Service
 
 The Windows service can be installed and uninstalled via the call parameters -i and –u.
 

@@ -221,7 +221,7 @@ namespace fiskaltrust.ifPOS.v0
 
 <span id="_Toc527986828" class="anchor"></span>*Code 4. Definition of class PayItem*
 
-### Signature Entry
+### <span id="c-signature-entry-224">Signature Entry</span>
 
 The signature entry is only used for the receipt response.
 
@@ -252,4 +252,4 @@ namespace fiskaltrust.ifPOS.v0
 }
 ```
 
-<span id="_Toc527986829" class="anchor"></span>*Code 5. Definition of class SigantureItem*
+<span id="_Toc527986829" class="anchor"></span>*Code 5. Definition of class SignatureItem*

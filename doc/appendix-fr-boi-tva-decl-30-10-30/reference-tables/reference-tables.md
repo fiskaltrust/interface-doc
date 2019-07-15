@@ -142,7 +142,7 @@ The ftSignatureType indicates type and origin of the signature.
 
 ### Type of Journal: ftJournalType
 
-The ftJournalType is used in connection with the journal function and defines the journal stream in accordance to the French law which is given back. In In the ftJournalType, the ISO-3166-1-ALPHA-2 from ASCII value is converted into hex and used as byte 8 and 7. For France (FR) this is 0x4652.
+The ftJournalType is used in connection with the journal function and defines the journal stream in accordance to the French law which is given back. In In the ftJournalType, the ISO-3166-1-ALPHA-2 from ASCII value is converted into hex and used as byte 8 and 7. For France (FR) this is 0x4652<span id="t-type-of-journal-ftjournaltype-160">.</span>
 
 | **Value**            | **Description**                  | **Version** |
 |----------------------|----------------------------------|-------------|
@@ -157,5 +157,5 @@ The ftJournalType is used in connection with the journal function and defines th
 | `0x465200000000000A` | Copy ("C" group) export          |             |
 | `0x465200000000000B` | Training ("X" group) export      |             |
 
-<span id="t-type-of-journal-ftjournaltype-160">*Table 38. Type of Journal: ftJournalType (FR - BOI-TVA-DECL 30-10-30)*</span>
+*Table 38. Type of Journal: ftJournalType (FR - BOI-TVA-DECL 30-10-30)*
 

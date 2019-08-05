@@ -19,11 +19,11 @@ Interface specification is provided by fiskaltrust.Interface nuget package, whic
 
 For specifications or provisions of national law, please refer to the appropriate appen-dix.
 
-Version History, page 16.
+Version History, page 1 <!-- TODO: page references -->6.
 
 ## Terminology
 
-This table expands on the descriptions of all general terms and abbreviations provided in Table 2 of the General Part with information specific to the German market.
+This table expands on the descriptions of all general terms and abbreviations provided in table <!-- TODO: table references --> 2 of the General Part with information specific to the German market.
 
 | Term                | Description                                                                                                                  |
 |---------------------|------------------------------------------------------------------------------------------------------------------------------|
@@ -34,7 +34,7 @@ This table expands on the descriptions of all general terms and abbreviations pr
 
 ## Cash Register Integration
 
-This chapter describes the cash register integration in accordance with the German law. The general rules for cash register integration are described in Chapter 6.3 of this document.6.3 of this document.6.3 of this document.6.3 of this document.6.3 of this document.6.3 of this document.6.3 of this document.6.3 of this document.
+This chapter describes the cash register integration in accordance with the German law. The general rules for cash register integration are described in Chapter <!-- TODO: Chapter reference --> 6.3 of this document.6.3 of this document.6.3 of this document.6.3 of this document.6.3 of this document.6.3 of this document.6.3 of this document.6.3 of this document.
 
 ### Receipt creation process
 
@@ -46,7 +46,7 @@ This chapter describes the general process of creating receipts with fiskaltrust
 
 ### Receipt for special functions
 
-This section describes receipt types used for special functions on the German market and expands on the descriptions from chapter 6.3.2.6.3.2.6.3.2.6.3.2.6.3.2.6.3.2.6.3.2.6.3.2.
+This section describes receipt types used for special functions on the German market and expands on the descriptions from Chapter <!-- TODO: Chapter reference --> 6.3.2.6.3.2.6.3.2.6.3.2.6.3.2.6.3.2.6.3.2.6.3.2.
 
 #### Definition
 
@@ -100,11 +100,11 @@ This interface is the basic infrastructure for the communication with fiskaltrus
 
 #### Echo Function
 
-The function is described in the general section at page 36.
+The function is described in the general section at page 3 <!-- TODO: page references -->6.
 
 #### Sign Function
 
-The key function of the fiskaltrust.SecurityMechanism is described in the general section at page 37. If the fiskaltrust.SecurityMechanism is run in DE (0x4445…) mode, then the sign function meets the GdPdU requirements.
+The key function of the fiskaltrust.SecurityMechanism is described in the general section at page 3 <!-- TODO: page references -->7. If the fiskaltrust.SecurityMechanism is run in DE (0x4445…) mode, then the sign function meets the GdPdU requirements.
 
 #### Journal Function
 
@@ -117,7 +117,7 @@ Stream stream = proxy.Journal(0x4445000000000001, 0, DateTime.UtcNow.Ticks);
 
 *Code 19. Call of iPos Journal (DE - GdPdU)*
 
-A list with various possibilities for the request parameter ftJournalType is displayed in the reference table on page 108.
+A list with various possibilities for the request parameter ftJournalType is displayed in the reference table on page 1 <!-- TODO: page references -->08.
 
 #### GdPdU Export
 

@@ -34,15 +34,15 @@ The queue nutshell serves to encapsulate the functionality of a receipt chain fo
 
 The Helper nutshell is used to support updates and configurations.
 
-#### fiskaltrust.SignatureCloud
+#### fiskaltrust.SignaturCloud
 
-The fiskaltrust.SignatureCloud is a pure online solution. The receipt linking is handled entirely online. The advantage of this solution is that no installation or configuration is required for the client and any platform can use this service.
+The fiskaltrust.SignaturCloud is a pure online solution. The receipt linking is handled entirely online. The advantage of this solution is that no installation or configuration is required for the client and any platform can use this service.
 
-The fiskaltrust.SignatureCloud has two different versions:
+The fiskaltrust.SignaturCloud currently has two different versions:
  - 1.1
  - 1.2
 
-We differentiate between them by backend servers. So the external url is the same: https://signaturcloud.fiskaltrust.at for both versions. If you want to use a specific version of fiskaltrust.SignatureCloud, you will need to set the service-version field into the request header. HTTP header fields are components of the header section of request and response messages in the Hypertext Transfer Protocol (HTTP). They define the operating parameters of an HTTP transaction. If you want to read more about the HTTP headers, you can find details on the following link: https://en.wikipedia.org/wiki/List_of_HTTP_header_fields. As default the fiskaltrust.SignatureCloud 1.1 version is used.
+We differentiate between them by backend servers. So the external url is the same: https://signaturcloud.fiskaltrust.at for both versions. If you want to use a specific version of fiskaltrust.SignaturCloud, you will need to set the service-version field into the request header. HTTP header fields are components of the header section of request and response messages in the Hypertext Transfer Protocol (HTTP). They define the operating parameters of an HTTP transaction. If you want to read more about the HTTP headers, you can find details on the following link: https://en.wikipedia.org/wiki/List_of_HTTP_header_fields. As default the fiskaltrust.SignaturCloud 1.1 version is used.
 
 ```
 Example:

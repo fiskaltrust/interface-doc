@@ -1,0 +1,10 @@
+[URL]/xml/journal?type=[type]&from=[from]&to=[to]
+For a local service the type has to be Decimal coded.
+
+
+Examples:
+local
+http://localhost:1200/980df9f1-7c11-4f1d-8248-3cb6fb179d3d/xml/journal?type=4707387510509010945&from=0&to=0
+
+signaturcloud-sandbox
+https://signaturcloud-sandbox.fiskaltrust.at/xml/journal?type=0x4154000000000001&from=0&to=0

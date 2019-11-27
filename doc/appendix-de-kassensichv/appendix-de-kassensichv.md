@@ -161,10 +161,10 @@ This table expands on the values provided in Table [ftChargeItemCase in General 
 | `0x4445000000000005` | undefined type of service for DE not taxable   | 5 | Umsatz | 1.3- |
 | `0x4445000000000006` | undefined type of service for DE zero   | 6 | Umsatz | 1.3- |
 | `0x4445000000000007` | undefined type of service for DE unknown vat   | 7 | Umsatz | 1.3- |
-| `0x4445000000000011` | delivery normal. For processing, see (0x4445000000000003) | 1 | Umsatz   | 1.3- |
-| `0x4445000000000012` | delivery discounted-1. For processing, see (0x4445000000000001)  | 2 | Umsatz   | 1.3- |
-| `0x4445000000000013` | delivery special-1. For processing, see (0x4445000000000004)  | 3 | Umsatz | 1.3- |
-| `0x4445000000000014` | delivery special-2. For processing, see (0x4445000000000002) | 4 | Umsatz  | 1.3- |
+| `0x4445000000000011` | delivery normal. For processing, see (0x4445000000000001) | 1 | Umsatz   | 1.3- |
+| `0x4445000000000012` | delivery discounted-1. For processing, see (0x4445000000000002)  | 2 | Umsatz   | 1.3- |
+| `0x4445000000000013` | delivery special-1. For processing, see (0x4445000000000003)  | 3 | Umsatz | 1.3- |
+| `0x4445000000000014` | delivery special-2. For processing, see (0x4445000000000004) | 4 | Umsatz  | 1.3- |
 | `0x4445000000000015` | delivery not taxable. For processing, see (0x4445000000000005) | 5 | Umsatz | 1.3- |
 | `0x4445000000000016` | delivery zero. For processing, see (0x4445000000000005) | 6 | Umsatz | 1.3- |
 | `0x4445000000000017` | delivery unknown vat. For processing, see (0x4445000000000005) | 7 | Umsatz | 1.3- |

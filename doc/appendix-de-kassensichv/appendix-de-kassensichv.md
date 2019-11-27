@@ -288,17 +288,17 @@ This table expands on the values provided in Table [ftChargeItemCase in General 
 
 This table will be removed in the future / replaced by a reference
 
-| ID | USt-Satz | Beschreibung |
+| ID | VAT rate | Description |
 |---|---|---|
-| 1 | 19,00% | Regelsteuersatz |
-| 2 | 7,00% | Ermäßigter Steuersatz |
-| 3 | 10,70% | Durchschnittsatz (§ 24 Abs. 1 Nr. 3 UStG) übrige Fälle |
-| 4 | 5,50% | Durchschnittsatz (§ 24 Abs. 1 Nr. 1 UStG) |
-| 5 | 0,00% | Nicht Steuerbar |
-| 6 | 0,00% | Umsatzsteuerfrei |
-| 7 | 0,00% | UmsatzsteuerNichtErmittelbar |
-| 8-999 | | reserviert für Änderungen der DFKA-Taxonomie/DSFinV-K |
-| ab 1000 | | individuelle Sachverhalte (Altsteuersätze, § 13b UStG, o.ä.) |
+| 1 | 19.00% | Standard tax rate |
+| 2 | 7.00% |`Reduced tax rate | 
+| 3 | 10.70% | Average rate (§ 24 (1) no. 3 UStG) Other cases |
+| 4 | 5.50% | Average rate (§ 24 (1) no. 3 UStG) 1 UStG) |
+| 5 | 0.00% | Not taxable |
+| 6 | 0.00% | VAT-free |
+| 7 | 0.00% | VATNot determinable | 
+| 8-999 | | Reserved for changes in the DFKA taxonomy/DSFinV-K 
+| from 1000 | | individual circumstances (old tax rates, § 13b UStG, or similar)|
 
 
 ### Type of Payment: ftPayItemCase

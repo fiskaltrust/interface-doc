@@ -20,6 +20,8 @@ The links to regulations and further information, can be found at:
 
 [BSI FAQ](https://www.bsi.bund.de/DE/Themen/DigitaleGesellschaft/Grundaufzeichnungen/FAQ/faq_node.html)
 
+[BMF FAQ](https://www.bundesfinanzministerium.de/Content/DE/FAQ/2019-11-19-steuergerechtigkeit-belegpflicht.html)
+
 [GoBD](https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Weitere_Steuerthemen/Abgabenordnung/2014-11-14-GoBD.pdf?__blob=publicationFile&v=3)
 
 ## Terminology

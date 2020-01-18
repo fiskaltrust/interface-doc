@@ -36,4 +36,4 @@
 # [Receipt Case Definitions](appendix-fr-boi-tva-decl-30-10-30/receipt-case-definitions/receipt-case-definitions.md)
 # [Reference tables](appendix-fr-boi-tva-decl-30-10-30/reference-tables/reference-tables.md)
 
-# [Appendix: DE – GdPdU](appendix-de-gdpdu/appendix-de-gdpdu.md)
+# [Appendix: DE – KassenSichV](appendix-de-kassensichv/appendix-de-kassensichv.md)

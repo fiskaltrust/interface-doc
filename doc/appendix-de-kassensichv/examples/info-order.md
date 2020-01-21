@@ -84,6 +84,7 @@ Request
 "UnitQuantity":6.0000
 }],
 "cbPayItems":[],
+// 0x4445 0000 0000 0010 (info-order) + 0000 0001 0000 0000 (implicit flow)
 "ftReceiptCase":4919338172267102224,
 "cbReceiptAmount":78.00,
 "cbUser":"Chef"
@@ -91,4 +92,17 @@ Request
 
 
 Response
+{
+"ftCashBoxID":"c094f242-91d5-4343-9c54-bce85f70d0d6",
+"ftQueueID":"",
+"ftQueueItemID":"",
+"ftQueueRow":"",
+"ftCashBoxID":"c094f242-91d5-4343-9c54-bce85f70d0d6",
+"ftPosSystemId":"b3dc6573-96d9-e611-80f7-5065f38adae1",
+"cbTerminalID":"1",
+"cbReceiptReference":"10",
+"cbReceiptMoment":"2019-10-25T13:48:04.323Z",
 
+
+
+}

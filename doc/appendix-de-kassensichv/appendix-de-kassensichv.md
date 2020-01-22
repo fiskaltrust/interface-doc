@@ -349,7 +349,8 @@ For definitions regarding national laws, please refer to the appropriate appendi
 | `0x4445000000000001` | Signature according to kasssichv (qr-code content)                  | 1.3                 |
 | `0x4445000000000002` | Archiving required  | 1.3                |
 | `0x4445000000000003` | notification       | 1.3                 |
-| `0x4445000000000011` | start-transaction-result     | 1.3                 |
+| `0x4445000000000010` | start-transaction-result     | 1.3                 |
+| `0x4445000000000011` | finish-transaction-payload     | 1.3                 |
 | `0x4445000000000012` | finish-transaction-result     | 1.3                 |
 | `0x4445000000000013` | receipt / qr-version     | 1.3                 |
 | `0x4445000000000014` | receipt / kassenseriennummer     | 1.3                 |

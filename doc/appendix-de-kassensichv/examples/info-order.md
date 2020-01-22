@@ -5,44 +5,52 @@ info-order
 Request
 
 {
-"ftCashBoxID": "ed9a6ac6-dbfe-41b4-b511-3070e57813b3",
-"ftPosSystemId": "5588eb37-13cb-e511-8106-3863bb35ddf0",
-"cbTerminalID": "Naramis2",
+"ftCashBoxID": "cashboxid-guid",
+"ftPosSystemId": "possystemid-guid",
+"cbTerminalID": "terminalid",
 "cbReceiptReference": "233348",
 "cbReceiptMoment": "2019-07-19T12:52:34.9609375Z",
 "cbChargeItems": [
 {
 "Quantity": 2.0,
 "Description": "0,5 Soda Zitrone",
-"Amount": 4.6,
-"VATRate": 20.0,
-"ftChargeItemCase": 4707387510509010947,
-"ftChargeItemCaseData": "",
-"AccountNumber": "",
-"CostCenter": "",
-"ProductGroup": "",
-"ProductNumber": "970794",
-"ProductBarcode": "",
-"Unit": ""
+"Amount": 5.6,
+"VATRate":19.0000,
+"ftChargeItemCase":4919338167972134913
 }
 ],
 "cbPayItems": [
 {
 "Quantity": 1.0,
-"Description": "Bargeld",
-"Amount": 48.6,
-"ftPayItemCase": 4707387510509010945,
-"ftPayItemCaseData": "",
-"AccountNumber": "",
-"CostCenter": "",
-"MoneyGroup": "",
-"MoneyNumber": ""
+"Description": "Internal",
+"Amount": 5.6,
+// 0x4445 0000 0000 000A (internal / material consumption)
+"ftPayItemCase": 4707387510509010945
 }
 ],
-"ftReceiptCase": 4707387510509010945,
-"cbReceiptAmount": 48.6,
+// 0x4445 0000 0000 0010 (info-order) + 0000 0001 0000 0000 (implicit flow)
+"ftReceiptCase":4919338172267102224,
 "cbArea": "Tisch 56",
 "cbPreviousReceiptReference": "233347"
+}
+
+
+Response
+{
+"ftCashBoxID": "cashboxid-guid",
+"ftPosSystemId": "possystemid-guid",
+"cbTerminalID": "terminalid",
+"cbReceiptReference": "233348",
+
+"ftQueueID":"queueid-guid",
+"ftQueueItemID":"queueitemid-guid",
+"ftQueueRow":"queuerow",
+"ftReceiptMoment":"2019-10-25T13:48:04.323Z",
+
+"ftCashboxIdentification":"fiskaltrust1=tse-client-id",
+"ftReceiptIdentification":"ft[queueraw-hex]#IT[tse-transaction]"
+
+
 }
 
 
@@ -91,18 +99,3 @@ Request
 }
 
 
-Response
-{
-"ftCashBoxID":"c094f242-91d5-4343-9c54-bce85f70d0d6",
-"ftQueueID":"",
-"ftQueueItemID":"",
-"ftQueueRow":"",
-"ftCashBoxID":"c094f242-91d5-4343-9c54-bce85f70d0d6",
-"ftPosSystemId":"b3dc6573-96d9-e611-80f7-5065f38adae1",
-"cbTerminalID":"1",
-"cbReceiptReference":"10",
-"cbReceiptMoment":"2019-10-25T13:48:04.323Z",
-
-
-
-}

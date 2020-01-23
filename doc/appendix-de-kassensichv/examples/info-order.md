@@ -59,16 +59,27 @@ Response
 "ftReceiptIdentification":"ft[queueraw-hex]#IT[tse-transaction]"
 
 ftSignatures[
-{
-//start-transaction-result
-},
-{
-//finish-transaction-payload
-},
-{
-//finish-transaction-result
-}
-
+        {
+            "ftSignatureFormat":13,
+            //0x4445000000000010 (start-transaction-result)
+            "ftSignatureType": 4919338167972134928,
+            "caption": "start-transaction-signature",
+            "data": "[startTransactionResult]"
+        },
+        {
+            "ftSignatureFormat":13,
+            //0x4445000000000011 (finish-transaction-payload)
+            "ftSignatureType": 4919338167972134929,
+            "caption": "finish-transaction-payload",
+            "data": "[finishTransactionPayload]"
+        },
+        {
+            "ftSignatureFormat": 13,
+            //0x4445000000000012 (finish-transaction-result)
+            "ftSignatureType": 4919338167972134930,
+            "caption": "finish-transaction-payload",
+            "data": "[finishTransactionResult]"
+        }
 ]
 
 }

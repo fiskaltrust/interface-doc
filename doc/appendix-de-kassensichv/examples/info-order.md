@@ -33,7 +33,7 @@ Request
 "Description": "Internal",
 "Amount": 5.6,
 // 0x4445 0000 0000 000A (internal / material consumption)
-"ftPayItemCase": 4707387510509010945
+"ftPayItemCase": 4919338167972134922
 }
 ],
 // 0x4445 0000 0000 0010 (info-order) + 0000 0001 0000 0000 (implicit flow)

@@ -105,7 +105,7 @@ ReceiptResponse
             "ftSignatureFormat":13,
             //0x4445000000000010 (start-transaction-result)
             "ftSignatureType": 4919338167972134928,
-            "caption": "start-transaction-signature",
+            "caption": "start-transaction-result",
             "data": "[startTransactionResult]"
         },
         {
@@ -119,7 +119,7 @@ ReceiptResponse
             "ftSignatureFormat": 13,
             //0x4445000000000012 (finish-transaction-result)
             "ftSignatureType": 4919338167972134930,
-            "caption": "finish-transaction-payload",
+            "caption": "finish-transaction-result",
             "data": "[finishTransactionResult]"
         },
         {
@@ -268,7 +268,7 @@ ReceiptResponse
             "ftSignatureFormat":13,
             //0x4445000000000010 (start-transaction-result)
             "ftSignatureType": 4919338167972134928,
-            "caption": "start-transaction-signature",
+            "caption": "start-transaction-result",
             "data": "[startTransactionResult]"
         }
     ],
@@ -383,7 +383,7 @@ ReceiptResponse
             "ftSignatureFormat":13,
             //0x4445000000000010 (start-transaction-result)
             "ftSignatureType": 4919338167972134928,
-            "caption": "start-transaction-signature",
+            "caption": "start-transaction-result",
             "data": "[startTransactionResult]"
         },
         {
@@ -397,7 +397,7 @@ ReceiptResponse
             "ftSignatureFormat": 13,
             //0x4445000000000012 (finish-transaction-result)
             "ftSignatureType": 4919338167972134930,
-            "caption": "finish-transaction-payload",
+            "caption": "finish-transaction-result",
             "data": "[finishTransactionResult]"
         },
         {

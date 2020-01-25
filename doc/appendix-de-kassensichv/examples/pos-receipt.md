@@ -91,7 +91,7 @@ ReceiptResponse
     "cbTerminalID": "1",
     "cbReceiptReference": "1",
     "ftCashBoxIdentification": "[ftCashBoxIdentification]",
-    "ftReceiptIdentification": "ft[ftQueueRow]#IT[finishTransactionNr]",
+    "ftReceiptIdentification": "ft[queue-receiptnumerator-hex]#IT[finishTransactionNr]",
     "ftReceiptMoment": "2019-10-25T13:32:46.133Z",
     "ftSignatures": [
         {

@@ -70,7 +70,7 @@ ReciptRequest
     }
   ],
   // 0x4445 0000 0000 0001 (pos-receipt) + 0x0000 0001 0000 0000 (implicit flow)
-  "ftReceiptCase": 4919338168240570369,
+  "ftReceiptCase": 4919338172267102209‬,
   "ftReceiptCaseData": "",
   "cbReceiptAmount": 13.00,
   "cbUser": "Chef",

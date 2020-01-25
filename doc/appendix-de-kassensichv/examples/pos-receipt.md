@@ -241,7 +241,7 @@ ReciptRequest
   "cbReceiptMoment": "2019-10-25T13:32:45.133Z",
   "cbChargeItems": [ ],
   "cbPayItems": [  ],
-  // 0x4445 0000 0000 0008 (pos-receipt) 
+  // 0x4445 0000 0000 0008 (start-transaction-receipt) 
   "ftReceiptCase": 4919338167972134920,
   "cbUser": "Chef",
   "cbArea": "Tisch 01",
@@ -378,13 +378,6 @@ ReceiptResponse
             "ftSignatureType": 4919338167972134913,
             "caption": "www.fiskaltrust.de",
             "data": "V0;[ftCashBoxIdentification];Kassenbeleg-V1;Beleg^3.80_9.20_0.00_0.00_0.00^13.00:Bar;[finishTransactionNr];[signatureCounter];[startTransactionMoment];[finishTransactionMoment];[signatureAlgorithm];[logTimeFormat e.g. unixtime];[signature];[publickey]"
-        },
-        {
-            "ftSignatureFormat":13,
-            //0x4445000000000010 (start-transaction-result)
-            "ftSignatureType": 4919338167972134928,
-            "caption": "start-transaction-result",
-            "data": "[startTransactionResult]"
         },
         {
             "ftSignatureFormat":13,

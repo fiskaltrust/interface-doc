@@ -89,7 +89,7 @@ ReceiptResponse
     "ftQueueItemID": "queueitemid-guid",
     "ftQueueRow": 96,
     "cbTerminalID": "1",
-    "cbReceiptReference": "1",
+    "cbReceiptReference": "233348",
     "ftCashBoxIdentification": "[ftCashBoxIdentification]",
     "ftReceiptIdentification": "ft[queue-receiptnumerator-hex]#IT[finishTransactionNr]",
     "ftReceiptMoment": "2019-10-25T13:32:46.133Z",

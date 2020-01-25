@@ -56,7 +56,7 @@ Response
 "ftReceiptMoment":"2019-10-25T13:48:04.323Z",
 
 "ftCashboxIdentification":"fiskaltrust1=tse-client-id",
-"ftReceiptIdentification":"ft[queueraw-hex]#IT[tse-transaction]"
+"ftReceiptIdentification":"ft[queue-receiptnumerator-hex]#IT[tse-transaction]"
 
 ftSignatures[
         {

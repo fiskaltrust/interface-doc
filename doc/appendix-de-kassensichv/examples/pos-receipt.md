@@ -30,7 +30,7 @@ ReciptRequest
       "Unit": "Stk",
       "UnitQuantity": 1,
       "UnitPrice": 3.8,
-      "Moment": "2019-10-25T13:32:45.133Z"
+      "Moment": "2019-10-25T11:01:01.001Z"
     },
     {
       "Position": 2,
@@ -50,7 +50,7 @@ ReciptRequest
       "Unit": "Stk",
       "UnitQuantity": 1,
       "UnitPrice": 9.20,
-      "Moment": "2019-10-25T13:32:45.133Z"
+      "Moment": "2019-10-25T11:02:01.133Z"
     }
   ],
   "cbPayItems": [
@@ -66,7 +66,7 @@ ReciptRequest
       "CostCenter": "Costcenter123",
       "MoneyGroup": "BAR",
       "MoneyNumber": "1234",
-      "Moment": "2019-10-25T13:32:45.133Z"
+      "Moment": "2019-10-25T13:32:43.000Z"
     }
   ],
   // 0x4445 0000 0000 0001 (pos-receipt) + 0x0000 0001 0000 0000 (implicit flow)
@@ -131,14 +131,21 @@ ReceiptResponse
         },
         {
             "ftSignatureFormat": 1,
-            //0x4445000000000014 (processType)
+            //0x4445000000000014 (kassen-seriennummer)
+            "ftSignatureType": 4919338167972134932,
+            "caption": "kassen-seriennummer",
+            "data": "[ftCashBoxIdentification]"
+        },
+        {
+            "ftSignatureFormat": 1,
+            //0x4445000000000015 (processType)
             "ftSignatureType": 4919338167972134933,
             "caption": "processType",
             "data": "Kassenbeleg-V1"
         },
         {
             "ftSignatureFormat": 1,
-            //0x4445000000000015 (processData)
+            //0x4445000000000016 (processData)
             "ftSignatureType": 4919338167972134934,
             "caption": "processData",
             "data": "Beleg^3.80_9.20_0.00_0.00_0.00^13.00:Bar"
@@ -198,9 +205,17 @@ ReceiptResponse
             "ftSignatureType": 4919338167972134942,
             "caption": "<public-key>",
             "data": "[<public-key>]"
+        },
+        {
+            "ftSignatureFormat": 1,
+            //0x444500000000001F <start-action-time>
+            "ftSignatureType": 4919338167972134943,
+            "caption": "Vorgangsbegin",
+            "data": "2019-10-25T11:01:01.001Z"
         }
     ],
-    "ftState": 4707387510509011000
+    //0x4445 0000 0000 0000
+    "ftState": 4919338167972134912
 }
 `
 
@@ -257,7 +272,8 @@ ReceiptResponse
             "data": "[startTransactionResult]"
         }
     ],
-    "ftState": 4707387510509011000
+    //0x4445 0000 0000 0000
+    "ftState": 4919338167972134912
 }
 
 
@@ -292,7 +308,7 @@ ReciptRequest
       "Unit": "Stk",
       "UnitQuantity": 1,
       "UnitPrice": 3.8,
-      "Moment": "2019-10-25T13:32:45.133Z"
+      "Moment": "2019-10-25T11:01:01.001Z"
     },
     {
       "Position": 2,
@@ -393,14 +409,14 @@ ReceiptResponse
         },
         {
             "ftSignatureFormat": 1,
-            //0x4445000000000014 (processType)
+            //0x4445000000000015 (processType)
             "ftSignatureType": 4919338167972134933,
             "caption": "processType",
             "data": "Kassenbeleg-V1"
         },
         {
             "ftSignatureFormat": 1,
-            //0x4445000000000015 (processData)
+            //0x4445000000000016 (processData)
             "ftSignatureType": 4919338167972134934,
             "caption": "processData",
             "data": "Beleg^3.80_9.20_0.00_0.00_0.00^13.00:Bar"
@@ -460,9 +476,17 @@ ReceiptResponse
             "ftSignatureType": 4919338167972134942,
             "caption": "<public-key>",
             "data": "[<public-key>]"
+        },
+        {
+            "ftSignatureFormat": 1,
+            //0x444500000000001F <start-action-time>
+            "ftSignatureType": 4919338167972134943,
+            "caption": "Vorgangsbegin",
+            "data": "2019-10-25T11:01:01.001Z"
         }
     ],
-    "ftState": 4707387510509011000
+    //0x4445 0000 0000 0000
+    "ftState": 4919338167972134912
 }
 `
 

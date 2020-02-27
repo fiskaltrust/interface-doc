@@ -37,3 +37,6 @@
 # [Reference tables](appendix-fr-boi-tva-decl-30-10-30/reference-tables/reference-tables.md)
 
 # [Appendix: DE – KassenSichV](appendix-de-kassensichv/appendix-de-kassensichv.md)
+# [Terminology](appendix-de-kassensichv/terminology/terminology.md)
+# [Cash Register Integration](appendix-de-kassensichv/cash-register-integration/cash-register-integration.md)
+# [Reference Tables](appendix-de-kassensichv/reference-tables/reference-tables.md)

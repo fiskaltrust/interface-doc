@@ -36,11 +36,16 @@ steps:
 - script: 'npm install -g markdown-link-check'
   displayName: 'Install markdown-link-check'
    
-- task: PowerShell@1
+- powershell: |
+    Get-ChildItem -Path ".\doc\" -Filter "*.md" -Recurse | ForEach-Object {
+      $path = Resolve-Path -Path $_.FullName -Relative
+      if(!($path -match "\\\.[^\.\\]+")) {
+        markdown-link-check -c .\markdown-link-check.config.json -q $path
+      }
+    }
+  failOnStderr: true
+  errorActionPreference: continue
   displayName: 'Check links'
-  inputs:
-    scriptName: 'scripts/MarkdownLinkCheck.ps1'
-    workingFolder: doc
 
 - task: NuGetToolInstaller@0
   displayName: 'Use NuGet'

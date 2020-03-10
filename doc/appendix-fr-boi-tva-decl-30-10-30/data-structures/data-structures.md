@@ -33,7 +33,7 @@ This table describes additional fields of the Charge Items Entry applicable to t
 
 #### ChargeItemCaseData Entry
 
-Charge Item Case Entry is used to hand over additional required Informations to a data line for a receipt.
+ChargeItemCaseData Entry is used to hand over additional required Informations to a data line for a receipt.
 The Format is limited to JSON.
 For French law fulfullment a net-amount by line is required. this is added here by a field called "NetAmount".
 

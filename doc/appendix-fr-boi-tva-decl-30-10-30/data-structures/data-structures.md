@@ -27,7 +27,6 @@ This table describes additional fields of the Charge Items Entry applicable to t
 |----------------|---------------|-----------------------------------|-----------------------------------------------------------------------|-------------|
 | `Description`  | `string`      | empty-string<br />mandatory       | Name or description of customary indication or type of other service. | 0-          |
 | `VATAmount`            | `Decimal`            | 0.0<br />mandatory                           | For French law fulfillment the VAT amount is required. It is used to calculate the net amount in order to avoid rounding errors which are especially likely to appear in row-based net price additions. | 0-          |
-
 | `ftChargeItemCaseData` | `String`<br />Max 64k | empty-string<br />mandatory                  | Additional data about the service, currently accepted only in JSON format.                                                                                                           | 0-          |
 
 <span id="_Toc527986683" class="anchor"></span>*Table 31. Charge Items Entry (ftChargeItems)*

@@ -289,7 +289,7 @@ The DSFinV-K export is divided into the following sections:
 
 - Single recordings module (DE: Einzelaufzeichnungsmodul)
 - Master data module (DE: Stammdatenmodul)
-- Cash register closing module (DE: Kassenabschlussmodul)
+- Cashpoint closing module (DE: Kassenabschlussmodul)
 
 Each module consists of several files. In the following we will go into the individual modules and look at the files and data contained in them.
 
@@ -297,14 +297,40 @@ Each module consists of several files. In the following we will go into the indi
 
 The single recordings provide the basis for data storage. These are divided into two main areas:
 
-- Bonpos
-- Bonkopf
+- Bonpos (lines.csv)
+- Bonkopf (transactions.csv)
 
 In addition to these two files there are further detail files which are described in the following.
 
 ##### File: Bonpos (lines.csv)
 
-The Bonpos file contains the single items of an action (DE: Vorgang) with the allocation of the correct VAT rate, quantity and type of goods supplied. In addition, the method of calculating the VAT (gross or net method) is also recorded. With the gross method only the gross price is recorded, with the net method the net price and the sales tax due on it.
+The Bonpos (lines.csv) file contains the single items of an action (DE: Vorgang) with the allocation of the correct VAT rate, quantity and type of goods supplied. In addition, the method of calculating the VAT (gross or net method) is also recorded. With the gross method only the gross price is recorded, with the net method the net price and the sales tax due on it.
+
+Following table shows the values needed per line in the Bonpos file:
+
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cash register | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Number |             |
+| `BON_ID` | Action-ID | String |             |
+| `POS_ZEILE` | Line number  | String |             |
+| `GUTSCHEIN_NR` | Voucher no.| String |             |
+| `ARTIKELTEXT` |Product/Article text| String |             |
+| `POS_TERMINAL_ID` |Terminal-ID of this line (position)| String |             |
+| `GV_TYP` |Type of business action  | String |             |
+| `GV_NAME` | Addition to the business action type | String|             |
+| `INHAUS` | Inhouse consumption | String |             |
+| `P_STORNO` | Position cancellation Identification | String |             |
+| `AGENTUR_ID` | ID of the Agency | Number |             |
+| `ART_NR` | Article number | String |             |
+| `GTIN` | GTIN | String |             |
+| `WARENGR_ID` | Product group ID | String |             |
+| `WARENGR` | Description of the product group | String |             |
+| `MENGE` | Quantity | Number |             |
+| `FAKTOR` | factor, e.g. container size | Number |             |
+| `EINHEIT` | Unit of measurement, e.g. kg, litres or pieces | String |             |
+| `STK_BR` | Price per unit incl. VAT | Number |             |
 
 ##### File: Bonpos_USt (lines_vat.csv)
 

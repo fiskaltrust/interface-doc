@@ -291,7 +291,7 @@ The DSFinV-K export is divided into the following sections:
 - Master data module (DE: Stammdatenmodul)
 - Cashpoint closing module (DE: Kassenabschlussmodul)
 
-Each module consists of several files. In the following we will go into the individual modules and look at the files and data contained in them.
+Each module consists of several files. In the following we will go into the individual modules and have look to the files and data contained in them.
 
 #### Single recordings module (DE: Einzelaufzeichnungsmodul)
 
@@ -306,19 +306,19 @@ In addition to these two files there are further detail files which are describe
 
 The Bonpos (lines.csv) file contains the single items of an action (DE: Vorgang) with the allocation of the correct VAT rate, quantity and type of goods supplied. In addition, the method of calculating the VAT (gross or net method) is also recorded. With the gross method only the gross price is recorded, with the net method the net price and the sales tax due on it.
 
-Following table shows the values needed per line in the Bonpos file:
+Following table shows the values needed per line/position in the Bonpos file:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cash register | String |             |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
-| `Z_NR` | No. of the cashpoint closing | Number |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |             |
 | `BON_ID` | Action-ID | String |             |
-| `POS_ZEILE` | Line number  | String |             |
+| `POS_ZEILE` | Line/Position number  | String |             |
 | `GUTSCHEIN_NR` | Voucher no.| String |             |
-| `ARTIKELTEXT` |Product/Article text| String |             |
-| `POS_TERMINAL_ID` |Terminal-ID of this line (position)| String |             |
-| `GV_TYP` |Type of business action  | String |             |
+| `ARTIKELTEXT` | Product/Article text| String |             |
+| `POS_TERMINAL_ID` | Terminal-ID of this line (position)| String |             |
+| `GV_TYP` | Type of business action  | String |             |
 | `GV_NAME` | Addition to the business action type | String|             |
 | `INHAUS` | Inhouse consumption | String |             |
 | `P_STORNO` | Position cancellation Identification | String |             |
@@ -327,16 +327,73 @@ Following table shows the values needed per line in the Bonpos file:
 | `GTIN` | GTIN | String |             |
 | `WARENGR_ID` | Product group ID | String |             |
 | `WARENGR` | Description of the product group | String |             |
-| `MENGE` | Quantity | Number |             |
-| `FAKTOR` | factor, e.g. container size | Number |             |
+| `MENGE` | Quantity | Decimal (3) |             |
+| `FAKTOR` | factor, e.g. container size | Decimal (3) |             |
 | `EINHEIT` | Unit of measurement, e.g. kg, litres or pieces | String |             |
-| `STK_BR` | Price per unit incl. VAT | Number |             |
+| `STK_BR` | Price per unit incl. VAT | Decimal (5) |             |
 
 ##### File: Bonpos_USt (lines_vat.csv)
 
+For each position, this file contains information on the VAT rates used. This detail table is necessary because, for example, several VAT rates per position can occur for combinations of goods (DE: Warenzusammenstellungen) or several lines with price information can be necessary for discounts. 
+
+
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cash register | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `BON_ID` | Action-ID | String |             |
+| `POS_ZEILE` | Line/Position number  | String |             |
+| `UST_SCHLUESSEL` | ID of the VAT rate | Integer |             |
+| `POS_BRUTTO` | Gross sales | Decimal (5) |             |
+| `POS_NETTO` | Net sales | Decimal (5) |             |
+| `POS_UST` | VAT | Decimal (5) ||
+
+
 ##### File: Bonpos_Preisfindung (itemamounts.csv)
 
+This table contains detailed information on the origin of the price, e.g. special customer discounts or surcharges.
+
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cash register | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `BON_ID` | Action-ID | String |             |
+| `POS_ZEILE` | Line/Position number  | String |             |
+| `TYP` | Base price, discount or surcharge  | String |             |
+| `UST_SCHLUESSEL` | ID of the VAT rate | Integer |             |
+| `PF_BRUTTO` | Gross sales | Decimal (5) |             |
+| `PF_NETTO` | Net sales | Decimal (5) |             |
+| `PF_UST` | VAT | Decimal (5) ||
+
+
 ##### File: Bonpos_Zusatzinfo (subitems.csv)
+
+This table allows to detail the composition of sold combinations of goods (DE: Warenzusammenstellungen). They serve exclusively for explanation.
+
+This does not affect the basis of assessment for VAT. In the case of goods combinations with different tax rates, however, information is stored here which serves to control the distribution of the VAT assessment basis (example: fast food menu consisting of a drink and a burger). In addition, orders deviating from the standard order can be taken into account to record the actual consumption of goods (example: gyros plate with chips instead of rice).
+
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cash register | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `BON_ID` | Action-ID | String |             |
+| `POS_ZEILE` | Line/Position number  | String |             |
+| `ZI_ART_NR` | Article number  | String |             |
+| `ZI_GTIN` | GTIN | String |             |
+| `ZI_NAME` | Article name | String |             |
+| `ZI_WARENGR_ID` | Product group ID | String |             |
+| `ZI_WARENGR` | Name of the product group | String ||
+| `ZI_MENGE` | Quantity | Decimal (3) ||
+| `ZI_FAKTOR` | factor, e.g. container sizes | Decimal (3) ||
+| `ZI_EINHEIT` | Unit of measurement, e.g. kg, litres or pieces | String ||
+| `ZI_UST_SCHLUESSEL` | ID of VAT rate for the base price | Integer ||
+| `ZI_BASISPREIS_BRUTTO` | Gross basis price | Decimal (5) ||
+| `ZI_BASISPREIS_NETTO` | Net basis price | Decimal (5) ||
+| `ZI_BASISPREIS_UST` | Basis VAT | Decimal (5) ||
+
 
 ##### File: Bonkopf (transactions.csv)
 

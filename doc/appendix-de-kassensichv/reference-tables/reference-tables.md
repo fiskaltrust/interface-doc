@@ -302,29 +302,27 @@ The single recordings provide the basis for data storage. These are divided into
 
 In addition to these two files there are further detail files which are described in the following.
 
-##### File: Bonpos
+##### File: Bonpos (lines.csv)
 
 The Bonpos file contains the single items of an action (DE: Vorgang) with the allocation of the correct VAT rate, quantity and type of goods supplied. In addition, the method of calculating the VAT (gross or net method) is also recorded. With the gross method only the gross price is recorded, with the net method the net price and the sales tax due on it.
 
-##### File: Bonpos_USt
+##### File: Bonpos_USt (lines_vat.csv)
 
-##### File: Bonpos_Preisfindung
+##### File: Bonpos_Preisfindung (itemamounts.csv)
 
-##### File: Bonpos_Zusatzinfo
+##### File: Bonpos_Zusatzinfo (subitems.csv)
 
-##### File: Bonkopf
+##### File: Bonkopf (transactions.csv)
 
-##### File: Bonkopf_USt
+##### File: Bonkopf_USt  (transactions_vat.csv)
 
-##### File: Bonkopf_AbrKreis
+##### File: Bonkopf_AbrKreis (allocation_groups.csv)
 
-##### File: Bonkopf_Zahlarten
+##### File: Bonkopf_Zahlarten (datapayment.csv)
 
-##### File: Bon_Referenzen
+##### File: Bon_Referenzen (references.csv)
 
-##### File: TSE_Transaktionen
-
-##### File: TSE_Transaktionen
+##### File: TSE_Transaktionen (transactions_tse.csv)
 
 #### Master data module (DE: Stammdatenmodul)
 
@@ -332,28 +330,28 @@ To avoid redundancies, the master data is only saved once for each cash register
 
 The master data module is divided into the following files:
 
-##### File: Stamm_Abschluss
+##### File: Stamm_Abschluss (cashpointclosing.csv)
 
-##### File: Stamm_Orte
+##### File: Stamm_Orte (location.csv)
 
-##### File: Stamm_Kassen
+##### File: Stamm_Kassen (cashregister.csv)
 
-##### File: Stamm_Terminals
+##### File: Stamm_Terminals (slaves.csv)
 
-##### File: Stamm_Agenturen
+##### File: Stamm_Agenturen (pa.csv)
 
-##### File: Stamm_USt
+##### File: Stamm_USt (vat.csv)
 
-##### File: Stamm_TSE
+##### File: Stamm_TSE (tse.csv)
 
-#### Cash register closing module (DE: Kassenabschlussmodul)
+#### Cashpoint closing module (DE: Kassenabschlussmodul)
 
 The three structure levels (modules) allow transactions to be separated and grouped, so that they can be automatically posted or transferred to the bookkeeping. The cash register closing therefore has an accounting function, meaning that the data of the respective closing has to be stored digitally within this module. The storage takes place in three files:
 
-##### File: Stamm_TSE
+##### File: Z_Zahlart Z_GV_TYP (businesscases.csv)
 
-##### File: Z_Zahlart
+##### File: Z_Zahlart (payment.csv)
 
-##### File: Z_Waehrungen
+##### File: Z_Waehrungen (cash_per_currency.csv)
 
 

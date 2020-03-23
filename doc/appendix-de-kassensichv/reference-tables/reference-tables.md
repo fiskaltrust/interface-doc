@@ -279,3 +279,81 @@ For definitions regarding national laws, please refer to the appropriate appendi
 
 *Table 15. Type of Signature: ftSignatureType*
 
+### DSFinV-K export
+
+This chapter explains how the DSFinV-K export is structured, explains how the mapping of the previously described input values are mapped to the files and data of the DSFinV-K export and defines how additional, for the DSFInV-K required, values can be submitted to the middleware. Furthermore, it describes how the marking of actions (DE: Vorgänge) can be made by connecting business actions (DE: Geschäftsvorfälle) and other procedures, occurrences and events (DE: Andere Vorgänge). 
+
+#### Structure
+
+The DSFinV-K export is divided into the following sections: 
+
+- Single recordings module (DE: Einzelaufzeichnungsmodul)
+- Master data module (DE: Stammdatenmodul)
+- Cash register closing module (DE: Kassenabschlussmodul)
+
+Each module consists of several files. In the following we will go into the individual modules and look at the files and data contained in them.
+
+#### Single recordings module (DE: Einzelaufzeichnungsmodul)
+
+The single recordings provide the basis for data storage. These are divided into two main areas:
+
+- Bonpos
+- Bonkopf
+
+In addition to these two files there are further detail files which are described in the following.
+
+##### File: Bonpos
+
+The Bonpos file contains the single items of an action (DE: Vorgang) with the allocation of the correct VAT rate, quantity and type of goods supplied. In addition, the method of calculating the VAT (gross or net method) is also recorded. With the gross method only the gross price is recorded, with the net method the net price and the sales tax due on it.
+
+##### File: Bonpos_USt
+
+##### File: Bonpos_Preisfindung
+
+##### File: Bonpos_Zusatzinfo
+
+##### File: Bonkopf
+
+##### File: Bonkopf_USt
+
+##### File: Bonkopf_AbrKreis
+
+##### File: Bonkopf_Zahlarten
+
+##### File: Bon_Referenzen
+
+##### File: TSE_Transaktionen
+
+##### File: TSE_Transaktionen
+
+#### Master data module (DE: Stammdatenmodul)
+
+To avoid redundancies, the master data is only saved once for each cash register closing. If changes are made to the master data listed below, a closing must be created automatically beforehand.
+
+The master data module is divided into the following files:
+
+##### File: Stamm_Abschluss
+
+##### File: Stamm_Orte
+
+##### File: Stamm_Kassen
+
+##### File: Stamm_Terminals
+
+##### File: Stamm_Agenturen
+
+##### File: Stamm_USt
+
+##### File: Stamm_TSE
+
+#### Cash register closing module (DE: Kassenabschlussmodul)
+
+The three structure levels (modules) allow transactions to be separated and grouped, so that they can be automatically posted or transferred to the bookkeeping. The cash register closing therefore has an accounting function, meaning that the data of the respective closing has to be stored digitally within this module. The storage takes place in three files:
+
+##### File: Stamm_TSE
+
+##### File: Z_Zahlart
+
+##### File: Z_Waehrungen
+
+

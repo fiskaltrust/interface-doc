@@ -281,7 +281,7 @@ For definitions regarding national laws, please refer to the appropriate appendi
 
 ### DSFinV-K export
 
-This chapter explains how the DSFinV-K export is structured, explains how the mapping of the previously described input values are mapped to the files and data of the DSFinV-K export and defines how additional, for the DSFInV-K required, values can be submitted to the middleware. Furthermore, it describes how the marking of actions (DE: Vorgänge) can be made by connecting business actions (DE: Geschäftsvorfälle) and other procedures, occurrences and events (DE: Andere Vorgänge). 
+This chapter explains how the DSFinV-K export is structured, explains how the previously described input values are mapped by fisklatrust to the files and data of the DSFinV-K export and defines how additional, for the DSFInV-K required, values can be submitted to the fiskaltrust middleware. Furthermore, it describes how the marking of actions (DE: Vorgänge) can be made by connecting business actions (DE: Geschäftsvorfälle) and other procedures, occurrences and events (DE: Andere Vorgänge). 
 
 #### Structure
 
@@ -396,6 +396,32 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 
 
 ##### File: Bonkopf (transactions.csv)
+
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cash register | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `BON_ID` | Action-ID | String |             |
+| `BON_NR` | Receipt number | Integer |             |
+| `BON_TYP` | Receipt type | String |             |
+| `BON_NAME` | Action-ID | String |             |
+| `TERMINAL_ID` | ID of the terminal that was used to record this receipt | String |             |
+| `BON_STORNO` | Cancellation indicator | String |             |
+| `BON_START` | Time of the action start | String |             |
+| `BON_ENDE` | Time of the operation end | String |             |
+| `BEDIENER_ID` | User-ID | String |             |
+| `BEDIENER_NAME` | User name | String |             |
+| `UMS_BRUTTO` | Gross total turnover | Decimal (2) |             |
+| `KUNDE_NAME` | Name of beneficiary customer | String |             |
+| `KUNDE_ID` | ID of the beneficiary customer| String |             |
+| `KUNDE_TYP` | Type of the beneficiary customer (e.g. employee) | String |             |
+| `KUNDE_STRASSE` | Street and house number of the beneficiary customer | String |             |
+| `KUNDE_PLZ` | Zip of the beneficiary customer | String |             |
+| `KUNDE_ORT` | City of the beneficiary customer | String |             |
+| `KUNDE_LAND` | Country of the beneficiary customer | String |             |
+| `KUNDE_USTID` | VAT-ID of the beneficiary customer | String |             |
+| `BON_NOTIZ` | Additional information on the receipt header | String |             |
 
 ##### File: Bonkopf_USt  (transactions_vat.csv)
 

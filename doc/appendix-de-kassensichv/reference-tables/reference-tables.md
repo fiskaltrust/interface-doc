@@ -312,27 +312,27 @@ Following table shows the values needed per line/position in the Bonpos file:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | filled by ft |
-| `Z_NR` | No. of the cashpoint closing | Integer |             |
-| `BON_ID` | Action-ID | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_NR` | No. of the cashpoint closing | Integer |  tbd   |
+| `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `POS_ZEILE` | Line/Position number  | String | filled by ft |
 | `GUTSCHEIN_NR` | Voucher no.| String | optional, can be sent via `ftPayItemData` in JSON format. To send, add the key value pair `voucherNr` e.g. `"ftPayItemData":"{ ..., "voucherNr":"UAUA91829182HH", ... }"`|
-| `ARTIKELTEXT` | Product/Article text| String |             |
-| `POS_TERMINAL_ID` | Terminal-ID of this line (position)| String |             |
-| `GV_TYP` | Type of business action  | String |             |
+| `ARTIKELTEXT` | Product/Article text| String | `ftChargeItem.Description` |
+| `POS_TERMINAL_ID` | Terminal-ID of this line (position)| String | `cbTerminalID` |
+| `GV_TYP` | Type of business action  | String | `ftChargeItemCase` |
 | `GV_NAME` | Addition to the business action type | String| optional, can be sent via `ftChargeItemData` in JSON format. To send, add the key value pair `itemCaseName` e.g. `"ftChargeItemData":"{ ..., "itemCaseName":"Rabatt: Black Friday", ... }"` |
 | `INHAUS` | Inhouse consumption | 0 or 1 | optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `inhaus` e.g. `"ftReceiptCaseData":"{ ..., "inhaus":1, ... }"`, defaults to 0 if not sent, any other value than 0 is interpreted as 1.|
-| `P_STORNO` | Position cancellation Identification | String |             |
-| `AGENTUR_ID` | ID of the Agency | Number |             |
-| `ART_NR` | Article number | String |             |
+| `P_STORNO` | Position cancellation Identification | String | not used|
+| `AGENTUR_ID` | ID of the Agency | Number | filled by ft |
+| `ART_NR` | Article number | String | `ftChargeItem.ProductNumber` |
 | `GTIN` | GTIN | String | optional, can be sent via `ftChargeItemData` in JSON format. To send, add the key value pair `GTIN` e.g. `"ftChargeItemData":"{ ..., "GTIN":"9181981928298", ... }"` |
 | `WARENGR_ID` | Product group ID | String | send via `ftChargeItem.productGroup` in JSON format by adding the key value pair `productGroupId` e.g. `"productGroup":"{ "productGroupId":"981981AA", "productGroupName":"Fleischwaren" }"`|
 | `WARENGR` | Description of the product group | String |send via `ftChargeItem.productGroup` in JSON format by adding the key value pair `productGroupName` e.g. `"productGroup":"{ "productGroupId":"981981AA", "productGroupName":"Fleischwaren" }"`|
-| `MENGE` | Quantity | Decimal (3) |             |
-| `FAKTOR` | factor, e.g. container size | Decimal (3) |             |
-| `EINHEIT` | Unit of measurement, e.g. kg, litres or pieces | String |             |
-| `STK_BR` | Price per unit incl. VAT | Decimal (5) |             |
+| `MENGE` | Quantity | Decimal (3) | `ftChargeItem.Quantity` |
+| `FAKTOR` | factor, e.g. container size | Decimal (3) | `ftChargeItem.UnitQuantity`|
+| `EINHEIT` | Unit of measurement, e.g. kg, litres or pieces | String | `ftChargeItem.Unit` |
+| `STK_BR` | Price per unit incl. VAT | Decimal (5) | `ftChargeItem.UnitPrice` |
 
 ##### File: Bonpos_USt (lines_vat.csv)
 
@@ -341,8 +341,8 @@ For each position, this file contains information on the VAT rates used. This de
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | No. of the cashpoint closing | Integer |             |
 | `BON_ID` | Action-ID | String |             |
 | `POS_ZEILE` | Line/Position number  | String |             |
@@ -358,8 +358,8 @@ This table contains detailed information on the origin of the price, e.g. specia
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | No. of the cashpoint closing | Integer |             |
 | `BON_ID` | Action-ID | String |             |
 | `POS_ZEILE` | Line/Position number  | String |             |
@@ -378,9 +378,9 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
-| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_NR` | Nr. of the cashpoint closing | Integer |             |
 | `BON_ID` | Action-ID | String |             |
 | `POS_ZEILE` | Line/Position number  | String |             |
 | `ZI_ART_NR` | Article number  | String |             |
@@ -401,9 +401,9 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
-| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_NR` | Nr. of the cashpoint closing | Integer |             |
 | `BON_ID` | Action-ID | String |             |
 | `BON_NR` | Receipt number | Integer |             |
 | `BON_TYP` | Receipt type / action type| String |             |
@@ -429,9 +429,9 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
-| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_NR` | Nr. of the cashpoint closing | Integer |             |
 | `BON_ID` | Action-ID | String |             |
 | `POS_ZEILE` | Line/Position number  | String |             |
 | `TYP` | Base price, discount or surcharge  | String |             |
@@ -444,9 +444,9 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
-| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_NR` | Nr. of the cashpoint closing | Integer |             |
 | `BON_ID` | Action-ID | String |             |
 | `ABRECHNUNGSKREIS` | Criterion (e.g table number, department etc.) of the assignment | String |             |
 
@@ -454,9 +454,9 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
-| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_NR` | Nr. of the cashpoint closing | Integer |             |
 | `BON_ID` | Action-ID | String |             |
 | `ZAHLART_TYP` | Type of payment method | String ||
 | `ZAHLART_NAME` | Name of the payment method | String | optional, can be sent via `ftPayItemData` in JSON format. To send, add the key value pair `itemCaseName` e.g. `"ftPayItemData":"{ ..., "itemCaseName":"Sodexo", ... }"` |
@@ -468,9 +468,9 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
-| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_NR` | Nr. of the cashpoint closing | Integer |             |
 | `BON_ID` | Action-ID | String |             |
 | `POS_ZEILE` | Line number of the referencing operation | String ||
 | `REF_TYP` | Type of reference | "ExterneRechnung" or "ExternerLieferschein" or "Transaktion" or "ExterneSonstige" | can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `refType ` e.g. `"ftReceiptCaseData":"{ ..., "refType":"Transaktion", ... }"`. The value "Transaktion" mapps to an internal reference within this DSFinV-K export, all other values map to external references.|
@@ -484,9 +484,9 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
-| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_NR` | Nr. of the cashpoint closing | Integer |             |
 | `BON_ID` | Action-ID | String |             |
 | `TSE_ID` | ID of the TSE used for the transaction | Integer ||
 | `TSE_TANR` | Transaction number of the transaction | Integer ||
@@ -508,8 +508,8 @@ The master data module is divided into the following files:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer |             |
 | `Z_BUCHUNGSTAG` | Booking date different from creation date | String |             |
 | `TAXONOMIE_VERSION` | Version of the DFKA taxonomy cash register | String | will automatically be filled by ft with the current version of the DSFinV-K |
@@ -529,8 +529,8 @@ The master data module is divided into the following files:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer |  |
 | `LOC_NAME` | Name of the site | String |  |
 | `LOC_STRASSE` | Street | String |  |
@@ -543,8 +543,8 @@ The master data module is divided into the following files:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer |  |
 | `KASSE_BRAND` | Brand of the cash register | String ||
 | `KASSE_MODELL` | Model designation | String |  |
@@ -558,8 +558,8 @@ The master data module is divided into the following files:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer ||
 | `TERMINAL_ID` | ID of the terminal | String ||
 | `TERMINAL_BRAND` | Brand of the terminal | String ||
@@ -572,8 +572,8 @@ The master data module is divided into the following files:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer |  |
 | `AGENTUR_ID` | ID of the agency | Integer ||
 | `AGENTUR_NAME` | Name of the client | String |  |
@@ -588,8 +588,8 @@ The master data module is divided into the following files:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer |  |
 | `UST_SCHLUESSEL` | ID of the VAT rate| Integer |  |
 | `UST_SATZ` | Percentage | Decimal (2) |  |
@@ -599,8 +599,8 @@ The master data module is divided into the following files:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer |
 | `TSE_ID` | TSE ID | Integer | |
 | `TSE_SERIAL` |  Serial number of the TSE (Corresponds according to TR- 03153 section 7.5. to the hash value of the key contained in the certificate; octet string in hexadecimal representation) | String | |
@@ -619,8 +619,8 @@ The three structure levels (modules) allow transactions to be separated and grou
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer ||
 | `GV_TYP` | business action type | String ||
 | `GV_NAME` | name of the business action type | String ||
@@ -634,8 +634,8 @@ The three structure levels (modules) allow transactions to be separated and grou
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer ||
 | `ZAHLART_TYP` | Type of payment method | String ||
 | `ZAHLART_NAME` | Name of the payment method | String ||
@@ -645,8 +645,8 @@ The three structure levels (modules) allow transactions to be separated and grou
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer ||
 | `ZAHLART_WAEH` | Currency | String ||
-| `ZAHLART_BETRAG_WAEH` | Amount | Dec-kimal (2) ||
+| `ZAHLART_BETRAG_WAEH` | Amount | Decimal (2) ||

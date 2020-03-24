@@ -310,7 +310,7 @@ Following table shows the values needed per line/position in the Bonpos file:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cash register | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
 | `Z_NR` | No. of the cashpoint closing | Integer |             |
 | `BON_ID` | Action-ID | String |             |
@@ -339,7 +339,7 @@ For each position, this file contains information on the VAT rates used. This de
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cash register | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
 | `Z_NR` | No. of the cashpoint closing | Integer |             |
 | `BON_ID` | Action-ID | String |             |
@@ -356,7 +356,7 @@ This table contains detailed information on the origin of the price, e.g. specia
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cash register | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
 | `Z_NR` | No. of the cashpoint closing | Integer |             |
 | `BON_ID` | Action-ID | String |             |
@@ -376,7 +376,7 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cash register | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
 | `Z_NR` | No. of the cashpoint closing | Integer |             |
 | `BON_ID` | Action-ID | String |             |
@@ -399,7 +399,7 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cash register | String |             |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
 | `Z_NR` | No. of the cashpoint closing | Integer |             |
 | `BON_ID` | Action-ID | String |             |
@@ -425,13 +425,78 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 
 ##### File: Bonkopf_USt  (transactions_vat.csv)
 
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `BON_ID` | Action-ID | String |             |
+| `POS_ZEILE` | Line/Position number  | String |             |
+| `TYP` | Base price, discount or surcharge  | String |             |
+| `UST_SCHLUESSEL` | ID of the VAT rate | Integer |             |
+| `BON_BRUTTO` | Gross sales | Decimal (5) |             |
+| `BON_NETTO` | Net sales | Decimal (5) |             |
+| `BON_UST` | VAT | Decimal (5) ||
+
 ##### File: Bonkopf_AbrKreis (allocation_groups.csv)
+
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `BON_ID` | Action-ID | String |             |
+| `ABRECHNUNGSKREIS` | Criterion (e.g table number, department etc.) of the assignment | String |             |
 
 ##### File: Bonkopf_Zahlarten (datapayment.csv)
 
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `BON_ID` | Action-ID | String |             |
+| `ZAHLART_TYP` | Type of payment method | String ||
+| `ZAHLART_NAME` | Name of the payment method | String ||
+| `ZAHLWAEH_CODE` | Currency code | String ||
+| `ZAHLWAEH_BETRAG` | Amount in foreign currency | Decimal (2) ||
+| `BASISW AEH_BETRAG` | Amount in basis currency (usually EUR) | Decimal (2) ||
+
 ##### File: Bon_Referenzen (references.csv)
 
+##### File: Bonkopf_Zahlarten (datapayment.csv)
+
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `BON_ID` | Action-ID | String |             |
+| `POS_ZEILE` | Line number of the referencing operation | String ||
+| `REF_TYP` | Type of reference | String ||
+| `REF_NAME` | Description for type e.g. "ExterneSonstige" | String ||
+| `REF_DATUM` | Date of the cashpoint closing | String ||
+| `REF_Z_KASSE_ID` | ID of the (closing) cashpoint | String ||
+| `REF_Z_NR` | No. of the cashpoint closing | Integer ||
+| `REF_BON_ID` | Action-ID | String ||
+
 ##### File: TSE_Transaktionen (transactions_tse.csv)
+
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `BON_ID` | Action-ID | String |             |
+| `TSE_ID` | ID of the TSE used for the transaction | Integer ||
+| `TSE_TANR` | Transaction number of the transaction | Integer ||
+| `TSE_TA_START` | Log time of the StartTransaction operation | String ||
+| `TSE_TA_ENDE` | Log time of the FinishTransaction operation | String ||
+| `TSE_TA_VORGANGSART` | processType der FinishTransaktions operation | String ||
+| `TSE_TA_SIGZ` | Signature counter of the FinishTransaction operation | String ||
+| `TSE_TA_SIG` | Signature of the FinishTransaction operation | String ||
+| `TSE_TA_FEHLER` | Where appropriate, indications of TSE errors | String ||
+| `TSE_VORGANGSDATEN` | Data of the operation (optional) | String ||
 
 #### Master data module (DE: Stammdatenmodul)
 

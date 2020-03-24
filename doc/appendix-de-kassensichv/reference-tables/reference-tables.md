@@ -506,17 +506,110 @@ The master data module is divided into the following files:
 
 ##### File: Stamm_Abschluss (cashpointclosing.csv)
 
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |             |
+| `Z_BUCHUNGSTAG` | Booking date different from creation date | String |             |
+| `TAXONOMIE_VERSION` | Version of the DFKA taxonomy cash register | String |             |
+| `Z_START_ID` | First BON_ID in closing | String |             |
+| `Z_ENDE_ID` | Last BON_ID in the closing | String |             |
+| `NAME` | Name of the company | String |             |
+| `STRASSE` | Street | String |             |
+| `PLZ` | Zip | String |             |
+| `ORT` | City | String |             |
+| `LAND` | Country | String |             |
+| `STNR` | Tax number of the company | String |             |
+| `USTID` | VAT ID | String |             |
+| `Z_SE_ZAHLUNGEN` | Total of all payments | Decimal (2) |             |
+| `Z_SE_BARZAHLUNGEN` | Total of all cash payments | Decimal (2) |             |
+
 ##### File: Stamm_Orte (location.csv)
+
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |  
+| `LOC_NAME` | Name of the site | String |  
+| `LOC_STRASSE` | Street | String |  
+| `LOC_PLZ` | Zip | String |  
+| `LOC_ORT` | City | String |  
+| `LOC_LAND` | Country | String |  
+| `LOC_USTID` | VAT ID | String |
 
 ##### File: Stamm_Kassen (cashregister.csv)
 
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |  
+| `KASSE_BRAND` | Brand of the cash register | String |
+| `KASSE_MODELL` | Model designation | String |  
+| `KASSE_SERIENNR` | Serial number of the cash register | String |  
+| `KASSE_SW_BRAND` | Brand name of the software | String |  
+| `KASSE_SW_VERSION` | Version of the software | String |
+| `KASSE_BASISWAEH_CODE` | Basis currency of the cash register | String |  
+| `KEINE_UST_ZUORDNUNG` | VAT not determinable | String | 
+
 ##### File: Stamm_Terminals (slaves.csv)
+
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |
+| `TERMINAL_ID` | ID of the terminal | String |
+| `TERMINAL_BRAND` | Brand of the terminal | String |
+| `TERMINAL_MODELL` | Model designation | String |  
+| `TERMINAL_SERIENNR` | Serial number of the terminal | String |  
+| `TERMINAL_SW_BRAND` | Brand name of the software | String |  
+| `TERMINAL_SW_VERSION` | Version of the software | String |
 
 ##### File: Stamm_Agenturen (pa.csv)
 
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |  
+| `AGENTUR_ID` | ID of the agency | Integer |
+| `AGENTUR_NAME` | Name of the client | String |  
+| `AGENTUR_STRASSE` | Street | String |  
+| `AGENTUR_PLZ` | Zip | String |  
+| `AGENTUR_ORT` | City | String |  
+| `AGENTUR_LAND` | Country | String |  
+| `AGENTUR_STNR` | Street| String |  
+| `AGENTUR_USTID` | VAT ID| String |  
+
 ##### File: Stamm_USt (vat.csv)
 
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |  
+| `UST_SCHLUESSEL` | ID of the VAT rate| Integer |  
+| `UST_SATZ` | Percentage | Decimal (2) |  
+| `UST_BESCHR` | Description| String |  
+
 ##### File: Stamm_TSE (tse.csv)
+
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |
+| `TSE_ID` | TSE ID | Integer | 
+| `TSE_SERIAL` |  Serial number of the TSE (Corresponds according to TR- 03153 section 7.5. to the hash value of the key contained in the certificate; octet string in hexadecimal representation) | String | 
+| `TSE_SIG_ALGO` | The signature algorithm used by the TSE | String | 
+| `TSE_ZEITFORMAT` | The format used by the TSE for the log-time | String | 
+| `TSE_PD_ENCODING` | Text encoding of the process data (UTF-8 or ASCII) | String | 
+| `TSE_PUBLIC_KEY` |  Public key - eventually extracted from the TSE certificate - in base64 encoding | String | 
+| `TSE_ZERTIFIKAT_I` |  First 1,000 characters of the TSE certificate (in base64 encoding) | String | 
+| `TSE_ZERTIFIKAT_II` | Possibly another 1,000 characters of the certificate (in base64 encoding) | String | 
 
 #### Cashpoint closing module (DE: Kassenabschlussmodul)
 
@@ -524,8 +617,36 @@ The three structure levels (modules) allow transactions to be separated and grou
 
 ##### File: Z_Zahlart Z_GV_TYP (businesscases.csv)
 
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |
+| `GV_TYP` | business action type | String |
+| `GV_NAME` | name of the business action type | String |
+| `AGENTUR_ID` | Agency ID | Integer |
+| `UST_SCHLUESSEL` | ID of the VAT rate | Integer |
+| `Z_UMS_BRUTTO` | Gross sales | Decimal (5) |
+| `Z_UMS_NETTO` | Net sales | Decimal (5) |
+| `Z_UST` | VAT | Decimal (5) |
+
 ##### File: Z_Zahlart (payment.csv)
+
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |
+| `ZAHLART_TYP` | Type of payment method | String |
+| `ZAHLART_NAME` | Name of the payment method | String |
+| `Z_ZAHLART_BETRAG` | business action type | Decimal (2) |
 
 ##### File: Z_Waehrungen (cash_per_currency.csv)
 
-
+| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
+|----------------------|--------------------------|---------------------|---------------------|
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String |             |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | String |             |
+| `Z_NR` | No. of the cashpoint closing | Integer |
+| `ZAHLART_WAEH` | Currency | String |
+| `ZAHLART_BETRAG_WAEH` | Amount | Dec-kimal (2) |

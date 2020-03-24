@@ -322,13 +322,13 @@ Following table shows the values needed per line/position in the Bonpos file:
 | `POS_TERMINAL_ID` | Terminal-ID of this line (position)| String |             |
 | `GV_TYP` | Type of business action  | String |             |
 | `GV_NAME` | Addition to the business action type | String| optional, can be sent via `ftChargeItemData` in JSON format. To send, add the key value pair `itemCaseName` e.g. `"ftChargeItemData":"{ ..., "itemCaseName":"Rabatt: Black Friday", ... }"` |
-| `INHAUS` | Inhouse consumption | [0|1] | optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `inhaus` e.g. `"ftReceiptCaseData":"{ ..., "inhaus":1, ... }"`, defaults to 0 if not sent, any other value than 0 is interpreted as 1.|
+| `INHAUS` | Inhouse consumption | 0 or 1 | optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `inhaus` e.g. `"ftReceiptCaseData":"{ ..., "inhaus":1, ... }"`, defaults to 0 if not sent, any other value than 0 is interpreted as 1.|
 | `P_STORNO` | Position cancellation Identification | String |             |
 | `AGENTUR_ID` | ID of the Agency | Number |             |
 | `ART_NR` | Article number | String |             |
 | `GTIN` | GTIN | String | optional, can be sent via `ftChargeItemData` in JSON format. To send, add the key value pair `GTIN` e.g. `"ftChargeItemData":"{ ..., "GTIN":"9181981928298", ... }"` |
-| `WARENGR_ID` | Product group ID | String |             |
-| `WARENGR` | Description of the product group | String |             |
+| `WARENGR_ID` | Product group ID | String | send via `ftChargeItem.productGroup` in JSON format by adding the key value pair `productGroupId` e.g. `"productGroup":"{ "productGroupId":"981981AA", "productGroupName":"Fleischwaren" }"`|
+| `WARENGR` | Description of the product group | String |send via `ftChargeItem.productGroup` in JSON format by adding the key value pair `productGroupName` e.g. `"productGroup":"{ "productGroupId":"981981AA", "productGroupName":"Fleischwaren" }"`|
 | `MENGE` | Quantity | Decimal (3) |             |
 | `FAKTOR` | factor, e.g. container size | Decimal (3) |             |
 | `EINHEIT` | Unit of measurement, e.g. kg, litres or pieces | String |             |
@@ -473,12 +473,12 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 | `Z_NR` | No. of the cashpoint closing | Integer |             |
 | `BON_ID` | Action-ID | String |             |
 | `POS_ZEILE` | Line number of the referencing operation | String ||
-| `REF_TYP` | Type of reference | String ||
-| `REF_NAME` | Description for type e.g. "ExterneSonstige" | String ||
-| `REF_DATUM` | Date of the cashpoint closing | String ||
-| `REF_Z_KASSE_ID` | ID of the (closing) cashpoint | String ||
-| `REF_Z_NR` | No. of the cashpoint closing | Integer ||
-| `REF_BON_ID` | Action-ID | String ||
+| `REF_TYP` | Type of reference | "ExterneRechnung" or "ExternerLieferschein" or "Transaktion" or "ExterneSonstige" | can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `refType ` e.g. `"ftReceiptCaseData":"{ ..., "refType":"Transaktion", ... }"`. The value "Transaktion" mapps to an internal reference within this DSFinV-K export, all other values map to external references.|
+| `REF_NAME` | Description for type | String | mandatory if refType is "ExterneSonstige", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `refName ` e.g. `"ftReceiptCaseData":"{ ..., "refName":"Sonstige Sonderwurst", ... }"`.|
+| `REF_DATUM` | Date of the cashpoint closing | String | mandatory if refType is "Transaktion", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `refMoment ` e.g. `"ftReceiptCaseData":"{ ..., "refMoment":"2020-01-03T17:00:01", ... }"`.|
+| `REF_Z_KASSE_ID` | ID of the (closing) cashpoint | String | mandatory if refType is "Transaktion", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `refCashBoxIdentification ` e.g. `"ftReceiptCaseData":"{ ..., "refCashBoxIdentification":"AHHAH1919919", ... }"`.|
+| `REF_Z_NR` | No. of the cashpoint closing | Integer | mandatory if refType is "Transaktion", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `refClosingNr` e.g. `"ftReceiptCaseData":"{ ..., "refClosingNr":1091029, ... }"`.|
+| `REF_BON_ID` | Action-ID | String | mandatory, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `refReceiptId` e.g. `"ftReceiptCaseData":"{ ..., "refReceiptId":"UAUUA1112", ... }"`.|
 
 ##### File: TSE_Transaktionen (transactions_tse.csv)
 

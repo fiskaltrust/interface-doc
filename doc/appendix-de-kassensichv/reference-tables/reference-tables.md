@@ -310,16 +310,16 @@ In addition to these two files there are further detail files which are listed i
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
-| `Z_NR` | No. of the cashpoint closing | Integer | automatically created and filled by ft |
+| `Z_NR` | Nr. of the cashpoint closing | Integer | automatically created and filled by ft |
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line/Position number  | String | `ftChargeItem.Position` if available, otherwise automatically filled by ft |
 | `GUTSCHEIN_NR` | Voucher no.| String | optional, can be sent via `ftPayItemData` in JSON format. To send, add the key value pair `voucherNr` e.g. `"ftPayItemData":"{ ..., "voucherNr":"UAUA91829182HH", ... }"`|
 | `ARTIKELTEXT` | Product/Article text| String | `ftChargeItem.Description` |
 | `POS_TERMINAL_ID` | Terminal-ID of this line (position)| String | `cbTerminalID` |
-| `GV_TYP` | Type of business action  | String | `ftChargeItemCase` |
+| `GV_TYP` | Type of business action  | String | deducted from `ftChargeItemCase` |
 | `GV_NAME` | Addition to the business action type | String| optional, can be sent via `ftChargeItemData` in JSON format. To send, add the key value pair `itemCaseName` e.g. `"ftChargeItemData":"{ ..., "itemCaseName":"Rabatt: Black Friday", ... }"` |
-| `INHAUS` | Inhouse consumption | 0 or 1 | optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `inhaus` e.g. `"ftReceiptCaseData":"{ ..., "inhaus":1, ... }"`, defaults to 0 if not sent, any other value than 0 is interpreted as 1.|
-| `P_STORNO` | Position cancellation Identification | String | not used|
+| `INHAUS` | Inhouse consumption | 0 or 1 | optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `inhouse` e.g. `"ftReceiptCaseData":"{ ..., "inhouse":1, ... }"`, defaults to 0 if not sent, any other value than 0 is interpreted as 1.|
+| `P_STORNO` | Position cancellation identification | String | not used|
 | `AGENTUR_ID` | ID of the Agency | Number | automatically filled by ft |
 | `ART_NR` | Article number | String | `ftChargeItem.ProductNumber` |
 | `GTIN` | GTIN | String | optional, can be sent via `ftChargeItemData` in JSON format. To send, add the key value pair `GTIN` e.g. `"ftChargeItemData":"{ ..., "GTIN":"9181981928298", ... }"` |
@@ -341,15 +341,15 @@ In addition to these two files there are further detail files which are listed i
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
 | `UST_SCHLUESSEL` | ID of the VAT rate | Integer | automatically filled by ft depending on the `ftChargeItemCase` |
 | `POS_BRUTTO` | Gross sales | Decimal (5) | `ftChargeItemCase.Amount` |
-| `POS_NETTO` | Net sales | Decimal (5) | automatically calculated and filled by ft |
-| `POS_UST` | VAT | Decimal (5) | automatically calculated and filled by ft depending on `ftChargeItemCase` and `ftChargeItemCase.Amount`|
+| `POS_NETTO` | Net sales | Decimal (5) | automatically calculated and filled by ft depending on `ftChargeItemCase` and `ftChargeItemCase.Amount`|
+| `POS_UST` | VAT | Decimal (5) | automatically calculated and filled by ft depending on `ftChargeItemCase`|
 
 
 ##### File: Bonpos_Preisfindung (itemamounts.csv)
 
 Not supported.
 
-In the data field STK_BR in the Bonpos file, either the reduced amount is displayed immediately (and the origin of the amount in the file Bonpos_Preisfindung) or the reduction in charges is displayed as a separate item line with negative amounts (with correct tax assignment; see file Bonpos_USt). The GV_TYP "Rabatt" is available for the separate line. The current version of the fiskaltrust middleware expects a separate negative `ftCargeItem` with the corresponding `ftChargeItemCase` (e.g. `0x4445000000000031`) which mapps to the GV_TYP "Rabatt" and does not support the file Bonpos_Preisfindung.
+According to the DSFinV-K specification, in the data field STK_BR in the Bonpos file, either the reduced amount is displayed immediately (and the origin of the amount in the file Bonpos_Preisfindung) or the reduction in charges is displayed as a separate item line with negative amounts (with correct tax assignment; see file Bonpos_USt). The GV_TYP "Rabatt" is available for the separate line. For the reduction in charges, the current version of the fiskaltrust middleware expects a separate negative `ftChargeItem` with the corresponding `ftChargeItemCase` (e.g. `0x4445000000000031`) which mapps to the GV_TYP "Rabatt". ft does currently not support the file Bonpos_Preisfindung.
 
 
 ##### File: Bonpos_Zusatzinfo (subitems.csv)
@@ -358,6 +358,8 @@ This table allows to detail the composition of sold combinations of goods (DE: W
 
 This does not affect the basis of assessment for VAT. In the case of goods combinations with different tax rates, however, information is stored here which serves to control the distribution of the VAT assessment basis (example: fast food menu consisting of a drink and a burger). In addition, orders deviating from the standard order can be taken into account to record the actual consumption of goods (example: gyros plate with chips instead of rice).
 
+TODO: define subitems to be sent within ftChargeItemCaseData
+
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
@@ -365,18 +367,18 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
-| `ZI_ART_NR` | Article number  | String |             |
-| `ZI_GTIN` | GTIN | String |             |
-| `ZI_NAME` | Article name | String |             |
-| `ZI_WARENGR_ID` | Product group ID | String |             |
-| `ZI_WARENGR` | Name of the product group | String ||
-| `ZI_MENGE` | Quantity | Decimal (3) ||
-| `ZI_FAKTOR` | factor, e.g. container sizes | Decimal (3) ||
-| `ZI_EINHEIT` | Unit of measurement, e.g. kg, litres or pieces | String ||
-| `ZI_UST_SCHLUESSEL` | ID of VAT rate for the base price | Integer ||
-| `ZI_BASISPREIS_BRUTTO` | Gross basis price | Decimal (5) ||
-| `ZI_BASISPREIS_NETTO` | Net basis price | Decimal (5) ||
-| `ZI_BASISPREIS_UST` | Basis VAT | Decimal (5) ||
+| `ZI_ART_NR` | Article number  | String | tbd |
+| `ZI_GTIN` | GTIN | String | tbd |
+| `ZI_NAME` | Article name | String | tbd |
+| `ZI_WARENGR_ID` | Product group ID | String |  tbd |
+| `ZI_WARENGR` | Name of the product group | String | tbd |
+| `ZI_MENGE` | Quantity | Decimal (3) | tbd |
+| `ZI_FAKTOR` | factor, e.g. container sizes | Decimal (3) | tbd |
+| `ZI_EINHEIT` | Unit of measurement, e.g. kg, litres or pieces | String | tbd |
+| `ZI_UST_SCHLUESSEL` | ID of VAT rate for the base price | Integer | tbd |
+| `ZI_BASISPREIS_BRUTTO` | Gross basis price | Decimal (5) | tbd |
+| `ZI_BASISPREIS_NETTO` | Net basis price | Decimal (5) | tbd |
+| `ZI_BASISPREIS_UST` | Basis VAT | Decimal (5) | tbd |
 
 
 ##### File: Bonkopf (transactions.csv)

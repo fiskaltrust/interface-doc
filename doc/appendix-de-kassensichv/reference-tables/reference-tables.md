@@ -309,7 +309,7 @@ In addition to these two files there are further detail files which are listed i
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically created and filled by ft |
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line/Position number  | String | `ftChargeItem.Position` if available, otherwise automatically filled by ft |
@@ -335,7 +335,7 @@ In addition to these two files there are further detail files which are listed i
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | No. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
@@ -363,7 +363,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
@@ -386,7 +386,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically created and filled by ft |
 | `BON_NR` | Receipt number | Long | `ftReceiptIdentification` (tbd: ftReceiptIdentification is a string, but number/long is needed) |
 | `BON_TYP` | Receipt type / action type| String | `ftReceiptCase` |
@@ -413,7 +413,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
@@ -427,7 +427,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `ABRECHNUNGSKREIS` | Criterion (e.g table number, department etc.) of the assignment | String | `cbReceiptReference` |
@@ -437,7 +437,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `ZAHLART_TYP` | Type of payment method | String | `ftPayItemCase` |
@@ -451,7 +451,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line number of the referencing operation | String | automatically filled by ft  |
@@ -467,7 +467,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `TSE_ID` | ID of the TSE used for the transaction | Integer | automatically filled by ft |
@@ -491,9 +491,9 @@ The master data module is divided into the following files:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `Z_BUCHUNGSTAG` | Booking date different from creation date | String | tbd |
+| `Z_BUCHUNGSTAG` | Booking date different from closing date (`Z_ERSTELLUNG`) | ISO 8601 und RFC3339 date | can be send via `ftReceiptCaseData` in JSON format by adding the key value pair `BookingDate` if the booking date is different from the closing date (`Z_ERSTELLUNG`). E.g. `"ftReceiptCaseData":"{ ..., "BookingDate":"2020-01-27", ... }"` |
 | `TAXONOMIE_VERSION` | Version of the DFKA taxonomy cash register | String | automatically filled by ft |
 | `Z_START_ID` | First BON_ID in closing | String | automatically filled by ft |
 | `Z_ENDE_ID` | Last BON_ID in the closing | String | automatically filled by ft |
@@ -512,7 +512,7 @@ The master data module is divided into the following files:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `LOC_NAME` | Name of the site | String | tbd |
 | `LOC_STRASSE` | Street | String | tbd |
@@ -526,7 +526,7 @@ The master data module is divided into the following files:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `KASSE_BRAND` | Brand of the cash register | String | tbd |
 | `KASSE_MODELL` | Model designation | String | tbd |
@@ -541,7 +541,7 @@ The master data module is divided into the following files:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `TERMINAL_ID` | ID of the terminal | String | tbd |
 | `TERMINAL_BRAND` | Brand of the terminal | String | tbd |
@@ -557,7 +557,7 @@ In case of an agency business, the agency master data has to be sent within each
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `AGENTUR_ID` | ID of the agency | automatically filled by ft |  |
 | `AGENTUR_NAME` | Name of the client | String | To send, add the key value pair `Name` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ "Name":"Metzger Edelweiß", "Street":"Am Berg 12", ... }, ... }"`|
@@ -573,7 +573,7 @@ In case of an agency business, the agency master data has to be sent within each
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft  |
 | `UST_SCHLUESSEL` | ID of the VAT rate| Integer | automatically filled by ft  |
 | `UST_SATZ` | Percentage | Decimal (2) | automatically filled by ft  |
@@ -584,7 +584,7 @@ In case of an agency business, the agency master data has to be sent within each
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `TSE_ID` | TSE ID | Integer | automatically filled by ft |
 | `TSE_SERIAL` |  Serial number of the TSE (Corresponds according to TR- 03153 section 7.5. to the hash value of the key contained in the certificate; octet string in hexadecimal representation) | String | automatically filled by ft |
@@ -604,7 +604,7 @@ The three structure levels (modules) allow transactions to be separated and grou
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `GV_TYP` | business action type | String | automatically filled by ft |
 | `GV_NAME` | name of the business action type | String | automatically filled by ft |
@@ -619,7 +619,7 @@ The three structure levels (modules) allow transactions to be separated and grou
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `ZAHLART_TYP` | Type of payment method | String | automatically filled by ft |
 | `ZAHLART_NAME` | Name of the payment method | String | automatically filled by ft |
@@ -630,7 +630,7 @@ The three structure levels (modules) allow transactions to be separated and grou
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `ZAHLART_WAEH` | Currency | ISO 4217 currency code | automatically filled by ft |
 | `ZAHLART_BETRAG_WAEH` | Amount | Decimal (2) | automatically filled by ft |

@@ -392,7 +392,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | `BON_TYP` | Receipt type / action type| String | `ftReceiptCase` |
 | `BON_NAME` | Additional description related to the `BON_TYP` | String | mandatory if `BON_TYPE` is "AVSonstige", otherwise optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptName ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptName":"Sonstige Sonderwurst", ... }"` |
 | `TERMINAL_ID` | ID of the terminal that was used to record this receipt | String | `cbTerminalID` |
-| `BON_STORNO` | Cancellation indicator | String | not used |
+| `BON_STORNO` | Cancellation indicator | String | filled by ft. If the receipt is a reverse/voided receipt, then it must be marked with the `ftReceiptCaseFlag` `0x0000000000040000` and must reference the initial receipt via `cbPreviousReceiptReference`. The referenced initial receipt must be part of the current cashpoint closing. (tbd: AVBelegstorno is used in our doc but now allowed?)|
 | `BON_START` | Time of the action start | String | automatically filled by ft (tbd: how to find the start) |
 | `BON_ENDE` | Time of the action end | String | `cbReceiptMoment` |
 | `BEDIENER_ID` | User-ID | String | send via `cbUser` in JSON format by adding the key value pair `UserId` e.g. `"cbUser":"{ "UserId":"19292", "UserName":"Peter Lux"}"`|
@@ -605,14 +605,14 @@ The three structure levels (modules) allow transactions to be separated and grou
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
-| `Z_NR` | Nr. of the cashpoint closing | Integer ||
-| `GV_TYP` | business action type | String ||
-| `GV_NAME` | name of the business action type | String ||
-| `AGENTUR_ID` | Agency ID | Integer ||
-| `UST_SCHLUESSEL` | ID of the VAT rate | Integer ||
-| `Z_UMS_BRUTTO` | Gross sales | Decimal (5) ||
-| `Z_UMS_NETTO` | Net sales | Decimal (5) ||
-| `Z_UST` | VAT | Decimal (5) ||
+| `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
+| `GV_TYP` | business action type | String | automatically filled by ft |
+| `GV_NAME` | name of the business action type | String | automatically filled by ft |
+| `AGENTUR_ID` | Agency ID | Integer | automatically filled by ft |
+| `UST_SCHLUESSEL` | ID of the VAT rate | Integer | automatically filled by ft |
+| `Z_UMS_BRUTTO` | Gross sales | Decimal (5) | automatically filled by ft |
+| `Z_UMS_NETTO` | Net sales | Decimal (5) | automatically filled by ft|
+| `Z_UST` | VAT | Decimal (5) | automatically filled by ft |
 
 ##### File: Z_Zahlart (payment.csv)
 
@@ -620,10 +620,10 @@ The three structure levels (modules) allow transactions to be separated and grou
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
-| `Z_NR` | Nr. of the cashpoint closing | Integer ||
-| `ZAHLART_TYP` | Type of payment method | String ||
-| `ZAHLART_NAME` | Name of the payment method | String ||
-| `Z_ZAHLART_BETRAG` | business action type | Decimal (2) ||
+| `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
+| `ZAHLART_TYP` | Type of payment method | String | automatically filled by ft |
+| `ZAHLART_NAME` | Name of the payment method | String | automatically filled by ft |
+| `Z_ZAHLART_BETRAG` | business action type | Decimal (2) | automatically filled by ft |
 
 ##### File: Z_Waehrungen (cash_per_currency.csv)
 
@@ -631,6 +631,6 @@ The three structure levels (modules) allow transactions to be separated and grou
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
-| `Z_NR` | Nr. of the cashpoint closing | Integer ||
-| `ZAHLART_WAEH` | Currency | String ||
-| `ZAHLART_BETRAG_WAEH` | Amount | Decimal (2) ||
+| `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
+| `ZAHLART_WAEH` | Currency | String | automatically filled by ft |
+| `ZAHLART_BETRAG_WAEH` | Amount | Decimal (2) | automatically filled by ft |

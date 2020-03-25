@@ -404,7 +404,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | `KUNDE_STRASSE` | Street and house number of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerStreet` e.g. `"cbCustomer":"{..., "CustomerStreet":"Lindwurmstr. 98", ...}"` |
 | `KUNDE_PLZ` | Zip of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerZip` e.g. `"cbCustomer":"{..., "CustomerZip":"80337", ...}"` |
 | `KUNDE_ORT` | City of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerCity` e.g. `"cbCustomer":"{..., "CustomerCity":"München", ...}"` |
-| `KUNDE_LAND` | Country of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerCountry` e.g. `"cbCustomer":"{..., "CustomerCountry":"DE", ...}"`  |
+| `KUNDE_LAND` | Country of the beneficiary customer | ISO 3166 ALPHA-3 country code | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerCountry` e.g. `"cbCustomer":"{..., "CustomerCountry":"DEU", ...}"`  |
 | `KUNDE_USTID` | VAT-ID of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerVATId` e.g. `"cbCustomer":"{..., "CustomerVATId":"DE123456789", ...}"`   |
 | `BON_NOTIZ` | Additional information on the receipt header | String | can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptNote ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptNote":"123, ich bin dabei!", ... }"` |
 
@@ -442,7 +442,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `ZAHLART_TYP` | Type of payment method | String | `ftPayItemCase` |
 | `ZAHLART_NAME` | Name of the payment method | String | optional, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `ItemCaseName` e.g. `"ftPayItemCaseData":"{ ..., "ItemCaseName":"Sodexo", ... }"` |
-| `ZAHLWAEH_CODE` | Currency code | String | only mandatory if foreign currency was used for the payment, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `CurrencyCode` e.g. `"ftPayItemCaseData":"{ ..., "CurrencyCode":"USD", ... }"`. Only ISO 4217 currency codes are allowed. |
+| `ZAHLWAEH_CODE` | ISO 4217 currency code | String | only mandatory if foreign currency was used for the payment, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `CurrencyCode` e.g. `"ftPayItemCaseData":"{ ..., "CurrencyCode":"USD", ... }"`. Only ISO 4217 currency codes are allowed. |
 | `ZAHLWAEH_BETRAG` | Amount in foreign currency | Decimal (2) | only mandatory if foreign currency was used for the payment, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `ForeignCurrencyAmount` e.g. `"ftPayItemCaseData":"{ ..., "ForeignCurrencyAmount":23.00, ... }"`. |
 | `BASISWAEH_BETRAG` | Amount in basis currency (usually EUR) | Decimal (2) | only mandatory if foreign currency was used for the payment, can be sent via `ftPayItemData` in JSON format. To send, add the key value pair `BaseCurrencyAmount` e.g. `"ftPayItemCaseData":"{ ..., "BaseCurrencyAmount":20.99, ... }"`|
 
@@ -501,7 +501,7 @@ The master data module is divided into the following files:
 | `STRASSE` | Street | String | tbd |
 | `PLZ` | Zip | String | tbd |
 | `ORT` | City | String | tbd |
-| `LAND` | Country | String | tbd |
+| `LAND` | Country | ISO 3166 ALPHA-3 country code | tbd |
 | `STNR` | Tax number of the company | String | tbd |
 | `USTID` | VAT ID | String | tbd |
 | `Z_SE_ZAHLUNGEN` | Total of all payments | Decimal (2) | automatically filled by ft  |
@@ -518,7 +518,7 @@ The master data module is divided into the following files:
 | `LOC_STRASSE` | Street | String | tbd |
 | `LOC_PLZ` | Zip | String | tbd |
 | `LOC_ORT` | City | String | tbd |
-| `LOC_LAND` | Country | String | tbd |
+| `LOC_LAND` | Country | ISO 3166 ALPHA-3 county code | tbd |
 | `LOC_USTID` | VAT ID | String | tbd |
 
 ##### File: Stamm_Kassen (cashregister.csv)
@@ -533,7 +533,7 @@ The master data module is divided into the following files:
 | `KASSE_SERIENNR` | Serial number of the cash register | String | tbd | 
 | `KASSE_SW_BRAND` | Brand name of the software | String | tbd |
 | `KASSE_SW_VERSION` | Version of the software | String | tbd |
-| `KASSE_BASISWAEH_CODE` | Basis currency of the cash register | String | tbd |
+| `KASSE_BASISWAEH_CODE` | Basis currency of the cash register | ISO 4217 currency code | tbd |
 | `KEINE_UST_ZUORDNUNG` | VAT not determinable | String | tbd |
 
 ##### File: Stamm_Terminals (slaves.csv)
@@ -564,7 +564,7 @@ In case of an agency business, the agency master data has to be sent within each
 | `AGENTUR_STRASSE` | Street | String | To send, add the key value pair `Street` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ "Name":"Metzger Edelweiß", "Street":"Am Berg 12", ... }, ... }"` |
 | `AGENTUR_PLZ` | Zip | String | To send, add the key value pair `Zip` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "Zip":"82467", ... }, ... }"` |
 | `AGENTUR_ORT` | City | String | To send, add the key value pair `City` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "City":"Garmisch-Partenkirchen", ... }, ... }"` |
-| `AGENTUR_LAND` | Country code | String | To send, add the key value pair `Country` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "Country":"DE", ... }, ... }"` |
+| `AGENTUR_LAND` | ISO 3166 ALPHA-3 country code | String | To send, add the key value pair `Country` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "Country":"DEU", ... }, ... }"` |
 | `AGENTUR_STNR` | Street| String | To send, add the key value pair `TaxNr` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "TaxNr":"123333211", ... }, ... }"` |
 | `AGENTUR_USTID` | VAT ID| String | To send, add the key value pair `VATId` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "VATId":"DE918291823", ... }, ... }"` |
 
@@ -632,5 +632,5 @@ The three structure levels (modules) allow transactions to be separated and grou
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `ZAHLART_WAEH` | Currency | String | automatically filled by ft |
+| `ZAHLART_WAEH` | Currency | ISO 4217 currency code | automatically filled by ft |
 | `ZAHLART_BETRAG_WAEH` | Amount | Decimal (2) | automatically filled by ft |

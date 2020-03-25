@@ -293,7 +293,7 @@ The DSFinV-K export is divided into the following sections/modules:
 - Master data module (DE: Stammdatenmodul)
 - Cashpoint closing module (DE: Kassenabschlussmodul)
 
-Each module consists of several files. In the following we will go into the individual modules and have look to the files and data contained in them.
+Each module consists of several files. In the following we will go into the individual modules and have look to the files and data contained in them. Details about the meaning of the files and their individual fields can be found in the official DSFinV-K specification.
 
 #### Single recordings module (DE: Einzelaufzeichnungsmodul)
 
@@ -302,21 +302,17 @@ The single recordings provide the basis for data storage. These are divided into
 - Bonpos (lines.csv)
 - Bonkopf (transactions.csv)
 
-In addition to these two files there are further detail files which are described in the following.
+In addition to these two files there are further detail files which are listed in the following. 
 
 ##### File: Bonpos (lines.csv)
-
-The Bonpos (lines.csv) file contains the single items of an action (DE: Vorgang) with the allocation of the correct VAT rate, quantity and type of goods supplied. In addition, the method of calculating the VAT (gross or net method) is also recorded. With the gross method only the gross price is recorded, with the net method the net price and the sales tax due on it.
-
-Following table shows the values needed per line/position in the Bonpos file:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
-| `Z_NR` | No. of the cashpoint closing | Integer | automatically filled by ft |
+| `Z_NR` | No. of the cashpoint closing | Integer | automatically created and filled by ft |
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
-| `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
+| `POS_ZEILE` | Line/Position number  | String | `ftChargeItem.Position` if available, otherwise automatically filled by ft |
 | `GUTSCHEIN_NR` | Voucher no.| String | optional, can be sent via `ftPayItemData` in JSON format. To send, add the key value pair `voucherNr` e.g. `"ftPayItemData":"{ ..., "voucherNr":"UAUA91829182HH", ... }"`|
 | `ARTIKELTEXT` | Product/Article text| String | `ftChargeItem.Description` |
 | `POS_TERMINAL_ID` | Terminal-ID of this line (position)| String | `cbTerminalID` |
@@ -336,9 +332,6 @@ Following table shows the values needed per line/position in the Bonpos file:
 
 ##### File: Bonpos_USt (lines_vat.csv)
 
-For each position, this file contains information on the VAT rates used. This detail table is necessary because, for example, several VAT rates per position can occur for combinations of goods (DE: Warenzusammenstellungen) or several lines with price information can be necessary for discounts. 
-
-
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
@@ -346,28 +339,17 @@ For each position, this file contains information on the VAT rates used. This de
 | `Z_NR` | No. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
-| `UST_SCHLUESSEL` | ID of the VAT rate | Integer | automatically filled by ft |
-| `POS_BRUTTO` | Gross sales | Decimal (5) | automatically filled by ft |
-| `POS_NETTO` | Net sales | Decimal (5) | automatically filled by ft |
-| `POS_UST` | VAT | Decimal (5) | automatically filled by ft |
+| `UST_SCHLUESSEL` | ID of the VAT rate | Integer | automatically filled by ft depending on the `ftChargeItemCase` |
+| `POS_BRUTTO` | Gross sales | Decimal (5) | `ftChargeItemCase.Amount` |
+| `POS_NETTO` | Net sales | Decimal (5) | automatically calculated and filled by ft |
+| `POS_UST` | VAT | Decimal (5) | automatically calculated and filled by ft depending on `ftChargeItemCase` and `ftChargeItemCase.Amount`|
 
 
 ##### File: Bonpos_Preisfindung (itemamounts.csv)
 
-This table contains detailed information on the origin of the price, e.g. special customer discounts or surcharges.
+Not supported.
 
-| **Fieldname**            | **Description**          | **Format**          | **ft.input** |
-|----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
-| `Z_NR` | No. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
-| `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
-| `TYP` | Base price, discount or surcharge  | String |automatically filled by ft |
-| `UST_SCHLUESSEL` | ID of the VAT rate | Integer | automatically filled by ft |
-| `PF_BRUTTO` | Gross sales | Decimal (5) | automatically filled by ft |
-| `PF_NETTO` | Net sales | Decimal (5) | automatically filled by ft |
-| `PF_UST` | VAT | Decimal (5) | automatically filled by ft |
+In the data field STK_BR in the Bonpos file, either the reduced amount is displayed immediately (and the origin of the amount in the file Bonpos_Preisfindung) or the reduction in charges is displayed as a separate item line with negative amounts (with correct tax assignment; see file Bonpos_USt). The GV_TYP "Rabatt" is available for the separate line. The current version of the fiskaltrust middleware expects a separate negative `ftCargeItem` with the corresponding `ftChargeItemCase` (e.g. `0x4445000000000031`) which mapps to the GV_TYP "Rabatt" and does not support the file Bonpos_Preisfindung.
 
 
 ##### File: Bonpos_Zusatzinfo (subitems.csv)

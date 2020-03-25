@@ -387,15 +387,14 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
-| `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
-| `BON_NR` | Receipt number | Integer | `ftReceiptIdentification` |
+| `Z_NR` | Nr. of the cashpoint closing | Integer | automatically created and filled by ft |
+| `BON_NR` | Receipt number | Long | `ftReceiptIdentification` (tbd: ftReceiptIdentification is a string, but number/long is needed) |
 | `BON_TYP` | Receipt type / action type| String | `ftReceiptCase` |
-| `BON_NAME` | Action-ID | String | mandatory if action type (`BON_TYPE`) is `AVSonstige`, otherwise optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptName ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptName":"Sonstige Sonderwurst", ... }"` |
+| `BON_NAME` | Additional description related to the `BON_TYP` | String | mandatory if `BON_TYPE` is "AVSonstige", otherwise optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptName ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptName":"Sonstige Sonderwurst", ... }"` |
 | `TERMINAL_ID` | ID of the terminal that was used to record this receipt | String | `cbTerminalID` |
 | `BON_STORNO` | Cancellation indicator | String | not used |
-| `BON_START` | Time of the action start | String | automatically filled by ft |
-| `BON_ENDE` | Time of the action end | String | automatically filled by ft |
+| `BON_START` | Time of the action start | String | automatically filled by ft (tbd: how to find the start) |
+| `BON_ENDE` | Time of the action end | String | `cbReceiptMoment` |
 | `BEDIENER_ID` | User-ID | String | send via `cbUser` in JSON format by adding the key value pair `UserId` e.g. `"cbUser":"{ "UserId":"19292", "UserName":"Peter Lux"}"`|
 | `BEDIENER_NAME` | User name | String | send via `cbUser` in JSON format by adding the key value pair `UserName` e.g. `"cbUser":"{ "UserId":"19292", "UserName":"Peter Lux"}"`|
 | `UMS_BRUTTO` | Gross total turnover | Decimal (2) | automatically filled by ft |
@@ -407,7 +406,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | `KUNDE_ORT` | City of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerCity` e.g. `"cbCustomer":"{..., "CustomerCity":"München", ...}"` |
 | `KUNDE_LAND` | Country of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerCountry` e.g. `"cbCustomer":"{..., "CustomerCountry":"DE", ...}"`  |
 | `KUNDE_USTID` | VAT-ID of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerVATId` e.g. `"cbCustomer":"{..., "CustomerVATId":"DE123456789", ...}"`   |
-| `BON_NOTIZ` | Additional information on the receipt header | String | tbd |
+| `BON_NOTIZ` | Additional information on the receipt header | String | can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptNote ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptNote":"123, ich bin dabei!", ... }"` |
 
 ##### File: Bonkopf_USt  (transactions_vat.csv)
 
@@ -553,19 +552,21 @@ The master data module is divided into the following files:
 
 ##### File: Stamm_Agenturen (pa.csv)
 
+In case of an agency business, the agency master data has to be sent within each affected receipt request to the ft middleware. To send, add the key value pair `AgencyData` to `"ftReceiptCaseData`. `AgencyData` accepts JSON an input having multiple key values described in the table below. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ "Name":"Metzger Edelweiß", "Street":"Am Berg 12", ... }, ... }"`.
+
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `AGENTUR_ID` | ID of the agency | Integer |  |
-| `AGENTUR_NAME` | Name of the client | String |  |
-| `AGENTUR_STRASSE` | Street | String |  |
-| `AGENTUR_PLZ` | Zip | String |  |
-| `AGENTUR_ORT` | City | String |  |
-| `AGENTUR_LAND` | Country | String |  |
-| `AGENTUR_STNR` | Street| String |  |
-| `AGENTUR_USTID` | VAT ID| String |  |
+| `AGENTUR_ID` | ID of the agency | automatically filled by ft |  |
+| `AGENTUR_NAME` | Name of the client | String | To send, add the key value pair `Name` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ "Name":"Metzger Edelweiß", "Street":"Am Berg 12", ... }, ... }"`|
+| `AGENTUR_STRASSE` | Street | String | To send, add the key value pair `Street` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ "Name":"Metzger Edelweiß", "Street":"Am Berg 12", ... }, ... }"` |
+| `AGENTUR_PLZ` | Zip | String | To send, add the key value pair `Zip` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "Zip":"82467", ... }, ... }"` |
+| `AGENTUR_ORT` | City | String | To send, add the key value pair `City` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "City":"Garmisch-Partenkirchen", ... }, ... }"` |
+| `AGENTUR_LAND` | Country code | String | To send, add the key value pair `Country` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "Country":"DE", ... }, ... }"` |
+| `AGENTUR_STNR` | Street| String | To send, add the key value pair `TaxNr` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "TaxNr":"123333211", ... }, ... }"` |
+| `AGENTUR_USTID` | VAT ID| String | To send, add the key value pair `VATId` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "VATId":"DE918291823", ... }, ... }"` |
 
 ##### File: Stamm_USt (vat.csv)
 
@@ -573,10 +574,10 @@ The master data module is divided into the following files:
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
-| `Z_NR` | Nr. of the cashpoint closing | Integer |  |
-| `UST_SCHLUESSEL` | ID of the VAT rate| Integer |  |
-| `UST_SATZ` | Percentage | Decimal (2) |  |
-| `UST_BESCHR` | Description| String |  |
+| `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft  |
+| `UST_SCHLUESSEL` | ID of the VAT rate| Integer | automatically filled by ft  |
+| `UST_SATZ` | Percentage | Decimal (2) | automatically filled by ft  |
+| `UST_BESCHR` | Description| String | automatically filled by ft  |
 
 ##### File: Stamm_TSE (tse.csv)
 

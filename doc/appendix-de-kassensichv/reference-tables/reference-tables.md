@@ -281,7 +281,7 @@ For definitions regarding national laws, please refer to the appropriate appendi
 
 ### DSFinV-K export
 
-You can downloade the current version of the DSFinV-K specification [here](https://www.bzst.de/DE/Unternehmen/Aussenpruefungen/DigitaleSchnittstelleFinV/digitaleschnittstellefinv_node.html).
+You can download the current version of the DSFinV-K specification [here](https://www.bzst.de/DE/Unternehmen/Aussenpruefungen/DigitaleSchnittstelleFinV/digitaleschnittstellefinv_node.html).
 
 Based on the the current version of the DSFinV-K specification, this chapter explains how the DSFinV-K export is structured, shows how the previously described input values are mapped by fisklatrust to the files and data of the DSFinV-K export and defines how additional, for the DSFInV-K required, values can be sent to the fiskaltrust middleware. Furthermore, it describes how the marking of actions (DE: Vorgänge) can be made by connecting business actions (DE: Geschäftsvorfälle) and other procedures, occurrences and events (DE: Andere Vorgänge). 
 
@@ -315,7 +315,7 @@ Following table shows the values needed per line/position in the Bonpos file:
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | No. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptReference` |
+| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
 | `GUTSCHEIN_NR` | Voucher no.| String | optional, can be sent via `ftPayItemData` in JSON format. To send, add the key value pair `voucherNr` e.g. `"ftPayItemData":"{ ..., "voucherNr":"UAUA91829182HH", ... }"`|
 | `ARTIKELTEXT` | Product/Article text| String | `ftChargeItem.Description` |
@@ -344,7 +344,7 @@ For each position, this file contains information on the VAT rates used. This de
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | No. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | automatically filled by ft |
+| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
 | `UST_SCHLUESSEL` | ID of the VAT rate | Integer | automatically filled by ft |
 | `POS_BRUTTO` | Gross sales | Decimal (5) | automatically filled by ft |
@@ -361,7 +361,7 @@ This table contains detailed information on the origin of the price, e.g. specia
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | No. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | automatically filled by ft |
+| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
 | `TYP` | Base price, discount or surcharge  | String |automatically filled by ft |
 | `UST_SCHLUESSEL` | ID of the VAT rate | Integer | automatically filled by ft |
@@ -381,7 +381,7 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | automatically filled by ft |
+| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
 | `ZI_ART_NR` | Article number  | String |             |
 | `ZI_GTIN` | GTIN | String |             |
@@ -404,7 +404,7 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptReference` |
+| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `BON_NR` | Receipt number | Integer | `ftReceiptIdentification` |
 | `BON_TYP` | Receipt type / action type| String | `ftReceiptCase` |
 | `BON_NAME` | Action-ID | String | mandatory if action type (`BON_TYPE`) is `AVSonstige`, otherwise optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `receiptName ` e.g. `"ftReceiptCaseData":"{ ..., "receiptName":"Sonstige Sonderwurst", ... }"` |
@@ -432,7 +432,7 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptReference` |
+| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
 | `UST_SCHLUESSEL` | ID of the VAT rate | Integer | automatically filled by ft |
 | `BON_BRUTTO` | Gross sales | Decimal (5) | automatically filled by ft |
@@ -446,8 +446,8 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptReference` |
-| `ABRECHNUNGSKREIS` | Criterion (e.g table number, department etc.) of the assignment | String | `cbArea` (? tbd)|
+| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
+| `ABRECHNUNGSKREIS` | Criterion (e.g table number, department etc.) of the assignment | String | `cbReceiptReference` (? tbd)|
 
 ##### File: Bonkopf_Zahlarten (datapayment.csv)
 
@@ -456,7 +456,7 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptReference` |
+| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `ZAHLART_TYP` | Type of payment method | String | `ftPayItemCase` |
 | `ZAHLART_NAME` | Name of the payment method | String | optional, can be sent via `ftPayItemData` in JSON format. To send, add the key value pair `itemCaseName` e.g. `"ftPayItemData":"{ ..., "itemCaseName":"Sodexo", ... }"` |
 | `ZAHLWAEH_CODE` | Currency code | String | only mandatory if foreign currency was used for the payment, can be sent via `ftPayItemData` in JSON format. To send, add the key value pair `currencyCode` e.g. `"ftPayItemData":"{ ..., "currencyCode":"USD", ... }"`. Only ISO 4217 currency codes are allowed. |
@@ -470,7 +470,7 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptReference` |
+| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line number of the referencing operation | String | automatically filled by ft  |
 | `REF_TYP` | Type of reference | "ExterneRechnung" or "ExternerLieferschein" or "Transaktion" or "ExterneSonstige" | can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `refType ` e.g. `"ftReceiptCaseData":"{ ..., "refType":"Transaktion", ... }"`. The value "Transaktion" mapps to an internal reference within this DSFinV-K export, all other values map to external references.|
 | `REF_NAME` | Description for type | String | mandatory if refType is "ExterneSonstige", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `refName ` e.g. `"ftReceiptCaseData":"{ ..., "refName":"Sonstige Sonderwurst", ... }"`.|
@@ -486,7 +486,7 @@ This does not affect the basis of assessment for VAT. In the case of goods combi
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | String | `cbReceiptMoment` |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptReference` |
+| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `TSE_ID` | ID of the TSE used for the transaction | Integer | automatically filled by ft |
 | `TSE_TANR` | Transaction number of the transaction | Integer | automatically filled by ft|
 | `TSE_TA_START` | Log time of the StartTransaction operation | String | automatically filled by ft |

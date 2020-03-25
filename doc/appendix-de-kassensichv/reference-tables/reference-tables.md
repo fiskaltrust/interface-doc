@@ -313,18 +313,18 @@ In addition to these two files there are further detail files which are listed i
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically created and filled by ft |
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line/Position number  | String | `ftChargeItem.Position` if available, otherwise automatically filled by ft |
-| `GUTSCHEIN_NR` | Voucher no.| String | optional, can be sent via `ftPayItemData` in JSON format. To send, add the key value pair `voucherNr` e.g. `"ftPayItemData":"{ ..., "voucherNr":"UAUA91829182HH", ... }"`|
+| `GUTSCHEIN_NR` | Voucher no.| String | optional, can be sent via `ftPayItemData` in JSON format. To send, add the key value pair `VoucherNr` e.g. `"ftPayItemData":"{ ..., "VoucherNr":"UAUA91829182HH", ... }"`|
 | `ARTIKELTEXT` | Product/Article text| String | `ftChargeItem.Description` |
 | `POS_TERMINAL_ID` | Terminal-ID of this line (position)| String | `cbTerminalID` |
 | `GV_TYP` | Type of business action  | String | deducted from `ftChargeItemCase` |
-| `GV_NAME` | Addition to the business action type | String| optional, can be sent via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `itemCaseName` e.g. `"ftChargeItemCaseData":"{ ..., "itemCaseName":"Rabatt: Black Friday", ... }"` |
-| `INHAUS` | Inhouse consumption | 0 or 1 | optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `inhouse` e.g. `"ftReceiptCaseData":"{ ..., "inhouse":1, ... }"`, defaults to 0 if not sent, any other value than 0 is interpreted as 1.|
+| `GV_NAME` | Addition to the business action type | String| optional, can be sent via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `ItemCaseName` e.g. `"ftChargeItemCaseData":"{ ..., "ItemCaseName":"Rabatt - Black Friday", ... }"` |
+| `INHAUS` | Inhouse consumption | 0 or 1 | optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `Inhouse` e.g. `"ftReceiptCaseData":"{ ..., "Inhouse":1, ... }"`, defaults to 0 if not sent, any other value than 0 is interpreted as 1.|
 | `P_STORNO` | Position cancellation identification | String | not used|
 | `AGENTUR_ID` | ID of the Agency | Number | automatically filled by ft |
 | `ART_NR` | Article number | String | `ftChargeItem.ProductNumber` |
 | `GTIN` | GTIN | String | optional, can be sent via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `GTIN` e.g. `"ftChargeItemCaseData":"{ ..., "GTIN":"9181981928298", ... }"` |
-| `WARENGR_ID` | Product group ID | String | send via `ftChargeItem.productGroup` in JSON format by adding the key value pair `productGroupId` e.g. `"productGroup":"{ "productGroupId":"981981AA", "productGroupName":"Fleischwaren" }"`|
-| `WARENGR` | Description of the product group | String |send via `ftChargeItem.productGroup` in JSON format by adding the key value pair `productGroupName` e.g. `"productGroup":"{ "productGroupId":"981981AA", "productGroupName":"Fleischwaren" }"`|
+| `WARENGR_ID` | Product group ID | String | send via `ftChargeItem.ProductGroup` in JSON format by adding the key value pair `ProductGroupId` e.g. `"ProductGroup":"{ ProductGroupId":"981981AA", "ProductGroupName":"Fleischwaren" }"`|
+| `WARENGR` | Description of the product group | String |send via `ftChargeItem.ProductGroup` in JSON format by adding the key value pair `ProductGroupName` e.g. `"ProductGroup":"{ "ProductGroupId":"981981AA", "ProductGroupName":"Fleischwaren" }"`|
 | `MENGE` | Quantity | Decimal (3) | `ftChargeItem.Quantity` |
 | `FAKTOR` | factor, e.g. container size | Decimal (3) | `ftChargeItem.UnitQuantity`|
 | `EINHEIT` | Unit of measurement, e.g. kg, litres or pieces | String | `ftChargeItem.Unit` |
@@ -358,7 +358,7 @@ This table allows to detail the composition of sold combinations of goods (DE: W
 
 This does not affect the basis of assessment for VAT. In the case of goods combinations with different tax rates, however, information is stored here which serves to control the distribution of the VAT assessment basis (example: fast food menu consisting of a drink and a burger). In addition, orders deviating from the standard order can be taken into account to record the actual consumption of goods (example: gyros plate with chips instead of rice).
 
-You can send those subitems to the ft middleware via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `subItems` as an array of subitems: `"ftChargeItemCaseData":"{ ..., "subItems":"[{ ... }, { ... }, ...]", ... }"`. Each subitem as described in the table below: 
+You can send those subitems to the ft middleware via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `SubItems` as an array of subitems: `"ftChargeItemCaseData":"{ ..., "SubItems":"[{ ... }, { ... }, ...]", ... }"`. Each subitem as described in the table below: 
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
@@ -367,17 +367,17 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
-| `ZI_ART_NR` | Article number  | String | to send, add the key value pair `ProductNumber` within the subitem. e.g. `"subItems":"[{ "ProductNumber":"10292", ... }, ... ]` |
-| `ZI_GTIN` | GTIN | String | to send, add the key value pair `GTIN` within the subitem. e.g. `"subItems":"[{ "ProductNumber":"10292", "GTIN":"4231234266622", ... }, ... ]` |
-| `ZI_NAME` | Article name | String | to send, add the key value pair `Description` within the subitem. e.g. `"subItems":"[{ "ProductNumber":"10292", "GTIN":"4231234266622", ... }, ... ]` |
-| `ZI_WARENGR_ID` | Product group ID | String |  to send, add the key value pair `ProductGroup` within the subitem. It should be sent as a JSON composed of the key value pairs `productGroupId` and `productGroupName` e.g. `"subItems":"[{ ..., "productGroup":"{ "productGroupId":"981981AA", "productGroupName":"Fleischwaren" }", ... }, ... ]` |
-| `ZI_WARENGR` | Name of the product group | String | similar to `ZI_WARENGR_ID`, use `subItem.productGroup.productGroupName` |
-| `ZI_MENGE` | Quantity | Decimal (3) | to send, add the key value pair `Quantity` within the subitem. e.g. `"subItems":"[{..., "Quantity":2.543, ... }, ... ]` |
-| `ZI_FAKTOR` | factor, e.g. container sizes | Decimal (3) | to send, add the key value pair `UnitQuantity` within the subitem. e.g. `"subItems":"[{ ..., "UnitQuantity":1.0, ... }, ... ]` |
-| `ZI_EINHEIT` | Unit of measurement, e.g. kg, litres or pieces | String | to send, add the key value pair `Unit` within the subitem. e.g. `"subItems":"[{ ..., "Unit":"kg", ... }, ... ]` |
-| `ZI_UST_SCHLUESSEL` | ID of VAT rate for the base price | Integer | to send, add the key value pair `ftSubChargeItemCase` within the subitem. e.g. `"subItems":"[{..., "ftSubChargeItemCase":"4919338167972134929", ... }, ... ]`. Possible values for `ftSubChargeItemCase` are the same as for `ftChargeItemCase` - as described in the reference table above. |
-| `ZI_BASISPREIS_BRUTTO` | Gross basis price | Decimal (5) | to send, add the key value pair `Amount` within the subitem. e.g. `"subItems":"[{..., "Amount":22.50, ... }, ... ]` |
-| `ZI_BASISPREIS_NETTO` | Net basis price | Decimal (5) | automatically calculated by ft from  `subItem.ftSubChargeItemCase` and `subItem.Amount`|
+| `ZI_ART_NR` | Article number  | String | to send, add the key value pair `ProductNumber` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", ... }, ... ]` |
+| `ZI_GTIN` | GTIN | String | to send, add the key value pair `GTIN` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", "GTIN":"4231234266622", ... }, ... ]` |
+| `ZI_NAME` | Article name | String | to send, add the key value pair `Description` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", "GTIN":"4231234266622", ... }, ... ]` |
+| `ZI_WARENGR_ID` | Product group ID | String |  to send, add the key value pair `ProductGroup` within the subitem. It should be sent as a JSON composed of the key value pairs `ProductGroupId` and `ProductGroupName` e.g. `"PubItems":"[{ ..., "ProductGroup":"{ "ProductGroupId":"981981AA", "ProductGroupName":"Fleischwaren" }", ... }, ... ]` |
+| `ZI_WARENGR` | Name of the product group | String | similar to `ZI_WARENGR_ID`, use `SubItem.ProductGroup.ProductGroupName` |
+| `ZI_MENGE` | Quantity | Decimal (3) | to send, add the key value pair `Quantity` within the subitem. e.g. `"SubItems":"[{..., "Quantity":2.543, ... }, ... ]` |
+| `ZI_FAKTOR` | factor, e.g. container sizes | Decimal (3) | to send, add the key value pair `UnitQuantity` within the subitem. e.g. `"SubItems":"[{ ..., "UnitQuantity":1.0, ... }, ... ]` |
+| `ZI_EINHEIT` | Unit of measurement, e.g. kg, litres or pieces | String | to send, add the key value pair `Unit` within the subitem. e.g. `"SubItems":"[{ ..., "Unit":"kg", ... }, ... ]` |
+| `ZI_UST_SCHLUESSEL` | ID of VAT rate for the base price | Integer | to send, add the key value pair `ftSubChargeItemCase` within the subitem. e.g. `"SubItems":"[{..., "ftSubChargeItemCase":"4919338167972134929", ... }, ... ]`. Possible values for `ftSubChargeItemCase` are the same as for `ftChargeItemCase` - as described in the reference table above. |
+| `ZI_BASISPREIS_BRUTTO` | Gross basis price | Decimal (5) | to send, add the key value pair `Amount` within the subitem. e.g. `"SubItems":"[{..., "Amount":22.50, ... }, ... ]` |
+| `ZI_BASISPREIS_NETTO` | Net basis price | Decimal (5) | automatically calculated by ft from  `ftSubChargeItemCase` and (subitem) `Amount`|
 | `ZI_BASISPREIS_UST` | Basis VAT | Decimal (5) | automatically filled by ft depending on `ftSubChargeItemCase` |
 
 
@@ -391,22 +391,22 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `BON_NR` | Receipt number | Integer | `ftReceiptIdentification` |
 | `BON_TYP` | Receipt type / action type| String | `ftReceiptCase` |
-| `BON_NAME` | Action-ID | String | mandatory if action type (`BON_TYPE`) is `AVSonstige`, otherwise optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `receiptName ` e.g. `"ftReceiptCaseData":"{ ..., "receiptName":"Sonstige Sonderwurst", ... }"` |
+| `BON_NAME` | Action-ID | String | mandatory if action type (`BON_TYPE`) is `AVSonstige`, otherwise optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptName ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptName":"Sonstige Sonderwurst", ... }"` |
 | `TERMINAL_ID` | ID of the terminal that was used to record this receipt | String | `cbTerminalID` |
 | `BON_STORNO` | Cancellation indicator | String | not used |
 | `BON_START` | Time of the action start | String | automatically filled by ft |
 | `BON_ENDE` | Time of the action end | String | automatically filled by ft |
-| `BEDIENER_ID` | User-ID | String | send via `cbUser` in JSON format by adding the key value pair `userId` e.g. `"cbUser":"{ "userId":"19292", "userName":"Peter Lux"}"`|
-| `BEDIENER_NAME` | User name | String | send via `cbUser` in JSON format by adding the key value pair `userName` e.g. `"cbUser":"{ "userId":"19292", "userName":"Peter Lux"}"`|
+| `BEDIENER_ID` | User-ID | String | send via `cbUser` in JSON format by adding the key value pair `UserId` e.g. `"cbUser":"{ "UserId":"19292", "UserName":"Peter Lux"}"`|
+| `BEDIENER_NAME` | User name | String | send via `cbUser` in JSON format by adding the key value pair `UserName` e.g. `"cbUser":"{ "UserId":"19292", "UserName":"Peter Lux"}"`|
 | `UMS_BRUTTO` | Gross total turnover | Decimal (2) | automatically filled by ft |
-| `KUNDE_NAME` | Name of beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `customerName` e.g. `"cbCustomer":"{"customerName":"Max Wanne",...}"`|
-| `KUNDE_ID` | ID of the beneficiary customer| String | if known, send via `cbCustomer` in JSON format by adding the key value pair `customerId` e.g. `"cbCustomer":"{"customerName":"Max Wanne", "customerId":"PX9819822", ...}"`|
-| `KUNDE_TYP` | Type of the beneficiary customer (e.g. employee) | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `customerType` e.g. `"cbCustomer":"{..., "customerId":"PX9819822", "customerType":"Mitarbeiter", ...}"`|
-| `KUNDE_STRASSE` | Street and house number of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `customerStreet` e.g. `"cbCustomer":"{..., "customerStreet":"Lindwurmstr. 98", ...}"` |
-| `KUNDE_PLZ` | Zip of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `customerStreet` e.g. `"cbCustomer":"{..., "customerZip":"80337", ...}"` |
-| `KUNDE_ORT` | City of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `customerCity` e.g. `"cbCustomer":"{..., "customerCity":"München", ...}"` |
-| `KUNDE_LAND` | Country of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `customerCountry` e.g. `"customerCountry":"{..., "customerCountry":"DE", ...}"`  |
-| `KUNDE_USTID` | VAT-ID of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `customerVATId` e.g. `"customerCountry":"{..., "customerVATId":"DE123456789", ...}"`   |
+| `KUNDE_NAME` | Name of beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Max Wanne",...}"`|
+| `KUNDE_ID` | ID of the beneficiary customer| String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerId` e.g. `"cbCustomer":"{"customerName":"Max Wanne", "CustomerId":"PX9819822", ...}"`|
+| `KUNDE_TYP` | Type of the beneficiary customer (e.g. employee) | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerType` e.g. `"cbCustomer":"{..., "CustomerId":"PX9819822", "CustomerType":"Mitarbeiter", ...}"`|
+| `KUNDE_STRASSE` | Street and house number of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerStreet` e.g. `"cbCustomer":"{..., "CustomerStreet":"Lindwurmstr. 98", ...}"` |
+| `KUNDE_PLZ` | Zip of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerZip` e.g. `"cbCustomer":"{..., "CustomerZip":"80337", ...}"` |
+| `KUNDE_ORT` | City of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerCity` e.g. `"cbCustomer":"{..., "CustomerCity":"München", ...}"` |
+| `KUNDE_LAND` | Country of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerCountry` e.g. `"cbCustomer":"{..., "CustomerCountry":"DE", ...}"`  |
+| `KUNDE_USTID` | VAT-ID of the beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerVATId` e.g. `"cbCustomer":"{..., "CustomerVATId":"DE123456789", ...}"`   |
 | `BON_NOTIZ` | Additional information on the receipt header | String | tbd |
 
 ##### File: Bonkopf_USt  (transactions_vat.csv)
@@ -442,10 +442,10 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `ZAHLART_TYP` | Type of payment method | String | `ftPayItemCase` |
-| `ZAHLART_NAME` | Name of the payment method | String | optional, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `itemCaseName` e.g. `"ftPayItemCaseData":"{ ..., "itemCaseName":"Sodexo", ... }"` |
-| `ZAHLWAEH_CODE` | Currency code | String | only mandatory if foreign currency was used for the payment, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `currencyCode` e.g. `"ftPayItemCaseData":"{ ..., "currencyCode":"USD", ... }"`. Only ISO 4217 currency codes are allowed. |
-| `ZAHLWAEH_BETRAG` | Amount in foreign currency | Decimal (2) | only mandatory if foreign currency was used for the payment, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `foreignCurrencyAmount` e.g. `"ftPayItemCaseData":"{ ..., "foreignCurrencyAmount":23.00, ... }"`. |
-| `BASISWAEH_BETRAG` | Amount in basis currency (usually EUR) | Decimal (2) | only mandatory if foreign currency was used for the payment, can be sent via `ftPayItemData` in JSON format. To send, add the key value pair `baseCurrencyAmount` e.g. `"ftPayItemCaseData":"{ ..., "baseCurrencyAmount":20.99, ... }"`|
+| `ZAHLART_NAME` | Name of the payment method | String | optional, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `ItemCaseName` e.g. `"ftPayItemCaseData":"{ ..., "ItemCaseName":"Sodexo", ... }"` |
+| `ZAHLWAEH_CODE` | Currency code | String | only mandatory if foreign currency was used for the payment, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `CurrencyCode` e.g. `"ftPayItemCaseData":"{ ..., "CurrencyCode":"USD", ... }"`. Only ISO 4217 currency codes are allowed. |
+| `ZAHLWAEH_BETRAG` | Amount in foreign currency | Decimal (2) | only mandatory if foreign currency was used for the payment, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `ForeignCurrencyAmount` e.g. `"ftPayItemCaseData":"{ ..., "ForeignCurrencyAmount":23.00, ... }"`. |
+| `BASISWAEH_BETRAG` | Amount in basis currency (usually EUR) | Decimal (2) | only mandatory if foreign currency was used for the payment, can be sent via `ftPayItemData` in JSON format. To send, add the key value pair `BaseCurrencyAmount` e.g. `"ftPayItemCaseData":"{ ..., "BaseCurrencyAmount":20.99, ... }"`|
 
 ##### File: Bon_Referenzen (references.csv)
 
@@ -456,12 +456,12 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
 | `POS_ZEILE` | Line number of the referencing operation | String | automatically filled by ft  |
-| `REF_TYP` | Type of reference | "ExterneRechnung" or "ExternerLieferschein" or "Transaktion" or "ExterneSonstige" | can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `refType ` e.g. `"ftReceiptCaseData":"{ ..., "refType":"Transaktion", ... }"`. The value "Transaktion" mapps to an internal reference within this DSFinV-K export, all other values map to external references.|
-| `REF_NAME` | Description for type | String | mandatory if refType is "ExterneSonstige", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `refName ` e.g. `"ftReceiptCaseData":"{ ..., "refName":"Sonstige Sonderwurst", ... }"`.|
-| `REF_DATUM` | Date of the cashpoint closing | String | mandatory if refType is "Transaktion", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `refMoment ` e.g. `"ftReceiptCaseData":"{ ..., "refMoment":"2020-01-03T17:00:01", ... }"`.|
-| `REF_Z_KASSE_ID` | ID of the (closing) cashpoint | String | mandatory if refType is "Transaktion", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `refCashBoxIdentification ` e.g. `"ftReceiptCaseData":"{ ..., "refCashBoxIdentification":"AHHAH1919919", ... }"`.|
-| `REF_Z_NR` | No. of the cashpoint closing | Integer | mandatory if refType is "Transaktion", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `refClosingNr` e.g. `"ftReceiptCaseData":"{ ..., "refClosingNr":1091029, ... }"`.|
-| `REF_BON_ID` | Action-ID | String | mandatory, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `refReceiptId` e.g. `"ftReceiptCaseData":"{ ..., "refReceiptId":"UAUUA1112", ... }"`.|
+| `REF_TYP` | Type of reference | "ExterneRechnung" or "ExternerLieferschein" or "Transaktion" or "ExterneSonstige" | can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefType ` e.g. `"ftReceiptCaseData":"{ ..., "RefType":"Transaktion", ... }"`. The value "Transaktion" mapps to an internal reference within this DSFinV-K export, all other values map to external references.|
+| `REF_NAME` | Description for type | String | mandatory if `RefType` is "ExterneSonstige", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefName ` e.g. `"ftReceiptCaseData":"{ ..., "RefName":"Sonstige Sonderwurst", ... }"`.|
+| `REF_DATUM` | Date of the cashpoint closing | String | mandatory if `RefType` is "Transaktion", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefMoment ` e.g. `"ftReceiptCaseData":"{ ..., "RefMoment":"2020-01-03T17:00:01", ... }"`.|
+| `REF_Z_KASSE_ID` | ID of the (closing) cashpoint | String | mandatory if `RefType` is "Transaktion", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefCashBoxIdentification ` e.g. `"ftReceiptCaseData":"{ ..., "RefCashBoxIdentification":"AHHAH1919919", ... }"`.|
+| `REF_Z_NR` | No. of the cashpoint closing | Integer | mandatory if `RefType` is "Transaktion", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefClosingNr` e.g. `"ftReceiptCaseData":"{ ..., "RefClosingNr":1091029, ... }"`. (tbd: if ft generates the closing nr., than how do I receive it as a caller?) |
+| `REF_BON_ID` | Action-ID | String | mandatory, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefReceiptId` e.g. `"ftReceiptCaseData":"{ ..., "RefReceiptId":"UAUUA1112", ... }"`.|
 
 ##### File: TSE_Transaktionen (transactions_tse.csv)
 

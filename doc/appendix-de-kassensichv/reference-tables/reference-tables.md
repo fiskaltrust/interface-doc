@@ -64,7 +64,7 @@ This table expands on the values provided in table [ftReceiptCaseFlag in General
 | 0x0000000000100000  | small business, not taxable sales. TBD: law reference | 1.3- |
 | 0x0000000000200000  | receiver is a company | 1.3- |
 | 0x0000000000400000  | contains characteristics related to UStG. TBD: law reference | 1.3- |
-| 0x0000000100000000 | Implicit Transaction. No Start-Transaction call to ´Sign´ is required, it is done implicitly. If the unique identifier set in property ´cbReceiptIdentification´ already started a transaction, this will throw an exception. | 1.3-  |
+| 0x0000000100000000 | Implicit Transaction. No Start-Transaction call to ´Sign´ is required, it is done implicitly. If the unique identifier set in property ´cbReceiptReference´ already started a transaction, this will throw an exception. | 1.3-  |
 | 0x0000800000000000  | Receipt request. Common behaviour. | 1.3- |
 
 

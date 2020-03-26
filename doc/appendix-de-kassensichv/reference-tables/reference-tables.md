@@ -311,7 +311,7 @@ In addition to these two files there are further detail files which are listed i
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically created and filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
+| `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `POS_ZEILE` | Line/Position number  | String | `ftChargeItem.Position` if available, otherwise automatically filled by ft |
 | `GUTSCHEIN_NR` | Voucher no.| String | optional, can be sent via `ftPayItemData` in JSON format. To send, add the key value pair `VoucherNr` e.g. `"ftPayItemData":"{ ..., "VoucherNr":"UAUA91829182HH", ... }"`|
 | `ARTIKELTEXT` | Product/Article text| String | `ftChargeItem.Description` |
@@ -337,7 +337,7 @@ In addition to these two files there are further detail files which are listed i
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | No. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
+| `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
 | `UST_SCHLUESSEL` | ID of the VAT rate | Integer | automatically filled by ft depending on the `ftChargeItemCase` |
 | `POS_BRUTTO` | Gross sales | Decimal (5) | `ftChargeItemCase.Amount` |
@@ -365,7 +365,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
+| `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
 | `ZI_ART_NR` | Article number  | String | to send, add the key value pair `ProductNumber` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", ... }, ... ]` |
 | `ZI_GTIN` | GTIN | String | to send, add the key value pair `GTIN` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", "GTIN":"4231234266622", ... }, ... ]` |
@@ -388,12 +388,13 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically created and filled by ft |
+| `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `BON_NR` | Receipt number | Long | `ftReceiptIdentification` (tbd: ftReceiptIdentification is a string, but number/long is needed) |
 | `BON_TYP` | Receipt type / action type| String | `ftReceiptCase` |
 | `BON_NAME` | Additional description related to the `BON_TYP` | String | mandatory if `BON_TYPE` is "AVSonstige", otherwise optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptName ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptName":"Sonstige Sonderwurst", ... }"` |
 | `TERMINAL_ID` | ID of the terminal that was used to record this receipt | String | `cbTerminalID` |
 | `BON_STORNO` | Cancellation indicator | String | filled by ft. If the receipt is a reverse/voided receipt, then it must be marked with the `ftReceiptCaseFlag` `0x0000000000040000` and must reference the initial receipt via `cbPreviousReceiptReference`. The referenced initial receipt must be part of the current cashpoint closing. (tbd: AVBelegstorno is used in our doc but now allowed?)|
-| `BON_START` | Time of the action start | String | automatically filled by ft (tbd: how to find the start) |
+| `BON_START` | Time of the action start | ISO 8601 and RFC3339 date | The action start can be within this cashpoint or outside of this cashpoint. If outside (e.g. by another system or another cashpoint) than it has to be provided in via `ftReceiptCaseData` in JSON format by adding the key value pair `ActionStartMoment`. E.g. `"ftReceiptCaseData":"{ ..., "ActionStartMoment":"2020-09-27T17:00:01", ... }"`. If not provided, ft tries to find the action start by following the `cbPreviousReceiptReference` path into the past until no more previous receipt references exist. ft will than fill this field with the value from `cbReceiptMoment` of the oldest receipt found in that chain. |
 | `BON_ENDE` | Time of the action end | String | `cbReceiptMoment` |
 | `BEDIENER_ID` | User-ID | String | send via `cbUser` in JSON format by adding the key value pair `UserId` e.g. `"cbUser":"{ "UserId":"19292", "UserName":"Peter Lux"}"`|
 | `BEDIENER_NAME` | User name | String | send via `cbUser` in JSON format by adding the key value pair `UserName` e.g. `"cbUser":"{ "UserId":"19292", "UserName":"Peter Lux"}"`|
@@ -415,7 +416,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
+| `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
 | `UST_SCHLUESSEL` | ID of the VAT rate | Integer | automatically filled by ft |
 | `BON_BRUTTO` | Gross sales | Decimal (5) | automatically filled by ft |
@@ -429,8 +430,8 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
-| `ABRECHNUNGSKREIS` | Criterion (e.g table number, department etc.) of the assignment | String | `cbReceiptReference` |
+| `BON_ID` | Action-ID | String (max. 50 chars) | `cbReceiptReference` |
+| `ABRECHNUNGSKREIS` | Connection criterion (e.g table number, department etc.) of the assignment | String | if needed, send via `cbArea` in JSON format by adding the key value pair `ConnectionCriterion` e.g. `"cbArea":"{..., "ConnectionCriterion":"Tisch Nr. 12", ...}"`.|
 
 ##### File: Bonkopf_Zahlarten (datapayment.csv)
 
@@ -439,7 +440,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
+| `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `ZAHLART_TYP` | Type of payment method | String | `ftPayItemCase` |
 | `ZAHLART_NAME` | Name of the payment method | String | optional, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `ItemCaseName` e.g. `"ftPayItemCaseData":"{ ..., "ItemCaseName":"Sodexo", ... }"` |
 | `ZAHLWAEH_CODE` | ISO 4217 currency code | String | only mandatory if foreign currency was used for the payment, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `CurrencyCode` e.g. `"ftPayItemCaseData":"{ ..., "CurrencyCode":"USD", ... }"`. Only ISO 4217 currency codes are allowed. |
@@ -448,12 +449,14 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 
 ##### File: Bon_Referenzen (references.csv)
 
+tbd: connection via cbReceiptReference and cbPreviousReceiptReference for reference type "Transaktion"
+
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
+| `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `POS_ZEILE` | Line number of the referencing operation | String | automatically filled by ft  |
 | `REF_TYP` | Type of reference | "ExterneRechnung" or "ExternerLieferschein" or "Transaktion" or "ExterneSonstige" | can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefType ` e.g. `"ftReceiptCaseData":"{ ..., "RefType":"Transaktion", ... }"`. The value "Transaktion" mapps to an internal reference within this DSFinV-K export, all other values map to external references.|
 | `REF_NAME` | Description for type | String | mandatory if `RefType` is "ExterneSonstige", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefName ` e.g. `"ftReceiptCaseData":"{ ..., "RefName":"Sonstige Sonderwurst", ... }"`.|
@@ -469,7 +472,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `BON_ID` | Action-ID | String | `ftReceiptIdentification` |
+| `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `TSE_ID` | ID of the TSE used for the transaction | Integer | automatically filled by ft |
 | `TSE_TANR` | Transaction number of the transaction | Integer | automatically filled by ft|
 | `TSE_TA_START` | Log time of the StartTransaction operation | String | automatically filled by ft |
@@ -559,7 +562,7 @@ In case of an agency business, the agency master data has to be sent within each
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `AGENTUR_ID` | ID of the agency | automatically filled by ft |  |
+| `AGENTUR_ID` | ID of the agency | Integer | automatically filled by ft |  |
 | `AGENTUR_NAME` | Name of the client | String | To send, add the key value pair `Name` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ "Name":"Metzger Edelweiß", "Street":"Am Berg 12", ... }, ... }"`|
 | `AGENTUR_STRASSE` | Street | String | To send, add the key value pair `Street` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ "Name":"Metzger Edelweiß", "Street":"Am Berg 12", ... }, ... }"` |
 | `AGENTUR_PLZ` | Zip | String | To send, add the key value pair `Zip` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "Zip":"82467", ... }, ... }"` |

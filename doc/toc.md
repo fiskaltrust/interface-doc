@@ -10,7 +10,6 @@
 ## [Reference tables](general/reference-tables/reference-tables.md)
 
 # [Appendix: AT - RKSV](appendix-at-rksv/appendix-at-rksv.md)
-## [Version History](appendix-at-rksv/version-history/version-history.md)
 ## [Terminology](appendix-at-rksv/terminology/terminology.md)
 ## [Cash Register Integration](appendix-at-rksv/cash-register-integration/cash-register-integration.md)
 ## [Data Structures](appendix-at-rksv/data-structures/data-structures.md)
@@ -22,7 +21,6 @@
 ## [Reference tables](appendix-at-rksv/reference-tables/reference-tables.md)
 
 # [Appendix: FR - BOI-TVA-DECL 30-10-30](appendix-fr-boi-tva-decl-30-10-30/appendix-fr-boi-tva-decl-30-10-30.md)
-## [Version History](appendix-fr-boi-tva-decl-30-10-30/version-history/version-history.md)
 ## [Terminology](appendix-fr-boi-tva-decl-30-10-30/terminology/terminology.md)
 ## [Cash Register Integration](appendix-fr-boi-tva-decl-30-10-30/cash-register-integration/cash-register-integration.md)
 ## [Data Structures](appendix-fr-boi-tva-decl-30-10-30/data-structures/data-structures.md)

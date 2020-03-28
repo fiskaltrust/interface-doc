@@ -1,5 +1,4 @@
 ﻿# [General Part](general/general.md)
-# [Version History](general/version-history/version-history.md)
 # [Terminology](general/terminology/terminology.md)
 # [Cash Register Integration](general/cash-register-integration/cash-register-integration.md)
 # [Data Structures](general/data-structures/data-structures.md)

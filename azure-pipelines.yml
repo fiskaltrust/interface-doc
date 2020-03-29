@@ -6,6 +6,9 @@ trigger:
 pool: Build
 
 steps:
+- checkout: self
+  clean: true
+
 - powershell: |
     $majorMinor,$prerelease = Get-Content "major.minor"
     $version = "$majorMinor.$(Get-Date -UFormat "%y")$("{0:D3}" -f (Get-Date).DayofYear).$env:BUILD_BUILDID"

@@ -1,3 +1,5 @@
+[Net.ServicePointManager]::SecurityProtocol = [Net.SecurityProtocolType]::Tls12
+
 # Get chapter numbering tool from GitHub
 New-Item -Name "tools" -ItemType Directory -Force
 Invoke-WebRequest -Uri https://github.com/TSchmiedlechner/DocFxChapterNumbers/releases/download/v1.0.2/DocFxChapterNumbers-v1.0.2.zip -OutFile "./tools/DocFxChapterNumbers.zip"

@@ -393,7 +393,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | `BON_TYP` | Receipt type / action type| String | `ftReceiptCase` |
 | `BON_NAME` | Additional description related to the `BON_TYP` | String | mandatory if `BON_TYPE` is "AVSonstige", otherwise optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptName ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptName":"Sonstige Sonderwurst", ... }"` |
 | `TERMINAL_ID` | ID of the terminal that was used to record this receipt | String | `cbTerminalID` |
-| `BON_STORNO` | Cancellation indicator | String | filled by ft. If the receipt is a reverse/voided receipt, then it must be marked with the `ftReceiptCaseFlag` `0x0000000000040000` and must reference the initial receipt via `cbPreviousReceiptReference`. The referenced initial receipt must be part of the current cashpoint closing. (tbd: AVBelegstorno is used in our doc but now allowed?)|
+| `BON_STORNO` | Cancellation indicator | String | filled by ft. If the receipt is a reverse/voided receipt, then it must be marked with the `ftReceiptCaseFlag` `0x0000000000040000` and must reference the initial receipt via `cbPreviousReceiptReference`. The referenced initial receipt must be part of the current cashpoint closing.|
 | `BON_START` | Time of the action start | ISO 8601 and RFC3339 date | The action start can be within this cashpoint or outside of this cashpoint. If outside (e.g. by another system or another cashpoint) than it has to be provided in via `ftReceiptCaseData` in JSON format by adding the key value pair `ActionStartMoment`. E.g. `"ftReceiptCaseData":"{ ..., "ActionStartMoment":"2020-09-27T17:00:01", ... }"`. If not provided, ft tries to find the action start by following the `cbPreviousReceiptReference` path into the past until no more previous receipt references exist. ft will than fill this field with the value from `cbReceiptMoment` of the oldest receipt found in that chain. |
 | `BON_ENDE` | Time of the action end | String | `cbReceiptMoment` |
 | `BEDIENER_ID` | User-ID | String | send via `cbUser` in JSON format by adding the key value pair `UserId` e.g. `"cbUser":"{ "UserId":"19292", "UserName":"Peter Lux"}"`|
@@ -449,7 +449,9 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 
 ##### File: Bon_Referenzen (references.csv)
 
-If `cbPreviousReceiptReference` is filled in the receipt request, ft will automatically try to find the referenced receipt and if found, ft will add an entry to Bon_Referenzen. If there are external references (from other systems or other cashpoints) to be added, then they have to be added as shown below:
+If `cbPreviousReceiptReference` is filled in the receipt request, ft will automatically try to find the referenced receipt and if found, ft will add an entry to Bon_Referenzen. For a recommendation on how to connect the single requests via `cbReceiptReference` and `cbPreviousReceiptReference` see our Business Cases Examples document [here](https://fiskaltrust.de/wp-content/uploads/sites/5/2020/02/fiskaltrust-Business-Cases-in-JSON_englisch.pdf).
+
+If there are external references (from other systems or other cashpoints) to be added, then they have to be added as shown below:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|

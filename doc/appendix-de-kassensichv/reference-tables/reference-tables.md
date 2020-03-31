@@ -295,6 +295,74 @@ The DSFinV-K export is divided into the following sections/modules:
 
 Each module consists of several files. In the following we will go into the individual modules and have look to the files and data contained in them. Details about the meaning of the files and their individual fields can be found in the official DSFinV-K specification.
 
+#### Mandatory data
+
+This chapter lists the data fields that are mandatory and can not be filled by ft. Therefore you need to provide them. For details on how to provide them, please see the chapters below. They offer information for all DSFinV-K fields. 
+
+| **Fieldname**            | **Module**          | **Description**          |
+|----------------------|--------------------------|---------------------|
+| `BON_ID` | Single recordings module | Action-ID (DE: Vorgangs-ID)|
+| `POS_TERMINAL_ID` | Single recordings module | ID of the slave (terminal) where the position (line) comes from. |
+| `ART_NR` | Single recordings module | Article number. |
+| `GTIN` | Single recordings module | Global Trade Item Number. |
+| `WARENGR_ID` | Single recordings module | Product group number. |
+| `WARENGR` | Single recordings module | Product group name. |
+| `MENGE` | Single recordings module | Quantity. |
+| `FAKTOR` | Single recordings module | Factor, e.g. container size. |
+| `EINHEIT` | Single recordings module | Unit of measurement, e.g. kg. |
+| `STK_BR` | Single recordings module | Price per unit incl. VAT. |
+| `BON_NAME` | Single recordings module | The `BON_NAME` is used to further subdivide the items contained in the transaction category (`BON_TYP`). The `BON_NAME` must be filled if `BON_TYP` is `AVSonstige`.|
+| `BON_STORNO` | Single recordings module | Mandatory for the subsequent cancellation of an receipt. |
+| `BON_START` | Single recordings module | Mandatory if the action (DE: Vorgang) starts within another system. Otherwise the receipt request of an action must be connected in a way that ft can find the start of the action.|
+| `BEDIENER_ID` | Single recordings module | User-ID |
+| `BEDIENER_NAME` | Single recordings module | User name |
+| `KUNDE_NAME` | Name of beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Max Wanne",...}"`|
+| `KUNDE_ID` | Single recordings module | ID of the beneficiary customer. (not mandatory if exempted in relation to § 148 AO)|
+| `KUNDE_TYP` | Single recordings module | Type of the beneficiary customer (e.g. employee). (not mandatory if exempted in relation to § 148 AO).|
+| `KUNDE_STRASSE` | Single recordings module | Street and house number of the beneficiary customer.(not mandatory if exempted in relation to § 148 AO) |
+| `KUNDE_PLZ` | Single recordings module | Zip of the beneficiary customer. (not mandatory if exempted in relation to § 148 AO) |
+| `KUNDE_ORT` | Single recordings module | City of the beneficiary customer. (not mandatory if exempted in relation to § 148 AO) |
+| `KUNDE_LAND` | Single recordings module | Country of the beneficiary customer. (not mandatory if exempted in relation to § 148 AO) |
+| `KUNDE_USTID` | Single recordings module | VAT-ID of the beneficiary customer. (not mandatory if exempted in relation to § 148 AO) |
+| `ABRECHNUNGSKREIS` | Single recordings module | Connection criterion (e.g table number, department etc.) of the assignment |
+| `ZAHLWAEH_CODE` | Single recordings module | foreign currency code. Only mandatory if foreign currency was used for the payment. |
+| `ZAHLWAEH_BETRAG` | Single recordings module | Amount in foreign currency. Only mandatory if foreign currency was used for the payment. |
+| receipt references | Single recordings module | see chapter "Bon_Referenzen" |
+| `NAME` | Master data module | Name of the company |
+| `STRASSE` | Master data module | Street of the company | 
+| `PLZ` | Master data module | Zip of the company |
+| `ORT` | Master data module | City of the company |
+| `LAND` | Master data module | Country of the company|
+| `STNR` | Master data module | Tax number of the company |
+| `USTID` | Master data module | VAT ID of the company | 
+| `LOC_NAME` | Master data module | Name of the site |
+| `LOC_STRASSE` | Master data module | Street of the site |
+| `LOC_PLZ` | Master data module | Zip of the site |
+| `LOC_ORT` | Master data module | City of the site | 
+| `LOC_LAND` | Master data module | Country of the site | 
+| `LOC_USTID` | Master data module | VAT ID of the site | 
+| `KASSE_BRAND` | Master data module | Brand of the cash register |
+| `KASSE_MODELL` | Master data module | Model designation |
+| `KASSE_SERIENNR` | Master data module | Serial number of the cash register |
+| `KASSE_SW_BRAND` | Master data module | Brand name of the software | 
+| `KASSE_SW_VERSION` | Master data module | Version of the software | 
+| `KASSE_BASISWAEH_CODE` | Master data module | Basis currency of the cash register |
+| `TERMINAL_ID` | Master data module | ID of the terminal |
+| `TERMINAL_BRAND` | Master data module | Brand of the terminal |
+| `TERMINAL_MODELL` | Master data module | Model designation |
+| `TERMINAL_SERIENNR` | Master data module | Serial number of the terminal |
+| `TERMINAL_SW_BRAND` | Master data module | Brand name of the software |
+| `TERMINAL_SW_VERSION` | Master data module | Version of the software |
+| `AGENTUR_NAME` | Master data module | Name of the agency (client) | 
+| `AGENTUR_STRASSE` | Master data module | Street of the agency |
+| `AGENTUR_PLZ` | Master data module | Zip  of the agency| String | 
+| `AGENTUR_ORT` | Master data module | City  of the agency| String | 
+| `AGENTUR_LAND` | Master data module | ISO 3166 ALPHA-3 country code  of the agency| 
+| `AGENTUR_STNR` | Master data module | Tax number of the agency| 
+| `AGENTUR_USTID` | Master data module | VAT ID of the agency| 
+
+The following chapters give you an overview of all DSFinV-K fields, provide you information on how they are filled by ft and how you can send additional data to fill mandatory (listed above) and optional fields that can not be filled by ft.
+
 #### Single recordings module (DE: Einzelaufzeichnungsmodul)
 
 The single recordings provide the basis for data storage. These are divided into two main areas:
@@ -539,7 +607,7 @@ The master data module is divided into the following files:
 | `KASSE_SW_BRAND` | Brand name of the software | String | tbd |
 | `KASSE_SW_VERSION` | Version of the software | String | tbd |
 | `KASSE_BASISWAEH_CODE` | Basis currency of the cash register | ISO 4217 currency code | tbd |
-| `KEINE_UST_ZUORDNUNG` | VAT not determinable | String | tbd |
+| `KEINE_UST_ZUORDNUNG` | VAT not determinable | String | automatically filled by ft |
 
 ##### File: Stamm_Terminals (slaves.csv)
 
@@ -570,7 +638,7 @@ In case of an agency business, the agency master data has to be sent within each
 | `AGENTUR_PLZ` | Zip | String | To send, add the key value pair `Zip` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "Zip":"82467", ... }, ... }"` |
 | `AGENTUR_ORT` | City | String | To send, add the key value pair `City` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "City":"Garmisch-Partenkirchen", ... }, ... }"` |
 | `AGENTUR_LAND` | ISO 3166 ALPHA-3 country code | String | To send, add the key value pair `Country` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "Country":"DEU", ... }, ... }"` |
-| `AGENTUR_STNR` | Street| String | To send, add the key value pair `TaxNr` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "TaxNr":"123333211", ... }, ... }"` |
+| `AGENTUR_STNR` | Tax number | String | To send, add the key value pair `TaxNr` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "TaxNr":"123333211", ... }, ... }"` |
 | `AGENTUR_USTID` | VAT ID| String | To send, add the key value pair `VATId` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "VATId":"DE918291823", ... }, ... }"` |
 
 ##### File: Stamm_USt (vat.csv)

@@ -301,65 +301,66 @@ This chapter lists the data fields that are mandatory and can not be filled by f
 
 | **Fieldname**            | **Module**          | **Description**          |
 |----------------------|--------------------------|---------------------|
-| `BON_ID` | Single recordings module | Action-ID (DE: Vorgangs-ID)|
-| `POS_TERMINAL_ID` | Single recordings module | ID of the slave (terminal) where the position (line) comes from. |
-| `ART_NR` | Single recordings module | Article number. |
-| `GTIN` | Single recordings module | Global Trade Item Number. |
-| `WARENGR_ID` | Single recordings module | Product group number. |
-| `WARENGR` | Single recordings module | Product group name. |
-| `MENGE` | Single recordings module | Quantity. |
-| `FAKTOR` | Single recordings module | Factor, e.g. container size. |
-| `EINHEIT` | Single recordings module | Unit of measurement, e.g. kg. |
-| `STK_BR` | Single recordings module | Price per unit incl. VAT. |
-| `BON_NAME` | Single recordings module | The `BON_NAME` is used to further subdivide the items contained in the transaction category (`BON_TYP`). The `BON_NAME` must be filled if `BON_TYP` is `AVSonstige`.|
-| `BON_STORNO` | Single recordings module | Mandatory for the subsequent cancellation of an receipt. |
-| `BON_START` | Single recordings module | Mandatory if the action (DE: Vorgang) starts within another system. Otherwise the receipt request of an action must be connected in a way that ft can find the start of the action.|
-| `BEDIENER_ID` | Single recordings module | User-ID |
-| `BEDIENER_NAME` | Single recordings module | User name |
+| `BON_ID` | Single recordings | Action-ID (DE: Vorgangs-ID)|
+| `POS_TERMINAL_ID` | Single recordings | ID of the slave (terminal) where the position (line) comes from. |
+| `ART_NR` | Single recordings | Article number. |
+| `GTIN` | Single recordings | Global Trade Item Number. |
+| `WARENGR_ID` | Single recordings | Product group number. |
+| `WARENGR` | Single recordings | Product group name. |
+| `MENGE` | Single recordings | Quantity. |
+| `FAKTOR` | Single recordings | Factor, e.g. container size. |
+| `EINHEIT` | Single recordings| Unit of measurement, e.g. kg. |
+| `STK_BR` | Single recordings | Price per unit incl. VAT. |
+| `BON_NAME` | Single recordings  | The `BON_NAME` is used to further subdivide the items contained in the transaction category (`BON_TYP`). The `BON_NAME` must be filled if `BON_TYP` is `AVSonstige`.|
+| `BON_STORNO` | Single recordings | Mandatory for the subsequent cancellation of an receipt. |
+| `BON_START` | Single recordings | Mandatory if the action (DE: Vorgang) starts within another system. Otherwise the receipt request of an action must be connected in a way that ft can find the start of the action.|
+| `BEDIENER_ID` | Single recordings | User-ID |
+| `BEDIENER_NAME` | Single recordings | User name |
 | `KUNDE_NAME` | Name of beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Max Wanne",...}"`|
-| `KUNDE_ID` | Single recordings module | ID of the beneficiary customer. (not mandatory if exempted in relation to § 148 AO)|
-| `KUNDE_TYP` | Single recordings module | Type of the beneficiary customer (e.g. employee). (not mandatory if exempted in relation to § 148 AO).|
-| `KUNDE_STRASSE` | Single recordings module | Street and house number of the beneficiary customer.(not mandatory if exempted in relation to § 148 AO) |
-| `KUNDE_PLZ` | Single recordings module | Zip of the beneficiary customer. (not mandatory if exempted in relation to § 148 AO) |
-| `KUNDE_ORT` | Single recordings module | City of the beneficiary customer. (not mandatory if exempted in relation to § 148 AO) |
-| `KUNDE_LAND` | Single recordings module | Country of the beneficiary customer. (not mandatory if exempted in relation to § 148 AO) |
-| `KUNDE_USTID` | Single recordings module | VAT-ID of the beneficiary customer. (not mandatory if exempted in relation to § 148 AO) |
-| `ABRECHNUNGSKREIS` | Single recordings module | Connection criterion (e.g table number, department etc.) of the assignment |
-| `ZAHLWAEH_CODE` | Single recordings module | foreign currency code. Only mandatory if foreign currency was used for the payment. |
-| `ZAHLWAEH_BETRAG` | Single recordings module | Amount in foreign currency. Only mandatory if foreign currency was used for the payment. |
-| receipt references | Single recordings module | see chapter "Bon_Referenzen" |
-| `NAME` | Master data module | Name of the company |
-| `STRASSE` | Master data module | Street of the company | 
-| `PLZ` | Master data module | Zip of the company |
-| `ORT` | Master data module | City of the company |
-| `LAND` | Master data module | Country of the company|
-| `STNR` | Master data module | Tax number of the company |
-| `USTID` | Master data module | VAT ID of the company | 
-| `LOC_NAME` | Master data module | Name of the site |
-| `LOC_STRASSE` | Master data module | Street of the site |
-| `LOC_PLZ` | Master data module | Zip of the site |
-| `LOC_ORT` | Master data module | City of the site | 
-| `LOC_LAND` | Master data module | Country of the site | 
-| `LOC_USTID` | Master data module | VAT ID of the site | 
-| `KASSE_BRAND` | Master data module | Brand of the cash register |
-| `KASSE_MODELL` | Master data module | Model designation |
-| `KASSE_SERIENNR` | Master data module | Serial number of the cash register |
-| `KASSE_SW_BRAND` | Master data module | Brand name of the software | 
-| `KASSE_SW_VERSION` | Master data module | Version of the software | 
-| `KASSE_BASISWAEH_CODE` | Master data module | Basis currency of the cash register |
-| `TERMINAL_ID` | Master data module | ID of the terminal |
-| `TERMINAL_BRAND` | Master data module | Brand of the terminal |
-| `TERMINAL_MODELL` | Master data module | Model designation |
-| `TERMINAL_SERIENNR` | Master data module | Serial number of the terminal |
-| `TERMINAL_SW_BRAND` | Master data module | Brand name of the software |
-| `TERMINAL_SW_VERSION` | Master data module | Version of the software |
-| `AGENTUR_NAME` | Master data module | Name of the agency (client) | 
-| `AGENTUR_STRASSE` | Master data module | Street of the agency |
-| `AGENTUR_PLZ` | Master data module | Zip  of the agency| String | 
-| `AGENTUR_ORT` | Master data module | City  of the agency| String | 
-| `AGENTUR_LAND` | Master data module | ISO 3166 ALPHA-3 country code  of the agency| 
-| `AGENTUR_STNR` | Master data module | Tax number of the agency| 
-| `AGENTUR_USTID` | Master data module | VAT ID of the agency| 
+| `KUNDE_ID` | Single recordings | ID of the beneficiary customer. (not mandatory if exempted in relation to § 148 AO)|
+| `KUNDE_TYP` | Single recordings | Type of the beneficiary customer (e.g. employee). (not mandatory if exempted in relation to § 148 AO).|
+| `KUNDE_STRASSE` | Single recordings | Street and house number of the beneficiary customer.(not mandatory if exempted in relation to § 148 AO) |
+| `KUNDE_PLZ` | Single recordings | Zip of the beneficiary customer. (not mandatory if exempted in relation to § 148 AO) |
+| `KUNDE_ORT` | Single recordings | City of the beneficiary customer. (not mandatory if exempted in relation to § 148 AO) |
+| `KUNDE_LAND` | Single recordings | Country of the beneficiary customer. (not mandatory if exempted in relation to § 148 AO) |
+| `KUNDE_USTID` | Single recordings | VAT-ID of the beneficiary customer. (not mandatory if exempted in relation to § 148 AO) |
+| `ABRECHNUNGSKREIS` | Single recordings | Connection criterion (e.g table number, department etc.) of the assignment |
+| `ZAHLWAEH_CODE` | Single recordings | foreign currency code. Only mandatory if foreign currency was used for the payment. |
+| `ZAHLWAEH_BETRAG` | Single recordings | Amount in foreign currency. Only mandatory if foreign currency was used for the payment. |
+| receipt references | Single recordings | see chapter "Bon_Referenzen" |
+| `Z_BUCHUNGSTAG` | Master data | Booking date different from closing date (`Z_ERSTELLUNG`). Only mandatory if the booking date is different to the date of the daily closing receipt. | 
+| `NAME` | Master data | Name of the company |
+| `STRASSE` | Master data | Street of the company | 
+| `PLZ` | Master data| Zip of the company |
+| `ORT` | Master data | City of the company |
+| `LAND` | Master data | Country of the company|
+| `STNR` | Master data | Tax number of the company |
+| `USTID` | Master data | VAT ID of the company | 
+| `LOC_NAME` | Master data | Name of the site |
+| `LOC_STRASSE` | Master data | Street of the site |
+| `LOC_PLZ` | Master data | Zip of the site |
+| `LOC_ORT` | Master data | City of the site | 
+| `LOC_LAND` | Master data | Country of the site | 
+| `LOC_USTID` | Master data | VAT ID of the site | 
+| `KASSE_BRAND` | Master data | Brand of the cash register |
+| `KASSE_MODELL` | Master data | Model designation |
+| `KASSE_SERIENNR` | Master data | Serial number of the cash register |
+| `KASSE_SW_BRAND` | Master data | Brand name of the software | 
+| `KASSE_SW_VERSION` | Master data | Version of the software | 
+| `KASSE_BASISWAEH_CODE` | Master data | Basis currency of the cash register |
+| `TERMINAL_ID` | Master data | ID of the terminal |
+| `TERMINAL_BRAND` | Master data | Brand of the terminal |
+| `TERMINAL_MODELL` | Master data | Model designation |
+| `TERMINAL_SERIENNR` | Master data | Serial number of the terminal |
+| `TERMINAL_SW_BRAND` | Master data | Brand name of the software |
+| `TERMINAL_SW_VERSION` | Master data | Version of the software |
+| `AGENTUR_NAME` | Master data | Name of the agency (client) | 
+| `AGENTUR_STRASSE` | Master data | Street of the agency |
+| `AGENTUR_PLZ` | Master data | Zip  of the agency| String | 
+| `AGENTUR_ORT` | Master data | City  of the agency| String | 
+| `AGENTUR_LAND` | Master data | ISO 3166 ALPHA-3 country code  of the agency| 
+| `AGENTUR_STNR` | Master data | Tax number of the agency| 
+| `AGENTUR_USTID` | Master data | VAT ID of the agency| 
 
 The following chapters give you an overview of all DSFinV-K fields, provide you information on how they are filled by ft and how you can send additional data to fill mandatory (listed above) and optional fields that can not be filled by ft.
 
@@ -377,7 +378,7 @@ In addition to these two files there are further detail files which are listed i
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically created and filled by ft |
 | `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `POS_ZEILE` | Line/Position number  | String | `ftChargeItem.Position` if available, otherwise automatically filled by ft |
@@ -403,7 +404,7 @@ In addition to these two files there are further detail files which are listed i
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | No. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
@@ -431,7 +432,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
@@ -454,7 +455,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically created and filled by ft |
 | `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `BON_NR` | Receipt number | Long | `ftReceiptIdentification` (tbd: ftReceiptIdentification is a string, but number/long is needed) |
@@ -482,7 +483,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `POS_ZEILE` | Line/Position number  | String | automatically filled by ft |
@@ -496,7 +497,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String (max. 50 chars) | `cbReceiptReference` |
 | `ABRECHNUNGSKREIS` | Connection criterion (e.g table number, department etc.) of the assignment | String | if needed, send via `cbArea` in JSON format by adding the key value pair `ConnectionCriterion` e.g. `"cbArea":"{..., "ConnectionCriterion":"Tisch Nr. 12", ...}"`.|
@@ -506,7 +507,7 @@ You can send those subitems to the ft middleware via `ftChargeItemCaseData` in J
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `ZAHLART_TYP` | Type of payment method | String | `ftPayItemCase` |
@@ -524,7 +525,7 @@ If there are external references (from other systems or other cashpoints) to be 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `POS_ZEILE` | Line number of the referencing operation | String | automatically filled by ft  |
@@ -540,7 +541,7 @@ If there are external references (from other systems or other cashpoints) to be 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `BON_ID` | Action-ID | String | `cbReceiptReference` |
 | `TSE_ID` | ID of the TSE used for the transaction | Integer | automatically filled by ft |
@@ -564,9 +565,9 @@ The master data module is divided into the following files:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `Z_BUCHUNGSTAG` | Booking date different from closing date (`Z_ERSTELLUNG`) | ISO 8601 und RFC3339 date | can be send via `ftReceiptCaseData` in JSON format by adding the key value pair `BookingDate` if the booking date is different from the closing date (`Z_ERSTELLUNG`). E.g. `"ftReceiptCaseData":"{ ..., "BookingDate":"2020-01-27", ... }"` |
+| `Z_BUCHUNGSTAG` | Booking date different from closing date (`Z_ERSTELLUNG`) | ISO 8601 und RFC3339 date | can be send via `ftReceiptCaseData` in JSON format by adding the key value pair `BookingDate` if the booking date is different from the daily closing receipt date (`Z_ERSTELLUNG`). E.g. `"ftReceiptCaseData":"{ ..., "BookingDate":"2020-01-27", ... }"` |
 | `TAXONOMIE_VERSION` | Version of the DFKA taxonomy cash register | String | automatically filled by ft |
 | `Z_START_ID` | First BON_ID in closing | String | automatically filled by ft |
 | `Z_ENDE_ID` | Last BON_ID in the closing | String | automatically filled by ft |
@@ -585,7 +586,7 @@ The master data module is divided into the following files:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `LOC_NAME` | Name of the site | String | tbd |
 | `LOC_STRASSE` | Street | String | tbd |
@@ -599,7 +600,7 @@ The master data module is divided into the following files:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `KASSE_BRAND` | Brand of the cash register | String | tbd |
 | `KASSE_MODELL` | Model designation | String | tbd |
@@ -614,7 +615,7 @@ The master data module is divided into the following files:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `TERMINAL_ID` | ID of the terminal | String | tbd |
 | `TERMINAL_BRAND` | Brand of the terminal | String | tbd |
@@ -630,7 +631,7 @@ In case of an agency business, the agency master data has to be sent within each
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `AGENTUR_ID` | ID of the agency | Integer | automatically filled by ft |  |
 | `AGENTUR_NAME` | Name of the client | String | To send, add the key value pair `Name` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ "Name":"Metzger Edelweiß", "Street":"Am Berg 12", ... }, ... }"`|
@@ -646,7 +647,7 @@ In case of an agency business, the agency master data has to be sent within each
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft  |
 | `UST_SCHLUESSEL` | ID of the VAT rate| Integer | automatically filled by ft  |
 | `UST_SATZ` | Percentage | Decimal (2) | automatically filled by ft  |
@@ -657,7 +658,7 @@ In case of an agency business, the agency master data has to be sent within each
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `TSE_ID` | TSE ID | Integer | automatically filled by ft |
 | `TSE_SERIAL` |  Serial number of the TSE (Corresponds according to TR- 03153 section 7.5. to the hash value of the key contained in the certificate; octet string in hexadecimal representation) | String | automatically filled by ft |
@@ -677,7 +678,7 @@ The three structure levels (modules) allow transactions to be separated and grou
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `GV_TYP` | business action type | String | automatically filled by ft |
 | `GV_NAME` | name of the business action type | String | automatically filled by ft |
@@ -692,7 +693,7 @@ The three structure levels (modules) allow transactions to be separated and grou
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `ZAHLART_TYP` | Type of payment method | String | automatically filled by ft |
 | `ZAHLART_NAME` | Name of the payment method | String | automatically filled by ft |
@@ -703,7 +704,7 @@ The three structure levels (modules) allow transactions to be separated and grou
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `ZAHLART_WAEH` | Currency | ISO 4217 currency code | automatically filled by ft |
 | `ZAHLART_BETRAG_WAEH` | Amount | Decimal (2) | automatically filled by ft |

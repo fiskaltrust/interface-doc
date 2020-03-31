@@ -316,6 +316,7 @@ This chapter lists the data fields that are mandatory and can not be filled by f
 | `BON_START` | Single recordings | Mandatory if the action (DE: Vorgang) starts within another system. Otherwise the receipt request of an action must be connected in a way that ft can find the start of the action.|
 | `BEDIENER_ID` | Single recordings | User-ID |
 | `BEDIENER_NAME` | Single recordings | User name |
+| `AGENTUR_ID` | Single recordings | ID of the agency, only mandatory if agency business (DE: Agenturgeschäft) |
 | `KUNDE_NAME` | Name of beneficiary customer | String | if known, send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Max Wanne",...}"`|
 | `KUNDE_ID` | Single recordings | ID of the beneficiary customer. (not mandatory if exempted in relation to § 148 AO)|
 | `KUNDE_TYP` | Single recordings | Type of the beneficiary customer (e.g. employee). (not mandatory if exempted in relation to § 148 AO).|
@@ -329,38 +330,8 @@ This chapter lists the data fields that are mandatory and can not be filled by f
 | `ZAHLWAEH_BETRAG` | Single recordings | Amount in foreign currency. Only mandatory if foreign currency was used for the payment. |
 | receipt references | Single recordings | see chapter "Bon_Referenzen" |
 | `Z_BUCHUNGSTAG` | Master data | Booking date different from closing date (`Z_ERSTELLUNG`). Only mandatory if the booking date is different to the date of the daily closing receipt. | 
-| `NAME` | Master data | Name of the company |
-| `STRASSE` | Master data | Street of the company | 
-| `PLZ` | Master data| Zip of the company |
-| `ORT` | Master data | City of the company |
-| `LAND` | Master data | Country of the company|
-| `STNR` | Master data | Tax number of the company |
-| `USTID` | Master data | VAT ID of the company | 
-| `LOC_NAME` | Master data | Name of the site |
-| `LOC_STRASSE` | Master data | Street of the site |
-| `LOC_PLZ` | Master data | Zip of the site |
-| `LOC_ORT` | Master data | City of the site | 
-| `LOC_LAND` | Master data | Country of the site | 
-| `LOC_USTID` | Master data | VAT ID of the site | 
-| `KASSE_BRAND` | Master data | Brand of the cash register |
-| `KASSE_MODELL` | Master data | Model designation |
-| `KASSE_SERIENNR` | Master data | Serial number of the cash register |
-| `KASSE_SW_BRAND` | Master data | Brand name of the software | 
-| `KASSE_SW_VERSION` | Master data | Version of the software | 
-| `KASSE_BASISWAEH_CODE` | Master data | Basis currency of the cash register |
-| `TERMINAL_ID` | Master data | ID of the terminal |
-| `TERMINAL_BRAND` | Master data | Brand of the terminal |
-| `TERMINAL_MODELL` | Master data | Model designation |
-| `TERMINAL_SERIENNR` | Master data | Serial number of the terminal |
-| `TERMINAL_SW_BRAND` | Master data | Brand name of the software |
-| `TERMINAL_SW_VERSION` | Master data | Version of the software |
-| `AGENTUR_NAME` | Master data | Name of the agency (client) | 
-| `AGENTUR_STRASSE` | Master data | Street of the agency |
-| `AGENTUR_PLZ` | Master data | Zip  of the agency| String | 
-| `AGENTUR_ORT` | Master data | City  of the agency| String | 
-| `AGENTUR_LAND` | Master data | ISO 3166 ALPHA-3 country code  of the agency| 
-| `AGENTUR_STNR` | Master data | Tax number of the agency| 
-| `AGENTUR_USTID` | Master data | VAT ID of the agency| 
+| Master data for the company, location, terminals, agencies as described in the chapter "Master data module" | Master data | Master data for this cashpint closing and referenced by the single recordings|
+
 
 The following chapters give you an overview of all DSFinV-K fields, provide you information on how they are filled by ft and how you can send additional data to fill mandatory (listed above) and optional fields that can not be filled by ft.
 
@@ -389,7 +360,7 @@ In addition to these two files there are further detail files which are listed i
 | `GV_NAME` | Addition to the business action type | String| optional, can be sent via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `ItemCaseName` e.g. `"ftChargeItemCaseData":"{ ..., "ItemCaseName":"Rabatt - Black Friday", ... }"` |
 | `INHAUS` | Inhouse consumption | 0 or 1 | optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `Inhouse` e.g. `"ftReceiptCaseData":"{ ..., "Inhouse":1, ... }"`, defaults to 0 if not sent, any other value than 0 is interpreted as 1.|
 | `P_STORNO` | Position cancellation identification | String | not used|
-| `AGENTUR_ID` | ID of the Agency | Number | automatically filled by ft |
+| `AGENTUR_ID` | ID of the Agency | Number | mandatory if agency business (DE: Agenturgeschäft). Please sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `AgencyId` e.g. `"ftReceiptCaseData":"{ ..., "AgencyId":"192", ... }"` |
 | `ART_NR` | Article number | String | `ftChargeItem.ProductNumber` |
 | `GTIN` | GTIN | String | optional, can be sent via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `GTIN` e.g. `"ftChargeItemCaseData":"{ ..., "GTIN":"9181981928298", ... }"` |
 | `WARENGR_ID` | Product group ID | String | send via `ftChargeItem.ProductGroup` in JSON format by adding the key value pair `ProductGroupId` e.g. `"ProductGroup":"{ ProductGroupId":"981981AA", "ProductGroupName":"Fleischwaren" }"`|
@@ -558,6 +529,53 @@ If there are external references (from other systems or other cashpoints) to be 
 
 To avoid redundancies, the master data is only saved once for each cash register closing. If changes are made to the master data listed below, a closing must be created automatically beforehand.
 
+The master data for the day that is closed by the daily closing receipt (or monthly, yaearly because they include the daily closing) needs to be included into the (daily/monthly/yearly) closing receipt. To include the data please add send the content of `ftReceiptCaseData` in JSON format and add the key value pair `dailyClosingMasterData`. The value should also be JSON and formatted as follows:
+```json
+"dailyClosingMasterData" : "{ 
+
+    "CompanyName" : "...",
+    "CompanyStreet" : "...",
+    "CompanyZip" : "...",
+    "CompanyCity" : "...",
+    "CompanyCountry" : "...",
+    "CompanyTaxNr" : "...",
+    "CompanyVATId" : "...",
+    
+    "LocationName" : "...",
+    "LocationStreet" : "...",
+    "LocationZip" : "...",
+    "LocationCity" : "...",
+    "LocationCountry" : "...",
+    "LocationVATId" : "...",
+    
+    "CashRegisterBrand" : "...",
+    "CashRegisterModel" : "...",
+    "CashRegisterSWBrand" : "...",
+    "CashRegisterSWBVersion" : "...",
+    "CashRegisterBaseCurrency" : "...",
+    
+    "Terminals" : [ {
+      "Id" : "...",
+      "Brand" : "...",
+      "Model" : "...",
+      "SerialNr" : "...",
+      "SWBrand" :  "...",
+      "SWVersion" : "..."
+    }, {...}, ...],
+    
+    "Agencies" : [ {
+      "Id" : "...",
+      "Name" : "...",
+      "Street" : "...",
+      "Zip" : "...",
+      "City" :  "...",
+      "Country" : "...",
+      "TaxNr" : "...",
+      "VATId" : "..."
+    }, {...}, ...],
+}"
+```
+
 The master data module is divided into the following files:
 
 ##### File: Stamm_Abschluss (cashpointclosing.csv)
@@ -571,15 +589,17 @@ The master data module is divided into the following files:
 | `TAXONOMIE_VERSION` | Version of the DFKA taxonomy cash register | String | automatically filled by ft |
 | `Z_START_ID` | First BON_ID in closing | String | automatically filled by ft |
 | `Z_ENDE_ID` | Last BON_ID in the closing | String | automatically filled by ft |
-| `NAME` | Name of the company | String | tbd |
-| `STRASSE` | Street | String | tbd |
-| `PLZ` | Zip | String | tbd |
-| `ORT` | City | String | tbd |
-| `LAND` | Country | ISO 3166 ALPHA-3 country code | tbd |
-| `STNR` | Tax number of the company | String | tbd |
-| `USTID` | VAT ID | String | tbd |
+| `NAME` | Name of the company | String | `dailyClosingMasterData.CompanyName` |
+| `STRASSE` | Street | String | `dailyClosingMasterData.CompanyStreet` |
+| `PLZ` | Zip | String | `dailyClosingMasterData.CompanyZip` |
+| `ORT` | City | String | `dailyClosingMasterData.CompanyCity` |
+| `LAND` | Country | ISO 3166 ALPHA-3 country code | `dailyClosingMasterData.CompanyCountry` |
+| `STNR` | Tax number of the company | String | `dailyClosingMasterData.CompanyTaxNr` |
+| `USTID` | VAT ID | String | `dailyClosingMasterData.CompanyVATId` |
 | `Z_SE_ZAHLUNGEN` | Total of all payments | Decimal (2) | automatically filled by ft  |
 | `Z_SE_BARZAHLUNGEN` | Total of all cash payments | Decimal (2) | automatically filled by ft |
+
+(`dailyClosingMasterData`is described above in the chapter "Master data module")
 
 ##### File: Stamm_Orte (location.csv)
 
@@ -588,12 +608,14 @@ The master data module is divided into the following files:
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `LOC_NAME` | Name of the site | String | tbd |
-| `LOC_STRASSE` | Street | String | tbd |
-| `LOC_PLZ` | Zip | String | tbd |
-| `LOC_ORT` | City | String | tbd |
-| `LOC_LAND` | Country | ISO 3166 ALPHA-3 county code | tbd |
-| `LOC_USTID` | VAT ID | String | tbd |
+| `LOC_NAME` | Name of the site | String | `dailyClosingMasterData.LocationName` |
+| `LOC_STRASSE` | Street | String | `dailyClosingMasterData.LocationStreet` |
+| `LOC_PLZ` | Zip | String | `dailyClosingMasterData.LocationZip` |
+| `LOC_ORT` | City | String | `dailyClosingMasterData.LocationCity` |
+| `LOC_LAND` | Country | ISO 3166 ALPHA-3 county code | `dailyClosingMasterData.LocationCountry` |
+| `LOC_USTID` | VAT ID | String | `dailyClosingMasterData.LocationVATId` |
+
+(`dailyClosingMasterData`is described above in the chapter "Master data module")
 
 ##### File: Stamm_Kassen (cashregister.csv)
 
@@ -602,13 +624,15 @@ The master data module is divided into the following files:
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `KASSE_BRAND` | Brand of the cash register | String | tbd |
-| `KASSE_MODELL` | Model designation | String | tbd |
-| `KASSE_SERIENNR` | Serial number of the cash register | String | tbd | 
-| `KASSE_SW_BRAND` | Brand name of the software | String | tbd |
-| `KASSE_SW_VERSION` | Version of the software | String | tbd |
-| `KASSE_BASISWAEH_CODE` | Basis currency of the cash register | ISO 4217 currency code | tbd |
+| `KASSE_BRAND` | Brand of the cash register | String | `dailyClosingMasterData.CashRegisterBrand` |
+| `KASSE_MODELL` | Model designation | String | `dailyClosingMasterData.CashRegisterModel` |
+| `KASSE_SERIENNR` | Serial number of the cash register | String | `ftCashBoxID` ?(tbd) | 
+| `KASSE_SW_BRAND` | Brand name of the software | String | `dailyClosingMasterData.CashRegisterSWBrand` |
+| `KASSE_SW_VERSION` | Version of the software | String | `dailyClosingMasterData.CashRegisterSWVersion`  |
+| `KASSE_BASISWAEH_CODE` | Basis currency of the cash register | ISO 4217 currency code | `dailyClosingMasterData.CashRegisterBaseCurrency`  |
 | `KEINE_UST_ZUORDNUNG` | VAT not determinable | String | automatically filled by ft |
+
+(`dailyClosingMasterData`is described above in the chapter "Master data module")
 
 ##### File: Stamm_Terminals (slaves.csv)
 
@@ -617,30 +641,33 @@ The master data module is divided into the following files:
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `TERMINAL_ID` | ID of the terminal | String | tbd |
-| `TERMINAL_BRAND` | Brand of the terminal | String | tbd |
-| `TERMINAL_MODELL` | Model designation | String | tbd |
-| `TERMINAL_SERIENNR` | Serial number of the terminal | String | tbd |
-| `TERMINAL_SW_BRAND` | Brand name of the software | String | tbd |
-| `TERMINAL_SW_VERSION` | Version of the software | String | tbd |
+| `TERMINAL_ID` | ID of the terminal | String | `dailyClosingMasterData.Terminals.Id` |
+| `TERMINAL_BRAND` | Brand of the terminal | String | `dailyClosingMasterData.Terminals.Brand`|
+| `TERMINAL_MODELL` | Model designation | String | `dailyClosingMasterData.Terminals.Model` |
+| `TERMINAL_SERIENNR` | Serial number of the terminal | String | `dailyClosingMasterData.Terminals.SerialNr` |
+| `TERMINAL_SW_BRAND` | Brand name of the software | String | `dailyClosingMasterData.Terminals.SWBrand` |
+| `TERMINAL_SW_VERSION` | Version of the software | String | `dailyClosingMasterData.Terminals.SWVersion` |
+
+(`dailyClosingMasterData`is described above in the chapter "Master data module")
 
 ##### File: Stamm_Agenturen (pa.csv)
 
-In case of an agency business, the agency master data has to be sent within each affected receipt request to the ft middleware. To send, add the key value pair `AgencyData` to `"ftReceiptCaseData`. `AgencyData` accepts JSON an input having multiple key values described in the table below. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ "Name":"Metzger Edelweiß", "Street":"Am Berg 12", ... }, ... }"`.
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `AGENTUR_ID` | ID of the agency | Integer | automatically filled by ft |  |
-| `AGENTUR_NAME` | Name of the client | String | To send, add the key value pair `Name` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ "Name":"Metzger Edelweiß", "Street":"Am Berg 12", ... }, ... }"`|
-| `AGENTUR_STRASSE` | Street | String | To send, add the key value pair `Street` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ "Name":"Metzger Edelweiß", "Street":"Am Berg 12", ... }, ... }"` |
-| `AGENTUR_PLZ` | Zip | String | To send, add the key value pair `Zip` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "Zip":"82467", ... }, ... }"` |
-| `AGENTUR_ORT` | City | String | To send, add the key value pair `City` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "City":"Garmisch-Partenkirchen", ... }, ... }"` |
-| `AGENTUR_LAND` | ISO 3166 ALPHA-3 country code | String | To send, add the key value pair `Country` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "Country":"DEU", ... }, ... }"` |
-| `AGENTUR_STNR` | Tax number | String | To send, add the key value pair `TaxNr` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "TaxNr":"123333211", ... }, ... }"` |
-| `AGENTUR_USTID` | VAT ID| String | To send, add the key value pair `VATId` to `AgencyData`. E.g. `"ftReceiptCaseData":"{ ..., "AgencyData":"{ ..., "VATId":"DE918291823", ... }, ... }"` |
+| `AGENTUR_ID` | ID of the agency | Integer | `dailyClosingMasterData.Agencies.Id` | 
+| `AGENTUR_NAME` | Name of the client | String | `dailyClosingMasterData.Agencies.Name` |
+| `AGENTUR_STRASSE` | Street | String | `dailyClosingMasterData.Agencies.Street`|
+| `AGENTUR_PLZ` | Zip | String |  `dailyClosingMasterData.Agencies.Zip` |
+| `AGENTUR_ORT` | City | String | `dailyClosingMasterData.Agencies.City` |
+| `AGENTUR_LAND` | ISO 3166 ALPHA-3 country code | String | `dailyClosingMasterData.Agencies.Country` |
+| `AGENTUR_STNR` | Tax number | String | `dailyClosingMasterData.Agencies.TaxNr` |
+| `AGENTUR_USTID` | VAT ID| String | `dailyClosingMasterData.Agencies.VATId` |
+
+(`dailyClosingMasterData`is described above in the chapter "Master data module")
 
 ##### File: Stamm_USt (vat.csv)
 

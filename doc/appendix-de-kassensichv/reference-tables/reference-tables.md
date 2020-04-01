@@ -328,7 +328,6 @@ This chapter lists the data fields that are mandatory and can not be filled by f
 | `ABRECHNUNGSKREIS` | Single recordings | Connection criterion (e.g table number, department etc.) of the assignment. |
 | `ZAHLWAEH_CODE` | Single recordings | Foreign currency code. Only mandatory if foreign currency was used for the payment. |
 | `ZAHLWAEH_BETRAG` | Single recordings | Amount in foreign currency. Only mandatory if foreign currency was used for the payment. |
-| receipt references | Single recordings | see chapter "Bon_Referenzen" |
 | `Z_BUCHUNGSTAG` | Master data | Booking date different from closing date (`Z_ERSTELLUNG`). Only mandatory if the booking date is different to the date of the daily closing receipt. | 
 | Master data for the company, location, terminals, agencies as described in the chapter "Master data module" | Master data | Master data for this cashpoint closing and referenced by the single recordings|
 
@@ -348,23 +347,23 @@ In addition to these two files there are further detail files which are listed i
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically created and filled by ft |
-| `BON_ID` | Action-ID | String | `cbReceiptReference` |
-| `POS_ZEILE` | Line/Position number  | String | `ftChargeItem.Position` if available, otherwise automatically filled by ft |
-| `GUTSCHEIN_NR` | Voucher no.| String | Optional, can be sent via `ftPayItemData` in JSON format. To send, add the key value pair `VoucherNr` e.g. `"ftPayItemData":"{ ..., "VoucherNr":"UAUA91829182HH", ... }"`|
-| `ARTIKELTEXT` | Product/Article text| String | `ftChargeItem.Description` |
-| `POS_TERMINAL_ID` | Terminal-ID of this line (position)| String | `cbTerminalID` |
-| `GV_TYP` | Type of business action  | String | Deducted from `ftChargeItemCase` |
-| `GV_NAME` | Addition to the business action type | String| Optional, can be sent via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `ItemCaseName` e.g. `"ftChargeItemCaseData":"{ ..., "ItemCaseName":"Rabatt - Black Friday", ... }"` |
+| `BON_ID` | Action-ID | String (40) | `cbReceiptReference` |
+| `POS_ZEILE` | Line/Position number  | String (50) | `ftChargeItem.Position` if available, otherwise automatically filled by ft |
+| `GUTSCHEIN_NR` | Voucher no.| String (50) | Optional, can be sent via `ftPayItemData` in JSON format. To send, add the key value pair `VoucherNr` e.g. `"ftPayItemData":"{ ..., "VoucherNr":"UAUA91829182HH", ... }"`|
+| `ARTIKELTEXT` | Product/Article text| String (255) | `ftChargeItem.Description` |
+| `POS_TERMINAL_ID` | Terminal-ID of this line (position)| String (50) | `cbTerminalID` |
+| `GV_TYP` | Type of business action  | String (30) | Deducted from `ftChargeItemCase` |
+| `GV_NAME` | Addition to the business action type | String (40) | Optional, can be sent via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `ItemCaseName` e.g. `"ftChargeItemCaseData":"{ ..., "ItemCaseName":"Rabatt - Black Friday", ... }"` |
 | `INHAUS` | Inhouse consumption | 0 or 1 | Optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `Inhouse` e.g. `"ftReceiptCaseData":"{ ..., "Inhouse":1, ... }"`, defaults to 0 if not sent, any other value than 0 is interpreted as 1.|
 | `P_STORNO` | Position cancellation identification | String | Not used|
 | `AGENTUR_ID` | ID of the Agency | Integer | Mandatory if agency business (DE: Agenturgeschäft). Please sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `AgencyId` e.g. `"ftReceiptCaseData":"{ ..., "AgencyId":192, ... }"` |
-| `ART_NR` | Article number | String | `ftChargeItem.ProductNumber` |
-| `GTIN` | Global Trade Item Number | String | Mandatory if it is an article, can be sent via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `GTIN` e.g. `"ftChargeItemCaseData":"{ ..., "GTIN":"9181981928298", ... }"` |
-| `WARENGR_ID` | Product group ID | String | Mandatory, please send via `ftChargeItem.ProductGroup` in JSON format by adding the key value pair `ProductGroupId` e.g. `"ProductGroup":"{ ProductGroupId":"981981AA", "ProductGroupName":"Fleischwaren" }"`|
-| `WARENGR` | Name of the product group | String |Mandatory, please send via `ftChargeItem.ProductGroup` in JSON format by adding the key value pair `ProductGroupName` e.g. `"ProductGroup":"{ "ProductGroupId":"981981AA", "ProductGroupName":"Fleischwaren" }"`|
+| `ART_NR` | Article number | String (50) | `ftChargeItem.ProductNumber` |
+| `GTIN` | Global Trade Item Number | String (50) | Mandatory if it is an article, can be sent via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `GTIN` e.g. `"ftChargeItemCaseData":"{ ..., "GTIN":"9181981928298", ... }"` |
+| `WARENGR_ID` | Product group ID | String (40) | Mandatory, please send via `ftChargeItem.ProductGroup` in JSON format by adding the key value pair `ProductGroupId` e.g. `"ProductGroup":"{ ProductGroupId":"981981AA", "ProductGroupName":"Fleischwaren" }"`|
+| `WARENGR` | Name of the product group | String (50) |Mandatory, please send via `ftChargeItem.ProductGroup` in JSON format by adding the key value pair `ProductGroupName` e.g. `"ProductGroup":"{ "ProductGroupId":"981981AA", "ProductGroupName":"Fleischwaren" }"`|
 | `MENGE` | Quantity | Decimal (3) | `ftChargeItem.Quantity` |
 | `FAKTOR` | factor, e.g. container size | Decimal (3) | `ftChargeItem.UnitQuantity`|
 | `EINHEIT` | Unit of measurement, e.g. kg, litres or pieces | String | `ftChargeItem.Unit` |
@@ -374,11 +373,11 @@ In addition to these two files there are further detail files which are listed i
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
-| `BON_ID` | Action-ID | String | `cbReceiptReference` |
-| `POS_ZEILE` | Line/Position number  | String | Automatically filled by ft |
+| `BON_ID` | Action-ID | String (40) | `cbReceiptReference` |
+| `POS_ZEILE` | Line/Position number  | String (50) | Automatically filled by ft |
 | `UST_SCHLUESSEL` | ID of the VAT rate | Integer | Automatically filled by ft depending on the `ftChargeItemCase` |
 | `POS_BRUTTO` | Gross sales | Decimal (5) | `ftChargeItemCase.Amount` |
 | `POS_NETTO` | Net sales | Decimal (5) | Automatically calculated and filled by ft depending on `ftChargeItemCase` and `ftChargeItemCase.Amount`|
@@ -416,19 +415,19 @@ Each subitem as described in the table below:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
-| `BON_ID` | Action-ID | String | `cbReceiptReference` |
-| `POS_ZEILE` | Line/Position number  | String | Automatically filled by ft |
-| `ZI_ART_NR` | Article number  | String | To send, add the key value pair `ProductNumber` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", ... }, ... ]` |
+| `BON_ID` | Action-ID | String (40) | `cbReceiptReference` |
+| `POS_ZEILE` | Line/Position number  | String (50) | Automatically filled by ft |
+| `ZI_ART_NR` | Article number  | String (50) | To send, add the key value pair `ProductNumber` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", ... }, ... ]` |
 | `ZI_GTIN` | GTIN | String | To send, add the key value pair `GTIN` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", "GTIN":"4231234266622", ... }, ... ]` |
-| `ZI_NAME` | Article name | String | To send, add the key value pair `Description` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", "GTIN":"4231234266622", ... }, ... ]` |
-| `ZI_WARENGR_ID` | Product group ID | String |  To send, add the key value pair `ProductGroup` within the subitem. It should be sent as a JSON composed of the key value pairs `ProductGroupId` and `ProductGroupName` e.g. `"SubItems":"[{ ..., "ProductGroup":"{ "ProductGroupId":"981981AA", "ProductGroupName":"Fleischwaren" }", ... }, ... ]` |
-| `ZI_WARENGR` | Name of the product group | String | Similar to `ZI_WARENGR_ID`, use `SubItem.ProductGroup.ProductGroupName` |
+| `ZI_NAME` | Article name | String (60) | To send, add the key value pair `Description` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", "GTIN":"4231234266622", ... }, ... ]` |
+| `ZI_WARENGR_ID` | Product group ID | String (40) |  To send, add the key value pair `ProductGroup` within the subitem. It should be sent as a JSON composed of the key value pairs `ProductGroupId` and `ProductGroupName` e.g. `"SubItems":"[{ ..., "ProductGroup":"{ "ProductGroupId":"981981AA", "ProductGroupName":"Fleischwaren" }", ... }, ... ]` |
+| `ZI_WARENGR` | Name of the product group | String (50) | Similar to `ZI_WARENGR_ID`, use `SubItem.ProductGroup.ProductGroupName` |
 | `ZI_MENGE` | Quantity | Decimal (3) | To send, add the key value pair `Quantity` within the subitem. e.g. `"SubItems":"[{..., "Quantity":2.543, ... }, ... ]` |
 | `ZI_FAKTOR` | factor, e.g. container sizes | Decimal (3) | To send, add the key value pair `UnitQuantity` within the subitem. e.g. `"SubItems":"[{ ..., "UnitQuantity":1.0, ... }, ... ]` |
-| `ZI_EINHEIT` | Unit of measurement, e.g. kg, litres or pieces | String | To send, add the key value pair `Unit` within the subitem. e.g. `"SubItems":"[{ ..., "Unit":"kg", ... }, ... ]` |
+| `ZI_EINHEIT` | Unit of measurement, e.g. kg, litres or pieces | String (50) | To send, add the key value pair `Unit` within the subitem. e.g. `"SubItems":"[{ ..., "Unit":"kg", ... }, ... ]` |
 | `ZI_UST_SCHLUESSEL` | ID of VAT rate for the base price | Integer | To send, add the key value pair `ftSubChargeItemCase` within the subitem. e.g. `"SubItems":"[{..., "ftSubChargeItemCase":"4919338167972134929", ... }, ... ]`. Possible values for `ftSubChargeItemCase` are the same as for `ftChargeItemCase` - as described in the reference table above. |
 | `ZI_BASISPREIS_BRUTTO` | Gross basis price | Decimal (5) | To send, add the key value pair `Amount` within the subitem. e.g. `"SubItems":"[{..., "Amount":22.50, ... }, ... ]` |
 | `ZI_BASISPREIS_NETTO` | Net basis price | Decimal (5) | Automatically calculated by ft from  `ftSubChargeItemCase` and (subitem) `Amount`|
@@ -439,39 +438,39 @@ Each subitem as described in the table below:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically created and filled by ft |
-| `BON_ID` | Action-ID | String | `cbReceiptReference` |
+| `BON_ID` | Action-ID | String (40) | `cbReceiptReference` |
 | `BON_NR` | Receipt number | Long | `ftReceiptIdentification` (tbd: ftReceiptIdentification is a string, but number/long is needed) |
-| `BON_TYP` | Receipt type / action type| String | `ftReceiptCase` |
-| `BON_NAME` | Additional description related to the `BON_TYP` | String | Mandatory if `BON_TYPE` is "AVSonstige", otherwise optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptName ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptName":"Sonstige Sonderwurst", ... }"` |
-| `TERMINAL_ID` | Mandatory, ID of the terminal that was used to record this receipt | String | `cbTerminalID` |
+| `BON_TYP` | Receipt type / action type| String (30) | Deducted from `ftReceiptCase` |
+| `BON_NAME` | Additional description related to the `BON_TYP` | String (60) | Mandatory if `BON_TYPE` is "AVSonstige", otherwise optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptName ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptName":"Sonstige Sonderwurst", ... }"` |
+| `TERMINAL_ID` | Mandatory, ID of the terminal that was used to record this receipt | String (50) | `cbTerminalID` |
 | `BON_STORNO` | Cancellation indicator | String | Filled by ft. Mandatory: if the receipt is a reverse/voided receipt, then it must be marked with the `ftReceiptCaseFlag` `0x0000000000040000` and must reference the initial receipt via `cbPreviousReceiptReference`. The referenced initial receipt must be part of the current cashpoint closing.|
 | `BON_START` | Time of the action start | ISO 8601 and RFC3339 date | The action start can be within this cashpoint or outside of this cashpoint. If outside (e.g. by another system or another cashpoint) than it has to be provided in via `ftReceiptCaseData` in JSON format by adding the key value pair `ActionStartMoment`. E.g. `"ftReceiptCaseData":"{ ..., "ActionStartMoment":"2020-09-27T17:00:01", ... }"`. If not provided, ft tries to find the action start by following the `cbPreviousReceiptReference` path into the past until no more previous receipt references exist. ft will than fill this field with the value from `cbReceiptMoment` of the oldest receipt found in that chain. |
 | `BON_ENDE` | Time of the action end | String | `cbReceiptMoment` |
-| `BEDIENER_ID` | User-ID | String | Mandatory, send via `cbUser` in JSON format by adding the key value pair `UserId` e.g. `"cbUser":"{ "UserId":"19292", "UserName":"Peter Lux"}"`|
-| `BEDIENER_NAME` | User name | String | Mandatory, send via `cbUser` in JSON format by adding the key value pair `UserName` e.g. `"cbUser":"{ "UserId":"19292", "UserName":"Peter Lux"}"`|
+| `BEDIENER_ID` | User-ID | String (50) | Mandatory, send via `cbUser` in JSON format by adding the key value pair `UserId` e.g. `"cbUser":"{ "UserId":"19292", "UserName":"Peter Lux"}"`|
+| `BEDIENER_NAME` | User name | String (50) | Mandatory, send via `cbUser` in JSON format by adding the key value pair `UserName` e.g. `"cbUser":"{ "UserId":"19292", "UserName":"Peter Lux"}"`|
 | `UMS_BRUTTO` | Gross total turnover | Decimal (2) | Automatically filled by ft |
-| `KUNDE_NAME` | Name of beneficiary customer | String | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Max Wanne",...}"`|
-| `KUNDE_ID` | ID of the beneficiary customer| String | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerId` e.g. `"cbCustomer":"{"customerName":"Max Mustermann", "CustomerId":"PX9819822", ...}"`|
-| `KUNDE_TYP` | Type of the beneficiary customer (e.g. employee) | String | Mandatory if not exempted in relation to § 148 AO.  Send via `cbCustomer` in JSON format by adding the key value pair `CustomerType` e.g. `"cbCustomer":"{..., "CustomerId":"PX9819822", "CustomerType":"Mitarbeiter", ...}"`|
-| `KUNDE_STRASSE` | Street and house number of the beneficiary customer | String | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerStreet` e.g. `"cbCustomer":"{..., "CustomerStreet":"Lindwurmstr. 98", ...}"` |
-| `KUNDE_PLZ` | Zip of the beneficiary customer | String | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerZip` e.g. `"cbCustomer":"{..., "CustomerZip":"80337", ...}"` |
-| `KUNDE_ORT` | City of the beneficiary customer | String | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCity` e.g. `"cbCustomer":"{..., "CustomerCity":"München", ...}"` |
+| `KUNDE_NAME` | Name of beneficiary customer | String (50) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Max Wanne",...}"`|
+| `KUNDE_ID` | ID of the beneficiary customer| String (50) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerId` e.g. `"cbCustomer":"{"customerName":"Max Mustermann", "CustomerId":"PX9819822", ...}"`|
+| `KUNDE_TYP` | Type of the beneficiary customer (e.g. employee) | String (50) | Mandatory if not exempted in relation to § 148 AO.  Send via `cbCustomer` in JSON format by adding the key value pair `CustomerType` e.g. `"cbCustomer":"{..., "CustomerId":"PX9819822", "CustomerType":"Mitarbeiter", ...}"`|
+| `KUNDE_STRASSE` | Street and house number of the beneficiary customer | String (60) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerStreet` e.g. `"cbCustomer":"{..., "CustomerStreet":"Lindwurmstr. 98", ...}"` |
+| `KUNDE_PLZ` | Zip of the beneficiary customer | String (10) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerZip` e.g. `"cbCustomer":"{..., "CustomerZip":"80337", ...}"` |
+| `KUNDE_ORT` | City of the beneficiary customer | String (62) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCity` e.g. `"cbCustomer":"{..., "CustomerCity":"München", ...}"` |
 | `KUNDE_LAND` | Country of the beneficiary customer | ISO 3166 ALPHA-3 country code | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCountry` e.g. `"cbCustomer":"{..., "CustomerCountry":"DEU", ...}"`  |
-| `KUNDE_USTID` | VAT-ID of the beneficiary customer | String | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerVATId` e.g. `"cbCustomer":"{..., "CustomerVATId":"DE123456789", ...}"`   |
-| `BON_NOTIZ` | Additional information on the receipt header | String | Optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptNote ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptNote":"123, ich bin dabei!", ... }"` |
+| `KUNDE_USTID` | VAT-ID of the beneficiary customer | String (15) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerVATId` e.g. `"cbCustomer":"{..., "CustomerVATId":"DE123456789", ...}"`   |
+| `BON_NOTIZ` | Additional information on the receipt header | String (255) | Optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptNote ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptNote":"123, ich bin dabei!", ... }"` |
 
 ##### File: Bonkopf_USt  (transactions_vat.csv)
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
-| `BON_ID` | Action-ID | String | `cbReceiptReference` |
-| `POS_ZEILE` | Line/Position number  | String | Automatically filled by ft |
+| `BON_ID` | Action-ID | String (40)| `cbReceiptReference` |
+| `POS_ZEILE` | Line/Position number  | String (50) | Automatically filled by ft |
 | `UST_SCHLUESSEL` | ID of the VAT rate | Integer | Automatically filled by ft |
 | `BON_BRUTTO` | Gross sales | Decimal (5) | Automatically filled by ft |
 | `BON_NETTO` | Net sales | Decimal (5) | Automatically filled by ft |
@@ -481,23 +480,23 @@ Each subitem as described in the table below:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
-| `BON_ID` | Action-ID | String (max. 50 chars) | `cbReceiptReference` |
-| `ABRECHNUNGSKREIS` | Connection criterion (e.g table number, department etc.) of the assignment | String | Mandatory if available. Please end via `cbArea` in JSON format by adding the key value pair `ConnectionCriterion` e.g. `"cbArea":"{..., "ConnectionCriterion":"Tisch Nr. 12", ...}"`.|
+| `BON_ID` | Action-ID | String (50) | `cbReceiptReference` |
+| `ABRECHNUNGSKREIS` | Connection criterion (e.g table number, department etc.) of the assignment | String (50) | Mandatory if available. Please end via `cbArea` in JSON format by adding the key value pair `ConnectionCriterion` e.g. `"cbArea":"{..., "ConnectionCriterion":"Tisch Nr. 12", ...}"`.|
 
 ##### File: Bonkopf_Zahlarten (datapayment.csv)
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
-| `BON_ID` | Action-ID | String | `cbReceiptReference` |
-| `ZAHLART_TYP` | Type of payment method | String | From `ftPayItemCase` |
-| `ZAHLART_NAME` | Name of the payment method | String | Optional, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `ItemCaseName` e.g. `"ftPayItemCaseData":"{ ..., "ItemCaseName":"Sodexo", ... }"` |
-| `ZAHLWAEH_CODE` | ISO 4217 currency code | String | Only mandatory if foreign currency was used for the payment, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `CurrencyCode` e.g. `"ftPayItemCaseData":"{ ..., "CurrencyCode":"USD", ... }"`. Only ISO 4217 currency codes are allowed. |
+| `BON_ID` | Action-ID | String (50) | `cbReceiptReference` |
+| `ZAHLART_TYP` | Type of payment method | String (25) | From `ftPayItemCase` |
+| `ZAHLART_NAME` | Name of the payment method | String (60)| Optional, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `ItemCaseName` e.g. `"ftPayItemCaseData":"{ ..., "ItemCaseName":"Sodexo", ... }"` |
+| `ZAHLWAEH_CODE` | ISO 4217 currency code | String (3) | Only mandatory if foreign currency was used for the payment, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `CurrencyCode` e.g. `"ftPayItemCaseData":"{ ..., "CurrencyCode":"USD", ... }"`. Only ISO 4217 currency codes are allowed. |
 | `ZAHLWAEH_BETRAG` | Amount in foreign currency | Decimal (2) | Only mandatory if foreign currency was used for the payment, can be sent via `ftPayItemCaseData` in JSON format. To send, add the key value pair `ForeignCurrencyAmount` e.g. `"ftPayItemCaseData":"{ ..., "ForeignCurrencyAmount":23.00, ... }"`. |
 | `BASISWAEH_BETRAG` | Amount in basis currency (usually EUR) | Decimal (2) | Only mandatory if foreign currency was used for the payment, can be sent via `ftPayItemData` in JSON format. To send, add the key value pair `BaseCurrencyAmount` e.g. `"ftPayItemCaseData":"{ ..., "BaseCurrencyAmount":20.99, ... }"`|
 
@@ -505,38 +504,38 @@ Each subitem as described in the table below:
 
 If `cbPreviousReceiptReference` is filled in the receipt request, ft will automatically try to find the referenced receipt and if found, ft will add an entry to Bon_Referenzen. For a recommendation on how to connect the single requests via `cbReceiptReference` and `cbPreviousReceiptReference` see our Business Cases Examples document [here](https://fiskaltrust.de/wp-content/uploads/sites/5/2020/02/fiskaltrust-Business-Cases-in-JSON_englisch.pdf).
 
-If there are external references (from other systems or other cashpoints) to be added, then they have to be added as shown below:
+If there are external references (from other systems or other cashpoints) to be added, then they can (optionally) be added as shown below:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
-| `BON_ID` | Action-ID | String | `cbReceiptReference` |
-| `POS_ZEILE` | Line number of the referencing operation | String | Automatically filled by ft  |
+| `BON_ID` | Action-ID | String (50) | `cbReceiptReference` |
+| `POS_ZEILE` | Line number of the referencing operation | String (50) | Automatically filled by ft  |
 | `REF_TYP` | Type of reference | "ExterneRechnung" or "ExternerLieferschein" or "Transaktion" or "ExterneSonstige" | can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefType ` e.g. `"ftReceiptCaseData":"{ ..., "RefType":"Transaktion", ... }"`. The value "Transaktion" mapps to an internal reference within this DSFinV-K export, all other values map to external references.|
-| `REF_NAME` | Description for type | String | Mandatory if `RefType` is "ExterneSonstige", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefName ` e.g. `"ftReceiptCaseData":"{ ..., "RefName":"Sonstige Sonderwurst", ... }"`.|
-| `REF_DATUM` | Date of the cashpoint closing | String | mandatory if `RefType` is "Transaktion", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefMoment` e.g. `"ftReceiptCaseData":"{ ..., "RefMoment":"2020-01-03T17:00:01", ... }"`.|
-| `REF_Z_KASSE_ID` | ID of the (closing) cashpoint | String | Mandatory if `RefType` is "Transaktion", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefCashBoxIdentification ` e.g. `"ftReceiptCaseData":"{ ..., "RefCashBoxIdentification":"AHHAH1919919", ... }"`.|
+| `REF_NAME` | Description for type | String (40) | Mandatory if `RefType` is "ExterneSonstige", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefName ` e.g. `"ftReceiptCaseData":"{ ..., "RefName":"Sonstige Sonderwurst", ... }"`.|
+| `REF_DATUM` | Date of the cashpoint closing | String (30) | mandatory if `RefType` is "Transaktion", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefMoment` e.g. `"ftReceiptCaseData":"{ ..., "RefMoment":"2020-01-03T17:00:01", ... }"`.|
+| `REF_Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | Mandatory if `RefType` is "Transaktion", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefCashBoxIdentification ` e.g. `"ftReceiptCaseData":"{ ..., "RefCashBoxIdentification":"AHHAH1919919", ... }"`.|
 | `REF_Z_NR` | No. of the cashpoint closing | Integer | Mandatory if `RefType` is "Transaktion", otherwise optional. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefClosingNr` e.g. `"ftReceiptCaseData":"{ ..., "RefClosingNr":1091029, ... }"`. (tbd: if ft generates the closing nr., than how do I receive it as a caller?) |
-| `REF_BON_ID` | Action-ID | String | mandatory, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefReceiptId` e.g. `"ftReceiptCaseData":"{ ..., "RefReceiptId":"UAUUA1112", ... }"`.|
+| `REF_BON_ID` | Action-ID | String (40) | mandatory, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `RefReceiptId` e.g. `"ftReceiptCaseData":"{ ..., "RefReceiptId":"UAUUA1112", ... }"`.|
 
 ##### File: TSE_Transaktionen (transactions_tse.csv)
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
-| `BON_ID` | Action-ID | String | `cbReceiptReference` |
+| `BON_ID` | Action-ID | String (40) | `cbReceiptReference` |
 | `TSE_ID` | ID of the TSE used for the transaction | Integer | Automatically filled by ft |
 | `TSE_TANR` | Transaction number of the transaction | Integer | Automatically filled by ft|
-| `TSE_TA_START` | Log time of the StartTransaction operation | String | Automatically filled by ft |
-| `TSE_TA_ENDE` | Log time of the FinishTransaction operation | String | Automatically filled by ft |
-| `TSE_TA_VORGANGSART` | processType der FinishTransaktions operation | String | Automatically filled by ft |
-| `TSE_TA_SIGZ` | Signature counter of the FinishTransaction operation | String | Automatically filled by ft |
-| `TSE_TA_SIG` | Signature of the FinishTransaction operation | String | Automatically filled by ft |
-| `TSE_TA_FEHLER` | Where appropriate, indications of TSE errors | String | Automatically filled by ft|
+| `TSE_TA_START` | Log time of the StartTransaction operation | String (30) | Automatically filled by ft |
+| `TSE_TA_ENDE` | Log time of the FinishTransaction operation | String (30) | Automatically filled by ft |
+| `TSE_TA_VORGANGSART` | processType der FinishTransaktions operation | String (30) | Automatically filled by ft |
+| `TSE_TA_SIGZ` | Signature counter of the FinishTransaction operation | Long | Automatically filled by ft |
+| `TSE_TA_SIG` | Signature of the FinishTransaction operation | String (512) | Automatically filled by ft |
+| `TSE_TA_FEHLER` | Where appropriate, indications of TSE errors | String (200) | Automatically filled by ft|
 | `TSE_VORGANGSDATEN` | Data of the operation (optional) | String | Automatically filled by ft |
 
 #### Master data module (DE: Stammdatenmodul)
@@ -596,20 +595,20 @@ The DSFinV-K master data module is divided into the following files:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `Z_BUCHUNGSTAG` | Booking date different from closing date (`Z_ERSTELLUNG`) | ISO 8601 und RFC3339 date | Can be send via `ftReceiptCaseData` in JSON format by adding the key value pair `BookingDate`. It is mandatory, if the booking date is different from the daily closing receipt date (`Z_ERSTELLUNG`). E.g. `"ftReceiptCaseData":"{ ..., "BookingDate":"2020-01-27", ... }"` |
-| `TAXONOMIE_VERSION` | Version of the DFKA taxonomy cash register | String | Automatically filled by ft |
-| `Z_START_ID` | First BON_ID in closing | String | Automatically filled by ft |
-| `Z_ENDE_ID` | Last BON_ID in the closing | String | Automatically filled by ft |
-| `NAME` | Name of the company | String | Mandatory, `dailyClosingMasterData.CompanyName` |
-| `STRASSE` | Street | String | Mandatory,`dailyClosingMasterData.CompanyStreet` |
-| `PLZ` | Zip | String | Mandatory, `dailyClosingMasterData.CompanyZip` |
-| `ORT` | City | String | Mandatory, `dailyClosingMasterData.CompanyCity` |
+| `TAXONOMIE_VERSION` | Version of the DFKA taxonomy cash register | String (10) | Automatically filled by ft |
+| `Z_START_ID` | First BON_ID in closing | String (40) | Automatically filled by ft |
+| `Z_ENDE_ID` | Last BON_ID in the closing | String (40) | Automatically filled by ft |
+| `NAME` | Name of the company | String (60) | Mandatory, `dailyClosingMasterData.CompanyName` |
+| `STRASSE` | Street | String (60) | Mandatory,`dailyClosingMasterData.CompanyStreet` |
+| `PLZ` | Zip | String (10) | Mandatory, `dailyClosingMasterData.CompanyZip` |
+| `ORT` | City | String (62) | Mandatory, `dailyClosingMasterData.CompanyCity` |
 | `LAND` | Country | ISO 3166 ALPHA-3 country code | Mandatory, `dailyClosingMasterData.CompanyCountry` |
-| `STNR` | Tax number of the company | String | Mandatory, `dailyClosingMasterData.CompanyTaxNr` |
-| `USTID` | VAT ID | String | Mandatory, `dailyClosingMasterData.CompanyVATId` |
+| `STNR` | Tax number of the company | String (20) | Mandatory, `dailyClosingMasterData.CompanyTaxNr` |
+| `USTID` | VAT ID | String (15) | Mandatory, `dailyClosingMasterData.CompanyVATId` |
 | `Z_SE_ZAHLUNGEN` | Total of all payments | Decimal (2) | Automatically filled by ft  |
 | `Z_SE_BARZAHLUNGEN` | Total of all cash payments | Decimal (2) | Automatically filled by ft |
 
@@ -619,15 +618,15 @@ The DSFinV-K master data module is divided into the following files:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
-| `LOC_NAME` | Name of the site | String | Mandatory, `dailyClosingMasterData.LocationName` |
-| `LOC_STRASSE` | Street | String | Mandatory, `dailyClosingMasterData.LocationStreet` |
-| `LOC_PLZ` | Zip | String | Mandatory, `dailyClosingMasterData.LocationZip` |
-| `LOC_ORT` | City | String | Mandatory, `dailyClosingMasterData.LocationCity` |
+| `LOC_NAME` | Name of the site | String (60) | Mandatory, `dailyClosingMasterData.LocationName` |
+| `LOC_STRASSE` | Street | String (60) | Mandatory, `dailyClosingMasterData.LocationStreet` |
+| `LOC_PLZ` | Zip | String (10) | Mandatory, `dailyClosingMasterData.LocationZip` |
+| `LOC_ORT` | City | String (62) | Mandatory, `dailyClosingMasterData.LocationCity` |
 | `LOC_LAND` | Country | ISO 3166 ALPHA-3 county code | Mandatory, `dailyClosingMasterData.LocationCountry` |
-| `LOC_USTID` | VAT ID | String | Mandatory, `dailyClosingMasterData.LocationVATId` |
+| `LOC_USTID` | VAT ID | String (15) | Mandatory, `dailyClosingMasterData.LocationVATId` |
 
 (`dailyClosingMasterData`is described above in the chapter "Master data module")
 
@@ -635,16 +634,16 @@ The DSFinV-K master data module is divided into the following files:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
-| `KASSE_BRAND` | Brand of the cash register | String | Mandatory, `dailyClosingMasterData.CashRegisterBrand` |
-| `KASSE_MODELL` | Model designation | String | Mandatory, `dailyClosingMasterData.CashRegisterModel` |
-| `KASSE_SERIENNR` | Serial number of the cash register | String | `ftCashBoxID` ?(tbd) | 
-| `KASSE_SW_BRAND` | Brand name of the software | String | Mandatory, `dailyClosingMasterData.CashRegisterSWBrand` |
-| `KASSE_SW_VERSION` | Version of the software | String | Mandatory, `dailyClosingMasterData.CashRegisterSWVersion`  |
+| `KASSE_BRAND` | Brand of the cash register | String (50) | Mandatory, `dailyClosingMasterData.CashRegisterBrand` |
+| `KASSE_MODELL` | Model designation | String (50) | Mandatory, `dailyClosingMasterData.CashRegisterModel` |
+| `KASSE_SERIENNR` | Serial number of the cash register | String (70) | `ftCashBoxID` ?(tbd) | 
+| `KASSE_SW_BRAND` | Brand name of the software | String (50) | Mandatory, `dailyClosingMasterData.CashRegisterSWBrand` |
+| `KASSE_SW_VERSION` | Version of the software | String (50) | Mandatory, `dailyClosingMasterData.CashRegisterSWVersion`  |
 | `KASSE_BASISWAEH_CODE` | Basis currency of the cash register | ISO 4217 currency code | Mandatory, `dailyClosingMasterData.CashRegisterBaseCurrency`  |
-| `KEINE_UST_ZUORDNUNG` | VAT not determinable | String | Automatically filled by ft |
+| `KEINE_UST_ZUORDNUNG` | VAT not determinable | 0 or 1 | Automatically filled by ft |
 
 (`dailyClosingMasterData`is described above in the chapter "Master data module")
 
@@ -652,15 +651,15 @@ The DSFinV-K master data module is divided into the following files:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
-| `TERMINAL_ID` | ID of the terminal | String |Mandatory, `dailyClosingMasterData.Terminals.Id` |
-| `TERMINAL_BRAND` | Brand of the terminal | String | Mandatory, `dailyClosingMasterData.Terminals.Brand`|
-| `TERMINAL_MODELL` | Model designation | String | Mandatory, `dailyClosingMasterData.Terminals.Model` |
-| `TERMINAL_SERIENNR` | Serial number of the terminal | String | Mandatory, `dailyClosingMasterData.Terminals.SerialNr` |
-| `TERMINAL_SW_BRAND` | Brand name of the software | String | Mandatory, `dailyClosingMasterData.Terminals.SWBrand` |
-| `TERMINAL_SW_VERSION` | Version of the software | String | Mandatory, `dailyClosingMasterData.Terminals.SWVersion` |
+| `TERMINAL_ID` | ID of the terminal | String (50) |Mandatory, `dailyClosingMasterData.Terminals.Id` |
+| `TERMINAL_BRAND` | Brand of the terminal | String (50) | Mandatory, `dailyClosingMasterData.Terminals.Brand`|
+| `TERMINAL_MODELL` | Model designation | String (50) | Mandatory, `dailyClosingMasterData.Terminals.Model` |
+| `TERMINAL_SERIENNR` | Serial number of the terminal | String (70) | Mandatory, `dailyClosingMasterData.Terminals.SerialNr` |
+| `TERMINAL_SW_BRAND` | Brand name of the software | String (50) | Mandatory, `dailyClosingMasterData.Terminals.SWBrand` |
+| `TERMINAL_SW_VERSION` | Version of the software | String (50) | Mandatory, `dailyClosingMasterData.Terminals.SWVersion` |
 
 (`dailyClosingMasterData`is described above in the chapter "Master data module")
 
@@ -669,17 +668,17 @@ The DSFinV-K master data module is divided into the following files:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `AGENTUR_ID` | ID of the agency | Integer | Mandatory, `dailyClosingMasterData.Agencies.Id` | 
-| `AGENTUR_NAME` | Name of the client | String | Mandatory, `dailyClosingMasterData.Agencies.Name` |
-| `AGENTUR_STRASSE` | Street | String | Mandatory, `dailyClosingMasterData.Agencies.Street`|
-| `AGENTUR_PLZ` | Zip | String |  Mandatory, `dailyClosingMasterData.Agencies.Zip` |
-| `AGENTUR_ORT` | City | String | Mandatory, `dailyClosingMasterData.Agencies.City` |
+| `AGENTUR_NAME` | Name of the client | String (60) | Mandatory, `dailyClosingMasterData.Agencies.Name` |
+| `AGENTUR_STRASSE` | Street | String (60) | Mandatory, `dailyClosingMasterData.Agencies.Street`|
+| `AGENTUR_PLZ` | Zip | String (10) |  Mandatory, `dailyClosingMasterData.Agencies.Zip` |
+| `AGENTUR_ORT` | City | String (62) | Mandatory, `dailyClosingMasterData.Agencies.City` |
 | `AGENTUR_LAND` | ISO 3166 ALPHA-3 country code | String | Mandatory, `dailyClosingMasterData.Agencies.Country` |
-| `AGENTUR_STNR` | Tax number | String | Mandatory, `dailyClosingMasterData.Agencies.TaxNr` |
-| `AGENTUR_USTID` | VAT ID| String | Mandatory, `dailyClosingMasterData.Agencies.VATId` |
+| `AGENTUR_STNR` | Tax number | String (20) | Mandatory, `dailyClosingMasterData.Agencies.TaxNr` |
+| `AGENTUR_USTID` | VAT ID| String (15) | Mandatory, `dailyClosingMasterData.Agencies.VATId` |
 
 (`dailyClosingMasterData`is described above in the chapter "Master data module")
 
@@ -687,7 +686,7 @@ The DSFinV-K master data module is divided into the following files:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft  |
 | `UST_SCHLUESSEL` | ID of the VAT rate| Integer | Automatically filled by ft  |
@@ -698,17 +697,17 @@ The DSFinV-K master data module is divided into the following files:
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `TSE_ID` | TSE ID | Integer | Automatically filled by ft |
-| `TSE_SERIAL` |  Serial number of the TSE (Corresponds according to TR- 03153 section 7.5. to the hash value of the key contained in the certificate; octet string in hexadecimal representation) | String | Automatically filled by ft |
-| `TSE_SIG_ALGO` | The signature algorithm used by the TSE | String | Automatically filled by ft |
-| `TSE_ZEITFORMAT` | The format used by the TSE for the log-time | String | Automatically filled by ft |
-| `TSE_PD_ENCODING` | Text encoding of the process data (UTF-8 or ASCII) | String | Automatically filled by ft |
-| `TSE_PUBLIC_KEY` |  Public key - eventually extracted from the TSE certificate - in base64 encoding | String | Automatically filled by ft |
-| `TSE_ZERTIFIKAT_I` |  First 1,000 characters of the TSE certificate (in base64 encoding) | String | Automatically filled by ft |
-| `TSE_ZERTIFIKAT_II` | Possibly another 1,000 characters of the certificate (in base64 encoding) | String | Automatically filled by ft |
+| `TSE_SERIAL` |  Serial number of the TSE (Corresponds according to TR- 03153 section 7.5. to the hash value of the key contained in the certificate; octet string in hexadecimal representation) | String (68) | Automatically filled by ft |
+| `TSE_SIG_ALGO` | The signature algorithm used by the TSE | String (21) | Automatically filled by ft |
+| `TSE_ZEITFORMAT` | The format used by the TSE for the log-time | String (31) | Automatically filled by ft |
+| `TSE_PD_ENCODING` | Text encoding of the process data (UTF-8 or ASCII) | String (5) | Automatically filled by ft |
+| `TSE_PUBLIC_KEY` |  Public key - eventually extracted from the TSE certificate - in base64 encoding | String (512) | Automatically filled by ft |
+| `TSE_ZERTIFIKAT_I` |  First 1,000 characters of the TSE certificate (in base64 encoding) | String (1000) | Automatically filled by ft |
+| `TSE_ZERTIFIKAT_II` | Possibly another 1,000 characters of the certificate (in base64 encoding) | String (1000) | Automatically filled by ft |
 
 #### Cashpoint closing module (DE: Kassenabschlussmodul)
 
@@ -718,11 +717,11 @@ The three structure levels (modules) allow transactions to be separated and grou
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
-| `GV_TYP` | business action type | String | Automatically filled by ft |
-| `GV_NAME` | name of the business action type | String | Automatically filled by ft |
+| `GV_TYP` | business action type | String (30) | Automatically filled by ft |
+| `GV_NAME` | name of the business action type | String (40) | Automatically filled by ft |
 | `AGENTUR_ID` | Agency ID | Integer | Automatically filled by ft |
 | `UST_SCHLUESSEL` | ID of the VAT rate | Integer | Automatically filled by ft |
 | `Z_UMS_BRUTTO` | Gross sales | Decimal (5) | Automatically filled by ft |
@@ -733,18 +732,18 @@ The three structure levels (modules) allow transactions to be separated and grou
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
-| `ZAHLART_TYP` | Type of payment method | String | Automatically filled by ft |
-| `ZAHLART_NAME` | Name of the payment method | String | Automatically filled by ft |
+| `ZAHLART_TYP` | Type of payment method | String (25) | Automatically filled by ft |
+| `ZAHLART_NAME` | Name of the payment method | String (60) | Automatically filled by ft |
 | `Z_ZAHLART_BETRAG` | business action type | Decimal (2) | Automatically filled by ft |
 
 ##### File: Z_Waehrungen (cash_per_currency.csv)
 
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
-| `Z_KASSE_ID` | ID of the (closing) cashpoint | String | `ftCashBoxIdentification` |
+| `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `ZAHLART_WAEH` | Currency | ISO 4217 currency code | Automatically filled by ft |

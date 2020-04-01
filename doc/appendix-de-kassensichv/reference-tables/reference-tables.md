@@ -59,7 +59,7 @@ This table expands on the values provided in table [ftReceiptCaseFlag in General
 |---|---|---|
 | 0x0000000000010000 | out of service | 1.3- |
 | 0x0000000000020000  | training receipt<br /> DSFinV-K: overrides BON_TYP=AVTraining  | 1.3- |
-| 0x0000000000040000 | reverse/voided receipt<br /> DSFinV-K: overrides BON_TYP=AVBelegstorno  | 1.3- |
+| 0x0000000000040000 | reverse/voided receipt<br /> DSFinV-K: sets the BON_STORNO flag to "1"  | 1.3- |
 | 0x0000000000080000  | paper/handwritten receipt | 1.3- |
 | 0x0000000000100000  | small business, not taxable sales. TBD: law reference | 1.3- |
 | 0x0000000000200000  | receiver is a company | 1.3- |

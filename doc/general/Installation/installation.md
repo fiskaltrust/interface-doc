@@ -1,6 +1,6 @@
 ## Installation
 
-### fiskaltrust.Service
+### fiskaltrust.Middleware
 
 #### Windows, Linux, Mac
 

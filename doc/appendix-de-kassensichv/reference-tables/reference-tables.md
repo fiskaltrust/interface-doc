@@ -8,7 +8,7 @@ The table below describes supported statuses for the ftState field in accordance
 
 The country-specific code is made of the country’s code value following the ISO-3166-1-ALPHA-2 standard, converted from ASCII into hex. For Germany (DE) this is `0x4445`, which results in `0x4445000000000000` as the value for the "ready" status.
 
-| **Value** | **Description** | **Service-Version** |
+| **Value** | **Description** | **Middleware-Version** |
 |---|---|---|
 
 ### Type of Receipt: ftReceiptCase
@@ -17,7 +17,7 @@ The ftReceiptCase indicates the receipt type and defines how it should be proces
 
 For Germany (DE) the country code is `0x4445`. Thus, the value of an unknown ftReceiptCase in Germany is `0x4445000000000000`.
 
-| **Value** | **Description** | **BON_TYP (DSFinV-K)** <br> **processType (TSE)** | **Service- Version** |
+| **Value** | **Description** | **BON_TYP (DSFinV-K)** <br> **processType (TSE)** | **Middleware- Version** |
 |---|---|---|---|
 | `0x4445000000000000` | unknown type for country-code "DE"<br />This is handled like a pos-receipt (`0x4445000000000001`). | Beleg <br> Kassenbeleg-V1 | 1.3- |
 | `0x4445000000000001` | pos-receipt<br />main kind of receipt processed on a pos-system. creates a turnover and/or change in the amount of cash in the till or similar operations. <br />using the ChargeItems and PayItems to hand over details for processing. independent from the used flow (explicit/implicit), the ChargeItems and PayItems should contain the full final state of the receipt. the duration of the action is calculated using the minimum and maximum of datetime over ReceiptRequest/ChargeItems/PayItems.<br /> DSFinV-K: BON_TYP=Beleg, can be overwritten by ftReceiptCaseFlag  | Beleg <br> Kassenbeleg-V1 | 1.3- |
@@ -55,7 +55,7 @@ For Germany (DE) the country code is `0x4445`. Thus, the value of an unknown ftR
 
 This table expands on the values provided in table [ftReceiptCaseFlag in General Part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag) with values applicable to the German market.
 
-| Value | Description | Service-Version |
+| Value | Description | Middleware-Version |
 |---|---|---|
 | 0x0000000000010000 | out of service | 1.3- |
 | 0x0000000000020000  | training receipt<br /> DSFinV-K: overrides BON_TYP=AVTraining  | 1.3- |
@@ -72,7 +72,7 @@ This table expands on the values provided in table [ftReceiptCaseFlag in General
 
 This table expands on the values provided in Table [ftChargeItemCase in General Part](../../general/reference-tables/reference-tables.md#type-of-service-ftchargeitemcase) with values applicable to the German 
 
-| **Value** | **Description** | **UST_SCHLUESSEL (DSFinV-K)** | **GV_TYP (DSFinV-K)** | **Service-Version** |
+| **Value** | **Description** | **UST_SCHLUESSEL (DSFinV-K)** | **GV_TYP (DSFinV-K)** | **Middleware-Version** |
 |---|---|---|---|---|
 | `0x4445000000000000` | unknown type of service for DE | 7 | Umsatz | 1.3- |
 | `0x4445000000000001` | undefined type of service for DE normal. 1.1.2019: 19,00% (DE: Regelsteuersatz) | 1 | Umsatz  | 1.3- |
@@ -217,7 +217,7 @@ This table will be removed in the future / replaced by a reference
 
 This table expands on the values provided in table [ftPayItemCase in General Part](../../general/reference-tables/reference-tables.md#type-of-payment-ftpayitemcase) with values applicable to the German market.
 
-| **Value**  | **Description** | **ZAHLART_TYP (DSFinV-K)** | **Service-Version** |
+| **Value**  | **Description** | **ZAHLART_TYP (DSFinV-K)** | **Middleware-Version** |
 |---|---|---|---|
 | `0x4445000000000000` | unknown payment type for DE<br />This is handled like a cash payment in national currency. | Bar | 1.3- |
 | `0x4445000000000001` | cash payment in national currency | Bar | 1.3- |
@@ -254,7 +254,7 @@ The ftSignatureType indicates type and origin of the signature. The data type is
 
 For definitions regarding national laws, please refer to the appropriate appendix<span id="t-type-of-signature-ftsignaturetype-127">.</span>
 
-| **Value**            | **Description**          | **Service-Version** |
+| **Value**            | **Description**          | **Middleware-Version** |
 |----------------------|--------------------------|---------------------|
 | `0x4445000000000001` | Signature according to kasssichv (qr-code content)                  | 1.3                 |
 | `0x4445000000000002` | Archiving required  | 1.3                |

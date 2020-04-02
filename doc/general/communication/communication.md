@@ -1,24 +1,24 @@
 ## Communication
 
-This chapter describes the ways to communicate with the fiskaltrust.Service via different network communication protocols. A fiskaltrust.Service exposes a WCF (Windows Communication Foundation) service to let POS-Systems interact with fiskaltrust.SecurityMechanism using fiskaltrust.Interface. Fiskaltrust also provides helpers to expand the communication interface for REST and serial/TCP protocols as well. This helpers can be activated and configured with the fiskaltrust.Portal.
+This chapter describes the ways to communicate with the fiskaltrust.Middleware via different network communication protocols. A fiskaltrust.Middleware exposes a WCF (Windows Communication Foundation) service to let POS-Systems interact with fiskaltrust.SecurityMechanism using fiskaltrust.Interface. Fiskaltrust also provides helpers to expand the communication interface for REST and serial/TCP protocols as well. This helpers can be activated and configured with the fiskaltrust.Portal.
 
 ### WCF Web Service
 
-The Windows Communication Foundation (WCF) is used to access the fiskaltrust.Service via network. This technology is not only suitable for Windows platforms, as the name might imply, but can be used with all operating systems and applications through standards such as SOAP and REST. Further information on this subject can be found on:
+The Windows Communication Foundation (WCF) is used to access the fiskaltrust.Middleware via network. This technology is not only suitable for Windows platforms, as the name might imply, but can be used with all operating systems and applications through standards such as SOAP and REST. Further information on this subject can be found on:
 
 <https://docs.microsoft.com/en-us/dotnet/framework/wcf/bindings>.
 
-The WCF service will be hosted under the URL, which can be set in the fiskaltrust.Portal on the configuration page of fiskaltrust.Service.
+The WCF service will be hosted under the URL, which can be set in the fiskaltrust.Portal on the configuration page of fiskaltrust.Middleware.
 
 ![](./images/01-configuration-page.png)
 
-<span id="_Toc527986808" class="anchor"></span>*Illustration 7. Configuration page of a fiskaltrust.Service*
+<span id="_Toc527986808" class="anchor"></span>*Illustration 7. Configuration page of a fiskaltrust.Middleware*
 
 Supported protocols are: http, https, net.tcp, net.pipe. For configuring a custom message size and a custom time out, it is possible to specify the parameter "messagesize" (in bytes) and the parameter "timeout" (in seconds) on the configuration page.
 
-Fiskaltrust provides a specific helper (balancer) to manage more than one fiskaltrust.Service in order to create a load balancing of the calls. The reason for using this helper is usually a flow of calls that could overload a single fiskaltrust.Service. The configuration page requires a specific parameter for choosing the way the balancing will be managed (least active, round robin).
+Fiskaltrust provides a specific helper (balancer) to manage more than one fiskaltrust.Middleware in order to create a load balancing of the calls. The reason for using this helper is usually a flow of calls that could overload a single fiskaltrust.Middleware. The configuration page requires a specific parameter for choosing the way the balancing will be managed (least active, round robin).
 
-The journal stream bill is composed by a concatenation of streams of all fiskaltrust.Services managed by the Balancer helper, separated by a '\\0' (zero) character.
+The journal stream bill is composed by a concatenation of streams of all instances of the fiskaltrust.Middleware managed by the Balancer helper, separated by a '\\0' (zero) character.
 
 Usually, a proxy class should be created and used to execute the function calls.
 
@@ -41,7 +41,7 @@ var proxy = factory.CreateChannel();
 
 Simple Object Access Protocol (SOAP) is a network protocol which can exchange data across systems and can execute RPC calls.
 
-With [`<basicHttpBinding>`](https://msdn.microsoft.com/en-us/library/system.servicemodel.basichttpbinding\(v=vs.110\).aspx), [`<netNamedPipeBinding>`](https://msdn.microsoft.com/en-us/library/system.servicemodel.netnamedpipebinding\(v=vs.110\).aspx) and [`<netTcpBinding>`](https://msdn.microsoft.com/en-us/library/system.servicemodel.nettcpbinding\(v=vs.110\).aspx), fiskaltrust.Service makes its functionality available on the local network.
+With [`<basicHttpBinding>`](https://msdn.microsoft.com/en-us/library/system.servicemodel.basichttpbinding\(v=vs.110\).aspx), [`<netNamedPipeBinding>`](https://msdn.microsoft.com/en-us/library/system.servicemodel.netnamedpipebinding\(v=vs.110\).aspx) and [`<netTcpBinding>`](https://msdn.microsoft.com/en-us/library/system.servicemodel.nettcpbinding\(v=vs.110\).aspx), fiskaltrust.Middleware makes its functionality available on the local network.
 
 **C# call for signing with SOAP:**
 ```cs
@@ -58,7 +58,7 @@ fiskaltrust.ifPOS.v0.ReceiptResponse resp = proxy.Sign(req);
 
 fiskaltrust provides a helper (balancer) to facilitate the workload management of multiple fiskaltrust.Queues by balancing the distribution of requests. It is used to prevent overloading of a single fiskaltrust.Queue. The configuration page allows the selection of a specific parameter indicating the way the balancing will be managed (least active, round robin).
 
-The journal stream bill be composed by a concatenation of the streams of all the fiskaltrust.Services managed by the Balancer helper. The concatenated streams must be separated by a ‘\\0’ (zero) character.
+The journal stream bill be composed by a concatenation of the streams of all instances of the fiskaltrust.Middleware managed by the Balancer helper. The concatenated streams must be separated by a ‘\\0’ (zero) character.
 
 ### REST Web Service
 
@@ -103,13 +103,13 @@ function success(data, textStatus, jqXHR) {
 
 ### Serial-stream or TCP-stream protocol
 
-The serial interface is still very common - especially for type-2 cash registers and non PC-based devices. In order to address these devices with fiskaltrust.Service, there is a particular communication protocol via stream which contains functions and uses data encoded into JSON.
+The serial interface is still very common - especially for type-2 cash registers and non PC-based devices. In order to address these devices with fiskaltrust.Middleware, there is a particular communication protocol via stream which contains functions and uses data encoded into JSON.
 
 In case when a cash register or an input station are not able to address SOAP or REST services, this stream-based protocol can also be addressed via a TCP stream.
 
 As a special extension, device-specifically, the data stream can also be sent directly to the printer and analysed. A new receipt with signature can be generated on the basis of this data. During this process, the generated receipt data are also stored in the ReceiptJournal.
 
-The Stream helper implements a serial communication using TCP or serial ports. On this helper’s configuration page the main parameter is the "connection" which provides the information to reach fiskaltrust.Service .
+The Stream helper implements a serial communication using TCP or serial ports. On this helper’s configuration page the main parameter is the "connection" which provides the information to reach fiskaltrust.Middleware .
 
 The data must have the following sequence of bytes to be sent:
 

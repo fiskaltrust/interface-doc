@@ -4,7 +4,7 @@ This chapter describes the cash register integration in accordance with the Aust
 
 ### Receipt Creation Process
 
-This chapter describes the general process of creating receipts with fiskaltrust.Service and its workflow, in accordance with the Austrian law.
+This chapter describes the general process of creating receipts with fiskaltrust.Middleware and its workflow, in accordance with the Austrian law.
 
 #### The fiskaltrust.SecurityMechanism
 
@@ -24,7 +24,7 @@ The regular workflow of the fiskaltrust.SecurityMechanism in the Austrian market
 
 #### Workflow - regular operation
 
-The following diagram illustrates the regular creation of a receipt with fiskaltrust.Service in accordance with the Austrian law.
+The following diagram illustrates the regular creation of a receipt with fiskaltrust.Middleware in accordance with the Austrian law.
 
 ![](./images/13.png)
 
@@ -32,7 +32,7 @@ The following diagram illustrates the regular creation of a receipt with fiskalt
 
 #### Workflow - special receipts
 
-The following diagram illustrates the creation of a special receipt with fiskaltrust.Service in accordance with the Austrian law.
+The following diagram illustrates the creation of a special receipt with fiskaltrust.Middleware in accordance with the Austrian law.
 
 ![](./images/14.png)
 
@@ -64,7 +64,7 @@ The following diagram illustrates the workflow of a failure of the fiskaltrust.S
 
 ![](./images/19.png)
 
-<span id="_Toc527986819" class="anchor"></span>*Illustration 19. Workflow - failure of the fiskaltrust.Service (recover after more than 48 hours) (AT - RKSVO)*
+<span id="_Toc527986819" class="anchor"></span>*Illustration 19. Workflow - failure of the fiskaltrust.Middleware (recover after more than 48 hours) (AT - RKSVO)*
 
 ### Receipt for special functions
 

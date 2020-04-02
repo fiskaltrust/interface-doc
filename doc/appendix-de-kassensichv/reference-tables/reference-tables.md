@@ -297,7 +297,7 @@ Each module consists of several files. In the following we will go into the indi
 
 #### Mandatory data
 
-This chapter lists the data fields that are mandatory and can not be filled by ft. Therefore you need to provide them. For details on how to provide them, please see the chapters below. They offer information for all DSFinV-K fields. 
+This chapter lists the data fields that are mandatory and must be provided by the cash register. For details on how to provide them, please see the chapters below. They offer information for all DSFinV-K fields. 
 
 | **Fieldname**            | **Module**          | **Description**          |
 |----------------------|--------------------------|---------------------|
@@ -357,9 +357,9 @@ In addition to these two files there are further detail files which are listed i
 | `POS_TERMINAL_ID` | Terminal-ID of this line (position)| String (50) | `cbTerminalID` |
 | `GV_TYP` | Type of business action  | String (30) | Deducted from `ftChargeItemCase` |
 | `GV_NAME` | Addition to the business action type | String (40) | Optional, can be sent via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `ItemCaseName` e.g. `"ftChargeItemCaseData":"{ ..., "ItemCaseName":"Rabatt - Black Friday", ... }"` |
-| `INHAUS` | Inhouse consumption | 0 or 1 | Optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `Inhouse` e.g. `"ftReceiptCaseData":"{ ..., "Inhouse":1, ... }"`, defaults to 0 if not sent, any other value than 0 is interpreted as 1.|
+| `INHAUS` | Inhouse consumption | 0 or 1 | Optional, can be sent via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `Inhouse` e.g. `"ftChargeItemCaseData":"{ ..., "Inhouse":1, ... }"`, defaults to 0 if not sent, any other value than 0 is interpreted as 1.|
 | `P_STORNO` | Position cancellation identification | String | Not used|
-| `AGENTUR_ID` | ID of the Agency | Integer | Mandatory if agency business (DE: Agenturgeschäft). Please sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `AgencyId` e.g. `"ftReceiptCaseData":"{ ..., "AgencyId":192, ... }"` |
+| `AGENTUR_ID` | ID of the Agency | Integer | Mandatory if agency business (DE: Agenturgeschäft). Please sent via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `AgencyId` e.g. `"ftChargeItemCaseData":"{ ..., "AgencyId":192, ... }"` |
 | `ART_NR` | Article number | String (50) | `ftChargeItem.ProductNumber` |
 | `GTIN` | Global Trade Item Number | String (50) | Mandatory if it is an article, can be sent via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `GTIN` e.g. `"ftChargeItemCaseData":"{ ..., "GTIN":"9181981928298", ... }"` |
 | `WARENGR_ID` | Product group ID | String (40) | Mandatory, please send via `ftChargeItem.ProductGroup` in JSON format by adding the key value pair `ProductGroupId` e.g. `"ProductGroup":"{ ProductGroupId":"981981AA", "ProductGroupName":"Fleischwaren" }"`|
@@ -422,7 +422,7 @@ Each subitem as described in the table below:
 | `POS_ZEILE` | Line/Position number  | String (50) | Automatically filled by ft |
 | `ZI_ART_NR` | Article number  | String (50) | To send, add the key value pair `ProductNumber` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", ... }, ... ]` |
 | `ZI_GTIN` | GTIN | String | To send, add the key value pair `GTIN` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", "GTIN":"4231234266622", ... }, ... ]` |
-| `ZI_NAME` | Article name | String (60) | To send, add the key value pair `Description` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", "GTIN":"4231234266622", ... }, ... ]` |
+| `ZI_NAME` | Article name | String (60) | To send, add the key value pair `Description` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", "Description":"4231234266622", ... }, ... ]` |
 | `ZI_WARENGR_ID` | Product group ID | String (40) |  To send, add the key value pair `ProductGroup` within the subitem. It should be sent as a JSON composed of the key value pairs `ProductGroupId` and `ProductGroupName` e.g. `"SubItems":"[{ ..., "ProductGroup":"{ "ProductGroupId":"981981AA", "ProductGroupName":"Fleischwaren" }", ... }, ... ]` |
 | `ZI_WARENGR` | Name of the product group | String (50) | Similar to `ZI_WARENGR_ID`, use `SubItem.ProductGroup.ProductGroupName` |
 | `ZI_MENGE` | Quantity | Decimal (3) | To send, add the key value pair `Quantity` within the subitem. e.g. `"SubItems":"[{..., "Quantity":2.543, ... }, ... ]` |

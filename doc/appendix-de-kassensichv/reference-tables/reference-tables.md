@@ -713,7 +713,11 @@ The DSFinV-K master data module is divided into the following files:
 
 #### Cashpoint closing module (DE: Kassenabschlussmodul)
 
-The three structure levels (modules) allow transactions to be separated and grouped, so that they can be automatically posted or transferred to the bookkeeping. The cash register closing therefore has an accounting function, meaning that the data of the respective closing has to be stored digitally within this module. The storage takes place in three files:
+The three structure levels (modules) allow transactions to be separated and grouped, so that they can be automatically posted or transferred to the bookkeeping. The cash register closing therefore has an accounting function, meaning that the data of the respective closing has to be exported digitally within this module. 
+
+The mandatory audit proof storage can be fulfilled with the fiskaltrust [add-on-products](https://fiskaltrust.de/produkte) (e.g. POS Archiv or AKO - Audicon Kassenarchiv Online).
+
+The export takes place into following three files:
 
 ##### File: Z_Zahlart Z_GV_TYP (businesscases.csv)
 

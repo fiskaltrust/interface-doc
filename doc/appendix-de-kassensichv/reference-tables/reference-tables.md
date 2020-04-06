@@ -348,7 +348,7 @@ In addition to these two files there are further detail files which are listed i
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically created and filled by ft |
 | `BON_ID` | Action-ID | String (40) | `cbReceiptReference` |
 | `POS_ZEILE` | Line/Position number  | String (50) | `ftChargeItem.Position` if available, otherwise automatically filled by ft |
@@ -374,7 +374,7 @@ In addition to these two files there are further detail files which are listed i
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `BON_ID` | Action-ID | String (40) | `cbReceiptReference` |
 | `POS_ZEILE` | Line/Position number  | String (50) | Automatically filled by ft |
@@ -416,7 +416,7 @@ Each subitem as described in the table below:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `BON_ID` | Action-ID | String (40) | `cbReceiptReference` |
 | `POS_ZEILE` | Line/Position number  | String (50) | Automatically filled by ft |
@@ -439,7 +439,7 @@ Each subitem as described in the table below:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically created and filled by ft |
 | `BON_ID` | Action-ID | String (40) | `cbReceiptReference` |
 | `BON_NR` | Receipt number | Long | `ftReceiptIdentification` (tbd: ftReceiptIdentification is a string, but number/long is needed) |
@@ -447,8 +447,8 @@ Each subitem as described in the table below:
 | `BON_NAME` | Additional description related to the `BON_TYP` | String (60) | Mandatory if `BON_TYPE` is "AVSonstige", otherwise optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptName ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptName":"Sonstige Sonderwurst", ... }"` |
 | `TERMINAL_ID` | Mandatory, ID of the terminal that was used to record this receipt | String (50) | `cbTerminalID` |
 | `BON_STORNO` | Cancellation indicator | String | Mandatory if your receipt is a reverse receipt that voids another, previous receipt. In this case mark your receipt with the `ftReceiptCaseFlag` `0x0000000000040000` and reference the receipt to be voided via `cbPreviousReceiptReference`. Ft will then set the `BON_STORNO` flag in the DSFinV-K export and will also add a corresponding reference in the file "**Bon_Referenzen (references.csv)**" (see below). |
-| `BON_START` | Time of the action start | ISO 8601 and RFC3339 date | The action start can be within this cashpoint or outside of this cashpoint. If outside (e.g. by another system or another cashpoint) than it has to be provided in via `ftReceiptCaseData` in JSON format by adding the key value pair `ActionStartMoment`. E.g. `"ftReceiptCaseData":"{ ..., "ActionStartMoment":"2020-09-27T17:00:01", ... }"`. If not provided, ft tries to find the action start by following the `cbPreviousReceiptReference` path into the past until no more previous receipt references exist. ft will than fill this field with the value from `cbReceiptMoment` of the oldest receipt found in that chain. |
-| `BON_ENDE` | Time of the action end | String | `cbReceiptMoment` |
+| `BON_START` | Time of the action start | ISO 8601 and RFC3339 date | The action start can be within this cashpoint or outside of this cashpoint. If outside (e.g. by another system or another cashpoint) than it has to be provided in via `ftReceiptCaseData` in JSON format by adding the key value pair `ActionStartMoment`. E.g. `"ftReceiptCaseData":"{ ..., "ActionStartMoment":"2020-09-27T17:00:01", ... }"`. If not provided, ft tries to find the action start by following the `cbPreviousReceiptReference` path into the past until no more previous receipt references exist. ft will than fill this field with the value from `ftReceiptMoment` of the oldest receipt found in that chain. |
+| `BON_ENDE` | Time of the action end | String | `ftReceiptMoment` |
 | `BEDIENER_ID` | User-ID | String (50) | Mandatory, send via `cbUser` in JSON format by adding the key value pair `UserId` e.g. `"cbUser":"{ "UserId":"19292", "UserName":"Peter Lux"}"`|
 | `BEDIENER_NAME` | User name | String (50) | Mandatory, send via `cbUser` in JSON format by adding the key value pair `UserName` e.g. `"cbUser":"{ "UserId":"19292", "UserName":"Peter Lux"}"`|
 | `UMS_BRUTTO` | Gross total turnover | Decimal (2) | Automatically filled by ft |
@@ -467,7 +467,7 @@ Each subitem as described in the table below:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `BON_ID` | Action-ID | String (40)| `cbReceiptReference` |
 | `POS_ZEILE` | Line/Position number  | String (50) | Automatically filled by ft |
@@ -481,7 +481,7 @@ Each subitem as described in the table below:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `BON_ID` | Action-ID | String (50) | `cbReceiptReference` |
 | `ABRECHNUNGSKREIS` | Connection criterion (e.g table number, department etc.) of the assignment | String (50) | Mandatory if available. Please end via `cbArea` in JSON format by adding the key value pair `ConnectionCriterion` e.g. `"cbArea":"{..., "ConnectionCriterion":"Tisch Nr. 12", ...}"`.|
@@ -491,7 +491,7 @@ Each subitem as described in the table below:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `BON_ID` | Action-ID | String (50) | `cbReceiptReference` |
 | `ZAHLART_TYP` | Type of payment method | String (25) | From `ftPayItemCase` |
@@ -511,7 +511,7 @@ If you want (optional) to add other, additional references (from other systems o
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `BON_ID` | Action-ID | String (50) | `cbReceiptReference` |
 | `POS_ZEILE` | Line number of the referencing operation | String (50) | Automatically filled by ft  |
@@ -527,7 +527,7 @@ If you want (optional) to add other, additional references (from other systems o
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `BON_ID` | Action-ID | String (40) | `cbReceiptReference` |
 | `TSE_ID` | ID of the TSE used for the transaction | Integer | Automatically filled by ft |
@@ -598,7 +598,7 @@ The DSFinV-K master data module is divided into the following files:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `Z_BUCHUNGSTAG` | Booking date different from closing date (`Z_ERSTELLUNG`) | ISO 8601 und RFC3339 date | Can be send via `ftReceiptCaseData` in JSON format by adding the key value pair `BookingDate`. It is mandatory, if the booking date is different from the daily closing receipt date (`Z_ERSTELLUNG`). E.g. `"ftReceiptCaseData":"{ ..., "BookingDate":"2020-01-27", ... }"` |
 | `TAXONOMIE_VERSION` | Version of the DFKA taxonomy cash register | String (10) | Automatically filled by ft |
@@ -621,7 +621,7 @@ The DSFinV-K master data module is divided into the following files:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `LOC_NAME` | Name of the site | String (60) | Mandatory, `dailyClosingMasterData.LocationName` |
 | `LOC_STRASSE` | Street | String (60) | Mandatory, `dailyClosingMasterData.LocationStreet` |
@@ -637,7 +637,7 @@ The DSFinV-K master data module is divided into the following files:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `KASSE_BRAND` | Brand of the cash register | String (50) | Mandatory, `dailyClosingMasterData.CashRegisterBrand` |
 | `KASSE_MODELL` | Model designation | String (50) | Mandatory, `dailyClosingMasterData.CashRegisterModel` |
@@ -654,7 +654,7 @@ The DSFinV-K master data module is divided into the following files:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | automatically filled by ft |
 | `TERMINAL_ID` | ID of the terminal | String (50) |Mandatory, `dailyClosingMasterData.Terminals.Id` |
 | `TERMINAL_BRAND` | Brand of the terminal | String (50) | Mandatory, `dailyClosingMasterData.Terminals.Brand`|
@@ -671,7 +671,7 @@ The DSFinV-K master data module is divided into the following files:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `AGENTUR_ID` | ID of the agency | Integer | Mandatory, `dailyClosingMasterData.Agencies.Id` | 
 | `AGENTUR_NAME` | Name of the client | String (60) | Mandatory, `dailyClosingMasterData.Agencies.Name` |
@@ -689,7 +689,7 @@ The DSFinV-K master data module is divided into the following files:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft  |
 | `UST_SCHLUESSEL` | ID of the VAT rate| Integer | Automatically filled by ft  |
 | `UST_SATZ` | Percentage | Decimal (2) | Automatically filled by ft  |
@@ -700,7 +700,7 @@ The DSFinV-K master data module is divided into the following files:
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `TSE_ID` | TSE ID | Integer | Automatically filled by ft |
 | `TSE_SERIAL` |  Serial number of the TSE (Corresponds according to TR- 03153 section 7.5. to the hash value of the key contained in the certificate; octet string in hexadecimal representation) | String (68) | Automatically filled by ft |
@@ -720,7 +720,7 @@ The three structure levels (modules) allow transactions to be separated and grou
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `GV_TYP` | business action type | String (30) | Automatically filled by ft |
 | `GV_NAME` | name of the business action type | String (40) | Automatically filled by ft |
@@ -735,7 +735,7 @@ The three structure levels (modules) allow transactions to be separated and grou
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | from `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `ZAHLART_TYP` | Type of payment method | String (25) | Automatically filled by ft |
 | `ZAHLART_NAME` | Name of the payment method | String (60) | Automatically filled by ft |
@@ -746,7 +746,7 @@ The three structure levels (modules) allow transactions to be separated and grou
 | **Fieldname**            | **Description**          | **Format**          | **ft.input** |
 |----------------------|--------------------------|---------------------|---------------------|
 | `Z_KASSE_ID` | ID of the (closing) cashpoint | String (50) | `ftCashBoxIdentification` |
-| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `cbReceiptMoment` of the daily closing receipt |
+| `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | From `ftReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically filled by ft |
 | `ZAHLART_WAEH` | Currency | ISO 4217 currency code | Automatically filled by ft |
 | `ZAHLART_BETRAG_WAEH` | Amount | Decimal (2) | Automatically filled by ft |

@@ -283,7 +283,7 @@ For definitions regarding national laws, please refer to the appropriate appendi
 
 You can download the current version of the DSFinV-K specification [here](https://www.bzst.de/DE/Unternehmen/Aussenpruefungen/DigitaleSchnittstelleFinV/digitaleschnittstellefinv_node.html).
 
-Based on the the current version of the DSFinV-K specification, this chapter explains how the DSFinV-K export is structured, shows how the previously described input values are mapped by fisklatrust to the files and data of the DSFinV-K export and defines how additional, for the DSFInV-K required, values can be sent to the fiskaltrust middleware. Furthermore, it describes how the marking of actions (DE: Vorgänge) can be made by connecting business actions (DE: Geschäftsvorfälle) and other procedures, occurrences and events (DE: Andere Vorgänge). 
+Based on the the current version of the DSFinV-K specification, this chapter explains how the DSFinV-K export is structured, shows how the previously described input values are mapped by fisklatrust to the files and data of the DSFinV-K export and defines how additional, for the DSFInV-K required, values can be sent to the ft.Middleware. Furthermore, it describes how the marking of actions (DE: Vorgänge) can be made by connecting business actions (DE: Geschäftsvorfälle) and other procedures, occurrences and events (DE: Andere Vorgänge). 
 
 #### Structure
 
@@ -297,7 +297,7 @@ Each module consists of several files. In the following we will go into the indi
 
 #### Mandatory data
 
-This chapter lists the data fields that are mandatory and must be provided by the cash register. For details on how to provide them, please see the chapters below. They offer information for all DSFinV-K fields. 
+This chapter lists the data fields that are mandatory and must be provided by the cashpoint. For details on how to provide them, please see the chapters below. They offer information for all DSFinV-K fields. 
 
 | **Fieldname**            | **Module**          | **Description**          |
 |----------------------|--------------------------|---------------------|
@@ -389,7 +389,7 @@ In addition to these two files there are further detail files which are listed i
 
 Not supported.
 
-According to the DSFinV-K specification, in the data field STK_BR in the Bonpos file, either the reduced amount is displayed immediately (and the origin of the amount in the file Bonpos_Preisfindung) or the reduction in charges is displayed as a separate item line with negative amounts (with correct tax assignment; see file Bonpos_USt). The GV_TYP "Rabatt" is available for the separate line. For the reduction in charges, the current version of the fiskaltrust middleware expects a separate negative `ftChargeItem` with the corresponding `ftChargeItemCase` (e.g. `0x4445000000000031`) which mapps to the GV_TYP "Rabatt". ft does currently not support the file Bonpos_Preisfindung.
+According to the DSFinV-K specification, in the data field STK_BR in the Bonpos file, either the reduced amount is displayed immediately (and the origin of the amount in the file Bonpos_Preisfindung) or the reduction in charges is displayed as a separate item line with negative amounts (with correct tax assignment; see file Bonpos_USt). The GV_TYP "Rabatt" is available for the separate line. For the reduction in charges, the current version of the ft.Middleware expects a separate negative `ftChargeItem` with the corresponding `ftChargeItemCase` (e.g. `0x4445000000000031`) which mapps to the GV_TYP "Rabatt". ft does currently not support the file Bonpos_Preisfindung.
 
 
 ##### File: Bonpos_Zusatzinfo (subitems.csv)
@@ -398,7 +398,7 @@ This table allows to detail the composition of sold combinations of goods (DE: W
 
 This does not affect the basis of assessment for VAT. In the case of goods combinations with different tax rates, however, information is stored here which serves to control the distribution of the VAT assessment basis (example: Inhouse breakfast menu consisting of a coffee, a drink and buffet meal). In addition, orders deviating from the standard order can be taken into account to record the actual consumption of goods (example: gyros plate with chips instead of rice).
 
-You can send those subitems to the ft middleware via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `SubItems` as an array of subitems: 
+You can send those subitems to the ft.Middleware via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `SubItems` as an array of subitems: 
 
 ```json
 "ftChargeItemCaseData" : "{ 
@@ -543,7 +543,7 @@ If you want (optional) to add other, additional references (from other systems o
 
 #### Master data module (DE: Stammdatenmodul)
 
-To avoid redundancies, the master data is only saved once for each cash register closing. If changes are made to the master data listed below, a closing must be created automatically beforehand.
+To avoid redundancies, the master data is only saved once for each cashpoint closing. If changes are made to the master data listed below, a closing must be created automatically beforehand.
 
 The **master data** for the day that is closed by the daily closing receipt (or monthly, yaearly because they include the daily closing) **must be included into the closing receipt** (daily/monthly/yearly). To include the data please send the content of `ftReceiptCaseData` in JSON format and add the key value pair `dailyClosingMasterData`. The value should also be JSON and formatted as follows:
 ```json
@@ -602,7 +602,7 @@ The DSFinV-K master data module is divided into the following files:
 | `Z_ERSTELLUNG` | Date of the cashpoint closing | ISO 8601 und RFC3339 date | Automatically filled by ft from `cbReceiptMoment` of the daily closing receipt |
 | `Z_NR` | Nr. of the cashpoint closing | Integer | Automatically created and filled by ft |
 | `Z_BUCHUNGSTAG` | Booking date different from closing date (`Z_ERSTELLUNG`) | ISO 8601 und RFC3339 date | Can be send via `ftReceiptCaseData` in JSON format by adding the key value pair `BookingDate`. It is mandatory, if the booking date is different from the daily closing receipt date (`Z_ERSTELLUNG`). E.g. `"ftReceiptCaseData":"{ ..., "BookingDate":"2020-01-27", ... }"` |
-| `TAXONOMIE_VERSION` | Version of the DFKA taxonomy cash register | String (10) | Automatically filled by ft |
+| `TAXONOMIE_VERSION` | Version of the DFKA taxonomy cashpoint-data according to the title: [DFKA Taxonomie](https://dfka.net/taxonomie/) | String (10) | Automatically filled by ft |
 | `Z_START_ID` | First BON_ID in closing | String (40) | Automatically filled by ft |
 | `Z_ENDE_ID` | Last BON_ID in the closing | String (40) | Automatically filled by ft |
 | `NAME` | Name of the company | String (60) | Mandatory, `dailyClosingMasterData.CompanyName` |

@@ -31,6 +31,7 @@ steps:
 - task: NodeTool@0
   inputs:
     checkLatest: true
+    versionSpec: '>=12.x'
   displayName: 'Install Node.js'
 
 - script: 'npm install -g markdown-link-check'

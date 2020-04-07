@@ -43,6 +43,8 @@ Simple Object Access Protocol (SOAP) is a network protocol which can exchange da
 
 With [`<basicHttpBinding>`](https://msdn.microsoft.com/en-us/library/system.servicemodel.basichttpbinding\(v=vs.110\).aspx), [`<netNamedPipeBinding>`](https://msdn.microsoft.com/en-us/library/system.servicemodel.netnamedpipebinding\(v=vs.110\).aspx) and [`<netTcpBinding>`](https://msdn.microsoft.com/en-us/library/system.servicemodel.nettcpbinding\(v=vs.110\).aspx), fiskaltrust.Service makes its functionality available on the local network.
 
+A WSDL file which describes the fiskaltrust.service is available at [dist/WSDL](https://github.com/fiskaltrust/interface-doc/tree/master/dist/WSDL).
+
 **C# call for signing with SOAP:**
 ```cs
 //create proxy and establish authentification
@@ -65,6 +67,8 @@ The journal stream bill be composed by a concatenation of the streams of all the
 Representational State Transfer architecture uses the classic http methods GET, PUT, POST and DELETE to communicate with fiskaltrust.SecurityMechanisms. The currently accepted data formats are XML and JSON. There are various implementations for REST which are all provided via Helper.
 
 The functions accept POST requests and use the endpoint set via the parameter "host" as basis. The URL is extended by `/[xml | json]/[echo | sign | journal]` in order to call the respective functions.
+
+XSD files are available which describes the fiskaltrust.service at [dist/XSD](https://github.com/fiskaltrust/interface-doc/tree/master/dist/XSD).
 
 #### *Balancer Helper*
 

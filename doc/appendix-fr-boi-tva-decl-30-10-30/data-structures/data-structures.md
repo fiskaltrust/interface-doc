@@ -17,7 +17,7 @@ This table describes additional fields of the Receipt Response applicable to the
 
 <span id="_Toc527986682" class="anchor"></span>*Table 30. Receipt Response*
 
-### Charge Items Entry
+### ChargeItems Entry
 
 Charge Items entriy is defined accordingly to the French law. This entry determines which counter will be used to sum up the value of the sales tax field (normal, discounted-1, discounted-2, zero or special) for the individual services. It is required for signature creation.
 
@@ -26,8 +26,27 @@ This table describes additional fields of the Charge Items Entry applicable to t
 | **Field Name** | **Data Type** | **Default Value Mandatory Field** | **Description**                                                       | **Version** |
 |----------------|---------------|-----------------------------------|-----------------------------------------------------------------------|-------------|
 | `Description`  | `string`      | empty-string<br />mandatory       | Name or description of customary indication or type of other service. | 0-          |
+| `VATAmount`            | `Decimal`            | 0.0<br />mandatory                           | For French law fulfillment the VAT amount is required. It is used to calculate the net amount in order to avoid rounding errors which are especially likely to appear in row-based net price additions. | 0-          |
+| `ftChargeItemCaseData` | `String`<br />Max 64k | empty-string<br />mandatory                  | Additional data about the service, currently accepted only in JSON format.                                                                                                           | 0-          |
 
 <span id="_Toc527986683" class="anchor"></span>*Table 31. Charge Items Entry (ftChargeItems)*
+
+#### ChargeItemCaseData Entry
+
+ChargeItemCaseData Entry is used to hand over additional required Informations to a data line for a receipt.
+The Format is limited to JSON.
+For French law fulfullment a net-amount by line is required. this is added here by a field called "NetAmount".
+
+| **Field Name** | **Data Type** | **Default Value Mandatory Field** | **Description**                                                       | **Version** |
+|----------------|---------------|-----------------------------------|-----------------------------------------------------------------------|-------------|
+| `NetAmount` | `Decimal` | 0.0<br /> mandatory | POS-device given net-amout, by line, to be processed. | 1.2 |
+
+##### ChargeItemCaseData Entry Example
+
+`{
+   \"NetAmount\" : 7.43
+}`
+
 
 ### Pay Items Entry
 

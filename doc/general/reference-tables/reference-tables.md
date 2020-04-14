@@ -108,6 +108,8 @@ The ftSignatureFormat tells the cash register or input station which display for
 | `0x0A`    | EAN-13 (Barcode)                                                | 1.0                 |
 | `0x0B`    | UPC-A (Barcode)                                                 | 1.0                 |
 | `0x0C`    | Code39 (Barcode, possible for Base32 data)                      | 1.0                 |
+| `0x0D`    | Base64                                                          | 1.3                 |
+
 
 *Table 14. Format of Signature: ftSignatureFormat*
 

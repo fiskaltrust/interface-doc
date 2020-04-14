@@ -116,7 +116,7 @@ Before the beginning of a new monthly period, the preliminary result of the cumu
 
 Before the beginning of a new annual period, a note of the counter reading must be taken in accordance with §8 para. 3 RKSV. This procedure replaces the monthly receipt at the end of the year. As an additional requirement, the correctness of the signature on this annual receipt needs to be checked against the database through fiskaltrust.SecurityMechanism. This can be processed automatically when using fiskaltrust.Carefree or done manually through the BMF App, which is available at:
 
-<https://www.bmf.gv.at/kampagnen/Unsere-Apps.html#heading_BMF_App>
+https://www.bmf.gv.at/services/apps.html
 
 ### Receipt structure
 

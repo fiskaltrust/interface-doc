@@ -3,10 +3,12 @@ trigger:
 - release/*
 - refs/tags/*
 
-pool:
-  vmImage: 'VS2017-Win2016'
+pool: Build
 
 steps:
+- checkout: self
+  clean: true
+
 - powershell: |
     $majorMinor,$prerelease = Get-Content "major.minor"
     $version = "$majorMinor.$(Get-Date -UFormat "%y")$("{0:D3}" -f (Get-Date).DayofYear).$env:BUILD_BUILDID"
@@ -15,18 +17,6 @@ steps:
     (Get-Content cover.html).replace('[[VERSION]]', $version) | Set-Content cover.html
     (Get-Content cover.html).replace('[[TODAY]]', $date) | Set-Content cover.html
   displayName: 'Set version in cover page'
-
-- powershell: |
-    $i = 0
-    Get-Content .\doc\toc.md | ForEach-Object {
-        $success = $_ -match "#\s*\[(.*?)\]\((?<filename>.*?)\)"
-        if ($success) {
-            $path = Join-Path "doc" $matches['filename']
-            "<style>body {counter-reset: h1 $i}</style>`n" + (Get-Content $path -Raw) | Set-Content $path
-            $i++;
-        }
-    }
-  displayName: 'Set chapter header counters'
 
 - task: NodeTool@0
   inputs:
@@ -37,11 +27,16 @@ steps:
 - script: 'npm install -g markdown-link-check'
   displayName: 'Install markdown-link-check'
    
-- task: PowerShell@1
+- powershell: |
+    Get-ChildItem -Path ".\doc\" -Filter "*.md" -Recurse | ForEach-Object {
+      $path = Resolve-Path -Path $_.FullName -Relative
+      if(!($path -match "\\\.[^\.\\]+")) {
+        markdown-link-check -c .\markdown-link-check.config.json -q $path
+      }
+    }
+  failOnStderr: true
+  errorActionPreference: continue
   displayName: 'Check links'
-  inputs:
-    scriptName: 'scripts/MarkdownLinkCheck.ps1'
-    workingFolder: doc
 
 - task: NuGetToolInstaller@0
   displayName: 'Use NuGet'

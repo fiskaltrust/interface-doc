@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/fiskaltrust.ifPOS.v0" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="ReceiptRequest">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element name="ftCashBoxID" type="xs:string" />
+        <xs:element name="ftQueueID" type="xs:string" nillable="true" minOccurs="0"  maxOccurs="1"/>
+        <xs:element name="ftPosSystemId" type="xs:string" nillable="true" minOccurs="0" />
+        <xs:element name="cbTerminalID" type="xs:string" nillable="true"/>
+        <xs:element name="cbReceiptReference" type="xs:string" nillable="true"/>
+        <xs:element name="cbReceiptMoment" type="xs:dateTime" />
+        <xs:element name="cbChargeItems">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="ChargeItem" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Position" type="xs:long" nillable="true" minOccurs="0" />
+                    <xs:element name="Quantity" type="xs:decimal" />
+                    <xs:element name="Description" type="xs:string" />
+                    <xs:element name="Amount" type="xs:decimal" />
+                    <xs:element name="VATRate" type="xs:decimal" />
+                    <xs:element name="ftChargeItemCase" type="xs:long" />
+                    <xs:element name="ftChargeItemCaseData" type="xs:string" nillable="true" minOccurs="0" />
+                    <xs:element name="VATAmount" type="xs:decimal" nillable="true" minOccurs="0" />
+                    <xs:element name="AccountNumber" type="xs:string" nillable="true" minOccurs="0" />
+                    <xs:element name="CostCenter" type="xs:string" nillable="true" minOccurs="0" />
+                    <xs:element name="ProductGroup" type="xs:string" nillable="true" minOccurs="0" />
+                    <xs:element name="ProductNumber" type="xs:string" nillable="true" minOccurs="0" />
+                    <xs:element name="ProductBarcode" type="xs:string" nillable="true" minOccurs="0" />
+                    <xs:element name="Unit" type="xs:string" nillable="true" minOccurs="0" />
+                    <xs:element name="UnitQuantity" type="xs:decimal" nillable="true" minOccurs="0" />
+                    <xs:element name="UnitPrice" type="xs:decimal" nillable="true" minOccurs="0" />
+                    <xs:element name="Moment" type="xs:dateTime" nillable="true" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="cbPayItems">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element name="PayItem" nillable="true" minOccurs="0" maxOccurs="unbounded">
+                <xs:complexType>
+                  <xs:sequence>
+                    <xs:element name="Position" type="xs:long" nillable="true" minOccurs="0" />
+                    <xs:element name="Quantity" type="xs:decimal" />
+                    <xs:element name="Description" type="xs:string" />
+                    <xs:element name="Amount" type="xs:decimal" />
+                    <xs:element name="ftPayItemCase" type="xs:long" />
+                    <xs:element name="ftPayItemCaseData" type="xs:string" nillable="true" minOccurs="0" />
+                    <xs:element name="AccountNumber" type="xs:string" nillable="true" minOccurs="0" />
+                    <xs:element name="CostCenter" type="xs:string" nillable="true" minOccurs="0" />
+                    <xs:element name="MoneyGroup" type="xs:string" nillable="true" minOccurs="0" />
+                    <xs:element name="MoneyNumber" type="xs:string" nillable="true" minOccurs="0" />
+                    <xs:element name="Moment" type="xs:dateTime" nillable="true" minOccurs="0" />
+                  </xs:sequence>
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+          </xs:complexType>
+        </xs:element>
+        <xs:element name="ftReceiptCase" type="xs:long" />
+        <xs:element name="ftReceiptCaseData" type="xs:string" nillable="true" minOccurs="0" />
+        <xs:element name="cbReceiptAmount" type="xs:integer" nillable="true" minOccurs="0" />
+        <xs:element name="cbUser" type="xs:string" nillable="true" minOccurs="0" />
+        <xs:element name="cbArea" type="xs:string" nillable="true" minOccurs="0" />
+        <xs:element name="cbCustomer" type="xs:string" nillable="true" minOccurs="0" />
+        <xs:element name="cbSettlement" type="xs:string" nillable="true" minOccurs="0" />
+        <xs:element name="cbPreviousReceiptReference" type="xs:string" nillable="true" minOccurs="0" />
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>

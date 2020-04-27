@@ -2,7 +2,7 @@
 
 ### iPOS Interface
 
-This interface is a communication channel for interacting with the fiskaltrust.Service. It provides three basic functions: "echo", "sign", and "journal". The functions "echo" and "sign" return bare-objects, the function "journal" returns a wrapped-object.
+This interface is a communication channel for interacting with the fiskaltrust.Middleware. It provides three basic functions: "echo", "sign", and "journal". The functions "echo" and "sign" return bare-objects, the function "journal" returns a wrapped-object.
 
 #### Echo Function
 
@@ -17,7 +17,7 @@ string result = proxy.Echo("Message");
 
 #### Sign Function
 
-This is the key function of the fiskaltrust.Service. Once the sign function is called, the receipt data is transferred for processing. The result of the processing is then sent back as receipt response.
+This is the key function of the fiskaltrust.Middleware. Once the sign function is called, the receipt data is transferred for processing. The result of the processing is then sent back as receipt response.
 
 **C# call iPos Sign:**
 ```cs
@@ -30,7 +30,7 @@ fiskaltrust.ifPOS.v0.ReceiptResponse resp = proxy.Sign(req);
 
 #### Journal Function
 
-With this function, a variety of information can be retrieved from the fiskaltrust.Service, ranging from the status information to a general notifications protocol.
+With this function, a variety of information can be retrieved from the fiskaltrust.Middleware, ranging from the status information to a general notifications protocol.
 
 **C# call iPos Journal:**
 ```cs

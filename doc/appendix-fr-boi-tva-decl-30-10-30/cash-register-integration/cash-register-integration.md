@@ -89,7 +89,7 @@ A signature block is generated if a cryptographic signature is required. A JSON 
 
 The receipt footer contains further information regarding the issuing company. The footer provided by the cash register can for example contain the SIRET and/or VAT number of the issuning enterprise.
 
-There is no legal requirement for the content of the footer, but if the fiskaltrust.Service sends any additional information for this section, it has to be printed/stored by the cash register.
+There is no legal requirement for the content of the footer, but if the fiskaltrust.Middleware sends any additional information for this section, it has to be printed/stored by the cash register.
 
 ### Data Collection Log
 
@@ -97,8 +97,8 @@ The Data Collection Log consists of a localised set of information stored using 
 
 #### Receipt Journal
 
-Receipt journals are JSON exports of internal structured data related to receipts handled by the service. For each receipt type a journal is created and maintained.
+Receipt journals are JSON exports of internal structured data related to receipts handled by the fiskaltrust.Middleware. For each receipt type a journal is created and maintained.
 
 #### Action Journal
 
-Action journals are JSON exports of internal structured data related to special actions traced by the service. There are journals related to different actions, e.g: a journal for the periodical counters, a journal for archiving, or a journal for a technical action log.
+Action journals are JSON exports of internal structured data related to special actions traced by the fiskaltrust.Middleware. There are journals related to different actions, e.g: a journal for the periodical counters, a journal for archiving, or a journal for a technical action log.

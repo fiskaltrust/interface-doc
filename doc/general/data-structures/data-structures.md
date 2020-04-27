@@ -1,10 +1,10 @@
 ## Data structures
 
-This chapter outlines several data structures, which are used in the communication with the fiskaltrust.Service.
+This chapter outlines several data structures, which are used in the communication with the fiskaltrust.Middleware.
 
 ### Receipt Request
 
-The cash register transfers the data of an entire receipt request to the fiskaltrust.Service using the ReceiptRequest data structure.
+The cash register transfers the data of an entire receipt request to the fiskaltrust.Middleware using the ReceiptRequest data structure.
 
 The details of fields supported by this data structure are outlined in the table below. The field fiskaltrust receipt case (ftReceiptCase) is of the highest importance for the correct processing of the receipt. This field defines the receipt type, determines if the receipt has to be secured accordingly to the national law, and establishes the way to calculate the correct values for each national counter.
 
@@ -62,7 +62,7 @@ namespace fiskaltrust.ifPOS.v0
 
 ### Receipt response
 
-The fiskaltrust.Service sends back the processed data to the cash register through the receipt response.
+The fiskaltrust.Middleware sends back the processed data to the cash register through the receipt response.
 
 The data included in the request, such as header, service, pay items, and footer, will not be sent back. The returned data is added to the receipt as supplement to the data of the receipt request.
 
@@ -76,7 +76,7 @@ The data included in the request, such as header, service, pay items, and footer
 | `cbReceiptReference`      | `string`          | mandatory                         | Allocated from request to response.                                                                                                                                                                                      | 0-          |
 | `ftCashBoxIdentification` | `string`          | mandatory                         | Cash register identification number.                                                                                                                                                                                     | 0-          |
 | `ftReceiptIdentification` | `string`          | mandatory                         | Upcounting receipt number allocated through fiskaltrust.SecurityMechanisms.                                                                                                                                              | 0-          |
-| `ftReceiptMoment`         | `DateTime`        | mandatory                         | Time of receipt processing through fiskaltrust.Service, provided in UTC.                                                                                                                                                 | 0-          |
+| `ftReceiptMoment`         | `DateTime`        | mandatory                         | Time of receipt processing through fiskaltrust.Middleware, provided in UTC.                                                                                                                                                 | 0-          |
 | `ftReceiptHeader`         | `string[]`        | null<br />optional                | Additional header for the receipt. Each row can contain up to 4096 characters. Line breaks should be inserted by the cash register independently.                                                                        | 0-          |
 | `ftChargeItems`           | `ChargeItem[]`    | null<br />optional                | Additional data sets in the charge items block which the cash register has to print onto the receipt. By default no additional data is provided. If additional data is provided, these data sets state an amount of "0". | 0-          |
 | `ftChargeLines`           | `string[]`        | null<br />optional                | Additional text line for the charge items block which the cash register has to print onto the receipt. Each row can contain up to 4096 characters, line breaks should be inserted by the cash register independently.    | 0-          |
@@ -84,8 +84,8 @@ The data included in the request, such as header, service, pay items, and footer
 | `ftPayLines`              | `string[]`        | null<br />optional                | Additional text line for the pay items block which the cash register has to print onto the receipt. Each row can contain up to 4096 characters, line breaks should be inserted by the cash register independently.       | 0-          |
 | `ftSignatures`            | `SignatureItem[]` | empty-array<br />mandatory        | Signature block, which the cash register has to print onto the receipt.                                                                                                                                                  | 0-          |
 | `ftReceiptFooter`         | `string[]`        | null<br />optional                | Additional footer for the receipt. Each row can contain up to 4096 characters, line breaks should be inserted by the cash register independently.                                                                        | 0-          |
-| `ftState`                 | `Int64`           | 0<br />mandatory                  | Flag indicating the status of the fiskaltrust.Service; set accordingly to the reference table in the appendix.                                                                                | 0-          |
-| `ftStateData`             | `string`          | empty-string<br />optional        | Additional information regarding the status of the fiskaltrust.Service, currently accepted only in JSON format.                                                                                                          | 0-          |
+| `ftState`                 | `Int64`           | 0<br />mandatory                  | Flag indicating the status of the fiskaltrust.Middleware; set accordingly to the reference table in the appendix.                                                                                | 0-          |
+| `ftStateData`             | `string`          | empty-string<br />optional        | Additional information regarding the status of the fiskaltrust.Middleware, currently accepted only in JSON format.                                                                                                          | 0-          |
 
 <span id="_Toc510009092" class="anchor"></span>*Table 4. Receipt Response*
 

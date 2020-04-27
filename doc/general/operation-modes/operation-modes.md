@@ -1,8 +1,8 @@
 ## Operation Modes
 
-### Components of the fiskaltrust.Service
+### Components of the fiskaltrust.Middleware
 
-Regardless of the characteristics of the product, fiskaltrust.Service consists of several logical components. This chapter provides an overview on these components.
+Regardless of the characteristics of the product, fiskaltrust.Middleware consists of several logical components. This chapter provides an overview on these components.
 
 #### Launcher
 
@@ -66,7 +66,7 @@ curl -X GET https://signaturcloud.fiskaltrust.at/api/version -H 'service-version
 ]
 ```
 
-### Configuration of the fiskaltrust.Service
+### Configuration of the fiskaltrust.Middleware
 
 #### Online Portal
 
@@ -74,7 +74,7 @@ All configuration settings, as well as the relevant extensions, are managed via 
 
 #### Queue
 
-A Queue is a part of communication line between the POS-System and the fiskaltrust.Service. All regular receipts created by the POS-System are sent to the fiskaltrust.Service to get secured and stored in the Queue, and the response of the fiskaltrust.SecurityMechanism is sent back. All special receipts (for example the periodical closings) are sent as "requests to execute a special function" to the fiskaltrust.Service and get answered by it. At least one Queue must be created for each POS-System.
+A Queue is a part of communication line between the POS-System and the fiskaltrust.Middleware. All regular receipts created by the POS-System are sent to the fiskaltrust.Middleware to get secured and stored in the Queue, and the response of the fiskaltrust.SecurityMechanism is sent back. All special receipts (for example the periodical closings) are sent as "requests to execute a special function" to the fiskaltrust.Middleware and get answered by it. At least one Queue must be created for each POS-System.
 
 #### Journal
 
@@ -86,7 +86,7 @@ The information for notifications is extracted from the processing protocol and 
 
 #### Configuration Scenarios
 
-The POS System connects to the fiskaltrust.Service to process the receipt chaining calculation. A Cash register means an individual fiskaltrust.SecurityMechanism - in the fiskaltrust.Portal it is called "CashBox" and represents the real CashRegister and its configuration with the SecurityMechanism. The cash register is identified via the ftCashBoxId. This is unique worldwide and also the first part of the authentication on the fiskaltrust.Helipad. The second part is an authentication token.
+The POS System connects to the fiskaltrust.Middleware to process the receipt chaining calculation. A Cash register means an individual fiskaltrust.SecurityMechanism - in the fiskaltrust.Portal it is called "CashBox" and represents the real CashRegister and its configuration with the SecurityMechanism. The cash register is identified via the ftCashBoxId. This is unique worldwide and also the first part of the authentication on the fiskaltrust.Helipad. The second part is an authentication token.
 
 #### Single Queue scenario
 
@@ -98,10 +98,10 @@ The most common scenario uses a connection to a single fiskaltrust.Queue, which 
 
 #### Scenario with several queues for performance improvement
 
-The POS System can require special operating conditions, e.g. a when a big flow of receipts is requested, the fiskaltrust.Service will ensure a high level of reliability by using multiple parallel Queues.
+The POS System can require special operating conditions, e.g. a when a big flow of receipts is requested, the fiskaltrust.Middleware will ensure a high level of reliability by using multiple parallel Queues.
 
-In this scenario, the fiskaltrust.Service hosts several Queues to optimize the performance of the service by distributing the workload evenly between the Queues. Each individual queue is reachable by the fiskaltrust.IPOS. This direct connection can be necessary in case of receipts with special functions and also in in case of special chunked Journals (Journals for specific range). The queues can be operated in a load balancing mode or in a backup mode via the balancer interface.
+In this scenario, the fiskaltrust.Middleware hosts several Queues to optimize the performance of the service by distributing the workload evenly between the Queues. Each individual queue is reachable by the fiskaltrust.IPOS. This direct connection can be necessary in case of receipts with special functions and also in in case of special chunked Journals (Journals for specific range). The queues can be operated in a load balancing mode or in a backup mode via the balancer interface.
 
 ![](./images/02-service-performance-optimization.png)
 
-<span id="_Toc527986810" class="anchor"></span>*Illustration 9. fiskaltrust.Service in a configuration for performance optimization*
+<span id="_Toc527986810" class="anchor"></span>*Illustration 9. fiskaltrust.Middleware in a configuration for performance optimization*

@@ -1,6 +1,6 @@
 ## Operation Modes
 
-### Components of the fiskaltrust.Service
+### Components of the fiskaltrust.Middleware
 
 #### ASP.<span></span>net 5/Core Web App
 
@@ -14,7 +14,7 @@ This application is the bridge between the queue nutshell and fiskaltrust.Signat
 
 In Austria it is mandatory to have an unmodifiable smartcard (write once read many) which must store the issued certificate containing the POS operator data. This smartcard must be read from a reader, which must be connected to the machine of the POS system via: internal device, connected external device, network connected device, or web service.
 
-### Configuration of the fiskaltrust.Service
+### Configuration of the fiskaltrust.Middleware
 
 #### Online Portal
 

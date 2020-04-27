@@ -6,7 +6,7 @@ This chapter expands on the descriptions of the function structures covered in t
 
 #### Echo Function
 
-In case of the Austrian product SignaturCloud, there is a special condition when the Echo-Function is called with null as a Message, which forces to reinitialize the fiskaltrust.Queue at service side.
+In case of the Austrian product SignaturCloud, there is a special condition when the Echo-Function is called with null as a Message, which forces to reinitialize the fiskaltrust.Queue in the fiskaltrust.Middleware.
 
 #### Sign Function
 
@@ -28,7 +28,7 @@ The CurrentDateTime is provided in the `yyyyMMddhhmmssfff` format.
 
 ### IATSSCD Interface
 
-This interface is applicable only for the Austrian market and enables direct communication with the signature creation device for own purposes: it can be used for testing if the service is running ("Echo" call), for getting the certificate ("Certificate" call), or signing autonomously ("Sign" call).
+This interface is applicable only for the Austrian market and enables direct communication with the signature creation device for own purposes: it can be used for testing if the fiskaltrust.Middleware is running ("Echo" call), for getting the certificate ("Certificate" call), or signing autonomously ("Sign" call).
 
 #### ZDA Indicator Request
 

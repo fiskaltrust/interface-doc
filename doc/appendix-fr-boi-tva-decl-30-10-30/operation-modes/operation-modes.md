@@ -1,12 +1,12 @@
 ## Operation Modes
 
-### Components of fiskaltrust.Service
+### Components of fiskaltrust.Middleware
 
 #### Launcher
 
 #### Queue Nutshell
 
-### Configuration of the fiskaltrust.Service
+### Configuration of the fiskaltrust.Middleware
 
 #### Online Portal
 

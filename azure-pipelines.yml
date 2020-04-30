@@ -3,10 +3,12 @@ trigger:
 - release/*
 - refs/tags/*
 
-pool:
-  vmImage: 'VS2017-Win2016'
+pool: Build
 
 steps:
+- checkout: self
+  clean: true
+
 - powershell: |
     $majorMinor,$prerelease = Get-Content "major.minor"
     $version = "$majorMinor.$(Get-Date -UFormat "%y")$("{0:D3}" -f (Get-Date).DayofYear).$env:BUILD_BUILDID"
@@ -16,21 +18,10 @@ steps:
     (Get-Content cover.html).replace('[[TODAY]]', $date) | Set-Content cover.html
   displayName: 'Set version in cover page'
 
-- powershell: |
-    $i = 0
-    Get-Content .\doc\toc.md | ForEach-Object {
-        $success = $_ -match "#\s*\[(.*?)\]\((?<filename>.*?)\)"
-        if ($success) {
-            $path = Join-Path "doc" $matches['filename']
-            "<style>body {counter-reset: h1 $i}</style>`n" + (Get-Content $path -Raw) | Set-Content $path
-            $i++;
-        }
-    }
-  displayName: 'Set chapter header counters'
-
 - task: NodeTool@0
   inputs:
     checkLatest: true
+    versionSpec: '>=12.x'
   displayName: 'Install Node.js'
 
 - script: 'npm install -g markdown-link-check'

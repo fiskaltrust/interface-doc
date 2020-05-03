@@ -6,10 +6,8 @@ option csharp_namespace = "fiskaltrust.ifPOS.v1";
 import "bcl.proto";
 
 service POS {
-	rpc Echo(EchoRequest) returns (EchoResponse) {}
-	
-	rpc Journal(JournalRequest) returns (JournalResponse) {}
-	
+	rpc Echo(EchoRequest) returns (EchoResponse) {}	
+	rpc Journal(JournalRequest) returns (JournalResponse) {}	
    rpc Sign(ReceiptRequest) returns (ReceiptResponse) {}
 }
 
@@ -50,6 +48,7 @@ message ChargeItem {
    .bcl.Decimal UnitPrice = 150;
    .bcl.DateTime Moment = 160;
 }
+
 message PayItem {
    int64 Position = 5;
    .bcl.Decimal Quantity = 10;
@@ -63,6 +62,7 @@ message PayItem {
    string MoneyNumber = 90;
    .bcl.DateTime Moment = 100;
 }
+
 message ReceiptRequest {
    string ftCashBoxID = 10;
    string ftQueueID = 15;
@@ -102,6 +102,7 @@ message ReceiptResponse {
    int64 ftState = 130;
    string ftStateData = 140;
 }
+
 message SignaturItem {
    int64 ftSignatureFormat = 10;
    int64 ftSignatureType = 20;

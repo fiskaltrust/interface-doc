@@ -1,3 +1,4 @@
+// Taken from https://github.com/protobuf-net/protobuf-net/blob/master/src/Tools/bcl.proto
 // The types in here indicate how protobuf-net represents certain types when using protobuf-net specific
 // library features. Note that it is not *required* to use any of these types, and cross-platform code
 // should usually avoid them completely (ideally starting from a .proto schema)

@@ -6,8 +6,8 @@ option csharp_namespace = "fiskaltrust.ifPOS.v1";
 import "bcl.proto";
 
 service POS {
-	rpc Echo(EchoRequest) returns (EchoResponse) {}	
-	rpc Journal(JournalRequest) returns (JournalResponse) {}	
+   rpc Echo(EchoRequest) returns (EchoResponse) {}	
+   rpc Journal(JournalRequest) returns (JournalResponse) {}	
    rpc Sign(ReceiptRequest) returns (ReceiptResponse) {}
 }
 

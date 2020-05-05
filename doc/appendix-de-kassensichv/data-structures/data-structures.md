@@ -4,6 +4,29 @@ This chapter expands on the descriptions of the data structures covered in the C
 
 ### Receipt Request
 
+Following chapter highlights fields from the receipt request that need a special handling for the german market.
+
+| **Field name**            | **Data type** | **Default Value Mandatory Field** | **Description**                                                                                         | **Version** |
+|---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
+| `cbTerminalID` | `string (50)` | Mandatory | The unique identification of the input station/cash register/terminal within a ftCashBoxID| 1.3 |
+| `cbUser` | `string (50)` | Mandatory | Name (not ID) of the user, who creates the receipt. | 1.3 |
+
+
+In the general description the field `cbCustomer` is described as optional. However for the German market the content of this field is not always optional. The customer data is mandatory for the german marekt if not exempted in relation to § 148 AO. To send the customer data please use the field `cbCustomer` and fill it in JSON format with following fields:
+
+| **Field name**            | **Data type** | **Default Value Mandatory Field** | **Description**                                                                                         | **Version** |
+|---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
+| `CustomerName` | `string (50)`  | Mandatory | Name of beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Erika Musterfrau",...}"`| 1.3 |
+| `CustomerId` | `string (50)`  | Mandatory | ID of the beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerId ` e.g. `"cbCustomer":"{"customerName":"Max Mustermann", "CustomerId":"PX9819822", ...}"`| 1.3 |
+| `CustomerType` | `string (50)`  | Mandatory | Type of the beneficiary customer (e.g. employee). Send via `cbCustomer` in JSON format by adding the key value pair `CustomerType` e.g. `"cbCustomer":"{..., "CustomerId":"PX9819822", "CustomerType":"Mitarbeiter", ...}"` | 1.3 |
+| `CustomerStreet` | `string (60)`  | Mandatory | Street and house number of the beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerStreet` e.g. `"cbCustomer":"{..., "CustomerStreet":"Lindwurmstr. 98", ...}"` | 1.3 |
+| `CustomerZip` | `string (10)`  | Mandatory | Zip of the beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerZip` e.g. `"cbCustomer":"{..., "CustomerZip":"80337", ...}"` | 1.3 |
+| `CustomerCity` | `string (62)`  | Mandatory | City of the beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCity` e.g. `"cbCustomer":"{..., "CustomerCity":"München", ...}"` | 1.3 |
+| `CustomerCountry` | `ISO 3166 ALPHA-3 country code` | Mandatory | Country of the beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCountry` e.g. `"cbCustomer":"{..., "CustomerCountry":"DEU", ...}"` | 1.3 |
+| `CustomerVATId` | `string(15)` | Mandatory if applicable | VAT-ID of the beneficiary customer.Send via `cbCustomer` in JSON format by adding the key value pair `CustomerVATId` e.g. `"cbCustomer":"{..., "CustomerVATId":"DE123456789", ...}"` | 1.3 |
+
+
+
 In the general description the field `ftReceiptCaseData` is described as optional. However for the German market the content of this field is not always optional.
 
 For some special cases we need you to transmit data within the field `ftReceiptCaseData` that is later needed for the DSFinV-K export. The following table describes when and how you have to fill them.

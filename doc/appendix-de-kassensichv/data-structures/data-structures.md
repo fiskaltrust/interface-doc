@@ -4,13 +4,54 @@ This chapter expands on the descriptions of the data structures covered in the C
 
 ### Receipt Request
 
+#### Single fields
+
 Following chapter highlights fields from the receipt request that need a special handling for the german market.
 
 | **Field name**            | **Data type** | **Default Value Mandatory Field** | **Description**                                                                                         | **Version** |
 |---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
 | `cbTerminalID` | `string (50)` | Mandatory | The unique identification of the input station/cash register/terminal within a ftCashBoxID| 1.3 |
 | `cbUser` | `string (50)` | Mandatory | Name (not ID) of the user, who creates the receipt. | 1.3 |
+| `cbReceiptReference` | `string (50)` | Mandatory if the request is part of a business action | Used to connect all requests reffering to the same business action. | 1.3 |
+| `cbPreviousReceiptReference` | `string (50)` | Optional | Points to `cbReceiptReference` of a previous request. Used to connect requests repesenting a bisiness action. E.g. split, merge or just reference a receipt to be voided. | 1.3 |
 
+Examples of using `cbReceiptReference` and `cbPreviousReceiptReference` to connect requests representing a business action:
+
+1. Simple
+
+| **Action**            | **receipt case** | **`cbReceiptReference`** | **`cbPreviousReceiptReference`**                                                                                         | **Description** |
+|---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
+| Check-In | `info-internal` | "10001" | empty | Family checks in into the hotel. |
+| Consumption | `info-order` | "10001" | empty | Family stays over night. |
+| Consumption | `info-order` | "10001" | empty | Family consumes breakfirst. |
+| Check-Out Payment | `pos-receipt` | "10001" | empty | Family pays the bill. |
+
+2. Split
+
+| **Action**            | **receipt case** | **`cbReceiptReference`** | **`cbPreviousReceiptReference`**                                                                                         | **Description** |
+|---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
+| Check-In | `info-internal` | "10001" | empty | Family checks in into the hotel. |
+| Consumption | `info-order` | "10001" | empty | Family stays over night. |
+| Consumption | `info-order` | "10001" | empty | Family consumes breakfirst. |
+| Check-Out Payment 1 | `pos-receipt` | "567" | "10001" | Wife pays half of the bill. |
+| Check-Out Payment 2 | `pos-receipt` | "568" | "10001" | Husband pays other half of the bill. |
+
+3. Merge (one pays for himself and for others)
+
+| **Action**            | **receipt case** | **`cbReceiptReference`** | **`cbPreviousReceiptReference`**                                                                                         | **Description** |
+|---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
+| Check-In | `info-internal` | "10001" | empty | Family 1 checks in into the hotel. |
+| Check-In | `info-internal` | "10002" | empty | Family 2 checks in into the hotel. |
+| Consumption | `info-order` | "10001" | empty | Family 1 stays over night. |
+| Consumption | `info-order` | "10002" | empty | Family 2 stays over night. |
+| Consumption | `info-order` | "10001" | empty | Family 1 consumes breakfirst. |
+| Consumption | `info-order` | "10002" | empty | Family 2 consumes breakfirst. |
+| Merge Step 1 | `info-internal` | "567" | "10001" | Merge action of Family 1 into new action "567" |
+| Merge Step 2 | `info-internal` | "567" | "10002" | Merge action of Family 2 into new action "567" |
+| Check-Out Payment | `pos-receipt` | "567" | empty | Family 1 pays bill for themselves and for Family 2 |
+
+
+#### Customer data `cbCustomer`
 
 In the general description the field `cbCustomer` is described as optional. However for the German market the content of this field is not always optional. The customer data is mandatory for the german marekt if not exempted in relation to § 148 AO. To send the customer data please use the field `cbCustomer` and fill it in JSON format with following fields:
 
@@ -26,6 +67,7 @@ In the general description the field `cbCustomer` is described as optional. Howe
 | `CustomerVATId` | `string(15)` | Mandatory if applicable | VAT-ID of the beneficiary customer.Send via `cbCustomer` in JSON format by adding the key value pair `CustomerVATId` e.g. `"cbCustomer":"{..., "CustomerVATId":"DE123456789", ...}"` | 1.3 |
 
 
+#### Receipt case data `ftReceiptCaseData`
 
 In the general description the field `ftReceiptCaseData` is described as optional. However for the German market the content of this field is not always optional.
 
@@ -34,14 +76,13 @@ For some special cases we need you to transmit data within the field `ftReceiptC
 
 | **Field name**            | **Data type** | **Default Value Mandatory Field** | **Description**                                                                                         | **Version** |
 |---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
-| `AgencyId` | `string`      | Mandatory if agency business (DE: Agenturgeschäft) | Send via `ftReceiptCaseData` in JSON format. To send, add the key value pair `AgencyId` e.g. `"ftChargeItemCaseData":"{ ..., "AgencyId":192, ... }"` | 1.3 |
 | `ProductGroupId` | `string`      | optional | Send via `ftReceiptCaseData` in JSON format. To send, pls. add the key value pair `ProductGroupId` e.g. `"ftChargeItemCaseData":"{ ..., "ProductGroupId":192, ... }"`. If not sent, the ft will automatically generate a product number (hash) deducted from `ftChargeItem.ProductGroup` | 1.3 |
 | `UserId` | `string`      | optional | Send via `ftReceiptCaseData` in JSON format. To send, pls. add the key value pair `UserId` e.g. `"ftReceiptCaseData":"{ ..., "UserId":192, ... }"`. If not sent, the ft will automatically generate a User-ID (hash) deducted from `cbUser` | 1.3 |
 | `ReceiptNote` | `string`      | optional                         | Additional information on the receipt header. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptNote` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptNote":"123, ich bin dabei!", ... }"` | 1.3|
 | `ReceiptName` | `string`      | Mandatory if your request mapps to the DSFinV-K BON_TYPE "AVSonstige" (see `ftReceiptCase`), otherwise optional | Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptName` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptName":"Sonstige Sonderwurst", ... }"` | 1.3|
 | `ActionStartMoment` | ISO 8601 and RFC3339 date     | Mandatory if the action (DE: Vorgang) starts within another system. Otherwise the receipt request of an action must be connected in a way that ft can find the start of the action. | The action start can be within this cashpoint or outside of this cashpoint. If outside (e.g. by another system or another cashpoint) than it has to be provided via `ftReceiptCaseData` in JSON format by adding the key value pair `ActionStartMoment`. E.g. `"ftReceiptCaseData":"{ ..., "ActionStartMoment":"2020-09-27T17:00:01", ... }"`. If not provided, ft tries to find the action start by following the `cbPreviousReceiptReference` path into the past until no more previous receipt references exist. ft will than fill this field with the value from `ftReceiptMoment` of the oldest receipt found in that chain. | 1.3 |
 
-If you want (optional) to provide a reference from another systems or another cashpoints, you can add it via the field `ftReceiptCaseData` by providing it's data as shown below:
+If you want (optional) to provide a **reference** from another systems or another cashpoints, you can add it via the field `ftReceiptCaseData` by providing it's data as shown below:
 
 | **Field name**            | **Data type** | **Default Value Mandatory Field** | **Description**                                                                                         | **Version** |
 |---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
@@ -51,8 +92,6 @@ If you want (optional) to provide a reference from another systems or another ca
 | `RefCashBoxIdentification` | `string` | If the reference you want to add is of type (RefType) "Transaktion", you must provide data for the field `RefCashBoxIdentification`. |  It should contain the value of ´ftCashBoxIdentification´ from the referenced cashpoint. Please send it via `ftReceiptCaseData` in JSON format by adding the key value pair `RefCashBoxIdentification` e.g. `"ftReceiptCaseData":"{ ..., "RefCashBoxIdentification":"AHHAH1919919", ... }"`. | 1.3 |
 | `RefClosingNr` | `integer` | If the reference you want to add is of type (RefType) "Transaktion", you must provide data for the field `RefClosingNr`. |  It should provide the the referenced cashpoint daily closing number of the referenced object. Please send it via `ftReceiptCaseData` in JSON format by adding the key value pair `RefClosingNr` e.g. `"ftReceiptCaseData":"{ ..., "RefClosingNr":1091029, ... }"`. | 1.3 |
 | `RefReceiptId` | `string` | If the reference you want to add is of type (RefType) "Transaktion", you must provide data for the field `RefReceiptId`. |  It should contain the value of ´ftReceiptIdentification´ of the referenced object. Please send it via `ftReceiptCaseData` in JSON format by adding the key value pair `RefReceiptId` e.g. `"ftReceiptCaseData":"{ ..., "RefReceiptId":"UAUUA1112#20200211-112430", ... }"`. | 1.3 |
-
-
 
 
 ### Receipt Response

@@ -15,56 +15,22 @@ Following chapter highlights fields from the receipt request that need a special
 | `cbReceiptReference` | `string (50)` | Mandatory if the request is part of a business action | Used to connect all requests reffering to the same business action. | 1.3 |
 | `cbPreviousReceiptReference` | `string (50)` | Optional | Points to `cbReceiptReference` of a previous request. Used to connect requests repesenting a bisiness action. E.g. split, merge or just reference a receipt to be voided. | 1.3 |
 
-Examples of using `cbReceiptReference` and `cbPreviousReceiptReference` to connect requests representing a business action:
-
-1. Simple
-
-| **Action**            | **receipt case** | **`cbReceiptReference`** | **`cbPreviousReceiptReference`**                                                                                         | **Description** |
-|---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
-| Check-In | `info-internal` | "10001" | empty | Family checks in into the hotel. |
-| Consumption | `info-order` | "10001" | empty | Family stays over night. |
-| Consumption | `info-order` | "10001" | empty | Family consumes breakfirst. |
-| Check-Out Payment | `pos-receipt` | "10001" | empty | Family pays the bill. |
-
-2. Split
-
-| **Action**            | **receipt case** | **`cbReceiptReference`** | **`cbPreviousReceiptReference`**                                                                                         | **Description** |
-|---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
-| Check-In | `info-internal` | "10001" | empty | Family checks in into the hotel. |
-| Consumption | `info-order` | "10001" | empty | Family stays over night. |
-| Consumption | `info-order` | "10001" | empty | Family consumes breakfirst. |
-| Check-Out Payment 1 | `pos-receipt` | "567" | "10001" | Wife pays half of the bill. |
-| Check-Out Payment 2 | `pos-receipt` | "568" | "10001" | Husband pays other half of the bill. |
-
-3. Merge (one pays for himself and for others)
-
-| **Action**            | **receipt case** | **`cbReceiptReference`** | **`cbPreviousReceiptReference`**                                                                                         | **Description** |
-|---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
-| Check-In | `info-internal` | "10001" | empty | Family 1 checks in into the hotel. |
-| Check-In | `info-internal` | "10002" | empty | Family 2 checks in into the hotel. |
-| Consumption | `info-order` | "10001" | empty | Family 1 stays over night. |
-| Consumption | `info-order` | "10002" | empty | Family 2 stays over night. |
-| Consumption | `info-order` | "10001" | empty | Family 1 consumes breakfirst. |
-| Consumption | `info-order` | "10002" | empty | Family 2 consumes breakfirst. |
-| Merge Step 1 | `info-internal` | "567" | "10001" | Merge action of Family 1 into new action "567" |
-| Merge Step 2 | `info-internal` | "567" | "10002" | Merge action of Family 2 into new action "567" |
-| Check-Out Payment | `pos-receipt` | "567" | empty | Family 1 pays bill for themselves and for Family 2 |
-
+Examples of using `cbReceiptReference` and `cbPreviousReceiptReference` to connect requests representing a business action can be found [here](connect-examples.md).
 
 #### Customer data `cbCustomer`
 
-In the general description the field `cbCustomer` is described as optional. However for the German market the content of this field is not always optional. The customer data is mandatory for the german marekt if not exempted in relation to § 148 AO. To send the customer data please use the field `cbCustomer` and fill it in JSON format with following fields:
+If you need to provide customer data in your request, you can send it in via the field `cbCustomer` by filling it JSON format with following fields:
 
 | **Field name**            | **Data type** | **Default Value Mandatory Field** | **Description**                                                                                         | **Version** |
 |---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
-| `CustomerName` | `string (50)`  | Mandatory | Name of beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Erika Musterfrau",...}"`| 1.3 |
-| `CustomerId` | `string (50)`  | Mandatory | ID of the beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerId ` e.g. `"cbCustomer":"{"customerName":"Max Mustermann", "CustomerId":"PX9819822", ...}"`| 1.3 |
-| `CustomerType` | `string (50)`  | Mandatory | Type of the beneficiary customer (e.g. employee). Send via `cbCustomer` in JSON format by adding the key value pair `CustomerType` e.g. `"cbCustomer":"{..., "CustomerId":"PX9819822", "CustomerType":"Mitarbeiter", ...}"` | 1.3 |
-| `CustomerStreet` | `string (60)`  | Mandatory | Street and house number of the beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerStreet` e.g. `"cbCustomer":"{..., "CustomerStreet":"Lindwurmstr. 98", ...}"` | 1.3 |
-| `CustomerZip` | `string (10)`  | Mandatory | Zip of the beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerZip` e.g. `"cbCustomer":"{..., "CustomerZip":"80337", ...}"` | 1.3 |
-| `CustomerCity` | `string (62)`  | Mandatory | City of the beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCity` e.g. `"cbCustomer":"{..., "CustomerCity":"München", ...}"` | 1.3 |
-| `CustomerCountry` | `ISO 3166 ALPHA-3 country code` | Mandatory | Country of the beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCountry` e.g. `"cbCustomer":"{..., "CustomerCountry":"DEU", ...}"` | 1.3 |
-| `CustomerVATId` | `string(15)` | Mandatory if applicable | VAT-ID of the beneficiary customer.Send via `cbCustomer` in JSON format by adding the key value pair `CustomerVATId` e.g. `"cbCustomer":"{..., "CustomerVATId":"DE123456789", ...}"` | 1.3 |
+| `CustomerName` | `string (50)`  | Optional | Name of beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Erika Musterfrau",...}"`| 1.3 |
+| `CustomerId` | `string (50)`  | Optional | ID of the beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerId ` e.g. `"cbCustomer":"{"customerName":"Max Mustermann", "CustomerId":"PX9819822", ...}"`| 1.3 |
+| `CustomerType` | `string (50)`  | Optional | Type of the beneficiary customer (e.g. employee). Send via `cbCustomer` in JSON format by adding the key value pair `CustomerType` e.g. `"cbCustomer":"{..., "CustomerId":"PX9819822", "CustomerType":"Mitarbeiter", ...}"` | 1.3 |
+| `CustomerStreet` | `string (60)`  | Optional | Street and house number of the beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerStreet` e.g. `"cbCustomer":"{..., "CustomerStreet":"Lindwurmstr. 98", ...}"` | 1.3 |
+| `CustomerZip` | `string (10)`  | Optional | Zip of the beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerZip` e.g. `"cbCustomer":"{..., "CustomerZip":"80337", ...}"` | 1.3 |
+| `CustomerCity` | `string (62)`  | Optional | City of the beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCity` e.g. `"cbCustomer":"{..., "CustomerCity":"München", ...}"` | 1.3 |
+| `CustomerCountry` | `ISO 3166 ALPHA-3 country code` | Optional | Country of the beneficiary customer. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCountry` e.g. `"cbCustomer":"{..., "CustomerCountry":"DEU", ...}"` | 1.3 |
+| `CustomerVATId` | `string(15)` | Optional | VAT-ID of the beneficiary customer.Send via `cbCustomer` in JSON format by adding the key value pair `CustomerVATId` e.g. `"cbCustomer":"{..., "CustomerVATId":"DE123456789", ...}"` | 1.3 |
 
 
 #### Receipt case data `ftReceiptCaseData`

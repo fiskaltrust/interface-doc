@@ -50,9 +50,6 @@ This chapter lists the data fields that are mandatory and must be provided by th
 | `ABRECHNUNGSKREIS` | Single recordings | Connection criterion of the assignment. |
 | `ZAHLWAEH_CODE` | Single recordings | Foreign currency code. Only mandatory if foreign currency was used for the payment. |
 | `ZAHLWAEH_BETRAG` | Single recordings | Amount in foreign currency. Only mandatory if foreign currency was used for the payment. |
-| `Z_BUCHUNGSTAG` | Master data | Booking date different from closing date (`Z_ERSTELLUNG`). Only mandatory if the booking date is different to the date of the daily closing receipt. | 
-| Master data for the company, location, terminals, agencies as described in the chapter "Master data module" | Master data | Master data for this cashpoint closing and referenced by the single recordings|
-
 
 The following chapters give you an overview of all DSFinV-K fields, provide you information on how they are filled by ft and how you can send additional data to fill mandatory (listed above) and optional fields that can not be filled by ft.
 

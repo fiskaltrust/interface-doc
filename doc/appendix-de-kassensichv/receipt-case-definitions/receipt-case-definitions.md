@@ -2,14 +2,14 @@
 
 This chapter expands on the definitions of Receipt Cases covered in Chapter ["Receipt Case Definitions"](../../general/receipt-case-definitions/receipt-case-definitions.md) of the General Part, with country specific information applicable to the German market.
 
-### Voucher (Service/Product)
+### Voucher (goods/services)
 
 The issuance and redemption of vouchers are processes with DSFinV-K requirements. According to the [EU directive](https://eur-lex.europa.eu/legal-content/EN/ALL/?uri=CELEX%3A32016L1065) as regards the treatment of vouchers there are two kinds of vouchers to be considered:
 
 - Single-purpose voucher (DE: Einzweckgutscheine)
 - Multi-purpose voucher (DE: Mehrzweckgutscheine)
 
-The difference is, that for single-purpose vouchers, the VAT rate is known already at transfer (issue) because it refers to a single purpose (service or product). On the other hand, in case of multi purpose vouchers the VAT rate is not known because it can be redeemed for different purposes (goods or services).
+The difference is, that for single-purpose vouchers, the VAT rate is known already at transfer (issue) because it refers to a single purpose (service or good). On the other hand, in case of multi purpose vouchers the VAT rate is not known because it can be redeemed for different purposes (goods or services). A multi-purpose voucher is a money substitute.
 
 The issuance of single-purpose vouchers is covered by our charge item cases (`ftChargeItemCase`): `0x4445000000000061`, `0x4445000000000062`, `0x4445000000000063`, `0x4445000000000064`, `0x4445000000000065`, `0x4445000000000066` and `0x4445000000000067`.
 
@@ -19,11 +19,11 @@ If the cash register can not handle the redemption of single-purpose vouchers wi
 
 Please find examples of requests with single-purpose vouchers [here](../examples/vouchers.md#single-purpose-voucher-issuance).
 
-The issuance of multi-purpose vouchers is covered within the pay items by `ftPayItemCase`: `0x444500000000000D`. Negative amounts get converted to an issuance. Since there is no specific product or service coverded by the voucher, the issuance is not taxable and no VAT rate must be specified. Same applies for redemption since the VAT rate is included in the charge items for the products or services of the request. For redemption of a multi-purpose voucher, one can use `ftPayItemCase`: `0x444500000000000D` with a positive amount. 
-
-If the cash register can not handle the redemption within a pay item, then it can alternatively use a charge item having `ftChargeItemCase`: `0x4445000000000068`. 
+The issuance of multi-purpose vouchers is covered within the pay items by `ftPayItemCase`: `0x444500000000000D`. Negative amounts get converted to an issuance. Since there is no specific good or service coverded by the voucher, the issuance is not taxable and no VAT rate must be specified. Same applies for redemption since the VAT rate is determined by the charge items for the goods or services of the request. For redemption of a multi-purpose voucher, one can use `ftPayItemCase`: `0x444500000000000D` with a positive amount. 
 
 Furthermore for the issuance of multi-purpose vouchers, one can alternatively use a charge item instead of a pay item. The `ftChargeItemCase`: `0x4445000000000060` has to be used.
+
+If the cash register can not handle the redemption within a pay item, then it can alternatively use a charge item having `ftChargeItemCase`: `0x4445000000000068` with negative amount. 
 
 Please find examples of requests with multi-purpose vouchers [here](../examples/vouchers.md#multi-purpose-voucher-issuance).
 

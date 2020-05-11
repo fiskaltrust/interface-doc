@@ -10,7 +10,7 @@ Income from returnables (DE:Pfand) and their return with settlement of the pledg
 
 #### Income from returnables (DE: Pfand)
 
-In the current version (2.1) of the [DSFinV-K documentation] one can find following description regarding returnables:
+In the current version (2.1) of the [DSFinV-K specification](https://www.bzst.de/DE/Unternehmen/Aussenpruefungen/DigitaleSchnittstelleFinV/digitaleschnittstellefinv_node.html) one can find following description regarding returnables:
 
 From a VAT point of view refering to the income from returnables (DE: Pfand), a distinction must be made here as to whether a transport container provided against a separately agreed deposit is a (self-contained) transport aid or merely a so-called goods container. Whereas transport aids basically serve to simplify the transport and storage of goods (e.g. pallets, boxes), goods are enclosed in inner/outer containers which are necessary for the delivery of the goods to the end consumer (e.g. bottles). 
 

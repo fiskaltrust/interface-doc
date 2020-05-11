@@ -20,7 +20,8 @@ Request:
          "Amount":15.00,
          "VATRate":19.0000,
          // 0x4445000000000061 (coupon sales normal)
-         "ftChargeItemCase":4919338167972135009
+         "ftChargeItemCase":4919338167972135009,
+         "ftChargeItemCaseData":"{\"VoucherNr\":\"UAUA91829182HH\"}"
       }
    ],
    "cbPayItems":[
@@ -64,7 +65,8 @@ Request (voucher within charge items):
          "Amount":-15.00,
          "VATRate":19.0000,
          // 0x4445000000000069 (coupon redeem normal)
-         "ftChargeItemCase":4919338167972135017
+         "ftChargeItemCase":4919338167972135017,
+         "ftChargeItemCaseData":"{\"VoucherNr\":\"UAUA91829182HH\"}"
       }
    ],
    "cbPayItems":[],
@@ -100,6 +102,7 @@ Request (voucher within pay items):
          "Amount":15.00,
          // 0x4445 0000 0000 000A (internal / material consumption)         
          "ftPayItemCase":4919338167972134922
+         "ftPayItemCaseData":"{\"VoucherNr\":\"UAUA91829182HH\"}"
       }
    ],
    // 0x4445 0000 0000 0001 (pos-receipt) + 0000 0001 0000 0000 (implicit flow)   
@@ -126,7 +129,8 @@ Request (voucher within pay items):
          "Description":"Voucher for food and drinks",
          "Amount":-150.00,
          // 0x4445 0000 0000 000D (voucher, not taxable)         
-         "ftPayItemCase":4919338167972134925
+         "ftPayItemCase":4919338167972134925,
+         "ftPayItemCaseData":"{\"VoucherNr\":\"UAUA91829182HH\"}"
       },
       {
          "Quantity":1.0,
@@ -156,7 +160,8 @@ Request (voucher within charge items):
          "Description":"Voucher for food and drinks",
          "Amount":150.00,
          // 0x4445000000000060 (voucher sale not taxable)
-         "ftChargeItemCase":4919338167972135008
+         "ftChargeItemCase":4919338167972135008,
+         "ftChargeItemCaseData":"{\"VoucherNr\":\"UAUA91829182HH\"}"
       }
    ],
    "cbPayItems":[
@@ -201,7 +206,8 @@ Request (voucher within pay items):
          "Description":"Voucher for food and drinks",
          "Amount":150.00,
          // 0x4445 0000 0000 000D (voucher, not taxable)         
-         "ftPayItemCase":4919338167972134925
+         "ftPayItemCase":4919338167972134925,
+         "ftChargeItemCaseData":"{\"VoucherNr\":\"UAUA91829182HH\"}"
       },
       {
          "Quantity":1.0,
@@ -239,7 +245,8 @@ Request (voucher within charge items):
          "Description":"Voucher for food and drinks",
          "Amount":-150.00,
          // 0x4445000000000068 (voucher redeem not taxable)
-         "ftChargeItemCase":4919338167972135016
+         "ftChargeItemCase":4919338167972135016,
+         "ftChargeItemCaseData":"{\"VoucherNr\":\"UAUA91829182HH\"}"
       }
    ],
    "cbPayItems":[

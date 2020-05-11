@@ -101,7 +101,7 @@ Request (voucher within pay items):
          "Description":"Voucher for RX234 MP3 Player",
          "Amount":15.00,
          // 0x4445 0000 0000 000A (internal / material consumption)         
-         "ftPayItemCase":4919338167972134922
+         "ftPayItemCase":4919338167972134922,
          "ftPayItemCaseData":"{\"VoucherNr\":\"UAUA91829182HH\"}"
       }
    ],

@@ -25,7 +25,7 @@ If the cash register can not handle the redemption within a pay item, then it ca
 
 Furthermore for the issuance of multi-purpose vouchers, one can alternatively use a charge item instead of a pay item. The `ftChargeItemCase`: `0x4445000000000060` has to be used.
 
-For all voucher requests you can optionally submit the voucher number. It can be sent via `ftPayItemCaseData` or `ftChargeItemCaseData` in JSON format. To send, add the key value pair `VoucherNr` e.g. `"ftPayItemCaseData":"{ ..., "VoucherNr":"UAUA91829182HH", ... }"`.
-
 Please find examples of requests with multi-purpose vouchers [here](../examples/vouchers.md#multi-purpose-voucher-issuance).
+
+For all voucher requests you can optionally submit the voucher number. It can be sent via `ftPayItemCaseData` or `ftChargeItemCaseData` in JSON format. To send, add the key value pair `VoucherNr` e.g. `"ftPayItemCaseData":"{ ..., "VoucherNr":"UAUA91829182HH", ... }"`.
 

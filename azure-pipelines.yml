@@ -54,7 +54,7 @@ steps:
     filePath: 'set-chapter-numbers.ps1'
 
 - powershell: |
-    Start-Process docfx -Wait -RedirectStandardError $(Build.ArtifactStagingDirectory)/docfx-err.log -RedirectStandardOutput $(Build.ArtifactStagingDirectory)/docfx-out.log
+    Start-Process docfx -ArgumentList "pdf" -Wait -RedirectStandardError $(Build.ArtifactStagingDirectory)/docfx-err.log -RedirectStandardOutput $(Build.ArtifactStagingDirectory)/docfx-out.log
   displayName: Run docfx
 
 - task: PublishBuildArtifacts@1

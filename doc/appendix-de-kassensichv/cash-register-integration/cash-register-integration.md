@@ -35,7 +35,7 @@ The transaction number defined in TR-03153 is responded behind hash-tag in prope
 #### The fiskaltrust.SecurityMechanism implicit transaction
 
 The regular workflow of the fiskaltrust.SecurityMechanism in the German market for actions running immediately has the same requirements as long-running ones. In details, this means, according to BSI TR-03153, there has to be a "Start-Transaction" and a "Finish-Transaction" executed against the TSE. To speed up these two steps into one call to the ´Sign´ method there is a special ´ReceiptCaseFlag´ introduced. Each time this is used in combination with a usual ´ReceiptCase´ a "Start-Transaction" is done behind the scenes upfront to the final call using the given ´ReceiptCase´.
-Using a unique identifier in `cbReceiptIdentification´ that was already used with a ´Sign´ call with ´ReceiptCase´ "Start-Transaction" will end up in an exception.
+Using a unique identifier in `cbReceiptReference` that was already used with a ´Sign´ call with ´ReceiptCase´ "Start-Transaction" will end up in an exception.
 The up-counting transaction number defined in TR-03153 is responded behind hash-tag in property ´ftReceiptIdentification´ of ´ReceiptResponse´ prefixed by "IT".
 
 ### Receipt for special functions

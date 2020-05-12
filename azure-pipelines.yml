@@ -46,7 +46,7 @@ steps:
     # Specific version can be removed as soon as 0.12.6 is released
     choco install wkhtmltopdf --version 0.12.4.20170325 --allow-downgrade -y
     choco install docfx --version 2.41 -y
-    nuget install DocFx.Plugins.PlantUml -ExcludeVersion -OutputDirectory .
+    nuget install DocFx.Plugins.PlantUml -Version "1.1.19" -ExcludeVersion -OutputDirectory .
   displayName: 'Install prerequisites'
 
 - task: PowerShell@2

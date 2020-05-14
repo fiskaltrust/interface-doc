@@ -39,14 +39,14 @@ This chapter lists the data fields that are mandatory and must be provided by th
 | `BON_START` | Single recordings | Mandatory if the action (DE: Vorgang) starts within another system. Otherwise the receipt request of an action must be connected in a way that ft can find the start of the action.|
 | `BEDIENER_NAME` | Single recordings | User name |
 | `AGENTUR_ID` | Single recordings | ID of the agency, only mandatory if agency business (DE: Agenturgeschäft) |
-| `KUNDE_NAME` | Single recordings | Full name of the beneficiary customer. Not mandatory if exempted in relation to § 148 AO. |
-| `KUNDE_ID` | Single recordings | ID of the beneficiary customer. Not mandatory if exempted in relation to § 148 AO.|
-| `KUNDE_TYP` | Single recordings | Type of the beneficiary customer (e.g. employee). Not mandatory if exempted in relation to § 148 AO.|
-| `KUNDE_STRASSE` | Single recordings | Street and house number of the beneficiary customer. Not mandatory if exempted in relation to § 148 AO. |
-| `KUNDE_PLZ` | Single recordings | Zip of the beneficiary customer. Not mandatory if exempted in relation to § 148 AO. |
-| `KUNDE_ORT` | Single recordings | City of the beneficiary customer. Not mandatory if exempted in relation to § 148 AO. |
-| `KUNDE_LAND` | Single recordings | Country of the beneficiary customer. Not mandatory if exempted in relation to § 148 AO. |
-| `KUNDE_USTID` | Single recordings | VAT-ID of the beneficiary customer. Not mandatory if exempted in relation to § 148 AO. |
+| `KUNDE_NAME` | Single recordings | Full name of the beneficiary customer. Mandatory if available. See also AEAO to § 146 |
+| `KUNDE_ID` | Single recordings | ID of the beneficiary customer. Mandatory if available. See also AEAO to § 146|
+| `KUNDE_TYP` | Single recordings | Type of the beneficiary customer (e.g. employee).  Mandatory if available. See also AEAO to § 146 |
+| `KUNDE_STRASSE` | Single recordings | Street and house number of the beneficiary customer. Mandatory if available. See also AEAO to § 146 |
+| `KUNDE_PLZ` | Single recordings | Zip of the beneficiary customer. Mandatory if available. See also AEAO to § 146 |
+| `KUNDE_ORT` | Single recordings | City of the beneficiary customer. Mandatory if available. See also AEAO to § 146 |
+| `KUNDE_LAND` | Single recordings | Country of the beneficiary customer. Mandatory if available. See also AEAO to § 146 |
+| `KUNDE_USTID` | Single recordings | VAT-ID of the beneficiary customer. Mandatory if available. See also AEAO to § 146 |
 | `ABRECHNUNGSKREIS` | Single recordings | Connection criterion of the assignment. |
 | `ZAHLWAEH_CODE` | Single recordings | Foreign currency code. Only mandatory if foreign currency was used for the payment. |
 | `ZAHLWAEH_BETRAG` | Single recordings | Amount in foreign currency. Only mandatory if foreign currency was used for the payment. |
@@ -171,14 +171,14 @@ Each subitem as described in the table below:
 | `BEDIENER_ID` | User-ID | String (50) | Optional. To send, pls. add the key value pair `UserId` e.g. `"ftReceiptCaseData":"{ ..., "UserId":192, ... }"`. If not sent, the ft will automatically generate a User-ID (hash) deducted from `cbUser` |
 | `BEDIENER_NAME` | User name | String (50) | Mandatory, please send via `cbUser` |
 | `UMS_BRUTTO` | Gross total turnover | Decimal (2) | Automatically filled by ft |
-| `KUNDE_NAME` | Name of beneficiary customer | String (50) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Max Wanne",...}"`|
-| `KUNDE_ID` | ID of the beneficiary customer| String (50) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerId` e.g. `"cbCustomer":"{"customerName":"Max Mustermann", "CustomerId":"PX9819822", ...}"`|
-| `KUNDE_TYP` | Type of the beneficiary customer (e.g. employee) | String (50) | Mandatory if not exempted in relation to § 148 AO.  Send via `cbCustomer` in JSON format by adding the key value pair `CustomerType` e.g. `"cbCustomer":"{..., "CustomerId":"PX9819822", "CustomerType":"Mitarbeiter", ...}"`|
-| `KUNDE_STRASSE` | Street and house number of the beneficiary customer | String (60) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerStreet` e.g. `"cbCustomer":"{..., "CustomerStreet":"Lindwurmstr. 98", ...}"` |
-| `KUNDE_PLZ` | Zip of the beneficiary customer | String (10) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerZip` e.g. `"cbCustomer":"{..., "CustomerZip":"80337", ...}"` |
-| `KUNDE_ORT` | City of the beneficiary customer | String (62) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCity` e.g. `"cbCustomer":"{..., "CustomerCity":"München", ...}"` |
-| `KUNDE_LAND` | Country of the beneficiary customer | ISO 3166 ALPHA-3 country code | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCountry` e.g. `"cbCustomer":"{..., "CustomerCountry":"DEU", ...}"`  |
-| `KUNDE_USTID` | VAT-ID of the beneficiary customer | String (15) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerVATId` e.g. `"cbCustomer":"{..., "CustomerVATId":"DE123456789", ...}"`   |
+| `KUNDE_NAME` | Name of beneficiary customer | String (50) | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Max Wanne",...}"`|
+| `KUNDE_ID` | ID of the beneficiary customer| String (50) | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerId` e.g. `"cbCustomer":"{"customerName":"Max Mustermann", "CustomerId":"PX9819822", ...}"`|
+| `KUNDE_TYP` | Type of the beneficiary customer (e.g. employee) | String (50) | Mandatory if available. See also AEAO to § 146.  Send via `cbCustomer` in JSON format by adding the key value pair `CustomerType` e.g. `"cbCustomer":"{..., "CustomerId":"PX9819822", "CustomerType":"Mitarbeiter", ...}"`|
+| `KUNDE_STRASSE` | Street and house number of the beneficiary customer | String (60) | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerStreet` e.g. `"cbCustomer":"{..., "CustomerStreet":"Lindwurmstr. 98", ...}"` |
+| `KUNDE_PLZ` | Zip of the beneficiary customer | String (10) | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerZip` e.g. `"cbCustomer":"{..., "CustomerZip":"80337", ...}"` |
+| `KUNDE_ORT` | City of the beneficiary customer | String (62) | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCity` e.g. `"cbCustomer":"{..., "CustomerCity":"München", ...}"` |
+| `KUNDE_LAND` | Country of the beneficiary customer | ISO 3166 ALPHA-3 country code | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCountry` e.g. `"cbCustomer":"{..., "CustomerCountry":"DEU", ...}"`  |
+| `KUNDE_USTID` | VAT-ID of the beneficiary customer | String (15) | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerVATId` e.g. `"cbCustomer":"{..., "CustomerVATId":"DE123456789", ...}"`   |
 | `BON_NOTIZ` | Additional information on the receipt header | String (255) | Optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptNote ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptNote":"123, ich bin dabei!", ... }"` |
 
 ##### File: Bonkopf_USt  (transactions_vat.csv)

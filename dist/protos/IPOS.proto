@@ -1,0 +1,111 @@
+syntax = "proto3";
+
+package fiskaltrust.ifPOS.v1;
+option csharp_namespace = "fiskaltrust.ifPOS.v1";
+
+import "bcl.proto";
+
+service POS {
+   rpc Echo(EchoRequest) returns (EchoResponse) {}	
+   rpc Journal(JournalRequest) returns (stream JournalResponse) {}	
+   rpc Sign(ReceiptRequest) returns (ReceiptResponse) {}
+}
+
+message EchoRequest {
+   string Message = 1;
+}
+
+message EchoResponse {
+   string Message = 1;
+}
+
+message JournalRequest {
+   int64 ftJournalType = 1;
+   int64 From = 2;
+   int64 To = 3;
+}
+
+message JournalResponse {
+   repeated uint32 Chunk = 1 [packed = false];
+}
+
+message ChargeItem {
+   int64 Position = 5;
+   .bcl.Decimal Quantity = 10;
+   string Description = 20;
+   .bcl.Decimal Amount = 30;
+   .bcl.Decimal VATRate = 40;
+   int64 ftChargeItemCase = 50;
+   string ftChargeItemCaseData = 60;
+   .bcl.Decimal VATAmount = 70;
+   string AccountNumber = 80;
+   string CostCenter = 90;
+   string ProductGroup = 100;
+   string ProductNumber = 110;
+   string ProductBarcode = 120;
+   string Unit = 130;
+   .bcl.Decimal UnitQuantity = 140;
+   .bcl.Decimal UnitPrice = 150;
+   .bcl.DateTime Moment = 160;
+}
+
+message PayItem {
+   int64 Position = 5;
+   .bcl.Decimal Quantity = 10;
+   string Description = 20;
+   .bcl.Decimal Amount = 30;
+   int64 ftPayItemCase = 40;
+   string ftPayItemCaseData = 50;
+   string AccountNumber = 60;
+   string CostCenter = 70;
+   string MoneyGroup = 80;
+   string MoneyNumber = 90;
+   .bcl.DateTime Moment = 100;
+}
+
+message ReceiptRequest {
+   string ftCashBoxID = 10;
+   string ftQueueID = 15;
+   string ftPosSystemId = 16;
+   string cbTerminalID = 20;
+   string cbReceiptReference = 30;
+   .bcl.DateTime cbReceiptMoment = 40;
+   repeated ChargeItem cbChargeItems = 50;
+   repeated PayItem cbPayItems = 60;
+   int64 ftReceiptCase = 70;
+   string ftReceiptCaseData = 80;
+   .bcl.Decimal cbReceiptAmount = 90;
+   string cbUser = 100;
+   string cbArea = 110;
+   string cbCustomer = 120;
+   string cbSettlement = 130;
+   string cbPreviousReceiptReference = 140;
+}
+
+message ReceiptResponse {
+   string ftCashBoxID = 10;
+   string ftQueueID = 14;
+   string ftQueueItemID = 15;
+   int64 ftQueueRow = 16;
+   string cbTerminalID = 20;
+   string cbReceiptReference = 30;
+   string ftCashBoxIdentification = 35;
+   string ftReceiptIdentification = 40;
+   .bcl.DateTime ftReceiptMoment = 50;
+   repeated string ftReceiptHeader = 60;
+   repeated ChargeItem ftChargeItems = 70;
+   repeated string ftChargeLines = 80;
+   repeated PayItem ftPayItems = 90;
+   repeated string ftPayLines = 100;
+   repeated SignaturItem ftSignatures = 110;
+   repeated string ftReceiptFooter = 120;
+   int64 ftState = 130;
+   string ftStateData = 140;
+}
+
+message SignaturItem {
+   int64 ftSignatureFormat = 10;
+   int64 ftSignatureType = 20;
+   string Caption = 30;
+   string Data = 40;
+}

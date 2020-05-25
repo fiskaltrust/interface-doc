@@ -30,9 +30,15 @@ if ((ReceiptResponse.ftState & 0x0000000000000001) != 0)
 {
   //your code in case of out of service condition
 }
-else if ((ReceiptResponse.ftState & 0x0000000000000008) != 0)
+
+if ((ReceiptResponse.ftState & 0x0000000000000008) != 0)
 {
   //your code in case of Late Signing condition
+}
+
+if ((ReceiptResponse.ftState & 0x0000000000000040) != 0)
+{
+  //your code in case of Message Pending condition
 }
 ```
 

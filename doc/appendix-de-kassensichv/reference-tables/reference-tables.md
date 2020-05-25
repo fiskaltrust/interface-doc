@@ -35,8 +35,8 @@ For Germany (DE) the country code is `0x4445`. Thus, the value of an unknown ftR
 | `0x444500000000000D` | b2c-invoice<br /> TBD: <br /> DSFinV-K: BON_TYP=Beleg, can be overwritten by ftReceiptCaseFlag  | Beleg <br> Kassenbeleg-V1 | 1.3- |
 | `0x444500000000000E` | info-invoice<br /> TBD: <br /> DSFinV-K: BON_TYP=AVRechnung | AVRechnung <br> Kassenbeleg-V1 | 1.3- |
 | `0x444500000000000F` | info-delivery-note<br /> TBD: <br /> DSFinV-K: BON_TYP=AVTransfer | AVTransfer <br> Kassenbeleg-V1 | 1.3- |
-| `0x4445000000000010` | info-order<br /> when goods are already delivered to customer and request-payitems not empty <br> (ReceiptRequest.PayItems != [])  <br /> DSFinV-K: BON_TYP=AVBestellung | AVBestellung <br> Kassenbeleg-V1 | 1.3- |
-| `0x4445000000000010` | info-order<br /> when recording an ongoing order and request-payitems are empty <br> (ReceiptRequest.PayItems == []) <br /> DSFinV-K: BON_TYP=[none] | [none] <br> Bestellung-V1 | 1.3- |
+| `0x4445000000000010` | info-order<br /> when goods are already delivered to customer and request-payitems not empty. must contain at least one request-chargeitem. <br> (ReceiptRequest.PayItems != [], ReceiptRequest.ChargeItems != [])  <br /> DSFinV-K: BON_TYP=AVBestellung | AVBestellung <br> Kassenbeleg-V1 | 1.3- |
+| `0x4445000000000010` | info-order<br /> when recording an ongoing order and request-payitems are empty. must contain at least one request-chargeitem. <br> (ReceiptRequest.PayItems == [], ReceiptRequest.ChargeItems != []) <br /> DSFinV-K: BON_TYP=[none] | [none] <br> Bestellung-V1 | 1.3- |
 | `0x4445000000000011` | cash deposit / cash pay-in / cash pay-out / exchange<br /> TBD: <br /> DSFinV-K: BON_TYP=Beleg, can be overwritten by ftReceiptCaseFlag | Beleg <br> Kassenbeleg-V1 | 1.3- |
 | `0x4445000000000012` | material consumption<br /> TBD: <br /> DSFinV-K: BON_TYP=AVSachbezug | AVSachbezung <br> Kassenbeleg-V1  | 1.3- |
 | `0x4445000000000013` | info-internal<br />  when request-chargeitems are not empty and when request-payitems are not empty <br /> DSFinV-K: BON_TYP=AVSonstige | AVSonstige <br> Kassenbeleg-V1 | 1.3- |

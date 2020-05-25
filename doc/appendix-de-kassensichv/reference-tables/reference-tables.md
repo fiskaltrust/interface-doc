@@ -2,6 +2,10 @@
 
 This chapter expands on the reference tables covered in [Reference Tables in General Part](../../general/reference-tables/reference-tables.md#reference-tables), with country-specific information applicable to the German market.
 
+
+!!!!!! TO BE DELETED BELOW THIS LINE, MOVED TO SEPARATE FILES !!!!!!!!
+
+
 ### Service Status: ftState
 
 The table below describes supported statuses for the ftState field in accordance with the German law. These codes can be added through the logic operator "OR".

@@ -46,7 +46,7 @@ steps:
     # Specific version can be removed as soon as 0.12.6 is released
     choco install wkhtmltopdf --version 0.12.4.20170325 --allow-downgrade -y
     choco install docfx --version 2.41 -y
-    nuget install DocFx.Plugins.PlantUml -ExcludeVersion -OutputDirectory .
+    nuget install DocFx.Plugins.PlantUml -Version "1.1.19" -ExcludeVersion -OutputDirectory .
   displayName: 'Install prerequisites'
 
 - task: PowerShell@2
@@ -54,17 +54,16 @@ steps:
     filePath: 'set-chapter-numbers.ps1'
 
 - powershell: |
-    Start-Process docfx -Wait -RedirectStandardError $(Build.ArtifactStagingDirectory)/docfx-err.log -RedirectStandardOutput $(Build.ArtifactStagingDirectory)/docfx-out.log
+    Start-Process docfx -ArgumentList "pdf" -Wait -RedirectStandardError $(Build.ArtifactStagingDirectory)/docfx-err.log -RedirectStandardOutput $(Build.ArtifactStagingDirectory)/docfx-out.log
   displayName: Run docfx
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: documentation'
-  inputs:
-    PathtoPublish: '_site_pdf/'
-    ArtifactName: documentation
 
 - task: PublishBuildArtifacts@1
   displayName: 'Publish Artifact: logs'
   inputs:
     ArtifactName: logs
 
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifact: documentation'
+  inputs:
+    PathtoPublish: '_site_pdf/'
+    ArtifactName: documentation

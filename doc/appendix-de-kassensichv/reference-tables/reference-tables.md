@@ -34,7 +34,7 @@ For Germany (DE) the country code is `0x4445`. Thus, the value of an unknown `ft
 | `0x444500000000000D` | **b2c-invoice**<br /><br />TBD<br /><br />The BON_TYP (Beleg) of DSFinV-K can be overwritten by an `ftReceiptCaseFlag`.   | Beleg <br> Kassenbeleg-V1 | 1.3- |
 | `0x444500000000000E` | **info-invoice**<br /><br />TBD<br />| AVRechnung <br> Kassenbeleg-V1 | 1.3- |
 | `0x444500000000000F` | **info-delivery-note**<br /><br />TBD<br />| AVTransfer <br> Kassenbeleg-V1 | 1.3- |
-| `0x4445000000000010` | i**info-order**<br /> <br />To be used when goods are already delivered to customer and the `ftPayItems` array of the request is empty.<br> `(ReceiptRequest.PayItems != [])` | AVBestellung <br> Kassenbeleg-V1 | 1.3- |
+| `0x4445000000000010` | i**info-order**<br /> <br />To be used when goods are already delivered to customer and the `ftPayItems` array of the request is filled. Usualy this is filled by using 'ftPayItemCase' material consumption ('0x444500000000000A').<br> `(ReceiptRequest.PayItems != [])` | AVBestellung <br> Kassenbeleg-V1 | 1.3- |
 | `0x4445000000000010` | **info-order**<br /> <br />To be used when recording an ongoing order and the `ftPayItems` array of the request is empty. <br> `(ReceiptRequest.PayItems == [])` | [none] <br> Bestellung-V1 | 1.3- |
 | `0x4445000000000011` | **cash deposit / cash pay-in / cash pay-out / exchange**<br /><br />TBD<br /><br />The BON_TYP (Beleg) of DSFinV-K can be overwritten by an `ftReceiptCaseFlag`. | Beleg <br> Kassenbeleg-V1 | 1.3- |
 | `0x4445000000000012` | **material consumption**<br /><br />TBD<br />| AVSachbezung <br> Kassenbeleg-V1  | 1.3- |

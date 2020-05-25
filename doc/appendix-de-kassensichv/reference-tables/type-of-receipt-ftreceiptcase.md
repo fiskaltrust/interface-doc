@@ -38,14 +38,18 @@ This table expands on the values provided in table [ftReceiptCaseFlag in General
 
 | Value | Description | Middleware-Version |
 |---|---|---|
-| 0x0000000000010000 | out of service | 1.3- |
+| 0x0000000000010000 | out of service  ??? clarify  | 1.3- |
 | 0x0000000000020000  | training receipt<br /> DSFinV-K: overrides BON_TYP=AVTraining  | 1.3- |
 | 0x0000000000040000 | reverse/voided receipt<br /> DSFinV-K: overrides BON_TYP=AVBelegstorno | 1.3- |
 | 0x0000000000080000  | paper/handwritten receipt | 1.3- |
 | 0x0000000000100000  | small business, not taxable sales. TBD: law reference | 1.3- |
 | 0x0000000000200000  | receiver is a company | 1.3- |
 | 0x0000000000400000  | contains characteristics related to UStG. TBD: law reference | 1.3- |
-| 0x0000000100000000 | Implicit Transaction. No Start-Transaction call to ´Sign´ is required, it is done implicitly. If the unique identifier set in property ´cbReceiptReference´ already started a transaction, this will throw an exception. | 1.3-  |
+| 0x0000000000800000  | Request additional informations from used TSE device. This is valid for Zero-Receipts only and responses a `TseInfo` entry in `ftStateData` field. Content of this item is same as declared in the IDESSCD interface described at [github.com/fiskaltrust](https://github.com/fiskaltrust/middleware-interface-dotnet/blob/master/src/fiskaltrust.ifPOS/v1/de/Models/TseInfo.cs)  | 1.3.1 |
+| 0x0000000001000000  | Request `ExecuteSelftest` and `ExecuteTimeUpdate` of used TSE device. This is valid for Zero-Receipts only and initiates a selftest and timeupdate at the used TSE device. Some devices (e.g. Swissbit) do require a selftest on a special period (e.g. 25h for Swissbit). On some devices this selftest is timeconsuming (e.g. up to 2 minutes on Swissbit) and therefore a pos-system can trigger this off peak serivcehours, to not block on receipt generation. <br /> If this is not used by pos-system the fiskaltrust-middleware cares on execution of selftest and timeupdate.  | 1.3.1 |
+| 0x0000000002000000  | Request download of TSE device .Tar-File. This is valid for Zero-Receipts only and processes a data-download from TSE device and this also leads to a data-upload to fiskaltrust-cloud. In case of an audit this can be used to get latest .Tar-File data available for download by using fiskaltrust-portal. .Tar-File download from TSE device is time consuming an may take more than 10 minutes to complete. <br /> If this is not used by pos-system the fiskaltrust-middleware cares on .Tar-File download after execution of daily-closing, monthly-closing, and yearly-closing.  | later |
+| 0x0000000004000000  | Request to bypass/avoid the download of TSE device .Tar-File. This is valid for daily-, montly-, and yearly-closing only. After the operations described before, a download of TSE device .Tar-File is done. This can be time consuming and also requires to not run any other operations on TSE device to be successfull. If this should **not** be executed, this flag can be used to bypass execution and keep TSE device useable for imediate receipt signing requests.  | later |
+| 0x0000000100000000 | Implicit Transaction. No Start-Transaction call to ´Sign´ is required, it is done implicitly. If the unique identifier set in property ´cbReceiptReference´ already started a transaction, this will throw an exception. | 1.3.0  |
 | 0x0000800000000000  | Receipt request. Common behaviour. | 1.3- |
 
 

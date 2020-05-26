@@ -126,6 +126,15 @@ This table expands on the values provided in Table [ftChargeItemCase in General 
 | `0x44450000000000A2` | not own sales | 5 | Umsatz  | 1.3- |
 
 
+#### ftChargeItemCaseFlag
+
+This table shows flags that can be added to each ftChargeItemCase with values applicable to the German market. 
+
+| Value | Description | Middleware-Version |
+|---|---|---|
+| 0x0000000000010000 | Take away marker. For some cases it is nescessary to differ for the same good from in-house-consumption and take away. This flag signals a take away situation or in other words a not-in-house-consumption if it is set.  | 1.3.1- |
+
+
 #### Table with vat rate reference numbers defined in DSFinV-K
 
 This table will be removed in the future / replaced by a reference

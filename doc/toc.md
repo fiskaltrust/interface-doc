@@ -40,4 +40,5 @@
 ### [Type of Service: ftChargeItemCase](appendix-de-kassensichv/reference-tables/type-of-service-ftchargeitemcase.md)
 ### [Type of Payment: ftPayItemCase](appendix-de-kassensichv/reference-tables/type-of-payment-ftpayitemcase.md)
 ### [Type of Signature: ftSignatureType](appendix-de-kassensichv/reference-tables/type-of-signature-ftsignaturetype.md)
+### [Type of Journal: ftJournalType](appendix-de-kassensichv/reference-tables/type-of-journal-ftjournaltype.md)
 ## [Procedural documentation for DSFinV-K generation](appendix-de-kassensichv/procedural-documentation/dsfinv-k-generation.md)

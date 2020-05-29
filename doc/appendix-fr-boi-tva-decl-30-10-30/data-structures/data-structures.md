@@ -4,7 +4,19 @@ This chapter expands on the descriptions of the data structures covered in the C
 
 ### Receipt Request
 
-There are no special requirements or laws for the French market.
+This table describes fields of the Receipt Request applicable to the French market.
+
+| Field name                | Data type | Default Value Mandatory Field | Description                                                                                              | Version |
+|---------------------------|-----------|-------------------------------|----------------------------------------------------------------------------------------------------------|---------|
+| cbReceiptAmount	        |Decimal?	| null<br>mandatory	                | Total receipt amount incl. taxes (gross receipt amount).                                                 | 0-      |
+| cbUser	                |String<br>Max 1k |	empty-string<br>optional<br>mandatory in training mode | Identification of the user, who started the training mode  Although all string values are supported, we suggest using data structures serialized into JSON format.	| 0-      |
+
+<h5 id="cbUser-entry-example">cbUser Entry Examples</h5>
+
+- Manager invoking training mode:
+  <code>{ \"managerID\" : 17 }</code>
+- Manager invoking training mode with Terminal user issuing receipt:
+  <code>{ \"managerID\" : 17, \"userID\": 42 }</code>
 
 ### Receipt Response
 

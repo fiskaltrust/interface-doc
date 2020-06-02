@@ -8,7 +8,7 @@ This table describes fields of the Receipt Request applicable to the French mark
 
 | Field name                | Data type | Default Value Mandatory Field | Description                                                                                              | Version |
 |---------------------------|-----------|-------------------------------|----------------------------------------------------------------------------------------------------------|---------|
-| `cbReceiptAmount`       |Decimal?	| null<br>mandatory	                | Total receipt amount incl. taxes (gross receipt amount).                                                 | 0-      |
+| `cbReceiptAmount`       |`Decimal`?	| null<br>mandatory	                | Total receipt amount incl. taxes (gross receipt amount).                                                 | 1.2      |
 
 #### ReceiptCaseData Entry
 
@@ -18,7 +18,7 @@ For French law fulfullment a  ManagerId is required, if the receipt is sent as t
 
 | **Field Name** | **Data Type** | **Default Value Mandatory Field** | **Description**                                                       | **Version** |
 |----------------|---------------|-----------------------------------|-----------------------------------------------------------------------|-------------|
-| `ManagerId`	                |String<br>Max 1k |	empty-string<br>optional<br>mandatory in training mode | Identification of the user, who started the training mode. | 0-      |
+| `ManagerId`	                |`String`<br>Max 1k |	empty-string<br>optional<br>mandatory in training mode | Identification of the user, who started the training mode. | 1.2      |
 
 ##### ReceiptCaseData Entry Example
 

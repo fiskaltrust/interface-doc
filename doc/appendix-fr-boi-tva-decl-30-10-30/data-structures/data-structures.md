@@ -23,7 +23,7 @@ For French law fulfullment a  ManagerId is required, if the receipt is sent as t
 ##### ReceiptCaseData Entry Example
 
 `{
-   \"ManagerId\" : 17
+   \"ManagerId\" : \"17\"
 }`
 
 ### Receipt Response

@@ -32,8 +32,8 @@ This table describes additional fields of the Receipt Response applicable to the
 
 | Field name                | Data type | Default Value Mandatory Field | Description                                                                                              | Version |
 |---------------------------|-----------|-------------------------------|----------------------------------------------------------------------------------------------------------|---------|
-| `ftCashBoxIdentification` | `string`  | mandatory                     | Cash register identification.                                                                            | 0-      |
-| `ftReceiptIdentification` | `string`  | mandatory                     | Allocated through fiskaltrust.SecurityMechanism upcounting receipt number depending on the receipt type. | 0-      |
+| `ftCashBoxIdentification` | `string`  | mandatory                     | Cash register identification.                                                                            | 1.2      |
+| `ftReceiptIdentification` | `string`  | mandatory                     | Allocated through fiskaltrust.SecurityMechanism upcounting receipt number depending on the receipt type. | 1.2      |
 
 <span id="_Toc527986682" class="anchor"></span>*Table 30. Receipt Response*
 
@@ -45,9 +45,9 @@ This table describes additional fields of the Charge Items Entry applicable to t
 
 | **Field Name** | **Data Type** | **Default Value Mandatory Field** | **Description**                                                       | **Version** |
 |----------------|---------------|-----------------------------------|-----------------------------------------------------------------------|-------------|
-| `Description`  | `string`      | empty-string<br />mandatory       | Name or description of customary indication or type of other service. | 0-          |
-| `VATAmount`            | `Decimal`            | 0.0<br />mandatory                           | For French law fulfillment the VAT amount is required. It is used to calculate the net amount in order to avoid rounding errors which are especially likely to appear in row-based net price additions. | 0-          |
-| `ftChargeItemCaseData` | `String`<br />Max 64k | empty-string<br />mandatory                  | Additional data about the service, currently accepted only in JSON format.                                                                                                           | 0-          |
+| `Description`  | `string`      | empty-string<br />mandatory       | Name or description of customary indication or type of other service. | 1.2          |
+| `VATAmount`            | `Decimal`            | 0.0<br />mandatory                           | For French law fulfillment the VAT amount is required. It is used to calculate the net amount in order to avoid rounding errors which are especially likely to appear in row-based net price additions. | 1.2          |
+| `ftChargeItemCaseData` | `string`<br />Max 64k | empty-string<br />mandatory                  | Additional data about the service, currently accepted only in JSON format.                                                                                                           | 1.2          |
 
 <span id="_Toc527986683" class="anchor"></span>*Table 31. Charge Items Entry (ftChargeItems)*
 
@@ -81,7 +81,7 @@ This table describes additional fields of the Signature Entry applicable to the 
 
 | **Field Name**      | **Data Type** | **Default Value**<br />**Mandatory Field** | **Description**                                                                                                                                                                       | **Version** |
 |---------------------|---------------|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `ftSignatureFormat` | `Int64`       | 0<br />mandatory                           | Format for displaying signature data according to the reference table in the appendix.                                                        | 0-          |
-| `ftSignatureType`   | `Int64`       | 0<br />mandatory                           | Type of signature according to the reference table in the appendix, for example signature according to the RKSV or FinanzOnline notification. | 0-          |
+| `ftSignatureFormat` | `Int64`       | 0<br />mandatory                           | Format for displaying signature data according to the reference table in the appendix.                                                        | 1.2          |
+| `ftSignatureType`   | `Int64`       | 0<br />mandatory                           | Type of signature according to the reference table in the appendix, for example signature according to the RKSV or FinanzOnline notification. | 1.2          |
 
 <span id="_Toc527986684" class="anchor"></span>*Table 32. Signature Entry*

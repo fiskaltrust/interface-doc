@@ -9,14 +9,22 @@ This table describes fields of the Receipt Request applicable to the French mark
 | Field name                | Data type | Default Value Mandatory Field | Description                                                                                              | Version |
 |---------------------------|-----------|-------------------------------|----------------------------------------------------------------------------------------------------------|---------|
 | cbReceiptAmount	        |Decimal?	| null<br>mandatory	                | Total receipt amount incl. taxes (gross receipt amount).                                                 | 0-      |
-| cbUser	                |String<br>Max 1k |	empty-string<br>optional<br>mandatory in training mode | Identification of the user, who started the training mode  Although all string values are supported, we suggest using data structures serialized into JSON format.	| 0-      |
 
-<h5 id="cbUser-entry-example">cbUser Entry Examples</h5>
+#### ReceiptCaseData Entry
 
-- Manager invoking training mode:
-  <code>{ \"managerID\" : 17 }</code>
-- Manager invoking training mode with Terminal user issuing receipt:
-  <code>{ \"managerID\" : 17, \"userID\": 42 }</code>
+ReceiptCaseData Entry is used to hand over additional required Informations to a data line for a receipt.
+The Format is limited to JSON.
+For French law fulfullment a  ManagerId is required, if the receipt is sent as training receipt.
+
+| **Field Name** | **Data Type** | **Default Value Mandatory Field** | **Description**                                                       | **Version** |
+|----------------|---------------|-----------------------------------|-----------------------------------------------------------------------|-------------|
+| `ManagerId`	                |String<br>Max 1k |	empty-string<br>optional<br>mandatory in training mode | Identification of the user, who started the training mode. | 0-      |
+
+##### ReceiptCaseData Entry Example
+
+`{
+   \"ManagerId\" : 17
+}`
 
 ### Receipt Response
 
@@ -58,7 +66,6 @@ For French law fulfullment a net-amount by line is required. this is added here 
 `{
    \"NetAmount\" : 7.43
 }`
-
 
 ### Pay Items Entry
 

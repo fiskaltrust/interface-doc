@@ -8,7 +8,7 @@ This table describes fields of the Receipt Request applicable to the French mark
 
 | Field name                | Data type | Default Value Mandatory Field | Description                                                                                              | Version |
 |---------------------------|-----------|-------------------------------|----------------------------------------------------------------------------------------------------------|---------|
-| cbReceiptAmount	        |Decimal?	| null<br>mandatory	                | Total receipt amount incl. taxes (gross receipt amount).                                                 | 0-      |
+| `cbReceiptAmount`       |Decimal?	| null<br>mandatory	                | Total receipt amount incl. taxes (gross receipt amount).                                                 | 0-      |
 
 #### ReceiptCaseData Entry
 

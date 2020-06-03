@@ -28,6 +28,15 @@ This release includes many stability and feature improvements for the German mid
 
 ## How to update
 Existing configurations with 1.3.0 continue to work, but we **strongly recommend all customers to update both their Queues and SCUs, especially in production systems**. 
+
+After these packages were updated, please also re-download the Launcher from the portal:
+1. Click re-build in the respective cashbox
+2. Download the instance by clicking the "dotnet Launcher Download" button
+3. Finally, replace the files (fiskaltrust.exe, ...) with the newly downloaded ones.
+
+We generally do not require manual updates of the Launcher, but had to make an exception in this release to resolve some important issues. Future releases will not require any manual interventions (except from updating package versions in the portal). We apologize for any inconvencience caused by this.
+
+### Additional information:
 - If you are using C#, please update the _fiskaltrust.interface_ NuGet package, or directly migrate to our client packages (as mentioned above). 
 - If you are using HTTP/REST, SOAP or gRPC via Protobuf directly, no changes are required in your implementation.
 

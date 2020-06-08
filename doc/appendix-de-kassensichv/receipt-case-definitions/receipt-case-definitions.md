@@ -29,3 +29,4 @@ Please find examples of requests with multi-purpose vouchers [here](../examples/
 
 For all voucher requests you can optionally submit the voucher number. It can be sent via `ftPayItemCaseData` or `ftChargeItemCaseData` in JSON format. To send, add the key value pair `VoucherNr` e.g. `"ftPayItemCaseData":"{ ..., "VoucherNr":"UAUA91829182HH", ... }"`.
 
+Please also find a postman collection containing all examples here:  [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/e0afcde3e32e902f2fef)

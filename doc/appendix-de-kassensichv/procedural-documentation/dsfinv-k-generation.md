@@ -36,7 +36,6 @@ This chapter lists the data fields that are mandatory and must be provided by th
 | `BON_NAME` | Single recordings  | The `BON_NAME` is used to further subdivide the items contained in the transaction category (`BON_TYP`). The `BON_NAME` must be filled if `BON_TYP` is `AVSonstige`.|
 | `TERMINAL_ID` | Single recordings | ID of the terminal that was used to record this receipt. |
 | `BON_STORNO` | Single recordings | Mandatory for the subsequent cancellation of an receipt. |
-| `BON_START` | Single recordings | Mandatory if the action (DE: Vorgang) starts within another system. Otherwise the receipt request of an action must be connected in a way that ft can find the start of the action.|
 | `BEDIENER_NAME` | Single recordings | User name |
 | `AGENTUR_ID` | Single recordings | ID of the agency, only mandatory if agency business (DE: Agenturgeschäft) |
 | `KUNDE_NAME` | Single recordings | Full name of the beneficiary customer. Mandatory if available. See also AEAO to § 146 |
@@ -166,8 +165,8 @@ Each subitem as described in the table below:
 | `BON_NAME` | Additional description related to the `BON_TYP` | String (60) | Mandatory if `BON_TYPE` is "AVSonstige", otherwise optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptName ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptName":"Sonstige Sonderwurst", ... }"` |
 | `TERMINAL_ID` | Mandatory, ID of the terminal that was used to record this receipt | String (50) | `cbTerminalID` |
 | `BON_STORNO` | Cancellation indicator | 0 or 1 | Mandatory if your receipt is a reverse receipt that voids another, previous receipt (DE: Nachträgliche Vorgangs-Stornierungen). The signs for the charge items and pay items must be reversed comparing to the receipt to be voided. Please reference the receipt to be voided via `cbPreviousReceiptReference` and set the field `VoidingReceipt` to the value ´1´ within `ftReceiptCaseData`. E.g. `"ftReceiptCaseData":"{ ..., "VoidingReceipt":1, ... }"`. Ft will then set the `BON_STORNO` flag in the DSFinV-K export and will also add a corresponding reference in the file "**Bon_Referenzen (references.csv)**" (see below). See also this [discussion](https://www.xing.com/communities/posts/dsfinv-k-2-punkt-1-bon-storno-1018938536).|
-| `BON_START` | Time of the action start | ISO 8601 and RFC3339 date | The action start can be within this cashpoint or outside of this cashpoint. If outside (e.g. by another system or another cashpoint) than it has to be provided in via `ftReceiptCaseData` in JSON format by adding the key value pair `ActionStartMoment`. E.g. `"ftReceiptCaseData":"{ ..., "ActionStartMoment":"2020-09-27T17:00:01", ... }"`. If not provided, ft tries to find the action start by following the `cbPreviousReceiptReference` path into the past until no more previous receipt references exist. ft will than fill this field with the value from `ftReceiptMoment` of the oldest receipt found in that chain. |
-| `BON_ENDE` | Time of the action end | String | `ftReceiptMoment` |
+| `BON_START` | Time of the action start | ISO 8601 and RFC3339 date | Automatically filled by ft |
+| `BON_ENDE` | Time of the action end | ISO 8601 and RFC3339 date | Automatically filled by ft. |
 | `BEDIENER_ID` | User-ID | String (50) | Optional. To send, pls. add the key value pair `UserId` e.g. `"ftReceiptCaseData":"{ ..., "UserId":192, ... }"`. If not sent, the ft will automatically generate a User-ID (hash) deducted from `cbUser` |
 | `BEDIENER_NAME` | User name | String (50) | Mandatory, please send via `cbUser` |
 | `UMS_BRUTTO` | Gross total turnover | Decimal (2) | Automatically filled by ft |

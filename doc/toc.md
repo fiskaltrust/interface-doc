@@ -1,4 +1,4 @@
-﻿# [General Part](general/general.md)
+# [General Part](general/general.md)
 ## [Terminology](general/terminology/terminology.md)
 ## [Cash Register Integration](general/cash-register-integration/cash-register-integration.md)
 ## [Data Structures](general/data-structures/data-structures.md)
@@ -41,4 +41,7 @@
 ### [Type of Payment: ftPayItemCase](appendix-de-kassensichv/reference-tables/type-of-payment-ftpayitemcase.md)
 ### [Type of Signature: ftSignatureType](appendix-de-kassensichv/reference-tables/type-of-signature-ftsignaturetype.md)
 ### [Type of Journal: ftJournalType](appendix-de-kassensichv/reference-tables/type-of-journal-ftjournaltype.md)
+## [Receipt Case Definitions](appendix-de-kassensichv/receipt-case-definitions/receipt-case-definitions.md)
+### [Voucher (goods/services)](appendix-de-kassensichv/receipt-case-definitions/vouchers.md)
+#### [Examples](appendix-de-kassensichv/examples/vouchers.md)
 ## [Procedural documentation for DSFinV-K generation](appendix-de-kassensichv/procedural-documentation/dsfinv-k-generation.md)

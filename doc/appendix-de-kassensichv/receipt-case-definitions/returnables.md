@@ -4,15 +4,9 @@ Income from returnables (DE:Pfand) and their return with settlement of the pledg
 
 #### Income from returnables (DE: Pfand)
 
-In the current version (2.1) of the [DSFinV-K specification](https://www.bzst.de/DE/Unternehmen/Aussenpruefungen/DigitaleSchnittstelleFinV/digitaleschnittstellefinv_node.html) one can find following description regarding returnables:
+From the point of view of turnover tax, the provision of transport aids against a deposit represents an independent delivery which is subject to the general tax rate according to § 12 Abs. 1 UStG (currently 7% VAT).  In contrast, the encirclement of goods, as a so-called dependent secondary service, shares the fate of the actual main service/product. (e.g. delivery of milk 7% VAT - deposit on milk bottle also 7% VAT). 
 
-From a VAT point of view refering to the income from returnables (DE: Pfand), a distinction must be made here as to whether a transport container provided against a separately agreed deposit is a (self-contained) transport aid or merely a so-called goods container. Whereas transport aids basically serve to simplify the transport and storage of goods (e.g. pallets, boxes), goods are enclosed in inner/outer containers which are necessary for the delivery of the goods to the end consumer (e.g. bottles). 
-
-From the point of view of turnover tax, the provision of transport aids against a deposit represents an independent delivery which is subject to the general tax rate according to § 12 Abs. 1 UStG (currently 7% VAT). 
-
-In contrast, the encirclement of goods, as a so-called dependent secondary service, shares the fate of the actual main service/product. (e.g. delivery of milk 7% VAT - deposit on milk bottle also 7% VAT). 
-
-However, this might not cover all cases. For more details, please see also for example the document [Umsatzsteuerrechtliche Behandlung der Hin- und Rückgabe von Transportbehältnissen](https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Steuerarten/Umsatzsteuer/Umsatzsteuer-Anwendungserlass/2013-11-05-hin-und-rueckgabe-von-transportbehaeltnissen.pdf?__blob=publicationFile&v=2) published by the BSI.
+However, this might not cover all cases. For more details and special cases, please see also for example the document [Umsatzsteuerrechtliche Behandlung der Hin- und Rückgabe von Transportbehältnissen](https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Steuerarten/Umsatzsteuer/Umsatzsteuer-Anwendungserlass/2013-11-05-hin-und-rueckgabe-von-transportbehaeltnissen.pdf?__blob=publicationFile&v=2) published by the BSI.
 
 With fiskaltrust you can use the charge item case (`ftChargeItemCase`): `0x4445000000000022` for transport aids (if its not "not taxable": `0x4445000000000025` or "free of tax": `0x4445000000000026`).
 
@@ -25,3 +19,8 @@ Analogue to the income from returnables (or non-cash loans) with reversed signs.
 For transport aids you can use the charge item case (`ftChargeItemCase`): `0x444500000000002A` with negative amount.
 
 For goods containers - depending on the VAT rate you need - you can use one of the following `ftChargeItemCase`: `0x4445000000000029`, `0x444500000000002A`, `0x444500000000002B`, `0x444500000000002C`, `0x444500000000002D`, `0x444500000000002E` or `0x444500000000002F`.
+
+Please find corresponding examples [here](../examples/returnables.md).
+
+We also have a postmman collection with the requests prepared for you: 
+[![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/e07e4cb0fbb017e31109)

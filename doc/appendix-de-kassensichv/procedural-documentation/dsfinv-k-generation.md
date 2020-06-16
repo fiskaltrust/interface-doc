@@ -5,7 +5,7 @@
 
 You can download the current version of the DSFinV-K specification [here](https://www.bzst.de/DE/Unternehmen/Aussenpruefungen/DigitaleSchnittstelleFinV/digitaleschnittstellefinv_node.html).
 
-Based on the the current version of the DSFinV-K specification, this chapter explains how the DSFinV-K export is structured, shows how the previously described input values are mapped by fisklatrust to the files and data of the DSFinV-K export and defines how additional, for the DSFInV-K required, values can be sent to the ft.Middleware. Furthermore, it describes how the marking of actions (DE: Vorgänge) can be made by connecting business actions (DE: Geschäftsvorfälle) and other procedures, occurrences and events (DE: Andere Vorgänge). 
+Based on the the version 2.1 of the DSFinV-K specification, this chapter explains how the DSFinV-K export is structured, shows how the previously described input values are mapped by fisklatrust to the files and data of the DSFinV-K export and defines how additional, for the DSFInV-K required, values can be sent to the ft.Middleware. Furthermore, it describes how the marking of actions (DE: Vorgänge) can be made by connecting business actions (DE: Geschäftsvorfälle) and other procedures, occurrences and events (DE: Andere Vorgänge). 
 
 #### Structure
 
@@ -36,23 +36,19 @@ This chapter lists the data fields that are mandatory and must be provided by th
 | `BON_NAME` | Single recordings  | The `BON_NAME` is used to further subdivide the items contained in the transaction category (`BON_TYP`). The `BON_NAME` must be filled if `BON_TYP` is `AVSonstige`.|
 | `TERMINAL_ID` | Single recordings | ID of the terminal that was used to record this receipt. |
 | `BON_STORNO` | Single recordings | Mandatory for the subsequent cancellation of an receipt. |
-| `BON_START` | Single recordings | Mandatory if the action (DE: Vorgang) starts within another system. Otherwise the receipt request of an action must be connected in a way that ft can find the start of the action.|
 | `BEDIENER_NAME` | Single recordings | User name |
 | `AGENTUR_ID` | Single recordings | ID of the agency, only mandatory if agency business (DE: Agenturgeschäft) |
-| `KUNDE_NAME` | Single recordings | Full name of the beneficiary customer. Not mandatory if exempted in relation to § 148 AO. |
-| `KUNDE_ID` | Single recordings | ID of the beneficiary customer. Not mandatory if exempted in relation to § 148 AO.|
-| `KUNDE_TYP` | Single recordings | Type of the beneficiary customer (e.g. employee). Not mandatory if exempted in relation to § 148 AO.|
-| `KUNDE_STRASSE` | Single recordings | Street and house number of the beneficiary customer. Not mandatory if exempted in relation to § 148 AO. |
-| `KUNDE_PLZ` | Single recordings | Zip of the beneficiary customer. Not mandatory if exempted in relation to § 148 AO. |
-| `KUNDE_ORT` | Single recordings | City of the beneficiary customer. Not mandatory if exempted in relation to § 148 AO. |
-| `KUNDE_LAND` | Single recordings | Country of the beneficiary customer. Not mandatory if exempted in relation to § 148 AO. |
-| `KUNDE_USTID` | Single recordings | VAT-ID of the beneficiary customer. Not mandatory if exempted in relation to § 148 AO. |
+| `KUNDE_NAME` | Single recordings | Full name of the beneficiary customer. Mandatory if available. See also AEAO to § 146 |
+| `KUNDE_ID` | Single recordings | ID of the beneficiary customer. Mandatory if available. See also AEAO to § 146|
+| `KUNDE_TYP` | Single recordings | Type of the beneficiary customer (e.g. employee).  Mandatory if available. See also AEAO to § 146 |
+| `KUNDE_STRASSE` | Single recordings | Street and house number of the beneficiary customer. Mandatory if available. See also AEAO to § 146 |
+| `KUNDE_PLZ` | Single recordings | Zip of the beneficiary customer. Mandatory if available. See also AEAO to § 146 |
+| `KUNDE_ORT` | Single recordings | City of the beneficiary customer. Mandatory if available. See also AEAO to § 146 |
+| `KUNDE_LAND` | Single recordings | Country of the beneficiary customer. Mandatory if available. See also AEAO to § 146 |
+| `KUNDE_USTID` | Single recordings | VAT-ID of the beneficiary customer. Mandatory if available. See also AEAO to § 146 |
 | `ABRECHNUNGSKREIS` | Single recordings | Connection criterion of the assignment. |
 | `ZAHLWAEH_CODE` | Single recordings | Foreign currency code. Only mandatory if foreign currency was used for the payment. |
 | `ZAHLWAEH_BETRAG` | Single recordings | Amount in foreign currency. Only mandatory if foreign currency was used for the payment. |
-| `Z_BUCHUNGSTAG` | Master data | Booking date different from closing date (`Z_ERSTELLUNG`). Only mandatory if the booking date is different to the date of the daily closing receipt. | 
-| Master data for the company, location, terminals, agencies as described in the chapter "Master data module" | Master data | Master data for this cashpoint closing and referenced by the single recordings|
-
 
 The following chapters give you an overview of all DSFinV-K fields, provide you information on how they are filled by ft and how you can send additional data to fill mandatory (listed above) and optional fields that can not be filled by ft.
 
@@ -145,7 +141,7 @@ Each subitem as described in the table below:
 | `ZI_ART_NR` | Article number  | String (50) | To send, add the key value pair `ProductNumber` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", ... }, ... ]` |
 | `ZI_GTIN` | GTIN | String | To send, add the key value pair `GTIN` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", "GTIN":"4231234266622", ... }, ... ]` |
 | `ZI_NAME` | Article name | String (60) | To send, add the key value pair `Description` within the subitem. e.g. `"SubItems":"[{ "ProductNumber":"10292", "Description":"4231234266622", ... }, ... ]` |
-| `ZI_WARENGR_ID` | Product group ID | String (40) |  To send, add the key value pair `ProductGroup` within the subitem. It should be sent as a JSON composed of the key value pairs `ProductGroupId` and `ProductGroupName` e.g. `"SubItems":"[{ ..., "ProductGroup":"{ "ProductGroupId":"981981AA", "ProductGroupName":"Fleischwaren" }", ... }, ... ]` (tbd: does this match to our concept of automatically filling the WARENGR_ID by hasing the name?) |
+| `ZI_WARENGR_ID` | Product group ID | String (40) |  To send, add the key value pair `ProductGroup` within the subitem. It should be sent as a JSON composed of the key value pairs `ProductGroupId` and `ProductGroupName` e.g. `"SubItems":"[{ ..., "ProductGroup":"{ "ProductGroupId":"981981AA", "ProductGroupName":"Fleischwaren" }", ... }, ... ]`. If only `ProductGroupName` is filled, ft will automatically fill `ZI_WARENGR_ID` by creating a hash from `ProductGroupName`. |
 | `ZI_WARENGR` | Name of the product group | String (50) | Similar to `ZI_WARENGR_ID`, use `SubItem.ProductGroup.ProductGroupName` |
 | `ZI_MENGE` | Quantity | Decimal (3) | To send, add the key value pair `Quantity` within the subitem. e.g. `"SubItems":"[{..., "Quantity":2.543, ... }, ... ]` |
 | `ZI_FAKTOR` | factor, e.g. container sizes | Decimal (3) | To send, add the key value pair `UnitQuantity` within the subitem. e.g. `"SubItems":"[{ ..., "UnitQuantity":1.0, ... }, ... ]` |
@@ -168,20 +164,20 @@ Each subitem as described in the table below:
 | `BON_TYP` | Receipt type / action type| String (30) | Deducted from `ftReceiptCase` |
 | `BON_NAME` | Additional description related to the `BON_TYP` | String (60) | Mandatory if `BON_TYPE` is "AVSonstige", otherwise optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptName ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptName":"Sonstige Sonderwurst", ... }"` |
 | `TERMINAL_ID` | Mandatory, ID of the terminal that was used to record this receipt | String (50) | `cbTerminalID` |
-| `BON_STORNO` | Cancellation indicator | String | Mandatory if your receipt is a reverse receipt that voids another, previous receipt. In this case mark your receipt with the `ftReceiptCaseFlag` `0x0000000000040000` and reference the receipt to be voided via `cbPreviousReceiptReference`. Ft will then set the `BON_STORNO` flag in the DSFinV-K export and will also add a corresponding reference in the file "**Bon_Referenzen (references.csv)**" (see below). |
-| `BON_START` | Time of the action start | ISO 8601 and RFC3339 date | The action start can be within this cashpoint or outside of this cashpoint. If outside (e.g. by another system or another cashpoint) than it has to be provided in via `ftReceiptCaseData` in JSON format by adding the key value pair `ActionStartMoment`. E.g. `"ftReceiptCaseData":"{ ..., "ActionStartMoment":"2020-09-27T17:00:01", ... }"`. If not provided, ft tries to find the action start by following the `cbPreviousReceiptReference` path into the past until no more previous receipt references exist. ft will than fill this field with the value from `ftReceiptMoment` of the oldest receipt found in that chain. |
-| `BON_ENDE` | Time of the action end | String | `ftReceiptMoment` |
-| `BEDIENER_ID` | User-ID | String (50) | Optional. To send, pls. add the key value pair `ProductGroupId` e.g. `"ftReceiptCaseData":"{ ..., "UserId":192, ... }"`. If not sent, the ft will automatically generate a User-ID (hash) deducted from `cbUser` |
+| `BON_STORNO` | Cancellation indicator | 0 or 1 | Mandatory if your receipt is a reverse receipt that voids another, previous receipt (DE: Nachträgliche Vorgangs-Stornierungen). The signs for the charge items and pay items must be reversed comparing to the receipt to be voided. Please reference the receipt to be voided via `cbPreviousReceiptReference` and set the field `VoidingReceipt` to the value ´1´ within `ftReceiptCaseData`. E.g. `"ftReceiptCaseData":"{ ..., "VoidingReceipt":1, ... }"`. Ft will then set the `BON_STORNO` flag in the DSFinV-K export and will also add a corresponding reference in the file "**Bon_Referenzen (references.csv)**" (see below). See also this [discussion](https://www.xing.com/communities/posts/dsfinv-k-2-punkt-1-bon-storno-1018938536).|
+| `BON_START` | Time of the action start | ISO 8601 and RFC3339 date | Automatically filled by ft |
+| `BON_ENDE` | Time of the action end | ISO 8601 and RFC3339 date | Automatically filled by ft. |
+| `BEDIENER_ID` | User-ID | String (50) | Optional. To send, pls. add the key value pair `UserId` e.g. `"ftReceiptCaseData":"{ ..., "UserId":192, ... }"`. If not sent, the ft will automatically generate a User-ID (hash) deducted from `cbUser` |
 | `BEDIENER_NAME` | User name | String (50) | Mandatory, please send via `cbUser` |
 | `UMS_BRUTTO` | Gross total turnover | Decimal (2) | Automatically filled by ft |
-| `KUNDE_NAME` | Name of beneficiary customer | String (50) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Max Wanne",...}"`|
-| `KUNDE_ID` | ID of the beneficiary customer| String (50) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerId` e.g. `"cbCustomer":"{"customerName":"Max Mustermann", "CustomerId":"PX9819822", ...}"`|
-| `KUNDE_TYP` | Type of the beneficiary customer (e.g. employee) | String (50) | Mandatory if not exempted in relation to § 148 AO.  Send via `cbCustomer` in JSON format by adding the key value pair `CustomerType` e.g. `"cbCustomer":"{..., "CustomerId":"PX9819822", "CustomerType":"Mitarbeiter", ...}"`|
-| `KUNDE_STRASSE` | Street and house number of the beneficiary customer | String (60) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerStreet` e.g. `"cbCustomer":"{..., "CustomerStreet":"Lindwurmstr. 98", ...}"` |
-| `KUNDE_PLZ` | Zip of the beneficiary customer | String (10) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerZip` e.g. `"cbCustomer":"{..., "CustomerZip":"80337", ...}"` |
-| `KUNDE_ORT` | City of the beneficiary customer | String (62) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCity` e.g. `"cbCustomer":"{..., "CustomerCity":"München", ...}"` |
-| `KUNDE_LAND` | Country of the beneficiary customer | ISO 3166 ALPHA-3 country code | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCountry` e.g. `"cbCustomer":"{..., "CustomerCountry":"DEU", ...}"`  |
-| `KUNDE_USTID` | VAT-ID of the beneficiary customer | String (15) | Mandatory if not exempted in relation to § 148 AO. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerVATId` e.g. `"cbCustomer":"{..., "CustomerVATId":"DE123456789", ...}"`   |
+| `KUNDE_NAME` | Name of beneficiary customer | String (50) | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Max Wanne",...}"`|
+| `KUNDE_ID` | ID of the beneficiary customer| String (50) | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerId` e.g. `"cbCustomer":"{"customerName":"Max Mustermann", "CustomerId":"PX9819822", ...}"`|
+| `KUNDE_TYP` | Type of the beneficiary customer (e.g. employee) | String (50) | Mandatory if available. See also AEAO to § 146.  Send via `cbCustomer` in JSON format by adding the key value pair `CustomerType` e.g. `"cbCustomer":"{..., "CustomerId":"PX9819822", "CustomerType":"Mitarbeiter", ...}"`|
+| `KUNDE_STRASSE` | Street and house number of the beneficiary customer | String (60) | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerStreet` e.g. `"cbCustomer":"{..., "CustomerStreet":"Lindwurmstr. 98", ...}"` |
+| `KUNDE_PLZ` | Zip of the beneficiary customer | String (10) | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerZip` e.g. `"cbCustomer":"{..., "CustomerZip":"80337", ...}"` |
+| `KUNDE_ORT` | City of the beneficiary customer | String (62) | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCity` e.g. `"cbCustomer":"{..., "CustomerCity":"München", ...}"` |
+| `KUNDE_LAND` | Country of the beneficiary customer | ISO 3166 ALPHA-3 country code | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCountry` e.g. `"cbCustomer":"{..., "CustomerCountry":"DEU", ...}"`  |
+| `KUNDE_USTID` | VAT-ID of the beneficiary customer | String (15) | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerVATId` e.g. `"cbCustomer":"{..., "CustomerVATId":"DE123456789", ...}"`   |
 | `BON_NOTIZ` | Additional information on the receipt header | String (255) | Optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptNote ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptNote":"123, ich bin dabei!", ... }"` |
 
 ##### File: Bonkopf_USt  (transactions_vat.csv)

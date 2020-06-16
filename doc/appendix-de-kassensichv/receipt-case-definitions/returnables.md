@@ -23,5 +23,5 @@ For goods containers - depending on the VAT rate you need - you can use one of t
 Please find our examples [here](../examples/returnables.md).
 
 We have also prepared a postmman collection containing the example requests for you: 
-< /br>
+
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/e07e4cb0fbb017e31109)

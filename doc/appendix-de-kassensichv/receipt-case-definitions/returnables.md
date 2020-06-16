@@ -20,7 +20,8 @@ For transport aids you can use the charge item case (`ftChargeItemCase`): `0x444
 
 For goods containers - depending on the VAT rate you need - you can use one of the following `ftChargeItemCase`: `0x4445000000000029`, `0x444500000000002A`, `0x444500000000002B`, `0x444500000000002C`, `0x444500000000002D`, `0x444500000000002E` or `0x444500000000002F`.
 
-Please find corresponding examples [here](../examples/returnables.md).
+Please find our examples [here](../examples/returnables.md).
 
-We also have a postmman collection with the requests prepared for you: 
+We have also prepared a postmman collection containing the example requests for you: 
+< /br>
 [![Run in Postman](https://run.pstmn.io/button.svg)](https://app.getpostman.com/run-collection/e07e4cb0fbb017e31109)

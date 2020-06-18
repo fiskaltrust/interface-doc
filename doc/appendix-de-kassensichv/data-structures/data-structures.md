@@ -59,14 +59,43 @@ If you need to provide a **reference** to another systems or another cashpoints,
 | `RefClosingNr` | `integer` | If the reference you want to add is of type (RefType) "Transaktion", you must provide data for the field `RefClosingNr`. |  It should provide the the referenced cashpoint daily closing number of the referenced object. Please send it via `ftReceiptCaseData` in JSON format by adding the key value pair `RefClosingNr` e.g. `"ftReceiptCaseData":"{ ..., "RefClosingNr":1091029, ... }"`. | 1.3 |
 | `RefReceiptId` | `string` | If the reference you want to add is of type (RefType) "Transaktion", you must provide data for the field `RefReceiptId`. |  It should contain the value of ´ftReceiptIdentification´ of the referenced object. Please send it via `ftReceiptCaseData` in JSON format by adding the key value pair `RefReceiptId` e.g. `"ftReceiptCaseData":"{ ..., "RefReceiptId":"UAUUA1112#20200211-112430", ... }"`. | 1.3 |
 
-
-### Receipt Response
-
-
 ### Charge Items Entry
+
+In the general description the field `ftChargeItemCaseData` is described as optional. However for the German market the content of this field is not always optional.
+
+For some special cases we need you to transmit data within the field `ftChargeItemCaseData` that is later needed for the DSFinV-K export. The following table describes when and how you have to fill them.
+
+
+| **Field name**            | **Data type** | **Default Value Mandatory Field** | **Description**                                                                                         | **Version** |
+|---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
+| `VoucherNr` | `string`      | mandatory if applicable | Send via `ftChargeItemCaseData` in JSON format if the carge item represents the voucher. To send, pls. add the key value pair `VoucherNr` e.g. `"ftChargeItemCaseData":"{ ..., "VoucherNr":"UAUA91829182HH", ... }"`.  | 1.3 |
+| `AgencyId` | `integer`      | mandatory if applicable | Mandatory if agency business (DE: Agenturgeschäft). Send via `ftChargeItemCaseData` in JSON format if the carge item represents the voucher. To send, pls. add the key value pair `AgencyId` e.g. `"ftChargeItemCaseData":"{ ..., "AgencyId":123, ... }"`.  | 1.3 |
+
+
+Following table highlights fields of the charge item that need a special handling for the german market.
+
+| **Field name**            | **Data type** | **Default Value Mandatory Field** | **Description**                                                                                         | **Version** |
+|---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
+| `ProductNumber` | `string (50)` | mandatory if available | Article number | 1.3 |
+| `ProductBarcode` | `string (50)` | mandatory if applicable | Use to send the Global Trade Item Number (GTIN) if the charge item represents an article. | 1.3 |
+| `ProductGroup` | `string (50)` | mandatory if available | Name of the product group. | 1.3 |
+| `Quantity` | `decimal (3)` | mandatory if available | Quantity | 1.3 |
+| `UnitQuantity` | `decimal (3)` | mandatory if available | Factor, e.g. container size | 1.3 |
+| `Unit` | `string` | mandatory if available | Unit of measurement, e.g. kg, litres or pieces | 1.3 |
+| `UnitPrice` | `decimal (5)` | mandatory if available | Price per unit incl. VAT | 1.3 |
+| `VATAmount` | `decimal (5)` | mandatory for special cases | In some special cases of taxation (e.g. car spare part in the car repair shop), the VAT ist not a percentage of the net-price (NETTO) or the gross-price. For this cases, the field  `VATAmount` is mandatory and a `ftChargeItemCase` that mapps to DSFinV-K UST_SCHLUESSEL 7 should be used. The value of the field `VATRate` should be set to `0.0`.  | 1.3 |
 
 
 ### Pay Items Entry
 
+In the general description the field `ftPayItemCaseData` is described as optional. However for the German market the content of this field is not always optional.
 
-### Signature Entry
+For some special cases we need you to transmit data within the field `ftPayItemCaseData` that is later needed for the DSFinV-K export. The following table describes when and how you have to fill them.
+
+
+| **Field name**            | **Data type** | **Default Value Mandatory Field** | **Description**                                                                                         | **Version** |
+|---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
+| `CurrencyCode` | `string (3)` | mandatory if foreign currency used | Mandatory if a foreign currency was used for the payment. To send, add the key value pair `CurrencyCode` e.g. `"ftPayItemCaseData":"{ ..., "CurrencyCode":"USD", ... }"`. Only ISO 4217 currency codes are allowed.  | 1.3 |
+| `ForeignCurrencyAmount` | `decimal (2)` | mandatory if foreign currency used  | Mandatory if a foreign currency was used for the payment. To send, add the key value pair `ForeignCurrencyAmount` e.g. `"ftPayItemCaseData":"{ ..., "ForeignCurrencyAmount":23.00, ... }"`.  | 1.3 |
+| `BaseCurrencyAmount` | `decimal (2)` | mandatory if foreign currency used | Mandatory if a foreign currency was used for the payment. Represents the converted value of the payed foreign currency amount into the base currency (EUR). To send, add the key value pair `BaseCurrencyAmount` e.g. `"ftPayItemCaseData":"{ ..., "BaseCurrencyAmount":20.00, ... }"`.  | 1.3 |
+| `VoucherNr` | `string`      | mandatory if applicable | Send via `ftPayItemCaseData` in JSON format if the pay item represents the voucher. To send, pls. add the key value pair `VoucherNr` e.g. `"ftPayItemCaseData":"{ ..., "VoucherNr":"UAUA91829182HH", ... }"`.  | 1.3 |

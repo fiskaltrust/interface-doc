@@ -44,4 +44,6 @@
 ## [Receipt Case Definitions](appendix-de-kassensichv/receipt-case-definitions/receipt-case-definitions.md)
 ### [Voucher (goods/services)](appendix-de-kassensichv/receipt-case-definitions/vouchers.md)
 #### [Examples](appendix-de-kassensichv/examples/vouchers.md)
+### [Returnables](appendix-de-kassensichv/receipt-case-definitions/returnables.md)
+#### [Examples](appendix-de-kassensichv/examples/returnables.md)
 ## [Procedural documentation for DSFinV-K generation](appendix-de-kassensichv/procedural-documentation/dsfinv-k-generation.md)

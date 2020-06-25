@@ -35,7 +35,6 @@ This chapter lists the data fields that are mandatory and must be provided by th
 | `STK_BR` | Single recordings | Price per unit incl. VAT. |
 | `BON_NAME` | Single recordings  | The `BON_NAME` is used to further subdivide the items contained in the transaction category (`BON_TYP`). The `BON_NAME` must be filled if `BON_TYP` is `AVSonstige`.|
 | `TERMINAL_ID` | Single recordings | ID of the terminal that was used to record this receipt. |
-| `BON_STORNO` | Single recordings | Mandatory for the subsequent cancellation of an receipt. |
 | `BEDIENER_NAME` | Single recordings | User name |
 | `AGENTUR_ID` | Single recordings | ID of the agency, only mandatory if agency business (DE: Agenturgeschäft) |
 | `KUNDE_NAME` | Single recordings | Full name of the beneficiary customer. Mandatory if available. See also AEAO to § 146 |
@@ -164,7 +163,7 @@ Each subitem as described in the table below:
 | `BON_TYP` | Receipt type / action type| String (30) | Deducted from `ftReceiptCase` |
 | `BON_NAME` | Additional description related to the `BON_TYP` | String (60) | Mandatory if `BON_TYPE` is "AVSonstige", otherwise optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptName ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptName":"Sonstige Sonderwurst", ... }"` |
 | `TERMINAL_ID` | Mandatory, ID of the terminal that was used to record this receipt | String (50) | `cbTerminalID` |
-| `BON_STORNO` | Cancellation indicator | 0 or 1 | Mandatory if your receipt is a reverse receipt that voids another, previous receipt (DE: Nachträgliche Vorgangs-Stornierungen). The signs for the charge items and pay items must be reversed comparing to the receipt to be voided. Please reference the receipt to be voided via `cbPreviousReceiptReference` and set the field `VoidingReceipt` to the value ´1´ within `ftReceiptCaseData`. E.g. `"ftReceiptCaseData":"{ ..., "VoidingReceipt":1, ... }"`. Ft will then set the `BON_STORNO` flag in the DSFinV-K export and will also add a corresponding reference in the file "**Bon_Referenzen (references.csv)**" (see below). See also this [discussion](https://www.xing.com/communities/posts/dsfinv-k-2-punkt-1-bon-storno-1018938536).|
+| `BON_STORNO` | Cancellation indicator | 0 or 1 | Automatically filled  by ft |
 | `BON_START` | Time of the action start | ISO 8601 and RFC3339 date | Automatically filled by ft |
 | `BON_ENDE` | Time of the action end | ISO 8601 and RFC3339 date | Automatically filled by ft. |
 | `BEDIENER_ID` | User-ID | String (50) | Optional. To send, pls. add the key value pair `UserId` e.g. `"ftReceiptCaseData":"{ ..., "UserId":192, ... }"`. If not sent, the ft will automatically generate a User-ID (hash) deducted from `cbUser` |
@@ -220,7 +219,7 @@ Each subitem as described in the table below:
 
 ##### File: Bon_Referenzen (references.csv)
 
-If `cbPreviousReceiptReference` is filled in your receipt request, ft will automatically try to find the referenced receipt and if found, ft will add an entry to Bon_Referenzen. This also applies if you want to void a previous receipt. See description of `BON_STORNO` above.
+If `cbPreviousReceiptReference` is filled in your receipt request, ft will automatically try to find the referenced receipt and if found, ft will add an entry to Bon_Referenzen. 
 
 For a recommendation on how to connect the single requests via `cbReceiptReference` and `cbPreviousReceiptReference` see our Business Cases Examples document [here](https://fiskaltrust.de/wp-content/uploads/sites/5/2020/02/fiskaltrust-Business-Cases-in-JSON_englisch.pdf). 
 

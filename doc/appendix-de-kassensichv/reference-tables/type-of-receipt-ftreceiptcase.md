@@ -22,7 +22,7 @@ For Germany (DE) the country code is `0x4445`. Thus, the value of an unknown `ft
 | `0x444500000000000D` | **b2c-invoice**<br /><br />TBD<br /><br />The BON_TYP (Beleg) of DSFinV-K can be overwritten by an `ftReceiptCaseFlag`.   | Beleg <br> Kassenbeleg-V1 | 1.3- |
 | `0x444500000000000E` | **info-invoice**<br /><br />TBD<br />| AVRechnung <br> Kassenbeleg-V1 | 1.3- |
 | `0x444500000000000F` | **info-delivery-note**<br /><br />TBD<br />| AVTransfer <br> Kassenbeleg-V1 | 1.3- |
-| `0x4445000000000010` | i**info-order**<br /> <br />To be used when goods are already delivered to customer and the `ftPayItems` array of the request is filled. Usualy this is filled by using `ftPayItemCase` material consumption ('0x444500000000000A').<br> `(ReceiptRequest.PayItems != [])` | AVBestellung <br> Kassenbeleg-V1 | 1.3- |
+| `0x4445000000000010` | **info-order**<br /> <br />To be used when goods are already delivered to customer and the `ftPayItems` array of the request is filled. Usualy this is filled by using `ftPayItemCase` material consumption ('0x444500000000000A').<br> `(ReceiptRequest.PayItems != [])` | AVBestellung <br> Kassenbeleg-V1 | 1.3- |
 | `0x4445000000000010` | **info-order**<br /> <br />To be used when recording an ongoing order and the `ftPayItems` array of the request is empty. This request must contain at least one `ftChargeItems` entry, empty `ftChargeItems` array is not allowed. <br> `(ReceiptRequest.PayItems == [] and ReceiptRequest.ChargeItems != [])` | [none] <br> Bestellung-V1 | 1.3- |
 | `0x4445000000000011` | **cash deposit / cash pay-in / cash pay-out / exchange**<br /><br />TBD<br /><br />The BON_TYP (Beleg) of DSFinV-K can be overwritten by an `ftReceiptCaseFlag`. | Beleg <br> Kassenbeleg-V1 | 1.3- |
 | `0x4445000000000012` | **material consumption**<br /><br />TBD<br />| AVSachbezung <br> Kassenbeleg-V1  | 1.3- |
@@ -38,7 +38,7 @@ This table expands on the values provided in table [ftReceiptCaseFlag in General
 
 | Value | Description | Middleware-Version |
 |---|---|---|
-| 0x0000000000010000  | out of service  ??? clarify  | 1.3- |
+| 0x0000000000010000  | failed receipt. Common behavior, see [general part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag).| 1.3- |
 | 0x0000000000020000  | training receipt<br /> DSFinV-K: overrides BON_TYP=AVTraining  | 1.3- |
 | 0x0000000000040000  | reverse/voided receipt<br /> DSFinV-K: overrides BON_TYP=AVBelegstorno | 1.3- |
 | 0x0000000000080000  | paper/handwritten receipt | 1.3- |
@@ -54,4 +54,4 @@ This table expands on the values provided in table [ftReceiptCaseFlag in General
 | 0x0000000008000000  | Request to update masterdata. This is valid for daily-, montly-, and yearly-closing only. Change of master-data already prepared in fiskaltrust-portal after rebuild of configuration and polled by fiskaltrust-middleware will be included in the moment of successfull execution of daily-, montly-, and yearly-closing. <br /> Master data are leaded by fiskaltrust-portal, manual change and update can be executed by ui, automated change and update will be possible by api (description will be provided later). <br /> This `ftReceiptCaseFlag` give a local point-of-sale-terminal the power do execute peviouse prepared master-data change. A default implementation could be to execute this on each daily-closing to get changes as soon done as they are reflacted to cashbox/queue.  | later |
 | 0x0000000010000000  | Request to fail an raise exception on daily-closing with started transactions.  | 1.3.1 |
 | 0x0000000100000000  | Implicit Transaction. No Start-Transaction call to ´Sign´ is required, it is done implicitly. If the unique identifier set in property ´cbReceiptReference´ already started a transaction, this will throw an exception. | 1.3.0  |
-| 0x0000800000000000  | Receipt request. Common behaviour. | 1.3- |
+| 0x0000800000000000  | receipt request. Common behavior, see [general part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag).| 1.3- |

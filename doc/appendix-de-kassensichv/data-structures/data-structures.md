@@ -68,7 +68,7 @@ For some special cases we need you to transmit data within the field `ftChargeIt
 | **Field name**            | **Data type** | **Default Value Mandatory Field** | **Description**                                                                                         | **Version** |
 |---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
 | `VoucherNr` | `string`      | mandatory if applicable | Send via `ftChargeItemCaseData` in JSON format if the carge item represents the voucher. To send, pls. add the key value pair `VoucherNr` e.g. `"ftChargeItemCaseData":"{ ..., "VoucherNr":"UAUA91829182HH", ... }"`.  | 1.3 |
-| `AgencyId` | `integer`      | mandatory if applicable | Mandatory if agency business (DE: Agenturgeschäft). Send via `ftChargeItemCaseData` in JSON format if the carge item represents the voucher. To send, pls. add the key value pair `AgencyId` e.g. `"ftChargeItemCaseData":"{ ..., "AgencyId":123, ... }"`.  | 1.3 |
+| `AgencyId` | `integer`      | mandatory if applicable | Mandatory if agency business (DE: Agenturgeschäft). Send via `ftChargeItemCaseData` in JSON format if the carge item represents the voucher. To send, pls. add the key value pair `AgencyId` e.g. `"ftChargeItemCaseData":"{ ..., "AgencyId": "73c94a68-c329-4d82-a8e4-d48903791922", ... }"` (the ID can be taken from the Portal's _Agency management_ page).  | 1.3 |
 
 
 Following table highlights fields of the charge item that need a special handling for the german market.

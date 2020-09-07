@@ -166,7 +166,7 @@ Each subitem as described in the table below:
 | `BON_STORNO` | Cancellation indicator | 0 or 1 | Automatically filled  by ft |
 | `BON_START` | Time of the action start | ISO 8601 and RFC3339 date | Automatically filled by ft |
 | `BON_ENDE` | Time of the action end | ISO 8601 and RFC3339 date | Automatically filled by ft. |
-| `BEDIENER_ID` | User-ID | String (50) | Optional. To send, pls. add the key value pair `UserId` e.g. `"ftReceiptCaseData":"{ ..., "UserId":192, ... }"`. If not sent, the ft will automatically generate a User-ID (hash) deducted from `cbUser` |
+| `BEDIENER_ID` | User-ID | String (50) | Optional. To send, pls. add the key value pair `UserId` e.g. `"ftReceiptCaseData":"{ ..., "UserId": "U192", ... }"`. If not sent, the ft will automatically generate a User-ID (hash) deducted from `cbUser` |
 | `BEDIENER_NAME` | User name | String (50) | Mandatory, please send via `cbUser` |
 | `UMS_BRUTTO` | Gross total turnover | Decimal (2) | Automatically filled by ft |
 | `KUNDE_NAME` | Name of beneficiary customer | String (50) | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Max Wanne",...}"`|

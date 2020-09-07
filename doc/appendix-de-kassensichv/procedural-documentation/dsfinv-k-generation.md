@@ -5,7 +5,7 @@
 
 You can download the current version of the DSFinV-K specification [here](https://www.bzst.de/DE/Unternehmen/Aussenpruefungen/DigitaleSchnittstelleFinV/digitaleschnittstellefinv_node.html).
 
-Based on the the version 2.1 of the DSFinV-K specification, this chapter explains how the DSFinV-K export is structured, shows how the previously described input values are mapped by fisklatrust to the files and data of the DSFinV-K export and defines how additional, for the DSFInV-K required, values can be sent to the ft.Middleware. Furthermore, it describes how the marking of actions (DE: Vorgänge) can be made by connecting business actions (DE: Geschäftsvorfälle) and other procedures, occurrences and events (DE: Andere Vorgänge). 
+Based on the version 2.1 of the DSFinV-K specification, this chapter explains how the DSFinV-K export is structured, shows how the previously described input values are mapped by fisklatrust to the files and data of the DSFinV-K export and defines how additional, for the DSFInV-K required, values can be sent to the ft.Middleware. Furthermore, it describes how the marking of actions (DE: Vorgänge) can be made by connecting business actions (DE: Geschäftsvorfälle) and other procedures, occurrences and events (DE: Andere Vorgänge). 
 
 #### Structure
 
@@ -15,11 +15,11 @@ The DSFinV-K export is divided into the following sections/modules:
 - Master data module (DE: Stammdatenmodul)
 - Cashpoint closing module (DE: Kassenabschlussmodul)
 
-Each module consists of several files. In the following we will go into the individual modules and have look to the files and data contained in them. Details about the meaning of the files and their individual fields can be found in the official DSFinV-K specification.
+Each module consists of several files. In the following we will take a look at the individual modules especially the content of the files and data. Details about the meaning of the files and their individual fields can be found in the official DSFinV-K specification.
 
 #### Mandatory data
 
-This chapter lists the data fields that are mandatory and must be provided by the cashpoint. For details on how to provide them, please see the chapters below. They offer information for all DSFinV-K fields. 
+This chapter lists the data fields that are mandatory and have to be provided by the cashpoint. For details on how to provide them, please see the chapters below. They offer information for all DSFinV-K fields. 
 
 | **Fieldname**            | **Module**          | **Description**          |
 |----------------------|--------------------------|---------------------|

@@ -4,7 +4,7 @@ This chapter expands on the reference tables covered in the Chapter ["Reference 
 
 ### Service Status: ftState
 
-The table below describes supported statuses for the ftState field in accordance with the Austrian law. These codes can be added through the logic operator "OR".
+The table below describes supported statuses for the ftState field in accordance with the Austrian law. The ftState from this reference table and the once of the general part of this documentation can be combined through the logic operator "OR". For example `0x4154000000000010` (monthly report due) and `0x4154000000000008` combined through `OR` results in `0x4154000000000018`.
 
 The country specific code, is made of the country’s code value following the ISO-3166-1-ALPHA-2 standard, converted from ASCII into hex. For Austria (AT) this is `0x4154`, which results in `0x4154000000000000` as the value for the "ready" status.
 

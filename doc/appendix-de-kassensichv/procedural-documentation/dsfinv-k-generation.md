@@ -76,7 +76,7 @@ In addition to these two files there are further detail files which are listed i
 | `GV_NAME` | Addition to the business action type | String (40) | Automatically filled by ft. Depending on `ftChargeItemId` or `ftPayItemId` |
 | `INHAUS` | Inhouse consumption | 0 or 1 | Mandatory, can be set via flag of the charge item. |
 | `P_STORNO` | Position cancellation identification | String | Not supported |
-| `AGENTUR_ID` | ID of the Agency | Integer | Mandatory if agency business (DE: Agenturgeschäft). Please sent via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `AgencyId` e.g. `"ftChargeItemCaseData":"{ ..., "AgencyId":192, ... }"` |
+| `AGENTUR_ID` | ID of the Agency | Integer | Mandatory if agency business (DE: Agenturgeschäft). Please send via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `AgencyId` e.g. `"ftChargeItemCaseData":"{ ..., "AgencyId": "73c94a68-c329-4d82-a8e4-d48903791922", ... }"` (the ID can be taken from the Portal's _Agency management_ page) |
 | `ART_NR` | Article number | String (50) | Mandatory, to send pls. fill `ftChargeItem.ProductNumber` |
 | `GTIN` | Global Trade Item Number | String (50) | Mandatory if an article, to send pls. fill `ftChargeItem.ProductBarcode` |
 | `WARENGR_ID` | Product group ID | String (40) | Optional. To send, pls. add the key value pair `ProductGroupId` e.g. `"ftChargeItemCaseData":"{ ..., "ProductGroupId":192, ... }"`. If not sent, the ft will automatically generate a product number (hash) deducted from `ftChargeItem.ProductGroup` |
@@ -166,7 +166,7 @@ Each subitem as described in the table below:
 | `BON_STORNO` | Cancellation indicator | 0 or 1 | Automatically filled  by ft |
 | `BON_START` | Time of the action start | ISO 8601 and RFC3339 date | Automatically filled by ft |
 | `BON_ENDE` | Time of the action end | ISO 8601 and RFC3339 date | Automatically filled by ft. |
-| `BEDIENER_ID` | User-ID | String (50) | Optional. To send, pls. add the key value pair `UserId` e.g. `"ftReceiptCaseData":"{ ..., "UserId":192, ... }"`. If not sent, the ft will automatically generate a User-ID (hash) deducted from `cbUser` |
+| `BEDIENER_ID` | User-ID | String (50) | Optional. To send, pls. add the key value pair `UserId` e.g. `"ftReceiptCaseData":"{ ..., "UserId": "U192", ... }"`. If not sent, the ft will automatically generate a User-ID (hash) deducted from `cbUser` |
 | `BEDIENER_NAME` | User name | String (50) | Mandatory, please send via `cbUser` |
 | `UMS_BRUTTO` | Gross total turnover | Decimal (2) | Automatically filled by ft |
 | `KUNDE_NAME` | Name of beneficiary customer | String (50) | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Max Wanne",...}"`|

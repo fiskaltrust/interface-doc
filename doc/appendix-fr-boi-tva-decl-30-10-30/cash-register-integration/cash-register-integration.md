@@ -37,19 +37,19 @@ In accordance with the Official Bulletin BOI-CF-COM-10-80-20160803 from August 3
 
 Before the start of a new day, previous results of the cumulative sales counter (daily counter) have to be recorded. A cash register can request this daily receipt from a fiskaltrust.SecurityMechanism for this purpose.
 
-A daily closing exports counters and summary data that are recorded for the period of the current day. When a daily closing is executed, the sums of the day are added to the totals of the month and all amounts for the day are then reset back to zero. The totals and the summary data of the day are written into the journal.
+A daily closing exports counters and summary data that are recorded for the period of the current day. When a daily closing is executed, the perpetual total is fixed at that moment and included in the closing receipt. The sums of the day are added to the totals of the month and all amounts for the day are then reset back to zero. The totals and the summary data of the day are written into the journal.
 
 #### Monthly Receipt
 
 Before the beginning of a new monthly period, previous results of the cumulative sales counter (monthly counter) have to be recorded. A cash register can request this monthly receipt from a fiskaltrust.SecurityMechanism For this purpose,.
 
-A monthly closing exports counters and summary data that are recorded for the period of the last month. When a monthly closing is executed, the sums of the month are added to the year’s totals and the amounts for the month are then reset back to zero. A monthly closing includes a daily closing. That means that a daily closing will be executed first, and the monthly closing follows. The totals and the summary data of the month are written into the journal.
+A monthly closing exports counters and summary data that are recorded for the period of the last month. When a monthly closing is executed, the perpetual total is fixed at that moment and included in the closing receipt. The sums of the month are added to the year’s totals and the amounts for the month are then reset back to zero. A monthly closing includes a daily closing. That means that a daily closing will be executed first, and the monthly closing follows. The totals and the summary data of the month are written into the journal.
 
 #### Annual Receipt
 
 Before the beginning of a new year, the previous results of the cumulative sales counter (yearly counter) have to be recorded. A cash register can request this yearly receipt from a fiskaltrust.SecurityMechanism for this purpose.
 
-A yearly closing exports the counters and summary data that are recorded for the period of the last year. When a yearly closing is executed, the totals of the year are written into the Journal. A yearly closing includes a daily and a monthly closing. That means first a daily, then a monthly closing and finally the yearly closing will be executed. The totals and the summary data of the year are written into the journal.
+A yearly closing exports the counters and summary data that are recorded for the period of the last year. When a yearly closing is executed, the perpetual total is fixed at that moment and included in the closing receipt. The totals of the year are written into the Journal. A yearly closing includes a daily and a monthly closing. That means first a daily, then a monthly closing and finally the yearly closing will be executed. The totals and the summary data of the year are written into the journal.
 
 #### Shift Receipt
 

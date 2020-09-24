@@ -5,7 +5,7 @@
 
 You can download the current version of the DSFinV-K specification [here](https://www.bzst.de/DE/Unternehmen/Aussenpruefungen/DigitaleSchnittstelleFinV/digitaleschnittstellefinv_node.html).
 
-Based on the the version 2.1 of the DSFinV-K specification, this chapter explains how the DSFinV-K export is structured, shows how the previously described input values are mapped by fisklatrust to the files and data of the DSFinV-K export and defines how additional, for the DSFInV-K required, values can be sent to the ft.Middleware. Furthermore, it describes how the marking of actions (DE: Vorgänge) can be made by connecting business actions (DE: Geschäftsvorfälle) and other procedures, occurrences and events (DE: Andere Vorgänge). 
+Based on the version 2.2 of the DSFinV-K specification, this chapter explains how the DSFinV-K export is structured, shows how the previously described input values are mapped by fisklatrust to the files and data of the DSFinV-K export and defines how additional, for the DSFInV-K required, values can be sent to the ft.Middleware. Furthermore, it describes how the marking of actions (DE: Vorgänge) can be made by connecting business actions (DE: Geschäftsvorfälle) and other procedures, occurrences and events (DE: Andere Vorgänge). 
 
 #### Structure
 
@@ -15,11 +15,11 @@ The DSFinV-K export is divided into the following sections/modules:
 - Master data module (DE: Stammdatenmodul)
 - Cashpoint closing module (DE: Kassenabschlussmodul)
 
-Each module consists of several files. In the following we will go into the individual modules and have look to the files and data contained in them. Details about the meaning of the files and their individual fields can be found in the official DSFinV-K specification.
+Each module consists of several files. In the following we will take a look at the individual modules especially the content of the files and data. Details about the meaning of the files and their individual fields can be found in the official DSFinV-K specification.
 
 #### Mandatory data
 
-This chapter lists the data fields that are mandatory and must be provided by the cashpoint. For details on how to provide them, please see the chapters below. They offer information for all DSFinV-K fields. 
+This chapter lists the data fields that are mandatory and have to be provided by the cashpoint. For details on how to provide them, please see the chapters below. They offer information for all DSFinV-K fields. 
 
 | **Fieldname**            | **Module**          | **Description**          |
 |----------------------|--------------------------|---------------------|
@@ -35,7 +35,6 @@ This chapter lists the data fields that are mandatory and must be provided by th
 | `STK_BR` | Single recordings | Price per unit incl. VAT. |
 | `BON_NAME` | Single recordings  | The `BON_NAME` is used to further subdivide the items contained in the transaction category (`BON_TYP`). The `BON_NAME` must be filled if `BON_TYP` is `AVSonstige`.|
 | `TERMINAL_ID` | Single recordings | ID of the terminal that was used to record this receipt. |
-| `BON_STORNO` | Single recordings | Mandatory for the subsequent cancellation of an receipt. |
 | `BEDIENER_NAME` | Single recordings | User name |
 | `AGENTUR_ID` | Single recordings | ID of the agency, only mandatory if agency business (DE: Agenturgeschäft) |
 | `KUNDE_NAME` | Single recordings | Full name of the beneficiary customer. Mandatory if available. See also AEAO to § 146 |
@@ -77,7 +76,7 @@ In addition to these two files there are further detail files which are listed i
 | `GV_NAME` | Addition to the business action type | String (40) | Automatically filled by ft. Depending on `ftChargeItemId` or `ftPayItemId` |
 | `INHAUS` | Inhouse consumption | 0 or 1 | Mandatory, can be set via flag of the charge item. |
 | `P_STORNO` | Position cancellation identification | String | Not supported |
-| `AGENTUR_ID` | ID of the Agency | Integer | Mandatory if agency business (DE: Agenturgeschäft). Please sent via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `AgencyId` e.g. `"ftChargeItemCaseData":"{ ..., "AgencyId":192, ... }"` |
+| `AGENTUR_ID` | ID of the Agency | Integer | Mandatory if agency business (DE: Agenturgeschäft). Please send via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `AgencyId` e.g. `"ftChargeItemCaseData":"{ ..., "AgencyId": "73c94a68-c329-4d82-a8e4-d48903791922", ... }"` (the ID can be taken from the Portal's _Agency management_ page) |
 | `ART_NR` | Article number | String (50) | Mandatory, to send pls. fill `ftChargeItem.ProductNumber` |
 | `GTIN` | Global Trade Item Number | String (50) | Mandatory if an article, to send pls. fill `ftChargeItem.ProductBarcode` |
 | `WARENGR_ID` | Product group ID | String (40) | Optional. To send, pls. add the key value pair `ProductGroupId` e.g. `"ftChargeItemCaseData":"{ ..., "ProductGroupId":192, ... }"`. If not sent, the ft will automatically generate a product number (hash) deducted from `ftChargeItem.ProductGroup` |
@@ -164,10 +163,10 @@ Each subitem as described in the table below:
 | `BON_TYP` | Receipt type / action type| String (30) | Deducted from `ftReceiptCase` |
 | `BON_NAME` | Additional description related to the `BON_TYP` | String (60) | Mandatory if `BON_TYPE` is "AVSonstige", otherwise optional, can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptName ` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptName":"Sonstige Sonderwurst", ... }"` |
 | `TERMINAL_ID` | Mandatory, ID of the terminal that was used to record this receipt | String (50) | `cbTerminalID` |
-| `BON_STORNO` | Cancellation indicator | 0 or 1 | Mandatory if your receipt is a reverse receipt that voids another, previous receipt (DE: Nachträgliche Vorgangs-Stornierungen). The signs for the charge items and pay items must be reversed comparing to the receipt to be voided. Please reference the receipt to be voided via `cbPreviousReceiptReference` and set the field `VoidingReceipt` to the value ´1´ within `ftReceiptCaseData`. E.g. `"ftReceiptCaseData":"{ ..., "VoidingReceipt":1, ... }"`. Ft will then set the `BON_STORNO` flag in the DSFinV-K export and will also add a corresponding reference in the file "**Bon_Referenzen (references.csv)**" (see below). See also this [discussion](https://www.xing.com/communities/posts/dsfinv-k-2-punkt-1-bon-storno-1018938536).|
+| `BON_STORNO` | Cancellation indicator | 0 or 1 | Automatically filled  by ft |
 | `BON_START` | Time of the action start | ISO 8601 and RFC3339 date | Automatically filled by ft |
 | `BON_ENDE` | Time of the action end | ISO 8601 and RFC3339 date | Automatically filled by ft. |
-| `BEDIENER_ID` | User-ID | String (50) | Optional. To send, pls. add the key value pair `UserId` e.g. `"ftReceiptCaseData":"{ ..., "UserId":192, ... }"`. If not sent, the ft will automatically generate a User-ID (hash) deducted from `cbUser` |
+| `BEDIENER_ID` | User-ID | String (50) | Optional. To send, pls. add the key value pair `UserId` e.g. `"ftReceiptCaseData":"{ ..., "UserId": "U192", ... }"`. If not sent, the ft will automatically generate a User-ID (hash) deducted from `cbUser` |
 | `BEDIENER_NAME` | User name | String (50) | Mandatory, please send via `cbUser` |
 | `UMS_BRUTTO` | Gross total turnover | Decimal (2) | Automatically filled by ft |
 | `KUNDE_NAME` | Name of beneficiary customer | String (50) | Mandatory if available. See also AEAO to § 146. Send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Max Wanne",...}"`|
@@ -220,7 +219,7 @@ Each subitem as described in the table below:
 
 ##### File: Bon_Referenzen (references.csv)
 
-If `cbPreviousReceiptReference` is filled in your receipt request, ft will automatically try to find the referenced receipt and if found, ft will add an entry to Bon_Referenzen. This also applies if you want to void a previous receipt. See description of `BON_STORNO` above.
+If `cbPreviousReceiptReference` is filled in your receipt request, ft will automatically try to find the referenced receipt and if found, ft will add an entry to Bon_Referenzen. 
 
 For a recommendation on how to connect the single requests via `cbReceiptReference` and `cbPreviousReceiptReference` see our Business Cases Examples document [here](https://fiskaltrust.de/wp-content/uploads/sites/5/2020/02/fiskaltrust-Business-Cases-in-JSON_englisch.pdf). 
 

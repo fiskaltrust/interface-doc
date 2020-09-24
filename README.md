@@ -1,6 +1,8 @@
 # fiskaltrust interface documentation
 _Welcome to the open source documentation of the fiskaltrust interface!_
 
+The goal of this repository is to provide a detailed technical specification of the fiskaltrust data interface used by POS-Systems to interact with the fiskaltrust.Middleware, so that the fiskaltrust.Middleware can be integrated by PosCreators into their systems without further support in the most cases.
+
 The technical specification of the data interface described in this document provides information regarding the following areas:
 1. Access to the fiskaltrust.Middleware
 2. Integration into the receipt based cash register workflow
@@ -94,3 +96,13 @@ To create a release, clone the repository locally and run the following commands
 git tag <version>
 git push origin --tags
 ```
+
+## Further public fiskaltrust repositories
+
+The following list shows further fiskaltrust repositories that are important for our customers. 
+
+| **Github repo**| **Goal/Purpose** | **Content** |
+|-------------------|----------|------------|
+|[fiskaltrust/portal-manual-doc](https://github.com/fiskaltrust/portal-manual-doc)| Goal of this repository is to list and describe the available functionality of the ft.Portal, so that the usability and understanding of the portal can be increased by the here offered explanations and descriptions.| Each offered functionality of the ft.Portal including the meaning of menu items, buttons, input fields, dropdown & checkbox values, etc. is described here. To avoid confusion as much as possible, also different hints referring on how the portal helps to configure or run different fiskaltrust processes can be found here. The description of fiskaltrust processes and products themselves are not part of this repository. |
+|[fiskaltrust/productdescription-de-doc](https://github.com/fiskaltrust/productdescription-de-doc)|Goal of this repository is to help our customers to get familiar with our products and services for the german market. It should also help our customers to apply the products and services described here.| The repository contains descriptions of the offered products and services by fiskaltrust for the german market. It also contains accompanying materials such as how-to guides, price lists, concepts and presentations, that help our customers to integrate the here offered products and services into their own products and services. |
+|[fiskaltrust/faq](https://github.com/fiskaltrust/faq)| The purpose of this repository is to provide information on frequent questions or concerns from our customers.| The repo contains unsorted, but tagged question and answer sets. If the content of the answer already exists in another public fiskaltrust repository, that content is linked in the answer. The content of this repo is also rendered and presented in the [docs.fiskaltrust](https://docs.fiskaltrust.cloud/doc/faq/qna/market-de.html) portal. |

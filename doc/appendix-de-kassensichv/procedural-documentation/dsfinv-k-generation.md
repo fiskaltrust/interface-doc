@@ -79,7 +79,7 @@ In addition to these two files there are further detail files which are listed i
 | `AGENTUR_ID` | ID of the Agency | Integer | Mandatory if agency business (DE: Agenturgeschäft). Please send via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `AgencyId` e.g. `"ftChargeItemCaseData":"{ ..., "AgencyId": "73c94a68-c329-4d82-a8e4-d48903791922", ... }"` (the ID can be taken from the Portal's _Agency management_ page) |
 | `ART_NR` | Article number | String (50) | Mandatory, to send pls. fill `ftChargeItem.ProductNumber` |
 | `GTIN` | Global Trade Item Number | String (50) | Mandatory if an article, to send pls. fill `ftChargeItem.ProductBarcode` |
-| `WARENGR_ID` | Product group ID | String (40) | Optional. To send, pls. add the key value pair `ProductGroupId` e.g. `"ftChargeItemCaseData":"{ ..., "ProductGroupId":192, ... }"`. If not sent, the ft will automatically generate a product number (hash) deducted from `ftChargeItem.ProductGroup` |
+| `WARENGR_ID` | Product group ID | String (40) | Optional. To send, pls. add the key value pair `ProductGroupId` to the ChargeItem (e.g. `"ftChargeItemCaseData":"{ ..., "ProductGroupId":192, ... }"`) or `MoneyGroupId` to the PayItem (e.g. `"ftPayItemCaseData":"{ ..., "MoneyGroupId":192, ... }"`). If not sent, the ft will automatically generate an ID (CRC32 hash) deducted from `ftChargeItem.ProductGroup` or `ftPayItem.MoneyGroup` |
 | `WARENGR` | Name of the product group | String (50) | Mandatory, pls. send via `ftChargeItem.ProductGroup` |
 | `MENGE` | Quantity | Decimal (3) | Mandatory, pls. send via `ftChargeItem.Quantity` |
 | `FAKTOR` | factor, e.g. container size | Decimal (3) | Mandatory, pls. send via `ftChargeItem.UnitQuantity`|

@@ -49,7 +49,6 @@ This table describes additional fields of the Charge Items Entry applicable to t
 | `VATAmount`            | `Decimal`            | 0.0<br />mandatory                           | For French law fulfillment the VAT amount is required. It is used to calculate the net amount in order to avoid rounding errors which are especially likely to appear in row-based net price additions. | 1.2          |
 | `ftChargeItemCaseData` | `string`<br />Max 64k | mandatory                  | Additional data about the service, currently accepted only in JSON format.                                                                                                           | 1.2          |
 | `Unit`                 | `String`<br />Max 1k  | mandatory                  | Unit of measurement                                                                                                                                                                  | 0-          |
-                                                                                                    | 0-          |
 | `UnitPrice`            | `Decimal`?            | mandatory                          | Gross price per indicated unit.                                                                                                                                                      | 0-          |
 
 <span id="_Toc527986683" class="anchor"></span>*Table 31. Charge Items Entry (ftChargeItems)*

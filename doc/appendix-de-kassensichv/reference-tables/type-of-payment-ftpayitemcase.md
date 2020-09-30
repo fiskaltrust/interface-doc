@@ -13,7 +13,7 @@ This table expands on the values provided in table [ftPayItemCase in General Par
 | `0x4445000000000006` | online payment | ElZahlungsdienstleister | 1.3- |
 | `0x4445000000000007` | customer card payment | Guthabenkarte  | 1.3- |
 | `0x4445000000000008` | SEPA transfer   | Unbar | 1.3-  |
-| `0x4445000000000009` | other Bank transfer | Unbar | | 1.3- |
+| `0x4445000000000009` | other Bank transfer | Unbar | 1.3- |
 | `0x444500000000000A` | internal / material consumption | Keine | 1.3- |
 | `0x444500000000000B` | change in national currency | Bar | 1.3- |
 | `0x444500000000000C` | change in foreign curreny | Bar | 1.3- |

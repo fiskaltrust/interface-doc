@@ -9,6 +9,7 @@ This table describes fields of the Receipt Request applicable to the French mark
 | Field name                | Data type | Default Value Mandatory Field | Description                                                                                              | Version |
 |---------------------------|-----------|-------------------------------|----------------------------------------------------------------------------------------------------------|---------|
 | `cbReceiptAmount`       |`Decimal`?	| null<br>mandatory	                | Total receipt amount incl. taxes (gross receipt amount).                                                 | 1.2      |
+| `ftPosSystemId`          |`guid/string` |mandatory	                |	This field identifies and documents the type and software version of the PosSystem sending the request. It is used for audits and as a base for commission calculation. The PosSystem itself has to be created in the portal and its ID can be implemented as a constant value by the PosCreator. | 1.2      |
 
 #### ReceiptCaseData Entry
 

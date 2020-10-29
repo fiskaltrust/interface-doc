@@ -17,9 +17,11 @@ ReceiptCaseData Entry is used to hand over additional required Informations to a
 The Format is limited to JSON.
 For French law fulfullment a  ManagerId is required, if the receipt is sent as training receipt.
 
-| **Field Name** | **Data Type** | **Default Value Mandatory Field** | **Description**                                                       | **Version** |
-|----------------|---------------|-----------------------------------|-----------------------------------------------------------------------|-------------|
-| `ManagerId`	                |`String`<br>Max 1k |	empty-string<br>optional<br>mandatory in training mode | Identification of the user, who started the training mode. | 1.2      |
+| **Field Name**  | **Data Type** | **Default Value Mandatory Field** | **Description**                                                       | **Version** |
+|-----------------|---------------|-----------------------------------|-----------------------------------------------------------------------|-------------|
+| `ManagerId`	   |`String`<br>Max 1k |	empty-string<br>optional<br>mandatory in training mode | Identification of the user, who started the training mode. | 1.2      |
+| `FromTimestamp` |`long`             | 0<br>mandatory for receiptcase `0x4652000000000017` | date/time in ticks for the beginning of the journal export.   | 1.2      |
+| `ToTimestamp`	|`long`             | 0<br>mandatory for receiptcase `0x4652000000000017` | date/time in ticks for the end of the journal export.<br>Timespan to `from` must be less than one year.   | 1.2      |
 
 ##### ReceiptCaseData Entry Example
 
@@ -35,6 +37,7 @@ This table describes additional fields of the Receipt Response applicable to the
 |---------------------------|-----------|-------------------------------|----------------------------------------------------------------------------------------------------------|---------|
 | `ftCashBoxIdentification` | `string`  | mandatory                     | Cash register identification.                                                                            | 1.2      |
 | `ftReceiptIdentification` | `string`  | mandatory                     | Allocated through fiskaltrust.SecurityMechanism upcounting receipt number depending on the receipt type. | 1.2      |
+| `ftStateData`             | `string`  | mandatory for receiptcase `0x4652000000000017` | Serialized JSON-object with hash-values for each journal-type export. | 1.2      |
 
 <span id="_Toc527986682" class="anchor"></span>*Table 30. Receipt Response*
 

@@ -7,4 +7,4 @@ This table expands on the values provided in table of Chapter ["Type of Journal:
 | `0x4445000000000000` | status information for QueueDE | 1.3.1       |
 | `0x4445000000000001` | .TAR-File from TSE device      | 1.3.1       |
 | `0x4445000000000002` | DSFinV-K-File                  | 1.3.6       |
-| `0x4445000000000003` | .TAR-File                      | 1.3.10      |
+| `0x4445000000000003` | .TAR-File                      | 1.3.11      |

@@ -25,7 +25,7 @@ For Germany (DE) the country code is `0x4445`. Thus, the value of an unknown `ft
 | `0x4445000000000010` | **info-order**<br /> <br />To be used when goods are already delivered to customer and the `ftPayItems` array of the request is filled. Usualy this is filled by using `ftPayItemCase` material consumption ('0x444500000000000A').<br> `(ReceiptRequest.PayItems != [])` | AVBestellung <br> Kassenbeleg-V1 | 1.3- |
 | `0x4445000000000010` | **info-order**<br /> <br />To be used when recording an ongoing order and the `ftPayItems` array of the request is empty. This request must contain at least one `ftChargeItems` entry, empty `ftChargeItems` array is not allowed. <br> `(ReceiptRequest.PayItems == [] and ReceiptRequest.ChargeItems != [])` | [none] <br> Bestellung-V1 | 1.3- |
 | `0x4445000000000011` | **cash deposit / cash pay-in / cash pay-out / exchange**<br /><br />TBD<br /><br />The BON_TYP (Beleg) of DSFinV-K can be overwritten by an `ftReceiptCaseFlag`. | Beleg <br> Kassenbeleg-V1 | 1.3- |
-| `0x4445000000000012` | **material consumption**<br /><br />TBD<br />| AVSachbezung <br> Kassenbeleg-V1  | 1.3- |
+| `0x4445000000000012` | **material consumption**<br /><br />TBD<br />| AVSachbezug <br> Kassenbeleg-V1  | 1.3- |
 | `0x4445000000000013` | **info-internal**<br /><br />First case: "charge items and pay items exist" <br> `(ReceiptRequest.ChargePayItems != [] && ReceiptRequest.PayItems != [])` | AVSonstige <br> Kassenbeleg-V1 | 1.3- |
 | `0x4445000000000013` | **info-internal**<br /><br />Second case: "no charge items and no pay items"<br> `(ReceiptRequest.ChargePayItems == [] && ReceiptRequest.PayItems == [])`| [none] <br> SonstigerVorgang | 1.3- |
 | `0x4445000000000014` | **protocol**<br /><br />TBD<br />| [none] <br> SonstigerVorgang | 1.3- |

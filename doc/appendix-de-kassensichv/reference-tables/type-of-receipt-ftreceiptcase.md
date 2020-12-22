@@ -27,7 +27,7 @@ For Germany (DE) the country code is `0x4445`. Thus, the value of an unknown `ft
 | `0x4445000000000011` | **cash deposit / cash pay-in / cash pay-out / exchange**<br /><br />TBD<br /><br />The BON_TYP (Beleg) of DSFinV-K can be overwritten by an `ftReceiptCaseFlag`. | Beleg <br> Kassenbeleg-V1 | 1.3- |
 | `0x4445000000000012` | **material consumption**<br /><br />TBD<br />| AVSachbezug <br> Kassenbeleg-V1  | 1.3- |
 | `0x4445000000000013` | **info-internal**<br /><br />First case: "charge items and pay items exist" <br> `(ReceiptRequest.ChargePayItems != [] && ReceiptRequest.PayItems != [])` | AVSonstige <br> Kassenbeleg-V1 | 1.3- |
-| `0x4445000000000013` | **info-internal**<br /><br />Second case: "no charge items and no pay items"<br> `(ReceiptRequest.ChargePayItems == [] && ReceiptRequest.PayItems == [])`| [none] <br> SonstigerVorgang | 1.3- |
+| `0x4445000000000013` | **info-internal**<br /><br />Second case: "no charge items or no pay items"<br> `(ReceiptRequest.ChargePayItems == [] \|\| ReceiptRequest.PayItems == [])`| [none] <br> SonstigerVorgang | 1.3- |
 | `0x4445000000000014` | **protocol**<br /><br />TBD<br />| [none] <br> SonstigerVorgang | 1.3- |
 | `0x4445000000000015` | **foreign sales**<br /><br />TBD<br />| AVSonstige <br> Kassenbeleg-V1 | 1.3- |
 

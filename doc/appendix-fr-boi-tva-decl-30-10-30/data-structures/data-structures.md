@@ -8,7 +8,7 @@ This table describes fields of the Receipt Request applicable to the French mark
 
 | Field name                | Data type | Default Value Mandatory Field | Description                                                                                              | Version |
 |---------------------------|-----------|-------------------------------|----------------------------------------------------------------------------------------------------------|---------|
-| `cbReceiptAmount`       |`Decimal`?	| null<br>mandatory	                | Total receipt amount incl. taxes (gross receipt amount).                                                 | 1.2      |
+| `cbReceiptAmount`       |`Decimal`?	| null<br />mandatory	                | Total receipt amount incl. taxes (gross receipt amount).                                                 | 1.2      |
 | `ftPosSystemId`          |`guid/string` |mandatory	                |	This field identifies and documents the type and software version of the PosSystem sending the request. It is used for audits and as a base for commission calculation. The PosSystem itself has to be created in the portal and its ID can be implemented as a constant value by the PosCreator. | 1.2      |
 
 #### ReceiptCaseData Entry
@@ -19,9 +19,9 @@ For French law fulfullment a  ManagerId is required, if the receipt is sent as t
 
 | **Field Name**  | **Data Type** | **Default Value Mandatory Field** | **Description**                                                       | **Version** |
 |-----------------|---------------|-----------------------------------|-----------------------------------------------------------------------|-------------|
-| `ManagerId`	   |`String`<br>Max 1k |	empty-string<br>optional<br>mandatory in training mode | Identification of the user, who started the training mode. | 1.2      |
-| `FromTimestamp` |`long`             | 0<br>mandatory for receiptcase `0x4652000000000017` | date/time in ticks for the beginning of the journal export.   | 1.2      |
-| `ToTimestamp`	|`long`             | 0<br>mandatory for receiptcase `0x4652000000000017` | date/time in ticks for the end of the journal export.<br>Timespan to `from` must be less than one year.   | 1.2      |
+| `ManagerId`	   |`String`<br />Max 1k |	empty-string<br />optional<br />mandatory in training mode | Identification of the user, who started the training mode. | 1.2      |
+| `FromTimestamp` |`long`             | 0<br />mandatory for receiptcase `0x4652000000000017` | date/time in ticks for the beginning of the journal export.   | 1.2      |
+| `ToTimestamp`	|`long`             | 0<br />mandatory for receiptcase `0x4652000000000017` | date/time in ticks for the end of the journal export.<br />Timespan to `from` must be less than one year.   | 1.2      |
 
 ##### ReceiptCaseData Entry Example
 

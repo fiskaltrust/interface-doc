@@ -20,7 +20,7 @@ Following chapter highlights fields from the receipt request that need a special
 | `cbReceiptReference` | `string (50)` | Mandatory if the request is part of a business action | Used to connect all requests reffering to the same business action. | 1.3 |
 | `cbPreviousReceiptReference` | `string (50)` | Optional | Points to `cbReceiptReference` of a previous request. Used to connect requests repesenting a business action. E.g. split, merge or just reference a receipt to be voided. | 1.3 |
 
-Examples of using `cbReceiptReference` and `cbPreviousReceiptReference` to connect requests representing a business action can be found [here](../examples/cbReference.md).
+Examples of using `cbReceiptReference` and `cbPreviousReceiptReference` to connect requests representing a business action can be found in our Postman collection.
 
 #### Customer data `cbCustomer`
 

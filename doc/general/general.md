@@ -1,6 +1,6 @@
 ---
 slug: /poscreators/middleware-doc
-title: General
+title: Introduction
 ---
 
 # General Part

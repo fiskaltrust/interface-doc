@@ -1,4 +1,9 @@
-## Cash Register Integration
+---
+slug: /poscreators/middleware-doc/germany/cash-register-integration
+title: Cash register integration
+---
+
+## Cash register integration
 
 This chapter describes the cash register integration in accordance with the German law. The general rules for cash register integration are described in General Part of this document.
 

@@ -1,3 +1,8 @@
+---
+slug: /poscreators/middleware-doc/general/installation
+title: Installation
+---
+
 ## Installation
 
 ### fiskaltrust.Middleware

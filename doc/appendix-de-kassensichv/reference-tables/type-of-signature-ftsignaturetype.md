@@ -1,4 +1,9 @@
-### Type of Signature: ftSignatureType
+---
+slug: /poscreators/middleware-doc/germany/reference-tables/ftsignaturetype
+title: 'Type of signature: ftSignatureType'
+---
+
+### Type of signature: ftSignatureType
 
 The ftSignatureType indicates type and origin of the signature. The data type is `Int64` and can contain a country specific code which is a value following the ISO-3166-1-ALPHA-2 standard, converted from ASCII into hex and used as byte 8 and 7.
 

@@ -1,4 +1,9 @@
-## Data Structures
+---
+slug: /poscreators/middleware-doc/france/data-structures
+title: Data structures
+---
+
+## Data structures
 
 This chapter expands on the descriptions of the data structures covered in the Chapter ["Data structures"](../../general/data-structures/data-structures.md) of the General Part, with country specific information applicable to the French market.
 

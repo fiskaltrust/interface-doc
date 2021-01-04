@@ -1,4 +1,9 @@
-## Cash Register Integration
+---
+slug: /poscreators/middleware-doc/general/cash-register-integration
+title: Cash register integration
+---
+
+## Cash register integration
 
 While designing the integration of fiskaltrust.Middleware into Cash Register Systems, our goal was to minimize the impact to the existing workflow as much as possible. With that in mind we've developed the following implementation suggestion.
 

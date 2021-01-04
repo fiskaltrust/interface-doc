@@ -54,8 +54,6 @@ module.exports = {
           ]
         },
         'middleware-doc/doc/appendix-de-kassensichv/receipt-case-definitions/receipt-case-definitions',
-        'middleware-doc/doc/appendix-de-kassensichv/receipt-case-definitions/vouchers',
-        'middleware-doc/doc/appendix-de-kassensichv/receipt-case-definitions/returnables',
         'middleware-doc/doc/appendix-de-kassensichv/procedural-documentation/dsfinv-k-generation',
       ]
     },

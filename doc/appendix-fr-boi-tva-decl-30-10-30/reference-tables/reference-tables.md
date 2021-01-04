@@ -1,4 +1,9 @@
-## Reference Tables
+---
+slug: /poscreators/middleware-doc/france/reference-tables
+title: Reference tables
+---
+
+## Reference tables
 
 ### Type of Receipt: ftReceiptCase
 

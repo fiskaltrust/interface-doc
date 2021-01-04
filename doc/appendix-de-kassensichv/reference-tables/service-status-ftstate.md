@@ -1,4 +1,9 @@
-### Service Status: ftState
+---
+slug: /poscreators/middleware-doc/germany/reference-tables/ftstate
+title: 'Service Status: ftState'
+---
+
+### Service status: ftState
 
 The table below describes supported statuses for the ftState field in accordance with the German law. These codes can be added through the logic operator "OR".
 

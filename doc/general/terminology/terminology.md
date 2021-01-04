@@ -1,3 +1,8 @@
+---
+slug: /poscreators/middleware-doc/general/terminology
+title: Terminology
+---
+
 ## Terminology
 
 The table below contains descriptions and explanations of all general terms and abbreviations used in this document. For specifications or provisions of national law, please refer to the appropriate appendix<span id="t-definition-of-terms-and-abbreviations-21">.</span>

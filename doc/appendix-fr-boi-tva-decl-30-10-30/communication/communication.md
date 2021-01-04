@@ -1,3 +1,8 @@
+---
+slug: /poscreators/middleware-doc/france/communication
+title: Communication
+---
+
 ## Communication
 
 ### WCF Web Service

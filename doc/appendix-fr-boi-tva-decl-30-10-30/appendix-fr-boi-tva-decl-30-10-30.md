@@ -1,4 +1,9 @@
-# Appendix: FR - BOI-TVA-DECL 30-10-30
+---
+slug: /poscreators/middleware-doc/france
+title: Introduction
+---
+
+# Appendix: France - BOI-TVA-DECL 30-10-30
 
 This appendix expands on the information provided in the General Part by adding details specific to the French market. This additional information is provided only where applicable. The remaining chapters, for which there is no additional information required, were omitted.
 

@@ -1,4 +1,9 @@
-### Type of Service: ftChargeItemCase
+---
+slug: /poscreators/middleware-doc/germany/reference-tables/ftchargeitemcase
+title: 'Type of service: ftChargeItemCase'
+---
+
+### Type of service: ftChargeItemCase
 
 This table expands on the values provided in Table [ftChargeItemCase in General Part](../../general/reference-tables/reference-tables.md#type-of-service-ftchargeitemcase) with values applicable to the German 
 

@@ -1,4 +1,9 @@
-## Operation Modes
+---
+slug: /poscreators/middleware-doc/france/operation-modes
+title: Operation modes
+---
+
+## Operation modes
 
 ### Components of fiskaltrust.Middleware
 

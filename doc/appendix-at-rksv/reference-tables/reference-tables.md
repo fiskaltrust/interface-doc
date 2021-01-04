@@ -1,4 +1,9 @@
-## Reference Tables
+---
+slug: /poscreators/middleware-doc/austria/reference-tables
+title: Reference tables
+---
+
+## Reference tables
 
 This chapter expands on the reference tables covered in the Chapter ["Reference tables"](../../general/reference-tables/reference-tables.md) of the General Part, with country specific information applicable to the Austrian market.
 

@@ -1,3 +1,8 @@
+---
+slug: /poscreators/middleware-doc/general/receipt-case-definitions
+title: Receipt Case Definitions
+---
+
 ## Receipt Case Definitions
 
 The below list is provided to ensure the common understanding of different types of business cases and to facilitate the implementation of their correct handling by the fiskaltrust.Middleware.

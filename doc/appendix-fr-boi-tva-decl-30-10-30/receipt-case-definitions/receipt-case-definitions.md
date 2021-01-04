@@ -1,4 +1,9 @@
-## Receipt Case Definitions
+---
+slug: /poscreators/middleware-doc/france/receipt-case-definitions
+title: Receipt case definitions
+---
+
+## Receipt case definitions
 
 #### Voucher (Service/Product)
 

@@ -24,7 +24,7 @@ The success of this journey can be achieved through the completion of the follow
 
 Before proceeding with this guide, you may consider getting familiar with the content of the following useful resources:
 
-- [POS Creator Lead Presentation](presentation/media/lead-presentation-creator-en.pptx)
+- [POS Creator Lead Presentation](data/lead-presentation-creator-en.pptx)
 - [POS Creator fiskaltrust.Middleware Webinar Recording on YouTube](https://www.youtube.com/watch?v=mq1hHL8ezOg)
 
 **Note:** you can find more useful resources in the [Further sources of information](#further-sources-of-information) section at the end of this document.
@@ -111,5 +111,5 @@ The goal of this stage is about reaching an agreement with the POS Dealers that 
 - FAQ: [fiskaltrust docs - faq](https://docs.fiskaltrust.cloud/doc/faq/qna/market-de.html) and [Github faq repo](https://github.com/fiskaltrust/faq) for creating issues (questions).
 - fiskaltrust gihub repos: [https://github.com/fiskaltrust](https://github.com/fiskaltrust)
 - fiskaltrust videos: [Youtube Channel](https://www.youtube.com/channel/UCmMlqO4L3AzkEhh6WYA8BJg)
-- [POS Creator Lead Presentation](presentation/media/lead-presentation-creator-en.pptx)
+- [POS Creator Lead Presentation](data/lead-presentation-creator-en.pptx)
 - POS Creator fiskaltrust.Middleware Webinar Recording on [fiskaltrust YouTube Channel](https://www.youtube.com/watch?v=mq1hHL8ezOg)

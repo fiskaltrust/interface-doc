@@ -23,4 +23,4 @@ The technical specification of the data interface described in this document pro
 
 Interface specification is provided by fiskaltrust.Interface nuget package, which can be found at https://www.nuget.org/packages/fiskaltrust.interface.
 
-For specifications or provisions of national law, please refer to the appropriate appendix.
+<div class="alert alert--warning" role="alert">Please note that this information is only complete when combined with the <b>General</b> part. To implement the Middleware, users should get themselves familiar with the general information first and then refer to the country-specific details listed here.</div>

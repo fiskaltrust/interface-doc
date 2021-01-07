@@ -4,8 +4,11 @@ module.exports = {
       type: 'category',
       label: 'Get started',
       items: [
-        'middleware-doc/doc/getting-started/getting-started',
-        'middleware-doc/doc/getting-started/middleware-integration'
+        'middleware-doc/doc/getting-started/getting-started-en',
+        'middleware-doc/doc/getting-started/getting-started-de',
+        'middleware-doc/doc/getting-started/middleware-integration-en',
+        'middleware-doc/doc/getting-started/middleware-integration-de',
+        'middleware-doc/doc/getting-started/lead-presentation',
       ]
     },
     {

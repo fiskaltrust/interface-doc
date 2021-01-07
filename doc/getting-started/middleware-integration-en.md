@@ -1,9 +1,9 @@
 ---
-slug: /poscreators/middleware-integration
-title: Middleware integration
+slug: /poscreators/get-started/middleware-integration
+title: Middleware integration (EN)
 ---
 
-# Middleware integration
+# Middleware Integration
 
 This document describes the steps required to configure and test the integration of the ft.Middleware with your POS system.
 

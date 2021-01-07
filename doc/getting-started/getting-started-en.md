@@ -1,9 +1,9 @@
 ---
 slug: /poscreators/get-started
-title: Get started for POS Creators
+title: Get started for POS Creators (EN)
 ---
 
-# Get started for POS Creators
+# Getting Started Guide for POS Creators
 
 ## Overview
 
@@ -11,7 +11,11 @@ This guide describes on a high level the stages, which a POS Creator should achi
 
 The success of this journey can be achieved through the completion of the following stages:
 
+
+
 ![integration phases](images/pos-creator-integration-phases.png)
+
+
 
 [1. Portal Registration](#1-portal-registration)<br/>
 [2. Middleware Integration](#2-middleware-integration)<br/>
@@ -24,7 +28,7 @@ The success of this journey can be achieved through the completion of the follow
 
 Before proceeding with this guide, you may consider getting familiar with the content of the following useful resources:
 
-- [POS Creator Lead Presentation](data/lead-presentation-creator-en.pptx)
+- [POS Creator Lead Presentation](data/presentations/lead-presentation-creator-en.pptx)
 - [POS Creator fiskaltrust.Middleware Webinar Recording on YouTube](https://www.youtube.com/watch?v=mq1hHL8ezOg)
 
 **Note:** you can find more useful resources in the [Further sources of information](#further-sources-of-information) section at the end of this document.
@@ -58,7 +62,7 @@ By registering in the live portal and digitally signing our cooperation agreemen
 
 ## 2. Middleware Integration
 
-There are several steps which must be followed to successfully integrate your solution with fiskaltrust.Middleware. Those steps include the CashBox Configuration, using the Middleware Launcher, and testing of the communication. Please check our [fiskaltrust.Middleware document](middleware-integration.md) for detailed information about this process.
+There are several steps which must be followed to successfully integrate your solution with fiskaltrust.Middleware. Those steps include the CashBox Configuration, using the Middleware Launcher, and testing of the communication. Please check our [fiskaltrust.Middleware document](middleware-integration-en.md) for detailed information about this process.
 
 ## 3. POS Dealer Onboarding
 
@@ -111,5 +115,5 @@ The goal of this stage is about reaching an agreement with the POS Dealers that 
 - FAQ: [fiskaltrust docs - faq](https://docs.fiskaltrust.cloud/doc/faq/qna/market-de.html) and [Github faq repo](https://github.com/fiskaltrust/faq) for creating issues (questions).
 - fiskaltrust gihub repos: [https://github.com/fiskaltrust](https://github.com/fiskaltrust)
 - fiskaltrust videos: [Youtube Channel](https://www.youtube.com/channel/UCmMlqO4L3AzkEhh6WYA8BJg)
-- [POS Creator Lead Presentation](data/lead-presentation-creator-en.pptx)
+- [POS Creator Lead Presentation](data/presentations/lead-presentation-creator-en.pptx)
 - POS Creator fiskaltrust.Middleware Webinar Recording on [fiskaltrust YouTube Channel](https://www.youtube.com/watch?v=mq1hHL8ezOg)

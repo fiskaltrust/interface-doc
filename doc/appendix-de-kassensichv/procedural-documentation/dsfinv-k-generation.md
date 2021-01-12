@@ -221,7 +221,7 @@ Each subitem as described in the table below:
 
 If `cbPreviousReceiptReference` is filled in your receipt request, ft will automatically try to find the referenced receipt and if found, ft will add an entry to Bon_Referenzen. 
 
-For a recommendation on how to connect the single requests via `cbReceiptReference` and `cbPreviousReceiptReference` see our Business Cases Examples document [here](https://fiskaltrust.de/wp-content/uploads/sites/5/2020/02/fiskaltrust-Business-Cases-in-JSON_englisch.pdf). 
+For a recommendation on how to connect the single requests via `cbReceiptReference` and `cbPreviousReceiptReference`, please refer to our [Postman sample collection](https://middleware-samples.docs.fiskaltrust.cloud/).
 
 If you want (optional) to add other, additional references (from other systems or other cashpoints), you can add them by providing their data as shown below:
 

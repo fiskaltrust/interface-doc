@@ -38,7 +38,7 @@ steps:
   errorActionPreference: continue
   displayName: 'Check links'
 
-- task: NuGetToolInstaller@0
+- task: NuGetToolInstaller@1  
   displayName: 'Use NuGet'
 
 - powershell: |

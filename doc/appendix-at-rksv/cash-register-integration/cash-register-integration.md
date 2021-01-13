@@ -94,7 +94,7 @@ Once the queue has been closed with a stop receipt, no hashing and signing of re
 
 If, for technical reasons, signatures cannot be created by fiskaltrust.SecurityMechanisms, receipts need to be issued (according to the RKSV) and marked with a comment "security mechanism failed". Once the technical failure has been resolved, a signed collective receipt must be issued to make up for the signature linking of all receipts issued during the technical failure.
 
-Further, you can find two fundamentally different types of failure distinguished by fiskaltrust.SecurityMechanisms:
+Furthermore, you can find two fundamentally different types of failure distinguished by fiskaltrust.SecurityMechanisms:
 
 #### Signature Creation Device Failure
 

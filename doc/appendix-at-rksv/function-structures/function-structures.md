@@ -1,6 +1,6 @@
 ## Function Structures
 
-This chapter expands on the descriptions of the function structures covered in the Chapter ["Function structures"](../../general/function-structures/function-structures.md) of the General Part, with country-specific information applicable to the Austrian market.
+More detailed descriptions of the function structures covered in Chapter ["Function structures"](../../general/function-structures/function-structures.md) of the General Part, with country-specific information applicable to the Austrian market.
 
 ### iPOS Interface
 

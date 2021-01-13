@@ -146,18 +146,19 @@ The ftSignatureType indicates type and origin of the signature.
 
 The ftJournalType is used in connection with the journal function and defines the journal stream in accordance to the French law which is given back. In In the ftJournalType, the ISO-3166-1-ALPHA-2 from ASCII value is converted into hex and used as byte 8 and 7. For France (FR) this is 0x4652<span id="t-type-of-journal-ftjournaltype-160">.</span>
 
-| **Value**            | **Description**                  | **Version** |
-|----------------------|----------------------------------|-------------|
-| `0x4652000000000000` | Status information for QueueFR   |             |
-| `0x4652000000000001` | Ticket ("T" group) export        |             |
-| `0x4652000000000002` | Payment Prove ("P" group) export |             |
-| `0x4652000000000003` | Invoice ("I" group) export       |             |
-| `0x4652000000000004` | Grand Total ("G" group) export   |             |
-| `0x4652000000000007` | Bill ("B" group) export          |             |
-| `0x4652000000000008` | Archive ("A" group) export       |             |
-| `0x4652000000000009` | Log ("L" group) export           |             |
-| `0x465200000000000A` | Copy ("C" group) export          |             |
-| `0x465200000000000B` | Training ("X" group) export      |             |
+| **Value**            | **Description**                     | **Version** |
+|----------------------|-------------------------------------|-------------|
+| `0x4652000000000000` | Status information for QueueFR      | 1.2         |
+| `0x4652000000000001` | Ticket ("T" group) export           | 1.2         |
+| `0x4652000000000002` | Payment Prove ("P" group) export    | 1.2         |
+| `0x4652000000000003` | Invoice ("I" group) export          | 1.2         |
+| `0x4652000000000004` | Grand Total ("G" group) export      | 1.2         |
+| `0x4652000000000007` | Bill ("B" group) export             | 1.2         |
+| `0x4652000000000008` | Archive ("A" group) export          | 1.2         |
+| `0x4652000000000009` | Log ("L" group) export              | 1.2         |
+| `0x465200000000000A` | Copy ("C" group) export             | 1.2         |
+| `0x465200000000000B` | Training ("X" group) export         | 1.2         |
+| `0x4652000000000010` | Export (in conjunction with Archiv) | 1.2         |
 
 *Table 38. Type of Journal: ftJournalType (FR - BOI-TVA-DECL 30-10-30)*
 

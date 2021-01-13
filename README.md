@@ -15,7 +15,7 @@ Interface specification is provided by fiskaltrust.Interface NuGet package, whic
 Official PDF documents that are built from the source in this repository can be found on the [Releases page](https://github.com/fiskaltrust/interface-doc/releases).
 
 ## Contributions
-Please review this README file to understand how it is structured and which tools are used if you want to contribute to this documentation.
+By reviewing this README file in order to understand its structure and which tools are being used, you are contributing to improving this documentation.
 
 ### Repository structure
 All documentation files are stored within the `/doc` folder in this repository (markdown, images, other static content).

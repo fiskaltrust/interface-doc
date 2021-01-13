@@ -28,7 +28,7 @@ The CurrentDateTime is provided in the `yyyyMMddhhmmssfff` format.
 
 ### IATSSCD Interface
 
-This interface is applicable only for the Austrian market and enables direct communication with the signature creation device for own purposes: it can be used for testing if the fiskaltrust.Middleware is running ("Echo" call), for requesting the certificate ("Certificate" call), or signing autonomously ("Sign" call).
+This interface is applicable only for the Austrian market and enables direct communication with the signature creation device for own purposes: it can be used for testing if the fiskaltrust-Middleware is running ("Echo" call), for requesting the certificate ("Certificate" call), or for signing autonomously ("Sign" call).
 
 #### ZDA Indicator Request
 

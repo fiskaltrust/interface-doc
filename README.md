@@ -31,7 +31,7 @@ All documentation files are stored within the `/doc` folder in this repository (
 A reference to a markdown file can be created like this: `[Reference Text](./path-to-file/filename.md)`.
 > Note that reference paths should be relative.
 
-If you want to reference something specific inside a markdown file, you need to create an anchor where you want your reference to point to.
+If you want to reference something specific inside a markdown file, you need to create an anchor to which you want your reference to point.
 Anchors can be created like this: `<span id="anchor-name">Referenced Item</span>`.
 
 The anchor id should adhere to the following convention: `<prefix>-<name>-<linenumber>`

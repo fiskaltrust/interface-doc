@@ -1,6 +1,6 @@
 # Appendix: AT - RKSV
 
-This appendix expands on the General Part's information by adding details specific to the Austrian market.  This additional information is provided only where applicable. The remaining chapters, for which there is no extra information required, were omitted.
+This appendix expands on the information provided in the General Part section, by adding details specific to the Austrian market. This additional information is provided only where applicable. The remaining chapters, for which there is no extra information required, were omitted.
 
 The links to regulations and further information, can be found at:
 

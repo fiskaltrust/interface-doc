@@ -6,7 +6,7 @@ This chapter describes the cash register integration in accordance with German l
 
 This chapter describes the general process of creating receipts with fiskaltrust.Middleware and its workflow, following German law. It requires to give a scope to an ongoing action over time. This scope is named a transaction. Calls to fiskaltrust.Middleware are processed just in time and cannot be async over multiple minutes. Therefore and in accordance with German law, a single call is maybe not able to scope a complete transaction. To solve this, multiple calls are used, scoping the same transaction.
 
-#### The fiskaltrust.SecurityMechanism explicit transaction
+#### The fiskaltrust.SecurityMechanism explicit transaction flow
 
 The regular workflow of the fiskaltrust.SecurityMechanism in the German market for actions running longer than 45s (German max transaction update time delta), defines the steps required for the creation of a receipt as follows:
 
@@ -15,10 +15,18 @@ The regular workflow of the fiskaltrust.SecurityMechanism in the German market f
 Already before you know how your action will complete, you have to create and reserve a transaction number, to be able to track when the action started. This is done by a special call to the 'Sign' method using the 'ReceiptCase' "Start-Transaction". Details of this 'ReceiptRequest' has to match a Zero-Receipt, so no 'ChargeItems' and no 'PayItems' are allowed. In addition to the Zero-Receipt requirements, it is required to add a unique identification to the property 'cbReceiptReference'. This unique identifier can only be used once (at least between each daily closing) in a system. It creates a bracket around an ongoing action. For all further 'Sign' method calls which belong to the same action, it is mandatory to use the same unique identifier in the property 'cbReceiptReference'. Only one ongoing action/transaction per unique identifier is allowed. Calling two times the 'Sign' method using 'ReceiptCase' "Start-Transaction" with the same unique identifier ends up in an exception. If there are communication errors, use the 'ReceiptCaseFlag' "ReceiptRequest" to check if an action/transaction was already created.  
 According to the German law and BSI TR-03153, a call to the 'Sign' method using the 'ReceiptCase' "Start-Transaction" takes care of starting a transaction inside the TSE. The up-counting transaction number, defined in TR-03153, is responded by the fiskaltrust.Middleware behind the hash-tag in the property 'ftReceiptIdentification' of 'ReceiptResponse', prefixed by "ST". For example "ftReceiptIdentification": "ft[queue-receiptnumerator-hex]#ST[tse-transaction]".
 
+![explicit-flow-start-transaction](media/explicit-flow-start-transaction.png)
+
+*Explicit Flow - Start Transaction (DE - KassenSichV)*
+
 ##### Update-Transaction
 
 Changes in ongoing actions have to be tracked. This is done by a special call to the 'Sign' method using the 'ReceiptCase' "Update-Transaction". Details of the 'ReceiptRequest' should show up the current overall 'ChargeItems' and 'PayItems' of the ongoing action. To identify the action/transaction, the unique identifier used in "Start-Transaction", handed over by the property 'cbReceiptReference', is utilised. Calling the 'Sign' method using a unique identifier that wasn't used to create a transaction, or was already used to finalise a transaction, will end up in an exception. According to the German law and BSI TR-03153, a call to the 'Sign' method using the 'ReceiptCase' "Update-Transaction" takes care of updating a transaction inside the TSE. The same transaction number as responded at the call of "Start-Transaction" is responded behind the hash-tag in the property 'ftReceiptIdentification' of 'ReceiptResponse', prefixed by "UT".  
 It is not mandatory to call 'Sign' using 'ReceiptCase' "Update-Transaction" before finalising a transaction. It is also possible to call 'Sign' using 'ReceiptCase' "Update-Transaction" multiple times for a single unique identifier/for a single transaction.
+
+![explicit-flow-update-transaction](media/explicit-flow-update-transaction.png)
+
+*Explicit Flow - Update Transaction (DE - KassenSichV)*
 
 ##### Delta-Transaction
 
@@ -26,17 +34,29 @@ The main functionality is the same as when calling the 'Sign' method using 'Rece
 According to the German law and BSI TR-03153, a call to the 'Sign' method using the 'ReceiptCase' "Delta-Transaction" takes care of updating a transaction inside the TSE. The same transaction number as responded at the call of "Start-Transaction" is responded behind the hash-tag in the property 'ftReceiptIdentification' of 'ReceiptResponse', prefixed by "DT".  
 It is not mandatory to call 'Sign' using 'ReceiptCase' "Delta-Transaction" before finalising a transaction. It is also possible to call 'Sign' using 'ReceiptCase' "Delta-Transaction" multiple times for a single unique identifier/for a single transaction.
 
+![explicit-flow-delta-transaction](media/explicit-flow-delta-transaction.png)
+
+*Explicit Flow - Delta Transaction (DE - KassenSichV)*
+
 ##### End-Transaction
 
 According to German law and BSI TR-03153, each call to the 'Sign' method using other 'ReceiptCase' than "Start-Transaction", "Update-Transaction", "Delta-Transaction" and any 'Zero-Receipts', takes care of ending a transaction inside the TSE.  
 To identify the action/transaction that should be finalised the unique identifier in the property 'cbReceiptReference' inside the 'ReceiptRequest' is used. No matter if you used "Update-Transaction", "Delta-Transaction" or none of them, the 'ChargeItems' and 'PayItems' have to include the complete final state of all items involved.  
 The transaction number, defined in TR-03153, is responded behind the hash-tag in the property 'ftReceiptIdentification' of 'ReceiptResponse', prefixed by "T".
 
-#### The fiskaltrust.SecurityMechanism implicit transaction
+![explicit-flow-end-transaction](media/explicit-flow-end-transaction.png)
+
+*Explicit Flow - End Transaction (DE - KassenSichV)*
+
+#### The fiskaltrust.SecurityMechanism implicit transaction flow
 
 The regular workflow of the fiskaltrust-SecurityMechanism in the German market for actions running for a short period has the same requirements as long-running ones. There has to be a "Start-Transaction" and a "Finish-Transaction" executed against the TSE. In order to speed up these two steps into one call to the 'Sign' method, a special 'ReceiptCaseFlag' is used. Each time this is used in combination with a usual 'ReceiptCase', a "Start-Transaction" is done behind the scenes upfront the final call, using the given 'ReceiptCase'.
 Using a unique identifier in 'cbReceiptReference' that was already used with a 'Sign' call with 'ReceiptCase' "Start-Transaction" will end up in an exception.
 The up-counting transaction number defined in TR-03153 is responded behind the hash-tag in the property 'ftReceiptIdentification' of 'ReceiptResponse', prefixed by "IT".
+
+![implicit-flow-start-finish-transaction](media/implicit-flow-start-finish-transaction.png)
+
+*Implicit Flow - Start/Finish Transaction (DE - KassenSichV)*
 
 ### Receipt for special functions
 

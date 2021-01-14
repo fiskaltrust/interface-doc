@@ -6,7 +6,7 @@ This chapter describes the cash register integration in accordance with German l
 
 This chapter describes the general process of creating receipts with fiskaltrust.Middleware and its workflow, following German law. It requires to give a scope to an ongoing action over time. This scope is named a transaction. Calls to fiskaltrust.Middleware are processed just in time and cannot be async over multiple minutes. Therefore and in accordance with German law, a single call is maybe not able to scope a complete transaction. To solve this, multiple calls are used, scoping the same transaction.
 
-#### The fiskaltrust.SecurityMechanism explicit transaction flow
+#### The fiskaltrust.SecurityMechanism explicit flow
 
 The regular workflow of the fiskaltrust.SecurityMechanism in the German market for actions running longer than 45s (German max transaction update time delta), defines the steps required for the creation of a receipt as follows:
 
@@ -48,7 +48,7 @@ The transaction number, defined in TR-03153, is responded behind the hash-tag in
 
 *Explicit Flow - End Transaction (DE - KassenSichV)*
 
-#### The fiskaltrust.SecurityMechanism implicit transaction flow
+#### The fiskaltrust.SecurityMechanism implicit flow
 
 The regular workflow of the fiskaltrust-SecurityMechanism in the German market for actions running for a short period has the same requirements as long-running ones. There has to be a "Start-Transaction" and a "Finish-Transaction" executed against the TSE. In order to speed up these two steps into one call to the 'Sign' method, a special 'ReceiptCaseFlag' is used. Each time this is used in combination with a usual 'ReceiptCase', a "Start-Transaction" is done behind the scenes upfront the final call, using the given 'ReceiptCase'.
 Using a unique identifier in 'cbReceiptReference' that was already used with a 'Sign' call with 'ReceiptCase' "Start-Transaction" will end up in an exception.

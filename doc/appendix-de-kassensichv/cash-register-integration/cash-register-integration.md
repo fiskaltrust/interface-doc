@@ -4,7 +4,18 @@ This chapter describes the cash register integration in accordance with German l
 
 ### Receipt Creation Process
 
-This chapter describes the general process of creating receipts with fiskaltrust.Middleware and its workflow, according to German law. It requires giving a scope to an ongoing action over time. This scope is named a transaction. Calls to fiskaltrust.Middleware are processed just in time and cannot be async over multiple minutes. Therefore and in accordance with German law, a single call is maybe not able to scope a complete transaction. To solve this, multiple calls are used, scoping the same transaction.
+This chapter describes the general process of creating receipts with fiskaltrust.Middleware and its workflow, according to German law. It requires giving a scope to an ongoing [action](../terminology/terminology.md) over time. This scope is named a [transaction](../terminology/terminology.md). Calls to fiskaltrust.Middleware are processed just in time and cannot be asynchronous over multiple minutes. Therefore and in accordance with German law, a single call is maybe not able to scope a complete transaction. To solve this, multiple calls are used, scoping the same transaction.
+
+The "**transaction**" describes the steps, at least at the beginning and end of the action, within the SCU.
+
+The "**flow**" describes the communication between the POS System and the fiskaltrust.Middleware to trigger those transactions. This can be done either 
+
+- **explicitly** (every single transaction like "Start" and "Finish" are initiated), or 
+- **implicitly** (a "Start-Transaction" is done automatically - implicitly - behind the scenes upfront the final call).
+
+![flow-vs-transaction](media/flow-vs-transaction.png)
+
+*Flow and Transaction (DE - KassenSichV)*
 
 #### The fiskaltrust.SecurityMechanism explicit flow
 

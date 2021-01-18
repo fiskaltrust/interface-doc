@@ -8,7 +8,7 @@ This chapter describes the general process of creating receipts with fiskaltrust
 
 The "**transaction**" describes the steps, at least at the beginning and end of the action, within the SCU.
 
-The "**flow**" describes the communication between the POS System and the fiskaltrust.Middleware to trigger those transactions. This can be done either 
+The "**flow**" describes the communication between the POS System and the fiskaltrust.Middleware to trigger transactions. This can be done either 
 
 - **explicitly** (every single transaction like "Start" and "Finish" are initiated), or 
 - **implicitly** (a "Start-Transaction" is done automatically - implicitly - behind the scenes upfront the final call).

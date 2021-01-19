@@ -1,11 +1,11 @@
-## Info-Order - Implicit Flow
+# Info-order - implicit flow examples
 
-This is used to persist orders
+The info-order implicit flow is used to persist orders.
 
-Same `cbReceiptReference` in multiple receiptrequest/receiptresponse (sign-calls) can be used to connect multiple actions into a business-action. each `cbReceiptReference` can only be used once within a explicit flow. this also meanse only one time start-transaction can be done with one specific `cbReceiptReference`, because it is mapped 1:1 to the ongoing transaction of the (tse).
-the implicit flow uses start-transaction and finish-transaction within the same receiptrequest/receiptresponse. therefore in this case the `cbReceiptReference` has no impact on already ongoing transactions as long as there wasn't a start-transaction with same `cbReceiptReference` before.
+`cbReceiptReference` can be used in multiple receipt-request/receipt-response (sign-calls) to connect multiple actions into a business-action. Each `cbReceiptReference` can only be used once within an explicit flow. Only one "start-transaction" can be done with one specific `cbReceiptReference` because it is mapped 1:1 to the TSE's ongoing transaction.
+The implicit flow uses "start-transaction" and "finish-transaction" within the same receipt-request/receipt-response. Therefore, the `cbReceiptReference` has no impact on ongoing transactions as long as there wasn't a "start-transaction" with the same `cbReceiptReference` before.
 
-An additional method to connect multiple actions to a ongoing business-action is to reference a previouse action by `cbPreviouseReceiptReference`.
+An additional method to connect multiple actions to an ongoing business-action is to reference a previous action by `cbPreviouseReceiptReference`.
 
 ```json
 {

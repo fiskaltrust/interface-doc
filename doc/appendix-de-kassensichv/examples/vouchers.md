@@ -1,10 +1,19 @@
-## Vouchers - Implicit Flow
+# Vouchers - implicit flow examples
 
 Examples of single-purpose and multi-purpose requests and responses.
 
-### Single-purpose voucher issuance
+## Table of content
 
-Request (single-purpose voucher issuance **within charge items**):
+- [Single-purpose voucher issuance](#single-purpose-voucher-issuance)
+- [Single-purpose voucher redemption](#single-purpose-voucher-redemption)
+- [Multi-purpose voucher issuance](#multi-purpose-voucher-issuance)
+- [Multi-purpose voucher redemption](#multi-purpose-voucher-redemption)
+
+## Single-purpose voucher issuance
+
+#### Receipt request 
+
+Single-purpose voucher issuance **within charge items**:
 
 ```json
 {
@@ -36,7 +45,7 @@ Request (single-purpose voucher issuance **within charge items**):
     "ftReceiptCase":4919338172267102209
 }
 ```
-Response:
+#### Receipt response
 
 ```json
 {
@@ -157,9 +166,11 @@ Response:
 }
 ```
 
-### Single-purpose voucher redemption
+## Single-purpose voucher redemption
 
-1. Request (single-purpose voucher redemption **within charge items**):
+#### Receipt request 
+
+Single-purpose voucher redemption **within charge items**:
 
 ```json
 {
@@ -192,7 +203,8 @@ Response:
 }
 ```
 
-Response:
+#### Receipt response
+
 ```json
 {
     "ftCashBoxID": "65a863b1-4a08-46da-9ab0-9201bedb5bb7",
@@ -313,7 +325,9 @@ Response:
 
 ```
 
-Request (single-purpose voucher redemption **within pay items**):
+#### Receipt request 
+
+Single-purpose voucher redemption **within pay items**:
 
 ```json
 {
@@ -345,7 +359,8 @@ Request (single-purpose voucher redemption **within pay items**):
     "ftReceiptCase":4919338172267102209
 }
 ```
-Response:
+#### Receipt response
+
 ```json
 {
     "ftCashBoxID": "65a863b1-4a08-46da-9ab0-9201bedb5bb7",
@@ -465,9 +480,11 @@ Response:
 }
 ```
 
-### Multi-purpose voucher issuance
+## Multi-purpose voucher issuance
 
-Request (multi-purpose voucher issuance **within pay items**):
+#### Receipt request 
+
+Multi-purpose voucher issuance **within pay items**:
 
 ```json
 {
@@ -499,7 +516,7 @@ Request (multi-purpose voucher issuance **within pay items**):
     "ftReceiptCase":4919338172267102209
 }
 ```
-Response:
+#### Receipt response
 
 ```json
 {
@@ -621,7 +638,9 @@ Response:
 
 ```
 
-Request (multi-purpose voucher issuance **within charge items**):
+#### Receipt request 
+
+Multi-purpose voucher issuance **within charge items**:
 
 ```json
 {
@@ -655,7 +674,7 @@ Request (multi-purpose voucher issuance **within charge items**):
     "ftReceiptCase":4919338172267102209
 }
 ```
-Rsponse:
+#### Receipt response
 
 ```json
 {
@@ -776,9 +795,11 @@ Rsponse:
 }
 ```
 
-### Multi-purpose voucher redemption
+## Multi-purpose voucher redemption
 
-Request (multi-purpose voucher redemption **within pay items**):
+#### Receipt request 
+
+Multi-purpose voucher redemption **within pay items**:
 
 ```json
 {
@@ -817,7 +838,7 @@ Request (multi-purpose voucher redemption **within pay items**):
 }
 ```
 
-Response:
+#### Receipt response
 
 ```json
 {
@@ -938,7 +959,9 @@ Response:
 }
 ```
 
-Request (multi-purpose voucher redemption **within charge items**):
+#### Receipt request 
+
+Multi-purpose voucher redemption **within charge items**:
 
 ```json
 {
@@ -977,7 +1000,7 @@ Request (multi-purpose voucher redemption **within charge items**):
     "ftReceiptCase":4919338172267102209
 }
 ```
-Response:
+#### Receipt response
 
 ```json
 {
@@ -1096,5 +1119,4 @@ Response:
     ],
     "ftState": 4919338167972134912
 }
-
 ```

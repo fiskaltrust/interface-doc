@@ -1,12 +1,12 @@
 ## Data Structures
 
-This chapter expands on the descriptions of the country-specific covered in the Chapter ["Data Structures"](../../general/data-structures/data-structures.md) of the General Part, with country specific information applicable to the German market.
+This chapter expands on the descriptions of the country-specific Data Structures, covered in the Chapter ["Data Structures"](../../general/data-structures/data-structures.md) of the General Part, with information applicable to the German market.
 
 ### Receipt Request
 
 #### Single fields
 
-Following chapter highlights fields from the receipt request that need special handling for the German market.
+Fields from the receipt request that need special handling for the German market are listed below:
 
 | **Field name**            | **Data type** | **Default Value Mandatory Field** | **Description**                                                                                         | **Version** |
 |---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|
@@ -37,7 +37,7 @@ If you need to provide customer data in your request, you can send it in via the
 
 In the general description, the field `ftReceiptCaseData` is described as optional. However, for the German market, the content of this field is not always optional.
 
-For some cases, we need you to transmit data within the field `ftReceiptCaseData` that is required later for the DSFinV-K export. The following table describes when and how you have to fill them.
+For some cases, it is needed to transmit data within the field `ftReceiptCaseData`, that is required later for the DSFinV-K export. The following table describes when and how you have to fill them.
 
 
 | **Field name**            | **Data type** | **Default Value Mandatory Field** | **Description**                                                                                         | **Version** |
@@ -46,7 +46,7 @@ For some cases, we need you to transmit data within the field `ftReceiptCaseData
 | `ReceiptNote` | `string`      | optional                         | Additional information on the receipt header. Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptNote` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptNote":"123, ich bin dabei!", ... }"` | 1.3|
 | `ReceiptName` | `string`      | Mandatory if your request mapps to the DSFinV-K BON_TYPE "AVSonstige" (see `ftReceiptCase`), otherwise optional | Can be sent via `ftReceiptCaseData` in JSON format. To send, add the key value pair `ReceiptName` e.g. `"ftReceiptCaseData":"{ ..., "ReceiptName":"Sonstige Sonderwurst", ... }"` | 1.3|
 
-If you need to provide a **reference** to another system or another cashpoint, you can add it via the field `ftReceiptCaseData` by providing it's data as shown below:
+If you need to provide a **reference** to another system or another cashpoint, you can add it via the field `ftReceiptCaseData` by providing its data as shown below:
 
 | **Field name**            | **Data type** | **Default Value Mandatory Field** | **Description**                                                                                         | **Version** |
 |---------------------------|---------------|-----------------------------------|---------------------------------------------------------------------------------------------------------|-------------|

@@ -5,7 +5,7 @@
 
 You can download the current version of the DSFinV-K specification [here](https://www.bzst.de/DE/Unternehmen/Aussenpruefungen/DigitaleSchnittstelleFinV/digitaleschnittstellefinv_node.html).
 
-Based on the version 2.2 of the DSFinV-K specification, this chapter explains how the DSFinV-K export is structured, how the previously described input values are mapped by fiskaltrust to the files and data of the DSFinV-K export, and defines how additional, for the DSFinV-K required values can be sent to the fiskaltrust.Middleware. Furthermore, it describes how the marking of actions (DE: Vorgänge) can be made by connecting business actions (DE: Geschäftsvorfälle) and other procedures, occurrences and events (DE: Andere Vorgänge).  
+This chapter explains how the DSFinV-K export, based on version 2.2 of the DSFinV-K specification, is structured. It describes how the previously described input values are mapped by fiskaltrust to the files and data of the DSFinV-K export. It defines how additional, for the DSFinV-K required values, can be sent to the fiskaltrust.Middleware. Furthermore, it describes how the marking of actions (DE: Vorgänge) can be made by connecting business actions (DE: Geschäftsvorfälle) and other procedures, occurrences and events (DE: Andere Vorgänge). 
 
 ### Structure
 
@@ -58,7 +58,7 @@ The single recordings provide the basis for data storage. These are divided into
 - Bonpos (lines.csv)
 - Bonkopf (transactions.csv)
 
-In addition to these two files, there are further detail files which are listed in the following. 
+In addition to these two files, there are further detail files which are listed below. 
 
 #### File: Bonpos (lines.csv)
 
@@ -110,9 +110,9 @@ According to the DSFinV-K specification, in the data field STK_BR in the Bonpos 
 
 #### File: Bonpos_Zusatzinfo (subitems.csv)
 
-This table allows to detail the composition of sold combinations of goods (DE: Warenzusammenstellungen). They serve exclusively for an explanation.
+This table allows to detail the composition of sold combinations of goods (DE: Warenzusammenstellungen). They serve exclusively as an explanation.
 
-This does not affect the basis of assessment for VAT. In the case of goods combinations with different tax rates, however, information is stored here which serves to control the distribution of the VAT assessment basis (for example, Inhouse breakfast menu consisting of a coffee, a drink and buffet meal). In addition, orders deviating from the standard order can be taken into account to record the actual consumption of goods (for example, gyros plate with chips instead of rice).
+This does not affect the basis of assessment for VAT. In the case of goods combinations with different tax rates, however, information is stored here, which serves to control the distribution of the VAT assessment basis (for example, Inhouse breakfast menu consisting of a coffee, a drink and buffet meal). In addition, orders deviating from the standard order can be taken into account to record the actual consumption of goods (for example, french fries instead of rice).
 
 You can send those subitems to the fiskaltrust.Middleware via `ftChargeItemCaseData` in JSON format. To send, add the key value pair `SubItems` as an array of subitems: 
 

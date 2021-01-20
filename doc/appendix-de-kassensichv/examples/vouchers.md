@@ -4,16 +4,16 @@ Examples of single-purpose and multi-purpose requests and responses.
 
 ## Table of content
 
-- [Single-purpose voucher issuance](#single-purpose-voucher-issuance)
+- [Issuing of a single-purpose voucher](#issuing-of-a-single-purpose-voucher)
 - [Single-purpose voucher redemption](#single-purpose-voucher-redemption)
-- [Multi-purpose voucher issuance](#multi-purpose-voucher-issuance)
+- [Issuing of a multi-purpose voucher](#issuing-of-a-multi-purpose-voucher)
 - [Multi-purpose voucher redemption](#multi-purpose-voucher-redemption)
 
-## Single-purpose voucher issuance
+## Issuing of a single-purpose voucher
 
 #### Receipt request 
 
-Single-purpose voucher issuance **within charge items**:
+Issuing of a single-purpose voucher **within charge items**:
 
 ```json
 {
@@ -480,11 +480,11 @@ Single-purpose voucher redemption **within pay items**:
 }
 ```
 
-## Multi-purpose voucher issuance
+## Issuing of a multi-purpose voucher
 
 #### Receipt request 
 
-Multi-purpose voucher issuance **within pay items**:
+Issuing of a multi-purpose voucher **within pay items**:
 
 ```json
 {
@@ -640,7 +640,7 @@ Multi-purpose voucher issuance **within pay items**:
 
 #### Receipt request 
 
-Multi-purpose voucher issuance **within charge items**:
+Issuing of a multi-purpose voucher **within charge items**:
 
 ```json
 {

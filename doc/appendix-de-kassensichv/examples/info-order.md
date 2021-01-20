@@ -3,7 +3,7 @@
 The info-order implicit flow is used to persist orders.
 
 `cbReceiptReference` can be used in multiple receipt-request/receipt-response (sign-calls) to connect multiple actions into a business-action. Each `cbReceiptReference` can only be used once within an explicit flow. Only one "start-transaction" can be done with one specific `cbReceiptReference` because it is mapped 1:1 to the TSE's ongoing transaction.
-The implicit flow uses "start-transaction" and "finish-transaction" within the same receipt-request/receipt-response. Therefore, the `cbReceiptReference` has no impact on ongoing transactions as long as there wasn't a "start-transaction" with the same `cbReceiptReference` before.
+The implicit flow uses "start-transaction" and "finish-transaction" within the same receipt-request/receipt-response. Therefore, the `cbReceiptReference` has no impact on ongoing transactions, as long as there wasn't a "start-transaction" with the same `cbReceiptReference` before.
 
 An additional method to connect multiple actions to an ongoing business-action is to reference a previous action by `cbPreviouseReceiptReference`.
 

@@ -61,7 +61,7 @@ If you need to provide a **reference** to another system or another cashpoint, y
 
 In the general description, the field `ftChargeItemCaseData` is described as optional. However, for the German market, the content of this field is not always optional.
 
-For some cases, we need you to transmit data within the field `ftChargeItemCaseData` that is required later for the DSFinV-K export. The following table describes when and how you have to fill them.
+For some cases, it is needed to transmit data within the field `ftChargeItemCaseData`, that is required later for the DSFinV-K export. The following table describes how and when these need to be filled.
 
 
 | **Field name**            | **Data type** | **Default Value Mandatory Field** | **Description**                                                                                         | **Version** |
@@ -89,7 +89,7 @@ The following table highlights fields of the charge item that need special handl
 
 In the general description, the field `ftPayItemCaseData` is described as optional. However, for the German market, the content of this field is not always optional.
 
-For some cases, we need you to transmit data within the field `ftPayItemCaseData` that is required later for  the DSFinV-K export. The following table describes when and how you have to fill them.
+For some cases, it is needed to transmit data within the field `ftPayItemCaseData`, that is required later for  the DSFinV-K export. The following table describes how and when these need to be filled.
 
 
 | **Field name**            | **Data type** | **Default Value Mandatory Field** | **Description**                                                                                         | **Version** |

@@ -1,6 +1,6 @@
 module.exports = {
   middlewareDoc: [
-    //AUTO-INSERT:GETTING-STARTED
+    //AUTO-INSERT:GETTING-STARTED-CREATORS
     {
       type: 'category',
       collapsed: false,

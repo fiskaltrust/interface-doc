@@ -1,16 +1,6 @@
 module.exports = {
   middlewareDoc: [
-    {
-      type: 'category',
-      label: 'Get started',
-      items: [
-        'middleware-doc/doc/getting-started/getting-started-en',
-        'middleware-doc/doc/getting-started/getting-started-de',
-        'middleware-doc/doc/getting-started/middleware-integration-en',
-        'middleware-doc/doc/getting-started/middleware-integration-de',
-        'middleware-doc/doc/getting-started/lead-presentation',
-      ]
-    },
+    //AUTO-INSERT:GETTING-STARTED
     {
       type: 'category',
       collapsed: false,

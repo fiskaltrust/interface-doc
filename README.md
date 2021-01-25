@@ -1,7 +1,7 @@
 # fiskaltrust interface documentation
-_Welcome to the open source documentation of the fiskaltrust interface!_
+_Welcome to the open-source documentation of the fiskaltrust interface!_
 
-The goal of this repository is to provide a detailed technical specification of the fiskaltrust data interface used by POS-Systems to interact with the fiskaltrust.Middleware, so that the fiskaltrust.Middleware can be integrated by PosCreators into their systems without further support in the most cases.
+This repository aims to provide a detailed technical specification of the fiskaltrust data interface used by POS-Systems to interact with the fiskaltrust.Middleware, so that PosCreators can integrate the fiskaltrust.Middleware into their systems without further support in most cases.
 
 The technical specification of the data interface described in this document provides information regarding the following areas:
 1. Access to the fiskaltrust.Middleware
@@ -10,38 +10,39 @@ The technical specification of the data interface described in this document pro
 4. Function structure of the interface
 5. Types of communication with fiskaltrust.Middleware
 6. Operating categories
-Interface specification is provided by fiskaltrust.Interface nuget package, which can be found at https://www.nuget.org/packages/fiskaltrust.interface
+Interface specification is provided by fiskaltrust.Interface NuGet package, which can be found at https://www.nuget.org/packages/fiskaltrust.interface
 
 Official PDF documents that are built from the source in this repository can be found on the [Releases page](https://github.com/fiskaltrust/interface-doc/releases).
 
 ## Contributions
-If you want to contribute to this documentation, please review this README file to understand how it is structured and which tools are used.
+By reviewing this README file in order to understand its structure and which tools are being used, you are contributing to improving this documentation.
 
 ### Repository structure
 All documentation files are stored within the `/doc` folder in this repository (markdown, images, other static content).
 
-- One sub-directory and one or more markdown file(s) per chapter should be created (e.g. `general/general.md`.)
+- You should create one sub-directory and one or more markdown file(s) per chapter (e.g. `general/general.md`.)
   - 1st and 2nd level headings should be split into separate files.
-- Each chapter markdown file must be included into the table of contents in `/doc/toc.md`. DocFx will scan this file to compose the PDF documentation.
+- You must include each chapter markdown file in the table of contents in `/doc/toc.md`. DocFx will scan this file to compose the PDF documentation.
   - The order from the toc file is used to define the chapter order in the PDF file.
-  - You may also use multiple files per chapter, but keep in mind that a page-break is created by DocFx after every markdown file.
-- Images must be stored within a folder called `images`. Multiple image folders in different sub-directories are supported, DocFx just scans for the directory name.
+  - You may also use multiple files per chapter, but keep in mind that DocFx creates a page-break after every markdown file.
+- You must store images within a folder called `images`. Multiple image folders in different sub-directories are supported, DocFx scans for the directory name.
 
 #### References
 A reference to a markdown file can be created like this: `[Reference Text](./path-to-file/filename.md)`.
 > Note that reference paths should be relative.
 
-If you want to reference something specific inside a markdown file you need to create a anchor where you want your reference to point to.
+If you want to reference something specific inside a markdown file, you need to create an anchor to which you want your reference to point.
 Anchors can be created like this: `<span id="anchor-name">Referenced Item</span>`.
 
 The anchor id should adhere to the following convention: `<prefix>-<name>-<linenumber>`
 
 The `<prefix>` shows what is referenced (`c` for a chapter, `t` for a table, `i` for an illustration and `l` for a code listing).
 The `<name>` is the name of the referenced item in lowercase letters with `-` instead of whitespaces.
-The `<linenumber>` is the linenumber of the anchor at the time of writing. This serves the prevention of duplicate names in a markdown file.
+The `<linenumber>` is the line number of the anchor at the time of writing. This serves the prevention of duplicate names in a markdown file.
 
 An anchor could look like this:
 ````
+
 ```
 some code
 ```
@@ -62,7 +63,7 @@ You can also reference anchors in other files like this:
 
 Use either chocolatey or nuget.exe to install DocFx, as described [here](https://github.com/docascode/docfx-seed/blob/master/README.md).
 
-Docfx will produce warnings for incorrect markdown (including incorrect references).
+DocFx will produce warnings for incorrect markdown (including incorrect references).
 
 #### wkhtmltopdf
 [wkhtmltopdf](https://wkhtmltopdf.org/) is used internally by DocFx to convert HTML files to PDF. Download and install it from the website linked above.
@@ -74,7 +75,7 @@ usage:
 ```
 markdown-link-check ./general/general.md
 ```
-> Please note thst this tool does not find dead references inside a file. Only dead references to nonexisting files / unreachable urls.
+> Please note that this tool does not find dead references inside a file. Only dead references to nonexisting files / unreachable URLs.
 
 #### PlantUML
 - This documentation supports the PlantUML notation, which will be converted to SVG images and embedded into the PDF during the build.
@@ -84,7 +85,7 @@ markdown-link-check ./general/general.md
 - Example
 
 ````text
-```plantUml
+​```plantUml
 skinparam shadowing false
 Diagram
 ```
@@ -92,7 +93,7 @@ Diagram
 
 ### Release
 To create a release, clone the repository locally and run the following commands:
-```console
+​```console
 git tag <version>
 git push origin --tags
 ```
@@ -103,6 +104,6 @@ The following list shows further fiskaltrust repositories that are important for
 
 | **Github repo**| **Goal/Purpose** | **Content** |
 |-------------------|----------|------------|
-|[fiskaltrust/portal-manual-doc](https://github.com/fiskaltrust/portal-manual-doc)| Goal of this repository is to list and describe the available functionality of the ft.Portal, so that the usability and understanding of the portal can be increased by the here offered explanations and descriptions.| Each offered functionality of the ft.Portal including the meaning of menu items, buttons, input fields, dropdown & checkbox values, etc. is described here. To avoid confusion as much as possible, also different hints referring on how the portal helps to configure or run different fiskaltrust processes can be found here. The description of fiskaltrust processes and products themselves are not part of this repository. |
-|[fiskaltrust/productdescription-de-doc](https://github.com/fiskaltrust/productdescription-de-doc)|Goal of this repository is to help our customers to get familiar with our products and services for the german market. It should also help our customers to apply the products and services described here.| The repository contains descriptions of the offered products and services by fiskaltrust for the german market. It also contains accompanying materials such as how-to guides, price lists, concepts and presentations, that help our customers to integrate the here offered products and services into their own products and services. |
-|[fiskaltrust/faq](https://github.com/fiskaltrust/faq)| The purpose of this repository is to provide information on frequent questions or concerns from our customers.| The repo contains unsorted, but tagged question and answer sets. If the content of the answer already exists in another public fiskaltrust repository, that content is linked in the answer. The content of this repo is also rendered and presented in the [docs.fiskaltrust](https://docs.fiskaltrust.cloud/doc/faq/qna/market-de.html) portal. |
+|[fiskaltrust/portal-manual-doc](https://github.com/fiskaltrust/portal-manual-doc)| Goal of this repository is to list and describe the available functionality of the fiskaltrust.Portal so that the usability and understanding of the portal can be increased by the here offered explanations and descriptions. | The available functionalities of the fiskaltrust.Portal, including the meaning of menu items, buttons, input fields, dropdown & checkbox values, are described here. Here you can also find different insights and tips on how the portal helps to configure or run different fiskaltrust processes here. The description of fiskaltrust processes and products themselves are not part of this repository. |
+|[fiskaltrust/productdescription-de-doc](https://github.com/fiskaltrust/productdescription-de-doc)|Goal of this repository is to help our customers to get familiar with our products and services for the german market. It should also help our customers apply the products and services described here.| The repository contains descriptions of the offered products and services by fiskaltrust for the german market. It also contains accompanying materials such as how-to guides, price lists, concepts, and presentations that help our customers integrate the offered products and services into their products and services. |
+|[fiskaltrust/faq](https://github.com/fiskaltrust/faq)| The purpose of this repository is to provide information on our customers' frequent questions or concerns. | The repo contains unsorted but tagged question and answer sets. If the answer's content already exists in another public fiskaltrust repository, that content is linked in the solution. The content of this repo is also rendered and presented in the [docs.fiskaltrust](https://docs.fiskaltrust.cloud/doc/faq/qna/market-de.html) portal. |

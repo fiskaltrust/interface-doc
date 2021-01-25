@@ -1,10 +1,10 @@
-## Returnables
+# Returnables
 
-### Income from returnables (DE: Pfand)
+## Income from returnables (DE: Pfand)
 
-#### Transport aid (income)
+### Transport aid (income)
 
-Request:
+#### Receipt request
 
 ```json
 {
@@ -43,7 +43,7 @@ Request:
 }
 ```
 
-Response:
+#### Receipt response
 
 ```json
 {
@@ -169,9 +169,9 @@ Response:
     "ftState": 4919338167972134912
 }
 ```
-#### Encirclement of goods (income)
+### Encirclement of goods (income)
 
-Request:
+#### Receipt request
 
 ```json
 {
@@ -209,7 +209,7 @@ Request:
     "ftReceiptCase":4919338172267102209
 }
 ```
-Response:
+#### Receipt response
 
 ```json
 {
@@ -335,11 +335,12 @@ Response:
     "ftState": 4919338167972134912
 }
 ```
-### Return with settlement of the pledged amount (DE: Pfandrückzahlung)
+## Return with settlement of the pledged amount (DE: Pfandrückzahlung)
 
-#### Transport aid (return)
+### Transport aid (return)
 
-Request:
+#### Receipt request
+
 ```json
 {
     "ftCashBoxID": "a489fec1-9f6d-4413-9a28-285a37519d67",
@@ -369,7 +370,7 @@ Request:
     "ftReceiptCase":4919338172267102209
 }
 ```
-Response:
+#### Receipt response
 
 ```json
 {
@@ -496,9 +497,10 @@ Response:
 }
 ```
 
-#### Encirclement of goods (return)
+### Encirclement of goods (return)
 
-Request:
+#### Receipt request
+
 ```json
 {
     "ftCashBoxID": "a489fec1-9f6d-4413-9a28-285a37519d67",
@@ -528,7 +530,7 @@ Request:
     "ftReceiptCase":4919338172267102209
 }
 ```
-Response:
+#### Receipt response
 
 ```json
 {

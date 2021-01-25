@@ -1,10 +1,10 @@
+# Pos-receipt examples
 
+## Implicit flow
 
-implicit flow
+#### Receipt request
 
-ReciptRequest
-
-`
+```json
 {
   "ftCashBoxID": "cashboxid-guid",
   "ftPosSystemId": "possystemid-guid",
@@ -77,12 +77,11 @@ ReciptRequest
   "cbArea": "Tisch 01",
   "cbSettlement": "Test1"
 }
-`
+```
 
+#### Receipt response
 
-ReceiptResponse
-
-`
+```json
 {
     "ftCashBoxID": "cashboxid-guid",
     "ftQueueID": "queueid-guid",
@@ -217,22 +216,15 @@ ReceiptResponse
     //0x4445 0000 0000 0000
     "ftState": 4919338167972134912
 }
-`
+```
 
+## Explicit flow
 
+### Start-transaction
 
+#### Receipt request
 
-
-
-
-
-explicit flow
-
-- start-transaction
-
-ReciptRequest
-
-`
+```json
 {
   "ftCashBoxID": "cashboxid-guid",
   "ftPosSystemId": "possystemid-guid",
@@ -247,12 +239,11 @@ ReciptRequest
   "cbArea": "Tisch 01",
   "cbSettlement": "Test1"
 }
-`
+```
 
+#### Receipt response
 
-ReceiptResponse
-
-`
+```json
 {
     "ftCashBoxID": "cashboxid-guid",
     "ftQueueID": "queueid-guid",
@@ -275,14 +266,13 @@ ReceiptResponse
     //0x4445 0000 0000 0000
     "ftState": 4919338167972134912
 }
+```
 
+### Pos-receipt
 
+#### Receipt request
 
-- pos-receipt
-
-ReciptRequest
-
-`
+```json
 {
   "ftCashBoxID": "cashboxid-guid",
   "ftPosSystemId": "possystemid-guid",
@@ -355,12 +345,11 @@ ReciptRequest
   "cbArea": "Tisch 01",
   "cbSettlement": "Test1"
 }
-`
+```
 
+#### Receipt response
 
-ReceiptResponse
-
-`
+```json
 {
     "ftCashBoxID": "cashboxid-guid",
     "ftQueueID": "queueid-guid",
@@ -481,5 +470,4 @@ ReceiptResponse
     //0x4445 0000 0000 0000
     "ftState": 4919338167972134912
 }
-`
-
+```

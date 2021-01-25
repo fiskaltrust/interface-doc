@@ -34,7 +34,7 @@ For France (FR) the country code is `0x4652`. Thus, the value for an unknown ftR
 | `0x4652000000000012` | Protocol / Technical Event Log<br />Has to be signed<br />Sign: Yes<br />Chain and national numbering: L<br />Details: Can be used by the POS system to log custom data.                                                                                                                                                                                                                                              |  1.2                |
 | `0x4652000000000013` | Protocol / Accounting / Audit<br />Has to be signed<br />Sign: Yes<br />Chain and national numbering: L<br />Details: Can be used by the POS system to log custom data.                                                                                                                                                                                                                                               | 1.2                 |
 | `0x4652000000000014` | Protocol / Custom<br />Does not need to be signed<br />Sign: No<br />Chain and national numbering: No<br />Details: Can be used by the POS system to log custom data.                                                                                                                                                                                                                                                    |  1.2                |
-| `0x4652000000000015` | Archive<br />Has to be Signed<br />Sign: Yes<br />Chain and national numbering: A<br />Details: Will trigger automatically a daily closing.                                                                                                                                                                                                                                                                                     |  1.2                |
+| `0x4652000000000015` | Archive<br />Has to be Signed<br />Sign: Yes<br />Chain and national numbering: A<br />Details: Will trigger automatically a daily closing.<br />Creates an archive starting with the first receipt of the queue (or first receipt after the last archive) until the last receipt before this request. It must not contain more than 365 days.<br />To retrieve the export as zip-file (containing the certificate, ReceiptJournals and QueueItems) a normal `/journal`request has to be send to the `ftJournalType`: `0x4652000000010010`. The value of `ftQueueRow`in the response of this receiptcase has to be send in the `from`-parameter.<br />The contents of the retrieved zip-file can be verified with the _ExportTool_ for France published on GitHub.|  1.2                |
 | `0x4652000000000016` | Copy<br />Has to be Signed<br />Sign: Yes<br />Chain and national numbering: C<br />Details: in a request the cbPreviousReceiptReference is mandatory. It contains the receiptnumber of the cash register which was handed out as a copy. When a copy of a reciept is requested, the phrase "duplicata" is returned with the fiskaltrust signature and must be printed on the receipt. Every time the receipt is reprinted, an upcounting number denoting how may times the receipt has been printed is returned and must be printed on the receipt and is then recorded in the journal.                                                                                                                                                                                      | 1.2                 |
 | `0x4652000000000017` | Export<br />Has to be Signed<br />Sign: Yes<br />Chain and national numbering: A<br />Details: Creates an Archive (see receiptcase `0x4652000000000015`), triggers an export and a daily closing before this export.<br />Must include `ftReceiptCaseData` with the timestamps for the start and end of the export (e.g. `"ftReceiptCase": "{\"FromTimestamp\": 12334565, \"ToTimestamp\": 1234565}"`).<br />If the timespan is bigger than 1 year, no export is created and the response is `null`.<br />The response contains the hash-values for each journal type in the field `ftStateData` as JSON string.<br />To retrieve the export as csv-files a normal `/journal`request has to be send with the `ftJournalTypeFlag` set to `0x0000000000010000`. The value of `ftQueueRow`in the response of this receiptcase has to be send in the `from`-parameter. During creation of the csv-file the hast value is compared to thos from the value in `ftStateData`. If the hashes don't match, the export returns `null`.| 1.2                 |
 
@@ -161,18 +161,19 @@ The ftSignatureType indicates type and origin of the signature.
 
 The ftJournalType is used in connection with the journal function and defines the journal stream in accordance to the French law which is given back. In In the ftJournalType, the ISO-3166-1-ALPHA-2 from ASCII value is converted into hex and used as byte 8 and 7. For France (FR) this is 0x4652<span id="t-type-of-journal-ftjournaltype-160">.</span>
 
-| **Value**            | **Description**                  | **Version** |
-|----------------------|----------------------------------|-------------|
-| `0x4652000000000000` | Status information for QueueFR   |             |
-| `0x4652000000000001` | Ticket ("T" group) export        |             |
-| `0x4652000000000002` | Payment Prove ("P" group) export |             |
-| `0x4652000000000003` | Invoice ("I" group) export       |             |
-| `0x4652000000000004` | Grand Total ("G" group) export   |             |
-| `0x4652000000000007` | Bill ("B" group) export          |             |
-| `0x4652000000000008` | Archive ("A" group) export       |             |
-| `0x4652000000000009` | Log ("L" group) export           |             |
-| `0x465200000000000A` | Copy ("C" group) export          |             |
-| `0x465200000000000B` | Training ("X" group) export      |             |
+| **Value**            | **Description**                     | **Version** |
+|----------------------|-------------------------------------|-------------|
+| `0x4652000000000000` | Status information for QueueFR      | 1.2         |
+| `0x4652000000000001` | Ticket ("T" group) export           | 1.2         |
+| `0x4652000000000002` | Payment Prove ("P" group) export    | 1.2         |
+| `0x4652000000000003` | Invoice ("I" group) export          | 1.2         |
+| `0x4652000000000004` | Grand Total ("G" group) export      | 1.2         |
+| `0x4652000000000007` | Bill ("B" group) export             | 1.2         |
+| `0x4652000000000008` | Archive ("A" group) export          | 1.2         |
+| `0x4652000000000009` | Log ("L" group) export              | 1.2         |
+| `0x465200000000000A` | Copy ("C" group) export             | 1.2         |
+| `0x465200000000000B` | Training ("X" group) export         | 1.2         |
+| `0x4652000000000010` | Export (in conjunction with Archiv) | 1.2         |
 
 *Table 38. Type of Journal: ftJournalType (FR - BOI-TVA-DECL 30-10-30)*
 

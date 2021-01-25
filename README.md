@@ -93,10 +93,11 @@ Diagram
 
 ### Release
 To create a release, clone the repository locally and run the following commands:
-​```console
-git tag <version>
+
+​```
+git tag [version]
 git push origin --tags
-```
+​```
 
 ## Further public fiskaltrust repositories
 

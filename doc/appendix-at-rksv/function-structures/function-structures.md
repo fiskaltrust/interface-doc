@@ -1,6 +1,6 @@
 ## Function Structures
 
-This chapter expands on the descriptions of the function structures covered in the Chapter ["Function structures"](../../general/function-structures/function-structures.md) of the General Part, with country specific information applicable to the Austrian market.
+More detailed descriptions of the function structures covered in Chapter ["Function structures"](../../general/function-structures/function-structures.md) of the General Part, with country-specific information applicable to the Austrian market.
 
 ### iPOS Interface
 
@@ -10,7 +10,7 @@ In case of the Austrian product SignaturCloud, there is a special condition when
 
 #### Sign Function
 
-The sign function meets the RKSV requirements when the fiskaltrust.SecurityMechanism is run in the following mode: the country set for creating the queue is AT and the cbReceiptCase has the flag `0x4154000000000000`.
+The sign function meets the RKSV requirements when the fiskaltrust.SecurityMechanism is run in the following mode: the country set for creating the queue is AT, and the cbReceiptCase has the flag `0x4154000000000000`.
 
 #### Journal Function
 
@@ -28,7 +28,7 @@ The CurrentDateTime is provided in the `yyyyMMddhhmmssfff` format.
 
 ### IATSSCD Interface
 
-This interface is applicable only for the Austrian market and enables direct communication with the signature creation device for own purposes: it can be used for testing if the fiskaltrust.Middleware is running ("Echo" call), for getting the certificate ("Certificate" call), or signing autonomously ("Sign" call).
+This interface is applicable only for the Austrian market and enables direct communication with the signature creation device for own purposes: it can be used for testing if the fiskaltrust-Middleware is running ("Echo" call), for requesting the certificate ("Certificate" call), or for signing autonomously ("Sign" call).
 
 #### ZDA Indicator Request
 

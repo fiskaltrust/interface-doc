@@ -1,6 +1,6 @@
 ## Data Structures
 
-This chapter expands on the descriptions of the data structures covered in the Chapter ["Data Structures"](../../general/data-structures/data-structures.md) of the General Part, with country specific information applicable to the Austrian market.
+This chapter expands more on describing the data structures covered in the Chapter ["Data Structures"](../../general/data-structures/data-structures.md) of the General Part, with country-specific information applicable to the Austrian market.
 
 ### Receipt Request
 

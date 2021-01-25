@@ -13,8 +13,7 @@ This table describes fields of the receipt request applicable to the French mark
 
 #### ReceiptCaseData Entry
 
-ReceiptCaseData Entry is used to hand over additional required information to a data line for a receipt.
-The format is limited to JSON.
+ReceiptCaseData Entry is used to hand over additional required information to a data line for a receipt in JSON format.
 For French law fulfilment, a  ManagerId is required, if the receipt is sent as training receipt.
 
 | **Field Name**  | **Data Type** | **Default Value Mandatory Field** | **Description**                                                       | **Version** |
@@ -51,16 +50,15 @@ This table describes additional fields of the Charge Items Entry applicable to t
 |----------------|---------------|-----------------------------------|-----------------------------------------------------------------------|-------------|
 | `Description`  | `string`      | mandatory       | Name or description of customary indication or type of other service. | 1.2          |
 | `VATAmount`            | `Decimal`            | 0.0<br />mandatory                           | For French law fulfilment the VAT amount is required. It is used to calculate the net amount in order to avoid rounding errors which are especially likely to appear in row-based net price additions. | 1.2          |
-| `ftChargeItemCaseData` | `string`<br />Max 64k | mandatory                  | Additional data about the service, currently accepted only in JSON format.                                                                                                           | 1.2          |
+| `ftChargeItemCaseData` | `string`<br />Max 64k | mandatory                  | Additional data about the service in JSON format.                                                                                                          | 1.2          |
 | `Unit`                 | `String`<br />Max 1k  | mandatory                  | Unit of measurement                                                                                                                                                                  | 1.2         |
-| `UnitPrice`            | `Decimal`?            | mandatory                          | Gross price per indicated unit.                                                                                                                                                      | 1.2         |
+| `UnitPrice`            | `Decimal`            | mandatory                          | Gross price per indicated unit.                                                                                                                                                      | 1.2         |
 
 <span id="_Toc527986683" class="anchor"></span>*Table 31. Charge Items Entry (ftChargeItems)*
 
 #### ChargeItemCaseData Entry
 
-ChargeItemCaseData Entry is used to hand over additional required information to a data line for a receipt.
-The Format is limited to JSON.
+ChargeItemCaseData Entry is used to hand over additional required information to a data line for a receipt in JSON format.
 For French law fulfilment, a net-amount by line is required. This is added by a field called "NetAmount".
 
 | **Field Name** | **Data Type** | **Default Value Mandatory Field** | **Description**                                                       | **Version** |
@@ -79,9 +77,9 @@ There are no special requirements or laws for the French market.
 
 ### Signature Entry
 
-A Signature Entry can include an electronic signature for printing on the receipt and some further information regarding the operational state of the fiskaltrust.SecurityMechanism.
+A Signature Entry can include an electronic signature for printing on the receipt and further information regarding the operational state of the fiskaltrust.SecurityMechanism.
 
-Furthermore, but only when receipts with special functions are used, the previous state of the totalisers (in case of a temporal closure), can also be sent back in this block.
+Furthermore, but only when receipts with special functions are used, the previous state of the totalizers (in case of a temporal closure), can also be sent back in this block.
 
 This table describes additional fields of the Signature Entry applicable to the French market.
 

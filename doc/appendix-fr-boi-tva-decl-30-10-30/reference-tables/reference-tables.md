@@ -1,22 +1,22 @@
-## Reference Tables
+# Reference Tables
 
-### Type of Receipt: ftReceiptCase
+## Type of Receipt: ftReceiptCase
 
-The ftReceiptCase defines the type of receipt and hence how fiskaltrust.SecurityMechanisms should process receipts according to the French law.
+The ftReceiptCase defines the type of receipt and hence how fiskaltrust.SecurityMechanisms should process receipts according to French law.
 
-For France (FR) the country code is `0x4652`. Thus, the value for an unknown ftReceiptCase in France is `0x4652000000000000`.
+For France (FR), the country code is `0x4652`. Thus, the value for an unknown ftReceiptCase in France is `0x4652000000000000`.
 
 | **Value**            | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                 | **Middleware-Version** |
 |----------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------------|
-| `0x4652000000000000` | Unknown receipt for FR<br />Processed like a ticket                                                                                                                                                                                                                                                                                                                                                                             | 1.2                 |
-| `0x4652000000000001` | Ticket<br />Legal document; has to be signed.<br />Sign: Yes<br />Chain and national numbering: T<br />Details: GT counters are raised                                                                                                                                                                                                                                                                                          | 1.2                 |
-| `0x4652000000000002` | Payment Prove<br />Payment without knowledge what was paid.<br />Legal document; has to be signed.<br />Sign: Yes<br />Chain and national numbering: P<br />No ChargeItems on payment-prove, the total amount is always zero, a negative payitem of type `0x4652000000000011` is used to get the sum of payitems to zero.<br />Details: GT counters are not raised                                                              |                     |
-| `0x4652000000000003` | Invoice<br />Legal document; has to be signed.<br />Sign: Yes<br />Chain and national numbering: I<br />A reference to the ticket can be created by using the cbPreviousReceiptNumber in the request.<br />Detail: GT counters are raised                                                                                                                                                                                       |                     |
-| `0x4652000000000004` | Shift Receipt / Grand Total Ticket / Grand Total Invoice: Shift<br />Sign: Yes<br />Chain and national numbering: G<br />Details: Resets shift counter, keeps all other counters                                                                                                                                                                                                                                                | 1.2                 |
-| `0x4652000000000005` | Daily Receipt / Grand Total Ticket / Grand Total Invoice: Daily<br />Sign: Yes<br />Chain and national numbering: G<br />Details:<br />-   Adds daily counter to month-counter an then resets daily counter<br />-   keeps shift counter                                                                                                                                                                                        | 1.2                 |
-| `0x4652000000000006` | Monthly Receipt / Grand Total Ticket / Grand Total Invoice: Month<br />Sign: Yes<br />Chain and national numbering: G<br />Details:<br />-   Adds daily counter to month-counter an then resets daily counter<br />-   Adds monthly counter to yearly counter and then resets monthly counter<br />-   keeps shift counter                                                                                                      | 1.2                 |
-| `0x4652000000000007` | Yearly Receipt / Grand Total Ticket / Grand Total Invoice: Year<br />Sign: Yes<br />Chain and national numbering: G<br />Details:<br />-   Adds daily counter to month-counter an then resets daily counter<br />-   Adds monthly counter to yearly counter and then resets monthly counter<br />-   Resets yearly counter<br />-   keeps shift counter                                                                         | 1.2                 |
-| `0x4652000000000008` | Bill<br />List of ChargeItems to be payed. Used to inform customers about their open ChargeItems. payitemtype `0x4652000000000011` is used<br />Sign: Yes<br />Chain and national numbering: B<br />Details: GT counters are not raised. When the bill is used, the phrase "document provisoire" is returned with the fiskaltrust signature and must be printed on the bill. Every time the bill is reprinted, an upcounting number denoting how may times the bill has been printed is returned and must be printed on the bill and is then recorded in the journal. If bill and payment prove are created, this does not replace a ticket creation. A ticket or an invoice has to be issued to raise turnover and raise the GT counters as well |                     |
+| `0x4652000000000000` | **Unknown receipt for FR**<br />Processed like a ticket                                                                                                                                                                                                                                                                                                                                                                         | 1.2                 |
+| `0x4652000000000001` | **Ticket**<br />Legal document; has to be signed.<br />Sign: Yes<br />Chain and national numbering: T<br />Details: GT counters are raised                                                                                                                                                                                                                                                                                      | 1.2                 |
+| `0x4652000000000002` | **Payment Prove**<br />Payment without knowing what was paid.<br />Legal document; has to be signed.<br />Sign: Yes<br />Chain and national numbering: P<br />No ChargeItems on payment-prove, the total amount is always zero, a negative PayItem of type `0x4652000000000011` is used to get the sum of PayItems to zero.<br />Details: GT counters are not raised                                                 |                     |
+| `0x4652000000000003` | **Invoice**<br />Legal document; has to be signed.<br />Sign: Yes<br />Chain and national numbering: I<br />A reference to the ticket can be created by using `cbPreviousReceiptNumber` in the request.<br />Detail: GT counters are raised                                                                                                                                                                                 |                     |
+| `0x4652000000000004` | **Shift Receipt / Grand Total Ticket / Grand Total Invoice: Shift**<br />Sign: Yes<br />Chain and national numbering: G<br />Details: Resets the shift-counter, keeps all other counters                                                                                                                                                                                                                                        | 1.2                 |
+| `0x4652000000000005` | **Daily Receipt / Grand Total Ticket / Grand Total Invoice: Daily**<br />Sign: Yes<br />Chain and national numbering: G<br />Details:<br />-   Adds a daily-counter to the monthly-counter and then resets daily-counter<br />-   keeps the shift-counter                                                                                                                                                                      | 1.2                 |
+| `0x4652000000000006` | **Monthly Receipt / Grand Total Ticket / Grand Total Invoice: Month**<br />Sign: Yes<br />Chain and national numbering: G<br />Details:<br />-   Adds a daily-counter to monthly-counter and then resets the daily-counter<br />-   Adds a monthly-counter to the yearly-counter and then resets the monthly-counter<br />-   keeps the shift-counter                                                                        | 1.2                 |
+| `0x4652000000000007` | **Yearly Receipt / Grand Total Ticket / Grand Total Invoice: Year**<br />Sign: Yes<br />Chain and national numbering: G<br />Details:<br />-   Adds a daily-counter to the monthly-counter and then resets the daily-counter<br />-   Adds a monthly-counter to the yearly-counter and then resets the monthly-counter<br />-   Resets the yearly-counter<br />-   keeps the shift-counter                                 | 1.2                 |
+| `0x4652000000000008` | **Bill**<br />List of ChargeItems to be payed. Used to inform customers about their open ChargeItems. PayItemType `0x4652000000000011` is used<br />Sign: Yes<br />Chain and national numbering: B<br />Details: GT counters are not raised. When the bill is used, the phrase "document provisoire" is returned with the fiskaltrust signature and must be printed on the bill. Every time the bill is reprinted, an upcounting number denoting how may times the bill has been printed is returned and must be printed on the bill and is then recorded in the journal. If bill and payment prove are created, this does not replace a ticket creation. A ticket or an invoice has to be issued to raise turnover and raise the GT counters as well |                     |
 | `0x4652000000000009` | Delivery Note<br />Sign: no<br />Chain and national numbering: no                                                                                                                                                                                                                                                                                                                                                               |                     |
 | `0x465200000000000A` | Cash Deposit<br />Same handling as payment prove<br />Chain and national numbering: P                                                                                                                                                                                                                                                                                                                                           |                     |
 | `0x465200000000000B` | Pay out<br />Same handling as payment prove<br />Chain and national numbering: P                                                                                                                                                                                                                                                                                                                                                |                     |
@@ -33,7 +33,7 @@ For France (FR) the country code is `0x4652`. Thus, the value for an unknown ftR
 | `0x4652000000000016` | Copy<br />Has to be Signed<br />Sign: Yes<br />Chain and national numbering: C<br />Details: in a request the cbPreviousReceiptReference is mandatory. It contains the receiptnumber of the cash register which was handed out as a copy. When a copy of a reciept is requested, the phrase "duplicata" is returned with the fiskaltrust signature and must be printed on the receipt. Every time the receipt is reprinted, an upcounting number denoting how may times the receipt has been printed is returned and must be printed on the receipt and is then recorded in the journal.                                                                                                                                                                                      | 1.2                 |
 <span id="_Toc527986685" class="anchor"></span>*Table 33. Type of Receipt: ftReceiptCase (FR – BOI-TVA-DECL 30-10-30)*
 
-#### ftReceiptCaseFlag
+### ftReceiptCaseFlag
 
 Diverse business transactions according to the French law and regulations can result in certain combinations of types of receipts. For this, bytes 6, 5, 4 and 3 are used as combinable codes. These codes can be added with the help of the logic operator "OR".
 
@@ -46,7 +46,7 @@ Diverse business transactions according to the French law and regulations can re
 
 <span id="_Toc527986686" class="anchor"></span>*Table 34. Type of Receipt: ftReceiptCase Flags (FR – BOI-TVA-DECL 30-10-30)*
 
-### Type of Service: ftChargeItemCase
+## Type of Service: ftChargeItemCase
 
 The ftChargeItemCase defines the type of service in charge item blocks and thus how fiskaltrust.SecurityMechanism processes individual receipts with regards to receipt generation and the accordance to the French law.
 
@@ -94,7 +94,7 @@ For France (FR) the country code is 0x4652. Thus, the value for an unknown ftCha
 
 In the following there are further guidelines for using ftChargeItemCase.
 
-### Type of Payment: ftPayItemCase
+## Type of Payment: ftPayItemCase
 
 The ftPayItemCase defines the type of payment within the pay items block and thus how the fiskaltrust.SecurityMechanism processes the individual payment in terms of the receipt.
 
@@ -123,7 +123,7 @@ The ftPayItemCase defines the type of payment within the pay items block and thu
 
 <span id="_Toc527986688" class="anchor"></span>*Table 36. Type of Payment: ftPayItemCase (FR - BOI-TVA-DECL 30-10-30)*
 
-### Type of Signature: ftSignatureType
+## Type of Signature: ftSignatureType
 
 The ftSignatureType indicates type and origin of the signature.
 
@@ -140,7 +140,7 @@ The ftSignatureType indicates type and origin of the signature.
 
 <span id="_Toc527986689" class="anchor"></span>*Table 37. Type of Signature: ftSignatureType (FR - BOI-TVA-DECL 30-10-30)*
 
-### Type of Journal: ftJournalType
+## Type of Journal: ftJournalType
 
 The ftJournalType is used in connection with the journal function and defines the journal stream in accordance to the French law which is given back. In In the ftJournalType, the ISO-3166-1-ALPHA-2 from ASCII value is converted into hex and used as byte 8 and 7. For France (FR) this is 0x4652<span id="t-type-of-journal-ftjournaltype-160">.</span>
 
@@ -160,7 +160,7 @@ The ftJournalType is used in connection with the journal function and defines th
 
 *Table 38. Type of Journal: ftJournalType (FR - BOI-TVA-DECL 30-10-30)*
 
-#### ftJournalTypeFlag
+### ftJournalTypeFlag
 
 Journals can be extracted in combination with this flags, which would be indicated using codes in byte 5. These codes can be combined using the logic operator OR.
 

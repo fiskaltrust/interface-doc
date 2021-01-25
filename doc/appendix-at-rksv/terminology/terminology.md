@@ -1,3 +1,9 @@
+---
+slug: /poscreators/middleware-doc/austria/terminology
+title: Terminology
+---
+
+
 ## Terminology
 
 This table expands on the descriptions of all general terms and abbreviations provided in the chapter ["Terminology"](../../general/terminology/terminology.md) of the General Part with information specific to the Austrian market.

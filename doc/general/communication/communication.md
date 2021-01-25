@@ -1,3 +1,8 @@
+---
+slug: /poscreators/middleware-doc/general/communication
+title: Communication
+---
+
 ## Communication
 
 This chapter describes the ways to communicate with the fiskaltrust.Middleware via different network communication protocols. A fiskaltrust.Middleware exposes a WCF (Windows Communication Foundation) service to let POS-Systems interact with fiskaltrust.SecurityMechanism using fiskaltrust.Interface. Fiskaltrust also provides helpers to expand the communication interface for REST and serial/TCP protocols as well. This helpers can be activated and configured with the fiskaltrust.Portal.

@@ -1,4 +1,9 @@
-## Data Structures
+---
+slug: /poscreators/middleware-doc/germany/data-structures
+title: Data structures
+---
+
+## Data structures
 
 This chapter expands on the descriptions of the country-specific Data Structures, covered in the Chapter ["Data Structures"](../../general/data-structures/data-structures.md) of the General Part, with information applicable to the German market.
 
@@ -15,7 +20,7 @@ Fields from the receipt request that need special handling for the German market
 | `cbReceiptReference` | `string (50)` | Mandatory if the request is part of a business action | Used to connect all requests referring to the same business action. | 1.3 |
 | `cbPreviousReceiptReference` | `string (50)` | Optional | Points to `cbReceiptReference` of a previous request. Used to connect requests representing a business action. E.g. split, merge or reference a receipt to be voided. | 1.3 |
 
-Examples of using `cbReceiptReference` and `cbPreviousReceiptReference` to connect requests representing a business action can be found [here](../examples/cbReference.md).
+Examples of using `cbReceiptReference` and `cbPreviousReceiptReference` to connect requests representing a business action can be found in our Postman collection.
 
 #### Customer data `cbCustomer`
 

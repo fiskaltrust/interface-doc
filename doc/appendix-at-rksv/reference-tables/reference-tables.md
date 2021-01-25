@@ -1,4 +1,9 @@
-## Reference Tables
+---
+slug: /poscreators/middleware-doc/austria/reference-tables
+title: Reference tables
+---
+
+## Reference tables
 
 This chapter expands on the reference tables covered in the Chapter ["Reference tables"](../../general/reference-tables/reference-tables.md) of the General Part, with country-specific information applicable to the Austrian market.
 
@@ -19,7 +24,11 @@ The country-specific code is made of the country's code value following the ISO-
 | `0x4154000000000040` | "message / notification pending"<br />A status message and/or FinanzOnline notification is ready for collection.<br />Using a zero receipt, the messages can be retrieved and archived or processed in bookkeeping.                                                                                                                                                                                                                                                                    | 1.0                 |
 | `0x4154000000000080` | "backup SSCD in use"<br />The receipt was signed by a signature creation unit configured for backup use.                                                                                                                                                                                                                                                                                                                                                                                    | 1.1.17248           |
 
-<span id="_Toc527986673" class="anchor"></span>*Table 21. Service status: ftState for AT - RKSVO*
+<span id="_Toc527986673" class="anchor">
+
+*Table 21. Service status: ftState for AT - RKSVO*
+
+</span>
 
 ### Type of Receipt: ftReceiptCase
 
@@ -47,7 +56,9 @@ For Austria (AT) the country code is `0x4154`. Thus, the value for an unknown ft
 | `0x415400000000000F` | "sales in an online shop, telephone-/fax orders"<br />Through the cash revenue law, sales from online shops and similar are exempted, even if these have been paid by credit card or comparable means of payments with RKSV requirement but not paid on business premises. As a cash transaction, the issued receipt comes with a recording requirement in accordance with §131 BAO and needs to be processed in bookkeeping. | 0-                   |
 | `0x4154000000000010` | "foreign sales"<br />Foreign sales do not have an RKSV-requirement. As a cash transaction, the issued receipt comes with a recording requirement in accordance with §131 BAO and need to be processed in bookkeeping. Foreign requirements, for example in connection with receipt generation or cash register requirements, have to be taken into account. | 0-                   |
 
-<span id="_Toc527986674" class="anchor"></span>*Table 22. Type of Receipt: ftReceiptCase (AT - RKSVO)*
+<span id="_Toc527986674" class="anchor"></span>
+
+*Table 22. Type of Receipt: ftReceiptCase (AT - RKSVO)*
 
 #### ftReceiptCaseFlag
 
@@ -64,7 +75,9 @@ This table expands on the values provided in the table ["Type of Receipt: ftRece
 | `0x0000000000400000` | "contains characteristics in accordance with §11 UStG"<br />On the receipt, the characteristics are issued in accordance with §11 UStG, and the transferred receipt contains receiver data in manufacturer-specific JSON format within the field ftReceiptCaseData.                                                                                                                                                                                                                                                                                                                                                                                                               | 0-              |
 | `0x0000800000000000` | Receipt request. Common behaviour.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                |                 |
 
-<span id="_Toc527986675" class="anchor"></span>*Table 23. Type of Receipt: ftReceiptCase Flags(AT - RKSVO)*
+<span id="_Toc527986675" class="anchor"></span>
+
+*Table 23. Type of Receipt: ftReceiptCase Flags(AT - RKSVO)*
 
 ### Type of Service: ftChargeItemCase
 
@@ -109,7 +122,9 @@ This table expands on the values provided in the table ["Type of Service: ftChar
 | `0x4154000000000022` | "obligation with RKSV requirement"<br />Obligations are to be equalized with pay items. If however, it is for technical reasons necessary to transfer obligations in the charge items block, then this code should be used for obligations with RKSV requirement. The gross amount due is recorded in the signature field, set zero, according to the RKSV.<br />For example, a receipt for a voucher issuance, for which the voucher is indicated as item in the charge items block and the corresponding cash amount is indicated in the pay items block.<br />An example for this would be a voucher intake via charge items block, or a payment of an outgoing invoice. | 0-                  |
 | `0x4154000000000023` | "obligation without RKSV requirement"<br />Obligations are to be equalized with pay items. If however, it is systematically necessary to transfer obligations in the charge items block, then this code should be used for obligations without RKSV requirement. The gross amount due is recorded in the signature field, set zero, according to the RKSV. For processing, also see (0x4154000000000007).                                                                                                                                                                                                                                                                   | 0-                  |
 
-<span id="_Toc527986676" class="anchor"></span>*Table 24. Type of Service: ftChargeItemCase (AT - RKSVO)*
+<span id="_Toc527986676" class="anchor"></span>
+
+*Table 24. Type of Service: ftChargeItemCase (AT - RKSVO)*
 
 ### Type of Payment: ftPayItemCase
 
@@ -138,7 +153,9 @@ This table expands on the values provided in the table ["Type of Payment: ftPayI
 | `0x4154000000000011` | "internal/ material consumption"                                                                                                  | 0-                  |
 | `0x4154000000000012` | "change"<br />tip                                                                                                                 | 0-                  |
 
-<span id="_Toc527986677" class="anchor"></span>*Table 25. Type of Payment: ftPayItemCase (AT - RKSVO)*
+<span id="_Toc527986677" class="anchor"></span>
+
+*Table 25. Type of Payment: ftPayItemCase (AT - RKSVO)*
 
 ### Type of Signature: ftSignatureFormat
 
@@ -162,7 +179,9 @@ According to the RKSV, there is one exception: if the fiskaltrust.SecurityMechan
 | `0x0B`    | UPC-A (bar code)                            |
 | `0x0C`    | Code39 (bar code, Base32 compatible)        |
 
-<span id="_Toc527986678" class="anchor"></span>*Table 26. Type of Signature: ftSignatureFormat (AT - RKSVO)*
+<span id="_Toc527986678" class="anchor"></span>
+
+*Table 26. Type of Signature: ftSignatureFormat (AT - RKSVO)*
 
 ### Type of Signature: ftSignatureType
 
@@ -175,7 +194,9 @@ This table expands on the values provided in the table ["Type of Signature: ftSi
 | `0x4154000000000002` | Archiving required according to RKSV or BAO §132.<br />E.g. notification of collective receipt after failure, initial receipt, monthly receipt, etc.. | 0-          |
 | `0x4154000000000003` | FinanzOnline notification                                                                                                                             | 0-          |
 
-<span id="_Toc527986679" class="anchor"></span>*Table 27. Type of Signature: ftSignatureType (AT - RKSVO)*
+<span id="_Toc527986679" class="anchor"></span>
+
+*Table 27. Type of Signature: ftSignatureType (AT - RKSVO)*
 
 ### Type of Journal: ftJournalType
 
@@ -198,7 +219,9 @@ For example, the following signature value is converted in the way described abo
 _R1-AT0_DEMO-CASH-BOX426_776730_2015-10-14T18:20:23_0,00_0,00_0,00_0,00_0,00_0gJTFI8/zqc=_968935007593160625_fP7/PMP-SnQ0=_Xh5wNe0akaTOVvMgLVrCcRh2xmIyP91ogbxc5xv4Rrw64lpQsqLm+1GZxuCz4D1sZl9WCv3wMMoE0p+gyLaufg==
 ```
 
-<span id="_Toc527986839" class="anchor"></span>*Code 15. Example of OCR output in Base64*
+<span id="_Toc527986839" class="anchor"></span>
+
+*Code 15. Example of OCR output in Base64*
 
 The BASE32 display in accordance with the RKSV for this OCR text output in BASE32 (bold) looks as follows:
 
@@ -206,7 +229,9 @@ The BASE32 display in accordance with the RKSV for this OCR text output in BASE3
 _R1-AT0_DEMO-CASH-BOX426_776730_2015-10-14T18:20:23_0,00_0,00_0,00_0,00_0,00_2IBFGFEPH7HKO===_968935007593160625_PT7P6PGD2KOQ2===_LYPHANPNDKI2JTSW6MQC2WWCOEMHNRTCGI7522EBXROOOG7YI26DVYS2KCZKFZX3KGM4NYFT4A6WYZS7KYFP34BQZICNFH5AZC3K47Q=
 ```
 
-<span id="_Toc527986840" class="anchor"></span>*Code 16. Example of OCR output in Base32*
+<span id="_Toc527986840" class="anchor"></span>
+
+*Code 16. Example of OCR output in Base32*
 
 This procedure has to be carried out by the cash register or input station itself because the service does not know whether a QR code can be printed or not, and because the data format for DEP storage requires a BASE64 display anyway.
 
@@ -217,4 +242,6 @@ A conversion tool is provided in the class fiskaltrust.ifPOS.Utility.
 string ocr = fiskaltrust.ifPOS.Utilities.AT_RKSV_Signature_ToBase32(qr_data);
 ```
 
-<span id="_Toc527986841" class="anchor"></span>*Code 17. Example for converting the QR-Code to OCR*
+<span id="_Toc527986841" class="anchor"></span>
+
+*Code 17. Example for converting the QR-Code to OCR*

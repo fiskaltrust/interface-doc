@@ -1,4 +1,9 @@
-## Function Structures
+---
+slug: /poscreators/middleware-doc/austria/function-structures
+title: Function structures
+---
+
+## Function structures
 
 More detailed descriptions of the function structures covered in Chapter ["Function structures"](../../general/function-structures/function-structures.md) of the General Part, with country-specific information applicable to the Austrian market.
 

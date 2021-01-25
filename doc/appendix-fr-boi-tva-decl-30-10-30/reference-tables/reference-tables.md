@@ -1,4 +1,9 @@
-## Reference Tables
+---
+slug: /poscreators/middleware-doc/france/reference-tables
+title: Reference tables
+---
+
+## Reference tables
 
 ### Type of Receipt: ftReceiptCase
 
@@ -31,7 +36,11 @@ For France (FR) the country code is `0x4652`. Thus, the value for an unknown ftR
 | `0x4652000000000014` | Protocol / Custom<br />Does not need to be signed<br />Sign: No<br />Chain and national numbering: No<br />Details: Can be used by the POS system to log custom data.                                                                                                                                                                                                                                                    |  1.2                |
 | `0x4652000000000015` | Archive<br />Has to be Signed<br />Sign: Yes<br />Chain and national numbering: A<br />Details: Will trigger automatically a daily closing.<br />Creates an archive starting with the first receipt of the queue (or first receipt after the last archive) until the last receipt before this request. It must not contain more than 365 days.<br />To retrieve the export as zip-file (containing the certificate, ReceiptJournals and QueueItems) a normal `/journal`request has to be send to the `ftJournalType`: `0x4652000000010010`. The value of `ftQueueRow`in the response of this receiptcase has to be send in the `from`-parameter.<br />The contents of the retrieved zip-file can be verified with the _ExportTool_ for France published on GitHub.|  1.2                |
 | `0x4652000000000016` | Copy<br />Has to be Signed<br />Sign: Yes<br />Chain and national numbering: C<br />Details: in a request the cbPreviousReceiptReference is mandatory. It contains the receiptnumber of the cash register which was handed out as a copy. When a copy of a reciept is requested, the phrase "duplicata" is returned with the fiskaltrust signature and must be printed on the receipt. Every time the receipt is reprinted, an upcounting number denoting how may times the receipt has been printed is returned and must be printed on the receipt and is then recorded in the journal.                                                                                                                                                                                      | 1.2                 |
-<span id="_Toc527986685" class="anchor"></span>*Table 33. Type of Receipt: ftReceiptCase (FR – BOI-TVA-DECL 30-10-30)*
+| `0x4652000000000017` | Export<br />Has to be Signed<br />Sign: Yes<br />Chain and national numbering: A<br />Details: Creates an Archive (see receiptcase `0x4652000000000015`), triggers an export and a daily closing before this export.<br />Must include `ftReceiptCaseData` with the timestamps for the start and end of the export (e.g. `"ftReceiptCase": "{\"FromTimestamp\": 12334565, \"ToTimestamp\": 1234565}"`).<br />If the timespan is bigger than 1 year, no export is created and the response is `null`.<br />The response contains the hash-values for each journal type in the field `ftStateData` as JSON string.<br />To retrieve the export as csv-files a normal `/journal`request has to be send with the `ftJournalTypeFlag` set to `0x0000000000010000`. The value of `ftQueueRow`in the response of this receiptcase has to be send in the `from`-parameter. During creation of the csv-file the hast value is compared to thos from the value in `ftStateData`. If the hashes don't match, the export returns `null`.| 1.2                 |
+
+<span id="_Toc527986685" class="anchor"></span>
+
+*Table 33. Type of Receipt: ftReceiptCase (FR – BOI-TVA-DECL 30-10-30)*
 
 #### ftReceiptCaseFlag
 
@@ -44,7 +53,9 @@ Diverse business transactions according to the French law and regulations can re
 | `0x0000000000040000` | "reverse receipt" or "voided receipt"<br />Common behaviour                                                                                                                                                                                                                                                                                                                                        |             |
 | `0x0000800000000000` | "receipt request"<br />Common behaviour                                                                                                                                                                                                                                                                                                                                                            |             |
 
-<span id="_Toc527986686" class="anchor"></span>*Table 34. Type of Receipt: ftReceiptCase Flags (FR – BOI-TVA-DECL 30-10-30)*
+<span id="_Toc527986686" class="anchor"></span>
+
+*Table 34. Type of Receipt: ftReceiptCase Flags (FR – BOI-TVA-DECL 30-10-30)*
 
 ### Type of Service: ftChargeItemCase
 
@@ -90,7 +101,9 @@ For France (FR) the country code is 0x4652. Thus, the value for an unknown ftCha
 | `0x4652000000000021` | "account of a third party/ third party name/ collection"<br />For processing, see (`0x4652000000000007`)                                                                                                                                                                                                                                             | 1.2                 |
 | `0x4652000000000022` | Obligation ???                                                                                                                                                                                                                                                                                                                                       | 1.2                 |
 
-<span id="_Toc527986687" class="anchor"></span>*Table 35. Type of Service: ftChargeItemCase (FR – BOI-TVA-DECL 30-10-30)*
+<span id="_Toc527986687" class="anchor"></span>
+
+*Table 35. Type of Service: ftChargeItemCase (FR – BOI-TVA-DECL 30-10-30)*
 
 In the following there are further guidelines for using ftChargeItemCase.
 
@@ -121,7 +134,9 @@ The ftPayItemCase defines the type of payment within the pay items block and thu
 | `0x4652000000000011` | "internal/ material consumption"<br />Can be used for bill<br />internal                                                          | 1.2                 |
 | `0x4652000000000012` | "change"<br />tip<br />cash                                                                                                       | 1.2                 |
 
-<span id="_Toc527986688" class="anchor"></span>*Table 36. Type of Payment: ftPayItemCase (FR - BOI-TVA-DECL 30-10-30)*
+<span id="_Toc527986688" class="anchor"></span>
+
+*Table 36. Type of Payment: ftPayItemCase (FR - BOI-TVA-DECL 30-10-30)*
 
 ### Type of Signature: ftSignatureType
 
@@ -138,7 +153,9 @@ The ftSignatureType indicates type and origin of the signature.
 | `0x4652000000000006` | Archive Totals Sum  | 1.2         |
 | `0x4652000000000007` | Perpetual Total Sum | 1.2         |
 
-<span id="_Toc527986689" class="anchor"></span>*Table 37. Type of Signature: ftSignatureType (FR - BOI-TVA-DECL 30-10-30)*
+<span id="_Toc527986689" class="anchor"></span>
+
+*Table 37. Type of Signature: ftSignatureType (FR - BOI-TVA-DECL 30-10-30)*
 
 ### Type of Journal: ftJournalType
 

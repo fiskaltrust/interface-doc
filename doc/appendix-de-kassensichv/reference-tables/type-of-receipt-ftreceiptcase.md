@@ -1,3 +1,8 @@
+---
+slug: /poscreators/middleware-doc/germany/reference-tables/ftreceiptcase
+title: 'Type of receipt: ftReceiptCase'
+---
+
 # Type of Receipt: ftReceiptCase
 
 The `ftReceiptCase` indicates the receipt type and defines how the fiskaltrust.SecurityMechanism should process it following German law.

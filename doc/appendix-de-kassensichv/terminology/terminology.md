@@ -1,3 +1,8 @@
+---
+slug: /poscreators/middleware-doc/germany/terminology
+title: Terminology
+---
+
 # Terminology
 
 | Term | Description |

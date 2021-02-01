@@ -1,6 +1,6 @@
 ---
 slug: /poscreators/middleware-doc/austria/cash-register-integration
-title: Terminology
+title: Cash register integration
 ---
 
 ## Cash Register Integration

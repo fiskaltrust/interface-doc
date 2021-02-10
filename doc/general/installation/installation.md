@@ -13,25 +13,26 @@ The mentioned platforms use the launcher `fiskaltrust.exe` to execute the fiskal
 
 The following call parameters are available with the launcher `fiskaltrust.exe`:
 
-| **Parameter**                  | **Description**                                                                                                                                                 |
-|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `-cashboxid`                   | Sets the CashBoxId into the static configuration (`fiskaltrust.exe.config`). The value is a GUID in format `00000000-0000-0000-0000-000000000000`.              |
-| `-accesstoken`                 | Sets the AccessToken in the static configuration (`fiskaltrust.exe.config`) for online communication                                                            |
-| `-useoffline`                  | Sets the offline mode in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true \| false                                             |
+| **Parameter**                  | **Description**                                              |
+| ------------------------------ | ------------------------------------------------------------ |
+| `-cashboxid`                   | Sets the CashBoxId into the static configuration (`fiskaltrust.exe.config`). The value is a GUID in format `00000000-0000-0000-0000-000000000000`. |
+| `-accesstoken`                 | Sets the AccessToken in the static configuration (`fiskaltrust.exe.config`) for online communication |
+| `-useoffline`                  | Sets the offline mode in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true \| false |
 | `-test`                        | Executing as command line program. Basic information is provided in the console. Should be indicated as last parameter, if it is set in connection with others. |
-| `-i`                           | Install Windows service                                                                                                                                         |
-| `-u`                           | Uninstall Windows service                                                                                                                                       |
-| `-servicename=[myservicename]` | Sets the service name in connection with -i and -u                                                                                                              |
-| `-displayname=[mydisplayname]` | Sets the service display name within the system control in connection with -i                                                                                   |
-| `-description=[mydescription]` | Sets the service description within the system control in connection with -i                                                                                    |
-| `-servicefolder`               | Sets folder containing the service files in the static configuration (`fiskaltrust.exe.config`)                                                                 |
-| `-sslvalidation`               | Sets the certificate validation when connecting through SSL in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true \| false       |
-| `-sandbox`                     | Sets the environment to be used in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true (sandbox) \| false (production)            |
-| `-packagesurl`                 | Sets the url of the package server used to download the packages in the static configuration (`fiskaltrust.exe.config`)                                         |
-| `-logfile`                     | Sets the file used to log the output messages in the static configuration (`fiskaltrust.exe.config`)                                                            |
-| `-connectiontimeout`           | Sets the timeout (in seconds) for the HTTP/HTTPS call to download the configuration in the static configuration (`fiskaltrust.exe.config`)                      |
-| `-connectionretry`             | Sets the number of trials to download the configuration in the static configuration (`fiskaltrust.exe.config`)                                                  |
-| `-proxy`                       | Sets the proxy server to be used to connect to internet in the static configuration (`fiskaltrust.exe.config`)                                                  |
+| `-i`                           | Install Windows service                                      |
+| `-u`                           | Uninstall Windows service                                    |
+| `-servicename=[myservicename]` | Sets the service name in connection with -i and -u           |
+| `-displayname=[mydisplayname]` | Sets the service display name within the system control in connection with -i |
+| `-description=[mydescription]` | Sets the service description within the system control in connection with -i |
+| `-servicefolder`               | Sets folder containing the service files in the static configuration (`fiskaltrust.exe.config`) |
+| `-sslvalidation`               | Sets the certificate validation when connecting through SSL in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true \| false |
+| `-sandbox`                     | Sets the environment to be used in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true (sandbox) \| false (production) |
+| `-packagesurl`                 | Sets the url of the package server used to download the packages in the static configuration (`fiskaltrust.exe.config`) |
+| `-logfile`                     | Sets the file used to log the output messages in the static configuration (`fiskaltrust.exe.config`) |
+| `-connectiontimeout`           | Sets the timeout (in seconds) for the HTTP/HTTPS call to download the configuration in the static configuration (`fiskaltrust.exe.config`) |
+| `-connectionretry`             | Sets the number of trials to download the configuration in the static configuration (`fiskaltrust.exe.config`) |
+| `-proxy`                       | Sets the proxy server to be used to connect to internet in the static configuration (`fiskaltrust.exe.config`) |
+| `-verbosity=Debug`             | Shows additional debug information. Can be used in `test.cmd` as well. |
 
 <span id="_Toc527986661" class="anchor"></span>*Table 8. fiskaltrust.exe launch parameters*
 

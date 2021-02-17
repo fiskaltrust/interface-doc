@@ -35,6 +35,7 @@ For Germany (DE), the country code is `0x4445`. Thus, the value of an unknown `f
 | `0x4445000000000013` | **Info-internal**<br /><br />Second case: "no charge items or no pay items"<br /> `(ReceiptRequest.ChargePayItems == [] \|\| ReceiptRequest.PayItems == [])` | [none] <br /> SonstigerVorgang | 1.3- |
 | `0x4445000000000014` | **Protocol**<br /><br /> | [none] <br /> SonstigerVorgang | 1.3- |
 | `0x4445000000000015` | **Foreign sales**<br /><br /> | AVSonstige <br /> Kassenbeleg-V1 | 1.3- |
+| `0x4445000000000016` | **Cancel/void a receipt**<br /><br /> Please note that according to the DSFinV-K, this receipt type can only be used on systems **without** a TSE. For "regular" cancellations, please use the respective _ftReceiptCaseFlag_.  | AVBelegstorno <br /> Kassenbeleg-V1 | 1.3.14- |
 
 
 #### ftReceiptCaseFlag
@@ -45,7 +46,7 @@ This table expands on the values provided in table [ftReceiptCaseFlag in General
 |---|---|---|
 | 0x0000000000010000  | **Failed receipt** <br />Common behaviour, see [general part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag). | 1.3- |
 | 0x0000000000020000  | **Training receipt**<br />DSFinV-K: overrides BON_TYP=AVTraining | 1.3- |
-| 0x0000000000040000  | **Reverse/voided receipt**<br />DSFinV-K: overrides BON_TYP=AVBelegstorno | 1.3- |
+| 0x0000000000040000  | **Reverse/voided receipt**<br />To cancel a receipt, resend it with this flag added to the _ftReceiptCase_ and inverse the _cbPayItems_ and _cbChargeItems_. In the DSFinV-K export, this flag will set the column `BON_STORNO` to `true`.<br/>In Middleware versions lower than 1.3.14, this flag created a receipt with the BON_TYP _AVBelegStorno_. This behavior got replaced by a separate _ftReceiptCase_. | 1.3- |
 | 0x0000000000080000  | **paper/handwritten receipt** | 1.3- |
 | 0x0000000000100000  | **Small business, not taxable sales.** | 1.3- |
 | 0x0000000000200000  | **Receiver is a company** | 1.3- |

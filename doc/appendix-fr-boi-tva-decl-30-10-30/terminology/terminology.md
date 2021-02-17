@@ -15,4 +15,8 @@ This table expands on the descriptions of all general terms and abbreviations pr
 | BOFIP             | Official tax bulletin of French tax authorities. (Bulletin Officiel des Finances Publiques-Impôts)                                                                                                |
 | CGI               | General Tax Code (Code général des impôts)                                                                                                                                                        |
 
-<span id="_Toc510009106" class="anchor"></span>*Table 29. Definition of Terms and Abbreviations (FR – BOI-TVA-DECL 30-10-30)*
+<span id="_Toc510009106" class="anchor">
+
+*Table 29. Definition of Terms and Abbreviations (FR – BOI-TVA-DECL 30-10-30)*
+
+</span>

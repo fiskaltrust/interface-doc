@@ -46,6 +46,7 @@ module.exports = {
             'middleware-doc/doc/appendix-de-kassensichv/terminology/terminology',
             'middleware-doc/doc/appendix-de-kassensichv/cash-register-integration/cash-register-integration',
             'middleware-doc/doc/appendix-de-kassensichv/data-structures/data-structures',
+		'middleware-doc/doc/appendix-de-kassensichv/installation/installation',
             {
               type: 'category',
               label: 'Reference Tables',

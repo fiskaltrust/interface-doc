@@ -32,7 +32,6 @@ The following call parameters are available with the launcher `fiskaltrust.exe`:
 | `-connectiontimeout`           | Sets the timeout (in seconds) for the HTTP/HTTPS call to download the configuration in the static configuration (`fiskaltrust.exe.config`) |
 | `-connectionretry`             | Sets the number of trials to download the configuration in the static configuration (`fiskaltrust.exe.config`) |
 | `-proxy`                       | Sets the proxy server to be used to connect to internet in the static configuration (`fiskaltrust.exe.config`) |
-| `-verbosity=Debug`             | Shows additional debug information. Can be used in `test.cmd` as well. |
 
 <span id="_Toc527986661" class="anchor"></span>*Table 8. fiskaltrust.exe launch parameters*
 

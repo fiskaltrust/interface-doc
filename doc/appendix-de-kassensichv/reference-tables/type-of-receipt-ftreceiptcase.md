@@ -46,7 +46,7 @@ This table expands on the values provided in table [ftReceiptCaseFlag in General
 |---|---|---|
 | 0x0000000000010000  | **Failed receipt** <br />Common behaviour, see [general part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag). | 1.3- |
 | 0x0000000000020000  | **Training receipt**<br />DSFinV-K: overrides BON_TYP=AVTraining | 1.3- |
-| 0x0000000000040000  | **Reverse/voided receipt**<br />To cancel a receipt, resend it with this flag added to the _ftReceiptCase_ and inverse the _cbPayItems_ and _cbChargeItems_. In the DSFinV-K export, this flag will set the column `BON_STORNO` to `true`.<br/>In Middleware versions lower than 1.3.14, this flag created a receipt with the BON_TYP _AVBelegStorno_. This behavior got replaced by a separate _ftReceiptCase_. | 1.3- |
+| 0x0000000000040000  | **Reverse/voided receipt**<br />To cancel a receipt, resend it with this flag added to the _ftReceiptCase_ and inverse the _cbPayItems_ and _cbChargeItems_ (Same behavior as described in the [general part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag)). In the DSFinV-K export, this flag will set the column `BON_STORNO` to `true`.<br/>In Middleware versions lower than 1.3.14, this flag created a receipt with the BON_TYP _AVBelegStorno_. This behavior got replaced by a separate _ftReceiptCase_. | 1.3- |
 | 0x0000000000080000  | **paper/handwritten receipt** | 1.3- |
 | 0x0000000000100000  | **Small business, not taxable sales.** | 1.3- |
 | 0x0000000000200000  | **Receiver is a company** | 1.3- |

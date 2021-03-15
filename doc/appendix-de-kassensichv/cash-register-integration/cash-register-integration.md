@@ -31,14 +31,16 @@ This is the regular workflow of the fiskaltrust-SecurityMechanism in the German 
 ##### Advantages
 
 - No open TSE-transactions to be managed.
-- Reduces complexity in error-handling.
+- Reduces complexity of business-process handling.
 
 #### How to use
 
 Sign-call with a [ftReceiptCase for implicit flow](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/reference-tables/ftreceiptcase#type-of-receipt-ftreceiptcase) + ftReceiptCaseFlag `0x0000000100000000`.
 The up-counting transaction number defined in TR-03153 is responded behind the hash-tag in the property 'ftReceiptIdentification' of 'ReceiptResponse', prefixed by "IT".
 
-Please be aware that for the implicit flow the start time of the first transaction of the business-action has to be printed on the receipt as the start-time of the action.
+
+<div class="alert alert--warning" role="alert">Please be aware that for the implicit flow, ADDITIONALLY the start time of the first transaction of the business-action (e.g. start time of the first order) has to be printed on the receipt as the start-time of the action.</div>
+
 
 ![implicit-flow-start-finish-transaction](media/implicit-flow-start-finish-transaction.png)
 
@@ -52,9 +54,9 @@ Please be aware that for the implicit flow the start time of the first transacti
 
 See [DE-action-start-de | fiskaltrust Documentation Platform](https://docs.fiskaltrust.cloud/docs/faq/examples/DE-action-start-de#standard-action---implicit-flow)
 
-Long lasting actions, multiple orders, e.g. gastronomy, hospitality
+##### Long lasting actions, multiple orders, e.g. gastronomy, hospitality
 
-
+![implicit-flow-multiple-sign-calls](media/implicit-flow-multiple-sign-calls.png)
 
 See [DE-action-start-de | fiskaltrust Documentation Platform](https://docs.fiskaltrust.cloud/docs/faq/examples/DE-action-start-de#long-lasting-action---implicit-flow)
 

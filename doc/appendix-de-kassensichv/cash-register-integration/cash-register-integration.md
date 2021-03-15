@@ -28,10 +28,17 @@ The "**flow**" describes the communication between the POS System and the fiskal
 
 This is the regular workflow of the fiskaltrust-SecurityMechanism in the German market for actions. 
 
+##### Advantages
+
+- No open TSE-transactions to be managed.
+- Reduces complexity in error-handling.
+
 #### How to use
 
 Sign-call with a [ftReceiptCase for implicit flow](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/reference-tables/ftreceiptcase#type-of-receipt-ftreceiptcase) + ftReceiptCaseFlag `0x0000000100000000`.
 The up-counting transaction number defined in TR-03153 is responded behind the hash-tag in the property 'ftReceiptIdentification' of 'ReceiptResponse', prefixed by "IT".
+
+Please be aware that for the implicit flow the start time of the first transaction of the business-action has to be printed on the receipt as the start-time of the action.
 
 ![implicit-flow-start-finish-transaction](media/implicit-flow-start-finish-transaction.png)
 
@@ -39,16 +46,32 @@ The up-counting transaction number defined in TR-03153 is responded behind the h
 
 #### Examples
 
+##### Short lasting actions, e.g. Retail
+
+![implicit-flow-single-sign-call](media/implicit-flow-single-sign-call.png)
+
+See [DE-action-start-de | fiskaltrust Documentation Platform](https://docs.fiskaltrust.cloud/docs/faq/examples/DE-action-start-de#standard-action---implicit-flow)
+
+Long lasting actions, multiple orders, e.g. gastronomy, hospitality
+
+
+
+See [DE-action-start-de | fiskaltrust Documentation Platform](https://docs.fiskaltrust.cloud/docs/faq/examples/DE-action-start-de#long-lasting-action---implicit-flow)
+
 See our [Postman Collection for implicit transactions](https://middleware-samples.docs.fiskaltrust.cloud/#1c202467-aa7d-4f17-b588-95a1a322015e).
 
 <details>
   <summary>Background information</summary>
 There has to be a "Start-Transaction" and a "Finish-Transaction" executed against the TSE. In order to speed up these two steps into one call to the 'Sign' method, a special 'ReceiptCaseFlag' is used. Each time this is used in combination with a usual 'ReceiptCase', a "Start-Transaction" is done behind the scenes upfront the final call, using the given 'ReceiptCase'.
-Using a unique identifier in 'cbReceiptReference' that was already used with a 'Sign' call with 'ReceiptCase' "Start-Transaction" will end up in an exception.
+
+Please be aware:
+
+- Using a unique identifier in 'cbReceiptReference' that was already used with a 'Sign' call with 'ReceiptCase' "Start-Transaction" will end up in an exception.
+- Because the implicit flow triggers a "Start-Transaction" AND a "Finish-Transaction" against the TSE, for each implicit 'Sign' call two TSE-signatures are consumed.
 
 </details>
 
-#### The fiskaltrust.SecurityMechanism explicit flow
+### The explicit flow
 
 The regular workflow of the fiskaltrust.SecurityMechanism in the German market for actions running longer than 45s (German max transaction update time delta), defines the steps required for the creation of a receipt as follows:
 

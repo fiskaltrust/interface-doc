@@ -3,11 +3,11 @@ slug: /poscreators/middleware-doc/germany/cash-register-integration
 title: Cash register integration
 ---
 
-## Cash register integration
+# Cash register integration
 
 This chapter describes the cash register integration in accordance with German law. The general rules for cash register integration are described in the General Part of this document.
 
-### Receipt Creation Process
+## Receipt Creation Process
 
 This chapter describes the general process of creating receipts with fiskaltrust.Middleware and its workflow, according to German law. It requires giving a scope to an ongoing [action](../terminology/terminology.md) over time. This scope is named a [transaction](../terminology/terminology.md). Calls to fiskaltrust.Middleware are processed just in time and cannot be asynchronous over multiple minutes. Therefore and in accordance with German law, a single call is maybe not able to scope a complete transaction. To solve this, multiple calls are used, scoping the same transaction.
 
@@ -15,12 +15,38 @@ The "**transaction**" describes the steps, at least at the beginning and end of 
 
 The "**flow**" describes the communication between the POS System and the fiskaltrust.Middleware to trigger transactions. This can be done either 
 
-- **explicitly** (every single transaction like "Start" and "Finish" are initiated), or 
-- **implicitly** (a "Start-Transaction" is done automatically - implicitly - behind the scenes upfront the final call).
+- **implicitly** (a "Start-Transaction" is done automatically - implicitly - behind the scenes upfront the final call), or
+- **explicitly** (every single transaction like "Start" and "Finish" are initiated)
 
 ![flow-vs-transaction](media/flow-vs-transaction.png)
 
 *Flow and Transaction (DE - KassenSichV)*
+
+### The implicit flow
+
+#### When to use
+
+This is the regular workflow of the fiskaltrust-SecurityMechanism in the German market for actions. 
+
+#### How to use
+
+Sign-call with a [ftReceiptCase for implicit flow](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/reference-tables/ftreceiptcase#type-of-receipt-ftreceiptcase) + ftReceiptCaseFlag `0x0000000100000000`.
+The up-counting transaction number defined in TR-03153 is responded behind the hash-tag in the property 'ftReceiptIdentification' of 'ReceiptResponse', prefixed by "IT".
+
+![implicit-flow-start-finish-transaction](media/implicit-flow-start-finish-transaction.png)
+
+*Implicit Flow - Start/Finish Transaction (DE - KassenSichV)*
+
+#### Examples
+
+See our [Postman Collection for implicit transactions](https://middleware-samples.docs.fiskaltrust.cloud/#1c202467-aa7d-4f17-b588-95a1a322015e).
+
+<details>
+  <summary>Background information</summary>
+There has to be a "Start-Transaction" and a "Finish-Transaction" executed against the TSE. In order to speed up these two steps into one call to the 'Sign' method, a special 'ReceiptCaseFlag' is used. Each time this is used in combination with a usual 'ReceiptCase', a "Start-Transaction" is done behind the scenes upfront the final call, using the given 'ReceiptCase'.
+Using a unique identifier in 'cbReceiptReference' that was already used with a 'Sign' call with 'ReceiptCase' "Start-Transaction" will end up in an exception.
+
+</details>
 
 #### The fiskaltrust.SecurityMechanism explicit flow
 
@@ -64,15 +90,7 @@ The transaction number, defined in TR-03153, is responded behind the hash-tag in
 
 *Explicit Flow - End Transaction (DE - KassenSichV)*
 
-#### The fiskaltrust.SecurityMechanism implicit flow
 
-The regular workflow of the fiskaltrust-SecurityMechanism in the German market for actions running for a short period has the same requirements as long-running ones. There has to be a "Start-Transaction" and a "Finish-Transaction" executed against the TSE. In order to speed up these two steps into one call to the 'Sign' method, a special 'ReceiptCaseFlag' is used. Each time this is used in combination with a usual 'ReceiptCase', a "Start-Transaction" is done behind the scenes upfront the final call, using the given 'ReceiptCase'.
-Using a unique identifier in 'cbReceiptReference' that was already used with a 'Sign' call with 'ReceiptCase' "Start-Transaction" will end up in an exception.
-The up-counting transaction number defined in TR-03153 is responded behind the hash-tag in the property 'ftReceiptIdentification' of 'ReceiptResponse', prefixed by "IT".
-
-![implicit-flow-start-finish-transaction](media/implicit-flow-start-finish-transaction.png)
-
-*Implicit Flow - Start/Finish Transaction (DE - KassenSichV)*
 
 ### Receipt for special functions
 

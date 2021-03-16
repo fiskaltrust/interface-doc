@@ -274,7 +274,9 @@ The response's signature block includes all information needed to be printed on 
 </p>
 </details>
 
-##### Long lasting actions, multiple orders, e.g. gastronomy, hospitality
+<details>
+  <summary><b>Long lasting actions, multiple orders, e.g. gastronomy, hospitality</b></summary>
+  <p>
 
 <details>
   <summary>Scenario description and graphical illustration (click to expand)</summary>
@@ -656,6 +658,9 @@ nothing to print here.
   </p>
 </details>
 
+</p>
+</details>
+
 ### The explicit flow
 
 #### When to use
@@ -744,7 +749,9 @@ The transaction number, defined in TR-03153, is responded behind the hash-tag in
 
 #### Examples
 
-##### Short lasting actions, e.g. Retail
+<details>
+  <summary><b>Short lasting actions, e.g. Retail</b></summary>
+  <p>
 
 <details>
   <summary>Scenario description (click to expand)</summary>
@@ -1002,6 +1009,9 @@ nothing to print here.
 3. end time of the action (DE: Zeitpunkt der Vorgangsbeendigung):   `2020-05-22T10:48:17.000Z` from the signature block with `ftSignatureType`: `0x444500000000001A`  (`dec: 4919338167972134938`)
 
 </p>
+</details>
+
+  </p>
 </details>
 
 ### Receipt for special functions

@@ -749,7 +749,252 @@ In this example, a customer wants to pay in a retail store at a scanner cash reg
 
 The response's signature block includes all information needed to be printed on the receipt (time of receipt creation, start time of the action, and end time of the action). 
 
-![implicit-flow-single-sign-call](media/implicit-flow-single-sign-call.png)
+![explicit-flow-example-calls](media/explicit-flow-example-calls.png)
+
+*Explicit Flow - Scenario example (DE - KassenSichV)*
+
+</p>
+</details>
+
+<details>
+  <summary>Start-Transaction request code (click to expand)</summary>
+  <p>
+
+```json
+{
+    "ftCashBoxID":"cashboxid-guid",
+    "ftPosSystemId":"possystemid-guid",
+    "cbTerminalID":"T1",
+    "cbReceiptReference":"233348",
+    "cbReceiptMoment":"2020-05-22T10:47:40.960Z",
+    "cbChargeItems":[],
+    "cbPayItems":[],
+    // 0x4445 0000 0000 0008 (start-transaction-receipt)  
+    "ftReceiptCase":4919338167972134920,
+    "cbArea":"Scannerkasse 14"
+}
+```
+
+</p>
+</details>
+
+<details>
+  <summary>Response code (click to expand)</summary>
+  <p>
+
+```json
+{
+    "ftCashBoxID": "cashboxid-guid",
+    "ftQueueID": "b6c9f13b-b987-43cd-ab08-3f5cb2a850d6",
+    "ftQueueItemID": "e617a29e-ed50-4a4c-ab8c-449884c0e217",
+    "ftQueueRow": 11,
+    "cbTerminalID": "T1",
+    "cbReceiptReference": "233348",
+    "ftCashBoxIdentification": "220130d5-9060-4e26-b75c-35968f49aae3",
+    "ftReceiptIdentification": "ftA#ST10",
+    "ftReceiptMoment": "2020-05-22T10:47:42.3247875Z",
+    "ftSignatures": [
+        {
+            "ftSignatureFormat": 13,
+            "ftSignatureType": 4919338167972134928,
+            "Caption": "start-transaction-signature",
+            "Data": "rYGXxEcXYlTqJ0K2VlcPXKG5G1cKBv1dCdcFPP9lFLguGa6tYGthqNUROqjxmID1/gZwv216P1CQklYiB8FV+A=="
+        }
+    ],
+    "ftState": 4919338167972134912
+}
+```
+nothing to print here.
+
+</p>
+</details>
+
+<details>
+  <summary>Finish-Transaction/POS receipt code (click to expand)</summary>
+  <p>
+
+```json
+{
+    "ftCashBoxID":"cashboxid-guid",
+    "ftPosSystemId":"possystemid-guid",
+    "cbTerminalID":"T1",
+    "cbReceiptReference":"233348",
+    "cbReceiptMoment":"2020-05-22T10:48:15.260Z",
+    "cbChargeItems":[
+        {
+            "Quantity":1.0,
+            "Description":"Feuerzeug BigRed",
+            "Amount":3.50,
+            "VATRate":19.0000,
+            "ftChargeItemCase":4919338167972134913,
+            "Moment":"2020-05-22T10:47:50.960Z"
+        },
+        {
+            "Quantity":1.0,
+            "Description":"Kaffe Hag",
+            "Amount":4.00,
+            "VATRate":19.0000,
+            "ftChargeItemCase":4919338167972134913,
+            "Moment":"2020-05-22T10:48:03.960Z"
+        }
+    ],
+    "cbPayItems":[
+        {
+            "Quantity":1.0,
+            "Description":"Cash",
+            "Amount":7.50,
+            // 0x4445 0000 0000 0001 (cash payment in national currency)         
+            "ftPayItemCase":4919338167972134913,
+            "Moment":"2020-05-22T10:48:10.260Z"
+        }
+    ],
+    // 0x4445 0000 0000 0001  (pos-receipt)  
+    "ftReceiptCase":4919338167972134913,
+    "cbArea":"Scannerkasse 14"
+}
+```
+
+</p>
+</details>
+
+<details>
+  <summary>Response (click to expand)</summary>
+  <p>
+
+```json
+{
+    "ftCashBoxID": "cashboxid-guid",
+    "ftQueueID": "b6c9f13b-b987-43cd-ab08-3f5cb2a850d6",
+    "ftQueueItemID": "cd667ebf-bd66-4f3f-a977-fc1aefc54b55",
+    "ftQueueRow": 13,
+    "cbTerminalID": "T1",
+    "cbReceiptReference": "233348",
+    "ftCashBoxIdentification": "220130d5-9060-4e26-b75c-35968f49aae3",
+    "ftReceiptIdentification": "ftC#T10",
+    "ftReceiptMoment": "2020-05-22T10:48:17.7751885Z",
+    "ftSignatures": [
+        {
+            "ftSignatureFormat": 3,
+            "ftSignatureType": 4919338167972134913,
+            "Caption": "www.fiskaltrust.de",
+            "Data": "V0;220130d5-9060-4e26-b75c-35968f49aae3;Kassenbeleg-V1;Beleg^7.50_0.00_0.00_0.00_0.00^7.50:Bar;10;19;2020-05-22T10:47:42.000Z;2020-05-22T10:48:17.000Z;ecdsa-plain-SHA256;utcTime;FGq8kd0kuQjHmyK8/Ca73h1mqOSRsctDfM/h7zddskjM7iKLuVs+Mwff8WCUz45kA/F2lF9kI90zny8Tnuhf/w==;MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAENFFPGk1vDk92IL6tjsVQ6kpwc4TCsYNNGGoc0cN4dUPQZwOo2tuQlrQAVvMfO+XHWsnphAtN5cUbIwdtMk/Z6g=="
+        },
+        {
+            "ftSignatureFormat": 13,
+            "ftSignatureType": 4919338167972134928,
+            "Caption": "start-transaction-signature",
+            "Data": "rYGXxEcXYlTqJ0K2VlcPXKG5G1cKBv1dCdcFPP9lFLguGa6tYGthqNUROqjxmID1/gZwv216P1CQklYiB8FV+A=="
+        },
+        {
+            "ftSignatureFormat": 13,
+            "ftSignatureType": 4919338167972134929,
+            "Caption": "finish-transaction-payload",
+            "Data": "QmVsZWdeNy41MF8wLjAwXzAuMDBfMC4wMF8wLjAwXjcuNTA6QmFy"
+        },
+        {
+            "ftSignatureFormat": 13,
+            "ftSignatureType": 4919338167972134930,
+            "Caption": "finish-transaction-signature",
+            "Data": "FGq8kd0kuQjHmyK8/Ca73h1mqOSRsctDfM/h7zddskjM7iKLuVs+Mwff8WCUz45kA/F2lF9kI90zny8Tnuhf/w=="
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134931,
+            "Caption": "<qr-code-version>",
+            "Data": "V0"
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134932,
+            "Caption": "<kassen-seriennummer>",
+            "Data": "220130d5-9060-4e26-b75c-35968f49aae3"
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134933,
+            "Caption": "<processType>",
+            "Data": "Kassenbeleg-V1"
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134934,
+            "Caption": "<processData>",
+            "Data": "Beleg^7.50_0.00_0.00_0.00_0.00^7.50:Bar"
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134935,
+            "Caption": "<transaktions-nummer>",
+            "Data": "10"
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134936,
+            "Caption": "<signatur-zaehler>",
+            "Data": "19"
+        },
+        {
+            "ftSignatureFormat": 1,
+            // 0x4445 0000 0000 0019
+            "ftSignatureType": 4919338167972134937,
+            "Caption": "<start-zeit>",
+            "Data": "2020-05-22T10:47:42.000Z"
+        },
+        {
+            "ftSignatureFormat": 1,
+            // 0x4445 0000 0000 001A
+            "ftSignatureType": 4919338167972134938,
+            "Caption": "<log-time>",
+            "Data": "2020-05-22T10:48:17.000Z"
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134939,
+            "Caption": "<sig-alg>",
+            "Data": "ecdsa-plain-SHA256"
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134940,
+            "Caption": "<log-time-format>",
+            "Data": "utcTime"
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134941,
+            "Caption": "<signatur>",
+            "Data": "FGq8kd0kuQjHmyK8/Ca73h1mqOSRsctDfM/h7zddskjM7iKLuVs+Mwff8WCUz45kA/F2lF9kI90zny8Tnuhf/w=="
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134942,
+            "Caption": "<public-key>",
+            "Data": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAENFFPGk1vDk92IL6tjsVQ6kpwc4TCsYNNGGoc0cN4dUPQZwOo2tuQlrQAVvMfO+XHWsnphAtN5cUbIwdtMk/Z6g=="
+        },
+        {
+            "ftSignatureFormat": 1,
+            // 0x4445 0000 0000 001F
+            "ftSignatureType": 4919338167972134943,
+            "Caption": "<vorgangsbeginn>",
+            "Data": "2020-05-22T10:47:50.960Z"
+        },
+    ],
+    "ftState": 4919338167972134912
+}
+```
+
+</p>
+</details>
+
+<details>
+  <summary>Receipt Info to be printed (click to expand)</summary>
+  <p>
+
+1. time of receipt creation (DE: Datum der Belegausgabe):  `2020-05-22T10:48:15.260Z"` from `cbReceiptMoment` of the pos-receipt request
+
+2. start time of the action (DE: Zeitpunkt des Vorgangbeginns):   `2020-05-22T10:47:50.960Z` from the signature block with `ftSignatureType`: `0x444500000000001F` (`dec: 4919338167972134943`)
+
+3. end time of the action (DE: Zeitpunkt der Vorgangsbeendigung):   `2020-05-22T10:48:17.000Z` from the signature block with `ftSignatureType`: `0x444500000000001A`  (`dec: 4919338167972134938`)
 
 </p>
 </details>

@@ -38,8 +38,7 @@ This is the regular workflow of the fiskaltrust-SecurityMechanism in the German 
 Sign-call with a [ftReceiptCase for implicit flow](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/reference-tables/ftreceiptcase#type-of-receipt-ftreceiptcase) + ftReceiptCaseFlag `0x0000000100000000`.
 The up-counting transaction number defined in TR-03153 is responded behind the hash-tag in the property 'ftReceiptIdentification' of 'ReceiptResponse', prefixed by "IT".
 
-
-<div class="alert alert--warning" role="alert">Please be aware that for the implicit flow, ADDITIONALLY the start time of the first transaction of the business-action (e.g. start time of the first order) has to be printed on the receipt as the start-time of the action.</div>
+**Please be aware that for the implicit flow, ADDITIONALLY the start time of the first transaction of the business-action (e.g. start time of the first order) has to be printed on the receipt as the start-time of the action.**
 
 
 ![implicit-flow-start-finish-transaction](media/implicit-flow-start-finish-transaction.png)
@@ -50,15 +49,25 @@ The up-counting transaction number defined in TR-03153 is responded behind the h
 
 ##### Short lasting actions, e.g. Retail
 
+In this example, a customer wants to pay for a good or service and no more orders are expected. A ftReceiptCase `0x4445000000000001` (POS receipt) + ftReceiptCaseFlag `0x0000000100000000` (Implicit Flag) is beeing sent to the middleware. The call includes all collected charge- and payitems of the business action (f.e. retail - trousers + T-shirt, including payment with credit card).
+
+The response's signature block includes all information needed to be printed on the receipt (time of receipt creation - which is the returned value of cbReceiptMoment of the sign-request, start time of the action, and end time of the action). 
+
 ![implicit-flow-single-sign-call](media/implicit-flow-single-sign-call.png)
 
-See [DE-action-start-de | fiskaltrust Documentation Platform](https://docs.fiskaltrust.cloud/docs/faq/examples/DE-action-start-de#standard-action---implicit-flow)
+See the code example of a request and the response at [DE-action-start-de | fiskaltrust Documentation Platform.](https://docs.fiskaltrust.cloud/docs/faq/examples/DE-action-start-de#standard-action---implicit-flow)
 
 ##### Long lasting actions, multiple orders, e.g. gastronomy, hospitality
 
+In this example, ongoing orders are expected over a longer period of time before a payment is made. Therefore, a ftReceiptCase `0x44450000000000010` (Info-order without pay-items) + ftReceiptCaseFlag `0x0000000100000000` (Implicit Flag) is beeing sent to the middleware. This is beeing repeated for every new order, using 'cbReceiptReference' to connect the new order with the previous corresponding one.
+
+For the payment (which may include a last order as well), a ftReceiptCase `0x4445000000000001` (POS receipt including at least the pay-items) + ftReceiptCaseFlag `0x0000000100000000` (Implicit Flag) is beeing sent to the middleware like in the previous example above to close this business action.
+
+The response's signature block of the POS receipt includes all information needed to be printed on the receipt (time of receipt creation - which is the returned value of cbReceiptMoment of the first sign-request of cbReceiptReference-connected orders, start time of the action, and end time of the action). 
+
 ![implicit-flow-multiple-sign-calls](media/implicit-flow-multiple-sign-calls.png)
 
-See [DE-action-start-de | fiskaltrust Documentation Platform](https://docs.fiskaltrust.cloud/docs/faq/examples/DE-action-start-de#long-lasting-action---implicit-flow)
+See the code example of multiple requests and responses at [DE-action-start-de | fiskaltrust Documentation Platform.](https://docs.fiskaltrust.cloud/docs/faq/examples/DE-action-start-de#long-lasting-action---implicit-flow)
 
 See our [Postman Collection for implicit transactions](https://middleware-samples.docs.fiskaltrust.cloud/#1c202467-aa7d-4f17-b588-95a1a322015e).
 

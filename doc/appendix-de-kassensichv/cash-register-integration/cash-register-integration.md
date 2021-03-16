@@ -45,6 +45,20 @@ The up-counting transaction number defined in TR-03153 is responded behind the h
 
 *Implicit Flow - Start/Finish Transaction (DE - KassenSichV)*
 
+<details>
+  <summary>Background information</summary>
+  <p>
+
+There has to be a "Start-Transaction" and a "Finish-Transaction" executed against the TSE. In order to speed up these two steps into one call to the 'Sign' method, a special 'ReceiptCaseFlag' is used. Each time this is used in combination with a usual 'ReceiptCase', a "Start-Transaction" is done behind the scenes upfront the final call, using the given 'ReceiptCase'.
+
+Please be aware:
+
+- Using a unique identifier in 'cbReceiptReference' that was already used with a 'Sign' call with 'ReceiptCase' "Start-Transaction" will end up in an exception.
+- Because the implicit flow triggers a "Start-Transaction" AND a "Finish-Transaction" against the TSE, for each implicit 'Sign' call two TSE-signatures are consumed.
+
+</p>
+</details>
+
 #### Examples
 
 ##### Short lasting actions, e.g. Retail
@@ -251,9 +265,11 @@ The response's signature block includes all information needed to be printed on 
 </p>
 </details>
 
-See the code example of a request and the response at [DE-action-start-de | fiskaltrust Documentation Platform.](https://docs.fiskaltrust.cloud/docs/faq/examples/DE-action-start-de#standard-action---implicit-flow)
-
 ##### Long lasting actions, multiple orders, e.g. gastronomy, hospitality
+
+<details>
+  <summary>Scenario description and graphical illustration (click to expand)</summary>
+  <p>
 
 In this example, ongoing orders are expected over a longer period of time before a payment is made. Therefore, a ftReceiptCase `0x44450000000000010` (Info-order without pay-items) + ftReceiptCaseFlag `0x0000000100000000` (Implicit Flag) is beeing sent to the middleware to document the long-lasting business-action. This is beeing repeated for every new order, using 'cbReceiptReference' to connect the new order with the previous corresponding one.
 
@@ -263,23 +279,374 @@ The response's signature block of the POS receipt includes all information neede
 
 ![implicit-flow-multiple-sign-calls](media/implicit-flow-multiple-sign-calls.png)
 
-See the code example of multiple requests and responses at [DE-action-start-de | fiskaltrust Documentation Platform.](https://docs.fiskaltrust.cloud/docs/faq/examples/DE-action-start-de#long-lasting-action---implicit-flow)
-
-See our [Postman Collection for implicit transactions](https://middleware-samples.docs.fiskaltrust.cloud/#1c202467-aa7d-4f17-b588-95a1a322015e).
-
-<details>
-  <summary>Background information</summary>
-  <p>
-
-There has to be a "Start-Transaction" and a "Finish-Transaction" executed against the TSE. In order to speed up these two steps into one call to the 'Sign' method, a special 'ReceiptCaseFlag' is used. Each time this is used in combination with a usual 'ReceiptCase', a "Start-Transaction" is done behind the scenes upfront the final call, using the given 'ReceiptCase'.
-
-Please be aware:
-
-- Using a unique identifier in 'cbReceiptReference' that was already used with a 'Sign' call with 'ReceiptCase' "Start-Transaction" will end up in an exception.
-- Because the implicit flow triggers a "Start-Transaction" AND a "Finish-Transaction" against the TSE, for each implicit 'Sign' call two TSE-signatures are consumed.
-
 </p>
 </details>
+
+###### Day 1 - first order
+
+<details>
+  <summary>Request code (click to expand)</summary>
+  <p>
+
+  ```json
+
+{
+    "ftCashBoxID": "cashboxid-guid",
+    "ftQueueID": "b6c9f13b-b987-43cd-ab08-3f5cb2a850d6",
+    "ftPosSystemId": "d4a62055-ca6c-4372-ae4d-f835a88e4a5d",
+    "cbTerminalID": "T1",
+    "cbReceiptReference":"LLA_1",
+    "cbReceiptMoment":"2020-05-26T10:47:40.960Z",
+    "cbChargeItems":[
+        {
+            "Quantity":1.0,
+            "Description":"0,5 Soda Zitrone",
+            "Amount":3.50,
+            "VATRate":19.0000,
+            "ftChargeItemCase":4919338167972134913,
+            "Moment":"2020-05-26T10:31:34.960Z"
+        }
+    ],
+    "cbPayItems":[], 
+    // 0x4445 0000 0000 0010 (info-order) + 0000 0001 0000 0000 (implicit flow)
+    "ftReceiptCase":4919338172267102224,
+    "cbArea":"Zimmer 12"
+}
+  ```
+
+  </p>
+</details>
+
+<details>
+  <summary>Response code (click to expand)</summary>
+  <p>
+
+  ```json
+{
+    "ftCashBoxID": "cashboxid-guid",
+    "ftQueueID": "b6c9f13b-b987-43cd-ab08-3f5cb2a850d6",
+    "ftQueueItemID": "14d06319-52d7-4fa6-841b-c296f81b716e",
+    "ftQueueRow": 68,
+    "cbTerminalID": "T1",
+    "cbReceiptReference": "LLA_1",
+    "ftCashBoxIdentification": "220130d5-9060-4e26-b75c-35968f49aae3",
+    "ftReceiptIdentification": "ft3D#IT92",
+    "ftReceiptMoment": "2020-05-29T13:54:53.9023323Z",
+    "ftSignatures": [
+        {
+            "ftSignatureFormat": 13,
+            "ftSignatureType": 4919338167972134928,
+            "Caption": "start-transaction-result",
+            "Data": "luQPVPNDHv+V3aQ14exAT8uO8oXWCxfBWQM+UlcBnDK1bPgFnhurbTPoX7a2PdEtlr76qDFlW78dOX13S/Cm/w=="
+        },
+        {
+            "ftSignatureFormat": 13,
+            "ftSignatureType": 4919338167972134929,
+            "Caption": "finish-transaction-payload",
+            "Data": "MTsiMCw1IFNvZGEgWml0cm9uZSI7My41MAo="
+        },
+        {
+            "ftSignatureFormat": 13,
+            "ftSignatureType": 4919338167972134930,
+            "Caption": "finish-transaction-result",
+            "Data": "IKLNsqh0CvUIIqpVdh1pAEc6qOwWM3LKnlPLBWPO05JoDsuSyqbKqXR5D6j7prgxY5JysmqF49h0zSk12N/3gA=="
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134933,
+            "Caption": "<processType>",
+            "Data": "Bestellung-V1"
+        }
+    ],
+    "ftState": 4919338167972134912
+}
+  ```
+
+nothing to print here
+
+  </p>
+</details>
+
+###### Day 2 - second order
+
+<details>
+  <summary>Request code (click to expand)</summary>
+  <p>
+
+  ```json
+{
+    "ftCashBoxID": "cashboxid-guid",
+    "ftQueueID": "b6c9f13b-b987-43cd-ab08-3f5cb2a850d6",
+    "ftPosSystemId": "d4a62055-ca6c-4372-ae4d-f835a88e4a5d",
+    "cbTerminalID": "T1",
+    "cbReceiptReference":"LLA_1",
+    "cbReceiptMoment":"2020-05-27T12:47:40.960Z",
+    "cbChargeItems":[
+        {
+            "Quantity":1.0,
+            "Description":"Kaffe Hag",
+            "Amount":4.00,
+            "VATRate":19.0000,
+            "ftChargeItemCase":4919338167972134913,
+            "Moment":"2020-05-27T12:11:22.233Z"
+        }
+    ],
+    "cbPayItems":[], 
+    // 0x4445 0000 0000 0010 (info-order) + 0000 0001 0000 0000 (implicit flow)
+    "ftReceiptCase":4919338172267102224,
+    "cbArea":"Zimmer 12"
+}
+  ```
+
+  </p>
+</details>
+
+<details>
+  <summary>Response code (click to expand)</summary>
+  <p>
+
+  ```json
+{
+    "ftCashBoxID": "cashboxid-guid",
+    "ftQueueID": "b6c9f13b-b987-43cd-ab08-3f5cb2a850d6",
+    "ftQueueItemID": "2005ad2d-a00b-4b44-9871-5806f036a220",
+    "ftQueueRow": 69,
+    "cbTerminalID": "T1",
+    "cbReceiptReference": "LLA_1",
+    "ftCashBoxIdentification": "220130d5-9060-4e26-b75c-35968f49aae3",
+    "ftReceiptIdentification": "ft3E#IT93",
+    "ftReceiptMoment": "2020-05-29T13:59:33.1843023Z",
+    "ftSignatures": [
+        {
+            "ftSignatureFormat": 13,
+            "ftSignatureType": 4919338167972134928,
+            "Caption": "start-transaction-result",
+            "Data": "ThADGCPpoSsOx/BN6bNlA1t2JQCd+SFWpJjGpalaDfMhlTMLx30yjCGtFZHyq8ZzXJIyOQ18BxWJ8SM/233U6Q=="
+        },
+        {
+            "ftSignatureFormat": 13,
+            "ftSignatureType": 4919338167972134929,
+            "Caption": "finish-transaction-payload",
+            "Data": "MTsiS2FmZmUgSGFnIjs0LjAwCg=="
+        },
+        {
+            "ftSignatureFormat": 13,
+            "ftSignatureType": 4919338167972134930,
+            "Caption": "finish-transaction-result",
+            "Data": "CFm7yisXpQ/ncBolxwSSJ4au4ibGNoK1wKqp/HI7VTPdo8GyaJ0keVgtcCQGAIIeZZv//mvLG9u0ROH83nFdXw=="
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134933,
+            "Caption": "<processType>",
+            "Data": "Bestellung-V1"
+        }
+    ],
+    "ftState": 4919338167972134912
+}
+  ```
+nothing to print here.
+
+  </p>
+</details>
+
+###### Day 3 - payment (POS receipt)
+
+<details>
+  <summary>Request code (click to expand)</summary>
+  <p>
+
+  ```json
+{
+    "ftCashBoxID": "cashboxid-guid",
+    "ftQueueID": "b6c9f13b-b987-43cd-ab08-3f5cb2a850d6",
+    "ftPosSystemId": "d4a62055-ca6c-4372-ae4d-f835a88e4a5d",
+    "cbTerminalID": "T1",
+    "cbReceiptReference":"LLA_1",
+    "cbReceiptMoment":"2020-05-28T14:11:22.233Z",
+    "cbChargeItems":[
+        {
+            "Quantity":1.0,
+            "Description":"0,5 Soda Zitrone",
+            "Amount":3.50,
+            "VATRate":19.0000,
+            "ftChargeItemCase":4919338167972134913,
+            "Moment":"2020-05-26T10:31:34.960Z"
+        },
+        {
+            "Quantity":1.0,
+            "Description":"Kaffe Hag",
+            "Amount":4.00,
+            "VATRate":19.0000,
+            "ftChargeItemCase":4919338167972134913,
+            "Moment":"2020-05-27T12:11:22.233Z"
+        }
+        ],
+        "cbPayItems":[
+        {
+            "Quantity":1.0,
+            "Description":"Cash",
+            "Amount":7.50,      
+            "ftPayItemCase":4919338167972134913,
+            "Moment":"2020-05-28T14:11:22.233Z"
+        }
+    ], 
+    // 0x4445 0000 0000 0001 (pos-receipt) + 0000 0001 0000 0000 (implicit flow) 
+    "ftReceiptCase":4919338172267102209,
+    "cbArea":"Zimmer 12"
+}
+
+  ```
+
+  </p>
+</details>
+
+<details>
+  <summary>Response code (click to expand)</summary>
+  <p>
+
+  ```json
+{
+    "ftCashBoxID": "cashboxid-guid",
+    "ftQueueID": "b6c9f13b-b987-43cd-ab08-3f5cb2a850d6",
+    "ftQueueItemID": "d6de2c89-04c7-4be4-9c07-44e234947277",
+    "ftQueueRow": 70,
+    "cbTerminalID": "T1",
+    "cbReceiptReference": "LLA_1",
+    "ftCashBoxIdentification": "220130d5-9060-4e26-b75c-35968f49aae3",
+    "ftReceiptIdentification": "ft3F#IT94",
+    "ftReceiptMoment": "2020-05-29T14:08:22.9158623Z",
+    "ftSignatures": [
+        {
+            "ftSignatureFormat": 3,
+            "ftSignatureType": 4919338167972134913,
+            "Caption": "www.fiskaltrust.de",
+            "Data": "V0;220130d5-9060-4e26-b75c-35968f49aae3;Kassenbeleg-V1;Beleg^7.50_0.00_0.00_0.00_0.00^7.50:Bar;94;168;2020-05-29T14:08:23.000Z;2020-05-29T14:08:24.000Z;ecdsa-plain-SHA256;utcTime;+dZ0zPEUJbjd7/vp5hA8GtbcGJvPxT/SyNiBWLxs3EzgjqL4HPFrmET/jalGD/ZiyIdZq9mx+YphP5tjCiT1pw==;MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAENFFPGk1vDk92IL6tjsVQ6kpwc4TCsYNNGGoc0cN4dUPQZwOo2tuQlrQAVvMfO+XHWsnphAtN5cUbIwdtMk/Z6g=="
+        },
+        {
+            "ftSignatureFormat": 13,
+            "ftSignatureType": 4919338167972134928,
+            "Caption": "start-transaction-signature",
+            "Data": "P5EYY5ORoRlEql8mH2FrmPuHgi6fonsamlCc1tyIhgYRz69ColwOW5DB4N33r/OpNapHwjI4ryGF6ZU/ZzXoag=="
+        },
+        {
+            "ftSignatureFormat": 13,
+            "ftSignatureType": 4919338167972134929,
+            "Caption": "finish-transaction-payload",
+            "Data": "QmVsZWdeNy41MF8wLjAwXzAuMDBfMC4wMF8wLjAwXjcuNTA6QmFy"
+        },
+        {
+            "ftSignatureFormat": 13,
+            "ftSignatureType": 4919338167972134930,
+            "Caption": "finish-transaction-signature",
+            "Data": "+dZ0zPEUJbjd7/vp5hA8GtbcGJvPxT/SyNiBWLxs3EzgjqL4HPFrmET/jalGD/ZiyIdZq9mx+YphP5tjCiT1pw=="
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134931,
+            "Caption": "<qr-code-version>",
+            "Data": "V0"
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134932,
+            "Caption": "<kassen-seriennummer>",
+            "Data": "220130d5-9060-4e26-b75c-35968f49aae3"
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134933,
+            "Caption": "<processType>",
+            "Data": "Kassenbeleg-V1"
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134934,
+            "Caption": "<processData>",
+            "Data": "Beleg^7.50_0.00_0.00_0.00_0.00^7.50:Bar"
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134935,
+            "Caption": "<transaktions-nummer>",
+            "Data": "94"
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134936,
+            "Caption": "<signatur-zaehler>",
+            "Data": "168"
+        },
+        {
+            "ftSignatureFormat": 1,
+            // 0x4445 0000 0000 0019
+            "ftSignatureType": 4919338167972134937,
+            "Caption": "<start-zeit>",
+            "Data": "2020-05-29T14:08:23.000Z"
+        },
+        {
+            // 0x4445 0000 0000 001A
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134938,
+            "Caption": "<log-time>",
+            "Data": "2020-05-29T14:08:24.000Z"
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134939,
+            "Caption": "<sig-alg>",
+            "Data": "ecdsa-plain-SHA256"
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134940,
+            "Caption": "<log-time-format>",
+            "Data": "utcTime"
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134941,
+            "Caption": "<signatur>",
+            "Data": "+dZ0zPEUJbjd7/vp5hA8GtbcGJvPxT/SyNiBWLxs3EzgjqL4HPFrmET/jalGD/ZiyIdZq9mx+YphP5tjCiT1pw=="
+        },
+        {
+            "ftSignatureFormat": 1,
+            "ftSignatureType": 4919338167972134942,
+            "Caption": "<public-key>",
+            "Data": "MFkwEwYHKoZIzj0CAQYIKoZIzj0DAQcDQgAENFFPGk1vDk92IL6tjsVQ6kpwc4TCsYNNGGoc0cN4dUPQZwOo2tuQlrQAVvMfO+XHWsnphAtN5cUbIwdtMk/Z6g=="
+        },
+        {
+            "ftSignatureFormat": 1,
+            // 0x4445 0000 0000 001F
+            "ftSignatureType": 4919338167972134943,
+            "Caption": "<vorgangsbeginn>",
+            "Data": "2020-05-26T10:31:34.960Z"
+        }
+    ],
+    "ftState": 4919338167972134912
+}
+  ```
+
+  </p>
+</details>
+
+###### Receipt details
+
+<details>
+  <summary>Receipt items to be printed (click to expand)</summary>
+  <p>
+
+1. time of receipt creation (DE: Datum der Belegausgabe):  `2020-05-28T14:11:22.233Z` from `cbReceiptMoment` of the pos-receipt request
+
+2. start time of the action (DE: Zeitpunkt des Vorgangbeginns):   `2020-05-29T14:08:23.000Z` from the signature block with `ftSignatureType`: `0x4445000000000019` (`dec: 4919338167972134937`)
+
+3. end time of the action (DE: Zeitpunkt der Vorgangsbeendigung):   `2020-05-29T14:08:24.000Z` from the signature block with `ftSignatureType`: `0x444500000000001A`  (`dec: 4919338167972134938`)
+
+4. start time of the first order (DE: Startzeitpunkt der ersten „Bestellung“ im Bondruck):  `2020-05-26T10:31:34.960Z` from the signature block with `ftSignatureType`: `0x444500000000001F` (`dec: 4919338167972134943`)
+
+  </p>
+</details>
+
 
 ### The explicit flow
 

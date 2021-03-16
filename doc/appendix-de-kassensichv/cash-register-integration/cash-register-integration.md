@@ -65,7 +65,9 @@ Please be aware:
 
 #### Examples
 
-##### Short lasting actions, e.g. Retail
+<details>
+  <summary><b>Short lasting actions, e.g. Retail</b></summary>
+  <p>
 
 <details>
   <summary>Scenario description and graphical illustration (click to expand)</summary>
@@ -265,6 +267,9 @@ The response's signature block includes all information needed to be printed on 
 2. start time of the action (DE: Zeitpunkt des Vorgangbeginns):   `2020-05-22T10:47:40.960Z` from the signature block with `ftSignatureType`: `0x444500000000001F` (`dec: 4919338167972134943`)
 
 3. end time of the action (DE: Zeitpunkt der Vorgangsbeendigung):   `2020-05-22T11:33:02.000Z` from the signature block with `ftSignatureType`: `0x444500000000001A`  (`dec: 4919338167972134938`)
+
+</p>
+</details>
 
 </p>
 </details>

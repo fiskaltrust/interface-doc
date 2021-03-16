@@ -22,16 +22,20 @@ The "**flow**" describes the communication between the POS System and the fiskal
 
 *Flow and Transaction (DE - KassenSichV)*
 
+Implicit- and explicit flow can be combined, dependent on the actual needs.
+
 ### The implicit flow
 
 #### When to use
 
-This is the regular workflow of the fiskaltrust-SecurityMechanism in the German market for actions. 
+This is the regular workflow of the fiskaltrust-SecurityMechanism in the German market for actions which should fit for around 90% of all use cases. 
 
-##### Advantages
+##### Characteristics
 
 - No open TSE-transactions to be managed.
 - Reduces complexity of business-process handling.
+- Each sign-request uses two TSE signatures
+- Slower TSE performance
 
 #### How to use
 
@@ -647,12 +651,37 @@ nothing to print here.
   </p>
 </details>
 
-
 ### The explicit flow
 
-The regular workflow of the fiskaltrust.SecurityMechanism in the German market for actions running longer than 45s (German max transaction update time delta), defines the steps required for the creation of a receipt as follows:
+#### When to use
 
-##### Start-Transaction
+The explicit workflow of the fiskaltrust-SecurityMechanism in the German market is best used when performance and saving TSE-signatures matter. 
+
+##### Characteristics
+
+- TSE-transactions may need to be managed.
+- Enhances complexity of business-process handling.
+- Less TSE-signatures are used
+- Better TSE performance
+
+#### How to use
+
+To document a business action from the start until the end, at least a Start- and an End-Transaction is needed. Long-lasting actions may be updated by using an Update- or a Delta-Transaction.
+
+<details>
+  <summary>Graphical Illustration (click to expand)</summary>
+  <p>
+
+![explicit-flow-multiple-sign-calls](media/explicit-flow-multiple-sign-calls.png)
+
+*Explicit Flow - Multiple sign-calls (DE - KassenSichV)*
+
+  </p>
+</details>
+
+<details>
+  <summary>Start-Transaction (click to expand)</summary>
+  <p>
 
 Already before you know how your action will complete, you have to create and reserve a transaction number, to be able to track when the action started. This is done by a special call to the 'Sign' method using the 'ReceiptCase' "Start-Transaction". Details of this 'ReceiptRequest' have to match a Zero-Receipt, so no 'ChargeItems' and no 'PayItems' are allowed. In addition to the Zero-Receipt requirements, it is required to add a unique identification to the property 'cbReceiptReference'. This unique identifier can only be used once (at least between each daily closing) in a system. It creates a bracket around an ongoing action. For all further 'Sign' method calls which belong to the same action, it is mandatory to use the same unique identifier in the property 'cbReceiptReference'. Only one ongoing action/transaction per unique identifier is allowed. Calling two times the 'Sign' method using 'ReceiptCase' "Start-Transaction" with the same unique identifier ends up in an exception. If there are communication errors, use the 'ReceiptCaseFlag' "ReceiptRequest" to check if an action/transaction was already created.  
 According to the German law and BSI TR-03153, a call to the 'Sign' method using the 'ReceiptCase' "Start-Transaction" takes care of starting a transaction inside the TSE. The up-counting transaction number, defined in TR-03153, is responded by the fiskaltrust.Middleware behind the hash-tag in the property 'ftReceiptIdentification' of 'ReceiptResponse', prefixed by "ST". For example "ftReceiptIdentification": "ft[queue-receiptnumerator-hex]#ST[tse-transaction]".
@@ -661,7 +690,12 @@ According to the German law and BSI TR-03153, a call to the 'Sign' method using 
 
 *Explicit Flow - Start Transaction (DE - KassenSichV)*
 
-##### Update-Transaction
+  </p>
+</details>
+
+<details>
+  <summary>Update-Transaction (click to expand)</summary>
+  <p>
 
 Changes in ongoing actions have to be tracked. This is done by a special call to the 'Sign' method using the 'ReceiptCase' "Update-Transaction". Details of the 'ReceiptRequest' should show up the current overall 'ChargeItems' and 'PayItems' of the ongoing action. To identify the action/transaction, the unique identifier used in "Start-Transaction", handed over by the property 'cbReceiptReference', is utilised. Calling the 'Sign' method using a unique identifier that wasn't used to create a transaction, or was already used to finalise a transaction, will end up in an exception. According to the German law and BSI TR-03153, a call to the 'Sign' method using the 'ReceiptCase' "Update-Transaction" handles the updating a transaction inside the TSE. The same transaction number as responded at the call of "Start-Transaction" is responded behind the hash-tag in the property 'ftReceiptIdentification' of 'ReceiptResponse', prefixed by "UT".  
 It is not mandatory to call 'Sign' using 'ReceiptCase' "Update-Transaction" before finalising a transaction. It is also possible to call 'Sign' using 'ReceiptCase' "Update-Transaction" multiple times for a single unique identifier/for a single transaction.
@@ -670,7 +704,12 @@ It is not mandatory to call 'Sign' using 'ReceiptCase' "Update-Transaction" befo
 
 *Explicit Flow - Update Transaction (DE - KassenSichV)*
 
-##### Delta-Transaction
+  </p>
+</details>
+
+<details>
+  <summary>Delta Transaction (click to expand)</summary>
+  <p>
 
 The main functionality is the same as when calling the 'Sign' method using 'ReceiptCase' "Update-Transaction". The differences are the details used in 'ChargeItems' and 'PayItems'; they hey depict exactly the same delta that occurred since the last call using 'Start-Transaction' or the last call using 'Delta-Transaction'. There should be a system-wide decision for the implementation to use only one of the 'ReceiptCases' - 'Update-Transaction' or 'Delta-Transaction'.  
 According to the German law and BSI TR-03153, a call to the 'Sign' method using the 'ReceiptCase' "Delta-Transaction" handles the updating of a transaction inside the TSE. The same transaction number as responded at the call of "Start-Transaction" is responded behind the hash-tag in the property 'ftReceiptIdentification' of 'ReceiptResponse', prefixed by "DT".  
@@ -680,7 +719,12 @@ It is not mandatory to call 'Sign' using 'ReceiptCase' "Delta-Transaction" befor
 
 *Explicit Flow - Delta Transaction (DE - KassenSichV)*
 
-##### End-Transaction
+  </p>
+</details>
+
+<details>
+  <summary>End Transaction (click to expand)</summary>
+  <p>
 
 According to German law and BSI TR-03153, each call to the 'Sign' method using other 'ReceiptCase' than "Start-Transaction", "Update-Transaction", "Delta-Transaction" and any 'Zero-Receipts', causes the end of a transaction inside the TSE.  
 To identify the action/transaction that should be finalised the unique identifier in the property 'cbReceiptReference' inside the 'ReceiptRequest' is used. No matter if you used "Update-Transaction", "Delta-Transaction" or none of them, the 'ChargeItems' and 'PayItems' have to include the complete final state of all items involved.  
@@ -690,7 +734,25 @@ The transaction number, defined in TR-03153, is responded behind the hash-tag in
 
 *Explicit Flow - End Transaction (DE - KassenSichV)*
 
+  </p>
+</details>
 
+#### Examples
+
+##### Short lasting actions, e.g. Retail
+
+<details>
+  <summary>Scenario description (click to expand)</summary>
+  <p>
+
+In this example, a customer wants to pay in a retail store at a scanner cash register. A ftReceiptCase `0x4445000000000008` (Start Transaction) is beeing sent to the middleware. The chargeItems are collected (e.g. the products are scanned) and the business action is beeing closed by sending a sign-request using the ftReceiptCase '0x4445000000000001' (POS receipt) including all collected charge- and payitems of the business action (in this example: Feuerzeug BigRed and Kaffee Hag, including cash payment).
+
+The response's signature block includes all information needed to be printed on the receipt (time of receipt creation, start time of the action, and end time of the action). 
+
+![implicit-flow-single-sign-call](media/implicit-flow-single-sign-call.png)
+
+</p>
+</details>
 
 ### Receipt for special functions
 

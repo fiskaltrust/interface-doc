@@ -679,6 +679,10 @@ The explicit workflow of the fiskaltrust-SecurityMechanism in the German market 
 To document a business action from the start until the end, at least a Start- and an End-Transaction is needed. Long-lasting actions may be updated by using an Update- or a Delta-Transaction.
 
 <details>
+  <summary>Integration Details (click to expand)</summary>
+  <p>
+
+<details>
   <summary>Graphical Illustration (click to expand)</summary>
   <p>
 
@@ -743,6 +747,9 @@ The transaction number, defined in TR-03153, is responded behind the hash-tag in
 ![explicit-flow-end-transaction](media/explicit-flow-end-transaction.png)
 
 *Explicit Flow - End Transaction (DE - KassenSichV)*
+
+  </p>
+</details>
 
   </p>
 </details>

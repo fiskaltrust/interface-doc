@@ -679,7 +679,7 @@ The explicit workflow of the fiskaltrust-SecurityMechanism in the German market 
 To document a business action from the start until the end, at least a Start- and an End-Transaction is needed. Long-lasting actions may be updated by using an Update- or a Delta-Transaction.
 
 <details>
-  <summary>Integration Details (click to expand)</summary>
+  <summary><b>Integration Details (click to expand)</b></summary>
   <p>
 
 <details>
@@ -757,7 +757,7 @@ The transaction number, defined in TR-03153, is responded behind the hash-tag in
 #### Examples
 
 <details>
-  <summary><b>Short lasting actions, e.g. Retail</b></summary>
+  <summary><b>Short lasting actions, e.g. Retail (click to expand)</b></summary>
   <p>
 
 <details>

@@ -22,6 +22,15 @@ The "**flow**" describes the communication between the POS System and the fiskal
 
 *Flow and Transaction (DE - KassenSichV)*
 
+### Characteristics
+
+| Implicit flow                                                | Explicit flow                                                |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| No open TSE-transactions to be managed                       | Long-lasting TSE-transactions may need to be managed         |
+| Reduced complexity of business-process handling              | Enhanced complexity of business-process handling             |
+| Each sign-request uses two TSE signatures                    | Less TSE-signatures are used                                 |
+| The TSE signing process could potentially lead faster to performance issues | The risk of performance issues for the TSE signing process is lower |
+
 Implicit- and explicit flow can be combined, dependent on the actual needs.
 
 ### The implicit flow
@@ -29,13 +38,6 @@ Implicit- and explicit flow can be combined, dependent on the actual needs.
 #### When to use
 
 This is the regular workflow of the fiskaltrust-SecurityMechanism in the German market for actions which should fit for around 90% of all use cases. 
-
-##### Characteristics
-
-- No open TSE-transactions to be managed.
-- Reduces complexity of business-process handling.
-- Each sign-request uses two TSE signatures
-- The TSE signing process could potentially lead faster to performance issues compared to the explicit flow
 
 #### How to use
 
@@ -666,13 +668,6 @@ nothing to print here.
 #### When to use
 
 The explicit workflow of the fiskaltrust-SecurityMechanism in the German market is best used when performance and saving TSE-signatures matter. 
-
-##### Characteristics
-
-- TSE-transactions may need to be managed.
-- Enhances complexity of business-process handling.
-- Less TSE-signatures are used
-- The risk of performance issues for the TSE signing process is reduced compared to the implicit flow.
 
 #### How to use
 

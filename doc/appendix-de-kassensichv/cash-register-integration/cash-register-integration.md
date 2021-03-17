@@ -35,14 +35,14 @@ This is the regular workflow of the fiskaltrust-SecurityMechanism in the German 
 - No open TSE-transactions to be managed.
 - Reduces complexity of business-process handling.
 - Each sign-request uses two TSE signatures
-- Slower TSE performance
+- The TSE signing process could potentially lead faster to performance issues compared to the explicit flow
 
 #### How to use
 
 Sign-call with a [ftReceiptCase for implicit flow](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/reference-tables/ftreceiptcase#type-of-receipt-ftreceiptcase) + ftReceiptCaseFlag `0x0000000100000000`.
 The up-counting transaction number defined in TR-03153 is responded behind the hash-tag in the property 'ftReceiptIdentification' of 'ReceiptResponse', prefixed by "IT".
 
-**Please be aware that for the implicit flow, ADDITIONALLY the start time of the first transaction of the business-action (e.g. start time of the first order) has to be printed on the receipt as the start-time of the action.**
+**For the implicit flow, ADDITIONALLY the start time of the first transaction of the business-action (e.g. start time of the first order) has to be printed on the receipt as the start-time of the action.**
 
 
 ![implicit-flow-start-finish-transaction](media/implicit-flow-start-finish-transaction.png)
@@ -55,7 +55,7 @@ The up-counting transaction number defined in TR-03153 is responded behind the h
 
 There has to be a "Start-Transaction" and a "Finish-Transaction" executed against the TSE. In order to speed up these two steps into one call to the 'Sign' method, a special 'ReceiptCaseFlag' is used. Each time this is used in combination with a usual 'ReceiptCase', a "Start-Transaction" is done behind the scenes upfront the final call, using the given 'ReceiptCase'.
 
-Please be aware:
+**Please be aware:**
 
 - Using a unique identifier in 'cbReceiptReference' that was already used with a 'Sign' call with 'ReceiptCase' "Start-Transaction" will end up in an exception.
 - Because the implicit flow triggers a "Start-Transaction" AND a "Finish-Transaction" against the TSE, for each implicit 'Sign' call two TSE-signatures are consumed.
@@ -672,7 +672,7 @@ The explicit workflow of the fiskaltrust-SecurityMechanism in the German market 
 - TSE-transactions may need to be managed.
 - Enhances complexity of business-process handling.
 - Less TSE-signatures are used
-- Better TSE performance
+- The risk of performance issues for the TSE signing process is reduced compared to the implicit flow.
 
 #### How to use
 
@@ -696,7 +696,6 @@ To document a business action from the start until the end, at least a Start- an
 <details>
   <summary>Start-Transaction (click to expand)</summary>
   <p>
-
 Already before you know how your action will complete, you have to create and reserve a transaction number, to be able to track when the action started. This is done by a special call to the 'Sign' method using the 'ReceiptCase' "Start-Transaction". Details of this 'ReceiptRequest' have to match a Zero-Receipt, so no 'ChargeItems' and no 'PayItems' are allowed. In addition to the Zero-Receipt requirements, it is required to add a unique identification to the property 'cbReceiptReference'. This unique identifier can only be used once (at least between each daily closing) in a system. It creates a bracket around an ongoing action. For all further 'Sign' method calls which belong to the same action, it is mandatory to use the same unique identifier in the property 'cbReceiptReference'. Only one ongoing action/transaction per unique identifier is allowed. Calling two times the 'Sign' method using 'ReceiptCase' "Start-Transaction" with the same unique identifier ends up in an exception. If there are communication errors, use the 'ReceiptCaseFlag' "ReceiptRequest" to check if an action/transaction was already created.  
 According to the German law and BSI TR-03153, a call to the 'Sign' method using the 'ReceiptCase' "Start-Transaction" takes care of starting a transaction inside the TSE. The up-counting transaction number, defined in TR-03153, is responded by the fiskaltrust.Middleware behind the hash-tag in the property 'ftReceiptIdentification' of 'ReceiptResponse', prefixed by "ST". For example "ftReceiptIdentification": "ft[queue-receiptnumerator-hex]#ST[tse-transaction]".
 

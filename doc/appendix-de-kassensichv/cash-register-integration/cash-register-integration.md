@@ -16,7 +16,7 @@ The "**transaction**" describes the steps, at least at the beginning and end of 
 The "**flow**" describes the communication between the POS System and the fiskaltrust.Middleware to trigger transactions. This can be done either 
 
 - **implicitly** (a "Start-Transaction" is done automatically - implicitly - behind the scenes upfront the final call), or
-- **explicitly** (every single transaction like "Start" and "Finish" are initiated)
+- **explicitly** (every single transaction like "Start" and "Finish" are initiated by the user of the Middleware)
 
 ![flow-vs-transaction](media/flow-vs-transaction.png)
 
@@ -1032,4 +1032,3 @@ This receipt must be archived. On successful operation, for customers of the pro
 
 Once the queue has been closed with a stop receipt, the German security mechanism's usage is deactivated.
 On successful operation, for customers of the product "Finanzamtmeldung", tax authorities are notified automatically and behind the scenes about the deactivation.
-

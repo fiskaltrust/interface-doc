@@ -37,7 +37,7 @@ Implicit- and explicit flow can be combined, dependent on the actual needs.
 
 #### When to use
 
-This is the regular workflow of the fiskaltrust-SecurityMechanism in the German market for actions which should fit for around 90% of all use cases. 
+This is the regular workflow of the fiskaltrust-SecurityMechanism in the German market for actions which should fit for around 90% of all use cases. Compared to the explicit low, it is easier to handle and leads to less trouble with handling open transactions on the user side.
 
 #### How to use
 
@@ -45,6 +45,8 @@ Sign-call with a [ftReceiptCase for implicit flow](https://docs.fiskaltrust.clou
 The up-counting transaction number defined in TR-03153 is responded behind the hash-tag in the property 'ftReceiptIdentification' of 'ReceiptResponse', prefixed by "IT".
 
 **For the implicit flow, ADDITIONALLY the start time of the first transaction of the business-action (e.g. start time of the first order) has to be printed on the receipt as the start-time of the action.**
+
+This value is returned by the `<vorgangsbeginn>` SignatureItem, and computed from the earliest chargeitem/payitem/cbReceiptMoment timestmap in the request.
 
 
 ![implicit-flow-start-finish-transaction](media/implicit-flow-start-finish-transaction.png)
@@ -66,6 +68,10 @@ There has to be a "Start-Transaction" and a "Finish-Transaction" executed agains
 </details>
 
 #### Examples
+
+For a better understanding how to implement the implicit flow, we prepared use cases for short- and long-lasting actions. For better understanding, the request- and response workflows have been illustrated. The comments provided in the code examples should help to determine the start-end end times of the actions printed on the receipt.
+
+Additional implicit- and explicit flow examples can be found in our [Postman collection](https://middleware-samples.docs.fiskaltrust.cloud/).
 
 <details>
   <summary><b>Short lasting actions, e.g. Retail</b></summary>
@@ -749,6 +755,8 @@ The transaction number, defined in TR-03153, is responded behind the hash-tag in
 </details>
 
 #### Examples
+
+For a better understanding how to implement the explicit flow, we prepared a use cases for a short- lasting action. For better understanding, the request- and response workflow has been illustrated. The comments provided in the code examples should help to determine the start-end end times of the actions printed on the receipt.
 
 <details>
   <summary><b>Short lasting actions, e.g. Retail (click to expand)</b></summary>

@@ -663,7 +663,7 @@ nothing to print here.
 
 4. start time of the first order (DE: Startzeitpunkt der ersten „Bestellung“ im Bondruck):  `2020-05-26T10:31:34.960Z` from the signature block with `ftSignatureType`: `0x444500000000001F` (`dec: 4919338167972134943`)
 
-  </p>
+</p>
 </details>
 
 </p>

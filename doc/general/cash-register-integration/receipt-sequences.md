@@ -24,7 +24,7 @@ Code examples of receipt sequences can be found in our [postman collection](http
 
 You can use [cbReceiptPreviousReference](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/data-structures#single-fields) to point to a cbReceiptReference of a previous request to split or void a receipt:
 
-<img src="images/splitting-receipts.png" alt="splitting-receipts" style="zoom:50%;" />
+<img src="images/splitting-receipts.png" alt="splitting-receipts" style="zoom:75%;" />
 
 Two friends are having a beer in a bar.  Each of them is paying his own consumption. Therefore, the receipt has to be split.
 
@@ -54,6 +54,18 @@ Two friends are having a beer in a bar on a big table. They change to a smaller 
 
 ## Referencing receipts of external queues or external Systems
 
-A) chargeItems collected at the "internal" queue are payed at an external system or queue
+### ChargeItems collected via "internal" queue are payed at an external system or queue
 
-B) chargeItems collected at an external system or queue are payed at the internal queue
+ChargeItems are collected via Info-internal or Info-order. cbArea can be used as an identifier for documenting the business action across multiple POS systems. The obligation to issue receipts arises at the external POS system.
+
+![chargeitem-internal-payment-external](images/chargeitem-internal-payment-external.png)
+
+### ChargeItems collected at an external system or queue are payed at the internal queue
+
+![chargeitem-external-payment-internal](images/chargeitem-external-payment-internal.png)
+
+## Money substitutes based sequences (vouchers, membership cards,...)
+
+prepaid
+
+redemption

@@ -14,6 +14,7 @@ In this chapter, the options to connect single receipts to receipt sequences for
 #### Use case examples
 
 - multiple (long lasting) transactions/orders/consumptions before payment is made (gastronomy, ...)
+- NFC-based/membership-based order solutions (e.g. accomodation/wellness, employee cards)
 
 #### How to use
 
@@ -33,7 +34,6 @@ Code examples of receipt sequences can be found in our [postman collection](http
 #### Use case examples
 
 - Order(s) paid by multiple people
-- Order(s) with down payment and final payment
 
 #### How to use
 
@@ -53,9 +53,12 @@ Code examples of splitting receipts can be found in our [fiskaltrust.Middleware]
 
 #### Use case examples
 
+- invitation
+- if you need to invoice more than one purchase receipt at a time/it can be paid all together
+
 #### How to use
 
-Merge receipts by combining [cbReceiptReference and cbReceiptPreviousReference](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/data-structures#single-fields). Use ftReceiptCase `0x4445000000000013` (Info-internal) to create a new cbReceiptReference and refer via cbPreviousReceiptReference to the order you want to merge. Repeat this for each order you want to merge using the same cbReceiptReference and using cbPreviousReceiptPreference to point to the order to be merged.
+Merge receipts by combining [cbReceiptReference and cbReceiptPreviousReference](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/data-structures#single-fields). Use ftReceiptCase 'Info-internal' to create a new cbReceiptReference and refer via cbPreviousReceiptReference to the order you want to merge. Repeat this for each order you want to merge using the same cbReceiptReference and using cbPreviousReceiptPreference to point to the order to be merged.
 
 #### Workflow example
 
@@ -119,6 +122,31 @@ When creating the POS receipt, use [ftReceiptCaseData](https://docs.fiskaltrust.
 
 ## Money substitutes based sequences (vouchers, membership cards,...)
 
-prepaid
+### Issuing and redeeming multi-purpose vouchers/cards
 
-redemption
+#### Use case examples
+
+- Consumption in Hospitality/Wellness/Spa with cards/bracelets
+- Use of employee cards in cafeteria/canteen
+- Multi-purpose vouchers
+
+#### How to use
+
+Issuing and redeeming a multi-purpose voucher can be achieved with charge- and payitems or within payitems only as shown in [following examples](https://middleware-samples.docs.fiskaltrust.cloud/#ef0d52d6-ac2f-4c75-b16c-d4d1380e3257) in the Postman collection. 
+
+#### Workflow
+
+![multi-purpose-voucher](images/multi-purpose-voucher.png)
+
+In this example, we are using the payitem option for managing the multi-purpose voucher transactions. A negative amount of ftPayItemCase `0x444500000000000D` gets converted to a multi-purpose voucher purchase. ftPayItemCaseData is being used to add the additional information of the use of the "NFC-bracelet NR. 321". In this case, the bracelet can be used as identifier across multiple involved POS systems.
+
+After charging the bracelet, the customer redeems the voucher in several cases. A positive amount of ftPayItemCase `0x444500000000000D` gets converted to a multi-purpose voucher redemption. The negative amount of payment indicates the credit available after the redemption.
+
+In the last business action, the customer wants to have his credit payed out. The positive amount of  ftPayItemCase `0x444500000000000D` is set to the actual credit value so that the payment amount is zero.
+
+#### Code examples
+
+[Issuing](https://middleware-samples.docs.fiskaltrust.cloud/#db4f12c1-458e-4e23-903c-11366f90a1db) and [redeeming](https://middleware-samples.docs.fiskaltrust.cloud/#a3fdd7ee-ae43-424e-b3ee-d6d0a236bb72) multi-purpose voucher using pay-items
+
+[Issuing](https://middleware-samples.docs.fiskaltrust.cloud/#ef0d52d6-ac2f-4c75-b16c-d4d1380e3257) and [redeeming](https://middleware-samples.docs.fiskaltrust.cloud/#93929db4-1ba4-4634-92e4-a6f79cd3c5d9) multi-purpose voucher using charge- and pay-items
+

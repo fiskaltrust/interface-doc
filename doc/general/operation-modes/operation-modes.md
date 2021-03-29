@@ -3,11 +3,15 @@ slug: /poscreators/middleware-doc/general/operation-modes
 title: Operation modes
 ---
 
-## Operation modes
+# Operation modes
 
-### Components of the fiskaltrust.Middleware
+## Components of the fiskaltrust.Middleware
 
 Regardless of the characteristics of the product, fiskaltrust.Middleware consists of several logical components. This chapter provides an overview on these components.
+
+### On-premise (and off-premise) installed components
+
+For POS systems hosted in-house (On-premise, on a cash-register or on a local network-server) or hosted by a third-party and usually supported by a different third-party (Off-Premise; f.e. dedicated hardware or server housing in a data center). This solution requires installation and configuration for the client. The platform support is dependent on the local market. The availability and use of the on-premise solution is dependent on local regulations and currently available for Austria and Germany.
 
 #### Launcher
 
@@ -25,51 +29,25 @@ The executable file `fiskaltrust.exe` and the corresponding DLLs can be distribu
 
 #### ASP.<span></span>net 5/Core Web App
 
-An ASP.<span></span>NET application provides the functionality of a queue via the REST service. This service is provided only on selected markets. For details, please refer to country specific appendix.
-
-#### SSCD Nutshell
-
-The SSCD (Secure Signature Creation Device) nutshell serves to encapsulate the communication with a signature creation device. The respective signature creation device can be accessed via different channels: directly, locally, or via network. This service is provided only on selected markets. For details, please refer to country specific appendix.
+An ASP.<span></span>NET application provides the functionality of a queue via the REST service. This service is provided in Austria and Germany. For details, please refer to the country specific appendices.
 
 #### Queue Nutshell
 
 The queue nutshell serves to encapsulate the functionality of a receipt chain for various platforms and localisations. In accordance with the interface description, the queues can be addressed individually or via a load balanced channel of the launcher.
 
+#### SSU Nutshell
+
+The SSCD (Secure Signature Creation Device) nutshell serves to encapsulate the communication with a signature creation device. The respective signature creation device can be accessed via different channels: directly, locally, or via network. This service is provided only on selected markets. For details, please refer to country specific appendix.
+
 #### Helper Nutshell
 
 The Helper nutshell is used to support updates and configurations.
 
-#### fiskaltrust.SignaturCloud
+### SaaS installed components
 
-The fiskaltrust.SignaturCloud is a pure online solution. The receipt linking is handled entirely online. The advantage of this solution is that no installation or configuration is required for the client and any platform can use this service.
+For POS systems hosted and maintained by a third-party (SaaS, Cloud-Hosting). No installation or configuration is required for the client and any platform can use this service. The availability and use of SaaS installed components is dependent on local regulations and currently available for Austria, France and Germany. In Austria and France the SaaS installation is hosted and operated by fiskaltrust ("ft.SignatureCoud"). In Germany, because of different market regulation, the fiskaltrust.Middleware components must be hosted and operated by the POS creator in the same datatcenter where the receipt generation process of a distributed point of sale system occutrs.
 
-The fiskaltrust.SignaturCloud currently has two different versions:
- - 1.1
- - 1.2
-
-We differentiate between them by backend servers. So the external url is the same: https://signaturcloud.fiskaltrust.at for both versions. If you want to use a specific version of fiskaltrust.SignaturCloud, you will need to set the service-version field into the request header. HTTP header fields are components of the header section of request and response messages in the Hypertext Transfer Protocol (HTTP). They define the operating parameters of an HTTP transaction. If you want to read more about the HTTP headers, you can find details on the following link: https://en.wikipedia.org/wiki/List_of_HTTP_header_fields. As default the fiskaltrust.SignaturCloud 1.1 version is used.
-
-```
-Example:
-curl -X GET https://signaturcloud.fiskaltrust.at/api/version -H 'service-version: 1.2'
-
-[
-  "fiskaltrust.space.signaturcloud",
-  "1.49.19218.17628-dev+f5672f3d7a",
-  "1.49.19218.17628",
-  "Service package:fiskaltrust.service.azure.net46.dll",
-  "Service product version:1.2",
-  "Service file version:1.2.19089.12258"
-]
-
-curl -X GET https://signaturcloud.fiskaltrust.at/api/version or
-curl -X GET https://signaturcloud.fiskaltrust.at/api/version -H 'service-version: 1.1'
-[
-  "fiskaltrust.space.signaturcloud",
-  "1.1",
-  "1.1.17249.2687"
-]
-```
+The components for the SaaS solution are the same as for the local solution; except the launcher, which is not needed. In Germany, the fiskaltrust.Middleware components can be delivered by a predefined Kubernetes Namespace which can be deployed by a Helm-Chart. fiskaltrust provides a "Backend POD" Docker image and Helm-Charts to be deployed at the poscreators environment.
 
 ### Configuration of the fiskaltrust.Middleware
 

@@ -1,13 +1,13 @@
 ---
-slug: /poscreators/middleware-doc/germany/receipt-sequences
-title: Receipt sequences
+slug: /poscreators/middleware-doc/germany/receipt-sequences-creation
+title: Receipt sequences creation
 ---
 
-# Receipt sequences
+# Receipt sequences creation
 
-In the chapter [Cash register integration](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/general/cash-register-integration#receipt-creation-process), the creation of single receipts using either implicit and/or explicit flow has been described.
+In the chapter [Single receipt creation](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/single-receipt-creation), the creation of single receipts using either implicit and/or explicit flow has been described.
 
-In this chapter, we will describe how to connect those single receipts to receipt sequences for integrating complex business cases.
+In this chapter, we will describe how to connect those single receipts to receipt sequences to integrate complex business cases.
 
 ## Referencing previous receipts within a queue
 
@@ -96,7 +96,7 @@ Two friends are having a beer in a bar on a big table. They change to a smaller 
 
 #### Use case examples
 
-When multiple POS systems are involved in the business action and only one is used for invoice/receipt creation, e.g.:
+Multiple POS systems are involved in the business action and only one of them is used for invoice/receipt creation, e.g.:
 
 - Restaurant/Bar using multiple queues; orders are done with one queue and payment with another queue
 - Restaurant/Wellness/Hotel using different POS systems; one system is used for final invoice creation

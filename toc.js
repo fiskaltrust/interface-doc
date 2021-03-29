@@ -45,6 +45,14 @@ module.exports = {
             'middleware-doc/doc/appendix-de-kassensichv/appendix-de-kassensichv',
             'middleware-doc/doc/appendix-de-kassensichv/terminology/terminology',
             'middleware-doc/doc/appendix-de-kassensichv/cash-register-integration/cash-register-integration',
+			 {
+              type: 'category',
+              label: 'Cash register integration',
+              items: [
+                'middleware-doc/doc/appendix-de-kassensichv/cash-register-integration/single-receipt-creation',
+                'middleware-doc/doc/appendix-de-kassensichv/cash-register-integration/receipt-sequences-creation',
+              ]
+            },
             'middleware-doc/doc/appendix-de-kassensichv/data-structures/data-structures',
             {
               type: 'category',

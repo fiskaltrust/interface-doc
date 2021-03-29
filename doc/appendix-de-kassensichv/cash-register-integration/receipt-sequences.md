@@ -1,5 +1,5 @@
 ---
-slug: /poscreators/middleware-doc/general/receipt-sequences
+slug: /poscreators/middleware-doc/germany/receipt-sequences
 title: Receipt sequences
 ---
 
@@ -23,7 +23,7 @@ Connect requests representing a business action with ['cbReceiptReference'](http
 
 #### Workflow example
 
-![referencing-previous-receipts](images/referencing-previous-receipts.png)
+![referencing-previous-receipts](media/referencing-previous-receipts.png)
 Two friends are having a beer in a bar.  Because it is good German beer, they are ordering another one. They pay with one bill.
 
 #### Code examples
@@ -43,7 +43,7 @@ Use ['cbReceiptPreviousReference'](https://docs.fiskaltrust.cloud/docs/poscreato
 
 #### Workflow example
 
-<img src="images/splitting-receipts.png" alt="splitting-receipts" style="zoom:50%;" />
+<img src="media/splitting-receipts.png" alt="splitting-receipts" style="zoom:50%;" />
 
 Two friends are having a beer in a bar.  Each of them is paying his own consumption. Therefore, the receipt has to be split.
 
@@ -64,7 +64,7 @@ Merge receipts by combining ['cbReceiptReference' and 'cbReceiptPreviousReferenc
 
 #### Workflow example
 
-![merging-receipts](images/merging-receipts.png)
+![merging-receipts](media/merging-receipts.png)
 
 Two friends are having a beer in a bar. One of them has birthday. To celebrate that, he invites the guests on the table next to them to pay what they have ordered and consumed so far. Therefore, their receipt has to be merged with the other receipt.
 
@@ -88,7 +88,7 @@ Document the field/section in which the receipt is created with [cbArea](https:/
 
 #### Workflow example
 
-![switching-cbarea](images/switching-cbarea.png)
+![switching-cbarea](media/switching-cbarea.png)
 
 Two friends are having a beer in a bar on a big table. They change to a smaller table so that a bigger group of people can sit on their previous table to order some food.
 
@@ -110,7 +110,7 @@ ChargeItems are collected via ftReceiptCase 'Info-internal' or 'Info-order'. 'cb
 
 #### Workflow example
 
-![chargeitem-internal-payment-external](images/chargeitem-internal-payment-external.png)
+![chargeitem-internal-payment-external](media/chargeitem-internal-payment-external.png)
 
 ### Option B: ChargeItems collected at an external system or queue are payed at the internal queue
 
@@ -129,7 +129,7 @@ For this workflow, the combination of following receipt-sequences is needed:
 
 #### Workflow example
 
-![chargeitem-external-payment-internal](images/chargeitem-external-payment-internal.png) 
+![chargeitem-external-payment-internal](media/chargeitem-external-payment-internal.png) 
 
 A couple performs a check-in at the reception of a hotel for one night. After the check-in, it decides to have a beer at the hotel-bar, which uses a different POS system (or fiskaltrust.queue). The consumption of the hotel-bar shall be paid with the final invoice of the overnight-stay. The room number is for 'cbArea' to provide information why the business actions across the different POS systems are connected. For the check-out, the receipt of the consumption of the hotel-bar and the receipt of the overnight stay need to be merged. Therefore, 'info-internal' receipts with a new, common 'cbReceiptReference' are created. One 'info-internal' receipt is used to reference to the external POS receipt using 'ftReceiptCaseData'. The other 'info-internal' receipt is used to reference to the internal 'info-order' of the overnight-stay using 'cbPreviousReceiptReference'. A 'POS receipt' is created, including all collected charge-items from external and internal POS system(s), and the pay-items of the internal POS system. The receipt is printed and handed over to the couple.
 
@@ -153,7 +153,7 @@ Issuing and redeeming a multi-purpose voucher can be achieved with charge- and p
 
 #### Workflow
 
-![multi-purpose-voucher](images/multi-purpose-voucher.png)
+![multi-purpose-voucher](media/multi-purpose-voucher.png)
 
 In this example, we are using the payitem option for managing the multi-purpose voucher transactions. A negative amount of 'ftPayItemCase' `0x444500000000000D` gets converted to a multi-purpose voucher purchase. 'ftPayItemCaseData' is being used to add the additional information of the use of the "NFC-bracelet NR. 321". In this case, the bracelet can be used as identifier across multiple involved POS systems.
 

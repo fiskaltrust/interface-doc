@@ -131,7 +131,12 @@ For this workflow, the combination of following receipt-sequences is needed:
 
 ![chargeitem-external-payment-internal](media/chargeitem-external-payment-internal.png) 
 
-A couple performs a check-in at the reception of a hotel for one night. After the check-in, it decides to have a beer at the hotel-bar, which uses a different POS system (or fiskaltrust.queue). The consumption of the hotel-bar shall be paid with the final invoice of the overnight-stay. The room number is for 'cbArea' to provide information why the business actions across the different POS systems are connected. For the check-out, the receipt of the consumption of the hotel-bar and the receipt of the overnight stay need to be merged. Therefore, 'info-internal' receipts with a new, common 'cbReceiptReference' are created. One 'info-internal' receipt is used to reference to the external POS receipt using 'ftReceiptCaseData'. The other 'info-internal' receipt is used to reference to the internal 'info-order' of the overnight-stay using 'cbPreviousReceiptReference'. A 'POS receipt' is created, including all collected charge-items from external and internal POS system(s), and the pay-items of the internal POS system. The receipt is printed and handed over to the couple.
+1. A couple performs a check-in at the reception of a hotel for one night.
+2. An info-order for the overnight-stay is created.
+3. After the check-in, it decides to have a beer at the hotel-bar, which uses a different POS system (or fiskaltrust.queue). The consumption of the hotel-bar shall be paid with the final invoice of the overnight-stay. The room number is for 'cbArea' to provide information why the business actions across the different POS systems are connected. 
+4. For the check-out, the receipt of the consumption of the hotel-bar and the receipt of the overnight stay need to be merged. Therefore, 'info-internal' receipts with a new, common 'cbReceiptReference' are created. One 'info-internal' receipt is used to reference to the external POS receipt using 'ftReceiptCaseData'. 
+5. The other 'info-internal' receipt is used to reference to the internal 'info-order' of the overnight-stay using 'cbPreviousReceiptReference'. 
+6. A 'POS receipt' is created, including all collected charge-items from external and internal POS system(s), and the pay-items of the internal POS system. The receipt is printed and handed over to the couple.
 
 #### Code examples
 

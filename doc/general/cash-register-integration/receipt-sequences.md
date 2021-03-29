@@ -7,23 +7,24 @@ title: Receipt sequences
 
 In the chapter [Cash register integration](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/general/cash-register-integration#receipt-creation-process), the creation of single receipts using either implicit and/or explicit flow has been described.
 
-In this chapter, the options to connect single receipts to receipt sequences for integrating complex business cases are described.
+In this chapter, we will describe how to connect those single receipts to receipt sequences for integrating complex business cases.
 
 ## Referencing previous receipts within a queue
 
 #### Use case examples
 
-- multiple (long lasting) transactions/orders/consumptions before payment is made (gastronomy, ...)
-- NFC-based/membership-based order solutions (e.g. accomodation/wellness, employee cards)
+- Multiple (long lasting) transactions/orders/consumptions before payment is made (gastronomy, ...)
+- NFC-based/membership-based order solutions (e.g. accommodation/wellness, employee cards)
+- Down payments
 
 #### How to use
 
-Connect requests representing a business action with [cbReceiptReference](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/data-structures#single-fields).
+Connect requests representing a business action with ['cbReceiptReference'](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/data-structures#single-fields).
 
 #### Workflow example
 
 ![referencing-previous-receipts](images/referencing-previous-receipts.png)
-Two friends are having a beer in a bar.  Because it is German beer, they are ordering another one. They pay with one bill.
+Two friends are having a beer in a bar.  Because it is good German beer, they are ordering another one. They pay with one bill.
 
 #### Code examples
 
@@ -34,10 +35,11 @@ Code examples of receipt sequences can be found in our [postman collection](http
 #### Use case examples
 
 - Order(s) paid by multiple people
+- Voiding/cancelling receipts
 
 #### How to use
 
-Use [cbReceiptPreviousReference](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/data-structures#single-fields) to point to a cbReceiptReference of a previous request to split or void a receipt.
+Use ['cbReceiptPreviousReference'](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/data-structures#single-fields) to point to a 'cbReceiptReference' of a previous request to split or void a receipt.
 
 #### Workflow example
 
@@ -58,7 +60,7 @@ Code examples of splitting receipts can be found in our [fiskaltrust.Middleware]
 
 #### How to use
 
-Merge receipts by combining [cbReceiptReference and cbReceiptPreviousReference](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/data-structures#single-fields). Use ftReceiptCase 'Info-internal' to create a new cbReceiptReference and refer via cbPreviousReceiptReference to the order you want to merge. Repeat this for each order you want to merge using the same cbReceiptReference and using cbPreviousReceiptPreference to point to the order to be merged.
+Merge receipts by combining ['cbReceiptReference' and 'cbReceiptPreviousReference'](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/data-structures#single-fields). Use ftReceiptCase 'Info-internal' to create a new 'cbReceiptReference' and refer via 'cbPreviousReceiptReference' to the order you want to merge. Repeat this for each order you want to merge using the same 'cbReceiptReference' and using 'cbPreviousReceiptPreference' to point to the order to be merged.
 
 #### Workflow example
 
@@ -78,7 +80,7 @@ Changing the area of value creation; e.g.
 
 - Consumption in Restaurant-Hotel -> Restaurant-Wellness -> Bar-Sauna
 - Moving between different tables within a Restaurant
-- Identifying a business action across multiple POS systems
+- Providing information how business actions are connected to each other across multiple POS systems
 
 #### How to use
 
@@ -114,11 +116,26 @@ ChargeItems are collected via ftReceiptCase 'Info-internal' or 'Info-order'. 'cb
 
 #### How to use
 
-When creating the POS receipt, use [ftReceiptCaseData](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/dsfinv-k#file-bon_referenzen-referencescsv) to add the transaction data from the external POS system according to the requirements of the DSFinV-K-specification. The obligation to issue receipts arises at the POS system where the POS receipt is being created.
+Use 'info-internal' with ['ftReceiptCaseData' according to the requirements of the DSFinV-K-specification](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/dsfinv-k#file-bon_referenzen-referencescsv) to reference to an business-action recorded by an external queue or POS system which needs to be merged with your ongoing internal business-action. By creating a new 'cbReceiptReference', you create the precondition to merge the receipt the external system with your internal receipts of the ongoing business-action. Repeat this step to collect and reference to multiple external POS systems with related business-actions to be charged. The obligation to issue receipts arises at the POS system where the POS receipt is being created.
+
+##### Prerequisites
+
+For this workflow, the combination of following receipt-sequences is needed:
+
+- Referencing previous receipts within a queue, using 'cbReceiptReference',
+- Merging receipts, using 'cbReceiptreference' and 'cbPreviousReceiptReference',
+- Providing additional information about how the business actions are connected to each other, using 'cbArea',
+- Providing information about the external POS receipt, using 'ftReceiptCaseData'
 
 #### Workflow example
 
-![chargeitem-external-payment-internal](images/chargeitem-external-payment-internal.png)
+![chargeitem-external-payment-internal](images/chargeitem-external-payment-internal.png) 
+
+A couple performs a check-in at the reception of a hotel for one night. After the check-in, it decides to have a beer at the hotel-bar, which uses a different POS system (or fiskaltrust.queue). The consumption of the hotel-bar shall be paid with the final invoice of the overnight-stay. The room number is for 'cbArea' to provide information why the business actions across the different POS systems are connected. For the check-out, the receipt of the consumption of the hotel-bar and the receipt of the overnight stay need to be merged. Therefore, 'info-internal' receipts with a new, common 'cbReceiptReference' are created. One 'info-internal' receipt is used to reference to the external POS receipt using 'ftReceiptCaseData'. The other 'info-internal' receipt is used to reference to the internal 'info-order' of the overnight-stay using 'cbPreviousReceiptReference'. A 'POS receipt' is created, including all collected charge-items from external and internal POS system(s), and the pay-items of the internal POS system. The receipt is printed and handed over to the couple.
+
+#### Code examples
+
+Code examples of referencing external receipts can be found in our postman collection.
 
 ## Money substitutes based sequences (vouchers, membership cards,...)
 
@@ -138,15 +155,15 @@ Issuing and redeeming a multi-purpose voucher can be achieved with charge- and p
 
 ![multi-purpose-voucher](images/multi-purpose-voucher.png)
 
-In this example, we are using the payitem option for managing the multi-purpose voucher transactions. A negative amount of ftPayItemCase `0x444500000000000D` gets converted to a multi-purpose voucher purchase. ftPayItemCaseData is being used to add the additional information of the use of the "NFC-bracelet NR. 321". In this case, the bracelet can be used as identifier across multiple involved POS systems.
+In this example, we are using the payitem option for managing the multi-purpose voucher transactions. A negative amount of 'ftPayItemCase' `0x444500000000000D` gets converted to a multi-purpose voucher purchase. 'ftPayItemCaseData' is being used to add the additional information of the use of the "NFC-bracelet NR. 321". In this case, the bracelet can be used as identifier across multiple involved POS systems.
 
-After charging the bracelet, the customer redeems the voucher in several cases. A positive amount of ftPayItemCase `0x444500000000000D` gets converted to a multi-purpose voucher redemption. The negative amount of payment indicates the credit available after the redemption.
+After charging the bracelet, the customer redeems the voucher in several cases. A positive amount of 'ftPayItemCase' `0x444500000000000D` gets converted to a multi-purpose voucher redemption. The negative amount of payment indicates the credit available after the redemption.
 
-In the last business action, the customer wants to have his credit payed out. The positive amount of  ftPayItemCase `0x444500000000000D` is set to the actual credit value so that the payment amount is zero.
+In the last business action, the customer wants to have his credit payed out. The positive amount of 'ftPayItemCase' `0x444500000000000D` is set to the actual credit value so that the payment amount is zero.
 
 #### Code examples
 
-[Issuing](https://middleware-samples.docs.fiskaltrust.cloud/#db4f12c1-458e-4e23-903c-11366f90a1db) and [redeeming](https://middleware-samples.docs.fiskaltrust.cloud/#a3fdd7ee-ae43-424e-b3ee-d6d0a236bb72) multi-purpose voucher using pay-items
+- [Issuing](https://middleware-samples.docs.fiskaltrust.cloud/#db4f12c1-458e-4e23-903c-11366f90a1db) and [redeeming](https://middleware-samples.docs.fiskaltrust.cloud/#a3fdd7ee-ae43-424e-b3ee-d6d0a236bb72) multi-purpose voucher using pay-items
 
-[Issuing](https://middleware-samples.docs.fiskaltrust.cloud/#ef0d52d6-ac2f-4c75-b16c-d4d1380e3257) and [redeeming](https://middleware-samples.docs.fiskaltrust.cloud/#93929db4-1ba4-4634-92e4-a6f79cd3c5d9) multi-purpose voucher using charge- and pay-items
+- [Issuing](https://middleware-samples.docs.fiskaltrust.cloud/#ef0d52d6-ac2f-4c75-b16c-d4d1380e3257) and [redeeming](https://middleware-samples.docs.fiskaltrust.cloud/#93929db4-1ba4-4634-92e4-a6f79cd3c5d9) multi-purpose voucher using charge- and pay-items
 

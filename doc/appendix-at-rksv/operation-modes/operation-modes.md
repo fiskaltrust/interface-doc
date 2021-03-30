@@ -19,11 +19,11 @@ This application is the bridge between the queue nutshell and fiskaltrust.Signat
 
 In Austria, it is mandatory to have an unmodifiable smartcard (write once read many) which must store the issued certificate containing the POS operator data. This smartcard must be read from a reader, which must be connected to the POS system's machine via an internal device, a connected external device, a network-connected device, or a web service.
 
-#### fiskaltrust.SignaturCloud
+#### fiskaltrust.SignatureCloud
 
-The fiskaltrust.SignaturCloud is a pure online solution. The receipt linking is handled entirely online. The advantage of this solution is that no installation or configuration is required for the client and any platform can use this service.
+The fiskaltrust.SignatureCloud is a pure online solution. The receipt linking is handled entirely online. The advantage of this solution is that no installation or configuration is required for the client and any platform can use this service.
 
-The fiskaltrust.SignaturCloud for AT currently has two different versions:
+The fiskaltrust.SignatureCloud for AT currently has two different versions:
 
  - 1.1
  - 1.2

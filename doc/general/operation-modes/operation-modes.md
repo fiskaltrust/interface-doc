@@ -5,13 +5,30 @@ title: Operation modes
 
 # Operation modes
 
+Dependent on local market regulations, following operation modes are supported by the fiskaltrust.Middleware:
+
+- on-premise (for POS systems hosted in-house, on a cash-register or on a local network-server) 
+- off-premise (for POS systems hosted by a third-party and usually supported by a different third-party; f.e. server housing in a data center)
+- private Cloud by 3rd party (hosted and maintained by a third-party)
+- private Cloud by fiskaltrust (hosted and maintained by fiskaltrust)
+
+| operation mode                                 | AT            | DE*           | FR            |
+| ---------------------------------------------- | ------------- | ------------- | ------------- |
+| **on- & off-premise**                          | **supported** | **supported** | not supported |
+| **private Cloud<br />operated by 3rd party**   | **supported** | **supported** | not supported |
+| **private Cloud<br />operated by fiskaltrust** | supported     | not supported | **supported** |
+
+*In Germany, the fiskaltrust.Middleware must always be operated as a local component of the electronic recording system. For example, if the electronic recording system runs on a local Windows based cash register, the fiskaltrust.Middleware has to be operated on the same machine. If the electronic recording system is a SaaS solution operated in the Cloud, the fiskaltrust.Middleware has to be operated in the same data center.
+
 ## Components of the fiskaltrust.Middleware
 
 Regardless of the characteristics of the product, fiskaltrust.Middleware consists of several logical components. This chapter provides an overview on these components.
 
-### On-premise (and off-premise) installed components
+### On-premise & off-premise installed components
 
-For POS systems hosted in-house (On-premise, on a cash-register or on a local network-server) or hosted by a third-party and usually supported by a different third-party (Off-Premise; f.e. dedicated hardware or server housing in a data center). This solution requires installation and configuration for the client. The platform support is dependent on the local market. The availability and use of the on-premise solution is dependent on local regulations and currently available for Austria and Germany.
+This solution requires installation and configuration for the client. The platform support is dependent on the local market. The availability and use of the on-premise solution is dependent on local regulations and currently available for Austria and Germany.
+
+![middleware-en](images/middleware-en.png)
 
 #### Launcher
 
@@ -21,8 +38,8 @@ The main tasks of the launcher are:
 
   - providing basic configuration settings such as ftCashBoxId and access token
   - comparing the configuration data retrieved from fiskaltrust.Helipad with the local configuration
-  - updating nutshells accordingly to the configuration
-  - execution of configured nutshells
+  - updating queue- and SCU packages accordingly to the configuration
+  - execution of configured packages
   - load balancing of multiple queues
 
 The executable file `fiskaltrust.exe` and the corresponding DLLs can be distributed via copy-paste and then configured and installed with the help of a command-line parameter. It can be downloaded (incl. configuration) from the Portal’s configuration-\>cashbox page, or found on nuget.org and configured manually.
@@ -31,23 +48,30 @@ The executable file `fiskaltrust.exe` and the corresponding DLLs can be distribu
 
 An ASP.<span></span>NET application provides the functionality of a queue via the REST service. This service is provided in Austria and Germany. For details, please refer to the country specific appendices.
 
-#### Queue Nutshell
+#### Queue
 
-The queue nutshell serves to encapsulate the functionality of a receipt chain for various platforms and localisations. In accordance with the interface description, the queues can be addressed individually or via a load balanced channel of the launcher.
+The queue serves to encapsulate the functionality of a receipt chain for various platforms and localisations. In accordance with the interface description, the queues can be addressed individually or via a load balanced channel of the launcher.
 
-#### SSU Nutshell
+#### SCU
 
-The SSCD (Secure Signature Creation Device) nutshell serves to encapsulate the communication with a signature creation device. The respective signature creation device can be accessed via different channels: directly, locally, or via network. This service is provided only on selected markets. For details, please refer to country specific appendix.
+The SCU (Signature Creation Unit) serves to encapsulate the communication with a signature creation device. The respective signature creation device can be accessed via different channels: directly, locally, or via network. This service is provided only on selected markets. For details, please refer to country specific appendix.
 
-#### Helper Nutshell
+#### Helipad Helper
 
-The Helper nutshell is used to support updates and configurations.
+The Helipad Helper is used to support updates and configurations.
+
+#### Supported platforms
+
+For supported platforms, please refer to the appendices of the applicable markets:
+
+- Supported platforms in Austria
+- Supported platforms in Germany
 
 ### SaaS installed components
 
-For POS systems hosted and maintained by a third-party (SaaS, Cloud-Hosting). No installation or configuration is required for the client and any platform can use this service. The availability and use of SaaS installed components is dependent on local regulations and currently available for Austria, France and Germany. In Austria and France the SaaS installation is hosted and operated by fiskaltrust ("ft.SignatureCoud"). In Germany, because of different market regulation, the fiskaltrust.Middleware components must be hosted and operated by the POS creator in the same datatcenter where the receipt generation process of a distributed point of sale system occutrs.
+No installation or configuration is required for the client and any platform can use this service. The availability and use of SaaS installed components is dependent on local regulations and currently available for Austria, France and Germany. In Austria and France the SaaS installation is hosted and operated by fiskaltrust ("ft.SignatureCoud"). In Germany, because of different market regulation, the fiskaltrust.Middleware components must be hosted and operated by the POS creator in the same datatcenter where the receipt generation process of a distributed point of sale system occurs.
 
-The components for the SaaS solution are the same as for the local solution; except the launcher, which is not needed. In Germany, the fiskaltrust.Middleware components can be delivered by a predefined Kubernetes Namespace which can be deployed by a Helm-Chart. fiskaltrust provides a "Backend POD" Docker image and Helm-Charts to be deployed at the poscreators environment.
+The components for the SaaS solution are the same as for the local solution; except the launcher, which is not needed. In Germany, the fiskaltrust.Middleware components can be delivered by a predefined Kubernetes Namespace which can be deployed by a Helm-Chart. fiskaltrust provides a "Backend POD" Docker image and Helm-Charts to be deployed at the POS creators environment.
 
 ### Configuration of the fiskaltrust.Middleware
 

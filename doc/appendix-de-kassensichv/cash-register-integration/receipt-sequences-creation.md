@@ -9,7 +9,7 @@ In the chapter [Single receipt creation](https://docs.fiskaltrust.cloud/docs/pos
 
 In this chapter, we will describe how to connect those single receipts to receipt sequences to integrate complex business cases.
 
-## Referencing previous receipts within a queue
+## Referencing previous actions within a queue
 
 #### Use case examples
 
@@ -28,14 +28,15 @@ Two friends are having a beer in a bar.  Because it is good German beer, they ar
 
 #### Code examples
 
-Code examples of receipt sequences can be found in our [postman collection](https://middleware-samples.docs.fiskaltrust.cloud/#e9b0b712-2dda-4c4c-a061-16d72daa723b).
+Code examples of receipt sequences can be found in our [Postman collection](https://middleware-samples.docs.fiskaltrust.cloud/#e9b0b712-2dda-4c4c-a061-16d72daa723b).
 
-## Splitting receipts
+## Splitting actions
 
 #### Use case examples
 
-- Order(s) paid by multiple people
+- pos-receipt(s) paid by multiple people
 - Voiding/cancelling receipts
+- Correction of orders (f.e. gastronomy)
 
 #### How to use
 
@@ -49,9 +50,9 @@ Two friends are having a beer in a bar.  Each of them is paying his own consumpt
 
 ### Code examples
 
-Code examples of splitting receipts can be found in our [fiskaltrust.Middleware](https://middleware-samples.docs.fiskaltrust.cloud/#86967a8f-a1fe-4262-975e-c4a155209cb3).
+Code examples of splitting receipts can be found in our [Postman collection](https://middleware-samples.docs.fiskaltrust.cloud/#86967a8f-a1fe-4262-975e-c4a155209cb3).
 
-## Merging receipts
+## Merging actions
 
 #### Use case examples
 
@@ -70,7 +71,7 @@ Two friends are having a beer in a bar. One of them has birthday. To celebrate t
 
 #### Code examples
 
-Code examples of merging receipts can be found in our [postman collection](https://middleware-samples.docs.fiskaltrust.cloud/#b81fedc6-919a-46e4-899a-52582606a6d7).
+Code examples of merging receipts can be found in our [Postman collection](https://middleware-samples.docs.fiskaltrust.cloud/#b81fedc6-919a-46e4-899a-52582606a6d7).
 
 ## Changing the area in which the receipt is created
 
@@ -92,7 +93,7 @@ Document the field/section in which the receipt is created with [cbArea](https:/
 
 Two friends are having a beer in a bar on a big table. They change to a smaller table so that a bigger group of people can sit on their previous table to order some food.
 
-## Referencing receipts of external queues or external Systems
+## Referencing actions of external queues or external Systems
 
 #### Use case examples
 

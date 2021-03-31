@@ -150,7 +150,7 @@ For this workflow, the combination of following receipt-sequences is needed:
 
 #### Code examples
 
-Code examples of referencing external receipts can be found in our postman collection.
+Code examples of referencing external receipts can be found in our [Postman collection](https://github.com/fiskaltrust/interface-doc/pull/174/commits/56ed40241b7db2dbe3471e87b33047784daf6a08).
 
 ## Money substitutes based sequences (vouchers, membership cards,...)
 
@@ -169,6 +169,8 @@ Issuing and redeeming a multi-purpose voucher can be achieved with charge- and p
 #### Workflow
 
 ![multi-purpose-voucher](media/multi-purpose-voucher.png)
+
+A customer at Club Med charges his bracelet with 100 €, which is used within the club area as a money substitute. Multiple consumptions are made using different POS systems. Each POS system uses its own different POS receipt IDs, and 'cbArea' is changing as well. At check-out, the customer is getting paid out the remaining credit on the bracelet. 
 
 In this example, we are using the payitem option for managing the multi-purpose voucher transactions. A negative amount of 'ftPayItemCase' `0x444500000000000D` gets converted to a multi-purpose voucher purchase. 'ftPayItemCaseData' is being used to add the additional information of the use of the "NFC-bracelet NR. 321". In this case, the bracelet can be used as identifier across multiple involved POS systems.
 

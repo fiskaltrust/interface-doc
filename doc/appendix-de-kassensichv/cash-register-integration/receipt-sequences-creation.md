@@ -9,6 +9,15 @@ In the chapter [Single receipt creation](single-receipt-creation.md), the creati
 
 In this chapter, we will describe how to connect those single receipts to receipt sequences to integrate complex business cases.
 
+### Why and when is this needed?
+
+Suppose orders, delivery notes, invoices and payments are being processed at different times, and the electronic recording system processes the business action not as a whole but in separate processes. 
+
+In that case, the business activities and other activities **must be traceable in their creation and processing**, and a unique identification number for the business action must exist.
+The same applies if different electronic recording systems are used in the course of the business action. 
+
+More details on the legal basis you can find [here](https://docs.fiskaltrust.cloud/docs/product-description/germany/products-and-services/legal-basis).
+
 ## Referencing previous actions within a queue
 
 #### Use case examples

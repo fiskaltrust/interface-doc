@@ -60,6 +60,17 @@ The SCU (Signature Creation Unit) serves to encapsulate the communication with a
 
 The Helipad Helper is used to support updates and configurations.
 
+#### Hardware requirements
+
+For the operation of the installed components of the fiskaltrust.Middleware following minimum hardware requirements are recommended:
+
+| Hardware                      | Minimum requirements                                         |
+| ----------------------------- | ------------------------------------------------------------ |
+| general hardware requirements | The fiskaltrust.Middleware can be generally operated on a [Rasperry PI 2](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/). |
+| local storage                 | Around 500 MB (200 MB for the Middleware components + 200 MB reserved for update-packages); optional: storage for SQLite db (around 8-10Kb/receipt) |
+| Hardware connectivity         | For the German market: USB, SD, Micro-SD or COM port for a local hardware-based security device (Technische Sicherheitseinrichtung, TSE).<br />For the Austrian market: USB port |
+| Internet connectivity         | Optional, but strongly recommended: (WIFI)modem for Internet connectivity to use software-security-, data as a service-, backup,- or configuration-/update services. |
+
 #### Supported platforms
 
 For supported platforms, please refer to the appendices of the applicable markets:

@@ -5,7 +5,7 @@ title: Receipt sequences creation
 
 # Receipt sequences creation
 
-In the chapter [Single receipt creation](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/single-receipt-creation), the creation of single receipts using either implicit and/or explicit flow has been described.
+In the chapter [Single receipt creation](single-receipt-creation.md), the creation of single receipts using either implicit and/or explicit flow has been described.
 
 In this chapter, we will describe how to connect those single receipts to receipt sequences to integrate complex business cases.
 
@@ -172,4 +172,3 @@ In the last business action, the customer wants to have his credit payed out. Th
 - [Issuing](https://middleware-samples.docs.fiskaltrust.cloud/#db4f12c1-458e-4e23-903c-11366f90a1db) and [redeeming](https://middleware-samples.docs.fiskaltrust.cloud/#a3fdd7ee-ae43-424e-b3ee-d6d0a236bb72) multi-purpose voucher using pay-items
 
 - [Issuing](https://middleware-samples.docs.fiskaltrust.cloud/#ef0d52d6-ac2f-4c75-b16c-d4d1380e3257) and [redeeming](https://middleware-samples.docs.fiskaltrust.cloud/#93929db4-1ba4-4634-92e4-a6f79cd3c5d9) multi-purpose voucher using charge- and pay-items
-

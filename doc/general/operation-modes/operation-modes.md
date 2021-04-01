@@ -26,7 +26,7 @@ Regardless of the characteristics of the product, fiskaltrust.Middleware consist
 
 ### On-premise & off-premise installed components
 
-This solution requires installation and configuration for the client. The platform support is dependent on the local market. The availability and use of the on-premise solution is dependent on local regulations and currently available for Austria and Germany.
+This solution requires [installation](../installation/operation-modes.md)  and configuration for the client. The platform support is dependent on the local market. The availability and use of the on-premise solution is dependent on local regulations and currently available for Austria and Germany.
 
 ![middleware-en](images/middleware-en.png)
 
@@ -64,7 +64,9 @@ Austria
 
 Germany
 
+#### SCD
 
+The SCD (Signature Creation Device) is not part of the fiskaltrust.Middleware. Signature Creation Devices are providing additional security and functionalities based on local market regulation, delivered by third party vendors (e.g. a software based cloud solution, a hardware device, or a certificate), supported by fiskaltrust via the SCU. The choice of the SCD has impacts on the fiskaltrust.Middleware configuration, therefore available SCDs, its configuration, functionalities and limitations regarding the fiskaltrust.Middleware are documented in the appropriate appendices of the markets.
 
 #### Helipad Helper
 

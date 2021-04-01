@@ -1,8 +1,8 @@
-# fiskaltrust.Middleware
+# fiskaltrust.Middleware - on-premise installation
 
 Die lokal installierte fiskaltrust.Middleware bietet die Einbindung von TSE aller Hersteller an die Registrierkasse, sowie eine vereinfachte Umsetzung der Anforderungen der Digitalen Schnittstelle der Finanzverwaltung für Kassensysteme.
 
-![middleware-en](../../general/operation-modes/images/middleware-en.png)
+![middleware-en](images/middleware-en-market-de.png)
 
 Die fiskaltrust.Middleware besteht aus 
 

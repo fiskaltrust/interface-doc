@@ -5,7 +5,9 @@ title: Operation modes
 
 # Operation modes
 
-Dependent on local market regulations, following operation modes are supported by the fiskaltrust.Middleware:
+Dependent on local market regulations, operation modes for following operational environments are supported by the fiskaltrust.Middleware:
+
+![operational-environments](images/operational-environments.png)
 
 - on-premise (for POS systems hosted in-house, on a cash-register or on a local network-server) 
 - off-premise (for POS systems hosted by a third-party and usually supported by a different third-party - mostly by the POS creator; f.e. server housing in a data center)

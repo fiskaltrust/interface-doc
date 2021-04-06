@@ -150,7 +150,7 @@ For this workflow, the combination of following receipt-sequences is needed:
 
 #### Code examples
 
-Code examples of referencing external receipts can be found in our [Postman collection](https://github.com/fiskaltrust/interface-doc/pull/174/commits/56ed40241b7db2dbe3471e87b33047784daf6a08).
+Code examples of referencing external receipts can be found in our [Postman collection](https://middleware-samples.docs.fiskaltrust.cloud/#06a34ac5-7c4f-441e-ba2b-4f02badc409c).
 
 ## Money substitutes based sequences (vouchers, membership cards,...)
 

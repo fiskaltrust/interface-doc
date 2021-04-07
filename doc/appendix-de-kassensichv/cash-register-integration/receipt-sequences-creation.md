@@ -53,7 +53,7 @@ Use ['cbReceiptPreviousReference'](https://docs.fiskaltrust.cloud/docs/poscreato
 
 #### Workflow example
 
-<img src="media/splitting-receipts.png" alt="splitting-receipts" style="zoom:50%;" />
+<img src="media/splitting-receipts.png" alt="splitting-receipts" style={{zoom: "50%"}} />
 
 Two friends are having a beer in a bar.  Each of them is paying his own consumption. Therefore, the receipt has to be split.
 

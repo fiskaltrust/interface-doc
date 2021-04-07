@@ -5,20 +5,25 @@ title: Operation modes
 
 # Operation modes
 
-Dependent on local market regulations, operation modes for following operational environments are supported by the fiskaltrust.Middleware:
+The fiskaltrust.Middleware can be operated in following operational environments:
 
 ![operational-environments](images/operational-environments.png)
 
-- on-premise (for POS systems hosted in-house, on a cash-register or on a local network-server) 
-- off-premise (for POS systems hosted by a third-party and usually supported by a different third-party - mostly by the POS creator; f.e. server housing in a data center)
-- private Cloud operated by a 3rd party (hosted and maintained by a third-party)
-- private Cloud operated by fiskaltrust (hosted and maintained by fiskaltrust)
+Identification of the operational environment from the perspective of a POS operator:
 
-| operation mode                                 | AT            | DE*           | FR            |
-| ---------------------------------------------- | ------------- | ------------- | ------------- |
-| **on- & off-premise**                          | **supported** | **supported** | **supported** |
-| **private Cloud<br />operated by a 3rd party** | **supported** | **supported** | not offered   |
-| **private Cloud<br />operated by fiskaltrust** | **supported** | not supported | **supported** |
+| hosted in-house | hosted in a different building         | dedicated hardware resource                                  | privately shared (hardware) resource        | operational environment |
+| --------------- | -------------------------------------- | ------------------------------------------------------------ | ------------------------------------------- | ----------------------- |
+| **yes**         | no                                     | **yes**<br />*(e.g. on a cash register or local network server)* | no                                          | **on-premise**          |
+| no              | **yes**<br />*(e.g. in a data center)* | **yes**<br />*(e.g. dedicated server)*                       | no                                          | **off-premise**         |
+| no              | **yes**                                | no                                                           | **yes**<br />*(e.g. virtualised resources)* | **private cloud**       |
+
+Availability of supported operational environments is dependent on the market as shown in the following table:
+
+| operation mode                                   | AT                                                           | DE                                               | FR                                                           |
+| ------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------------------ |
+| **on- & off-premise**                            | **available**                                                | **available**                                    | **available**                                                |
+| **private Cloud**<br />*operated by a 3rd party* | **available**                                                | **available**                                    | not available<br />*generally supported, but not offered*    |
+| **private Cloud**<br />*operated by fiskaltrust* | **available**<br />*(by the fiskaltrust product Signature.Cloud)* | not available<br />*due to legal restrictions* * | **available**<br />*(by the fiskaltrust product Signature.Cloud)* |
 
 *In Germany, the fiskaltrust.Middleware must always be operated as a local component of the electronic recording system. For example, if the electronic recording system runs on a local Windows based cash register, the fiskaltrust.Middleware has to be operated on the same operational environment (this could be the same machine, or a local network server). If the electronic recording system is a SaaS solution operated in the Cloud, the fiskaltrust.Middleware has to be operated in the same data center.
 
@@ -32,9 +37,6 @@ This solution requires [installation](../installation/operation-modes.md)  and c
 
 ![middleware-en](images/middleware-en.png)
 
-tbd: tcp/serial stream not in market-de
-fr only rest/wcf?
-
 #### Launcher
 
 The Launcher is a software (file) named `fiskaltrust.exe`, which is used only for the on-premise installed products (e.g. AT products fiskaltrust.SignatureCard or fiskaltrust.SignatureBox). For Windows, it is a .NET command-line application and a .NET Windows service. For Linux and Mac, the launcher can be executed via Mono, version 3.2.8 or higher, or used as daemon.
@@ -47,16 +49,31 @@ The main tasks of the launcher are:
   - execution of configured packages
   - load balancing of multiple queues
 
-The executable file `fiskaltrust.exe` and the corresponding DLLs can be distributed via copy-paste and then configured and installed with the help of a command-line parameter. It can be downloaded (incl. configuration) from the Portal’s configuration-\>cashbox page, or found on nuget.org and configured manually.
+The executable file `fiskaltrust.exe` and the corresponding DLLs can be distributed via copy-paste and then configured and installed with the help of a command-line parameter. It can be downloaded (incl. configuration) from the Portal’s configuration->cashbox page, or found on nuget.org and configured manually.
 
 #### IPOS Interface
 
-The cash register communicates with the queue via the IPOS interface. The IPOS interface is identical for all supported countries (cross national) and can be accessed via REST, gRPC, WCF, TCP stream and serial stream. There are three interface methods offered: *echo* (check availability), *sign* (sign receipt data, send special receipts) and *journal* (export data).
+The cash register communicates with the queue via the IPOS interface. The IPOS interface is identical for all supported countries (cross national). There are three interface methods offered: 
+
+- *echo* (check availability), 
+- *sign* (sign receipt data, send special receipts) and 
+- *journal* (export data).
+
+The options to establish the communication with the IPOS interface are dependent on the market as following:
+
+| Communication Option | AT            | DE                                   | FR            |
+| -------------------- | ------------- | ------------------------------------ | ------------- |
+| **gRPC**             | not supported | **supported**                        | not supported |
+| **REST**             | **supported** | **supported**                        | **supported** |
+| **Serial Stream**    | **supported** | not supported                        | not supported |
+| **TCP Stream**       | **supported** | generally supported, but not offered | **supported** |
+| **WCF/SOAP**         | **supported** | **supported**                        | **supported** |
+
 More detailed information you can find in the [communication chapter](../communication/communication.md).
 
 #### Queue
 
-The queue serves to encapsulate the functionality of a receipt chain for various platforms and localisations. In accordance with the interface description, the queues can be addressed individually or via a load balanced channel of the launcher.
+A Queue is a part of communication line between the POS-System and the fiskaltrust.Middleware. The queue serves to encapsulate the functionality of a receipt chain for various platforms and localisations. All regular receipts created by the POS-System are sent to the fiskaltrust.Middleware to get secured and stored in the Queue, and the response of the fiskaltrust.SecurityMechanism is sent back. All special receipts (for example the periodical closings) are sent as "requests to execute a special function" to the fiskaltrust.Middleware and get answered by it.  In accordance with the interface description, the queues can be addressed individually or via a load balanced channel of the launcher.   At least one Queue must be created for each POS-System.
 
 #### SCU
 
@@ -87,10 +104,13 @@ For the operation of the installed components of the fiskaltrust.Middleware foll
 
 #### Supported software platforms
 
-For supported platforms, please refer to the appendices of the applicable markets:
+For detailed information on supported platforms and its restrictions, please refer to the linked appendices of the applicable markets in the table below:
 
-- Supported platforms in Austria
-- Supported platforms in Germany
+| platform        | AT            | DE                                                           | FR            |
+| --------------- | ------------- | ------------------------------------------------------------ | ------------- |
+| **Android**     | not supported | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/android.md) | not supported |
+| **Linux/macOs** | **supported** | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/linux.md) | **supported** |
+| **Windows**     | **supported** | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/windows.md) | **supported** |
 
 ### Private cloud (operated by a third party) installed components
 

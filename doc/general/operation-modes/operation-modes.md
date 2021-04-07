@@ -7,7 +7,8 @@ title: Operation modes
 
 The fiskaltrust.Middleware can be operated in following operational environments:
 
-![operational-environments](images/operational-environments.png)
+![operational-environments](images/operational-environments.svg)
+([click to enlarge](images/operational-environments.svg))
 
 Identification of the operational environment from the perspective of a POS operator:
 
@@ -33,59 +34,60 @@ Regardless of the characteristics of the product, fiskaltrust.Middleware consist
 
 ### On-premise & off-premise installed components
 
-This solution requires [installation](../installation/operation-modes.md)  and configuration for the client. The platform support is dependent on the local market. The availability and use of the on-premise solution is dependent on local regulations and currently available for Austria and Germany.
+The on-premise solution of the fiskaltrust.Middleware requires [installation](../installation/operation-modes.md)  and configuration for the client. Below the most important components of the Middleware are illustrated:
 
-![middleware-en](images/middleware-en.png)
-
-#### Launcher
-
-The Launcher is a software (file) named `fiskaltrust.exe`, which is used only for the on-premise installed products (e.g. AT products fiskaltrust.SignatureCard or fiskaltrust.SignatureBox). For Windows, it is a .NET command-line application and a .NET Windows service. For Linux and Mac, the launcher can be executed via Mono, version 3.2.8 or higher, or used as daemon.
-
-The main tasks of the launcher are:
-
-  - providing basic configuration settings such as ftCashBoxId and access token
-  - comparing the configuration data retrieved from fiskaltrust.Helipad with the local configuration
-  - updating queue- and SCU packages accordingly to the configuration
-  - execution of configured packages
-  - load balancing of multiple queues
-
-The executable file `fiskaltrust.exe` and the corresponding DLLs can be distributed via copy-paste and then configured and installed with the help of a command-line parameter. It can be downloaded (incl. configuration) from the Portal’s configuration->cashbox page, or found on nuget.org and configured manually.
+![middleware-en](images/middleware-en.svg)
 
 #### IPOS Interface
 
-The cash register communicates with the queue via the IPOS interface. The IPOS interface is identical for all supported countries (cross national). There are three interface methods offered: 
+The IPOS interface is part of the queue, a component of the fiskaltrust.Middleware. It enables the communication between the cash register and the fiskaltrust.Middleware and is identical for all supported countries (cross national).
+
+The iPOS Interface offers three interface methods:
 
 - *echo* (check availability), 
 - *sign* (sign receipt data, send special receipts) and 
 - *journal* (export data).
 
-The options to establish the communication with the IPOS interface are dependent on the market as following:
+To establish a communication with the IPOS interface, following communication services are recommended based on the POS systems prerequisites:
 
-| Communication Option | AT            | DE                                   | FR            |
-| -------------------- | ------------- | ------------------------------------ | ------------- |
-| **gRPC**             | not supported | **supported**                        | not supported |
-| **REST**             | **supported** | **supported**                        | **supported** |
-| **Serial Stream**    | **supported** | not supported                        | not supported |
-| **TCP Stream**       | **supported** | generally supported, but not offered | **supported** |
-| **WCF/SOAP**         | **supported** | **supported**                        | **supported** |
+| POS system technology stack | gRPC            | REST                       | WCF  |
+| --------------------------- | --------------- | -------------------------- | ---- |
+| **.NET client**             | **recommended** | alternative recommendation |      |
+| **Java client**             | **recommended** |                            |      |
+| **Web App**                 |                 | **recommended**            |      |
 
-More detailed information you can find in the [communication chapter](../communication/communication.md).
+The availability of supported communication services is dependent on the market as shown in the following table:
+
+| Communication service | AT            | DE            | FR            |
+| --------------------- | ------------- | ------------- | ------------- |
+| **gRPC**              | not supported | **supported** | not supported |
+| **REST**              | **supported** | **supported** | **supported** |
+| **WCF**               | **supported** | **supported** | **supported** |
+
+More detailed information, including the data flow, you can find in the [communication chapter](../communication/communication.md).
 
 #### Queue
 
-A Queue is a part of communication line between the POS-System and the fiskaltrust.Middleware. The queue serves to encapsulate the functionality of a receipt chain for various platforms and localisations. All regular receipts created by the POS-System are sent to the fiskaltrust.Middleware to get secured and stored in the Queue, and the response of the fiskaltrust.SecurityMechanism is sent back. All special receipts (for example the periodical closings) are sent as "requests to execute a special function" to the fiskaltrust.Middleware and get answered by it.  In accordance with the interface description, the queues can be addressed individually or via a load balanced channel of the launcher.   At least one Queue must be created for each POS-System.
+In addition to enable the communication with the cash register via IPOS Interface, the queue also serves to encapsulate the functionality of a receipt chain: All regular receipts created by the POS-System and sent to the fiskaltrust.Middleware are processed in the ft.SecurityMechanism. This mechanism takes care of the creation of the unique, consecutive receipt number, the chaining and the persistence of the data.  After getting secured and stored in the queue, the response of the fiskaltrust.SecurityMechanism is sent back to the POS system. All special receipts (for example the periodical closings) are sent as "requests to execute a special function" to the fiskaltrust.Middleware and get answered by it. 
 
 #### SCU
 
-The SCU (Signature Creation Unit) serves to encapsulate the communication with a signature creation device. The respective signature creation device can be accessed via different channels: directly, locally, or via network. This service is provided in following markets:
+The SCU handles the country-specific implementation of the security solution and is responsible for the signatures. For specific information regarding supported Signature Creation Devices and platforms, please refer to the appropriate appendices:
 
-Austria
+- Austria
 
-Germany
+- [Germany]( (../../appendix-de-kassensichv/operation-modes/on-premise-installation.md) )
+- France
 
 #### SCD
 
 The SCD (Signature Creation Device) is not part of the fiskaltrust.Middleware. Signature Creation Devices are providing additional security and functionalities based on local market regulation, delivered by third party vendors (e.g. a software based cloud solution, a hardware device, or a certificate), supported by fiskaltrust via the SCU. The choice of the SCD has impacts on the fiskaltrust.Middleware configuration, therefore available SCDs, its configuration, functionalities and limitations regarding the fiskaltrust.Middleware are documented in the appropriate appendices of the markets.
+
+The signature creation device can be accessed via different channels: 
+
+- *directly* (e.g. with a attached hardware), 
+- *locally* (e.g. via local network), or via 
+- *network* (e.g. external network, internet). 
 
 #### Helipad Helper
 
@@ -106,11 +108,27 @@ For the operation of the installed components of the fiskaltrust.Middleware foll
 
 For detailed information on supported platforms and its restrictions, please refer to the linked appendices of the applicable markets in the table below:
 
-| platform        | AT            | DE                                                           | FR            |
+| Platform        | AT            | DE                                                           | FR            |
 | --------------- | ------------- | ------------------------------------------------------------ | ------------- |
 | **Android**     | not supported | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/android.md) | not supported |
 | **Linux/macOs** | **supported** | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/linux.md) | **supported** |
 | **Windows**     | **supported** | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/windows.md) | **supported** |
+
+#### Launcher
+
+The Launcher is a software (file) named `fiskaltrust.exe`, which is used only for the on-premise installed products (e.g. AT products fiskaltrust.SignatureCard or fiskaltrust.SignatureBox). For Windows, it is a .NET command-line application and a .NET Windows service. For Linux and Mac, the launcher can be executed via Mono, version 3.2.8 or higher, or used as daemon.
+
+The main tasks of the launcher are:
+
+  - providing basic configuration settings such as ftCashBoxId and access token
+  - comparing the configuration data retrieved from fiskaltrust.Helipad with the local configuration
+  - updating queue- and SCU packages accordingly to the configuration
+  - execution of configured packages
+  - load balancing of multiple queues
+
+The executable file `fiskaltrust.exe` and the corresponding DLLs can be distributed via copy-paste and then configured and installed with the help of a command-line parameter. It can be downloaded (incl. configuration) from the Portal’s configuration->cashbox page, or found on nuget.org and configured manually.
+
+Call parameter of the launcher are documented in the chapter [installation](../installation/installation.md).
 
 ### Private cloud (operated by a third party) installed components
 
@@ -122,42 +140,4 @@ The components for the SaaS solution are the same as for the local solution; exc
 
 No installation or configuration is required for the client and any platform can use this service. This service is currently available in Austria and France.
 
-### Configuration of the fiskaltrust.Middleware
-
-#### Online Portal
-
-All configuration settings, as well as the relevant extensions, are managed via the online fiskaltrust.Portal. For further information, refer to the appropriate appendix.
-
-#### Queue
-
-A Queue is a part of communication line between the POS-System and the fiskaltrust.Middleware. All regular receipts created by the POS-System are sent to the fiskaltrust.Middleware to get secured and stored in the Queue, and the response of the fiskaltrust.SecurityMechanism is sent back. All special receipts (for example the periodical closings) are sent as "requests to execute a special function" to the fiskaltrust.Middleware and get answered by it. At least one Queue must be created for each POS-System.
-
-#### Journal
-
-A journal is an export of internal structured data of the receipts from the Queue(s). There are three types of journals: a protocol journal saving all requests, a journal which records all events happening in the queue (starts, stops, failures), and localized journals depeding on the national laws. For more details please refer to the appropriate appendix. The format of a common journal export is JSON.
-
-#### Notifications
-
-The information for notifications is extracted from the processing protocol and stored internally in the action journal. Helipad retrieves this information and processes it in accordance with country specific law. Special events have a localized reporting requirement. In online mode, notifications can be uploaded, automated and transported further at fiskaltrust.SecurityMechanism. If in offline mode, notifications are transported via zero receipts within the signature block.
-
-#### Configuration Scenarios
-
-The POS System connects to the fiskaltrust.Middleware to process the receipt chaining calculation. A Cash register means an individual fiskaltrust.SecurityMechanism - in the fiskaltrust.Portal it is called "CashBox" and represents the real CashRegister and its configuration with the SecurityMechanism. The cash register is identified via the ftCashBoxId. This is unique worldwide and also the first part of the authentication on the fiskaltrust.Helipad. The second part is an authentication token.
-
-#### Single Queue scenario
-
-The most common scenario uses a connection to a single fiskaltrust.Queue, which takes care of performing all the requested operations in accordance to the national law and requlations.
-
-![](./images/01-individual-queue.png)
-
-<span id="_Toc527986809" class="anchor"></span>*Illustration* *8. Use of an individual queue.*
-
-#### Scenario with several queues for performance improvement
-
-The POS System can require special operating conditions, e.g. a when a big flow of receipts is requested, the fiskaltrust.Middleware will ensure a high level of reliability by using multiple parallel Queues.
-
-In this scenario, the fiskaltrust.Middleware hosts several Queues to optimize the performance of the service by distributing the workload evenly between the Queues. Each individual queue is reachable by the fiskaltrust.IPOS. This direct connection can be necessary in case of receipts with special functions and also in in case of special chunked Journals (Journals for specific range). The queues can be operated in a load balancing mode or in a backup mode via the balancer interface.
-
-![](./images/02-service-performance-optimization.png)
-
-<span id="_Toc527986810" class="anchor"></span>*Illustration 9. fiskaltrust.Middleware in a configuration for performance optimization*
+#### 

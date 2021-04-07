@@ -1,57 +1,43 @@
 # fiskaltrust.Middleware - on-premise installation
 
-Die lokal installierte fiskaltrust.Middleware bietet die Einbindung von TSE aller Hersteller an die Registrierkasse, sowie eine vereinfachte Umsetzung der Anforderungen der Digitalen Schnittstelle der Finanzverwaltung für Kassensysteme.
+The illustration belows shows the components available for the on-premise installation of the fiskaltrust.Middleware for the German market. For the operation modes available and the description of the components please refer to the [general part](../../general/operation-modes/operation-modes.md) .
 
-![middleware-en](images/middleware-en-market-de.png)
+![middleware-en](images/middleware-en-market-de.svg)
 
-Die fiskaltrust.Middleware besteht aus 
-
-- einer Launcher App zum Installieren der Middleware lokal auf dem Kassenrechner
-- einem Middleware Dienstprogramm (Service/Daemon; läuft dauerhaft auf dem Kassenrechner)
-
-## Hardware Voraussetzungen
-
-| Hardware                          | Mindestanforderung                                           |
-| --------------------------------- | ------------------------------------------------------------ |
-| Allgemeine Hardware Anforderungen | Die Middleware kann grundsätzlich auf einem [Rasperry PI 2](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/) betrieben werden. |
-| lokaler Speicher                  | ca. 500 MB (200 MB für die Middleware + 200 MB reserviert für update-packages); optional: Speicher für SQLite DB (ca. 8-10Kb/Beleg) |
-| Hardware Anschlüsse für TSE       | USB, SD, Micro-SD oder COM Port bei lokal angeschlossener TSE |
-| Internet Connektivität            | optional: (WIFI)Modem für Internet Anschluß zur Nutzung von Cloud TSE, data as a service-, backup,- oder Konfigurations-/update Services. |
-
-## Unterstützte Plattformen & TSEs
-
-|                                                              | Windows                                 | Linux, macOS                                  | Android |
-| ------------------------------------------------------------ | --------------------------------------- | --------------------------------------------- | ------- |
-| [A-Trust Cloud TSE](../features/basics/tse-as-a-service/a-trust.md) | ja                                      |                                               |         |
-| [Cryptovision Hardware-TSE](../features/basics/tse-as-a-service/cryptovision.md) | ja                                      | ja                                            |         |
-| [Deutsche Fiskal Cloud-TSE](../features/basics/tse-as-a-service/deutsche-fiskal.md) | derzeit nur für Windows 10 zertifiziert | derzeit nur für Ubuntu LTS 20.04 zertifiziert |         |
-| [Diebold-Nixdorf Hardware-TSE](../features/basics/tse-as-a-service/diebold-nixdorf.md) | ja                                      | ja                                            |         |
-| [Epson Hardware-TSE](../features/basics/tse-as-a-service/epson.md) | ja                                      | ja                                            |         |
-| [fiskaly Cloud-TSE](../features/basics/tse-as-a-service/epson.md) | ja                                      | ja                                            | ja      |
-| [Swissbit Hardware-TSE](../features/basics/tse-as-a-service/swissbit.md) | ja                                      | ja                                            | ja      |
-| [Swissbit Cloud-TSE](../features/basics/tse-as-a-service/swissbit-cloud.md) | derzeit nur für Windows 10 zertifiziert | derzeit nur für Ubuntu LTS 20.04 zertifiziert |         |
-
-### Systemvoraussetzungen
+### Supported software platforms
 
 - [Windows](../features/supported-platforms/windows.md)
 - [Linux, macOs](../features/supported-platforms/linux.md)
 - [Android](../features/supported-platforms/android.md)
 
-## Features
+## Communication services
 
-### Schnittstellentechnologien
+For the German market, following communication services are available dependent on the platform:
 
-freie Auswahl folgender konfigurierbarer Schnittstellentechnologien:
+|      | Windows       | Linux, macOS  | Android       |
+| ---- | ------------- | ------------- | ------------- |
+| WCF  | **supported** | not supported | not supported |
+| gRPC | **supported** | **supported** | **supported** |
+| REST | **supported** | **supported** | **supported** |
 
-|      | Windows | Linux, macOS | Android |
-| ---- | ------- | ------------ | ------- |
-| WCF  | ja      |              |         |
-| gRPC | ja      | ja           | ja      |
-| REST | ja      | ja           | ja      |
+## TSE support
 
-### Schnittstellendokumentation
+|                                                              | Windows                                | Linux, macOS                               | Android                                |
+| ------------------------------------------------------------ | -------------------------------------- | ------------------------------------------ | -------------------------------------- |
+| [A-Trust Cloud TSE](../features/basics/tse-as-a-service/a-trust.md) | not supported<br />available soon      | not supported                              | not supported                          |
+| [Cryptovision Hardware-TSE](../features/basics/tse-as-a-service/cryptovision.md) | **supported**                          | **supported**                              | not supported                          |
+| [Deutsche Fiskal Cloud-TSE](../features/basics/tse-as-a-service/deutsche-fiskal.md) | **supported**<br />*Windows 10 only*   | **supported**<br />*Ubuntu LTS 20.04 only* | not supported                          |
+| [Diebold-Nixdorf Hardware-TSE](../features/basics/tse-as-a-service/diebold-nixdorf.md) | **supported**                          | **supported**                              | not supported                          |
+| [Epson Hardware-TSE](../features/basics/tse-as-a-service/epson.md) | **supported**                          | **supported**                              | not supported                          |
+| [fiskaly Cloud-TSE](../features/basics/tse-as-a-service/epson.md) | **supported**<br />*with restrictions* | **supported**<br />*with restrictions*     | **supported**<br />*with restrictions* |
+| [Swissbit Hardware-TSE](../features/basics/tse-as-a-service/swissbit.md) | **supported**                          | **supported**                              | **supported**                          |
+| [Swissbit Cloud-TSE](../features/basics/tse-as-a-service/swissbit-cloud.md) | **supported**<br />Windows 10 only     | **supported**<br />*Ubuntu LTS 20.04 only* |                                        |
 
-https://github.com/fiskaltrust/interface-doc/blob/master/doc/general/communication/communication.md
+## Hardware requirements
+
+For hardware requirements, please refer to the [general part](../../general/operation-modes/operation-modes.md).
+
+- 
 
 ### Datenspeicher
 
@@ -68,8 +54,3 @@ Folgende Optionen sind über die Konfiguration der Queue einstellbar:
 -  [TAR-File-Export](../features/upload-and-export/tar-unload-and-export.md) 
 -  [DSFinV-K-Export](../features/upload-and-export/dsfinvk-export.md) 
 -  [DFKA-Taxonomie-Export](../features/upload-and-export/dfka-taxonomie-export.md) 
-
-### Abstraktion
-
-- [SCU-Abstraktion](../features/basics/scu-abstraction.md)  
-- [Queue-Abstraktion](../features/basics/queue-abstraction.md) 

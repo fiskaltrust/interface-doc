@@ -26,7 +26,7 @@ Bitte achten Sie auf die case-sensitive Verwendung der Parameter.
 
 ## Konfiguration
 
-![scu-de-epson-config](../../../media/scu-de-epson-config.png)
+![scu-de-epson-config](../images/scu-de-epson-config.png)
 
 - **Host:** DNS oder IP Addresse des Epson Servers, Epson Printers oder lokalen Webservices
 - **Port:** Port des Epson Servers, Printers oder lokjalen Webservices, üblicherweise 8009

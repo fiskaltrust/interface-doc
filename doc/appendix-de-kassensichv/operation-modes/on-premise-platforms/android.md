@@ -20,7 +20,7 @@ The launcher of the fiskaltrust.Middleware for Android can be used with followin
 
 Aufgrund der Sicherheitseinschränkungen von Android können die benötigten Packages nicht beim Start des Dienstes geladen bzw. aktualisiert werden. Daher steht die Middleware für Android mit folgenden vorkonfigurierten Packages zum Download zur Verfügung:
 
-- SQLite Queue
+- SQLite queue
 - Fiskaly SCU
 - Swissbit SCU (z.B. via SD-Karten)
 
@@ -42,7 +42,7 @@ Der Android Launcher wird jeweils für die HTTP-Variante als auch für die gRPC 
 
 |                         | fiskaltrust.Middleware für Android (HTTP)                    | fiskaltrust.Middleware für Android (gRPC)                    |
 | ----------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| **QR Code zum Scannen** | ![http](../../media/android-http.png) | ![grpc](../../media/android-grpc.png) |
+| **QR Code zum Scannen** | ![http](../images/android-http.png)                          | ![grpc](../images/android-grpc.png)                          |
 | **URL**                 | https://play.google.com/store/apps/details?id=eu.fiskaltrust.androidlauncher.http | https://play.google.com/store/apps/details?id=eu.fiskaltrust.androidlauncher.grpc |
 
 

@@ -1,10 +1,15 @@
-# fiskaltrust.Middleware - on-premise installation
+---
+slug: /poscreators/middleware-doc/germany/operation-mode/on-premise-installation
+title: On-premise installation
+---
 
-The illustration belows shows the components available for the on-premise installation of the fiskaltrust.Middleware for the German market. For the operation modes available and the description of the components please refer to the [general part](../../general/operation-modes/operation-modes.md) .
+# On-premise installation
+
+The illustration below shows the components available for the on-premise installation of the fiskaltrust.Middleware for the German market. For the operation modes available and the description of the components please refer to the [general part](../../general/operation-modes/operation-modes.md) .
 
 ![middleware-en](images/middleware-en-market-de.svg)
 
-### Supported software platforms
+## Supported software platforms
 
 - [Windows](../features/supported-platforms/windows.md)
 - [Linux, macOs](../features/supported-platforms/linux.md)
@@ -14,13 +19,13 @@ The illustration belows shows the components available for the on-premise instal
 
 For the German market, following communication services are available dependent on the platform:
 
-|      | Windows       | Linux, macOS  | Android       |
-| ---- | ------------- | ------------- | ------------- |
-| WCF  | **supported** | not supported | not supported |
-| gRPC | **supported** | **supported** | **supported** |
-| REST | **supported** | **supported** | **supported** |
+|          | Windows       | Linux, macOS  | Android       |
+| -------- | ------------- | ------------- | ------------- |
+| **gRPC** | **supported** | **supported** | **supported** |
+| **REST** | **supported** | **supported** | **supported** |
+| **WCF**  | **supported** | not supported | not supported |
 
-## TSE support
+## SCD/TSE support
 
 |                                                              | Windows                                | Linux, macOS                               | Android                                |
 | ------------------------------------------------------------ | -------------------------------------- | ------------------------------------------ | -------------------------------------- |
@@ -30,27 +35,30 @@ For the German market, following communication services are available dependent 
 | [Diebold-Nixdorf Hardware-TSE](../features/basics/tse-as-a-service/diebold-nixdorf.md) | **supported**                          | **supported**                              | not supported                          |
 | [Epson Hardware-TSE](../features/basics/tse-as-a-service/epson.md) | **supported**                          | **supported**                              | not supported                          |
 | [fiskaly Cloud-TSE](../features/basics/tse-as-a-service/epson.md) | **supported**<br />*with restrictions* | **supported**<br />*with restrictions*     | **supported**<br />*with restrictions* |
-| [Swissbit Hardware-TSE](../features/basics/tse-as-a-service/swissbit.md) | **supported**                          | **supported**                              | **supported**                          |
 | [Swissbit Cloud-TSE](../features/basics/tse-as-a-service/swissbit-cloud.md) | **supported**<br />Windows 10 only     | **supported**<br />*Ubuntu LTS 20.04 only* |                                        |
+| [Swissbit Hardware-TSE](../features/basics/tse-as-a-service/swissbit.md) | **supported**                          | **supported**                              | **supported**                          |
 
 ## Hardware requirements
 
 For hardware requirements, please refer to the [general part](../../general/operation-modes/operation-modes.md).
 
-- 
+## Local data storage platform support
 
-### Datenspeicher
+Following local data storage options can be configured in the queue:
 
-Folgende Optionen sind über die Konfiguration der Queue einstellbar:
+|                                                              | Windows       | Linux, macOS  | Android       |
+| ------------------------------------------------------------ | ------------- | ------------- | ------------- |
+| **[EF-storage](../features/supported-databases/entity-framework.md)** | **supported** | **supported** | not supported |
+| **In-memory storage**                                        |               |               |               |
+| **[MySQL-storage](../features/supported-databases/mysql.md)** | **supported** | **supported** | **supported** |
+| **[SQLite-storage](../features/supported-databases/sqlite.md)** | **supported** | **supported** | **supported** |
 
-|                                                              | Windows | Linux, macOS | Android |
-| ------------------------------------------------------------ | ------- | ------------ | ------- |
-| [SQLite-Storage](../features/supported-databases/sqlite.md)  | ja      | ja           | ja      |
-| [EF-Storage](../features/supported-databases/entity-framework.md) | ja      | ja           |         |
-| [MySQL-Storage](../features/supported-databases/mysql.md)    | ja      | ja           | ja      |
+## Local data export
 
-### Daten-Export
+-  TAR-File-Export 
+-  [DSFinV-K export](../procedural-documentation/dsfinv-k-generation.md) 
+-  DFKA-Taxonomie-Export 
 
--  [TAR-File-Export](../features/upload-and-export/tar-unload-and-export.md) 
--  [DSFinV-K-Export](../features/upload-and-export/dsfinvk-export.md) 
--  [DFKA-Taxonomie-Export](../features/upload-and-export/dfka-taxonomie-export.md) 
+## Installation
+
+For the on- and off-premise installation of the fiskaltrust.Middleware please refer to the [installation chapter in the general part](../../general/installation/installation.md).

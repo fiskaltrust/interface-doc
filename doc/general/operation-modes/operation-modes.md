@@ -72,7 +72,7 @@ In addition to enable the communication with the cash register via IPOS Interfac
 
 #### SCU
 
-The SCU handles the country-specific implementation of the security solution and is responsible for the signatures. For specific information regarding supported Signature Creation Devices and platforms, please refer to the appropriate appendices:
+The SCU (Signature Creation Unit) handles the country-specific implementation of the security solution and is responsible for the signatures. For specific information regarding supported Signature Creation Devices and platforms, please refer to the appropriate appendices:
 
 - Austria
 
@@ -83,7 +83,7 @@ The SCU handles the country-specific implementation of the security solution and
 
 The SCD (Signature Creation Device) is not part of the fiskaltrust.Middleware. Signature Creation Devices are providing additional security and functionalities based on local market regulation, delivered by third party vendors (e.g. a software based cloud solution, a hardware device, or a certificate), supported by fiskaltrust via the SCU. The choice of the SCD has impacts on the fiskaltrust.Middleware configuration, therefore available SCDs, its configuration, functionalities and limitations regarding the fiskaltrust.Middleware are documented in the appropriate appendices of the markets.
 
-The signature creation device can be accessed via different channels: 
+The signature creation device can be generally accessed via following channels: 
 
 - *directly* (e.g. with a attached hardware), 
 - *locally* (e.g. via local network), or via 
@@ -97,12 +97,12 @@ The Helipad Helper is used to support updates and configurations.
 
 For the operation of the installed components of the fiskaltrust.Middleware following minimum hardware requirements are recommended:
 
-| Hardware                      | Minimum requirements                                         |
-| ----------------------------- | ------------------------------------------------------------ |
-| general hardware requirements | The fiskaltrust.Middleware can be generally operated on a [Rasperry PI 2](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/). |
-| local storage                 | Around 500 MB (200 MB for the Middleware components + 200 MB reserved for update-packages); optional: storage for SQLite db (around 8-10Kb/receipt) |
-| Hardware connectivity         | For the German market: USB, SD, Micro-SD or COM port for a local hardware-based security device (Technische Sicherheitseinrichtung, TSE).<br />For the Austrian market: USB port |
-| Internet connectivity         | Optional, but strongly recommended: (WIFI)modem for Internet connectivity to use software-security-, data as a service-, backup,- or configuration-/update services. |
+| Hardware                          | Minimum requirements                                         |
+| --------------------------------- | ------------------------------------------------------------ |
+| **General hardware requirements** | The fiskaltrust.Middleware can be generally operated on a [Rasperry PI 2](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/). |
+| **Local storage**                 | Around 500 MB (200 MB for the Middleware components + 200 MB reserved for update-packages); optional: storage for SQLite db (around 8-10Kb/receipt) |
+| **Hardware connectivity**         | For the German market: USB, SD, Micro-SD or COM port for a local hardware-based security device (Technische Sicherheitseinrichtung, TSE).<br />For the Austrian market: USB port |
+| **Internet connectivity**         | Optional, but strongly recommended: (WIFI)modem for Internet connectivity to use software-security-, data as a service-, backup,- or configuration-/update services. |
 
 #### Supported software platforms
 
@@ -132,12 +132,10 @@ Call parameter of the launcher are documented in the chapter [installation](../i
 
 ### Private cloud (operated by a third party) installed components
 
-No installation or configuration is required for the client and any platform can use this service. The availability and use of SaaS installed components is dependent on local regulations and currently available for Austria and Germany. In Germany, because of different market regulation, the fiskaltrust.Middleware components must be hosted and operated by the POS creator in the same datatcenter where the receipt generation process of a distributed point of sale system occurs.
+No installation or configuration is required for the client and any platform can use this service. The availability and use of SaaS installed components is dependent on local regulations and currently available for Austria and Germany. In Germany, because of different market regulation, the fiskaltrust.Middleware components must be hosted and operated by the POS creator in the same datacenter where the receipt generation process of a distributed point of sale system occurs.
 
 The components for the SaaS solution are the same as for the local solution; except the launcher, which is not needed. In Germany, the fiskaltrust.Middleware components can be delivered by a predefined Kubernetes Namespace which can be deployed by a Helm-Chart. fiskaltrust provides a "Backend POD" Docker image and Helm-Charts to be deployed at the POS creators environment.
 
 ### Private cloud (operated by fiskaltrust) installed components
 
 No installation or configuration is required for the client and any platform can use this service. This service is currently available in Austria and France.
-
-#### 

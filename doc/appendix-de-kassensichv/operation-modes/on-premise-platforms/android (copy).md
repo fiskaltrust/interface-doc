@@ -5,16 +5,16 @@ title: Android
 
 # Android
 
-## Requirements
+## Systemanforderungen
 
-Android 7 and higer.
+Android 7 und höher
 
-## Supported packages
+## Unterstützte Packages
 
-The launcher of the fiskaltrust.Middleware for Android can be used with following cashbox configuration:
+Der Launcher der fiskaltrust.Middleware für Android unter folgenden Cashbox Konfiguration nutzbar:
 
  - SQLite Package
- - Fiskaly Cloud TSE oder Swissbit Hardware TSE
+ - Fiskaly Cloud TSE oder Swissbit TSE
 
 ## Unterschiede zu ft.Middleware für Desktop
 

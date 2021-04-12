@@ -3,22 +3,22 @@ slug: /product-description/germany/products-and-services/caas/features/basics/ts
 title: Cryptovision-TSE
 ---
 
-# Cryptovision/Bundesdruckerei-Interoperabilität
+# Cryptovision/Bundesdruckerei-TSE
 
 ## SCU
 
-Das _fiskaltrust.Middleware.SCU.DE.CryptoVision_-Package ermöglicht die Verbindung der Middleware mit einer CryptoVision-TSE über das von der TSE emulierte Dateisystem.
+The _fiskaltrust.Middleware.SCU.DE.CryptoVision_ package connects the middleware with a CryptoVision hardware-TSE via the file system emulated by the TSE.
 
-**Verfügbar ab Version**: 1.3.1
+**Available from version**: 1.3.1
 
-### Parameter
+### Parameters
 
-| Name | Beschreibung | Optional |
+| Name | Description | **Default Value**<br />**Mandatory Field** |
 | ---- | ------------ |--------- |
-| _devicePath_ | Pfad zum Laufwerk, unter dem die TSE erreichbar ist (z.B. `D:`), ohne abschließenden Slash | nein |
-| _adminPin_ | Admin-PIN der TSE. Falls nicht angegeben, wird der Default-PIN verwendet. | ja |
-| _timeAdminPin_ | Time Admin-PIN der TSE. Falls nicht angegeben, wird der Default-PIN verwendet. | ja |
-| _TseIOReadDelayMs_ | Die Zeit, die vor dem Lesen der Antworten von der TSE abgewartet wird (in Millisekunden). Der Default-Wert sollte ausschließlich bei Lesefehlern verändert werden, da dadurch die Verarbeitungszeit aller Operationen erhöht wird. | ja (Default: 10) |
+| _devicePath_ | Path to the drive under which the TSE can be reached (e.g. ` D: `), without a final slash | empty string<br />mandatory |
+| _adminPin_ | Admin PIN of the TSE. If not specified, the default PIN is used. | ?<br />optional |
+| _timeAdminPin_ | Time Admin PIN of the TSE. If not specified, the default PIN is used. | ?<br />optional |
+| _TseIOReadDelayMs_ | The time the TSE waits before reading the responses (in milliseconds). The default value should only be changed in the event of read errors, as this increases the processing time for all operations. | 10<br />optional |
 
 
 
@@ -26,20 +26,22 @@ Das _fiskaltrust.Middleware.SCU.DE.CryptoVision_-Package ermöglicht die Verbind
 
 ### Bundesdruckerei TSE, microSD, 8GB
 
-**Artikel Nummer:** 4445-20300
+**Product item number:** 4445-20300
 
-Technische Sicherungseinrichtung (TSE-Modul), Bauform: microSD-Karte, Sicherungseinheit: NXP SE050, SE Leistung (Signatur): 150 ms, Lebensdauer: 20 Mio. Signaturen, Speicherplatz: 8 GB, Zertifikatslaufzeit 5 Jahre
+Technische Sicherungseinrichtung (TSE-module), design: microSD-card, security unit: NXP SE050, security unit performance (signature): 150 ms, lifespan: 20 Mio. signatures, storage capacity: 8 GB, certificate validity: 5 years
 
-Sonderartikel: Storno und Rückgabe unabhängig von der Lieferzeit ausgeschlossen.
 
-### Zertifizierungs-ID
+Special items: Cancellation and return are excluded regardless of the delivery time.
 
-Zertifizierungs-ID der TSE gemäß Punkt 9.2.2 des [Anwendungserlasses zu § 146a AO](https://docs.fiskaltrust.cloud/doc/productdescription-de-doc/product-service-description/media/2019-06-17-einfuehrung-paragraf-146a-AO-anwendungserlass-zu-paragraf-146a-AO.pdf):
 
-| Zertifizierungs-ID | Prüfgegenstand | Antragsteller | Datum |
+### Certification-ID
+
+Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://docs.fiskaltrust.cloud/doc/productdescription-de-doc/product-service-description/media/2019-06-17-einfuehrung-paragraf-146a-AO-anwendungserlass-zu-paragraf-146a-AO.pdf):
+
+| Certification-ID | Test item | Applicant | Date |
 | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| [BSI-K-TR-0374-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0374-2020.html) | Bundesdruckerei D-TRUST TSEVersion 1.0                       | cv cryptovision GmbH                                         | 14.04.2020                                                   |
+| [BSI-K-TR-0374-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0374-2020.html) | Bundesdruckerei D-TRUST TSE Version 1.0                      | cv cryptovision GmbH                                         | 14.04.2020                                                   |
 
-### Preis & Vertrieb
+### Price & distribution
 
 [fiskaltrust.Portal](https://portal.fiskaltrust.de)

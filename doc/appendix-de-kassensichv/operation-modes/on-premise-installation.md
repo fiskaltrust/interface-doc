@@ -1,5 +1,5 @@
 ---
-slug: /poscreators/middleware-doc/germany/operation-mode/on-premise-installation
+slug: /poscreators/middleware-doc/germany/operation-modes/on-premise-installation
 title: On-premise installation
 ---
 

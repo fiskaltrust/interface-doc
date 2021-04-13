@@ -25,18 +25,18 @@ For the German market, following communication services are available dependent 
 | **REST** | **supported** | **supported** | **supported** |
 | **WCF**  | **supported** | not supported | not supported |
 
-## SCD/TSE platform support matrix
+## SCD/TSE support matrix
 
-|                                                              | Windows                                | Linux, macOS                                                 | Android                              |
-| ------------------------------------------------------------ | -------------------------------------- | ------------------------------------------------------------ | ------------------------------------ |
-| [A-Trust Cloud TSE](../features/basics/tse-as-a-service/a-trust.md) | not supported<br />*available soon*    | not supported                                                | not supported                        |
-| [Cryptovision Hardware-TSE](../features/basics/tse-as-a-service/cryptovision.md) | **supported**                          | **supported**                                                | not supported                        |
-| [Deutsche Fiskal Cloud-TSE](../features/basics/tse-as-a-service/deutsche-fiskal.md) | **supported**<br />*with restrictions* | **supported**<br />*with restrictions, Ubuntu LTS 20.04 only* | not supported                        |
-| [Diebold-Nixdorf Hardware-TSE](../features/basics/tse-as-a-service/diebold-nixdorf.md) | **supported**                          | **supported**                                                | not supported                        |
-| [Epson Hardware-TSE](../features/basics/tse-as-a-service/epson.md) | **supported**                          | **supported**                                                | not supported                        |
-| [fiskaly Cloud-TSE](../features/basics/tse-as-a-service/epson.md) | **supported**<br />*with restrictions* | **supported**<br />*with restrictions*                       | **supported**<br />with restrictions |
-| [Swissbit Cloud-TSE](../features/basics/tse-as-a-service/swissbit-cloud.md) | **supported**<br />*with restrictions* | **supported**<br />*with restrictions, Ubuntu LTS 20.04 only* |                                      |
-| [Swissbit Hardware-TSE](../features/basics/tse-as-a-service/swissbit.md) | **supported**                          | **supported**                                                | **supported**                        |
+|                                                              | Type | State of certification | Environmental protection    | Max. nr. of registered clients (queues) | Windows                                | Linux, macOS                                                 | Android                                |
+| ------------------------------------------------------------ | ---------------------- | --------------------------- | --------------------------- | -------------------------------------- | ------------------------------------------------------------ | -------------------------------------- | -------------------------------------- |
+| [A-Trust Cloud TSE](../features/basics/tse-as-a-service/a-trust.md) | Software | in certification       |                             |                             | not supported<br />*available soon*    | not supported                                                | not supported                          |
+| [Cryptovision Hardware-TSE](../features/basics/tse-as-a-service/cryptovision.md) | Hardware<br />microSD | **certified**          | **not needed**              | 128        | **supported**                          | **supported**                                                | not supported                          |
+| [Deutsche Fiskal Cloud-TSE](../features/basics/tse-as-a-service/deutsche-fiskal.md) | Software  | **certified**          | required<br />*currently exposed* | 1                 | **supported**                          | **supported**<br />*Ubuntu LTS 20.04 only*                   | not supported                          |
+| [Diebold-Nixdorf Hardware-TSE](../features/basics/tse-as-a-service/diebold-nixdorf.md) | Hardware<br />USB Type A | **certified**          | **not needed**              |                                         | **supported**                          | **supported**                                                | not supported                          |
+| [Epson Hardware-TSE](../features/basics/tse-as-a-service/epson.md) | Hardware<br />USB Type A, microSD | **certified** | **not needed**              |                                         | **supported**                          | **supported**                                                | not supported                          |
+| [fiskaly Cloud-TSE](../features/basics/tse-as-a-service/epson.md) | Software | in certification       |                             | 25        | **supported**                    | **supported**                                          | **supported** |
+| [Swissbit Cloud-TSE](../features/basics/tse-as-a-service/swissbit-cloud.md) | Software | **certified** | required<br />*currently exposed* | 1 | **supported** | **supported**<br />*Ubuntu LTS 20.04 only* | not supported |
+| [Swissbit Hardware-TSE](../features/basics/tse-as-a-service/swissbit.md) | Hardware<br />USB Type A, SD, microSD | **certified** | **not needed** |                                         | **supported**                          | **supported**                                                | **supported**                          |
 
 ## Hardware requirements
 

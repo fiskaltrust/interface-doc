@@ -1,15 +1,23 @@
 ---
-slug: /product-description/germany/products-and-services/caas/features/basics/tse/fiskaly
+slug: /poscreators/middleware-doc/germany/scd/fiskaly-cloud
 title: fiskaly-TSE
 ---
 
-# fiskaly-Interoperabilität (In Zertifizierung)
+# fiskaly Cloud-TSE (In certification)
 
 ## SCU
 
-Das _fiskaltrust.Middleware.SCU.DE.Fiskaly_-Package ermöglicht die Verbindung der Middleware mit einer fiskaly Cloud-TSE. Die fiskaly-TSE befindet sich derzeit in Zertifizierung.
+The _fiskaltrust.Middleware.SCU.DE.Fiskaly_-package connects the middleware to a fiskaly Cloud-TSE. 
 
-**Preview verfügbar ab Version**: 1.3.1
+### Restrictions
+
+### State of certification and environmental protection
+
+The fiskaly Cloud-TSE is currently in certification, and switching to the certified state will require an update of the SCU. 
+
+"BSI-K-TR-0403 [TSE in Evaluierung]" ("TSE in evaluation") is returned for 'ftSignatureType' `0x4445000000000022` (certification identification). 
+
+**Available from version**: 1.3.16
 
 ## Parameter
 

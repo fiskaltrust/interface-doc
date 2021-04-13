@@ -11,9 +11,11 @@ The _fiskaltrust.Middleware.SCU.DE.DeutscheFiskal_-package connects the middlewa
 
 ### Restrictions
 
-#### Requirements on environmental protection
+#### State of certification and environmental protection
 
 Please note that this TSE places strict requirements on environmental protection (i.e. the operating system used and its configuration). You can find more detailed information in the official documents of the manufacturer in the [download area of the fiskaltrust portal](https://portal.fiskaltrust.de/AccountProfile/Download).
+
+"BSI-K-TR-0456-2021 [USK ausgesetzt]" ("Environmental protection exposed") is returned for 'ftSignatureType' `0x4445000000000022` (certification identification). 
 
 #### Client registration
 

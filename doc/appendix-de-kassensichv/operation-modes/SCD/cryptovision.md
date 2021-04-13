@@ -1,5 +1,5 @@
 ---
-slug: /product-description/germany/products-and-services/caas/features/basics/tse/cryptovision
+slug: /poscreators/middleware-doc/germany/scd/cryptovision
 title: Cryptovision-TSE
 ---
 
@@ -16,8 +16,8 @@ The _fiskaltrust.Middleware.SCU.DE.CryptoVision_ package connects the middleware
 | Name | Description | **Default Value**<br />**Mandatory Field** |
 | ---- | ------------ |--------- |
 | _devicePath_ | Path to the drive under which the TSE can be reached (e.g. ` D: `), without a final slash | empty string<br />mandatory |
-| _adminPin_ | Admin PIN of the TSE. If not specified, the default PIN is used. | ?<br />optional |
-| _timeAdminPin_ | Time Admin PIN of the TSE. If not specified, the default PIN is used. | ?<br />optional |
+| _adminPin_ | Admin PIN of the TSE. If not specified, the default PIN is used. | to be documented<br />optional |
+| _timeAdminPin_ | Time Admin PIN of the TSE. If not specified, the default PIN is used. | to be documented<br />optional |
 | _TseIOReadDelayMs_ | The time the TSE waits before reading the responses (in milliseconds). The default value should only be changed in the event of read errors, as this increases the processing time for all operations. | 10<br />optional |
 
 

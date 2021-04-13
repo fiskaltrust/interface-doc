@@ -1,56 +1,56 @@
 ---
-slug: /product-description/germany/products-and-services/caas/features/basics/tse/swissbit-cloud
+slug: /poscreators/middleware-doc/germany/scd/swissbit-cloud
 title: Swissbit Cloud-TSE
 ---
 
-# Swissbit Cloud-Interoperabilität
+# Swissbit Cloud-TSE
 
 ## SCU
 
-Das _fiskaltrust.Middleware.SCU.DE.SwissbitCloud_-Package ermöglicht die Verbindung der Middleware mit einer Swissbit Cloud-TSE über den von Swissbit zur Verfügung gestellten _Fiskal Cloud Connector_-Service. Dieser kann entweder beim ersten Start des SCU-Packages automatisch installiert werden, oder es kann eine bereits installierte Version des FCC genutzt werden (s. _Parameter_).
+The _fiskaltrust.Middleware.SCU.DE.SwissbitCloud_-package connects the middleware to a Swissbit Cloud-TSE via the _Fiskal Cloud Connector_ ("FCC") service provided by Swissbit. The FCC can be installed automatically when the SCU package is started for the first time, or an already installed version of the FCC can be used (see *Parameter*).
 
-Bitte beachten Sie, dass diese TSE strikte Anforderungen an den Umgebungsschutz stellt (d.h. das verwendete Betriebssystem und dessen Konfiguration). Genauere Informationen finden Sie in den offiziellen Dokumenten des Herstellers im [Download-Bereich des Portals](https://portal.fiskaltrust.de/AccountProfile/Download).
+### Restrictions
 
-**Aufgrund aktueller technischer Limitierungen ist die Swissbit Cloud-SCU derzeit auf eine einzelne Client-Registrierung beschränkt.** Dadurch werden die möglichen [Rollout-Szenarien](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware#rollout-scenarios) auf jene Fälle beschränkt, in denen pro SCU nur eine Queue betrieben wird. 
+#### Requirements on environmental protection
 
-**Verfügbar ab Version**: 1.3.11
+Please note that this TSE places strict requirements on environmental protection (i.e. the operating system used and its configuration). You can find more detailed information in the official documents of the manufacturer in the [download area of the fiskaltrust portal](https://portal.fiskaltrust.de/AccountProfile/Download).
+
+#### Client registration
+
+The Swissbit Cloud-SCU is currently limited to a single client registration. Possible [rollout scenarios](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc / middleware # rollout-scenarios) are limited to those cases in which exact one queue is operated per SCU.
+
+**Available from version**: 1.3.11
 
 ## Parameter
 
-| Name | Beschreibung | Optional |
-| ---- | ------------ |--------- |
-| _FccId_ | Die ID des Fiskal Cloud Connector, wie im FCC-Portal angegeben. Wird bei der Produktion über das fiskaltrust-Portal automatisch befüllt. | nein |
-| _FccSecret_ | Das Secret bzw. Passwort des Fiskal Cloud Connector, wie im FCC-Portal angegeben. Wird bei der Produktion über das fiskaltrust-Portal automatisch befüllt. | nein |
-| _ErsCode_ | Der PIN code, der benutzt wird um das Kassensystem beim FCC zu authentifizieren, wie im FCC-Portal angegeben. Wird bei der Produktion über das fiskaltrust-Portal automatisch befüllt. | nein |
-| _ActivationToken_ | Das Token, das von der Middleware benutzt wird um Clients im FCC zu registrieren, wie im FCC-Portal angegeben. Wird bei der Produktion über das fiskaltrust-Portal automatisch befüllt. | nein |
-| _FccPort_ | Der Port, über den die Middleware mit dem FCC kommuniziert. | ja (Default: 20001) |
-| _FccDirectory_ | Das Verzeichnis, in dem der Fiskal Cloud Connector abgelegt wird. Falls angegeben, wird zuerst geprüft ob der FCC bereits in diesem Verzeichnis installiert ist, und eine bereits vorhandene Version verwendet. Falls am angegebenen Ort keine FCC-Installation vorhanden ist oder der Parameter nicht angegeben ist, wird der FCC automatisch installiert. | ja (Default: `%localappdata%/fiskaltrust/FCC/[FccId]`) |
-| _ProxyServer_ | Falls der Zugang zum Internet über einen Proxy-Server erfolgen muss: Die URL bzw. IP-Adresse des Proxy-Servers. | ja (Default: leer/kein Proxy) |
-| _ProxyPort_ | Falls der Zugang zum Internet über einen Proxy-Server erfolgen muss: Der HTTP-Port des Proxy-Servers. | ja (Default: leer) |
-| _ProxyUsername_ | Falls der Zugang zum Internet über einen _authentifizierten_ Proxy-Server erfolgen muss: Der Benutzername des Proxy-Servers. | ja (Default: leer/keine Proxy-Authentifizierung) |
-| _ProxyPassword_ | Falls der Zugang zum Internet über einen _authentifizierten_ Proxy-Server erfolgen muss: Das Passwort des Proxy-Servers. | ja (Default: leer/keine Proxy-Authentifizierung) |
-| _DontAddFccFirewallException_ | Wenn dieser Parameter nicht gesetzt ist, versucht die SCU beim ersten Start automatisch, eine Firewall-Exception für den FCC anzulegen (dazu werden Admin-Rechte benötigt). Dies kann verhindert werden, indem dieser Parameter auf `true` gesetzt wird. | ja (Default: `false`) |
-| _FccDownloadUri_ | Wenn dieser Parameter gesetzt ist, wird die angegebene Web-URL zum Download des FCC verwendet. Wenn kein Wert gesetzt ist, wird der FCC automatisch von den fiskaltrust-Servern heruntergeladen. Dieser Parameter kann hilfreich sein, falls der Download von fiskaltrust z.B. aufgrund einer streng konfigurierten Firewall nicht möglich ist.  | ja (Default: `null`) |
-
-
+| Name                          | Description                                                  | **Default Value**<br />**Mandatory Field**             |
+| ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------ |
+| _FccId_                       | The ID of the Fiscal Cloud Connector as specified in the FCC portal. Is automatically filled during production via the fiscal trust portal. | mandatory                                              |
+| _FccSecret_                   | The secret or password of the Fiscal Cloud Connector, as specified in the FCC portal. Is automatically filled during production via the fiskaltrust-Portal. | mandatory                                              |
+| _ErsCode_                     | The PIN code that is used to authenticate the POS system with the FCC, as specified in the FCC portal. It is filled automatically during production via the fiskaltrust portal. | mandatory                                              |
+| _ActivationToken_             | The token used by the middleware to register clients in the FCC, as specified in the FCC portal. It is filled automatically during production via the fiskaltrust portal. | mandatory                                              |
+| _FccPort_                     | The port that the middleware uses to communicate with the FCC. | 20001<br />optional                                    |
+| _FccDirectory_                | The directory in which the Fiscal Cloud Connector is stored. If specified, it is first checked whether the FCC is already installed in this directory and an existing version is used. If there is no FCC installation at the specified location or the parameter is not specified, the FCC will be installed automatically. | `%localappdata%/fiskaltrust/FCC/[FccId]`<br />optional |
+| _ProxyServer_                 | If access to the Internet is established via a proxy server: The proxy server's URL or IP address. | empty string/no proxy<br />optional                    |
+| _ProxyPort_                   | If access to the Internet is established via a proxy server: The proxy server's HTTP-port. | empty string<br />optional                             |
+| _ProxyUsername_               | If access to the Internet is established via an _authenticated_ proxy server: The proxy server's user name. | empty string/no proxy authentication<br />optional     |
+| _ProxyPassword_               | If access to the Internet is enabled via an _authenticated_ proxy server: The proxy server's password. | empty string/no proxy authentication<br />optional     |
+| _DontAddFccFirewallException_ | If this parameter is not set, the SCU automatically tries to create a firewall exception for the FCC when it is started for the first time (admin rights are required). This can be prevented by setting this parameter to `true`. | `false`<br />optional                                  |
+| _FccDownloadUri_              | If this parameter is set, the specified web URL is used to download the FCC. If no value is set, the FCC is automatically downloaded from the fiskaltrust servers. This parameter can help if the download from fiskaltrust servers is not possible, e.g. due to a strictly configured firewall. | `null`<br />optional                                   |
 
 ## Troubleshooting
-**Der Fiskal Cloud Connector kann keine Verbindung zum Internet herstellen:** Sollte die Middleware nicht als Administrator gestartet werden, die automatische Erzeugung der Firewall-Exception über den oben beschriebenen Parmater deaktiviert sein, oder Sie eine spezielle Firewall verwenden: fügen Sie bitte manuell eine Ausnahmeregelung in Ihrer Firewall für die `java.exe` im Unterverzeichnis `bin\jre\bin` des _FccDirectory_ (s.o.) hinzu (Zugriff auf fiskal.cloud, Port 443).
 
-## Produkte
+### The Fiskal Cloud Connector cannot establish a connection to the Internet 
 
-### Bundle: fiskaltrust.Sorglos Swissbit Cloud-TSE [subscription] per Standort
+| Possible cause                                               | Fix                                                          |
+| ------------------------------------------------------------ | ------------------------------------------------------------ |
+| The middleware is not started as administrator.              | Start the middleware with administrator rights.              |
+| The automatic generation of the firewall exception via the parameter described above is deactivated, or a particular firewall is used. | An exception rule in the firewall for the `java.exe` in the subdirectory` bin \ jre \ bin` of the _FccDirectory_ (see above) (access to fiskal.cloud, port 443) has to be added manually. |
 
-**Artikel-Nummer:** 4445+030061
+### Certification-ID
 
-### Zertifizierungs-ID
+Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://docs.fiskaltrust.cloud/doc/productdescription-de-doc/product-service-description/media/2019-06-17-einfuehrung-paragraf-146a-AO-anwendungserlass-zu-paragraf-146a-AO.pdf):
 
-Zertifizierungs-ID der TSE gemäß Punkt 9.2.2 des [Anwendungserlasses zu § 146a AO](https://docs.fiskaltrust.cloud/doc/productdescription-de-doc/product-service-description/media/2019-06-17-einfuehrung-paragraf-146a-AO-anwendungserlass-zu-paragraf-146a-AO.pdf):
-
-| Zertifizierungs-ID | Prüfgegenstand | Antragsteller | Datum |
-| :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| [BSI-K-TR-0369-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0369-2020.html) | D-TRUST TSE Web, Version 1.0 | D-TRUST GmbH                                                  | 30.09.2020                                                |
-
-### Preis & Vertrieb
-
-[fiskaltrust.Portal](https://portal.fiskaltrust.de)
+| Certification-ID                                             | Test item                   | Applicant    | Date       |
+| :----------------------------------------------------------- | :-------------------------- | :----------- | :--------- |
+| [BSI-K-TR-0369-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0369-2020.html) | D-TRUST TSE Web Version 1.0 | D-TRUST GmbH | 30.09.2020 |

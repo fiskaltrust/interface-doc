@@ -27,8 +27,8 @@ The Swissbit Cloud-SCU is limited to a single client registration. Possible [rol
 
 | Name                          | Description                                                  | **Default Value**<br />**Mandatory Field**             |
 | ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------ |
-| _FccId_                       | The ID of the Fiscal Cloud Connector as specified in the FCC portal. Is automatically filled during production via the fiscal trust portal. | mandatory                                              |
-| _FccSecret_                   | The secret or password of the Fiscal Cloud Connector, as specified in the FCC portal. Is automatically filled during production via the fiskaltrust-Portal. | mandatory                                              |
+| _FccId_                       | The ID of the Fiscal Cloud Connector as specified in the FCC portal. It is filled automatically during production via the fiskaltrust portal. | mandatory                                              |
+| _FccSecret_                   | The secret or password of the Fiscal Cloud Connector, as specified in the FCC portal. It is filled automatically during production via the fiskaltrust portal. | mandatory                                              |
 | _ErsCode_                     | The PIN code that is used to authenticate the POS system with the FCC, as specified in the FCC portal. It is filled automatically during production via the fiskaltrust portal. | mandatory                                              |
 | _ActivationToken_             | The token used by the middleware to register clients in the FCC, as specified in the FCC portal. It is filled automatically during production via the fiskaltrust portal. | mandatory                                              |
 | _FccPort_                     | The port that the middleware uses to communicate with the FCC. | 20001<br />optional                                    |

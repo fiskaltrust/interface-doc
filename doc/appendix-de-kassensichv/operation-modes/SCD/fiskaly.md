@@ -3,7 +3,7 @@ slug: /poscreators/middleware-doc/germany/scd/fiskaly-cloud
 title: fiskaly-TSE
 ---
 
-# fiskaly Cloud-TSE (In certification)
+# fiskaly Cloud-TSE
 
 ## SCU
 
@@ -21,17 +21,12 @@ The fiskaly Cloud-TSE is currently in certification, and switching to the certif
 
 ## Parameter
 
-| Name | Beschreibung | Optional |
+| Name | Description | **Default Value**<br />**Mandatory Field** |
 | ---- | ------------ |--------- |
-| _TssId_ | Die ID der verwendeten fiskaly-TSE, wie im fiskaly-Dashboard angegeben. Wird bei der Produktion über das fiskaltrust-Portal automatisch befüllt. | nein |
-| _ApiKey_ | Der API-Key, der zur Authentifizierung an den fiskaly-Services verwendet wird, wie im fiskaly-Dashboard angegeben. Wird bei der Produktion über das fiskaltrust-Portal automatisch befüllt. | nein |
-| _ApiSecret_ | Das API-Secret, der zur Authentifizierung an den fiskaly-Services verwendet wird, wie im fiskaly-Dashboard angegeben. Wird bei der Produktion über das fiskaltrust-Portal automatisch befüllt. | nein |
-| _FiskalyClientDebugLevel_ | Das interne Debug-Level des fiskaly-SDKs. Nur bei der Fehlersuche zu verwenden. | ja (Default: `NO_OUTPUT`, mögliche Werte: `NO_OUTPUT`, `ERRORS_ONLY`, `ERRORS_AND_WARNINGS`, `EVERYTHING`) |
-| _FiskalyClientDebugFile_ | Das Log-File, in den interne Logs des fiskaly-SDKs geschrieben werden (falls aktiviert). Nur bei der Fehlersuche zu verwenden. | ja (Default: leer) |
-| _FiskalyClientTimeout_ | Das [fiskaly-Client-Timeout](https://developer.fiskaly.com/en/docs/client-documentation/#configuration) in Millisekunden | ja (Default: `50000`) |
-| _FiskalyClientSmaersTimeout_ | Das [fiskaly-SMAERS-Timeout](https://developer.fiskaly.com/en/docs/client-documentation/#configuration) in Millisekunden | ja (Default: `50000`) |
-
-### Preis & Vertrieb
-
-[fiskaltrust.Portal](https://portal.fiskaltrust.de)
-
+| _TssId_ | The ID of the fiskaly TSE used, as indicated in the fiskaly dashboard. It is filled automatically during production via the fiskaltrust portal. | mandatory |
+| _ApiKey_ | The API key used to authenticate to the fiskaly services as specified in the fiskaly dashboard. It is filled automatically during production via the fiskaltrust portal. | mandatory |
+| _ApiSecret_ | The API secret that is used to authenticate to the fiskaly services, as specified in the fiskaly dashboard. It is filled automatically during production via the fiskaltrust portal. | mandatory |
+| _FiskalyClientDebugLevel_ | The internal debug level of the fiskaly SDK. To be used only for troubleshooting. | `NO_OUTPUT`, possible values: `NO_OUTPUT`, `ERRORS_ONLY`, `ERRORS_AND_WARNINGS`, `EVERYTHING`<br />optional |
+| _FiskalyClientDebugFile_ | The log file in which the internal logs of the fiskaly SDK are written (if activated). To be used only for troubleshooting. | empty string<br />optional |
+| _FiskalyClientTimeout_ | The [fiskaly-client-timeout](https://developer.fiskaly.com/en/docs/client-documentation/#configuration) in miliseconds | `50000`<br />optional                                        |
+| _FiskalyClientSmaersTimeout_ | The [fiskaly-SMAERS-timeout](https://developer.fiskaly.com/en/docs/client-documentation/#configuration) in miliseconds | `50000`<br />optional |

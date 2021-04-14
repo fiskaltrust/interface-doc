@@ -17,7 +17,7 @@ The illustration below shows the components available for the on-premise install
 
 ## Communication services platform support matrix
 
-For the German market, following communication services are available dependent on the platform:
+For the German market, depending on the platform, following communication services are available:
 
 |          | Windows       | Linux, macOS  | Android       |
 | -------- | ------------- | ------------- | ------------- |

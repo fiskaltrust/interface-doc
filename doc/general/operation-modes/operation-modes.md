@@ -68,7 +68,7 @@ More detailed information, including the data flow, you can find in the [communi
 
 #### Queue
 
-In addition to enable the communication with the cash register via IPOS Interface, the queue also serves to encapsulate the functionality of a receipt chain: All regular receipts created by the POS-System and sent to the fiskaltrust.Middleware are processed in the ft.SecurityMechanism. This mechanism takes care of the creation of the unique, consecutive receipt number, the chaining and the persistence of the data.  After getting secured and stored in the queue, the response of the fiskaltrust.SecurityMechanism is sent back to the POS system. All special receipts (for example the periodical closings) are sent as "requests to execute a special function" to the fiskaltrust.Middleware and get answered by it. 
+In addition to enable the communication with the cash register via iPOS Interface, the queue also serves to encapsulate the functionality of a receipt chain: All regular receipts created by the POS-System and sent to the fiskaltrust.Middleware are processed in the ft.SecurityMechanism. This mechanism takes care of the creation of the unique, consecutive receipt number, the chaining and the persistence of the data.  After getting secured and stored in the queue, the response of the fiskaltrust.SecurityMechanism is sent back to the POS-System. All special receipts (for example the periodical closings) are sent as "requests to execute a special function" to the fiskaltrust.Middleware and get responded by it. 
 
 #### SCU
 
@@ -116,7 +116,7 @@ For detailed information on supported platforms and its restrictions, please ref
 
 #### Launcher
 
-The Launcher is a software (file) named `fiskaltrust.exe`, which is used only for the on-premise installed products (e.g. AT products fiskaltrust.SignatureCard or fiskaltrust.SignatureBox). For Windows, it is a .NET command-line application and a .NET Windows service. For Linux and Mac, the launcher can be executed via Mono, version 3.2.8 or higher, or used as daemon.
+The Launcher is a software (file) named `fiskaltrust.exe`, which is used only for the on-premise installed products (e.g. AT product fiskaltrust.SignatureCloud). For Windows, it is a .NET command-line application and a .NET Windows service. For Linux and Mac, the launcher can be executed via Mono, version 3.2.8 or higher, or used as daemon.
 
 The main tasks of the launcher are:
 
@@ -126,7 +126,7 @@ The main tasks of the launcher are:
   - execution of configured packages
   - load balancing of multiple queues
 
-The executable file `fiskaltrust.exe` and the corresponding DLLs can be distributed via copy-paste and then configured and installed with the help of a command-line parameter. It can be downloaded (incl. configuration) from the Portal’s configuration->cashbox page, or found on nuget.org and configured manually.
+The executable file `fiskaltrust.exe` and the corresponding DLLs can be distributed via copy-paste and then configured and installed with the help of a command-line parameter. The launcher can be downloaded (incl. configuration) from the [https://portal.fiskaltrust.de/CashBox](https://portal.fiskaltrust.de/CashBox), or found on nuget.org and configured manually.
 
 Call parameter of the launcher are documented in the chapter [installation](../installation/installation.md).
 

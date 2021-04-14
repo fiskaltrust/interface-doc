@@ -10,7 +10,7 @@ At least one Queue must be created for each POS-System. Dependent on local marke
 
 #### Journal
 
-A journal is an export of internal structured data of the receipts from the Queue(s). There are three types of journals: a protocol journal saving all requests, a journal which records all events happening in the queue (starts, stops, failures), and localized journals depending on the national laws. For more details please refer to the appropriate appendix. The format of a common journal export is JSON.
+A journal is an export of internal structured data of the receipts from the Queue(s). There are three types of journals: a protocol journal saving all requests, a journal which records all events happening in the queue (starts, stops, failures), and localized journals depending on the national laws. For more details please refer to the appropriate appendix.
 
 #### Notifications
 

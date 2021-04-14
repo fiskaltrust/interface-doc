@@ -5,25 +5,37 @@ title: Deutsche Fiskal Cloud-TSE
 
 # Deutsche Fiskal Cloud-TSE
 
-## SCU
+## SCD
 
-The _fiskaltrust.Middleware.SCU.DE.DeutscheFiskal_-package connects the middleware with a Deutsche Fiskal Cloud-TSE via the _Fiskal Cloud Connector_ ("FCC") service provided by Deutsche Fiskal. The FCC can be installed automatically when the SCU package is started for the first time, or an already installed version of the FCC can be used (see _Parameter_).
-
-### Restrictions
-
-#### State of certification and environmental protection
+### Environmental protection
 
 Please note that this TSE places strict requirements on environmental protection (i.e. the operating system used and its configuration). You can find more detailed information in the official documents of the manufacturer in the [download area of the fiskaltrust portal](https://portal.fiskaltrust.de/AccountProfile/Download).
 
+### State of certification
+
+Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://docs.fiskaltrust.cloud/doc/productdescription-de-doc/product-service-description/media/2019-06-17-einfuehrung-paragraf-146a-AO-anwendungserlass-zu-paragraf-146a-AO.pdf):
+
+| Certification-ID                                             | Test item                   | Applicant    | Date       |
+| :----------------------------------------------------------- | :-------------------------- | :----------- | :--------- |
+| [BSI-K-TR-0369-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0369-2020.html) | D-TRUST TSE Web Version 1.0 | D-TRUST GmbH | 30.09.2020 |
+
+#### Certification identification
+
 "BSI-K-TR-0456-2021 [USK ausgesetzt]" ("Environmental protection exposed") is returned for 'ftSignatureType' `0x4445000000000022` (certification identification). 
 
-#### Client registration
+### Client registration
 
-The Swissbit Cloud-SCU is currently limited to a single client registration. Possible [rollout scenarios](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc / middleware # rollout-scenarios) are limited to those cases in which exact one queue is operated per SCU.
+The Deutsche Fiskal Cloud-SCU is limited to a single client registration. Possible [rollout scenarios](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware#rollout-scenarios) are limited to those cases in which exact one queue is operated per SCU.
 
-**Available from version**: 1.3.11
+## SCU
 
-## Parameter
+### Availability
+
+from version: 1.3.11
+
+The _fiskaltrust.Middleware.SCU.DE.DeutscheFiskal_-package connects the middleware with a Deutsche Fiskal Cloud-TSE via the _Fiskal Cloud Connector_ ("FCC") service provided by Deutsche Fiskal. The FCC can be installed automatically when the SCU package is started for the first time, or an already installed version of the FCC can be used (see _Parameter_).
+
+### Parameters
 
 | Name | Description | **Default Value**<br />**Mandatory Field** |
 | ---- | ------------ |--------- |
@@ -47,13 +59,5 @@ The Swissbit Cloud-SCU is currently limited to a single client registration. Pos
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | The middleware is not started as administrator.              | Start the middleware with administrator rights.              |
 | The automatic generation of the firewall exception via the parameter described above is deactivated, or a particular firewall is used. | An exception rule in the firewall for the `java.exe` in the subdirectory` bin \ jre \ bin` of the _FccDirectory_ (see above) (access to fiskal.cloud, port 443) has to be added manually. |
-
-### Certification-ID
-
-Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://docs.fiskaltrust.cloud/doc/productdescription-de-doc/product-service-description/media/2019-06-17-einfuehrung-paragraf-146a-AO-anwendungserlass-zu-paragraf-146a-AO.pdf):
-
-| Certification-ID                                             | Test item | Applicant | Date |
-| :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| [BSI-K-TR-0369-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0369-2020.html) | D-TRUST TSE Web Version 1.0                                   | D-TRUST GmbH                                                 | 30.09.2020                                                   |
 
 

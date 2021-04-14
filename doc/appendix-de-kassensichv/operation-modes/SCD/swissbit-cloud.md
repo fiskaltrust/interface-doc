@@ -5,25 +5,37 @@ title: Swissbit Cloud-TSE
 
 # Swissbit Cloud-TSE
 
-## SCU
+## SCD
 
-The _fiskaltrust.Middleware.SCU.DE.SwissbitCloud_-package connects the middleware to a Swissbit Cloud-TSE via the _Fiskal Cloud Connector_ ("FCC") service provided by Swissbit. The FCC can be installed automatically when the SCU package is started for the first time, or an already installed version of the FCC can be used (see *Parameter*).
-
-### Restrictions
-
-#### State of certification and environmental protection
+### Environmental protection
 
 Please note that this TSE places strict requirements on environmental protection (i.e. the operating system used and its configuration). You can find more detailed information in the official documents of the manufacturer in the [download area of the fiskaltrust portal](https://portal.fiskaltrust.de/AccountProfile/Download).
 
+### State of certification
+
+Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://docs.fiskaltrust.cloud/doc/productdescription-de-doc/product-service-description/media/2019-06-17-einfuehrung-paragraf-146a-AO-anwendungserlass-zu-paragraf-146a-AO.pdf):
+
+| Certification-ID                                             | Test item                   | Applicant    | Date       |
+| :----------------------------------------------------------- | :-------------------------- | :----------- | :--------- |
+| [BSI-K-TR-0369-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0369-2020.html) | D-TRUST TSE Web Version 1.0 | D-TRUST GmbH | 30.09.2020 |
+
+#### Certification identification
+
 "BSI-K-TR-0456-2021 [USK ausgesetzt]" ("Environmental protection exposed") is returned for 'ftSignatureType' `0x4445000000000022` (certification identification). 
 
-#### Client registration
+### Client registration
 
-The Swissbit Cloud-SCU is limited to a single client registration. Possible [rollout scenarios](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc / middleware # rollout-scenarios) are limited to those cases in which exact one queue is operated per SCU.
+The Swissbit Cloud-SCU is limited to a single client registration. Possible [rollout scenarios](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware#rollout-scenarios) are limited to those cases in which exact one queue is operated per SCU.
 
-**Available from version**: 1.3.11
+## SCU
 
-## Parameter
+### Availability
+
+from version: 1.3.11
+
+The _fiskaltrust.Middleware.SCU.DE.SwissbitCloud_-package connects the middleware to a Swissbit Cloud-TSE via the _Fiskal Cloud Connector_ ("FCC") service provided by Swissbit. The FCC can be installed automatically when the SCU package is started for the first time, or an already installed version of the FCC can be used (see *Parameter*).
+
+### Parameters
 
 | Name                          | Description                                                  | **Default Value**<br />**Mandatory Field**             |
 | ----------------------------- | ------------------------------------------------------------ | ------------------------------------------------------ |

@@ -5,6 +5,20 @@ title: Cryptovision-TSE
 
 # Cryptovision/Bundesdruckerei-TSE
 
+## SCD
+
+### State of certification
+
+Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://docs.fiskaltrust.cloud/doc/productdescription-de-doc/product-service-description/media/2019-06-17-einfuehrung-paragraf-146a-AO-anwendungserlass-zu-paragraf-146a-AO.pdf):
+
+| Certification-ID                                             | Test item                               | Applicant            | Date       |
+| :----------------------------------------------------------- | :-------------------------------------- | :------------------- | :--------- |
+| [BSI-K-TR-0374-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0374-2020.html) | Bundesdruckerei D-TRUST TSE Version 1.0 | cv cryptovision GmbH | 14.04.2020 |
+
+#### Certification identification
+
+"BSI-K-TR-0374-2020" is returned for 'ftSignatureType' `0x4445000000000022` (certification identification). 
+
 ## SCU
 
 The _fiskaltrust.Middleware.SCU.DE.CryptoVision_ package connects the middleware with a CryptoVision hardware-TSE via the file system emulated by the TSE.
@@ -33,15 +47,4 @@ Technische Sicherungseinrichtung (TSE-module), design: microSD-card, security un
 
 Special items: Cancellation and return are excluded regardless of the delivery time.
 
-
-### Certification-ID
-
-Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://docs.fiskaltrust.cloud/doc/productdescription-de-doc/product-service-description/media/2019-06-17-einfuehrung-paragraf-146a-AO-anwendungserlass-zu-paragraf-146a-AO.pdf):
-
-| Certification-ID | Test item | Applicant | Date |
-| :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| [BSI-K-TR-0374-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0374-2020.html) | Bundesdruckerei D-TRUST TSE Version 1.0                      | cv cryptovision GmbH                                         | 14.04.2020                                                   |
-
-### Price & distribution
-
-[fiskaltrust.Portal](https://portal.fiskaltrust.de)
+https://portal.fiskaltrust.de)

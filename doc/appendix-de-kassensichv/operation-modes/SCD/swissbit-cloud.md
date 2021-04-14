@@ -54,17 +54,7 @@ The _fiskaltrust.Middleware.SCU.DE.SwissbitCloud_-package connects the middlewar
 
 ## Troubleshooting
 
-### The Fiskal Cloud Connector cannot establish a connection to the Internet 
-
-| Possible cause                                               | Solution                                                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| The middleware is not started as administrator.              | Start the middleware with administrator rights.              |
-| The automatic generation of the firewall exception via the parameter described above is deactivated, or a particular firewall is used. | An exception rule in the firewall for the `java.exe` in the subdirectory` bin \ jre \ bin` of the _FccDirectory_ (see above) (access to fiskal.cloud, port 443) has to be added manually. |
-
-### Certification-ID
-
-Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://docs.fiskaltrust.cloud/doc/productdescription-de-doc/product-service-description/media/2019-06-17-einfuehrung-paragraf-146a-AO-anwendungserlass-zu-paragraf-146a-AO.pdf):
-
-| Certification-ID                                             | Test item                   | Applicant    | Date       |
-| :----------------------------------------------------------- | :-------------------------- | :----------- | :--------- |
-| [BSI-K-TR-0369-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0369-2020.html) | D-TRUST TSE Web Version 1.0 | D-TRUST GmbH | 30.09.2020 |
+| Problem                                                      | Possible cause                                               | Solution                                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **The Fiskal Cloud Connector cannot establish a connection to the Internet** | The middleware is not started as administrator.              | Start the middleware with administrator rights.              |
+|                                                              | The automatic generation of the firewall exception via the parameter described above is deactivated, or a particular firewall is used. | An exception rule in the firewall for the `java.exe` in the subdirectory` bin \ jre \ bin` of the _FccDirectory_ (see above) (access to fiskal.cloud, port 443) has to be added manually. |

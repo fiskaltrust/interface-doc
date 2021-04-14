@@ -53,11 +53,8 @@ The _fiskaltrust.Middleware.SCU.DE.DeutscheFiskal_-package connects the middlewa
 | _FccDownloadUri_ | If this parameter is set, the specified web URL is used to download the FCC. If no value is set, the FCC is automatically downloaded from the fiskaltrust servers. This parameter can help if the download from fiskaltrust servers is not possible, e.g. due to a strictly configured firewall. | `null`<br />optional |
 
 ## Troubleshooting
-### The Fiskal Cloud Connector cannot establish a connection to the Internet 
 
-| Possible cause                                               | Solution                                                     |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| The middleware is not started as administrator.              | Start the middleware with administrator rights.              |
-| The automatic generation of the firewall exception via the parameter described above is deactivated, or a particular firewall is used. | An exception rule in the firewall for the `java.exe` in the subdirectory` bin \ jre \ bin` of the _FccDirectory_ (see above) (access to fiskal.cloud, port 443) has to be added manually. |
-
-
+| Problem                                                      | Possible cause                                               | Solution                                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **The Fiskal Cloud Connector cannot establish a connection to the Internet** | The middleware is not started as administrator.              | Start the middleware with administrator rights.              |
+|                                                              | The automatic generation of the firewall exception via the parameter described above is deactivated, or a particular firewall is used. | An exception rule in the firewall for the `java.exe` in the subdirectory` bin \ jre \ bin` of the _FccDirectory_ (see above) (access to fiskal.cloud, port 443) has to be added manually. |

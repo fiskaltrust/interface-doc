@@ -1,52 +1,48 @@
 ---
-slug: /product-description/germany/products-and-services/caas/features/basics/tse/diebold-nixdorf
+slug: /poscreators/middleware-doc/germany/scd/diebold-nixdorf
 title: Diebold Nixdorf-TSE
 ---
 
-# Diebold Nixdorf-Interoperabilität 
+# Diebold Nixdorf-TSE 
+
+## SCD
+
+### State of certification
+
+Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://docs.fiskaltrust.cloud/doc/productdescription-de-doc/product-service-description/media/2019-06-17-einfuehrung-paragraf-146a-AO-anwendungserlass-zu-paragraf-146a-AO.pdf):
+
+| Certification-ID                                             | Test item                           | Applicant                    | Date       |
+| :----------------------------------------------------------- | :---------------------------------- | :--------------------------- | :--------- |
+| [BSI-K-TR-0393-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0393-2020.html) | Diebold Nixdorf TSE-CardVersion 1.0 | Diebold Nixdorf Systems GmbH | 20.02.2020 |
+
+#### Certification identification
+
+"BSI-K-TR-0393-2020" is returned for 'ftSignatureType' `0x4445000000000022` (certification identification). 
 
 ## SCU
 
-Das _fiskaltrust.Middleware.SCU.DE.DieboldNixdorf_-Package ermöglicht die Verbindung der Middleware mit einer Diebold Nixdorf-TSE über einen seriellen COM-Port.
+The _fiskaltrust.Middleware.SCU.DE.DieboldNixdorf_ package connects the middleware with a Diebold Nixdorf hardware-TSE via a serial COM port.
 
-**RC verfügbar ab Version**: 1.3.1
+### **Support**
 
-**Stabil ab Version:** 1.3.6
+RC from version: 1.3.1
 
-## Parameter
+Stable from version: 1.3.6
 
-| Name | Beschreibung | Optional |
+### Parameters
+
+| Name | Description | **Default Value**<br />**Mandatory Field** |
 | ---- | ------------ |--------- |
-| _ComPort_ | Der COM-Port, über den die serielle Kommunikation mit der TSE erfolgt | nein |
-| _AdminUser_ | Der Benutzername des Admin-Users. Falls nicht angebeben, wird der vom Hersteller definierte Default-Wert verwendet. | ja |
-| _AdminPin_ | Admin-PIN der TSE. Falls nicht angegeben, wird der Default-PIN verwendet. | ja |
-| _TimeAdminUser_ | Der Benutzername des Time-Admin-Users. Falls nicht angebeben, wird der vom Hersteller definierte Default-Wert verwendet. | ja |
-| _TimeAdminPin_ | Time Admin-PIN der TSE. Falls nicht angegeben, wird der Default-PIN verwendet. | ja |
+| _ComPort_ | The COM port used for serial communication with the TSE | mandatory |
+| _AdminUser_ | The username of the admin user. If not specified, the default value defined by the manufacturer is used. | to be documented<br />optional |
+| _AdminPin_ | Admin PIN of the TSE. If not specified, the default PIN is used. | to be documented<br />optional |
+| _TimeAdminUser_ | The username of the time-admin user. If not specified, the default value defined by the manufacturer is used. | to be documented<br />optional |
+| _TimeAdminPin_ | Time-admin PIN of the TSE. If not specified, the default PIN is used. | to be documented<br />optional |
 
 
 ## Troubleshooting
-**Beim Start der Middleware wird ein Fehler angezeigt, laut dem der Zugriff auf den angegebenen COM-Port verweigert wurde:** Bitte versichern Sie sich zuerst, ob in der SCU-Konfiguration den richtigen COM-Port hinterlegt wurde. Falls dies zutrifft, wird der Port bereits von einer anderen Anwendung verwendet. Typischerweise handelt es sich dabei um die mit der TSE gelieferte Web Service-Software von Diebold Nixdorf; diese wird von unserer SCU allerdings nicht benötigt, da alle Zugriffe direkt über das COM-Protokoll erfolgen. Die Deinstallation der Diebold Nixdorf-Software behebt dieses Problem.
+| Problem                                                      | Possible cause                                               | Solution                                                     |
+| ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **When starting the middleware, an error is displayed stating that access to the specified COM port was denied** | Wrong COM port is used in the SCU configuration              | Update SCU configuration with the correct COM port used      |
+|                                                              | COM port is already used by a software (typically by the Diebold Nixdorf Web Service included with the TSE) | The Diebold Nixdorf Web Service is not required as all access is made directly via the COM protocol. Uninstalling the Diebold Nixdorf software eliminates this problem. |
 
-## Hardware
-
-### Diebold Nixdorf TSE, USB, 8 GB                             
-
-
-
-**Artikel Nummer:** 4445-20400
-
-Technische Sicherungseinrichtung (TSE-Modul), Bauform: USB-Stick, Verschlüsselung: 384 Bit, SE Leistung (Signatur): 250 ms, Lebensdauer: 20 Mio. Signaturen, Speicherplatz: 8 GB, Zertifikatslaufzeit 7 Jahre
-
-Sonderartikel: Storno und Rückgabe unabhängig von der Lieferzeit ausgeschlossen.
-
-### Zertifizierungs-ID
-
-Zertifizierungs-ID der TSE gemäß Punkt 9.2.2 des [Anwendungserlasses zu § 146a AO](https://docs.fiskaltrust.cloud/doc/productdescription-de-doc/product-service-description/media/2019-06-17-einfuehrung-paragraf-146a-AO-anwendungserlass-zu-paragraf-146a-AO.pdf):
-
-| Zertifizierungs-ID | Prüfgegenstand | Antragsteller | Datum |
-| :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- | :----------------------------------------------------------- |
-| [BSI-K-TR-0393-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0393-2020.html) | Diebold Nixdorf TSE-CardVersion 1.0                          | Diebold Nixdorf Systems GmbH                                 | 20.02.2020                                                   |
-
-### Preis & Vertrieb
-
-[fiskaltrust.Portal](https://portal.fiskaltrust.de)

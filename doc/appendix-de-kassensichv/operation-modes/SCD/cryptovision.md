@@ -23,7 +23,9 @@ Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 14
 
 The _fiskaltrust.Middleware.SCU.DE.CryptoVision_ package connects the middleware with a CryptoVision hardware-TSE via the file system emulated by the TSE.
 
-**Available from version**: 1.3.1
+### **Support**
+
+from version: 1.3.1
 
 ### Parameters
 
@@ -33,18 +35,3 @@ The _fiskaltrust.Middleware.SCU.DE.CryptoVision_ package connects the middleware
 | _adminPin_ | Admin PIN of the TSE. If not specified, the default PIN is used. | to be documented<br />optional |
 | _timeAdminPin_ | Time Admin PIN of the TSE. If not specified, the default PIN is used. | to be documented<br />optional |
 | _TseIOReadDelayMs_ | The time the TSE waits before reading the responses (in milliseconds). The default value should only be changed in the event of read errors, as this increases the processing time for all operations. | 10<br />optional |
-
-
-
-## Hardware
-
-### Bundesdruckerei TSE, microSD, 8GB
-
-**Product item number:** 4445-20300
-
-Technische Sicherungseinrichtung (TSE-module), design: microSD-card, security unit: NXP SE050, security unit performance (signature): 150 ms, lifespan: 20 Mio. signatures, storage capacity: 8 GB, certificate validity: 5 years
-
-
-Special items: Cancellation and return are excluded regardless of the delivery time.
-
-https://portal.fiskaltrust.de)

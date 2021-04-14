@@ -19,9 +19,9 @@ The fiskaly Cloud-TSE is currently in certification, and switching to the certif
 
 ## SCU
 
-### Availability
+### Support
 
-from version: 1.3.16
+**from version:** 1.3.16
 
 The _fiskaltrust.Middleware.SCU.DE.Fiskaly_-package connects the middleware to a fiskaly Cloud-TSE. 
 

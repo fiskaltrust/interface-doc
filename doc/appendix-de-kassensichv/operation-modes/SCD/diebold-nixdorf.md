@@ -3,7 +3,7 @@ slug: /poscreators/middleware-doc/germany/scd/diebold-nixdorf
 title: Diebold Nixdorf-TSE
 ---
 
-# Diebold Nixdorf-TSE 
+# Diebold Nixdorf Hardware-TSE 
 
 ## SCD
 
@@ -21,13 +21,13 @@ Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 14
 
 ## SCU
 
-The _fiskaltrust.Middleware.SCU.DE.DieboldNixdorf_ package connects the middleware with a Diebold Nixdorf hardware-TSE via a serial COM port.
-
 ### **Support**
 
-RC from version: 1.3.1
+**RC from version:** 1.3.1
 
-Stable from version: 1.3.6
+**Stable from version:** 1.3.6
+
+The _fiskaltrust.Middleware.SCU.DE.DieboldNixdorf_ package connects the middleware with a Diebold Nixdorf hardware-TSE via a serial COM port.
 
 ### Parameters
 

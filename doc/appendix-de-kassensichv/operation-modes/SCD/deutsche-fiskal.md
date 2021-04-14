@@ -29,9 +29,9 @@ The Deutsche Fiskal Cloud-SCU is limited to a single client registration (only o
 
 ## SCU
 
-### Availability
+### Support
 
-from version: 1.3.11
+**from version:** 1.3.11
 
 The _fiskaltrust.Middleware.SCU.DE.DeutscheFiskal_-package connects the middleware with a Deutsche Fiskal Cloud-TSE via the _Fiskal Cloud Connector_ ("FCC") service provided by Deutsche Fiskal. The FCC can be installed automatically when the SCU package is started for the first time, or an already installed version of the FCC can be used (see _Parameter_).
 

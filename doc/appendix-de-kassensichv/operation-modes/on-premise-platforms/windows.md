@@ -11,6 +11,8 @@ The fiskaltrust.Middleware runs as a service on all 32-bit and 64-bit platforms 
 
 All supported operating system need C++ Runtime in 32 or 64 bit installed. We recommend to use .NET Framework 4.8 if possible.
 
+Please be aware that dependent on the TSE used there may be additional requirements on protecting the OS environment as documented in the [on-premise-installation overview](..\on-premise-installation.md).
+
 | Operating system                    | Support       | Minimum .NET Framework | Recommended .NET Framework |
 | ----------------------------------- | ------------- | ---------------------- | -------------------------- |
 | Windows XP                          | not supported |                        |                            |
@@ -35,4 +37,3 @@ All supported operating system need C++ Runtime in 32 or 64 bit installed. We re
 | Windows Server 2019                 | supported     | 4.7.2                  | 4.8                        |
 | Windows 10 1903-1909                | supported     | 4.8                    | 4.8                        |
 | Windows 10 IoT Enterprise 2019 LTSC | supported     | 4.8                    | 4.8                        |
-

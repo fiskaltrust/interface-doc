@@ -3,7 +3,7 @@ slug: /poscreators/middleware-doc/germany/scd/cryptovision
 title: Cryptovision-TSE
 ---
 
-# Cryptovision/Bundesdruckerei-TSE
+# Cryptovision/Bundesdruckerei Hardware-TSE
 
 ## SCD
 
@@ -21,11 +21,11 @@ Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 14
 
 ## SCU
 
-The _fiskaltrust.Middleware.SCU.DE.CryptoVision_ package connects the middleware with a CryptoVision hardware-TSE via the file system emulated by the TSE.
-
 ### **Support**
 
-from version: 1.3.1
+**from version:** 1.3.1
+
+The _fiskaltrust.Middleware.SCU.DE.CryptoVision_ package connects the middleware with a CryptoVision hardware-TSE via the file system emulated by the TSE.
 
 ### Parameters
 

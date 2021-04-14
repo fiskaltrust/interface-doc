@@ -29,9 +29,9 @@ The Swissbit Cloud-SCU is limited to a single client registration (only one queu
 
 ## SCU
 
-### Availability
+### Support
 
-from version: 1.3.11
+**from version:** 1.3.11
 
 The _fiskaltrust.Middleware.SCU.DE.SwissbitCloud_-package connects the middleware to a Swissbit Cloud-TSE via the _Fiskal Cloud Connector_ ("FCC") service provided by Swissbit. The FCC can be installed automatically when the SCU package is started for the first time, or an already installed version of the FCC can be used (see *Parameter*).
 

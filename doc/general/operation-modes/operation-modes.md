@@ -68,7 +68,7 @@ More detailed information, including the data flow, you can find in the [communi
 
 #### Queue
 
-In addition to enable the communication with the cash register via IPOS Interface, the queue also serves to encapsulate the functionality of a receipt chain: All regular receipts created by the POS-System and sent to the fiskaltrust.Middleware are processed in the ft.SecurityMechanism. This mechanism takes care of the creation of the unique, consecutive receipt number, the chaining and the persistence of the data.  After getting secured and stored in the queue, the response of the fiskaltrust.SecurityMechanism is sent back to the POS system. All special receipts (for example the periodical closings) are sent as "requests to execute a special function" to the fiskaltrust.Middleware and get answered by it. 
+In addition to enable the communication with the cash register via iPOS Interface, the queue also serves to encapsulate the functionality of a receipt chain: All regular receipts created by the POS-System and sent to the fiskaltrust.Middleware are processed in the ft.SecurityMechanism. This mechanism takes care of the creation of the unique, consecutive receipt number, the chaining and the persistence of the data.  After getting secured and stored in the queue, the response of the fiskaltrust.SecurityMechanism is sent back to the POS-System. All special receipts (for example the periodical closings) are sent as "requests to execute a special function" to the fiskaltrust.Middleware and get responded by it. 
 
 #### SCU
 

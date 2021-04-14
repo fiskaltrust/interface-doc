@@ -126,7 +126,7 @@ The main tasks of the launcher are:
   - execution of configured packages
   - load balancing of multiple queues
 
-The executable file `fiskaltrust.exe` and the corresponding DLLs can be distributed via copy-paste and then configured and installed with the help of a command-line parameter. It can be downloaded (incl. configuration) from the Portal’s configuration->cashbox page, or found on nuget.org and configured manually.
+The executable file `fiskaltrust.exe` and the corresponding DLLs can be distributed via copy-paste and then configured and installed with the help of a command-line parameter. The launcher can be downloaded (incl. configuration) from the [https://portal.fiskaltrust.de/CashBox](https://portal.fiskaltrust.de/CashBox), or found on nuget.org and configured manually.
 
 Call parameter of the launcher are documented in the chapter [installation](../installation/installation.md).
 

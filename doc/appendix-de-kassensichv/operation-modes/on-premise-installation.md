@@ -15,7 +15,7 @@ The illustration below shows the components available for the on-premise install
 - [Linux, macOs](../features/supported-platforms/linux.md)
 - [Android](../features/supported-platforms/android.md)
 
-## Communication services platform support matrix
+## Communication services/platform support matrix
 
 For the German market, depending on the platform, following communication services are available:
 
@@ -25,7 +25,7 @@ For the German market, depending on the platform, following communication servic
 | **REST** | **supported** | **supported** | **supported** |
 | **WCF**  | **supported** | not supported | not supported |
 
-## SCD/TSE support matrix
+## SCD/characteristics & platform support matrix
 
 |                                                              | Type,<br />Form factor | State of certification | Environmental protection    | Max. nr. of registered clients (queues) | Windows                                | Linux, macOS                                                 | Android                                |
 | ------------------------------------------------------------ | ---------------------- | --------------------------- | --------------------------- | -------------------------------------- | ------------------------------------------------------------ | -------------------------------------- | -------------------------------------- |
@@ -36,13 +36,13 @@ For the German market, depending on the platform, following communication servic
 | [Epson Hardware-TSE](SCD/epson.md) | Hardware<br />USB Type A, microSD | **certified** | **not required**        | 100 | **supported**                          | **supported**                                                | not supported                          |
 | [fiskaly Cloud-TSE](SCD/epson.md) | Software | in certification       |                             | 25        | **supported**                    | **supported**                                          | **supported** |
 | [Swissbit Cloud-TSE](SCD/swissbit-cloud.md) | Software | **certified** | required<br />*currently exposed* | 1 | **supported** | **supported**<br />*Ubuntu LTS 20.04 only* | not supported |
-| [Swissbit Hardware-TSE](SCD/swissbit.md) | Hardware<br />USB Type A, SD, microSD | **certified** | **not required** |                                         | **supported**                          | **supported**                                                | **supported**                          |
+| [Swissbit Hardware-TSE](SCD/swissbit.md) | Hardware<br />USB Type A, SD, microSD | **certified** | **not required** | 100 | **supported**                          | **supported**                                                | **supported**                          |
 
 ## Hardware requirements
 
 For hardware requirements, please refer to the [general part](../../general/operation-modes/operation-modes.md).
 
-## Local data storage platform support matrix
+## Local data storage/platform support matrix
 
 Following local data storage options can be configured in the queue:
 
@@ -62,3 +62,6 @@ Following local data storage options can be configured in the queue:
 ## Installation
 
 For the on- and off-premise installation of the fiskaltrust.Middleware please refer to the [installation chapter in the general part](../../general/installation/installation.md).
+
+Configuration Scenarios
+

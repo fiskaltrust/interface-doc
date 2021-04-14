@@ -17,3 +17,10 @@ A journal is an export of internal structured data of the receipts from the Queu
 The information for notifications is extracted from the processing protocol and stored internally in the action journal. Helipad retrieves this information and processes it in accordance with country specific law. Special events have a localized reporting requirement. In online mode, notifications can be uploaded, automated and transported further at fiskaltrust.SecurityMechanism. If in offline mode, notifications are transported via zero receipts within the signature block.
 
 #### Configuration Scenarios
+
+Configuration scenarios are highly dependent on local market regulation and the platform of the POS system. For specific information regarding configuration, please refer to the appropriate appendices:
+
+- Austria
+
+- [Germany]( (../../appendix-de-kassensichv/operation-modes/on-premise-installation.md) )
+- France

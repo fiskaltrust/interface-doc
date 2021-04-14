@@ -1,18 +1,20 @@
 ---
-slug: /product-description/germany/products-and-services/caas/features/databases/mysql
+slug: /poscreators/middleware-doc/germany/databases/mysql
 title: MySQL
 ---
 
 # MySQL Storage
 
-Die Verwendung des MySQL Storage-Providers ermöglicht den Betrieb der Middleware mit einem externen MySQL-Datenbanksystem. Die Middleware speichert dabei sämtliche beim Betrieb der Queue verarbeiteten Daten sowieso alle Konfigurationsdaten direkt in der Datenbank ab. 
+## Support
 
-Dieser Storage-Provider eignet sich besonders zum Aufbau ausfallsicherer Systeme, oder zur Einbindung der Middleware in bestehende Systemarchitekturen.
+**from version:** 1.3.0
 
-**Verfügbar ab Version**: 1.3.8
+The use of the MySQL storage provider enables the middleware to be operated with an external MySQL database system. The middleware stores all the data processed during the operation of the queue and all configuration data directly in the database.
 
-## Parameter
+This storage provider is particularly suitable for setting up fail-safe systems or for integrating middleware into existing system architectures.
 
-| Name | Beschreibung | Optional |
-| ---- | ------------ |--------- |
-| _connectionstring_ | MySQL-Connection-String zum Datenbanksystem | nein | 
+## Parameters
+
+| Name               | Description                                    | **Default Value**<br />**Mandatory Field** |
+| ------------------ | ---------------------------------------------- | ------------------------------------------ |
+| _connectionstring_ | MySQL connection string to the database system | mandatory                                  |

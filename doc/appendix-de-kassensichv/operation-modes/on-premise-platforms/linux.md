@@ -17,7 +17,7 @@ Other than that, no specific software needs to be installed (aside from the depe
 
 ## Supported packages
 
-### Local data storage distribution support
+### Local data storage/Linux distribution support matrix
 
 |                                                              | Ubuntu     | Debian     | Other distributions running Mono |
 | ------------------------------------------------------------ | ---------- | ---------- | -------------------------------- |
@@ -28,18 +28,18 @@ Other than that, no specific software needs to be installed (aside from the depe
 
 Both Entity Framework and SQLite queues can be launched on Linux, starting from version 1.3.3. 
 
-### TSE distribution support
+### SCD/Linux distribution support matrix
 
-|                                                              | Ubuntu                                 | Debian     | Other distributions running Mono |
-| ------------------------------------------------------------ | -------------------------------------- | ---------- | -------------------------------- |
-| [A-Trust Cloud TSE](../basics/tse-as-a-service/a-trust.md) | not tested                             | not tested |                                  |
-| [Cryptovision Hardware-TSE](../basics/tse-as-a-service/cryptovision.md) | **tested**                             | **tested** | should work (not tested)         |
-| [Deutsche Fiskal Cloud-TSE](../basics/tse-as-a-service/deutsche-fiskal.md) | Ubuntu LTS 20.04 certified, not tested | not tested |                                  |
-| [Diebold-Nixdorf Hardware-TSE](../basics/tse-as-a-service/diebold-nixdorf.md) | not tested                             | not tested |                                  |
-| [Epson Hardware-TSE](../basics/tse-as-a-service/epson.md) | not tested                             | not tested |                                  |
-| [fiskaly Cloud-TSE](../basics/tse-as-a-service/fiskaly.md) | **tested**                             | **tested** | should work (not tested)         |
-| [Swissbit Hardware TSE](../basics/tse-as-a-service/swissbit.md) | **tested**                             | **tested** | should work (not tested)         |
-| [Swissbit Cloud TSE](../basics/tse-as-a-service/swissbit-cloud.md) | Ubuntu LTS 20.04 certified, not tested | not tested |                                  |
+|                                                           | Ubuntu                                 | Debian     | Other distributions running Mono |
+| --------------------------------------------------------- | -------------------------------------- | ---------- | -------------------------------- |
+| [A-Trust Cloud TSE](../SCD/a-trust.md)                    | not tested                             | not tested |                                  |
+| [Cryptovision Hardware-TSE](../SCD/cryptovision.md)       | **tested**                             | **tested** | should work (not tested)         |
+| [Deutsche Fiskal Cloud-TSE](../SCD/deutsche-fiskal.md)    | Ubuntu LTS 20.04 certified, not tested | not tested |                                  |
+| [Diebold-Nixdorf Hardware-TSE](../SCD/diebold-nixdorf.md) | not tested                             | not tested |                                  |
+| [Epson Hardware-TSE](../SCD/epson.md)                     | not tested                             | not tested |                                  |
+| [fiskaly Cloud-TSE](../SCD/fiskaly.md)                    | **tested**                             | **tested** | should work (not tested)         |
+| [Swissbit Hardware TSE](../SCD/swissbit.md)               | **tested**                             | **tested** | should work (not tested)         |
+| [Swissbit Cloud TSE](../SCD/swissbit-cloud.md)            | Ubuntu LTS 20.04 certified, not tested | not tested |                                  |
 
 ## Limitations
 

@@ -34,7 +34,7 @@ Regardless of the characteristics of the product, fiskaltrust.Middleware consist
 
 ### On-premise & off-premise installed components
 
-The on-premise solution of the fiskaltrust.Middleware requires [installation](../installation/operation-modes.md)  and configuration for the client. Below the most important components of the Middleware are illustrated:
+The on-premise solution of the fiskaltrust.Middleware requires [installation](../installation/installation.md)  and configuration for the client. Below the most important components of the Middleware are illustrated:
 
 ![middleware-en](images/middleware-en.svg)
 

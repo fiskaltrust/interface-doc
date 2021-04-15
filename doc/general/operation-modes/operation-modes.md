@@ -76,7 +76,7 @@ The SCU (Signature Creation Unit) handles the country-specific implementation of
 
 - Austria
 
-- [Germany]( (../../appendix-de-kassensichv/operation-modes/on-premise-installation.md) )
+- [Germany](../../appendix-de-kassensichv/operation-modes/on-premise-installation.md)
 - France
 
 #### SCD

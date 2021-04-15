@@ -5,15 +5,15 @@ title: On-premise installation
 
 # On-premise installation
 
-The illustration below shows the components available for the on-premise installation of the fiskaltrust.Middleware for the German market. For the operation modes available and the description of the components please refer to the [general part](../../general/operation-modes/operation-modes.md) .
+The illustration below shows the components available for the premise installation of the fiskaltrust.Middleware for the German market. For the operation modes available and the description of the components please refer to the [general part](../../general/operation-modes/operation-modes.md) .
 
 ![middleware-en](images/middleware-en-market-de.svg)
 
 ## Supported software platforms
 
-- [Windows](../features/supported-platforms/windows.md)
-- [Linux, macOs](../features/supported-platforms/linux.md)
-- [Android](../features/supported-platforms/android.md)
+- [Windows](on-premise-platforms/windows.md)
+- [Linux, macOs](on-premise-platforms/linux.md)
+- [Android](on-premise-platforms/android.md)
 
 ## Communication services/platform support matrix
 
@@ -29,14 +29,14 @@ For the German market, depending on the platform, following communication servic
 
 |                                                              | Type,<br />Form factor | State of certification | Environmental protection    | Max. nr. of registered clients (queues) | Windows                                | Linux, macOS                                                 | Android                                |
 | ------------------------------------------------------------ | ---------------------- | --------------------------- | --------------------------- | -------------------------------------- | ------------------------------------------------------------ | -------------------------------------- | -------------------------------------- |
-| [A-Trust Cloud TSE](SCD/a-trust.md) | Software | in certification       |                             |                             | not supported<br />*available soon*    | not supported                                                | not supported                          |
-| [Cryptovision Hardware-TSE](SCD/cryptovision.md) | Hardware<br />microSD | **certified**          | **not required**    | 128        | **supported**                          | **supported**                                                | not supported                          |
-| [Deutsche Fiskal Cloud-TSE](SCD/deutsche-fiskal.md) | Software  | **certified**          | required<br />*currently exposed* | 1                 | **supported**                          | **supported**<br />*Ubuntu LTS 20.04 only*                   | not supported                          |
-| [Diebold-Nixdorf Hardware-TSE](SCD/diebold-nixdorf.md) | Hardware<br />USB Type A | **certified**          | **not required**    |                                         | **supported**                          | **supported**                                                | not supported                          |
-| [Epson Hardware-TSE](SCD/epson.md) | Hardware<br />USB Type A, microSD | **certified** | **not required**        | 100 | **supported**                          | **supported**                                                | not supported                          |
-| [fiskaly Cloud-TSE](SCD/epson.md) | Software | in certification       |                             | 25        | **supported**                    | **supported**                                          | **supported** |
-| [Swissbit Cloud-TSE](SCD/swissbit-cloud.md) | Software | **certified** | required<br />*currently exposed* | 1 | **supported** | **supported**<br />*Ubuntu LTS 20.04 only* | not supported |
-| [Swissbit Hardware-TSE](SCD/swissbit.md) | Hardware<br />USB Type A, SD, microSD | **certified** | **not required** | 100 | **supported**                          | **supported**                                                | **supported**                          |
+| [A-Trust Cloud TSE](scd/a-trust.md) | Software | in certification       | unknown | unknown | not supported<br />*available soon*    | not supported                                                | not supported                          |
+| [Cryptovision Hardware-TSE](scd/cryptovision.md) | Hardware<br />microSD | **certified**          | **not required**    | 128        | **supported**                          | **supported**                                                | not supported                          |
+| [Deutsche Fiskal Cloud-TSE](scd/deutsche-fiskal.md) | Software  | **certified**          | required<br />*currently exposed* | 1                 | **supported**                          | **supported**<br />*Ubuntu LTS 20.04 only*                   | not supported                          |
+| [Diebold-Nixdorf Hardware-TSE](scd/diebold-nixdorf.md) | Hardware<br />USB Type A | **certified**          | **not required**    |                                         | **supported**                          | **supported**                                                | not supported                          |
+| [Epson Hardware-TSE](scd/epson.md) | Hardware<br />USB Type A, microSD | **certified** | **not required**        | 100 | **supported**                          | **supported**                                                | not supported                          |
+| [fiskaly Cloud-TSE](scd/epson.md) | Software | in certification       | unknown | technically unlimited | **supported**                    | **supported**                                          | **supported** |
+| [Swissbit Cloud-TSE](scd/swissbit-cloud.md) | Software | **certified** | required<br />*currently exposed* | 1 | **supported** | **supported**<br />*Ubuntu LTS 20.04 only* | not supported |
+| [Swissbit Hardware-TSE](scd/swissbit.md) | Hardware<br />USB Type A, SD, microSD | **certified** | **not required** | 100 | **supported**                          | **supported**                                                | **supported**                          |
 
 ## Hardware requirements
 
@@ -46,12 +46,12 @@ For hardware requirements, please refer to the [general part](../../general/oper
 
 Following local data storage options can be configured in the queue:
 
-|                                                              | Windows       | Linux, macOS  | Android       |
-| ------------------------------------------------------------ | ------------- | ------------- | ------------- |
-| **[EF-storage](../features/supported-databases/entity-framework.md)** | **supported** | **supported** | not supported |
-| **In-memory storage**                                        |               |               |               |
-| **[MySQL-storage](../features/supported-databases/mysql.md)** | **supported** | **supported** | **supported** |
-| **[SQLite-storage](../features/supported-databases/sqlite.md)** | **supported** | **supported** | **supported** |
+|                                                            | Windows       | Linux, macOS  | Android       |
+| ---------------------------------------------------------- | ------------- | ------------- | ------------- |
+| **[EF-storage](on-premise-databases/entity-framework.md)** | **supported** | **supported** | not supported |
+| **In-memory storage**                                      |               |               |               |
+| **[MySQL-storage](on-premise-databases/mysql.md)**         | **supported** | **supported** | **supported** |
+| **[SQLite-storage](on-premise-databases/sqlite.md)**       | **supported** | **supported** | **supported** |
 
 ## Local data export
 

@@ -22,8 +22,8 @@ Other than that, no specific software needs to be installed (aside from the depe
 |                                                              | Ubuntu     | Debian     | Other distributions running Mono |
 | ------------------------------------------------------------ | ---------- | ---------- | -------------------------------- |
 | local mySQL Storage                                          | **tested** | **tested** | should work (not tested)         |
-| local [SQLite-Storage](../supported-databases/sqlite.md)     | **tested** | **tested** | should work (not tested)         |
-| local [EF-Storage](../supported-databases/entity-framework.md) | not tested | not tested |                                  |
+| local [SQLite-Storage](../on-premise-databases/sqlite.md)    | **tested** | **tested** | should work (not tested)         |
+| local [EF-Storage](../on-premise-databases/entity-framework.md) | not tested | not tested |                                  |
 | local in-memory storage                                      | not tested | not tested |                                  |
 
 Both Entity Framework and SQLite queues can be launched on Linux, starting from version 1.3.3. 

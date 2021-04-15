@@ -32,14 +32,14 @@ Both Entity Framework and SQLite queues can be launched on Linux, starting from 
 
 |                                                           | Ubuntu                                 | Debian     | Other distributions running Mono |
 | --------------------------------------------------------- | -------------------------------------- | ---------- | -------------------------------- |
-| [A-Trust Cloud TSE](../SCD/a-trust.md)                    | not tested                             | not tested |                                  |
-| [Cryptovision Hardware-TSE](../SCD/cryptovision.md)       | **tested**                             | **tested** | should work (not tested)         |
-| [Deutsche Fiskal Cloud-TSE](../SCD/deutsche-fiskal.md)    | Ubuntu LTS 20.04 certified, not tested | not tested |                                  |
-| [Diebold-Nixdorf Hardware-TSE](../SCD/diebold-nixdorf.md) | not tested                             | not tested |                                  |
-| [Epson Hardware-TSE](../SCD/epson.md)                     | not tested                             | not tested |                                  |
-| [fiskaly Cloud-TSE](../SCD/fiskaly.md)                    | **tested**                             | **tested** | should work (not tested)         |
-| [Swissbit Hardware TSE](../SCD/swissbit.md)               | **tested**                             | **tested** | should work (not tested)         |
-| [Swissbit Cloud TSE](../SCD/swissbit-cloud.md)            | Ubuntu LTS 20.04 certified, not tested | not tested |                                  |
+| [A-Trust Cloud TSE](../scd/a-trust.md)                    | not tested                             | not tested |                                  |
+| [Cryptovision Hardware-TSE](../scd/cryptovision.md)       | **tested**                             | **tested** | should work (not tested)         |
+| [Deutsche Fiskal Cloud-TSE](../scd/deutsche-fiskal.md)    | Ubuntu LTS 20.04 certified, not tested | not tested |                                  |
+| [Diebold-Nixdorf Hardware-TSE](../scd/diebold-nixdorf.md) | not tested                             | not tested |                                  |
+| [Epson Hardware-TSE](../scd/epson.md)                     | not tested                             | not tested |                                  |
+| [fiskaly Cloud-TSE](../scd/fiskaly.md)                    | **tested**                             | **tested** | should work (not tested)         |
+| [Swissbit Hardware TSE](../scd/swissbit.md)               | **tested**                             | **tested** | should work (not tested)         |
+| [Swissbit Cloud TSE](../scd/swissbit-cloud.md)            | Ubuntu LTS 20.04 certified, not tested | not tested |                                  |
 
 ## Limitations
 

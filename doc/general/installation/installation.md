@@ -5,13 +5,21 @@ title: Installation
 
 # Installation
 
-The installation of the fiskaltrust.Middleware refers to the on-premise operation. For an on-premise installation of the middleware, following steps are required:
+In an on-premise or off-premise operational environment, the components of the fiskaltrust.Middleware need to be configured, downloaded, installed and started on a local developer-machine, or enrolled onto a POS operator's cash register or server:
 
-Cashbox configuration
+## Cashbox configuration
 
-The components of the fiskaltrust.Middleware need to be configured in the fiskaltrust.Portal.
+The components of the fiskaltrust.Middleware need to be configured in the fiskaltrust.Portal. Which components are available, needed and how they are configured, is dependent on the local market regulation.
 
-download of the launcher
+For example, it must be configured the endpoints where the POS system can reach the service, in which database the processed data from the service is to be stored, which Signature Creation Device (SCD) is to be used for the signatures and how the SCD can be reached for the service.
+
+Here you can find more information on the configuration options of the components:
+
+- market-AT
+- market-DE
+- market-FR
+
+Download of the launcher
 
 start of the launcher
 

@@ -48,14 +48,6 @@ The iPOS Interface offers three interface methods:
 - *sign* (sign receipt data, send special receipts) and 
 - *journal* (export data).
 
-
-
-| Communication service | AT            | DE            | FR            |
-| --------------------- | ------------- | ------------- | ------------- |
-| **gRPC**              | not supported | **supported** | not supported |
-| **REST**              | **supported** | **supported** | **supported** |
-| **WCF**               | **supported** | **supported** | **supported** |
-
 More detailed information, including the data flow, you can find in the [communication chapter](../communication/communication.md).
 
 #### Queue

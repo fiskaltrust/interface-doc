@@ -12,9 +12,17 @@ This chapter describes the ways to communicate with the fiskaltrust.Middleware v
 | **WCF**               | **supported** | **supported** | **supported** |
 | **serial/TCP**| **supported(helper)** |not supported| not supported  |
 
-
-
 (Fiskaltrust also provides helpers to expand the communication interface for REST and serial/TCP protocols as well. This helpers can be activated and configured with the fiskaltrust.Portal.)
+
+To establish a communication with the IPOS interface, following communication services are recommended based on the POS systems prerequisites:
+
+| POS system technology stack | gRPC            | REST                       | WCF  |
+| --------------------------- | --------------- | -------------------------- | ---- |
+| **.NET client**             | **recommended** | alternative recommendation |      |
+| **Java client**             | **recommended** |                            |      |
+| **Web App**                 |                 | **recommended**            |      |
+
+
 
 ### WCF Web Service
 

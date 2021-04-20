@@ -3,11 +3,19 @@ slug: /poscreators/middleware-doc/general/installation
 title: Installation
 ---
 
-## Installation
+# Installation
 
-### fiskaltrust.Middleware
+The installation of the fiskaltrust.Middleware refers to the on-premise operation. For an on-premise installation of the middleware, following steps are required:
 
-#### Windows, Linux, Mac
+Cashbox configuration
+
+The components of the fiskaltrust.Middleware need to be configured in the fiskaltrust.Portal.
+
+download of the launcher
+
+start of the launcher
+
+## Windows, Linux, Mac
 
 The mentioned platforms use the launcher `fiskaltrust.exe` to execute the fiskaltrust.SecurityMechanism. For Linux and Mac, the launcher can be executed via Mono, version 3.2.8 or higher. For Windows the launcher can be executed via the .NET framework, version 4.0 or higher, or via Mono, version 3.2.8 or higher.
 

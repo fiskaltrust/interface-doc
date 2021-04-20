@@ -48,15 +48,7 @@ The iPOS Interface offers three interface methods:
 - *sign* (sign receipt data, send special receipts) and 
 - *journal* (export data).
 
-To establish a communication with the IPOS interface, following communication services are recommended based on the POS systems prerequisites:
 
-| POS system technology stack | gRPC            | REST                       | WCF  |
-| --------------------------- | --------------- | -------------------------- | ---- |
-| **.NET client**             | **recommended** | alternative recommendation |      |
-| **Java client**             | **recommended** |                            |      |
-| **Web App**                 |                 | **recommended**            |      |
-
-The availability of supported communication services is dependent on the market as shown in the following table:
 
 | Communication service | AT            | DE            | FR            |
 | --------------------- | ------------- | ------------- | ------------- |

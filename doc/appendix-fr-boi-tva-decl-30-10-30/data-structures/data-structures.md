@@ -83,8 +83,8 @@ There are no special requirements or laws for the French market.
 ### Signature Entry
 
 A Signature Entry can include an electronic signature for printing on the receipt and further information regarding the operational state of the fiskaltrust.SecurityMechanism.
-
 Furthermore, but only when receipts with special functions are used, the previous state of the totalizers (in case of a temporal closure), can also be sent back in this block.
+All SignatureItems send back to the POS-System must be printed on the receipt, therefore it's mandatory to print the content of the fields _Caption_ and _Data_.
 
 This table describes additional fields of the Signature Entry applicable to the French market.
 

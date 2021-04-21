@@ -5,23 +5,42 @@ title: Installation
 
 # Installation
 
-In an on-premise or off-premise operational environment, the components of the fiskaltrust.Middleware need to be configured, downloaded, installed and started on a local developer-machine, or enrolled onto a POS operator's cash register or server:
+For operating the fiskaltrust.Middleware on-premise or off-premise, the components of the fiskaltrust.Middleware need to be configured, downloaded, installed and started:
 
-## Cashbox configuration
+## Configuration of Middleware components (Cashbox configuration)
 
-The components of the fiskaltrust.Middleware need to be configured in the fiskaltrust.Portal. Which components are available, needed and how they are configured, is dependent on the local market regulation.
+The components of the fiskaltrust.Middleware need to be configured in the fiskaltrust.Portal to meet the needs of the environment where the Middleware should be operated. Which components are available, needed and how they are configured, is dependent on the local market regulation.
 
 For example, it must be configured the endpoints where the POS system can reach the service, in which database the processed data from the service is to be stored, which Signature Creation Device (SCD) is to be used for the signatures and how the SCD can be reached for the service.
 
 Here you can find more information on the configuration options of the components:
 
 - market-AT
-- market-DE
+- [market-DE](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware#the-cashbox-as-a-configuration-container)
 - market-FR
 
-Download of the launcher
+At the end of this configuration process, a so-called "Launcher" including the configuration needs to be downloaded.
 
-start of the launcher
+## Download of the Launcher
+
+After configuring the cashbox in the portal, a so-called "Launcher" and its configuration needs to be downloaded. Following Launcher options are available for download in the markets:
+
+| Icon                                             | Launcher              | AT        | DE         | FR        |
+| ------------------------------------------------ | --------------------- | --------- | ---------- | --------- |
+| ![launcher-net](images/launcher-net.png)         | .NET Launcher         | supported | supported  | supported |
+| ![launcher-offline](images/launcher-offline.png) | .NET Offline Launcher | supported | supported  | supported |
+| ![launcher-mono](images/launcher-mono.png)       | Mono Launcher         | supported | supported  | supported |
+| ![launcher-android](images/launcher-android.png) | Android Launcher      |           | supported* |           |
+
+*availability dependent on the cashbox configuration
+
+More information on configuration and launcher download you can find in the market specific appendices:
+
+- market-AT
+- [market-DE](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware#start-and-test-the-service)
+- market-FR
+
+## Start of the launcher
 
 ## Windows, Linux, Mac
 

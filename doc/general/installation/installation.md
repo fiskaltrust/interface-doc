@@ -7,9 +7,11 @@ title: Installation
 
 For operating the fiskaltrust.Middleware on-premise or off-premise, the components of the fiskaltrust.Middleware need to be configured, downloaded, installed and started:
 
-## Configuration of Middleware components (Cashbox configuration)
+## Configuration of Middleware components 
 
-The components of the fiskaltrust.Middleware need to be configured in the fiskaltrust.Portal to meet the needs of the environment where the Middleware should be operated. Which components are available, needed and how they are configured, is dependent on the local market regulation.
+## (Cashbox configuration)
+
+The components of the fiskaltrust.Middleware need to be configured in the fiskaltrust.Portal for the environment where the Middleware should be operated. The availability of components and its configuration options are dependent on the local market regulation.
 
 For example, it must be configured the endpoints where the POS system can reach the service, in which database the processed data from the service is to be stored, which Signature Creation Device (SCD) is to be used for the signatures and how the SCD can be reached for the service.
 
@@ -25,14 +27,16 @@ At the end of this configuration process, a so-called "Launcher" including the c
 
 After configuring the cashbox in the portal, a so-called "Launcher" and its configuration needs to be downloaded. Following Launcher options are available for download in the markets:
 
-| Icon                                             | Launcher              | AT        | DE         | FR        |
-| ------------------------------------------------ | --------------------- | --------- | ---------- | --------- |
-| ![launcher-net](images/launcher-net.png)         | .NET Launcher         | supported | supported  | supported |
-| ![launcher-offline](images/launcher-offline.png) | .NET Offline Launcher | supported | supported  | supported |
-| ![launcher-mono](images/launcher-mono.png)       | Mono Launcher         | supported | supported  | supported |
-| ![launcher-android](images/launcher-android.png) | Android Launcher      |           | supported* |           |
+| Icon                                             | Launcher                                | Description                                                  | Additional packages required                                 | AT        | DE         | FR        |
+| ------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | --------- | ---------- | --------- |
+| ![launcher-net](images/launcher-net.png)         | .NET Launcher<br />(*default launcher*) | For starting the Middleware on Windows with Internet connection | Yes.<br />The launcher loads additional packages dependent on the configuration during the start. | supported | supported  | supported |
+| ![launcher-offline](images/launcher-offline.png) | .NET Offline Launcher                   | For starting the Middleware on Windows without Internet connection | No                                                           | supported | supported  | supported |
+| ![launcher-mono](images/launcher-mono.png)       | Mono Launcher                           | For starting the Middleware on Linux/macOS with Internet connection | Yes.<br />The launcher loads additional packages dependent on the configuration during the start. | supported | supported  | supported |
+| ![launcher-android](images/launcher-android.png) | Android Launcher                        | For starting the Middleware on Android with Internet connection | No<br />All files needed for operation are included due to Google Play Store restrictions, therefore the configuration options are limited. |           | supported* |           |
 
 *availability dependent on the cashbox configuration
+
+The received zip-compressed folders need to be unzipped and can be moved or renamed if necessary.
 
 More information on configuration and launcher download you can find in the market specific appendices:
 
@@ -40,37 +44,43 @@ More information on configuration and launcher download you can find in the mark
 - [market-DE](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware#start-and-test-the-service)
 - market-FR
 
-## Start of the launcher
+## Starting the launcher
 
-## Windows, Linux, Mac
+### Windows, Linux, macOS
 
-The mentioned platforms use the launcher `fiskaltrust.exe` to execute the fiskaltrust.SecurityMechanism. For Linux and Mac, the launcher can be executed via Mono, version 3.2.8 or higher. For Windows the launcher can be executed via the .NET framework, version 4.0 or higher, or via Mono, version 3.2.8 or higher.
+The folder with the downloaded launcher contains the launcher `fiskaltrust.exe` to start the fiskaltrust.Middleware, the service represented by the `.dll` files, the cashbox configuration file named `fiskaltrust.exe.config`, and three command files:
+
+- `install-service.cmd`
+- `uninstall-service.cmd`
+- `test.cmd`
+
+The command files can be used for parameterized starting or stopping of the service. They execute the `fiskaltrust.exe` with specification of appropriate parameters.
 
 The following call parameters are available with the launcher `fiskaltrust.exe`:
 
-| **Parameter**                  | **Description**                                                                                                                                                 |
-|--------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| `-cashboxid`                   | Sets the CashBoxId into the static configuration (`fiskaltrust.exe.config`). The value is a GUID in format `00000000-0000-0000-0000-000000000000`.              |
-| `-accesstoken`                 | Sets the AccessToken in the static configuration (`fiskaltrust.exe.config`) for online communication                                                            |
-| `-useoffline`                  | Sets the offline mode in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true \| false                                             |
-| `-test`                        | Executing as command line program. Basic information is provided in the console. Should be indicated as last parameter, if it is set in connection with others. |
-| `-i`                           | Install Windows service                                                                                                                                         |
-| `-u`                           | Uninstall Windows service                                                                                                                                       |
-| `-servicename=[myservicename]` | Sets the service name in connection with -i and -u                                                                                                              |
-| `-displayname=[mydisplayname]` | Sets the service display name within the system control in connection with -i                                                                                   |
-| `-description=[mydescription]` | Sets the service description within the system control in connection with -i                                                                                    |
-| `-servicefolder`               | Sets folder containing the service files in the static configuration (`fiskaltrust.exe.config`)                                                                 |
-| `-sslvalidation`               | Sets the certificate validation when connecting through SSL in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true \| false       |
-| `-sandbox`                     | Sets the environment to be used in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true (sandbox) \| false (production)            |
-| `-packagesurl`                 | Sets the url of the package server used to download the packages in the static configuration (`fiskaltrust.exe.config`)                                         |
-| `-logfile`                     | Sets the file used to log the output messages in the static configuration (`fiskaltrust.exe.config`)                                                            |
-| `-connectiontimeout`           | Sets the timeout (in seconds) for the HTTP/HTTPS call to download the configuration in the static configuration (`fiskaltrust.exe.config`)                      |
-| `-connectionretry`             | Sets the number of trials to download the configuration in the static configuration (`fiskaltrust.exe.config`)                                                  |
-| `-proxy`                       | Sets the proxy server to be used to connect to internet in the static configuration (`fiskaltrust.exe.config`)                                                  |
+| **Parameter**                  | **Description**                                              | AT        | DE        | FR        |
+| ------------------------------ | ------------------------------------------------------------ | --------- | --------- | --------- |
+| `-cashboxid`                   | Sets the CashBoxId into the static configuration (`fiskaltrust.exe.config`). The value is a GUID in format `00000000-0000-0000-0000-000000000000`. | supported | supported | supported |
+| `-accesstoken`                 | Sets the AccessToken in the static configuration (`fiskaltrust.exe.config`) for online communication |           |           |           |
+| `-useoffline`                  | Sets the offline mode in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true \| false |           |           |           |
+| `-test`                        | Executing as command line program. Basic information is provided in the console. Should be indicated as last parameter, if it is set in connection with others. |           |           |           |
+| `-i`                           | Install Windows service                                      |           |           |           |
+| `-u`                           | Uninstall Windows service                                    |           |           |           |
+| `-servicename=[myservicename]` | Sets the service name in connection with -i and -u           |           |           |           |
+| `-displayname=[mydisplayname]` | Sets the service display name within the system control in connection with -i |           |           |           |
+| `-description=[mydescription]` | Sets the service description within the system control in connection with -i |           |           |           |
+| `-servicefolder`               | Sets folder containing the service files in the static configuration (`fiskaltrust.exe.config`) |           |           |           |
+| `-sslvalidation`               | Sets the certificate validation when connecting through SSL in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true \| false |           |           |           |
+| `-sandbox`                     | Sets the environment to be used in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true (sandbox) \| false (production) |           |           |           |
+| `-packagesurl`                 | Sets the url of the package server used to download the packages in the static configuration (`fiskaltrust.exe.config`) |           |           |           |
+| `-logfile`                     | Sets the file used to log the output messages in the static configuration (`fiskaltrust.exe.config`) |           |           |           |
+| `-connectiontimeout`           | Sets the timeout (in seconds) for the HTTP/HTTPS call to download the configuration in the static configuration (`fiskaltrust.exe.config`) |           |           |           |
+| `-connectionretry`             | Sets the number of trials to download the configuration in the static configuration (`fiskaltrust.exe.config`) |           |           |           |
+| `-proxy`                       | Sets the proxy server to be used to connect to internet in the static configuration (`fiskaltrust.exe.config`) |           |           |           |
 
 <span id="_Toc527986661" class="anchor"></span>*Table 8. fiskaltrust.exe launch parameters*
 
-#### Test Environment
+#### Development/Test Environment
 
 In Windows, it is necessary to run the `cmd.exe` as administrator. The launcher `fiskaltrust.exe` can be then executed as a command line program through the call parameter `–test`.
 
@@ -86,7 +96,7 @@ In Windows, all data is saved per default in `C:\ProgramData\fiskaltrust\service
 
 <span id="_Toc527986811" class="anchor"></span>*Illustration 10. Screen Shot console in test mode*
 
-#### Windows Service
+#### Windows Service Installation
 
 The Windows service can be installed and uninstalled via the call parameters -i and –u.
 
@@ -96,7 +106,7 @@ The Windows service can be installed and uninstalled via the call parameters -i 
 
 Once successfully completed, the service will appear in the list of running services.
 
-#### Mono Service
+#### Mono Service Installation
 
 For Linux, the fiskaltrust.SecurityMechanism can be installed as Daemon.
 
@@ -176,7 +186,7 @@ Finally, the daemon can be installed with the following command:
 
 Once completed, the service should appear in the running daemon list.
 
-#### iOS-Devices, Android-Devices, Windows Universal App (XBox, Windows Phone, …)
+### Android
 
 A background app for each respective platform is in planning.
 

@@ -32,7 +32,9 @@ Connect requests representing a business action with ['cbReceiptReference'](http
 
 #### Workflow example
 
-![referencing-previous-receipts](media/referencing-previous-receipts.png)
+![referencing-previous-receipts](media/referencing-previous-receipts.svg)
+([click to expand](media/referencing-previous-receipts.svg))
+
 Two friends are having a beer in a bar.  Because it is good German beer, they are ordering another one. They pay with one bill.
 
 #### Code examples
@@ -53,7 +55,9 @@ Use ['cbReceiptPreviousReference'](https://docs.fiskaltrust.cloud/docs/poscreato
 
 #### Workflow example
 
-<img src="media/splitting-receipts.png" alt="splitting-receipts" style={{zoom: "50%"}} />
+![splitting-receipts](media/splitting-receipts.svg)
+
+([click to expand](media/splitting-receipts.svg))
 
 Two friends are having a beer in a bar.  Each of them is paying his own consumption. Therefore, the receipt has to be split.
 
@@ -74,7 +78,9 @@ Merge receipts by combining ['cbReceiptReference' and 'cbReceiptPreviousReferenc
 
 #### Workflow example
 
-![merging-receipts](media/merging-receipts.png)
+![merging-receipts](media/merging-receipts.svg)
+
+([click to expand](media/merging-receipts.svg))
 
 Two friends are having a beer in a bar. One of them has birthday. To celebrate that, he invites the guests on the table next to them to pay what they have ordered and consumed so far. Therefore, their receipt has to be merged with the other receipt.
 
@@ -98,7 +104,9 @@ Document the field/section in which the receipt is created with [cbArea](https:/
 
 #### Workflow example
 
-![switching-cbarea](media/switching-cbarea.png)
+![switching-cbarea](media/switching-cbarea.svg)
+
+([click to expand](media/switching-cbarea.svg))
 
 Two friends are having a beer in a bar on a big table. They change to a smaller table so that a bigger group of people can sit on their previous table to order some food.
 
@@ -120,7 +128,11 @@ ChargeItems are collected via ftReceiptCase 'Info-internal' or 'Info-order'. 'cb
 
 #### Workflow example
 
-![chargeitem-internal-payment-external](media/chargeitem-internal-payment-external.png)
+![chargeitem-internal-payment-external](media/chargeitem-internal-payment-external.svg)
+
+([click to expand](media/chargeitem-internal-payment-external.svg))
+
+A couple checks-in in a hotel for one night. They have a beer at the hotel bar, which uses a different POS system than at the reception. The couple wishes the consumption to be paid via accomodation invoice at checkout. Therefore, an 'info-internal' is used instead of a 'POS receipt'. 'cbArea' is used to provide the information about the connected business action using the room number as unique identifier.
 
 ### Option B: ChargeItems collected at an external system or queue are payed at the internal queue
 
@@ -139,7 +151,9 @@ For this workflow, the combination of following receipt-sequences is needed:
 
 #### Workflow example
 
-![chargeitem-external-payment-internal](media/chargeitem-external-payment-internal.png) 
+![chargeitem-external-payment-internal](media/chargeitem-external-payment-internal.svg) 
+
+([click to expand](media/chargeitem-external-payment-internal.svg))
 
 1. A couple performs a check-in at the reception of a hotel for one night.
 2. An info-order for the overnight-stay is created.
@@ -168,7 +182,9 @@ Issuing and redeeming a multi-purpose voucher can be achieved with charge- and p
 
 #### Workflow
 
-![multi-purpose-voucher](media/multi-purpose-voucher.png)
+![multi-purpose-voucher](media/multi-purpose-voucher.svg)
+
+([click to expand](media/multi-purpose-voucher.svg))
 
 A customer at Club Med charges his bracelet with 100 €, which is used within the club area as a money substitute. Multiple consumptions are made using different POS systems. Each POS system uses its own different POS receipt IDs, and 'cbArea' is changing as well. At check-out, the customer is getting paid out the remaining credit on the bracelet. 
 

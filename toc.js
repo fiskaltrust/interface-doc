@@ -54,6 +54,7 @@ module.exports = {
               ]
             },
             'middleware-doc/doc/appendix-de-kassensichv/data-structures/data-structures',
+		'middleware-doc/doc/appendix-de-kassensichv/installation/installation',
             {
               type: 'category',
               label: 'Reference Tables',

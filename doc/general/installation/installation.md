@@ -51,14 +51,14 @@ The folder with the downloaded and unzipped launcher contains
 
 In the fiskaltrust.Portal, the components of the fiskaltrust.Middleware have been configured via Cashbox configuration for the environment where the Middleware should be operated, e.g. which database should be used to store the receipt data. 
 
-This configured and downloaded local Middleware service can be now started by executing the `fiskaltrust.exe` and optionally adapted for the local machine; e.g. setting the target folder for the data storage of the service, or setting the service name.
+This configured and downloaded local Middleware service can be now started by executing the `fiskaltrust.exe` and optionally add settings in the static configuration file `fiskaltrust.exe.config` for the local machine; e.g. setting the target folder for the data storage of the service, or setting the service name.
 
 This can be achieved in following ways:
 
-- Executing the launcher `fiskaltrust.exe` as a command line program using call parameters, either directly or via command files, for adapting the static configuration (`fiskaltrust.exe.config`), or
-- Directly modifying the static configuration `fiskaltrust.exe.config`.
+- Executing the launcher `fiskaltrust.exe` as a command line program using call parameters, either directly or via command files, for adding settings in the static configuration (`fiskaltrust.exe.config`), or
+- Directly modifying the static configuration file `fiskaltrust.exe.config` by adding the appropriate key-value pairs in the section `appSettings` (see *Table 8. fiskaltrust.exe launch parameters*).
 
-With the downloaded Launcher, there are three pre-configured command files included which can be used (and adapted) for parameterized execution of the `fiskaltrust.exe` for starting or stopping of the Middleware service. In Windows, it is necessary to run the command line `cmd.exe` as administrator:
+With the downloaded Launcher, there are three pre-configured command files included which can be used (and adapted) for parameterized execution of the `fiskaltrust.exe` for starting or stopping of the Middleware service for the most common use cases. In Windows, it is necessary to run the command line `cmd.exe` as administrator:
 
 | File                    | Description                                                  |
 | ----------------------- | ------------------------------------------------------------ |
@@ -68,25 +68,25 @@ With the downloaded Launcher, there are three pre-configured command files inclu
 
 The following call parameters are available with the launcher `fiskaltrust.exe`:
 
-| **Parameter**                  | **Description**                                              | overwrites values in the static configuration | AT        | DE        | FR        |
-| ------------------------------ | ------------------------------------------------------------ | --------------------------------------------- | --------- | --------- | --------- |
-| `-cashboxid`                   | Sets the CashBoxId. The value is a GUID in format `00000000-0000-0000-0000-000000000000`. | yes                                           | supported | supported | supported |
-| `-accesstoken`                 | Sets the AccessToken for online communication                | yes                                           | supported | supported | supported |
-| `-useoffline`                  | Sets the offline mode. The value is a boolean: true \| false | yes                                           | supported | supported | supported |
-| `-test`                        | Executing as command line program. Basic information is provided in the console. Should be indicated as last parameter, if it is set in connection with others. | no                                            | supported | supported | supported |
-| `-i`                           | Install Windows service                                      | no                                            | supported | supported | supported |
-| `-u`                           | Uninstall Windows service                                    | no                                            | supported | supported | supported |
-| `-servicename=[myservicename]` | Sets the service name in connection with -i and -u           | no                                            |           |           |           |
-| `-displayname=[mydisplayname]` | Sets the service display name within the system control in connection with -i | no                                            |           |           |           |
-| `-description=[mydescription]` | Sets the service description within the system control in connection with -i | no                                            |           |           |           |
-| `-servicefolder`               | Sets folder containing the service files.                    | yes                                           |           |           |           |
-| `-sslvalidation`               | Sets the certificate validation when connecting through SSL in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true \| false |                                               |           |           |           |
-| `-sandbox`                     | Sets the environment to be used in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true (sandbox) \| false (production) |                                               |           |           |           |
-| `-packagesurl`                 | Sets the url of the package server used to download the packages in the static configuration (`fiskaltrust.exe.config`) |                                               |           |           |           |
-| `-logfile`                     | Sets the file used to log the output messages in the static configuration (`fiskaltrust.exe.config`) |                                               |           |           |           |
-| `-connectiontimeout`           | Sets the timeout (in seconds) for the HTTP/HTTPS call to download the configuration in the static configuration (`fiskaltrust.exe.config`) |                                               |           |           |           |
-| `-connectionretry`             | Sets the number of trials to download the configuration in the static configuration (`fiskaltrust.exe.config`) |                                               |           |           |           |
-| `-proxy`                       | Sets the proxy server to be used to connect to internet in the static configuration (`fiskaltrust.exe.config`) |                                               |           |           |           |
+| **Parameter**                  | **Description**                                              | Overwrites the values in the static configuration | AT        | DE        | FR        |
+| ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------- | --------- | --------- | --------- |
+| `-cashboxid`                   | Sets the CashBoxId. The value is a GUID in format `00000000-0000-0000-0000-000000000000`. | yes                                               | supported | supported | supported |
+| `-accesstoken`                 | Sets the AccessToken for online communication                | yes                                               | supported | supported | supported |
+| `-useoffline`                  | Sets the offline mode. The value is a boolean: true \| false | yes                                               | supported | supported | supported |
+| `-test`                        | Executing as command line program. Basic information is provided in the console. Should be indicated as last parameter, if it is set in connection with others. | no                                                | supported | supported | supported |
+| `-i`                           | Install Windows service                                      | no                                                | supported | supported | supported |
+| `-u`                           | Uninstall Windows service                                    | no                                                | supported | supported | supported |
+| `-servicename=[myservicename]` | Sets the service name in connection with -i and -u           | no                                                |           |           |           |
+| `-displayname=[mydisplayname]` | Sets the service display name within the system control in connection with -i | no                                                |           |           |           |
+| `-description=[mydescription]` | Sets the service description within the system control in connection with -i | no                                                |           |           |           |
+| `-servicefolder`               | Sets folder containing the service files.                    | yes                                               |           |           |           |
+| `-sslvalidation`               | Sets the certificate validation when connecting through SSL. The value is a boolean: true \| false | yes                                               |           |           |           |
+| `-sandbox`                     | Sets the environment to be used. The value is a boolean: true (sandbox) \| false (production) | yes                                               |           |           |           |
+| `-packagesurl`                 | Sets the url of the package server used to download the packages. | yes                                               |           |           |           |
+| `-logfile`                     | Sets the file used to log the output messages.               | yes                                               |           |           |           |
+| `-connectiontimeout`           | Sets the timeout (in seconds) for the HTTP/HTTPS call to download the configuration. | yes                                               |           |           |           |
+| `-connectionretry`             | Sets the number of trials to download the configuration.     | yes                                               |           |           |           |
+| `-proxy`                       | Sets the proxy server to be used to connect to the internet. | yes                                               |           |           |           |
 
 <span id="_Toc527986661" class="anchor"></span>*Table 8. fiskaltrust.exe launch parameters*
 

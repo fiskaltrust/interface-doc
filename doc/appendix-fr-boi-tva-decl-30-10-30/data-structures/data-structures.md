@@ -24,8 +24,6 @@ For French law fulfilment, a  ManagerId is required, if the receipt is sent as t
 | **Field Name**  | **Data Type** | **Default Value Mandatory Field** | **Description**                                                       | **Version** |
 |-----------------|---------------|-----------------------------------|-----------------------------------------------------------------------|-------------|
 | `ManagerId`	   |`String`<br />Max 1k |	empty-string<br />optional<br />mandatory in training mode | Identification of the user, who started the training mode. | 1.2      |
-| `FromTimestamp` |`long`             | 0<br />mandatory for ReceiptCase `0x4652000000000017` | Date/time in ticks for the beginning of the journal export.   | 1.2      |
-| `ToTimestamp`	|`long`             | 0<br />mandatory for ReceiptCase `0x4652000000000017` | Date/time in ticks for the end of the journal export.<br />Timespan to `from` must be less than one year.   | 1.2      |
 
 ##### ReceiptCaseData Entry Example
 

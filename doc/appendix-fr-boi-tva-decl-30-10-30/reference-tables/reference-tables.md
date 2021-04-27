@@ -179,4 +179,4 @@ Journals can be extracted in combination with these flags, indicated using codes
 
 | **Value**            | **Description**                  | **Version** |
 |----------------------|----------------------------------|-------------|
-| `0x0000000000010000` | Receive journal export as csv-file and compare hash-values created with receiptcase `0x4652000000000017` | 1.2         |
+| `0x0000000000010000` | Receive Archive as zip-file created with receiptcase `0x4652000000000015` | 1.2         |

@@ -35,6 +35,7 @@
 ## [Terminology](appendix-de-kassensichv/terminology/terminology.md)
 ## [Cash Register Integration](appendix-de-kassensichv/cash-register-integration/cash-register-integration.md)
 ## [Data Structures](appendix-de-kassensichv/data-structures/data-structures.md)
+## [Installation](appendix-de-kassensichv/installation/installation.md)
 ## [Reference Tables](appendix-de-kassensichv/reference-tables/reference-tables.md)
 ### [Service Status: ftState](appendix-de-kassensichv/reference-tables/service-status-ftstate.md)
 ### [Type of Receipt: ftReceiptCase](appendix-de-kassensichv/reference-tables/type-of-receipt-ftreceiptcase.md)

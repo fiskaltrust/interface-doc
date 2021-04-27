@@ -5,7 +5,7 @@ title: Installation
 
 # Installation
 
-For operating the fiskaltrust.Middleware on-premise or off-premise, the components of the fiskaltrust.Middleware need to be configured, downloaded, installed and started:
+For operating the fiskaltrust.Middleware on-premise or off-premise, the components of the fiskaltrust.Middleware need to be configured, downloaded, and installed/started:
 
 ## Configuration of Middleware components 
 
@@ -38,19 +38,33 @@ After configuring the cashbox in the portal, a so-called "Launcher" and its conf
 
 The received zip-compressed folders need to be unzipped and can be moved or renamed if necessary.
 
-More information on configuration and launcher download you can find in the market specific appendices:
+The folder with the downloaded and unzipped launcher contains 
 
-- market-AT
-- [market-DE](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware#start-and-test-the-service)
-- market-FR
+- the launcher `fiskaltrust.exe`, 
+- three pre-configured `.cmd` command files ,
+- a file for the static configuration of the service named `fiskaltrust.exe.config`,  and 
+- the fiskaltrust.Middleware service represented by the `.dll` files.
 
-## Starting the launcher
+## Starting the Launcher using parameters or a static configuration
 
 ### Windows, Linux, macOS
 
-The folder with the downloaded launcher contains the launcher `fiskaltrust.exe` to start the fiskaltrust.Middleware, the service represented by the `.dll` files, the cashbox configuration file named `fiskaltrust.exe.config`, and three pre-configured command files. 
+In the fiskaltrust.Portal, the components of the fiskaltrust.Middleware have been configured via Cashbox configuration for the environment where the Middleware should be operated, e.g. which database should be used to store the receipt data. 
 
-The command files can be used for parameterized starting or stopping of the service. They execute the `fiskaltrust.exe` with specification of appropriate parameters. In Windows, it is necessary to run the `cmd.exe` as administrator:
+This configured and downloaded local Middleware instance can now be adapted for the local machine; e.g. setting the target folder for the data storage of the service, or setting the service name. 
+
+This can be achieved in following ways:
+
+- Executing the launcher `fiskaltrust.exe` as a command line program using call parameters, either directly or via command files, for adapting the static configuration (`fiskaltrust.exe.config`).
+- Directly editing the static configuration static configuration
+
+
+
+For starting the Middleware service the  `fiskaltrust.exe` needs to be executed.
+
+For execution, parameters can be used
+
+The command files can be used for parameterized execution of the `fiskaltrust.exe` for starting or stopping of the Middleware service. In Windows, it is necessary to run the command line `cmd.exe` as administrator:
 
 | File                    | Description                                                  |
 | ----------------------- | ------------------------------------------------------------ |
@@ -62,7 +76,7 @@ The following call parameters are available with the launcher `fiskaltrust.exe`:
 
 | **Parameter**                  | **Description**                                              | AT        | DE        | FR        |
 | ------------------------------ | ------------------------------------------------------------ | --------- | --------- | --------- |
-| `-cashboxid`                   | Sets the CashBoxId into the static configuration (`fiskaltrust.exe.config`). The value is a GUID in format `00000000-0000-0000-0000-000000000000`. | supported | supported | supported |
+| `-cashboxid`                   | Sets the CashBoxId in the static configuration (`fiskaltrust.exe.config`). The value is a GUID in format `00000000-0000-0000-0000-000000000000`. | supported | supported | supported |
 | `-accesstoken`                 | Sets the AccessToken in the static configuration (`fiskaltrust.exe.config`) for online communication | supported | supported | supported |
 | `-useoffline`                  | Sets the offline mode in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true \| false | supported | supported | supported |
 | `-test`                        | Executing as command line program. Basic information is provided in the console. Should be indicated as last parameter, if it is set in connection with others. | supported | supported | supported |
@@ -82,16 +96,41 @@ The following call parameters are available with the launcher `fiskaltrust.exe`:
 
 <span id="_Toc527986661" class="anchor"></span>*Table 8. fiskaltrust.exe launch parameters*
 
-#### Applying the configuration
+#### Applying the Cashbox-configuration
 
-(Only) during the start of the (online-) launcher, the configuration is checked and the configuration-file (usually Configuration-`00000000-0000-0000-0000-000000000000`.json) including the needed packages are downloaded to the fiskaltrust service-folder (usually `C:\ProgramData\fiskaltrust\service`). If a newer configuration is available online, the new configuration file including the new packages according to the configuration are downloaded and installed. Therefore, when updating the configuration of the fiskaltrust.Middleware via fiskaltrust.Portal, the fiskaltrust  Service needs to be manually re-started so that the launcher checks for the new configuration.
+During the start of the Online-Launcher (.NET Launcher or Mono-Launcher), the configuration is checked and the configuration-file (usually Configuration-`00000000-0000-0000-0000-000000000000`.json) including the needed packages are downloaded to the fiskaltrust service-folder (usually `C:\ProgramData\fiskaltrust\service`) if necessary. 
 
-#### Outbound traffic
+When a new configuration shall be applied, the fiskaltrust service needs to be restarted so that the Launcher checks if a new configuration exists.
+
+For checking the configuration and downloading the needed packages the Launcher must be able to contact the fiskaltrust packages-server:
+
+**Outbound traffic**
 
 | Type  | Protocol | Port | Source                             |
 | ----- | -------- | ---- | ---------------------------------- |
 | https | TCP      | 443  | packages-sandbox.fiskaltrust.cloud |
 | https | TCP      | 443  | packages.fiskaltrust.cloud         |
+
+Applying the static configuration
+
+powershell script?
+
+
+
+#### Service folder
+
+The data for the service, e.g. 
+
+- the configuration, 
+- service packages, 
+- the local data storage for receipt data, 
+- data exports, 
+
+is saved under Windows in `C:\ProgramData\fiskaltrust\service`. 
+
+In Linux, the data is saved under `/usr/share/fiskaltrust/service`. 
+
+The deletion of this folder results in a loss of data, and a loss in functionality of the fiskaltrust.SecurityMechanism. In case of an active online connection, the fiskaltrust.SecurityMechanism can restore its functionality without this folder, however the data which was lost cannot be restored.
 
 #### Development/Test Environment
 
@@ -206,3 +245,6 @@ A background app for each respective platform is in planning.
 The scope of operation will be limited to one queue and the update ability will be realised via the platform store. The support nutshell will not be available.
 
 The main features of the data and function structure however, will be the same, and the communication will be adapted to the platform specific standard.
+
+## Migrating the installation to a different hardware
+

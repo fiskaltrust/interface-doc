@@ -51,20 +51,14 @@ The folder with the downloaded and unzipped launcher contains
 
 In the fiskaltrust.Portal, the components of the fiskaltrust.Middleware have been configured via Cashbox configuration for the environment where the Middleware should be operated, e.g. which database should be used to store the receipt data. 
 
-This configured and downloaded local Middleware instance can now be adapted for the local machine; e.g. setting the target folder for the data storage of the service, or setting the service name. 
+This configured and downloaded local Middleware service can be now started by executing the `fiskaltrust.exe` and optionally adapted for the local machine; e.g. setting the target folder for the data storage of the service, or setting the service name.
 
 This can be achieved in following ways:
 
-- Executing the launcher `fiskaltrust.exe` as a command line program using call parameters, either directly or via command files, for adapting the static configuration (`fiskaltrust.exe.config`).
-- Directly editing the static configuration static configuration
+- Executing the launcher `fiskaltrust.exe` as a command line program using call parameters, either directly or via command files, for adapting the static configuration (`fiskaltrust.exe.config`), or
+- Directly modifying the static configuration `fiskaltrust.exe.config`.
 
-
-
-For starting the Middleware service the  `fiskaltrust.exe` needs to be executed.
-
-For execution, parameters can be used
-
-The command files can be used for parameterized execution of the `fiskaltrust.exe` for starting or stopping of the Middleware service. In Windows, it is necessary to run the command line `cmd.exe` as administrator:
+With the downloaded Launcher, there are three pre-configured command files included which can be used (and adapted) for parameterized execution of the `fiskaltrust.exe` for starting or stopping of the Middleware service. In Windows, it is necessary to run the command line `cmd.exe` as administrator:
 
 | File                    | Description                                                  |
 | ----------------------- | ------------------------------------------------------------ |
@@ -74,25 +68,25 @@ The command files can be used for parameterized execution of the `fiskaltrust.ex
 
 The following call parameters are available with the launcher `fiskaltrust.exe`:
 
-| **Parameter**                  | **Description**                                              | AT        | DE        | FR        |
-| ------------------------------ | ------------------------------------------------------------ | --------- | --------- | --------- |
-| `-cashboxid`                   | Sets the CashBoxId in the static configuration (`fiskaltrust.exe.config`). The value is a GUID in format `00000000-0000-0000-0000-000000000000`. | supported | supported | supported |
-| `-accesstoken`                 | Sets the AccessToken in the static configuration (`fiskaltrust.exe.config`) for online communication | supported | supported | supported |
-| `-useoffline`                  | Sets the offline mode in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true \| false | supported | supported | supported |
-| `-test`                        | Executing as command line program. Basic information is provided in the console. Should be indicated as last parameter, if it is set in connection with others. | supported | supported | supported |
-| `-i`                           | Install Windows service                                      | supported | supported | supported |
-| `-u`                           | Uninstall Windows service                                    | supported | supported | supported |
-| `-servicename=[myservicename]` | Sets the service name in connection with -i and -u           |           |           |           |
-| `-displayname=[mydisplayname]` | Sets the service display name within the system control in connection with -i |           |           |           |
-| `-description=[mydescription]` | Sets the service description within the system control in connection with -i |           |           |           |
-| `-servicefolder`               | Sets folder containing the service files in the static configuration (`fiskaltrust.exe.config`) |           |           |           |
-| `-sslvalidation`               | Sets the certificate validation when connecting through SSL in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true \| false |           |           |           |
-| `-sandbox`                     | Sets the environment to be used in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true (sandbox) \| false (production) |           |           |           |
-| `-packagesurl`                 | Sets the url of the package server used to download the packages in the static configuration (`fiskaltrust.exe.config`) |           |           |           |
-| `-logfile`                     | Sets the file used to log the output messages in the static configuration (`fiskaltrust.exe.config`) |           |           |           |
-| `-connectiontimeout`           | Sets the timeout (in seconds) for the HTTP/HTTPS call to download the configuration in the static configuration (`fiskaltrust.exe.config`) |           |           |           |
-| `-connectionretry`             | Sets the number of trials to download the configuration in the static configuration (`fiskaltrust.exe.config`) |           |           |           |
-| `-proxy`                       | Sets the proxy server to be used to connect to internet in the static configuration (`fiskaltrust.exe.config`) |           |           |           |
+| **Parameter**                  | **Description**                                              | overwrites values in the static configuration | AT        | DE        | FR        |
+| ------------------------------ | ------------------------------------------------------------ | --------------------------------------------- | --------- | --------- | --------- |
+| `-cashboxid`                   | Sets the CashBoxId. The value is a GUID in format `00000000-0000-0000-0000-000000000000`. | yes                                           | supported | supported | supported |
+| `-accesstoken`                 | Sets the AccessToken for online communication                | yes                                           | supported | supported | supported |
+| `-useoffline`                  | Sets the offline mode. The value is a boolean: true \| false | yes                                           | supported | supported | supported |
+| `-test`                        | Executing as command line program. Basic information is provided in the console. Should be indicated as last parameter, if it is set in connection with others. | no                                            | supported | supported | supported |
+| `-i`                           | Install Windows service                                      | no                                            | supported | supported | supported |
+| `-u`                           | Uninstall Windows service                                    | no                                            | supported | supported | supported |
+| `-servicename=[myservicename]` | Sets the service name in connection with -i and -u           | no                                            |           |           |           |
+| `-displayname=[mydisplayname]` | Sets the service display name within the system control in connection with -i | no                                            |           |           |           |
+| `-description=[mydescription]` | Sets the service description within the system control in connection with -i | no                                            |           |           |           |
+| `-servicefolder`               | Sets folder containing the service files.                    | yes                                           |           |           |           |
+| `-sslvalidation`               | Sets the certificate validation when connecting through SSL in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true \| false |                                               |           |           |           |
+| `-sandbox`                     | Sets the environment to be used in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true (sandbox) \| false (production) |                                               |           |           |           |
+| `-packagesurl`                 | Sets the url of the package server used to download the packages in the static configuration (`fiskaltrust.exe.config`) |                                               |           |           |           |
+| `-logfile`                     | Sets the file used to log the output messages in the static configuration (`fiskaltrust.exe.config`) |                                               |           |           |           |
+| `-connectiontimeout`           | Sets the timeout (in seconds) for the HTTP/HTTPS call to download the configuration in the static configuration (`fiskaltrust.exe.config`) |                                               |           |           |           |
+| `-connectionretry`             | Sets the number of trials to download the configuration in the static configuration (`fiskaltrust.exe.config`) |                                               |           |           |           |
+| `-proxy`                       | Sets the proxy server to be used to connect to internet in the static configuration (`fiskaltrust.exe.config`) |                                               |           |           |           |
 
 <span id="_Toc527986661" class="anchor"></span>*Table 8. fiskaltrust.exe launch parameters*
 
@@ -111,7 +105,7 @@ For checking the configuration and downloading the needed packages the Launcher 
 | https | TCP      | 443  | packages-sandbox.fiskaltrust.cloud |
 | https | TCP      | 443  | packages.fiskaltrust.cloud         |
 
-Applying the static configuration
+
 
 powershell script?
 

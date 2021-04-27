@@ -1,3 +1,8 @@
+---
+slug: /poscreators/middleware-doc/austria/installation
+title: Installation
+---
+
 ## Installation
 
 ### fiskaltrust.SignatureCard

@@ -1,3 +1,8 @@
+---
+slug: /poscreators/middleware-doc
+title: Introduction
+---
+
 # General Part
 
 The technical specification of the data interface described in this document provides information regarding the following areas:
@@ -9,6 +14,6 @@ The technical specification of the data interface described in this document pro
 5. Types of communication with fiskaltrust.Middleware
 6. Operating categories
 
-Interface specification is provided by fiskaltrust.Interface nuget package, which can be found at <https://www.nuget.org/packages/fiskaltrust.interface>
+The interface specification is provided by the fiskaltrust.Interface NuGet package, which can be found at <https://www.nuget.org/packages/fiskaltrust.interface>
 
 For specifications or provisions of national law, please refer to the appropriate appendix.

@@ -1,3 +1,8 @@
+---
+slug: /poscreators/middleware-doc/general/reference-tables
+title: Reference tables
+---
+
 ## Reference tables
 
 ### Service Status: ftState

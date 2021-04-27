@@ -1,3 +1,8 @@
+---
+slug: /poscreators/middleware-doc/general/function-structures
+title: Function structures
+---
+
 ## Function structures
 
 ### iPOS Interface

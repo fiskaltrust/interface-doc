@@ -1,3 +1,8 @@
+---
+slug: /poscreators/middleware-doc/general/communication
+title: Communication
+---
+
 ## Communication
 
 This chapter describes the ways to communicate with the fiskaltrust.Middleware via different network communication protocols. A fiskaltrust.Middleware exposes a WCF (Windows Communication Foundation) service to let POS-Systems interact with fiskaltrust.SecurityMechanism using fiskaltrust.Interface. Fiskaltrust also provides helpers to expand the communication interface for REST and serial/TCP protocols as well. This helpers can be activated and configured with the fiskaltrust.Portal.
@@ -12,7 +17,11 @@ The WCF service will be hosted under the URL, which can be set in the fiskaltrus
 
 ![](./images/01-configuration-page.png)
 
-<span id="_Toc527986808" class="anchor"></span>*Illustration 7. Configuration page of a fiskaltrust.Middleware*
+<span id="_Toc527986808" class="anchor">
+
+*Illustration 7. Configuration page of a fiskaltrust.Middleware*
+
+</span>
 
 Supported protocols are: http, https, net.tcp, net.pipe. For configuring a custom message size and a custom time out, it is possible to specify the parameter "messagesize" (in bytes) and the parameter "timeout" (in seconds) on the configuration page.
 
@@ -35,7 +44,11 @@ ChannelFactory<fiskaltrust.ifPOS.v0.IPOS> factory =
 var proxy = factory.CreateChannel();
 ```
 
-<span id="_Toc527986833" class="anchor"></span>*Code 9. Call of proxy class*
+<span id="_Toc527986833" class="anchor">
+
+*Code 9. Call of proxy class*
+
+</span>
 
 #### SOAP
 
@@ -54,7 +67,11 @@ ifPOS.v0.ReceiptRequest req;
 fiskaltrust.ifPOS.v0.ReceiptResponse resp = proxy.Sign(req);
 ```
 
-<span id="_Toc527986834" class="anchor"></span>*Code 10. Example call for signing with SOAP*
+<span id="_Toc527986834" class="anchor">
+
+*Code 10. Example call for signing with SOAP*
+
+</span>
 
 #### *Balancer Helper*
 
@@ -103,7 +120,11 @@ function success(data, textStatus, jqXHR) {
 }
 ```
 
-<span id="_Toc527986835" class="anchor"></span>*Code 11. JS/jQuery Example calling the REST Web Service*
+<span id="_Toc527986835" class="anchor">
+
+*Code 11. JS/jQuery Example calling the REST Web Service*
+
+</span>
 
 ### Serial-stream or TCP-stream protocol
 
@@ -155,4 +176,8 @@ one byte CRC7 calculation of the previous bytes except the first (byte) 2.
 <STX (0x02)>Command["Echo"|"Sign"]<TAB (0x09)>Data[JSON-ReceiptRequest]<ETX (0x03)><CRC7>
 ```
 
-<span id="_Toc527986836" class="anchor"></span>*Code 12. Data Structure for call and response*
+<span id="_Toc527986836" class="anchor">
+
+*Code 12. Data Structure for call and response*
+
+</span>

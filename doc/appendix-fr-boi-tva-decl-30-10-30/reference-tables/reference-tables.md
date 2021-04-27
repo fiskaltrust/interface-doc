@@ -1,4 +1,9 @@
-# Reference Tables
+---
+slug: /poscreators/middleware-doc/france/reference-tables
+title: Reference tables
+---
+
+# Reference tables
 
 ## Type of Receipt: ftReceiptCase
 
@@ -44,7 +49,9 @@ According to French law and regulations, various business transactions can resul
 | `0x0000000000040000` | **Reverse/voided receipt**<br />Common behaviour, see [general part](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/general/reference-tables#ftreceiptcaseflag). |             |
 | `0x0000800000000000` | **Receipt request**<br />Common behaviour, see [general part](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/general/reference-tables#ftreceiptcaseflag). |             |
 
-<span id="_Toc527986686" class="anchor"></span>*Table 34. Type of Receipt: ftReceiptCase Flags (FR – BOI-TVA-DECL 30-10-30)*
+<span id="_Toc527986686" class="anchor"></span>
+
+*Table 34. Type of Receipt: ftReceiptCase Flags (FR – BOI-TVA-DECL 30-10-30)*
 
 ## Type of Service: ftChargeItemCase
 
@@ -90,7 +97,9 @@ For France (FR), the country code is 0x4652. Thus, the value for an unknown `ftC
 | `0x4652000000000021` | **Account of a third party/ third party name/ collection**<br />For processing, see (`0x4652000000000007`)                                                                                                                                                                                                                                         | 1.2                 |
 | `0x4652000000000022` | **Obligation**                                                                                                                                                                                                                                                                                                                                   | 1.2                 |
 
-<span id="_Toc527986687" class="anchor"></span>*Table 35. Type of Service: ftChargeItemCase (FR – BOI-TVA-DECL 30-10-30)*
+<span id="_Toc527986687" class="anchor"></span>
+
+*Table 35. Type of Service: ftChargeItemCase (FR – BOI-TVA-DECL 30-10-30)*
 
 In the following there are further guidelines for using ftChargeItemCase.
 
@@ -121,7 +130,9 @@ The `ftPayItemCase` defines the type of payment within the pay items block and h
 | `0x4652000000000011` | **Internal/ material consumption**<br />Can be used for bill<br />internal                                                     | 1.2                 |
 | `0x4652000000000012` | **Change**<br />tip<br />cash                                                                                                  | 1.2                 |
 
-<span id="_Toc527986688" class="anchor"></span>*Table 36. Type of Payment: ftPayItemCase (FR - BOI-TVA-DECL 30-10-30)*
+<span id="_Toc527986688" class="anchor"></span>
+
+*Table 36. Type of Payment: ftPayItemCase (FR - BOI-TVA-DECL 30-10-30)*
 
 ## Type of Signature: ftSignatureType
 
@@ -138,7 +149,9 @@ The `ftSignatureType` indicates the type and origin of the signature.
 | `0x4652000000000006` | Archive Totals Sum  | 1.2         |
 | `0x4652000000000007` | Perpetual Total Sum | 1.2         |
 
-<span id="_Toc527986689" class="anchor"></span>*Table 37. Type of Signature: ftSignatureType (FR - BOI-TVA-DECL 30-10-30)*
+<span id="_Toc527986689" class="anchor"></span>
+
+*Table 37. Type of Signature: ftSignatureType (FR - BOI-TVA-DECL 30-10-30)*
 
 ## Type of Journal: ftJournalType
 

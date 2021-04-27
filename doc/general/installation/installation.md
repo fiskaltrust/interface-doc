@@ -28,6 +28,7 @@ The following call parameters are available with the launcher `fiskaltrust.exe`:
 | `-sslvalidation`               | Sets the certificate validation when connecting through SSL in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true \| false |
 | `-sandbox`                     | Sets the environment to be used in the static configuration (`fiskaltrust.exe.config`). The value is a boolean: true (sandbox) \| false (production) |
 | `-packagesurl`                 | Sets the url of the package server used to download the packages in the static configuration (`fiskaltrust.exe.config`) |
+| `-verbosity`                   | Sets the level of debug-information in the logfile. The value is a string: `Debug`. Use in the static configuration (`fiskaltrust.exe.config`) the key `loglevel` with the value `Debug`. Possible values/debug levels are: `Trace` \| `Debug` \| `Information` \| `Warning` \| `Error` \| `Critical` |
 | `-logfile`                     | Sets the file used to log the output messages in the static configuration (`fiskaltrust.exe.config`) |
 | `-connectiontimeout`           | Sets the timeout (in seconds) for the HTTP/HTTPS call to download the configuration in the static configuration (`fiskaltrust.exe.config`) |
 | `-connectionretry`             | Sets the number of trials to download the configuration in the static configuration (`fiskaltrust.exe.config`) |

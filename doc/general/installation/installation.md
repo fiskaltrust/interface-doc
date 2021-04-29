@@ -75,7 +75,6 @@ The following call parameters are available with the launcher `fiskaltrust.exe`:
 | `-connectionretry`             | Sets the number of trials to download the configuration.     | yes                                                          | supported       | supported | supported       |
 | `-proxy`                       | Sets the proxy server to be used to connect to the internet. | yes                                                          | supported       | supported | supported       |
 | `-verbosity`                   | Sets the level of debug-information in the logfile. The value is a string. Possible values are: `Trace` \|`Debug` \|`Information` \|`Warning` \|`Error` \|`Critical` | yes. <br />Use in the static configuration the key `loglevel` | *not supported* | supported | *not supported* |
-
 <span id="_Toc527986661" class="anchor"></span>*Table 8. fiskaltrust.exe launch parameters*
 
 ### Starting the Launcher

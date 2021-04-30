@@ -1,22 +1,12 @@
 trigger:
 - master
-- release/*
-- refs/tags/*
 
-pool: ft-a240-build-agents-windows
+pool:
+  vmImage: 'ubuntu-latest'
 
 steps:
 - checkout: self
   clean: true
-
-- powershell: |
-    $majorMinor,$prerelease = Get-Content "major.minor"
-    $version = "$majorMinor.$(Get-Date -UFormat "%y")$("{0:D3}" -f (Get-Date).DayofYear).$env:BUILD_BUILDID"
-    $date = Get-Date -format dd.MM.yyyy
-
-    (Get-Content cover.html).replace('[[VERSION]]', $version) | Set-Content cover.html
-    (Get-Content cover.html).replace('[[TODAY]]', $date) | Set-Content cover.html
-  displayName: 'Set version in cover page'
 
 - task: NodeTool@0
   inputs:
@@ -28,7 +18,7 @@ steps:
   displayName: 'Install markdown-link-check'
    
 - powershell: |
-    Get-ChildItem -Path ".\doc\" -Filter "*.md" -Recurse | ForEach-Object {
+    Get-ChildItem -Path "./doc/" -Filter "*.md" -Recurse | Where-Object { $_.FullName -inotmatch "i18n" } | ForEach-Object {
       $path = Resolve-Path -Path $_.FullName -Relative
       if(!($path -match "\\\.[^\.\\]+")) {
         markdown-link-check -c .\markdown-link-check.config.json -q $path
@@ -37,33 +27,3 @@ steps:
   failOnStderr: true
   errorActionPreference: continue
   displayName: 'Check links'
-
-- task: NuGetToolInstaller@1  
-  displayName: 'Use NuGet'
-
-- powershell: |
-    # The current latest version 0.12.5 contains a bug that prevents the creation of TOCs
-    # Specific version can be removed as soon as 0.12.6 is released
-    choco install wkhtmltopdf --version 0.12.4.20170325 --allow-downgrade -y
-    choco install docfx --version 2.41 -y
-    nuget install DocFx.Plugins.PlantUml -Version "1.1.19" -ExcludeVersion -OutputDirectory .
-  displayName: 'Install prerequisites'
-
-- task: PowerShell@2
-  inputs:
-    filePath: 'set-chapter-numbers.ps1'
-
-- powershell: |
-    Start-Process docfx -ArgumentList "pdf" -Wait -RedirectStandardError $(Build.ArtifactStagingDirectory)/docfx-err.log -RedirectStandardOutput $(Build.ArtifactStagingDirectory)/docfx-out.log
-  displayName: Run docfx
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: logs'
-  inputs:
-    ArtifactName: logs
-
-- task: PublishBuildArtifacts@1
-  displayName: 'Publish Artifact: documentation'
-  inputs:
-    PathtoPublish: '_site_pdf/'
-    ArtifactName: documentation

@@ -55,26 +55,26 @@ The downloaded Launcher can now be optionally adapted for the local machine; e.g
 
 The following call parameters are available with the launcher `fiskaltrust.exe`:
 
-| **Parameter**                  | **Description**                                              | Overwrites the values in the static configuration `fiskaltrust.exe.config` | AT              | DE        | FR              |
-| ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | --------------- | --------- | --------------- |
-| `-cashboxid`                   | Sets the CashBoxId. The value is a GUID in format `00000000-0000-0000-0000-000000000000`. | yes                                                          | supported       | supported | supported       |
-| `-accesstoken`                 | Sets the AccessToken for online communication                | yes                                                          | supported       | supported | supported       |
-| `-useoffline`                  | Sets the offline mode. The value is a boolean: true \| false | yes                                                          | supported       | supported | supported       |
-| `-test`                        | Executing as command line program. Basic information is provided in the console. Should be indicated as last parameter, if it is set in connection with others. | no                                                           | supported       | supported | supported       |
-| `-i`                           | Install Windows service                                      | no                                                           | supported       | supported | supported       |
-| `-u`                           | Uninstall Windows service                                    | no                                                           | supported       | supported | supported       |
-| `-servicename=[myservicename]` | Sets the service name in connection with -i and -u           | no                                                           | supported       | supported | supported       |
-| `-displayname=[mydisplayname]` | Sets the service display name within the system control in connection with -i | no                                                           | supported       | supported | supported       |
-| `-description=[mydescription]` | Sets the service description within the system control in connection with -i | no                                                           | supported       | supported | supported       |
-| `-servicefolder`               | Sets folder containing the service files.                    | yes                                                          | supported       | supported | supported       |
-| `-sslvalidation`               | Sets the certificate validation when connecting through SSL. The value is a boolean: true \| false | yes                                                          | supported       | supported | supported       |
-| `-sandbox`                     | Sets the environment to be used. The value is a boolean: true (sandbox) \| false (production) | yes                                                          | supported       | supported | supported       |
-| `-packagesurl`                 | Sets the url of the package server used to download the packages. | yes                                                          | supported       | supported | supported       |
-| `-logfile`                     | Sets the file used to log the output messages.               | yes                                                          | supported       | supported | supported       |
-| `-connectiontimeout`           | Sets the timeout (in seconds) for the HTTP/HTTPS call to download the configuration. | yes                                                          | supported       | supported | supported       |
-| `-connectionretry`             | Sets the number of trials to download the configuration.     | yes                                                          | supported       | supported | supported       |
-| `-proxy`                       | Sets the proxy server to be used to connect to the internet. | yes                                                          | supported       | supported | supported       |
-| `-verbosity`                   | Sets the level of debug-information in the logfile. The value is a string. Possible values are: `Trace` \|`Debug` \|`Information` \|`Warning` \|`Error` \|`Critical` | yes. <br />Use in the static configuration the key `loglevel` | *not supported* | supported | *not supported* |
+| **Parameter**                  | **Description**                                              | Overwrites the values in the static configuration `fiskaltrust.exe.config` |
+| ------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| `-cashboxid`                   | Sets the CashBoxId. The value is a GUID in format `00000000-0000-0000-0000-000000000000`. | yes                                                          |
+| `-accesstoken`                 | Sets the AccessToken for online communication                | yes                                                          |
+| `-useoffline`                  | Sets the offline mode. The value is a boolean: true \| false | yes                                                          |
+| `-test`                        | Executing as command line program. Basic information is provided in the console. Should be indicated as last parameter, if it is set in connection with others. | no                                                           |
+| `-i`                           | Install Windows service                                      | no                                                           |
+| `-u`                           | Uninstall Windows service                                    | no                                                           |
+| `-servicename=[myservicename]` | Sets the service name in connection with -i and -u           | no                                                           |
+| `-displayname=[mydisplayname]` | Sets the service display name within the system control in connection with -i | no                                                           |
+| `-description=[mydescription]` | Sets the service description within the system control in connection with -i | no                                                           |
+| `-servicefolder`               | Sets folder containing the service files.                    | yes                                                          |
+| `-sslvalidation`               | Sets the certificate validation when connecting through SSL. The value is a boolean: true \| false | yes                                                          |
+| `-sandbox`                     | Sets the environment to be used. The value is a boolean: true (sandbox) \| false (production) | yes                                                          |
+| `-packagesurl`                 | Sets the url of the package server used to download the packages. | yes                                                          |
+| `-logfile`                     | Sets the file used to log the output messages.               | yes                                                          |
+| `-connectiontimeout`           | Sets the timeout (in seconds) for the HTTP/HTTPS call to download the configuration. | yes                                                          |
+| `-connectionretry`             | Sets the number of trials to download the configuration.     | yes                                                          |
+| `-proxy`                       | Sets the proxy server to be used to connect to the internet. | yes                                                          |
+| `-verbosity`                   | Sets the level of debug-information in the logfile. The value is a string. Possible values are: `Trace` \|`Debug` \|`Information` \|`Warning` \|`Error` \|`Critical`<br />**Supported in the German market only!** | yes. <br />Use in the static configuration the key `loglevel` |
 <span id="_Toc527986661" class="anchor"></span>*Table 8. fiskaltrust.exe launch parameters*
 
 ### Starting the Launcher

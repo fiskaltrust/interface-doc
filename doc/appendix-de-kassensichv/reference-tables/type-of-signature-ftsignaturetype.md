@@ -37,5 +37,4 @@ For definitions regarding national laws, please refer to the appropriate appendi
 | `0x4445000000000022` | Certification identification (e.g. BSI-K-TR-1234-5678). Also contains information about the certification state (for non certified TSEs) and the state of the environmental protection. | 1.3.16                 |
 
 
-*Table 15. Type of Signature: ftSignatureType*
 

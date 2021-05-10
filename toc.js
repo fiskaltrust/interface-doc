@@ -51,55 +51,56 @@ module.exports = {
           items: [
             'middleware-doc/doc/appendix-de-kassensichv/appendix-de-kassensichv',
             'middleware-doc/doc/appendix-de-kassensichv/terminology/terminology',
-			 {
+            'middleware-doc/doc/appendix-de-kassensichv/installation/installation',
+			      {
               type: 'category',
               label: 'Cash register integration',
               items: [
-				'middleware-doc/doc/appendix-de-kassensichv/cash-register-integration/cash-register-integration',
+				        'middleware-doc/doc/appendix-de-kassensichv/cash-register-integration/cash-register-integration',
                 'middleware-doc/doc/appendix-de-kassensichv/cash-register-integration/single-receipt-creation',
                 'middleware-doc/doc/appendix-de-kassensichv/cash-register-integration/receipt-sequences-creation',
               ]
             },
             'middleware-doc/doc/appendix-de-kassensichv/data-structures/data-structures',
-			 {
+			      {
               type: 'category',
               label: 'Operation modes',
               items: [
-				'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-installation',
-				{
-              type: 'category',
-              label: 'On-premise platforms',
-              items: [
-				'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-platforms/android',
-				'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-platforms/linux',
-				'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-platforms/windows',
+				        'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-installation',
+				        {
+                  type: 'category',
+                  label: 'On-premise platforms',
+                  items: [
+				            'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-platforms/android',
+				            'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-platforms/linux',
+				            'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-platforms/windows',
+                  ]
+                },
+			          {
+                  type: 'category',
+                  label: 'Signature Creation Devices',
+                  items: [
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/a-trust',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/cryptovision',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/deutsche-fiskal',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/diebold-nixdorf',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/epson',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/fiskaly',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/swissbit-cloud',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/swissbit',
+                  ]
+                },
+                {
+                  type: 'category',
+                  label: 'On-premise databases',
+                  items: [
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-databases/entity-framework',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-databases/mysql',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-databases/sqlite',
+                  ]
+                },
               ]
-            },
-			{
-              type: 'category',
-              label: 'Signature Creation Devices',
-              items: [
-				'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/a-trust',
-				'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/cryptovision',
-				'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/deutsche-fiskal',
-				'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/diebold-nixdorf',
-				'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/epson',
-				'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/fiskaly',
-				'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/swissbit-cloud',
-				'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/swissbit',
-              ]
-            },
-					{
-              type: 'category',
-              label: 'On-premise databases',
-              items: [
-				'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-databases/entity-framework',
-				'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-databases/mysql',
-				'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-databases/sqlite',
-              ]
-            },
-              ]
-            },
+            },		
             {
               type: 'category',
               label: 'Reference Tables',

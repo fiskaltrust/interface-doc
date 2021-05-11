@@ -21,7 +21,7 @@ In Austria, it is mandatory to have an unmodifiable smartcard (write once read m
 
 #### fiskaltrust.SignatureCloud
 
-The fiskaltrust.SignatureCloud is a pure online solution. The receipt linking is handled entirely online. The advantage of this solution is that no installation or configuration is required for the client and any platform can use this service.
+The fiskaltrust.SignatureCloud is an online-only solution. The receipt linking is handled entirely online. The advantage of this solution is that no installation or configuration is required for the client and any platform can use this service.
 
 The fiskaltrust.SignatureCloud for AT currently has two different versions:
 

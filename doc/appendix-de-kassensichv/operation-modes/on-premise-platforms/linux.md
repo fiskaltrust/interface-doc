@@ -13,7 +13,7 @@ In general, it's possible to run the Middleware on each Linux distribution that 
 
 **Please make sure to install the latest Mono version**. The default versions in the package repositories are usually extremely outdated, so please follow the official [Mono guidelines](https://www.mono-project.com/download/stable/#download-lin-ubuntu) to get the latest packages. We recommend to use at least version 6.8.0, if possible.
 
-Other than that, no specific software needs to be installed (aside from the dependencies Mono has).
+Other than that, no specific software needs to be installed (aside from the dependencies Mono has). When using a Swissbit TSE, it might be required to install the `libc` or `glibc` packages, as these are required by Swissbit's libraries.
 
 ## Supported packages
 

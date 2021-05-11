@@ -53,7 +53,7 @@ The Android Launcher is available for download as an app for both the HTTP varia
 
 The status of the fiskaltrust.Middleware is displayed in the Android notification area. Alternatively, HTTP endpoints are available to call up the status and detailed diagnostic logs (see *Additional information*).
 
-#### Initialisation of the Swissbit TSE
+#### Initialisation of the Swissbit TSE (microSD)
 
 Due to the hardware, the Swissbit TSE has to be unplugged and plugged in again for initialization when the middleware is started for the first time (information on this is then available both in the notification area and via the status endpoint).
 

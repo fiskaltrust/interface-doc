@@ -25,7 +25,7 @@ At the end of this configuration process, a so-called "Launcher" including the c
 
 ## Download of the Launcher
 
-After configuring the cashbox in the portal, following so-called "Launcher" are available for download:
+After configuring the cashbox in the portal, following so-called "Launchers" are available for download:
 
 | Icon                                             | Launcher                                | Description                                                  | AT        | DE         | FR        |
 | ------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------ | --------- | ---------- | --------- |

@@ -9,19 +9,19 @@ For operating the fiskaltrust.Middleware on-premise or off-premise, the componen
 
 ## Configuration of Middleware components 
 
-## (Cashbox configuration)
-
 The components of the fiskaltrust.Middleware need to be configured in the fiskaltrust.Portal for the environment where the Middleware should be operated. The availability of components and its configuration options are dependent on the local market regulation.
 
 For example, it must be configured at which endpoints the Middleware is listening on, in which database the processed data is to be stored, which Signature Creation Unit (SCU) is to be used for the signatures and how it can be reached by the Middleware.
 
+The components of the Middleware which should be operated as an on-premise Middleware-instance are collected in a so-called "Cashbox"configuration container.
+
 More information on the configuration options of the components can be found in the according market-appendices:
 
-- market-AT
-- [market-DE](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware#the-cashbox-as-a-configuration-container)
-- market-FR
+- Austria
+- [Germany](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware#the-cashbox-as-a-configuration-container)
+- France
 
-At the end of this configuration process, a so-called "Launcher" including the configuration needs to be downloaded.
+At the end of this configuration process, a so-called "Launcher" including the Cashbox-configuration needs to be downloaded.
 
 ## Download of the Launcher
 
@@ -30,9 +30,9 @@ After configuring the cashbox in the portal, following so-called "Launchers" are
 | Icon                                             | Launcher                                | Description                                                  | AT        | DE         | FR        |
 | ------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------ | --------- | ---------- | --------- |
 | ![launcher-net](images/launcher-net.png)         | .NET Launcher<br />(*default launcher*) | **For starting the Middleware on Windows with Internet connection.**<br />The launcher loads the configuration file and its needed packages during the start from the fiskaltrust packages-server. | supported | supported  | supported |
-| ![launcher-offline](images/launcher-offline.png) | .NET Offline Launcher                   | **For starting the Middleware on Windows without Internet connection.** <br />A static configuration and its needed packages for operation is included. | supported | supported  | supported |
+| ![launcher-offline](images/launcher-offline.png) | .NET Offline Launcher                   | **For starting the Middleware on Windows without Internet connection.** <br />A static configuration and its needed packages for operation is included. The regular package update mechanisms are not supported with the offline launcher. | supported | supported  | supported |
 | ![launcher-mono](images/launcher-mono.png)       | Mono Launcher                           | **For starting the Middleware on Linux/macOS with Internet connection.**<br />The launcher loads the configuration file and its needed packages during the start from the fiskaltrust packages-server. | supported | supported  | supported |
-| ![launcher-android](images/launcher-android.png) | Android Launcher                        | **For starting the Middleware on Android with Internet connection.**<br />A static configuration and its needed packages for operation is included.<br />The configuration options are limited to keep the package sizes small. |           | supported* |           |
+| ![launcher-android](images/launcher-android.png) | Android Launcher                        | **For starting the Middleware on Android with Internet connection.**<br />The needed packages for operation are already included. The launcher loads the configuration file during the start from the fiskaltrust packages-server.<br />The configuration options are limited to keep the package sizes small. |           | supported* |           |
 
 *availability dependent on the cashbox configuration. For more details, see the [platform documentation for Android](https://docs.fiskaltrust.cloud/docs/product-description/germany/products-and-services/caas/features/platforms/android).
 

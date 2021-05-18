@@ -13,7 +13,7 @@ For operating the fiskaltrust.Middleware on-premise or off-premise, the componen
 
 The components of the fiskaltrust.Middleware need to be configured in the fiskaltrust.Portal for the environment where the Middleware should be operated. The availability of components and its configuration options are dependent on the local market regulation.
 
-For example, it must be configured the endpoints where the POS system can reach the service, in which database the processed data from the service is to be stored, which Signature Creation Device (SCD) is to be used for the signatures and how the SCD can be reached for the service.
+For example, it must be configured at which endpoints the Middleware is listening on, in which database the processed data is to be stored, which Signature Creation Unit (SCU) is to be used for the signatures and how it can be reached by the Middleware.
 
 More information on the configuration options of the components can be found in the according market-appendices:
 

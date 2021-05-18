@@ -110,7 +110,7 @@ The data for the service, including
 
 - the configuration, 
 - service packages, 
-- the local data storage for receipt data, and
+- the local data storage for receipt data if a SQLite database is used, and
 - data exports like DSFinV-K, TSE-TAR files, 
 
 is saved under Windows in `C:\ProgramData\fiskaltrust\service`. 

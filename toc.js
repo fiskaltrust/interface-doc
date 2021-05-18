@@ -80,14 +80,14 @@ module.exports = {
                   type: 'category',
                   label: 'Signature Creation Devices',
                   items: [
-                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/a-trust',
-                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/cryptovision',
-                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/deutsche-fiskal',
-                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/diebold-nixdorf',
-                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/epson',
-                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/fiskaly',
-                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/swissbit-cloud',
-                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scd/swissbit',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scu/a-trust',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scu/cryptovision',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scu/deutsche-fiskal',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scu/diebold-nixdorf',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scu/epson',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scu/fiskaly',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scu/swissbit-cloud',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scu/swissbit',
                   ]
                 },
                 {

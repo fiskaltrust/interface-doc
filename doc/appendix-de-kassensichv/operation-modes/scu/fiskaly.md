@@ -1,11 +1,9 @@
 ---
-slug: /poscreators/middleware-doc/germany/scd/fiskaly-cloud
+slug: /poscreators/middleware-doc/germany/scu/fiskaly-cloud
 title: fiskaly-TSE
 ---
 
-# fiskaly Cloud-TSE
-
-## SCD
+# SCU for fiskaly Cloud-TSE
 
 ### State of certification
 
@@ -16,8 +14,6 @@ The fiskaly Cloud-TSE is currently in certification, and switching to the certif
 "BSI-K-TR-0403 [TSE in Evaluierung]" ("TSE in evaluation") is returned for 'ftSignatureType' `0x4445000000000022` (certification identification). 
 
 **Available from version**: 1.3.16
-
-## SCU
 
 ### Support
 

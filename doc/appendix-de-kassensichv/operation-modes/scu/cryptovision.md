@@ -1,11 +1,9 @@
 ---
-slug: /poscreators/middleware-doc/germany/scd/cryptovision
+slug: /poscreators/middleware-doc/germany/scu/cryptovision
 title: Cryptovision-TSE
 ---
 
-# Cryptovision/Bundesdruckerei Hardware-TSE
-
-## SCD
+# SCU for Cryptovision/Bundesdruckerei Hardware-TSE
 
 ### State of certification
 
@@ -18,8 +16,6 @@ Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 14
 #### Certification identification
 
 "BSI-K-TR-0374-2020" is returned for 'ftSignatureType' `0x4445000000000022` (certification identification). 
-
-## SCU
 
 ### **Support**
 

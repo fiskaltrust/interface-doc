@@ -56,22 +56,16 @@ In addition to enable the communication with the cash register via iPOS Interfac
 
 #### SCU
 
-The SCU (Signature Creation Unit) handles the country-specific implementation of the security solution and is responsible for the signatures. For specific information regarding supported Signature Creation Devices and platforms, please refer to the appropriate appendices:
+The SCU (Signature Creation Unit) handles the country-specific implementation of the security solution and is responsible for the signatures. 
+
+The additional security and functionalities based on local market regulation is delivered by third party vendors (e.g. a software based cloud solution, a hardware device, or a certificate), supported by fiskaltrust via the SCU. The choice of the SCU has impacts on the fiskaltrust.Middleware configuration, therefore available SCUs, its configuration, functionalities and limitations regarding the fiskaltrust.Middleware are documented in the appropriate appendices of the markets.
+
+For specific information regarding supported Signature Creation Units and platforms, please refer to the appropriate appendices:
 
 - Austria
 
 - [Germany](../../appendix-de-kassensichv/operation-modes/on-premise-installation.md)
 - France
-
-#### SCD
-
-The SCD (Signature Creation Device) is not part of the fiskaltrust.Middleware. Signature Creation Devices are providing additional security and functionalities based on local market regulation, delivered by third party vendors (e.g. a software based cloud solution, a hardware device, or a certificate), supported by fiskaltrust via the SCU. The choice of the SCD has impacts on the fiskaltrust.Middleware configuration, therefore available SCDs, its configuration, functionalities and limitations regarding the fiskaltrust.Middleware are documented in the appropriate appendices of the markets.
-
-The signature creation device can be generally accessed via following channels: 
-
-- *directly* (e.g. with a attached hardware), 
-- *locally* (e.g. via local network), or via 
-- *network* (e.g. external network, internet). 
 
 #### Helipad Helper
 
@@ -95,7 +89,7 @@ For detailed information on supported platforms and its restrictions, please ref
 | Platform        | AT            | DE                                                           | FR            |
 | --------------- | ------------- | ------------------------------------------------------------ | ------------- |
 | **Android**     | not supported | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/android.md) | not supported |
-| **Linux/macOs** | **supported** | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/linux.md) | **supported** |
+| **Linux/macOS** | **supported** | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/linux.md) | **supported** |
 | **Windows**     | **supported** | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/windows.md) | **supported** |
 
 #### Launcher

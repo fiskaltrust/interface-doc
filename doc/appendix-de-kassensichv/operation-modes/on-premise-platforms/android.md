@@ -7,7 +7,7 @@ title: Android
 
 ## Requirements
 
-Android 7 and higer.
+Android 7.0 and higher.
 
 ## Supported packages
 

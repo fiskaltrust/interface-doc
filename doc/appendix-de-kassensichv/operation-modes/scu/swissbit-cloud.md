@@ -3,7 +3,7 @@ slug: /poscreators/middleware-doc/germany/scu/swissbit-cloud
 title: Swissbit Cloud-TSE
 ---
 
-# SCU for Swissbit Cloud-TSE
+# Swissbit Cloud-TSE
 
 ### Environmental protection
 
@@ -24,6 +24,8 @@ Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 14
 ### Client registration
 
 The Swissbit Cloud-SCU is limited to a single client registration (only one queue can be registered at the TSE). Possible [rollout scenarios](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware#rollout-scenarios) are limited to those cases in which exact one queue is operated per SCU.
+
+## Signature Creation Unit
 
 ### Support
 

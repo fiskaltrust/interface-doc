@@ -17,7 +17,9 @@ Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 14
 
 "BSI-K-TR-0374-2020" is returned for 'ftSignatureType' `0x4445000000000022` (certification identification). 
 
-### **Support**
+## Signature Creation Unit
+
+### Support
 
 **from version:** 1.3.1
 

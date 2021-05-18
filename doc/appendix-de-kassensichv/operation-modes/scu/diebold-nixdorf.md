@@ -3,7 +3,7 @@ slug: /poscreators/middleware-doc/germany/scu/diebold-nixdorf
 title: Diebold Nixdorf-TSE
 ---
 
-# SCU for Diebold Nixdorf Hardware-TSE 
+# Diebold Nixdorf Hardware-TSE 
 
 ### State of certification
 
@@ -17,7 +17,9 @@ Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 14
 
 "BSI-K-TR-0393-2020" is returned for 'ftSignatureType' `0x4445000000000022` (certification identification). 
 
-### **Support**
+## Signature Creation Unit
+
+### Support
 
 **RC from version:** 1.3.1
 

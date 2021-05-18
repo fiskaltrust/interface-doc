@@ -3,7 +3,7 @@ slug: /poscreators/middleware-doc/germany/scu/epson
 title: Epson-TSE
 ---
 
-# SCU for Epson Hardware-TSE
+# Epson Hardware-TSE
 
 ### State of certification
 
@@ -16,6 +16,8 @@ Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 14
 #### Certification identification
 
 "BSI-K-TR-0373-2019" is returned for 'ftSignatureType' `0x4445000000000022` (certification identification). 
+
+## Signature Creation Unit
 
 ### Support
 

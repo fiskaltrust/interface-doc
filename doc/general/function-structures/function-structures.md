@@ -59,3 +59,14 @@ Stream stream = proxy.Journal(ftJournalType, 0, DateTime.UtcNow.Ticks);
 ```
 
 A list with possible values for the request parameter ftJournalType is provided in the reference the table ["Type of Journal: ftJournalType"](../reference-tables/reference-tables.md#t-type-of-signature-ftsignaturetype-127). The journal depends on national requirements and therefore the function has to run in the appropriate mode: exporting data in chunks, or as a whole.
+
+##### Timestamps
+
+The journal function expects the timestamps to be [.NET Ticks](https://docs.microsoft.com/en-us/dotnet/api/system.datetime.ticks?view=net-5.0#remarks).
+
+The following convertion formulas can be used to convert between unix time and .NET Ticks:
+
+| Conversion             | Formula                                    |
+|------------------------|--------------------------------------------|
+| `unix time` -> `Ticks` | `621355968000000000 + unixtime * 10000000` |
+| `Ticks` -> `unix time` | `(ticks - 621355968000000000) / 10000000`  |

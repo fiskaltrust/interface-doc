@@ -36,7 +36,7 @@ Supported protocols are: http, https, net.tcp, net.pipe. For configuring a custo
 A WSDL file which describes the fiskaltrust.Middleware is available at [dist/WSDL](https://github.com/fiskaltrust/interface-doc/tree/master/dist/WSDL).
 
 ### User specific protocols
-With the helper topology, it is possible to solve every scenario. Please contact our support if you required assistance for a special case scenario.
+With the helper topology, it is possible to solve every scenario. Please contact our support if you require assistance for a special case scenario.
 
 ### Summary
 

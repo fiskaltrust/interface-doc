@@ -4,7 +4,7 @@ title: Communication
 ---
 
 ## Communication
-This chapter describes the ways to communicate with the fiskaltrust.Middleware via different network communication protocols. Depending on the market the fiskaltrust.Middleware offers a variety of possibilities to let the POS-System interact with fiskaltrust.SecurityMechanism using fiskaltrust.Interface:
+The fiskaltrust.Middleware supports different communication protocols, effectively giving our customers the possibility to use it on all platforms. Hence, different protocols are recommended for different platforms. For non-windows environments, we recommend the usage of gRPC. Please have a look into our other demo repositories for alternatives, e.g. HTTP/REST or SOAP.
 
 
 ### gRPC
@@ -22,21 +22,6 @@ XSD files are available which describes the fiskaltrust.Middleware at [dist/XSD]
 
 For Example Requests please have a look at our [Postman Collection](https://github.com/fiskaltrust/middleware-demo-postman)
 
-Here you can find some demo projects which are communicating via rest with the fiskaltrust.Middleware:
-
-
-https://github.com/fiskaltrust/middleware-demo-dotnet/tree/master/src/fiskaltrust.Middleware.Demo.Http
-
-https://github.com/fiskaltrust/middleware-demo-android
-
-https://github.com/fiskaltrust/middleware-demo/tree/master/C/REST
-
-https://github.com/fiskaltrust/middleware-demo/tree/master/CPP/simple/REST
-
-https://github.com/fiskaltrust/middleware-demo/tree/master/Rust/advanced/rustConsoleApplicationREST
-
-https://github.com/fiskaltrust/middleware-demo/tree/master/VB6/REST
-
 
 ### WCF Web Service
 
@@ -50,16 +35,8 @@ Supported protocols are: http, https, net.tcp, net.pipe. For configuring a custo
 
 A WSDL file which describes the fiskaltrust.Middleware is available at [dist/WSDL](https://github.com/fiskaltrust/interface-doc/tree/master/dist/WSDL).
 
-Here you can find some demo projects which are communicating via SOAP with the fiskaltrust.Middleware:
-
-
-https://github.com/fiskaltrust/middleware-demo-dotnet/tree/master/src/fiskaltrust.Middleware.Demo.Soap
-
-https://github.com/fiskaltrust/middleware-demo/tree/master/C/SOAP
-
-https://github.com/fiskaltrust/middleware-demo/tree/master/CPP/advanced/cppConsoleApplicationSOAP
-
-https://github.com/fiskaltrust/middleware-demo/tree/master/VB6/SOAP
+### User specific protocols
+With the helper topology, it is possible to solve every scenario. Please contact our support if you required assistance for a special case scenario.
 
 ### Summary
 
@@ -69,3 +46,15 @@ https://github.com/fiskaltrust/middleware-demo/tree/master/VB6/SOAP
 | **REST**              | **supported (helper)** | **supported** | **supported (helper)** |
 | **WCF**               | **supported** | **supported** | **supported** |
 | **serial/TCP**| **supported (helper)** |not supported| not supported  |
+
+### Related resources
+Our latest samples are available for the following programming languages and tools:
+<p align="center">
+  <a href="https://github.com/fiskaltrust/middleware-demo-dotnet"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/C-Sharp.png/100px-C-Sharp.png" alt="csharp"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/fiskaltrust/middleware-demo-java"><img src="https://upload.wikimedia.org/wikiversity/de/thumb/b/b8/Java_cup.svg/100px-Java_cup.svg.png" alt="java"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/fiskaltrust/middleware-demo-node"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/100px-Node.js_logo.svg.png" alt="node"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/fiskaltrust/middleware-demo-android"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Android_robot.svg/100px-Android_robot.svg.png" alt="android"></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/fiskaltrust/middleware-demo-postman"><img src="https://avatars3.githubusercontent.com/u/10251060?s=100&v=4" alt="node"></a>
+</p>
+
+Additionally, other samples (including legacy ones) can be found in our [demo repository](https://github.com/fiskaltrust/demo).

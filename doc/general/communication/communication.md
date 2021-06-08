@@ -40,11 +40,11 @@ https://github.com/fiskaltrust/middleware-demo/tree/master/VB6/REST
 
 ### WCF Web Service
 
-The Windows Communication Foundation (WCF) is used to access the fiskaltrust.Middleware via network. This technology is not only suitable for Windows platforms, as the name might imply, but can be used with all operating systems and applications through standards such as SOAP and REST. Further information on this subject can be found on:
+The Windows Communication Foundation (WCF) is used to access the fiskaltrust.Middleware via network or locally. This technology is not only suitable for Windows platforms, as the name might imply, but can be used with all operating systems and applications through standards such as SOAP. Further information on this subject can be found on:
 
 <https://docs.microsoft.com/en-us/dotnet/framework/wcf/bindings>.
 
-The WCF service will be hosted under the URL, which can be set in the fiskaltrust.Portal on the configuration page of fiskaltrust.Middleware.
+The WCF service will be hosted under the URL, which can be set in the fiskaltrust. Portal on the configuration page of fiskaltrust.Middleware.
 
 Supported protocols are: http, https, net.tcp, net.pipe. For configuring a custom message size and a custom time out, it is possible to specify the parameter "messagesize" (in bytes) and the parameter "timeout" (in seconds) on the configuration page.
 

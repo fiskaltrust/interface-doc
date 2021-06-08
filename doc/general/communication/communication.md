@@ -20,6 +20,21 @@ The functions accept POST requests and use the endpoint set via the parameter "h
 
 XSD files are available which describes the fiskaltrust.Middleware at [dist/XSD](https://github.com/fiskaltrust/interface-doc/tree/master/dist/XSD).
 
+For Example Requests please have a look at our [Postman Collection](https://github.com/fiskaltrust/middleware-demo-postman)
+
+Here you can find some demo projects which are communicating via rest with the fiskaltrust.Middleware:
+https://github.com/fiskaltrust/middleware-demo-dotnet/tree/master/src/fiskaltrust.Middleware.Demo.Http
+
+https://github.com/fiskaltrust/middleware-demo-android
+
+https://github.com/fiskaltrust/middleware-demo/tree/master/C/REST
+
+https://github.com/fiskaltrust/middleware-demo/tree/master/CPP/simple/REST
+
+https://github.com/fiskaltrust/middleware-demo/tree/master/Rust/advanced/rustConsoleApplicationREST
+
+https://github.com/fiskaltrust/middleware-demo/tree/master/VB6/REST
+
 
 ### WCF Web Service
 
@@ -33,9 +48,14 @@ Supported protocols are: http, https, net.tcp, net.pipe. For configuring a custo
 
 A WSDL file which describes the fiskaltrust.Middleware is available at [dist/WSDL](https://github.com/fiskaltrust/interface-doc/tree/master/dist/WSDL).
 
+Here you can find some demo projects which are communicating via SOAP with the fiskaltrust.Middleware:
+https://github.com/fiskaltrust/middleware-demo-dotnet/tree/master/src/fiskaltrust.Middleware.Demo.Soap
 
+https://github.com/fiskaltrust/middleware-demo/tree/master/C/SOAP
 
+https://github.com/fiskaltrust/middleware-demo/tree/master/CPP/advanced/cppConsoleApplicationSOAP
 
+https://github.com/fiskaltrust/middleware-demo/tree/master/VB6/SOAP
 
 | Communication service | AT            | DE            | FR            |
 | --------------------- | ------------- | -------------| ------------- |

@@ -61,6 +61,8 @@ https://github.com/fiskaltrust/middleware-demo/tree/master/CPP/advanced/cppConso
 
 https://github.com/fiskaltrust/middleware-demo/tree/master/VB6/SOAP
 
+### Summary
+
 | Communication service | AT            | DE            | FR            |
 | --------------------- | ------------- | -------------| ------------- |
 | **gRPC**              | not supported | **supported** | not supported |

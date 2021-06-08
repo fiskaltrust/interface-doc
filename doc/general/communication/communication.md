@@ -7,9 +7,9 @@ title: Communication
 This chapter describes the ways to communicate with the fiskaltrust.Middleware via different network communication protocols. Depending on the market the fiskaltrust.Middleware offers a variety of possibilities to let the POS-System interact with fiskaltrust.SecurityMechanism using fiskaltrust.Interface:
 
 
-### grpc
+### gRPC
 
-The grpc protocol is currently only available for the german market, please see [german appendix](../../appendix-de-kassensichv/appendix-de-kassensichv.md) for further information.
+The gRPC protocol is currently only available for the german market, please see [german appendix](../../appendix-de-kassensichv/appendix-de-kassensichv.md) for further information.
 
 
 ### REST Web Service

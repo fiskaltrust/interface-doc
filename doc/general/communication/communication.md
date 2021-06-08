@@ -16,7 +16,7 @@ The grpc protocol is currently only available for the german market, please see 
 
 Representational State Transfer architecture uses the classic http method POST to communicate with fiskaltrust.Middleware. The currently accepted data formats are XML and JSON.
 
-The functions accept POST requests and use the endpoint set via the parameter "host" as basis. The URL is extended by `/[xml | json]/[v0 | v1]/[echo | sign | journal]` in order to call the respective functions.
+The functions accept POST requests and use the endpoint set via the parameter "host" as basis. The URL is extended by `/[xml|json]/[v0|v1]/[echo|sign|journal]` in order to call the respective functions.
 
 XSD files are available which describes the fiskaltrust.Middleware at [dist/XSD](https://github.com/fiskaltrust/interface-doc/tree/master/dist/XSD).
 

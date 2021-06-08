@@ -23,6 +23,8 @@ XSD files are available which describes the fiskaltrust.Middleware at [dist/XSD]
 For Example Requests please have a look at our [Postman Collection](https://github.com/fiskaltrust/middleware-demo-postman)
 
 Here you can find some demo projects which are communicating via rest with the fiskaltrust.Middleware:
+
+
 https://github.com/fiskaltrust/middleware-demo-dotnet/tree/master/src/fiskaltrust.Middleware.Demo.Http
 
 https://github.com/fiskaltrust/middleware-demo-android
@@ -49,6 +51,8 @@ Supported protocols are: http, https, net.tcp, net.pipe. For configuring a custo
 A WSDL file which describes the fiskaltrust.Middleware is available at [dist/WSDL](https://github.com/fiskaltrust/interface-doc/tree/master/dist/WSDL).
 
 Here you can find some demo projects which are communicating via SOAP with the fiskaltrust.Middleware:
+
+
 https://github.com/fiskaltrust/middleware-demo-dotnet/tree/master/src/fiskaltrust.Middleware.Demo.Soap
 
 https://github.com/fiskaltrust/middleware-demo/tree/master/C/SOAP

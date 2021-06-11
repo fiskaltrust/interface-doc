@@ -16,7 +16,14 @@ module.exports = {
             'middleware-doc/doc/general/data-structures/data-structures',
             'middleware-doc/doc/general/function-structures/function-structures',
             'middleware-doc/doc/general/communication/communication',
-            'middleware-doc/doc/general/operation-modes/operation-modes',
+			 {
+              type: 'category',
+              label: 'Operation modes',
+              items: [
+				'middleware-doc/doc/general/operation-modes/operation-modes',
+				'middleware-doc/doc/general/operation-modes/configuration',
+              ]
+            },
             'middleware-doc/doc/general/installation/installation',
             'middleware-doc/doc/general/receipt-case-definitions/receipt-case-definitions',
             'middleware-doc/doc/general/reference-tables/reference-tables',
@@ -44,16 +51,56 @@ module.exports = {
           items: [
             'middleware-doc/doc/appendix-de-kassensichv/appendix-de-kassensichv',
             'middleware-doc/doc/appendix-de-kassensichv/terminology/terminology',
-			 {
+            'middleware-doc/doc/appendix-de-kassensichv/installation/installation',
+			      {
               type: 'category',
               label: 'Cash register integration',
               items: [
-				'middleware-doc/doc/appendix-de-kassensichv/cash-register-integration/cash-register-integration',
+				        'middleware-doc/doc/appendix-de-kassensichv/cash-register-integration/cash-register-integration',
                 'middleware-doc/doc/appendix-de-kassensichv/cash-register-integration/single-receipt-creation',
                 'middleware-doc/doc/appendix-de-kassensichv/cash-register-integration/receipt-sequences-creation',
               ]
             },
             'middleware-doc/doc/appendix-de-kassensichv/data-structures/data-structures',
+			      {
+              type: 'category',
+              label: 'Operation modes',
+              items: [
+				        'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-installation',
+				        {
+                  type: 'category',
+                  label: 'On-premise platforms',
+                  items: [
+				            'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-platforms/android',
+				            'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-platforms/linux',
+				            'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-platforms/windows',
+                  ]
+                },
+			          {
+                  type: 'category',
+                  label: 'Signature Creation Devices',
+                  items: [
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scu/a-trust',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scu/cryptovision',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scu/deutsche-fiskal',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scu/diebold-nixdorf',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scu/epson',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scu/fiskaly',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scu/swissbit-cloud',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/scu/swissbit',
+                  ]
+                },
+                {
+                  type: 'category',
+                  label: 'On-premise databases',
+                  items: [
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-databases/entity-framework',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-databases/mysql',
+                    'middleware-doc/doc/appendix-de-kassensichv/operation-modes/on-premise-databases/sqlite',
+                  ]
+                },
+              ]
+            },		
             {
               type: 'category',
               label: 'Reference Tables',

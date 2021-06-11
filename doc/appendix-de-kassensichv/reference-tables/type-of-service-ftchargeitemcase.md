@@ -131,7 +131,7 @@ This table expands on the values provided in the table [ftChargeItemCase in Gene
 | `0x44450000000000A2` | Not own sales | 5 | Umsatz  | 1.3- |
 
 
-#### ftChargeItemCaseFlag
+## ftChargeItemCaseFlag
 
 This table shows flags that can be added to each `ftChargeItemCase` with values applicable to the German market. 
 

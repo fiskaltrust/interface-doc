@@ -16,3 +16,4 @@ The table below describes its supported statuses for the ftState field following
 | `0xXXXX000000000010` | Reserved                                                                                            |                     |
 | `0xXXXX000000000020` | Reserved                                                                                            |                     |
 | `0xXXXX000000000080` | Reserved                                                                                            |                     |
+| `0xXXXX000000000100` | The Middleware is in the process of switching SCUs. This state is returned in case any receipts are processed between the _initialize-switch receipt_ and the _finish-switch receipt_. These receipts are protected by the fiskaltrust.SecurityMechanism, but not sent to any TSE, as no SCU is connected at this point. |   1.3.19                  |

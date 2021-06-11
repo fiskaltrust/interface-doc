@@ -10,6 +10,7 @@ title: Function structures
 #### Echo Function
 
 There are no special requirements or laws for the French market.
+In case of the French product ChaîneCloud, there is a special condition when the echo-Function is called with null as a Message, which forces to reinitialize the fiskaltrust.Queue in the fiskaltrust.Middleware.
 
 #### Sign Function
 

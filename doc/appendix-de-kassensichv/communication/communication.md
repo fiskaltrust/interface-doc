@@ -12,7 +12,7 @@ The German Middleware natively supports REST, gRPC and WCF communication without
 #### gRPC
 [gRPC](https://grpc.io) is a modern open source high performance _Remote Procedure Call (RPC)_ framework that can run in any environment. It can be used in most programming language and is generally known to be fast, reliable and efficient.
 
-gRPC uses protocol buffers (i.e. _.proto_ files), a platform-independent standard, to describe interfaces. The .proto files of the fiskaltrust.Middleware can be downloaded [here](https://github.com/fiskaltrust/interface-doc/tree/master/dist/protos/).
+gRPC uses protocol buffers (i.e. _.proto_ files), a platform-independent standard, to statically describe interfaces. The _.proto_ files of the fiskaltrust.Middleware can be downloaded [here](https://github.com/fiskaltrust/interface-doc/tree/master/dist/protos/).
 
 In case .NET is used to implement the Middleware's interface, we recommend using our open-source NuGet client package (available on [NuGet.org](https://www.nuget.org/packages/fiskaltrust.Middleware.Interface.Client.Grpc/)/[GitHub](https://www.nuget.org/packages/fiskaltrust.Middleware.Interface.Client.Grpc/)).
 

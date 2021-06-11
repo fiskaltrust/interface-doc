@@ -11,12 +11,6 @@ Only WCF-based protocols are currently supported natively by the Austrian versio
 
 Additionally, it's also possible to communicate via a serial interface by using [another helper](#serial-stream-or-tcp-stream-helper).
 
-:::info
-
-We're currently working on unifying the Middleware experience for all markets to provide gRPC and native REST support in the Austrian Middleware.
-
-:::
-
 ### Communication helpers
 These helpers can be used to enable additional communication protocols or features. These additional components "wrap" the WCF endpoints of Queue packages and map their methods to the respective protocol or functionality.
 

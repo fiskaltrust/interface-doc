@@ -73,7 +73,7 @@ The following call parameters are available with the launcher `fiskaltrust.exe`:
 | `-logfile`                     | Sets the file used to log the output messages.               | yes                                                          |
 | `-connectiontimeout`           | Sets the timeout (in seconds) for the HTTP/HTTPS call to download the configuration. | yes                                                          |
 | `-connectionretry`             | Sets the number of trials to download the configuration.     | yes                                                          |
-| `-proxy`                       | Sets the proxy server to be used to connect to the internet. The value can be used as follows: `“address=xxx.xxx.xxx.xxx;user=test;password=pwd123` | yes                                                          |
+| `-proxy`                       | Sets the proxy server to be used to connect to the internet. The value can be used as follows: `"address=xxx.xxx.xxx.xxx;user=test;password=pwd123"`. `user` and `password` are optional values. | yes                                                          |
 | `-verbosity`                   | Sets the level of debug-information in the logfile. The value is a string. Possible values are: `Trace` \|`Debug` \|`Information` \|`Warning` \|`Error` \|`Critical`<br />**Supported in the German market only!** | yes. <br />Use in the static configuration the key `loglevel` |
 <span id="_Toc527986661" class="anchor"></span>*Table 8. fiskaltrust.exe launch parameters*
 

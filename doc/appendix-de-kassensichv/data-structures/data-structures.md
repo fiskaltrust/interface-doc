@@ -86,7 +86,7 @@ The following table highlights fields of the charge item that need special handl
 | `ProductBarcode` | `string (50)` | mandatory if applicable | Use to send the Global Trade Item Number (GTIN) if the charge item represents an article. | 1.3 |
 | `ProductGroup` | `string (50)` | mandatory if available | Name of the product group. | 1.3 |
 | `Quantity` | `decimal (3)` | mandatory if available | Quantity | 1.3 |
-| `UnitQuantity` | `decimal (3)` | mandatory if available | Quantity of the service(s) of receipt entry, displayed in indicated units. | 1.3 |
+| `UnitQuantity` | `decimal (3)` | mandatory if available | Quantity of the service(s) of receipt entry, displayed in indicated units, e.g.  a big beer Unit: "liter" UnitQuantity: 0.5 | 1.3 |
 | `Unit` | `string` | mandatory if available | Unit of measurement, e.g. kg, litres or pieces | 1.3 |
 | `UnitPrice` | `decimal (5)` | mandatory if available | Price per unit incl. VAT | 1.3 |
 | `VATAmount` | `decimal (5)` | mandatory for special cases | In some special cases of taxation (e.g. car spare part in the car repair shop), the VAT is not a percentage of the net-price (NETTO) or the gross-price. For these cases, the field  `VATAmount` is mandatory and a `ftChargeItemCase` that maps to DSFinV-K UST_SCHLUESSEL 7 should be used. The value of the field `VATRate` should be set to `0.0`. | 1.3 |

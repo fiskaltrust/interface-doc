@@ -4,7 +4,7 @@ title: 'Type of signature: ftSignatureType'
 ---
 
 # Type of Signature: ftSignatureType
-The `ftSignatureType` indicates the type and origin of the signature. The data type is `Int64` and can contain a country-specific code (following the ISO-3166-1-ALPHA-2 standard), converted from ASCII into hex and used as byte 8 and 7 (e.g. `4445` for `DE`).
+The `ftSignatureType` indicates the type and origin of the signature. The data type is `Int64` and can contain a country-specific code (following the ISO-3166-1-ALPHA-2 standard), converted from ASCII into hex and used as byte 8 and 7 (e.g. `0x4445` for `DE`).
 
 :::info
 
@@ -40,7 +40,6 @@ As of today, there are two options when printing receipts: either print all deta
 
 
 \* This value must be printed when using long-running business sequences and/or the implicit flow and **is not included in the QR code**. It is computed with the following formula: `min(cbReceiptMoment, min(chargeItems.Moment), min(payItems.Moment))`
-
 
 
 

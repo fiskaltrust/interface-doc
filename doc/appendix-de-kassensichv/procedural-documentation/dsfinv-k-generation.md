@@ -225,6 +225,8 @@ Each subitem is described in the table below:
 
 If `cbPreviousReceiptReference` is filled in your receipt request, fiskaltrust will automatically try to find the referenced receipt, and if found, fiskaltrust will add an entry to Bon_Referenzen. 
 
+If a previous receipt with the same `cbReceiptReference` exists, fiskaltrust will also automatically find the referenced receipt and add an entry to Bon_Referenzen. 
+
 For a recommendation on how to connect the single requests via `cbReceiptReference` and `cbPreviousReceiptReference`, please refer to our [Postman sample collection](https://middleware-samples.docs.fiskaltrust.cloud/).
 
 If you optionally want to add additional references (from other systems or other cashpoints), you can add them by providing their data as shown below:

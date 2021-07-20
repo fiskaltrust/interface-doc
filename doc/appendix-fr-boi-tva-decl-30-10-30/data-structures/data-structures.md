@@ -39,7 +39,6 @@ This table describes additional fields of the receipt response applicable to the
 |---------------------------|-----------|-------------------------------|----------------------------------------------------------------------------------------------------------|---------|
 | `ftCashBoxIdentification` | `string`  | mandatory                     | Cash register identification.                                                                            | 1.2      |
 | `ftReceiptIdentification` | `string`  | mandatory                     | Allocated through fiskaltrust.SecurityMechanism upcounting receipt number depending on the receipt type. | 1.2      |
-| `ftStateData`             | `string`  | mandatory for ReceiptCase `0x4652000000000017` | Serialised JSON-object with hash-values for each journal-type export. | 1.2      |
 
 <span id="_Toc527986682" class="anchor"></span>*Table 30. Receipt Response*
 

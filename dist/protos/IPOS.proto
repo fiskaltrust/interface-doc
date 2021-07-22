@@ -49,7 +49,7 @@ message ChargeItem {
    .bcl.DateTime Moment = 160;
 }
 
-message PayItem {
+message payitem {
    int64 Position = 5;
    .bcl.Decimal Quantity = 10;
    string Description = 20;
@@ -71,7 +71,7 @@ message ReceiptRequest {
    string cbReceiptReference = 30;
    .bcl.DateTime cbReceiptMoment = 40;
    repeated ChargeItem cbChargeItems = 50;
-   repeated PayItem cbPayItems = 60;
+   repeated payitem cbPayItems = 60;
    int64 ftReceiptCase = 70;
    string ftReceiptCaseData = 80;
    .bcl.Decimal cbReceiptAmount = 90;
@@ -95,7 +95,7 @@ message ReceiptResponse {
    repeated string ftReceiptHeader = 60;
    repeated ChargeItem ftChargeItems = 70;
    repeated string ftChargeLines = 80;
-   repeated PayItem ftPayItems = 90;
+   repeated payitem ftPayItems = 90;
    repeated string ftPayLines = 100;
    repeated SignaturItem ftSignatures = 110;
    repeated string ftReceiptFooter = 120;

@@ -9,7 +9,7 @@ This chapter describes the general process of creating receipts with fiskaltrust
 
 The "**transaction**" describes the steps, at least at the beginning and end of the action, within the SCU.
 
-The "**flow**" describes the communication between the POS System and the fiskaltrust.Middleware to trigger transactions. This can be done either 
+The "**flow**" describes the communication between the POS-System and the fiskaltrust.Middleware to trigger transactions. This can be done either 
 
 - **implicitly** (a "Start-Transaction" is done automatically - implicitly - behind the scenes upfront the final call), or
 - **explicitly** (every single transaction like "Start" and "Finish" are initiated by the user of the Middleware)
@@ -20,11 +20,11 @@ The "**flow**" describes the communication between the POS System and the fiskal
 
 ## Characteristics
 
-| Implicit flow                                                | Explicit flow                                                |
-| ------------------------------------------------------------ | ------------------------------------------------------------ |
-| No open TSE-transactions to be managed                       | Long-lasting TSE-transactions may need to be managed         |
-| Reduced complexity of business-process handling              | Enhanced complexity of business-process handling             |
-| Each sign-request uses two TSE signatures                    | Less TSE-signatures are used                                 |
+| Implicit flow                                                               | Explicit flow                                                       |
+|-----------------------------------------------------------------------------|---------------------------------------------------------------------|
+| No open TSE-transactions to be managed                                      | Long-lasting TSE-transactions may need to be managed                |
+| Reduced complexity of business-process handling                             | Enhanced complexity of business-process handling                    |
+| Each sign-request uses two TSE signatures                                   | Less TSE-signatures are used                                        |
 | The TSE signing process could potentially lead faster to performance issues | The risk of performance issues for the TSE signing process is lower |
 
 Implicit- and explicit flow can be combined, dependent on the actual needs.
@@ -93,7 +93,7 @@ The response's signature block includes all information needed to be printed on 
 ```json
 {
     "ftCashBoxID":"cashboxid-guid",
-    "ftPosSystemId":"possystemid-guid",
+    "ftPosSystemId":"POS-Systemid-guid",
     "cbTerminalID":"T1",
     "cbReceiptReference":"4747847",
     "cbReceiptMoment":"2020-05-22T11:33:00.260Z",
@@ -778,7 +778,7 @@ The response's signature block includes all information needed to be printed on 
 ```json
 {
     "ftCashBoxID":"cashboxid-guid",
-    "ftPosSystemId":"possystemid-guid",
+    "ftPosSystemId":"POS-Systemid-guid",
     "cbTerminalID":"T1",
     "cbReceiptReference":"233348",
     "cbReceiptMoment":"2020-05-22T10:47:40.960Z",
@@ -831,7 +831,7 @@ nothing to print here.
 ```json
 {
     "ftCashBoxID":"cashboxid-guid",
-    "ftPosSystemId":"possystemid-guid",
+    "ftPosSystemId":"POS-Systemid-guid",
     "cbTerminalID":"T1",
     "cbReceiptReference":"233348",
     "cbReceiptMoment":"2020-05-22T10:48:15.260Z",
@@ -1028,7 +1028,7 @@ You can find examples of special cases of zero receipts applicable to the German
 ### Start Receipt (Initial Receipt)
 
 There are many requirements for implementing a new, or a replaced German security mechanism (TSE). This kind of receipt can be used once in a lifetime of the queue/SCU combination and also initialises the underlying German security mechanism (TSE) for usage.
-This receipt must be archived. On successful operation, for customers of the product "Finanzamtmeldung", tax authorities are notified automatically and behind the scenes about the active usage of the ftCashboxIdentification, and the serial number of the German security mechanism (TSE).
+This receipt must be archived. On successful operation, for customers of the product "Finanzamtmeldung", tax authorities are notified automatically and behind the scenes about the active usage of the ftCashBoxIdentification, and the serial number of the German security mechanism (TSE).
 
 ### Stop Receipt (Closing Receipt)
 

@@ -45,17 +45,17 @@ WCF supports different underlying protocols: _http, https, net.tcp_ and _net.pip
 A WSDL file which describes the WCF interface of the fiskaltrust.Middleware is available at [dist/WSDL](https://github.com/fiskaltrust/interface-doc/tree/master/dist/WSDL).
 
 ### User specific protocols
-With the Middleware's _helper_ topology, it is possible to connect the Middleware to POS systems in every scenario, as it can be easily extended to support any other protocol as well. Please contact our support if you require assistance for a special case.
+With the Middleware's _helper_ topology, it is possible to connect the Middleware to POS-Systems in every scenario, as it can be easily extended to support any other protocol as well. Please contact our support if you require assistance for a special case.
 
 ### Summary
 The following table displays which protocols are currently available in which country:
 
-| Communication service | AT            | DE            | FR            |
-| --------------------- | ------------- | -------------| ------------- |
-| **gRPC**              | not yet supported | **supported** | not yet supported |
+| Communication service | AT                         | DE            | FR                         |
+|-----------------------|----------------------------|---------------|----------------------------|
+| **gRPC**              | not yet supported          | **supported** | not yet supported          |
 | **REST**              | **supported (via helper)** | **supported** | **supported (via helper)** |
-| **WCF**               | **supported** | **supported** | **supported** |
-| **serial/TCP**| **supported (via helper)** | not supported | not supported  |
+| **WCF**               | **supported**              | **supported** | **supported**              |
+| **serial/TCP**        | **supported (via helper)** | not supported | not supported              |
 
 As mentioned above, the Middleware versions will be unified in the upcoming version 2.0. 
 

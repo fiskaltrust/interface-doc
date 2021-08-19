@@ -27,13 +27,13 @@ This interface allows requesting the RKSV-DEP by means of ftJournalType `0x4154â
 
 In addition, a security file of the RKSV-DEP is generated with each monthly report. The file name of this backup file can also be retrieved. The name of the file is composed as follows:
 
-`QueueID + CurrentDateTime + CashboxId + LastSettlementMonth + "\_rksv\_dep.json"`
+`QueueID + CurrentDateTime + CashBoxId + LastSettlementMonth + "\_rksv\_dep.json"`
 
 The CurrentDateTime is provided in the `yyyyMMddhhmmssfff` format.
 
 ### IATSSCD Interface
 
-This interface is applicable only for the Austrian market and enables direct communication with the signature creation device for own purposes: it can be used for testing if the fiskaltrust-Middleware is running ("Echo" call), for requesting the certificate ("Certificate" call), or for signing autonomously ("Sign" call).
+This interface is applicable only for the Austrian market and enables direct communication with the signature creation device for own purposes: it can be used for testing if the fiskaltrust.Middleware is running ("Echo" call), for requesting the certificate ("Certificate" call), or for signing autonomously ("Sign" call).
 
 #### ZDA Indicator Request
 

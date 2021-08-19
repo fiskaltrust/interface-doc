@@ -113,9 +113,9 @@ This table describes additional fields of the ChargeItems Entry applicable to th
 `ChargeItemCaseData` Entry is used to hand over additional required information to a data line for a receipt in JSON format.
 For French law fulfilment, a net-amount by line is required. This is added by a field called `NetAmount`.
 
-| **Field Name** | **Data Type** | **Default Value Mandatory Field** | **Description**                                                       | **Version** |
-|----------------|---------------|-----------------------------------|-----------------------------------------------------------------------|-------------|
-| `NetAmount` | `Decimal` | 0.0<br /> mandatory | POS-device given net-amount, by line, to be processed. | 1.2 |
+| **Field Name** | **Data Type** | **Default Value Mandatory Field** | **Description**                                        | **Version** |
+|----------------|---------------|-----------------------------------|--------------------------------------------------------|-------------|
+| `NetAmount`    | `Decimal`     | 0.0<br /> mandatory               | POS-device given net-amount, by line, to be processed. | 1.2         |
 
 ##### Example
 

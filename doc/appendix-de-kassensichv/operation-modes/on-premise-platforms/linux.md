@@ -5,7 +5,7 @@ title: Linux
 
 # fiskaltrust.Middleware for Linux and macOs
 
-Starting with version 1.3.3, it's possible to run the German Middleware on Linux, using [Mono](https://www.mono-project.com/). Just configure a Cashbox and download the Linux launcher via the respective button in the Cashbox overview. Like on Windows, the downloaded zip file contains scripts to install and test the Middleware.
+Starting with version 1.3.3, it's possible to run the German Middleware on Linux, using [Mono](https://www.mono-project.com/). Just configure a CashBox and download the Linux launcher via the respective button in the CashBox overview. Like on Windows, the downloaded zip file contains scripts to install and test the Middleware.
 
 ## Requirements
 
@@ -19,19 +19,19 @@ Other than that, no specific software needs to be installed (aside from the depe
 
 ### Local data storage/Linux distribution support matrix
 
-|                                                              | Ubuntu     | Debian     | Other distributions running Mono |
-| ------------------------------------------------------------ | ---------- | ---------- | -------------------------------- |
-| local mySQL Storage                                          | **tested** | **tested** | should work (not tested)         |
-| local [SQLite-Storage](../on-premise-databases/sqlite.md)    | **tested** | **tested** | should work (not tested)         |
+|                                                                 | Ubuntu     | Debian     | Other distributions running Mono |
+|-----------------------------------------------------------------|------------|------------|----------------------------------|
+| local mySQL Storage                                             | **tested** | **tested** | should work (not tested)         |
+| local [SQLite-Storage](../on-premise-databases/sqlite.md)       | **tested** | **tested** | should work (not tested)         |
 | local [EF-Storage](../on-premise-databases/entity-framework.md) | not tested | not tested |                                  |
-| local in-memory storage                                      | not tested | not tested |                                  |
+| local in-memory storage                                         | not tested | not tested |                                  |
 
 Both Entity Framework and SQLite queues can be launched on Linux, starting from version 1.3.3. 
 
 ### SCU/Linux distribution support matrix
 
 |                                                           | Ubuntu                                 | Debian     | Other distributions running Mono |
-| --------------------------------------------------------- | -------------------------------------- | ---------- | -------------------------------- |
+|-----------------------------------------------------------|----------------------------------------|------------|----------------------------------|
 | [A-Trust Cloud TSE](../scu/a-trust.md)                    | not tested                             | not tested |                                  |
 | [Cryptovision Hardware-TSE](../scu/cryptovision.md)       | **tested**                             | **tested** | should work (not tested)         |
 | [Deutsche Fiskal Cloud-TSE](../scu/deutsche-fiskal.md)    | Ubuntu LTS 20.04 certified, not tested | not tested |                                  |

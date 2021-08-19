@@ -1,2 +1,2 @@
-<!-- In a Journal reqest the body will be ignored-->
+<!-- In a Journal request the body will be ignored-->
 <!-- It has to be done via the URL -> see the journal_URL.txt -->

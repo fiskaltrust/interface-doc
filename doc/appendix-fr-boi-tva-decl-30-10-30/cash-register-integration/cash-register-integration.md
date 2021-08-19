@@ -22,7 +22,7 @@ The regular workflow of the fiskaltrust.SecurityMechanism in the French market d
   - create machine-readable code
   - create additional receipt data
   - save all the send and generated data
-  - return the whole data to the POS system
+  - return the whole data to the POS-System
 
 ### Receipt for special functions
 
@@ -104,6 +104,6 @@ The Data Collection Log consists of a localised set of information stored using 
 
 Receipt journals are JSON exports of internal structured data related to receipts handled by the fiskaltrust.Middleware. For each receipt type, a journal is created and maintained.
 
-#### Action Journal
+#### fiskaltrust.ActionJournal 
 
-Action journals are JSON exports of internal structured data related to special actions traced by the fiskaltrust.Middleware. There are journals related to different actions, e.g., a journal for the periodical counters, a journal for archiving, or a journal for a technical action log.
+ fiskaltrust.ActionJournals are JSON exports of internal structured data related to special actions traced by the fiskaltrust.Middleware. There are journals related to different actions, e.g., a journal for the periodical counters, a journal for archiving, or a journal for a technical action log.

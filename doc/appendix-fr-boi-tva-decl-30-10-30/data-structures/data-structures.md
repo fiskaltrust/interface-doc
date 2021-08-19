@@ -11,19 +11,19 @@ This chapter expands on the descriptions of the data structures covered in the C
 
 This table describes fields of the receipt request applicable to the French market.
 
-| Field name                | Data type | Default Value Mandatory Field | Description                                                                                              | Version |
-|---------------------------|-----------|-------------------------------|----------------------------------------------------------------------------------------------------------|---------|
-| `cbReceiptAmount`       |`Decimal`?	| null<br />mandatory	                | Total receipt amount incl. taxes (gross receipt amount).                                                 | 1.2      |
-| `ftPosSystemId`          |`guid/string` |mandatory	                |	This field identifies and documents the type and software version of the PosSystem sending the request. It is used for audits and as a base for commission calculation. The PosSystem itself has to be created in the portal and its ID can be implemented as a constant value by the PosCreator. | 1.2      |
+| Field name        | Data type     | Default Value Mandatory Field | Description                                                                                                                                                                                                                                                                                                     | Version |
+|-------------------|---------------|-------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------|
+| `cbReceiptAmount` | `Decimal`?    | null<br />mandatory           | Total receipt amount incl. taxes (gross receipt amount).                                                                                                                                                                                                                                                        | 1.2     |
+| `ftPosSystemId`   | `guid/string` | mandatory                     | This field identifies and documents the type and software version of the POS-System sending the request. It is used for audits and as a base for commission calculation. The POS-System itself has to be created in the fiskaltrust.Portal and its ID can be implemented as a constant value by the PosCreator. | 1.2     |
 
 #### ReceiptCaseData Entry
 
 ReceiptCaseData Entry is used to hand over additional required information to a data line for a receipt in JSON format.
 For French law fulfilment, a  ManagerId is required, if the receipt is sent as training receipt.
 
-| **Field Name**  | **Data Type** | **Default Value Mandatory Field** | **Description**                                                       | **Version** |
-|-----------------|---------------|-----------------------------------|-----------------------------------------------------------------------|-------------|
-| `ManagerId`	   |`String`<br />Max 1k |	empty-string<br />optional<br />mandatory in training mode | Identification of the user, who started the training mode. | 1.2      |
+| **Field Name** | **Data Type**        | **Default Value Mandatory Field**                          | **Description**                                            | **Version** |
+|----------------|----------------------|------------------------------------------------------------|------------------------------------------------------------|-------------|
+| `ManagerId`    | `String`<br />Max 1k | empty-string<br />optional<br />mandatory in training mode | Identification of the user, who started the training mode. | 1.2         |
 
 ##### ReceiptCaseData Entry Example
 
@@ -35,11 +35,11 @@ For French law fulfilment, a  ManagerId is required, if the receipt is sent as t
 
 This table describes additional fields of the receipt response applicable to the French market.
 
-| Field name                | Data type | Default Value Mandatory Field | Description                                                                                              | Version |
-|---------------------------|-----------|-------------------------------|----------------------------------------------------------------------------------------------------------|---------|
-| `ftCashBoxIdentification` | `string`  | mandatory                     | Cash register identification.                                                                            | 1.2      |
-| `ftReceiptIdentification` | `string`  | mandatory                     | Allocated through fiskaltrust.SecurityMechanism upcounting receipt number depending on the receipt type. | 1.2      |
-| `ftStateData`             | `string`  | mandatory for ReceiptCase `0x4652000000000017` | Serialised JSON-object with hash-values for each journal-type export. | 1.2      |
+| Field name                | Data type | Default Value Mandatory Field                  | Description                                                                                              | Version |
+|---------------------------|-----------|------------------------------------------------|----------------------------------------------------------------------------------------------------------|---------|
+| `ftCashBoxIdentification` | `string`  | mandatory                                      | Cash register identification.                                                                            | 1.2     |
+| `ftReceiptIdentification` | `string`  | mandatory                                      | Allocated through fiskaltrust.SecurityMechanism upcounting receipt number depending on the receipt type. | 1.2     |
+| `ftStateData`             | `string`  | mandatory for ReceiptCase `0x4652000000000017` | Serialised JSON-object with hash-values for each journal-type export.                                    | 1.2     |
 
 <span id="_Toc527986682" class="anchor"></span>*Table 30. Receipt Response*
 
@@ -49,13 +49,13 @@ The Charge Items entry is defined according to the French law. This entry determ
 
 This table describes additional fields of the Charge Items Entry applicable to the French market.
 
-| **Field Name** | **Data Type** | **Default Value Mandatory Field** | **Description**                                                       | **Version** |
-|----------------|---------------|-----------------------------------|-----------------------------------------------------------------------|-------------|
-| `Description`  | `string`      | mandatory       | Name or description of customary indication or type of other service. | 1.2          |
-| `VATAmount`            | `Decimal`            | 0.0<br />mandatory                           | For French law fulfilment the VAT amount is required. It is used to calculate the net amount in order to avoid rounding errors which are especially likely to appear in row-based net price additions. | 1.2          |
-| `ftChargeItemCaseData` | `string`<br />Max 64k | mandatory                  | Additional data about the service in JSON format.                                                                                                          | 1.2          |
-| `Unit`                 | `String`<br />Max 1k  | mandatory                  | Unit of measurement                                                                                                                                                                  | 1.2         |
-| `UnitPrice`            | `Decimal`            | mandatory                          | Gross price per indicated unit.                                                                                                                                                      | 1.2         |
+| **Field Name**         | **Data Type**         | **Default Value Mandatory Field** | **Description**                                                                                                                                                                                        | **Version** |
+|------------------------|-----------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
+| `Description`          | `string`              | mandatory                         | Name or description of customary indication or type of other service.                                                                                                                                  | 1.2         |
+| `VATAmount`            | `Decimal`             | 0.0<br />mandatory                | For French law fulfilment the VAT amount is required. It is used to calculate the net amount in order to avoid rounding errors which are especially likely to appear in row-based net price additions. | 1.2         |
+| `ftChargeItemCaseData` | `string`<br />Max 64k | mandatory                         | Additional data about the service in JSON format.                                                                                                                                                      | 1.2         |
+| `Unit`                 | `String`<br />Max 1k  | mandatory                         | Unit of measurement                                                                                                                                                                                    | 1.2         |
+| `UnitPrice`            | `Decimal`             | mandatory                         | Gross price per indicated unit.                                                                                                                                                                        | 1.2         |
 
 <span id="_Toc527986683" class="anchor"></span>*Table 31. Charge Items Entry (ftChargeItems)*
 
@@ -64,9 +64,9 @@ This table describes additional fields of the Charge Items Entry applicable to t
 ChargeItemCaseData Entry is used to hand over additional required information to a data line for a receipt in JSON format.
 For French law fulfilment, a net-amount by line is required. This is added by a field called "NetAmount".
 
-| **Field Name** | **Data Type** | **Default Value Mandatory Field** | **Description**                                                       | **Version** |
-|----------------|---------------|-----------------------------------|-----------------------------------------------------------------------|-------------|
-| `NetAmount` | `Decimal` | 0.0<br /> mandatory | POS-device given net-amount, by line, to be processed. | 1.2 |
+| **Field Name** | **Data Type** | **Default Value Mandatory Field** | **Description**                                        | **Version** |
+|----------------|---------------|-----------------------------------|--------------------------------------------------------|-------------|
+| `NetAmount`    | `Decimal`     | 0.0<br /> mandatory               | POS-device given net-amount, by line, to be processed. | 1.2         |
 
 ##### ChargeItemCaseData Entry Example
 
@@ -86,9 +86,9 @@ All SignatureItems send back to the POS-System must be printed on the receipt, t
 
 This table describes additional fields of the Signature Entry applicable to the French market.
 
-| **Field Name**      | **Data Type** | **Default Value**<br />**Mandatory Field** | **Description**                                                                                                                                                                       | **Version** |
-|---------------------|---------------|--------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
-| `ftSignatureFormat` | `Int64`       | 0<br />mandatory                           | Format for displaying signature data according to the reference table in the appendix.                                                        | 1.2          |
-| `ftSignatureType`   | `Int64`       | 0<br />mandatory                           | Type of signature according to the reference table in the appendix. | 1.2          |
+| **Field Name**      | **Data Type** | **Default Value**<br />**Mandatory Field** | **Description**                                                                        | **Version** |
+|---------------------|---------------|--------------------------------------------|----------------------------------------------------------------------------------------|-------------|
+| `ftSignatureFormat` | `Int64`       | 0<br />mandatory                           | Format for displaying signature data according to the reference table in the appendix. | 1.2         |
+| `ftSignatureType`   | `Int64`       | 0<br />mandatory                           | Type of signature according to the reference table in the appendix.                    | 1.2         |
 
 <span id="_Toc527986684" class="anchor"></span>*Table 32. Signature Entry*

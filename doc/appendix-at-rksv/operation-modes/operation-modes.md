@@ -17,7 +17,7 @@ This application is the bridge between the queue nutshell and fiskaltrust.Signat
 
 ### SSCD Nutshell
 
-In Austria, it is mandatory to have an unmodifiable smartcard (write once read many) which must store the issued certificate containing the POS operator data. This smartcard must be read from a reader, which must be connected to the POS system's machine via an internal device, a connected external device, a network-connected device, or a web service.
+In Austria, it is mandatory to have an unmodifiable smartcard (write once read many) which must store the issued certificate containing the PosOperator data. This smartcard must be read from a reader, which must be connected to the POS-System's machine via an internal device, a connected external device, a network-connected device, or a web service.
 
 #### fiskaltrust.SignatureCloud
 

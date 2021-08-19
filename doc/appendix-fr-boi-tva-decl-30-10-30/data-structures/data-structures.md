@@ -45,7 +45,7 @@ In order to reflect changes of table or rooms several possibilities can be taken
 ...
 ```
 
-##### **Saving a room number
+##### Saving a room number
 
 ```...
 "cbArea": "{\"room\" : \"W1101\"}"

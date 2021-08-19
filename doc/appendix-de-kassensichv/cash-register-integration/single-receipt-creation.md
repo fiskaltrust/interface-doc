@@ -33,7 +33,7 @@ Implicit- and explicit flow can be combined, dependent on the actual needs.
 
 ### When to use
 
-This is the regular workflow of the fiskaltrust-SecurityMechanism in the German market for actions which should fit for around 90% of all use cases. Compared to the explicit low, it is easier to handle and leads to less trouble with handling open transactions on the user side.
+This is the regular workflow of the fiskaltrust-SecurityMechanism in the German market for actions which should fit for around 90% of all use cases. Compared to the explicit flow, it is easier to handle and leads to less trouble with handling open transactions on the user side.
 
 ### How to use
 

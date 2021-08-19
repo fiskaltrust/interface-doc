@@ -34,7 +34,7 @@ In order to reflect changes of table or rooms several possibilities can be taken
 
 1. An entry in the protocol with ReceiptCase `0x4652000000000012` can be made.
 1. The complete bill can be voided with the ReceiptCaseFlag `0x0000000000040000` and be done as new Bill for the new table/room.
-1. The next note is done with a new number in `cbArea` and the `cbPreviousReceiptReference` is set to the value of the note done on the old table. If after the bill a ticket (without another note ) is issued the same procedure can be used.
+1. The next note is done with a new number in `cbArea` and the `cbPreviousReceiptReference` is set to the value of the note done on the old table. If after the bill a ticket (without another note) is issued the same procedure can be used.
 
 #### Example
 

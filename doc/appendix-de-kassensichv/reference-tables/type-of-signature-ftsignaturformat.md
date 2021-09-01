@@ -6,8 +6,13 @@ title: 'Format of signature: ftSignatureFormat'
 # Format of Signature: ftSignatureFormat
 The Middleware uses the same _ftSignatureFormats_ in Germany as in all other countries, as described in the [general part](../../general/reference-tables/reference-tables.md#format-of-signature-ftsignatureformat). 
 
-A single additional flag was added to mark optional signatures that are not legally required to be printed.
+:::info
 
+Please note that starting from June 2021, it's possible to **either** print the fiscalization details as a QR code **or** as text (while previously, the textual information was mandatory). Printing both is still allowed. More details can be found in the [enactment by the German government](https://dserver.bundestag.de/btd/19/290/1929085.pdf). 
+
+:::
+
+As of today, there are two options when printing receipts: either print all details as text, or print the QR code which contains (mostly) the same information. The Middleware returns all required data, so that the PosCreator is free to choose either. We've added a flag to the `ftSignatureFormat` value that can be used to determine if printing is optional when using the QR code (as the current QR code format specified by the DSFinV-K is missing some values).
 ## ftSignatureFormatFlag
 
 | Value | Description | Middleware-Version | 

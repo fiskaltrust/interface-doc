@@ -13,6 +13,7 @@ Please note that starting from June 2021, it's possible to **either** print the 
 :::
 
 As of today, there are two options when printing receipts: either print all details as text, or print the QR code which contains (mostly) the same information. The Middleware returns all required data, so that the PosCreator is free to choose either. We've added a flag to the `ftSignatureFormat` value that can be used to determine if printing is optional when using the QR code (as the current QR code format specified by the DSFinV-K is missing some values).
+
 ## ftSignatureFormatFlag
 
 | Value | Description | Middleware-Version | 

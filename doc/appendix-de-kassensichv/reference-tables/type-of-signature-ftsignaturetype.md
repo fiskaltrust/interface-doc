@@ -7,7 +7,13 @@ title: 'Type of signature: ftSignatureType'
 
 The `ftSignatureType` indicates the type and origin of the signature. The data type is `Int64` and can contain a country-specific code, a value following the ISO-3166-1-ALPHA-2 standard, converted from ASCII into hex and used as byte 8 and 7.
 
-**Generally, all values returned in the response's signature block have to be printed on the receipt.**
+:::tip
+
+The German Middleware returns multiple additional signature items that are later used while generating our DSFinV-K export and **do not need to be printed**. To identify those, we have added a flag to the `ftSignatureFormat`, which is described [here](type-of-signature-ftsignaturformat.md)
+
+:::
+
+
 
 For definitions regarding national laws, please refer to the appropriate appendix<span id="t-type-of-signature-ftsignaturetype-127">.</span>
 

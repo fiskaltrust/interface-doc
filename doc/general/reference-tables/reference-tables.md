@@ -24,8 +24,6 @@ The table below describes supported statuses for the ftState field. Those codes 
 | `0xXXXX000000000040` | Message Pending<br />Use Zero-Receipt to show Message on Receipt                                    | 1.0                    |
 | `0xXXXX000000000080` | Reserved                                                                                            |                        |
 
-*Table 9. Service Status: ftState*
-
 Example of reading ftState parameter
 
 The following example shows how to extract the value of a flag into the ftState property.
@@ -47,8 +45,6 @@ if ((ReceiptResponse.ftState & 0x0000000000000040) != 0)
 }
 ```
 
-<span id="_Toc527986838" class="anchor"></span>*Code 14. Extracting the flag value into the ftState property*
-
 ### Type of Receipt: ftReceiptCase
 
 The ftReceiptCase indicates the receipt type and defines how it should be processed by the fiskaltrust.SecurityMechanism. The data type is `Int64` and contains the country specific code, which is a value following the ISO-3166-1-ALPHA-2 standard converted from ASCII into hex and used as byte 8 and 7. For definitions regarding national laws, please refer to the appropriate appendix<span id="t-type-of-receipt-ftreceiptcase-49">.</span>
@@ -56,8 +52,6 @@ The ftReceiptCase indicates the receipt type and defines how it should be proces
 | **Value**            | **Description**                                                                                                                                      | **Middleware Version** |
 |----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
 | `0x0000000000000000` | "default value"<br />Unknown type of receipt.<br />Automatic processing through the localization setting of the fiskaltrust.Middleware is attempted. | 1.1                    |
-
-*Table 10. Type of Receipt: ftReceiptCase*
 
 #### ftReceiptCaseFlag
 
@@ -72,8 +66,6 @@ Business transactions can result in combinations of receipt types, which would b
 | `0x0000800000000000` | "receipt request".<br />Used to retrieve an already processed receipt from the fiskaltrust.Middleware using the cbReceiptReference field. The cbTerminalID can also be included in this request. Chargeitems and payitems have to be exactly the same as in the requested receipt. If a matching receipt is found, its content will be returned. If nothing is found a null value is returned. This can be nescessary if a communication problem occurs while fiskaltrust.Middleware processes a request.                                                                                                                                                                                                                                                                                                            | 1.1                    |
 |                      | To prevent a duplication of requested receipt, the cash register terminal can place an additional parameter inside the queue to influence the behavior of this "receipt request" when no receipt is found.<br />Parameter name: "receiptrequestmode"<br />Parameter values:<br />0 (default) … null is returned<br />1 … request is handled in the same way as new request. If processing is successful, the created ReceiptResponse is returned.                                                                                                                                                                                                                                                                                                                                                                    | 1.2                    |
 
-*Table 11. Type of Receipt: ftReceiptCaseFlag*
-
 These flags are based on national laws and regulations, for further information please refer to the appropriate country specific appendix.
 
 ### Type of Service: ftChargeItemCase
@@ -86,8 +78,6 @@ For definitions regarding national laws, please refer to the appropriate country
 |----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
 | `0xXXXX000000000000` | "default value"<br />Unknown type of service: Automatic processing through the localization setting of the fiskaltrust.Middleware is attempted. | 1.0                    |
 
-*Table 12. Type of Service: ftChargeItemCase*
-
 ### Type of Payment: ftPayItemCase
 
 The ftPayItemCase indicates the type of payment within the pay items block and defines how the fiskaltrust.SecurityMechanism processes the individual payment in terms of the receipt. The data type is `Int64` and contains a country specific code which is a value following the ISO-3166-1-ALPHA-2 standard, converted from ASCII into hex and used as byte 8 and 7.
@@ -97,8 +87,6 @@ For definitions regarding national laws, please refer to the appropriate appendi
 | **Value**            | **Description**                                                                                                                              | **Middleware Version** |
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
 | `0xXXXX000000000000` | "default value"<br />unknown payment type: Automatic processing through the localization setting of the fiskaltrust.Middleware is attempted. | 1.0                    |
-
-*Table 13. Type of Payment: ftPayItemCase*
 
 ### Format of Signature: ftSignatureFormat
 
@@ -122,8 +110,6 @@ The ftSignatureFormat tells the cash register or input station which display for
 | `0x0D`    | Base64                                                          | 1.3                    |
 
 
-*Table 14. Format of Signature: ftSignatureFormat*
-
 ### Type of Signature: ftSignatureType
 
 The ftSignatureType indicates type and origin of the signature. The data type is `Int64` and can contain a country specific code which is a value following the ISO-3166-1-ALPHA-2 standard, converted from ASCII into hex and used as byte 8 and 7.
@@ -137,8 +123,6 @@ For definitions regarding national laws, please refer to the appropriate appendi
 | `0x0000000000002000` | alert notification       | 1.0                    |
 | `0x0000000000003000` | failure notification     | 1.0                    |
 
-*Table 15. Type of Signature: ftSignatureType*
-
 ### <span id="c-type-of-journal-ftjournaltype-129">Type of Journal: ftJournalType</span>
 
 The ftJournalType is used with the journal function and specifies the content and format of the returned journal stream. The data type is `Int64` and contains a country specific code which is a value following the ISO-3166-1-ALPHA-2 standard, converted from ASCII into hex and used as byte 8 and 7.
@@ -151,6 +135,3 @@ For definitions regarding national laws, please refer to the appropriate appendi
 | `0x0000000000000001` | fiskaltrust.ActionJournal in internal format | 1.1                    |
 | `0x0000000000000002` | ReceiptJournal in internal format            | 1.1                    |
 | `0x0000000000000003` | QueueItemJournal in internal format          | 1.1                    |
-
-*Table 16. Type of Journal: ftJournalType*
-

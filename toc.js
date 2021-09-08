@@ -111,6 +111,7 @@ module.exports = {
                 'middleware-doc/doc/appendix-de-kassensichv/reference-tables/type-of-service-ftchargeitemcase',
                 'middleware-doc/doc/appendix-de-kassensichv/reference-tables/type-of-payment-ftpayitemcase',
                 'middleware-doc/doc/appendix-de-kassensichv/reference-tables/type-of-signature-ftsignaturetype',
+                'middleware-doc/doc/appendix-de-kassensichv/reference-tables/type-of-signature-ftsignatureformat',
                 'middleware-doc/doc/appendix-de-kassensichv/reference-tables/type-of-journal-ftjournaltype',
               ]
             },

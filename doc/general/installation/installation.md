@@ -13,7 +13,7 @@ The components of the fiskaltrust.Middleware need to be configured in the fiskal
 
 For example, it must be configured at which endpoints the Middleware is listening on, in which database the processed data is to be stored, which Signature Creation Unit (SCU) is to be used for the signatures and how it can be reached by the Middleware.
 
-The components of the Middleware which should be operated as an on-premise Middleware-instance are collected in a so-called "Cashbox"configuration container.
+The components of the Middleware which should be operated as an on-premise Middleware-instance are collected in a so-called "CashBox"configuration container.
 
 More information on the configuration options of the components can be found in the according market-appendices:
 
@@ -21,11 +21,11 @@ More information on the configuration options of the components can be found in 
 - [Germany](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware#the-cashbox-as-a-configuration-container)
 - France
 
-At the end of this configuration process, a so-called "Launcher" including the Cashbox-configuration needs to be downloaded.
+At the end of this configuration process, a so-called "Launcher" including the CashBox-configuration needs to be downloaded.
 
 ## Download of the Launcher
 
-After configuring the cashbox in the portal, following so-called "Launchers" are available for download:
+After configuring the CashBox in the portal, following so-called "Launchers" are available for download:
 
 | Icon                                             | Launcher                                | Description                                                  | AT        | DE         | FR        |
 | ------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------ | --------- | ---------- | --------- |
@@ -34,7 +34,7 @@ After configuring the cashbox in the portal, following so-called "Launchers" are
 | ![launcher-mono](images/launcher-mono.png)       | Mono Launcher                           | **For starting the Middleware on Linux/macOS with Internet connection.**<br />The launcher loads the configuration file and its needed packages during the start from the fiskaltrust packages-server. | supported | supported  | supported |
 | ![launcher-android](images/launcher-android.png) | Android Launcher                        | **For starting the Middleware on Android with Internet connection.**<br />The needed packages for operation are already included. The launcher loads the configuration file during the start from the fiskaltrust packages-server.<br />The configuration options are limited to keep the package sizes small. |           | supported* |           |
 
-*availability dependent on the cashbox configuration. For more details, see the [platform documentation for Android](https://docs.fiskaltrust.cloud/docs/product-description/germany/products-and-services/caas/features/platforms/android).
+*availability dependent on the CashBox configuration. For more details, see the [platform documentation for Android](https://docs.fiskaltrust.cloud/docs/product-description/germany/products-and-services/caas/features/platforms/android).
 
 The received zip-compressed folders need to be unzipped and can be moved or renamed if necessary.
 
@@ -49,7 +49,7 @@ The folder with the downloaded and unzipped launcher contains
 
 ### Launcher configuration
 
-In the fiskaltrust.Portal, the components of the fiskaltrust.Middleware have been configured via Cashbox configuration for the environment where the Middleware should be operated, e.g. which database should be used to store the receipt data. 
+In the fiskaltrust.Portal, the components of the fiskaltrust.Middleware have been configured via CashBox configuration for the environment where the Middleware should be operated, e.g. which database should be used to store the receipt data. 
 
 The downloaded Launcher can now be optionally adapted for the local machine; e.g. setting the target folder for the data storage of the service, or setting the service name. This can be done by either using call parameters when executing the `fiskaltrust.exe`, or by directly modifying the  `fiskaltrust.exe.config`  by adding the appropriate key-value pairs in the section `appSettings`.
 
@@ -73,7 +73,7 @@ The following call parameters are available with the launcher `fiskaltrust.exe`:
 | `-logfile`                     | Sets the file used to log the output messages.               | yes                                                          |
 | `-connectiontimeout`           | Sets the timeout (in seconds) for the HTTP/HTTPS call to download the configuration. | yes                                                          |
 | `-connectionretry`             | Sets the number of trials to download the configuration.     | yes                                                          |
-| `-proxy`                       | Sets the proxy server to be used to connect to the internet. The value can be used as follows: `"address=xxx.xxx.xxx.xxx;user=test;password=pwd123"`. `user` and `password` are optional values. See [Using a Proxy](https://link.fiskaltrust.cloud/rollout/proxy) | yes                                                          |
+| `-proxy`                       | Sets the proxy server to be used to connect to the internet. The value can be used as follows: `"address=xxx.xxx.xxx.xxx;username=test;password=pwd123"`. `username` and `password` are optional values. See [Using a Proxy](https://link.fiskaltrust.cloud/rollout/proxy) | yes                                                          |
 | `-verbosity`                   | Sets the level of debug-information in the logfile. The value is a string. Possible values are: `Trace` \|`Debug` \|`Information` \|`Warning` \|`Error` \|`Critical`<br />**Supported in the German market only!** | yes. <br />Use in the static configuration the key `loglevel` |
 <span id="_Toc527986661" class="anchor"></span>*Table 8. fiskaltrust.exe launch parameters*
 
@@ -89,7 +89,7 @@ Following  options are available for executing the `fiskaltrust.exe`:
 | `uninstall-service.cmd`             | Pre-configured command file which executes `fiskaltrust.exe` using the parameter `-u` for un-installing the fiskaltrust.Middleware as a service under Windows. | Run the command file `uninstall-service.cmd` as administrator. |                                                              |
 | `test.cmd`                          | Pre-configured command file which executes `fiskaltrust.exe` using the parameter `-test` for starting the fiskaltrust.Middleware as a command line program under Windows, recommended for test and development purpose. | Run the command file `test.cmd` as administrator.<br />For details, see [Test Environment](#test-environment) |                                                              |
 
-### Applying the Cashbox-configuration
+### Applying the CashBox-configuration
 
 During the start of the Online-Launcher (.NET Launcher or Mono-Launcher), the configuration is checked and the configuration-file (usually Configuration-`00000000-0000-0000-0000-000000000000`.json) including the needed packages are downloaded to the fiskaltrust service-folder (usually `C:\ProgramData\fiskaltrust\service`) if necessary. 
 

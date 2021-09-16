@@ -36,7 +36,7 @@ The _fiskaltrust.Middleware.SCU.DE.DeutscheFiskal_-package connects the middlewa
 
 **from version:** 1.3.23
 
-The _fiskaltrust.Middleware.SCU.DE.SwissbitCloud_-package handels updates for FCC on start and new versions of the FCC are installed automatically.
+The _fiskaltrust.Middleware.SCU.DE.SwissbitCloud_ package handles updates for FCC on start and new versions of the FCC are installed automatically when updating the SCU.
 
 ### Parameters
 

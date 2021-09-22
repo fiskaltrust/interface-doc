@@ -14,6 +14,7 @@
 ## [Terminology](appendix-at-rksv/terminology/terminology.md)
 ## [Cash Register Integration](appendix-at-rksv/cash-register-integration/cash-register-integration.md)
 ## [Data Structures](appendix-at-rksv/data-structures/data-structures.md)
+## [Installation](appendix-de-kassensichv/installation/installation.md)
 ## [Function structures](appendix-at-rksv/function-structures/function-structures.md)
 ## [Communication](appendix-at-rksv/communication/communication.md)
 ## [Operation Modes](appendix-at-rksv/operation-modes/operation-modes.md)

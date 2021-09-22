@@ -4,7 +4,7 @@ This Chapter describes the different scenarios of failure when using the fiskalt
 #### Failure of the fiskaltrust.Middleware
 If a cash register cannot communicate with the fiskaltrust.Middleware it is most likely due to a failure of the fiskaltrust Middleware. Such a failure means that the electronic recording system is not operational and there is no access to the appropriate journal.
 
-![](./images/07-no-middleware-connection.png)
+![no-middleware-connection](./images/07-no-middleware-connection.png)
 
 In this case, the following steps must be taken:
 

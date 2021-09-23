@@ -24,13 +24,10 @@ After fiskaltrust.Middleware has received an "end of failure receipt", the statu
 #### Failure of the Signature Creation Unit
 If the communication to the SCU fails (e.g. when the secure Signature Creation Device is not reachable), the POS System can continue to operate until the SCU is accessible again. Receipts created in a state where no communication is possible with the SCU are protected by the security mechanism of fiskaltrust. The fiskaltrust.Middleware will respond with the ftState = `0x02` "SCU communication failed". The POS System receives the response and processes the data it contains. For following Requests no more communication attempts are done to avoid long waiting times for each Receipt request/Receipt response sequence.
 
-
 ![no-scu-connection](./images/10-no-scu-connection.png)
   
 When the SSCD is reachable again, a Zero-Receipt must be sent, which forces a communication retry towards the SSCD device. If the fiskaltrust.Middleware is able to connect to the SSCD again, the ftState = 0x00 (ok) is returned to the POS system via the response and the fiskaltrust.Middleware is ready for normal operation again. Furthermore, the response contains a listing of the requests that were not signed by the TSE. The requests affected by the failure of the communication with the SCU do not have to be sent to the Queue again after the problem has been resolved.
 <br>
-:::tip
-We recommend to make the zero-receipt after a failure a manual operation, and not automatically send it it via the POS system as soon as a failure state is returned. In most scenarios, only operators can determine if the connection to the SSCD can be re-established, e.g. when the internet or the device is reconnected. Automatically sending zero-receipts might lead to unnecessary wait times if the connection can't be established at this point in time.
-:::
+>We recommend to make the zero-receipt after a failure a manual operation, and not automatically send it it via the POS system as soon as a failure state is returned. In most scenarios, only operators can determine if the connection to the SSCD can be re-established, e.g. when the internet or the device is reconnected. Automatically sending zero-receipts might lead to unnecessary wait times if the connection can't be established at this point in time.
 
 ![reestablished-scu-connection](./images/11-reestablished-connection.png)

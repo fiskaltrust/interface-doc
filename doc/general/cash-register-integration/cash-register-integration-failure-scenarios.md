@@ -23,6 +23,9 @@ After fiskaltrust.Middleware has received an "end of failure receipt", the statu
 
 #### Failure of the Signature Creation Unit
 If the communication to the SCU fails (e.g. when the secure Signature Creation Device is not reachable), the POS System can continue to operate until the SCU is accessible again. Receipts created in a state where no communication is possible with the SCU are protected by the security mechanism of fiskaltrust. The fiskaltrust.Middleware will respond with the ftState = `0x02` "SCU communication failed". The POS System receives the response and processes the data it contains. For following Requests no more communication attempts are done to avoid long waiting times for each Receipt request/Receipt response sequence.
+<p>
+We are using the "circuit breaker" design pattern for our failed mode. As we are not trying to communicate with the SCU once a Call failed, the logic is preventing the failure from constantly reccuring during a temporary failure. With this approach the POSOperators are not blocked in their daily business, as we are avoiding long timeouts which would occur for every request to the SCU.
+</p>
 
 ![no-scu-connection](./images/10-no-scu-connection.png)
   

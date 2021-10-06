@@ -1,3 +1,8 @@
+---
+slug: /poscreators/middleware-doc/general/cash-register-integration/failure-scenarios
+title: Failure scenarios
+---
+
 ### Failure Scenarios
 This Chapter describes the different scenarios of failure when using the fiskaltrust.Middleware and how to handle them.
 

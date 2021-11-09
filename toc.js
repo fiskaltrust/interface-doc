@@ -12,7 +12,14 @@ module.exports = {
           items: [
             'middleware-doc/doc/general/general',
             'middleware-doc/doc/general/terminology/terminology',
-            'middleware-doc/doc/general/cash-register-integration/cash-register-integration',
+            {
+              type: 'category',
+              label: 'Cash register integration',
+              items: [
+                 'middleware-doc/doc/general/cash-register-integration/cash-register-integration-regular-workflow',
+                 'middleware-doc/doc/general/cash-register-integration/cash-register-integration-failure-scenarios'
+              ]
+           },
             'middleware-doc/doc/general/data-structures/data-structures',
             'middleware-doc/doc/general/function-structures/function-structures',
             'middleware-doc/doc/general/communication/communication',
@@ -20,8 +27,8 @@ module.exports = {
               type: 'category',
               label: 'Operation modes',
               items: [
-				'middleware-doc/doc/general/operation-modes/operation-modes',
-				'middleware-doc/doc/general/operation-modes/configuration',
+				    'middleware-doc/doc/general/operation-modes/operation-modes',
+				    'middleware-doc/doc/general/operation-modes/configuration',
               ]
             },
             'middleware-doc/doc/general/installation/installation',

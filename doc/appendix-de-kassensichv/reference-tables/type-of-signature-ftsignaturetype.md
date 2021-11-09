@@ -9,7 +9,7 @@ The `ftSignatureType` indicates the type and origin of the signature. The data t
 
 :::tip
 
-The German Middleware returns multiple additional signature items that are later used while generating our DSFinV-K export and **do not need to be printed**. To identify those, we have added a flag to the `ftSignatureFormat`, which is described [here](type-of-signature-ftsignaturformat.md)
+The German Middleware returns multiple additional signature items that are later used while generating our DSFinV-K export and **do not need to be printed**. To identify those, we have added a flag to the `ftSignatureFormat`, which is described [here](type-of-signature-ftsignatureformat.md)
 
 :::
 

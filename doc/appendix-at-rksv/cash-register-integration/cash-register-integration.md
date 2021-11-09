@@ -5,7 +5,7 @@ title: Cash register integration
 
 ## Cash Register Integration
 
-This chapter describes the cash register integration following the Austrian law. The general rules for cash register integration are described in the Chapter ["Cash Register Integration"](../../general/cash-register-integration/cash-register-integration.md) of the general part.
+This chapter describes the cash register integration following the Austrian law. The general rules for cash register integration are described in the Chapter ["Cash Register Integration"](../../general/cash-register-integration/cash-register-integration-regular-workflow.md) of the general part.
 
 ### Receipt Creation Process
 
@@ -73,7 +73,7 @@ The following diagram illustrates the workflow of a failure of the fiskaltrust.S
 
 ### Receipt for special functions
 
-This section describes receipt types used for special functions on the Austrian market and expands on the descriptions from the Chapter ["Receipt for special functions"](../../general/cash-register-integration/cash-register-integration.md#c-receipt-for-special-functions-54) of the general part.
+This section describes receipt types used for special functions on the Austrian market and expands on the descriptions from the Chapter ["Receipt for special functions"](../../general/cash-register-integration/cash-register-integration-regular-workflow.md#c-receipt-for-special-functions-54) of the general part.
 
 In accordance with §131b para. 2 BAO and the RKSV, as per 1.1.2017 (now 1.4.2017), each transaction receipt needs to be cryptographically signed with a signature creation device assigned to the taxpayer, to guarantee the immutability of the recording. In addition to these receipts, several other requirements are stated by the RKSV which can be met by creating the following receipts with special functions.
 

@@ -43,14 +43,27 @@ Both Entity Framework and SQLite queues can be launched on Linux, starting from 
 
 ## Limitations
 
+:::danger
+
+Due to the limited hosting capabilities of Mono, the current version of the Middleware has several limitations and specifics when running on Linux. Therefore, please read this section carefully.
+
+The upcoming major version of the Middleware will include a truly platform-independent Launcher where these limitations will be resolved.
+
+:::
+
+
 Currently, the Middleware only supports gRPC and REST when executed on Linux. This means that SOAP is right now not supported (due to open bugs in Mono's WCF implementation). 
 
 If you haven't already decided for a communication technology, we strongly recommend gRPC, especially in Linux scenarios, as it provides a cleaner, more stable interface. Please refer to our demo project (currently available in [C#](https://github.com/fiskaltrust/middleware-demo-dotnet), [Java](https://github.com/fiskaltrust/middleware-demo-java), [Node.js](https://github.com/fiskaltrust/middleware-demo-node) and [others](https://github.com/fiskaltrust)) for sample implementations.
 
-## REST limitations
+### REST limitations
+When using REST, the HTTP endpoint slightly differs from the Windows version, as the version prefix cannot be included because of the mentioned Mono issues. Hence, a REST endpoint on Linux must be called like this: `http://localhost:1500/a4c4e466-721a-4011-a9a5-a23827a21b45/sign`:
+- The `/json/v1` part needs to be omited
+- The URL must be written in lower case
+- When calling the _journal_ endpoint, the `type`, `from` and `to` GET parameters must be included
 
-When using REST, the HTTP endpoint slightly differs from the Windows version, as the version prefix cannot be included because of the mentioned Mono issues. Hence, a REST URL on Linux would look like this: `http://localhost:1500/a4c4e466-721a-4011-a9a5-a23827a21b45/sign` (instead of `../v1/sign`).
+Please also note that the `content-type` must be set:
+- to `application/json` when calling the _sign_ or _echo_ endpoints
+- to `text/plain` when calling the _journal_ endpoint
 
 In addition, if REST is used, a gRPC endpoint needs to be configured as the **primary** endpoint of the Queue and the SCU, so it can be properly used by our packages.
-
-We will unify the experiences on Linux and Windows in an upcoming version.

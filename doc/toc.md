@@ -1,6 +1,7 @@
 # [General Part](general/general.md)
 ## [Terminology](general/terminology/terminology.md)
-## [Cash Register Integration](general/cash-register-integration/cash-register-integration.md)
+## [Cash Register Integration](general/cash-register-integration/cash-register-integration-regular-workflow.md)
+## [Cash Register Integration](general/cash-register-integration/cash-register-integration-failure-scenarios.md)
 ## [Data Structures](general/data-structures/data-structures.md)
 ## [Function structures](general/function-structures/function-structures.md)
 ## [Communication](general/communication/communication.md)

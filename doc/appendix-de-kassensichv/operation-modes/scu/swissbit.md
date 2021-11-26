@@ -27,11 +27,12 @@ The _fiskaltrust.Middleware.SCU.DE.Swissbit_ package connects the middleware wit
 
 ### Parameters
 
-| Name           | Description                                                                               | **Default Value**<br />**Mandatory Field** |
-|----------------|-------------------------------------------------------------------------------------------|--------------------------------------------|
-| _devicePath_   | Path to the drive under which the TSE can be reached (e.g. ` D: `), without a final slash | empty string<br />mandatory                |
-| _adminPin_     | Admin PIN of the TSE. If not specified, the default PIN is used.                          | to be documented<br />optional             |
-| _timeAdminPin_ | Time Admin PIN of the TSE. If not specified, the default PIN is used.                     | to be documented<br />optional             |
+| Name                   | Description                                                                                        | **Default Value**<br />**Mandatory Field** |
+|------------------------|----------------------------------------------------------------------------------------------------|--------------------------------------------|
+| _devicePath_           | Path to the drive under which the TSE can be reached (e.g. ` D: `), without a final slash          | empty string<br />mandatory                |
+| _adminPin_             | Admin PIN of the TSE. If not specified, the default PIN is used.                                   | to be documented<br />optional             |
+| _timeAdminPin_         | Time Admin PIN of the TSE. If not specified, the default PIN is used.                              | to be documented<br />optional             |
+| _EnableFirmwareUpdate_ | Enables firmware updates for the TSE. (see https://link.fiskaltrust.cloud/de/swisssbit-tse/update) | false<br />optional                        |
 
 ## Troubleshooting
 

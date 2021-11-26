@@ -58,7 +58,7 @@ In addition to enable the communication with the cash register via iPOS Interfac
 
 The SCU (Signature Creation Unit) handles the country-specific implementation of the security solution and is responsible for the signatures. 
 
-The additional security and functionalities based on local market regulation is delivered by third party vendors (e.g. a software/based cloud solution, a hardware device, or a certificate), supported by fiskaltrust via the SCU. The choice of the SCU has impacts on the fiskaltrust.Middleware configuration, therefore available SCUs, its configuration, functionalities and limitations regarding the fiskaltrust.Middleware are documented in the appropriate appendices of the markets.
+The additional security and functionalities based on local market regulation is delivered by third party vendors (e.g. a software-based cloud solution, a hardware device, or a certificate), supported by fiskaltrust via the SCU. The choice of the SCU has impacts on the fiskaltrust.Middleware configuration, therefore available SCUs, its configuration, functionalities and limitations regarding the fiskaltrust.Middleware are documented in the appropriate appendices of the markets.
 
 For specific information regarding supported Signature Creation Units and platforms, please refer to the appropriate appendices:
 

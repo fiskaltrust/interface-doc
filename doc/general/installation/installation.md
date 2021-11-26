@@ -13,7 +13,7 @@ The components of the fiskaltrust.Middleware need to be configured in the fiskal
 
 For example, it must be configured at which endpoints the Middleware is listening on, in which database the processed data is to be stored, which Signature Creation Unit (SCU) is to be used for the signatures and how it can be reached by the Middleware.
 
-The components of the Middleware which should be operated as an on-premise Middleware-instance are collected in a so-called "CashBox"configuration container.
+The components of the Middleware which should be operated as an on-premise Middleware-instance are collected in a so-called "CashBox" configuration container.
 
 More information on the configuration options of the components can be found in the according market-appendices:
 
@@ -83,7 +83,7 @@ Following  options are available for executing the `fiskaltrust.exe`:
 
 | Option                              | Description                                                  | Windows                                                      | Linux                                                        |
 | ----------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `fiskaltrust.exe`                   | Executing the launcher `fiskaltrust.exe` as a command line program using call parameters. | Run the command line `cmd.exe` as administrator.<br /><br />Example: `fiskaltrust.exe - test` | Example: ```sudo mono fiskaltrust.exe -test```.              |
+| `fiskaltrust.exe`                   | Executing the launcher `fiskaltrust.exe` as a command line program using call parameters. | Run the command line `cmd.exe` as administrator.<br /><br />Example: `fiskaltrust.exe -test` | Example: ```sudo mono fiskaltrust.exe -test```              |
 | `[pre-configured command file].cmd` | Command files can be used for executing the `fiskaltrust.exe` with pre-defined setups, e.g. for developing and debugging. Three pre-configured setups are already included with the downloaded launcher (see below). |                                                              |                                                              |
 | `install-service.cmd`               | Pre-configured command file which executes `fiskaltrust.exe` using the parameter `-i` for installing the fiskaltrust.Middleware as a service under Windows, recommended for permanent on-premise operation. | Run the command file `install-service.cmd` as administrator. <br />For details, see [Windows Service Installation](#windows-service-installation) | For installing the fiskaltrust.Middleware as a Daemon, see [Mono service installation](#mono-service-installation). |
 | `uninstall-service.cmd`             | Pre-configured command file which executes `fiskaltrust.exe` using the parameter `-u` for un-installing the fiskaltrust.Middleware as a service under Windows. | Run the command file `uninstall-service.cmd` as administrator. |                                                              |
@@ -132,7 +132,7 @@ A static configuration can be enforced via the configuration.json file in the `f
 
 ![](./images/01-console-testmode.png)
 
-<span id="_Toc527986811" class="anchor"></span>*Illustration 10. Screen Shot console in test mode*
+<span id="_Toc527986811" class="anchor"></span>*Illustration 10. Screenshot console in test mode*
 
 ### Windows Service Installation
 
@@ -140,7 +140,7 @@ The Windows service can be installed and uninstalled via the call parameters -i 
 
 ![](./images/02-windows-services.png)
 
-<span id="_Toc527986812" class="anchor"></span>*Illustration 11. Screen Shot Windows services fiskaltrust service*
+<span id="_Toc527986812" class="anchor"></span>*Illustration 11. Screenshot Windows services fiskaltrust service*
 
 Once successfully completed, the service will appear in the list of running services.
 

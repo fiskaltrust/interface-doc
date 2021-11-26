@@ -24,11 +24,11 @@ The gRPC protocol is currently only available in the Middleware for Germany, ple
 We recommend using gRPC for new implementations, as it has several advantages (including performance, reliability, asynchronous streams, and static message contracts) and is supported by most programming frameworks.
 
 ### REST web service
-When selecting REST (_Representational State Transfer_), the Middleware hosts a HTTP service that can be used like any commonly used web service. Messages can either either be encoded with _JSON_ or _XML_, depending on the users preference.
+When selecting REST (_Representational State Transfer_), the Middleware hosts a HTTP service that can be used like any commonly used web service. Messages can either be encoded with _JSON_ or _XML_, depending on the user's preference.
 
 The offered REST functions accept POST request, the URL is composed like this: `http://[specified-url]/[xml|json]/[v0|v1]/[echo|sign|journal]`.
 
-For sample requests of the most commonly used receipt cases and journals, please have a look at our [Postman Collection](https://github.com/fiskaltrust/middleware-demo-postman)
+For sample requests of the most commonly used receipt cases and journals, please have a look at our [Postman Collection](https://github.com/fiskaltrust/middleware-demo-postman).
 
 XSD files which describe the REST interface of the fiskaltrust.Middleware are available at [dist/XSD](https://github.com/fiskaltrust/interface-doc/tree/master/dist/XSD).
 
@@ -62,7 +62,7 @@ As mentioned above, the Middleware versions will be unified in the upcoming vers
 ### Sample implementations
 Our latest samples, which demonstrate the communication protocols we recommend for the respective languages, are available here:
 <p align="center">
-  <a href="https://github.com/fiskaltrust/middleware-demo-dotnet"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/1/13/C-Sharp.png/100px-C-Sharp.png" alt="csharp" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+  <a href="https://github.com/fiskaltrust/middleware-demo-dotnet"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/0/0d/C_Sharp_wordmark.svg/120px-C_Sharp_wordmark.svg.png" alt="csharp" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://github.com/fiskaltrust/middleware-demo-java"><img src="https://upload.wikimedia.org/wikiversity/de/thumb/b/b8/Java_cup.svg/100px-Java_cup.svg.png" alt="java" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://github.com/fiskaltrust/middleware-demo-node"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d9/Node.js_logo.svg/100px-Node.js_logo.svg.png" alt="node" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
   <a href="https://github.com/fiskaltrust/middleware-demo-android"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d7/Android_robot.svg/100px-Android_robot.svg.png" alt="android" /></a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

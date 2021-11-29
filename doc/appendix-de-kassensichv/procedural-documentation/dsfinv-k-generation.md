@@ -267,7 +267,7 @@ If you optionally want to add additional references (from other systems or other
 
 The three structure levels (modules) allow transactions to be separated and grouped to be automatically posted or transferred to the bookkeeping. Therefore, the cash register closing has an accounting function, meaning that the data of the respective closing has to be exported digitally within this module.  
 
-<!-- markdown-link-check-disable-line --> The mandatory, audit-proof storage can be fulfilled with the fiskaltrust [add-on-products](https://fiskaltrust.de/produkte) (e.g. POS Archiv or AKO - Audicon Kassenarchiv Online).
+The mandatory, audit-proof storage can be fulfilled with the fiskaltrust [add-on-products](https://fiskaltrust.de/produkte) (e.g. POS Archiv or AKO - Audicon Kassenarchiv Online).<!-- markdown-link-check-disable-line -->
 
 The export takes place into the following three files:
 

@@ -14,7 +14,7 @@ This chapter explains how the DSFinV-K export, based on version 2.2 of the DSFin
 
 ### Prerequisite
 
-A daily-closing-receipt must be sent at the end of the day for the fiskaltrust.Middleware to be able to generate the DSFinV-K export. Without the daily-closing-receipts the DFinV-K export will be empty.
+A daily-closing-receipt must be sent at the end of the day for the fiskaltrust.Middleware to be able to generate the DSFinV-K export. Without the daily-closing-receipts the DSFinV-K export will be empty.
 
 ### Structure
 

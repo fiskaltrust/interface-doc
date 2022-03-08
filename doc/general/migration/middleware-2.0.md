@@ -9,10 +9,10 @@ In this version of the middleware, we created a new version of the launcher (lau
 
 # PosCreators
 
-# PosDealers 
-
-To be able to use the launcher 2.0, there is a prerequisite.
+To ensure a successful switch to the new launcher version, there is a prerequisite.
 The prerequisite is to have  installed locally the .net 6 framework https://dotnet.microsoft.com/en-us/download/dotnet/6.0
+
+# PosDealers 
 
 Launcher 2.0 quick start guide
 

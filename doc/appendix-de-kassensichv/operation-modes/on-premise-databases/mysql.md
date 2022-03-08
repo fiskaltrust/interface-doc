@@ -15,6 +15,7 @@ This storage provider is particularly suitable for setting up fail-safe systems 
 
 ## Parameters
 
-| Name               | Description                                    | **Default Value**<br />**Mandatory Field** |
-| ------------------ | ---------------------------------------------- | ------------------------------------------ |
-| _connectionstring_ | MySQL connection string to the database system | mandatory                                  |
+| Name                  | Description                                                            | **Default Value**<br />**Mandatory Field** |
+| --------------------- | ---------------------------------------------------------------------- | ------------------------------------------ |
+| _connectionstring_    | MySQL connection string to the database system                         | mandatory                                  |
+| _EnableTarFileExport_ | Disables the automatic TAR File export from the TSE on the Queue level | `true` <br> optional                       |

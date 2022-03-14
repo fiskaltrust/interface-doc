@@ -14,17 +14,19 @@ Clone github repository (branch: `proof-of-concept`) https://github.com/fiskaltr
 
 Build the project with visual studio or use one of the binaries from the build (https://fiskaltrust.visualstudio.com/fiskaltrust/_build/results?buildId=50602&view=artifacts&pathAsName=false&type=publishedArtifacts)
 
-Start the launcher via the commandline:
+Start the Launcher via the commandline:
 ```sh
 fiskaltrust.Launcher.exe run --cashbox-id <cashboxid> --access-token <accesstoken> --sandbox
 ```
 
+To stop the Launcher press <kbd>Ctrl</kbd> + <kbd>C</kbd>.
+
 > ***Note:***  
-> See help for other start parameters
+> See help for other start parameters:
 > ```sh
 > fiskaltrust.Launcher.exe run --help
 > ```
-> See help for other available commands
+> See help for other available commands:
 > ```sh
 > fiskaltrust.Launcher.exe --help
 > ```
@@ -34,7 +36,7 @@ fiskaltrust.Launcher.exe run --cashbox-id <cashboxid> --access-token <accesstoke
 ## Hosting
 ### WCF/SOAP
 
-WCF/SOAP hosting is not currently available in the 2.0 launcher. You can track progess for SOAP hosting in [this issue](https://github.com/fiskaltrust/middleware-launcher/issues/6).
+WCF/SOAP hosting is not currently available in the 2.0 Launcher. You can track progess for SOAP hosting in [this issue](https://github.com/fiskaltrust/middleware-launcher/issues/6).
 
 ### REST
 
@@ -46,14 +48,14 @@ The `v2/journal` endpoint now only accepts GET requests.
 
 ## Service
 
-The launcher 2.0 can be installed as a service on Windows and linux (when systemd is available) using the `install` command.
+The 2.0 Launcher can be installed as a service on Windows and linux (when systemd is available) using the `install` command:
 ```sh
 fiskaltrust.Launcher.exe install --cashbox-id <cashboxid> --access-token <accesstoken> --launcher-configuration-file <launcher-configuration-file>
 ```
 
 ## Launcher configuration
 
-The launcher configuration is now read from a json file (`launcher.configuration.json` in the working diorectory per default).
+The 2.0 Launcher configuration is now read from a json file (`launcher.configuration.json` in the working diorectory per default).
 
 This file can be set via the `--launcher-configuration-file` cli argument.
 
@@ -101,4 +103,4 @@ All of these config keys can be overridden using the corresponding cli arguments
 
 # PosOperators
 
-The Launcher 2.0 does not need .NET Framework or Mono on linux to run. The executable comes bundled with the .NET 6 runtime.
+The 2.0 Launcher does not need .NET Framework or Mono on linux to run. The executable comes bundled with the .NET 6 runtime.

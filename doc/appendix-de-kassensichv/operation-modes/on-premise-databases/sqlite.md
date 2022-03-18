@@ -16,5 +16,5 @@ This storage provider is particularly suitable for the simple construction of sm
 ## Parameters
 | Name                        | Description                                                                                                      | **Default Value**<br />**Mandatory Field** |
 | --------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| _EnableTarFileExport_       | Enables the automatic TAR File export from the TSE on the Queue level (Values: `true` / `false`)                 | `true` <br> optional                       |
-| _StoreTemporaryExportFiles_ | Enables storage of temporaty export files in the `fiskaltrust/service/Exports` folder (Values: `true` / `false`) | `false` <br> optional                      |
+| _EnableTarFileExport_       | Enables the automatic TAR File export from the TSE on the Queue level (Values: `true` / `false`)                 | `true` <br /> optional                       |
+| _StoreTemporaryExportFiles_ | Enables storage of temporaty export files in the `fiskaltrust/service/Exports` folder (Values: `true` / `false`) | `false` <br /> optional                      |

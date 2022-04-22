@@ -129,7 +129,7 @@ namespace fiskaltrust.ifPOS.v0
 
 Charge items entries are used for receipt requests as well as for receipt responses.
 
-The sum of the `ftChargeItems` and the sum of the`ftPayItems`should be equal except for very specific cases. If that is not the case a warning will be returned.
+In every request using the ftReceiptCase 0x????000000000001, the sum of the filed `amount` of all `ftChargeItems` and the sum of the field `amount` of all `ftPayItems`should be equal. If that is not the case a warning will be returned except for very specific cases.
 
 The details of fields supported by this data structure are outlined in the table below. The ftChargeItemCase field is particularly important for the correct processing of the receipt. A reference table for the supported values can be found in the appendix.
 

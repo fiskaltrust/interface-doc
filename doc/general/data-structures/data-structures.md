@@ -188,7 +188,7 @@ namespace fiskaltrust.ifPOS.v0
 
 Payment entries are used for receipt requests as well as for receipt responses.
 
-In every request using the ftReceiptCase 0x????000000000001, the sum of the filed `amount` of all `ftPayItems` and the sum of the field `amount` of all `ftChargeItems`should be equal. If that is not the case a warning will be returned except for very specific cases.
+In every request using the ftReceiptCase 0x????000000000001, the sum of the field `amount` of all `ftPayItems` and the sum of the field `amount` of all `ftChargeItems`should be equal. If that is not the case a warning will be returned except for very specific cases.
 
 The ftPayItemCase field is particularly important for the correct processing of the receipt. This field can help to decide if the receipt has to be signed and the sum counter adjusted. A reference table for the supported values can be found in the appendix.
 

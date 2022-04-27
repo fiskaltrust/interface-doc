@@ -161,7 +161,7 @@ This table expands on the values provided in the table ["Type of Payment: ftPayI
 
 This table expands on the values provided in the table ["Format of Signature: ftSignatureFormat"](../../general/reference-tables/reference-tables.md#t-type-of-signature-ftsignatureformat-112) with values applicable to the Austrian market.
 
-According to the RKSV, there is one exception: if the fiskaltrust.SecurityMechanism responds with a QR code but the printer, through which the receipt is supposed to be printed (or electronically issued), cannot display QR codes, it is allowed to convert the signature value and display it as bar code, link, or in OCR typeface on the receipt. This requirement and a sample code can be found in the Chapter ["Printing of QR-Code not supported"](#c-printing-of-qr-code-not-supported-191).
+According to the RKSV, there is one exception: if the fiskaltrust.SecurityMechanism responds with a QR code but the printer, through which the receipt is supposed to be printed (or electronically issued), cannot display QR codes, it is allowed to convert the signature value and display it as bar code, link, or in OCR typeface on the receipt. This requirement and a sample code can be found in the Chapter ["Printing of QR-Code not supported"](#printing-of-qr-code-not-supported).
 
 | **Value** | **Description**                             |
 |-----------|---------------------------------------------|

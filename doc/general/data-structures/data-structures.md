@@ -71,6 +71,7 @@ The fiskaltrust.Middleware sends back the processed data to the cash register th
 
 The data included in the request, such as header, service, pay items, and footer, will not be sent back. The returned data is added to the receipt as supplement to the data of the receipt request.
 
+
 | **Field name**            | **Data type**     | **Default Value Mandatory Field** | **Description**                                                                                                                                                                                                          | **Version** |
 |---------------------------|-------------------|-----------------------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
 | `ftCashBoxID`             | `guid/string`     | mandatory                         | Allocated from request to response.                                                                                                                                                                                      | 0-          |
@@ -128,6 +129,8 @@ namespace fiskaltrust.ifPOS.v0
 
 Charge items entries are used for receipt requests as well as for receipt responses.
 
+In every request using the ftReceiptCase 0x????000000000001, the sum of the filed `amount` of all `ftChargeItems` and the sum of the field `amount` of all `ftPayItems`should be equal. If that is not the case a warning will be returned except for very specific cases.
+
 The details of fields supported by this data structure are outlined in the table below. The ftChargeItemCase field is particularly important for the correct processing of the receipt. A reference table for the supported values can be found in the appendix.
 
 | **Field Name**         | **Data Type**         | **Default Value **<br />**Mandatory Field** | **Description**                                                                                                                                                                      | **Version** |
@@ -184,6 +187,8 @@ namespace fiskaltrust.ifPOS.v0
 ### Pay Items Entry
 
 Payment entries are used for receipt requests as well as for receipt responses.
+
+In every request using the ftReceiptCase 0x????000000000001, the sum of the field `amount` of all `ftPayItems` and the sum of the field `amount` of all `ftChargeItems`should be equal. If that is not the case a warning will be returned except for very specific cases.
 
 The ftPayItemCase field is particularly important for the correct processing of the receipt. This field can help to decide if the receipt has to be signed and the sum counter adjusted. A reference table for the supported values can be found in the appendix.
 

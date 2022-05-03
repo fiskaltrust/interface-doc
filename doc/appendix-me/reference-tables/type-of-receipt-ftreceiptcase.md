@@ -18,6 +18,7 @@ For Montenegro (ME), the country code is `0x4D45`. Thus, the value of an unknown
 | `0x4D45000000000004` | **Out of operation receipt / stop-receipt**<br /><br />The request is only valid with the same property requirements as a zero-receipt. It is disabling the fiskaltrust.SecurityMechanism and de-registers the instance from the _central invoice register_. <br /><br />The request is only valid when the charge items block (`ftChargeItems`) and the pay items block (`ftPayItems`) in the `ftReceiptRequest` are empty arrays. | 1.3- |
 | `0x4D45000000000005` | **Monthly-closing**<br /><br />This is a zero-receipt. It is recommended to send this receipt at the end of each month to define the time of the accounting closure, but there's no legal requirement to track the end of the month in Montenegran fiscalization. | 1.3- |
 | `0x4D45000000000006` | **Yearly-closing**<br /><br />This is a zero receipt. It is **mandatory** to send a yearly-closing receipt in Montenegro at the end of the fiscal year, as this resets the yearly counter the Middleware has to send to the _central invoice register_. | 1.3- |
+| `0x4D45000000000007` | **Cash deposit or withdrawal**<br /><br />Used to sign when cash is either deposited into the till (e.g. in the morning, when it's put into operation), or withdrawn (e.g. in the evening). It is **mandatory** to send this receipt in Montenegro in the previously mentioned scenarios, as this data has to be sent to the _central invoice register_. | 1.3- |
 
 
 ## ftReceiptCaseFlag

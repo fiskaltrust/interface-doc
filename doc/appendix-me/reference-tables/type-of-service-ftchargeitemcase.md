@@ -20,7 +20,7 @@ This table expands on the values provided in the table [ftChargeItemCase in Gene
 | `0x4D45000000000012` | Delivery (reduced VAT rate) | 7 %   | 1.3- |
 | `0x4D45000000000013` | Delivery (not taxable/exempt from VAT) | - | 1.3- |
 | `0x4D45000000000014` | Delivery (zero) | 0% | 1.3- |
-| `0x4D45000000000001` | Delivery (unknown VAT) <br />VAT rate from the `VatRate` property is directly passed to the _central invoice service_) | custom | 1.3- |
+| `0x4D45000000000015` | Delivery (unknown VAT) <br />VAT rate from the `VatRate` property is directly passed to the _central invoice service_) | custom | 1.3- |
 | `0x4D45000000000019` | Other services (normal VAT rate). | 21 % | 1.3- |
 | `0x4D4500000000001A` | Other services (reduced VAT rate) | 7 %   | 1.3- |
 | `0x4D4500000000001B` | Other services (not taxable/exempt from VAT) | - | 1.3- |

@@ -25,6 +25,18 @@ Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 14
 
 The _fiskaltrust.Middleware.SCU.DE.Swissbit_ package connects the middleware with a Swissbit hardware-TSE via the file system emulated by the TSE.
 
+### FCC
+
+## User access rights
+
+The user access rights depends on the function.
+
+
+
+## Installation
+
+The default FCC directory is located in our regular service folder C:\ProgramData\fiskaltrust\service\fiskaltrust\FCC.
+
 ### Parameters
 
 | Name                   | Description                                                                                        | **Default Value**<br />**Mandatory Field** |

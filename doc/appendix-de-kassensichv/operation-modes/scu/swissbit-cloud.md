@@ -16,6 +16,7 @@ Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 14
 | Certification-ID                                                                                                                    | Test item                   | Applicant    | Date       |
 |:------------------------------------------------------------------------------------------------------------------------------------|:----------------------------|:-------------|:-----------|
 | [BSI-K-TR-0457-2021](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0457-2021.html) | D-TRUST TSE Web Version 2.0 | D-TRUST GmbH | 18.02.2021 |
+| [BSI-K-TR-0457-2021](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0457-2021.html) | D-TRUST TSE Web Version 2.0 | D-TRUST GmbH | 18.02.2021 |
 | [BSI-K-TR-0369-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0369-2020.html) | D-TRUST TSE Web Version 1.0 | D-TRUST GmbH | 30.09.2020 |
 
 #### Certification identification
@@ -37,6 +38,18 @@ The _fiskaltrust.Middleware.SCU.DE.SwissbitCloud_-package connects the middlewar
 **from version:** 1.3.23
 
 The _fiskaltrust.Middleware.SCU.DE.SwissbitCloud_-package handles updates for FCC on start and new versions of the FCC are installed automatically when updating the SCU.
+
+### FCC
+
+## User access rights
+
+The user access rights depends on the role (integrator, admin or user).
+
+## Installation
+
+The default FCC directory is located in our regular service folder C:\ProgramData\fiskaltrust\service\fiskaltrust\FCC.
+
+You can find more detailed information in the official documents of the manufacturer in the[download area of the fiskaltrust portal](https://portal.fiskaltrust.de/AccountProfile/Download).
 
 ### Parameters
 

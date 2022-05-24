@@ -34,7 +34,9 @@ The following diagram illustrates the regular creation of a receipt with fiskalt
 
 #### Workflow - special receipts
 
-The following diagram illustrates the creation of a special receipt with fiskaltrust.Middleware. For a general description of special receipts, please refer to ["Receipt for special functions"](#workflow---special-receipts) Chapter. For national laws on receipts, refer to the appropriate appendix.
+
+The following diagram illustrates the creation of a special receipt with fiskaltrust.Middleware. For a general description of special receipts, please refer to ["Receipt for special functions"](#receipt-for-special-functions) Chapter. For national laws on receipts, refer to the appropriate appendix.
+
 
 ![](./images/03-special-receipts.png)
 
@@ -52,7 +54,9 @@ There are several receipt requirements fulfilled by the fiskaltrust.Middleware i
 
 This section describes the receipt types used for those special functions. For further information on how to fulfil the requirements of national laws, please refer to the appropriate appendix.
 
-#### Zero Receipt
+
+#### Zero Receipt<
+
 
 A zero receipt is a universal data carrier and storage. The cash register sends a receipt with an empty charge items block (ftChargeItem) and an empty pay items block (ftPayItem) which logically contain a total amount of "0".
 

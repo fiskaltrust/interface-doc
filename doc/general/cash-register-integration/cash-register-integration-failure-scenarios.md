@@ -22,7 +22,7 @@ An alternative way of handling such situation is the generation of a handwritten
 
 ![late-signing-mode](./images/08-late-signing-mode.png)
 
-After fiskaltrust.Middleware has received an "end of failure receipt", the status of failure is terminated by receiving a response with normal state code.
+After fiskaltrust.Middleware has received an "end of failure receipt" (i.e. a zero receipt), the status of failure is terminated by receiving a response with normal state code.
 
 ![end-late-signing-mode](./images/09-end-late-signing-mode.png)
 

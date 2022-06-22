@@ -126,7 +126,7 @@ For development, integration and testing purpose we recommend to run the Middlew
 In Windows, it is necessary to run the `cmd.exe` as administrator. The launcher `fiskaltrust.exe` can be then executed as a command line program through the call parameter `–test`.
 
 In Linux, the following command should be used:
-`sudo mono fiskaltrust.exe -test`.
+`sudo mono fiskaltrust.exe -test -cashboxid <cashboxid> -accesstoken <accesstoken> <other options>`.
 
 A static configuration can be enforced via the configuration.json file in the `fiskaltrust.exe` folder in connection with `-useoffline=true`.
 

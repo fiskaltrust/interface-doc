@@ -36,7 +36,7 @@ Additionally to obtaining these values from the Portal, they're also returned on
 The following methods are available:
 
 #### Echo
-`POST /api/iatsscd/echo`\
+`POST /api/v0/iatsscd/echo`\
 The echo method can be used to test if the endpoint is available and the authentication parameters are correct. This method returns the exact same data that was sent in the request.
 
 #### Sample request
@@ -54,7 +54,7 @@ The echo method can be used to test if the endpoint is available and the authent
 ```
 
 #### Sign
-`POST /api/iatsscd/sign`\
+`POST /api/v0/iatsscd/sign`\
 The sign method can be used to sign a receipt. The RKSV-compliant receipt data is passed as a Base64-encoded JSON object in the request body. The signature is returned Base64-encoded as a JSON object in the response body.
 
 #### Sample request
@@ -72,7 +72,7 @@ The sign method can be used to sign a receipt. The RKSV-compliant receipt data i
 ```
 
 #### Certificate
-`GET /api/iatsscd/certificate`\
+`GET /api/v0/iatsscd/certificate`\
 The certificate method is used to obtain the certificate of the RKSV.Sign service. The certificate is returned as a Base64-encoded JSON object in the response body.
 
 #### Sample response
@@ -83,7 +83,7 @@ The certificate method is used to obtain the certificate of the RKSV.Sign servic
 ```
 
 #### ZDA
-`GET /api/iatsscd/zda`\
+`GET /api/v0/iatsscd/zda`\
 The ZDA method is used to obtain the short sign of the certificate service operator of the RKSV.Sign service. The ZDA is returned as a JSON object in the response body.
 
 #### Sample response

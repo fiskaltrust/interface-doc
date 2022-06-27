@@ -16,19 +16,19 @@ module.exports = {
               type: 'category',
               label: 'Cash register integration',
               items: [
-                 'middleware-doc/doc/general/cash-register-integration/cash-register-integration-regular-workflow',
-                 'middleware-doc/doc/general/cash-register-integration/cash-register-integration-failure-scenarios'
+                'middleware-doc/doc/general/cash-register-integration/cash-register-integration-regular-workflow',
+                'middleware-doc/doc/general/cash-register-integration/cash-register-integration-failure-scenarios'
               ]
-           },
+            },
             'middleware-doc/doc/general/data-structures/data-structures',
             'middleware-doc/doc/general/function-structures/function-structures',
             'middleware-doc/doc/general/communication/communication',
-			 {
+            {
               type: 'category',
               label: 'Operation modes',
               items: [
-				    'middleware-doc/doc/general/operation-modes/operation-modes',
-				    'middleware-doc/doc/general/operation-modes/configuration',
+                'middleware-doc/doc/general/operation-modes/operation-modes',
+                'middleware-doc/doc/general/operation-modes/configuration',
               ]
             },
             'middleware-doc/doc/general/installation/installation',
@@ -59,31 +59,31 @@ module.exports = {
             'middleware-doc/doc/middleware-de-kassensichv/appendix-de-kassensichv',
             'middleware-doc/doc/middleware-de-kassensichv/terminology/terminology',
             'middleware-doc/doc/middleware-de-kassensichv/installation/installation',
-			      {
+            {
               type: 'category',
               label: 'Cash register integration',
               items: [
-				        'middleware-doc/doc/middleware-de-kassensichv/cash-register-integration/cash-register-integration',
+                'middleware-doc/doc/middleware-de-kassensichv/cash-register-integration/cash-register-integration',
                 'middleware-doc/doc/middleware-de-kassensichv/cash-register-integration/single-receipt-creation',
                 'middleware-doc/doc/middleware-de-kassensichv/cash-register-integration/receipt-sequences-creation',
               ]
             },
             'middleware-doc/doc/middleware-de-kassensichv/data-structures/data-structures',
-			      {
+            {
               type: 'category',
               label: 'Operation modes',
               items: [
-				        'middleware-doc/doc/middleware-de-kassensichv/operation-modes/on-premise-installation',
-				        {
+                'middleware-doc/doc/middleware-de-kassensichv/operation-modes/on-premise-installation',
+                {
                   type: 'category',
                   label: 'On-premise platforms',
                   items: [
-				            'middleware-doc/doc/middleware-de-kassensichv/operation-modes/on-premise-platforms/android',
-				            'middleware-doc/doc/middleware-de-kassensichv/operation-modes/on-premise-platforms/linux',
-				            'middleware-doc/doc/middleware-de-kassensichv/operation-modes/on-premise-platforms/windows',
+                    'middleware-doc/doc/middleware-de-kassensichv/operation-modes/on-premise-platforms/android',
+                    'middleware-doc/doc/middleware-de-kassensichv/operation-modes/on-premise-platforms/linux',
+                    'middleware-doc/doc/middleware-de-kassensichv/operation-modes/on-premise-platforms/windows',
                   ]
                 },
-			          {
+                {
                   type: 'category',
                   label: 'Signature Creation Devices',
                   items: [
@@ -107,7 +107,7 @@ module.exports = {
                   ]
                 },
               ]
-            },		
+            },
             {
               type: 'category',
               label: 'Reference Tables',
@@ -147,6 +147,27 @@ module.exports = {
           label: 'Middleware API samples',
           href: 'https://middleware-samples.docs.fiskaltrust.cloud/'
         }
+      ]
+    },
+    {
+      type: 'category',
+      collapsed: false,
+      label: 'Receipt signing APIs',
+      items: [
+        {
+          type: 'category',
+          label: 'RKSV.Sign (Austria)',
+          items: [
+            'signing-at-rksv/rksv-sign-intro.md',
+            'signing-at-rksv/rksv-sign-api.md',
+            {
+              type: 'link',
+              label: 'RKSV.Sign API samples',
+              href: 'https://rksvsign-samples.docs.fiskaltrust.cloud/'
+            }
+          ]
+        },     
+        
       ]
     }
   ]

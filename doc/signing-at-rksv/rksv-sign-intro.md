@@ -8,4 +8,4 @@ In Austria, fiskaltrust offers a cloud-based _signing-only_ product called _RKSV
 In this section, we've described the API calls to use for signing receipts and obtaining additional information from the signing service. Additionally, we've prepared a [Postman collection](https://rksvsign-samples.docs.fiskaltrust.cloud/), showing the most common task
 
 ## Prerequisites
-Before starting, users need to generate a _CashBox_ via our API (which is used for authentication). For more information, see the [RKSV.Sign section](/docs/posdealers/buy-resell/products/signing#country-specific-variants) in our documentation for PosDealers. For easier reference, we've included a sample of the respective API call in the Postman collection mentioned above.
+Before starting, users need to generate a _CashBox_ via our API (which is used for authentication). For more information, see the [RKSV.Sign section](https://docs.fiskaltrust.cloud/preview/docs/posdealers/buy-resell/products/signing#country-specific-variants) in our documentation for PosDealers. For easier reference, we've included a sample of the respective API call in the Postman collection mentioned above.

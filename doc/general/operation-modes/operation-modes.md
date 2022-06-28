@@ -64,7 +64,7 @@ For specific information regarding supported Signature Creation Units and platfo
 
 - Austria
 
-- [Germany](../../appendix-de-kassensichv/operation-modes/on-premise-installation.md)
+- [Germany](../../middleware-de-kassensichv/operation-modes/on-premise-installation.md)
 - France
 
 #### Helipad Helper
@@ -88,9 +88,9 @@ For detailed information on supported platforms and its restrictions, please ref
 
 | Platform        | AT            | DE                                                           | FR            |
 | --------------- | ------------- | ------------------------------------------------------------ | ------------- |
-| **Android**     | not supported | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/android.md) | not supported |
-| **Linux/macOS** | **supported** | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/linux.md) | **supported** |
-| **Windows**     | **supported** | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/windows.md) | **supported** |
+| **Android**     | not supported | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/android.md) | not supported |
+| **Linux/macOS** | **supported** | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/linux.md) | **supported** |
+| **Windows**     | **supported** | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/windows.md) | **supported** |
 
 #### Launcher
 

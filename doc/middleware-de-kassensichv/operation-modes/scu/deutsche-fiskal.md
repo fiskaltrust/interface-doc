@@ -1,9 +1,9 @@
 ---
-slug: /poscreators/middleware-doc/germany/scu/swissbit-cloud
-title: Swissbit Cloud-TSE
+slug: /poscreators/middleware-doc/germany/scu/deutsche-fiskal-cloud
+title: Deutsche Fiskal Cloud-TSE
 ---
 
-# Swissbit Cloud-TSE
+# Deutsche Fiskal Cloud-TSE
 
 ### Environmental protection
 
@@ -11,7 +11,7 @@ Please note that this TSE places strict requirements on environmental protection
 
 ### State of certification
 
-Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://docs.fiskaltrust.cloud/doc/productdescription-de-doc/product-service-description/media/2019-06-17-einfuehrung-paragraf-146a-AO-anwendungserlass-zu-paragraf-146a-AO.pdf):
+Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://link.fiskaltrust.cloud/de/legal/146a-ao):
 
 | Certification-ID                                                                                                                    | Test item                   | Applicant    | Date       |
 |:------------------------------------------------------------------------------------------------------------------------------------|:----------------------------|:-------------|:-----------|
@@ -24,7 +24,7 @@ Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 14
 
 ### Client registration
 
-The Swissbit Cloud-SCU is limited to a single client registration (only one queue can be registered at the TSE). Possible [rollout scenarios](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware#rollout-scenarios) are limited to those cases in which exact one queue is operated per SCU.
+The Deutsche Fiskal Cloud-SCU is limited to a single client registration (only one queue can be registered at the TSE). Possible [rollout scenarios](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware#rollout-scenarios) are limited to those cases in which exact one queue is operated per SCU.
 
 ## Signature Creation Unit
 
@@ -32,18 +32,18 @@ The Swissbit Cloud-SCU is limited to a single client registration (only one queu
 
 **from version:** 1.3.11
 
-The _fiskaltrust.Middleware.SCU.DE.SwissbitCloud_-package connects the middleware to a Swissbit Cloud-TSE via the _Fiskal Cloud Connector_ ("FCC") service provided by Swissbit. The FCC can be installed automatically when the SCU package is started for the first time, or an already installed version of the FCC can be used (see *Parameter*).
+The _fiskaltrust.Middleware.SCU.DE.DeutscheFiskal_-package connects the middleware with a Deutsche Fiskal Cloud-TSE via the _Fiskal Cloud Connector_ ("FCC") service provided by Deutsche Fiskal. The FCC can be installed automatically when the SCU package is started for the first time, or an already installed version of the FCC can be used (see _Parameter_).
 
 **from version:** 1.3.23
 
-The _fiskaltrust.Middleware.SCU.DE.SwissbitCloud_-package handles updates for FCC on start and new versions of the FCC are installed automatically when updating the SCU.
+The _fiskaltrust.Middleware.SCU.DE.DeutscheFiskal_-package package handles updates for FCC on start and new versions of the FCC are installed automatically when updating the SCU.
 
 ### Parameters
 
 | Name                          | Description                                                                                                                                                                                                                                                                                                                  | **Default Value**<br />**Mandatory Field**             |
 |-------------------------------|------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------------------------------------------|
-| _FccId_                       | The ID of the Fiscal Cloud Connector as specified in the FCC portal. It is filled automatically during production via the fiskaltrust portal.                                                                                                                                                                                | mandatory                                              |
-| _FccSecret_                   | The secret or password of the Fiscal Cloud Connector, as specified in the FCC portal. It is filled automatically during production via the fiskaltrust portal.                                                                                                                                                               | mandatory                                              |
+| _FccId_                       | The ID of the Fiscal Cloud Connector as specified in the FCC portal. It is filled automatically during production via the fiscal trust portal.                                                                                                                                                                               | mandatory                                              |
+| _FccSecret_                   | The secret or password of the Fiscal Cloud Connector, as specified in the FCC portal. It is filled automatically during production via the fiskaltrust-Portal.                                                                                                                                                               | mandatory                                              |
 | _ErsCode_                     | The PIN code that is used to authenticate the POS-System with the FCC, as specified in the FCC portal. It is filled automatically during production via the fiskaltrust portal.                                                                                                                                              | mandatory                                              |
 | _ActivationToken_             | The token used by the middleware to register clients in the FCC, as specified in the FCC portal. It is filled automatically during production via the fiskaltrust portal.                                                                                                                                                    | mandatory                                              |
 | _FccPort_                     | The port that the middleware uses to communicate with the FCC.                                                                                                                                                                                                                                                               | 20001<br />optional                                    |
@@ -54,7 +54,7 @@ The _fiskaltrust.Middleware.SCU.DE.SwissbitCloud_-package handles updates for FC
 | _ProxyPassword_               | If access to the Internet is enabled via an _authenticated_ proxy server: The proxy server's password.                                                                                                                                                                                                                       | empty string/no proxy authentication<br />optional     |
 | _DontAddFccFirewallException_ | If this parameter is not set, the SCU automatically tries to create a firewall exception for the FCC when it is started for the first time (admin rights are required). This can be prevented by setting this parameter to `true`.                                                                                           | `false`<br />optional                                  |
 | _FccDownloadUri_              | If this parameter is set, the specified web URL is used to download the FCC. If no value is set, the FCC is automatically downloaded from the fiskaltrust servers. This parameter can help if the download from fiskaltrust servers is not possible, e.g. due to a strictly configured firewall.                             | `null`<br />optional                                   |
-| _EnableTarFileExport_               |           in progress                     | `null`<br />optional                                   |
+ _EnableTarFileExport_               |           in progress                     | `null`<br />optional                                   |
 | _MaxFccDownloadTimeSec_               |           in progress                    | `null`<br />optional                                   |
 | _FccUri_               |           If this parameter is set, the specified web URL is used to download the FCC. If no value is set, the FCC is automatically downloaded from the fiskaltrust servers. This parameter can help if the download from fiskaltrust servers is not possible, e.g. due to a strictly configured firewall.                  | `null`<br />optional                                   |
 | _CertificationId_               |           Certification identification of the TSE used                   | `null`<br />optional                                   |
@@ -62,6 +62,8 @@ The _fiskaltrust.Middleware.SCU.DE.SwissbitCloud_-package handles updates for FC
 | _CertificationIdAddition_               |           in progress                     | `null`<br />optional                                   |
 | _ServiceFolder_               |          Sets folder containing the service files.                   | `null`<br />optional                                   |
 | _FCCversion_               |             If the currently installed FCC version is lower than this, the Middleware will automatically download and update the newer FCC. This should enable users that have already installed previous versions to profit from the latest improvements in this external dependency.          | `3.2.3`<br />optional                                   |
+
+
 
 ## Troubleshooting
 

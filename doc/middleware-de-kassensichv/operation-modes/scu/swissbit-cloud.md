@@ -11,7 +11,7 @@ Please note that this TSE places strict requirements on environmental protection
 
 ### State of certification
 
-Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://docs.fiskaltrust.cloud/doc/productdescription-de-doc/product-service-description/media/2019-06-17-einfuehrung-paragraf-146a-AO-anwendungserlass-zu-paragraf-146a-AO.pdf):
+Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://link.fiskaltrust.cloud/de/legal/146a-ao):
 
 | Certification-ID                                                                                                                    | Test item                   | Applicant    | Date       |
 |:------------------------------------------------------------------------------------------------------------------------------------|:----------------------------|:-------------|:-----------|

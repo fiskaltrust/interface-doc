@@ -3,7 +3,7 @@ slug: /poscreators/signing/austria
 title: Introduction
 ---
 
-## Introduction to RKSV.Sign
+# Introduction to RKSV.Sign
 
 In Austria, fiskaltrust offers a cloud-based _signing-only_ product called _RKSV.Sign_ for customers that prefer to not use the Middleware, e.g. because they've already made RKSV-compliant (_Registrierkassenverordnung_) implementations themselves.
 

@@ -158,8 +158,8 @@ module.exports = {
           type: 'category',
           label: 'RKSV.Sign (Austria)',
           items: [
-            'middleware-doc/doc/signing-at-rksv/rksv-sign-intro.md',
-            'middleware-doc/doc/signing-at-rksv/rksv-sign-api.md',
+            'middleware-doc/doc/signing-at-rksv/rksv-sign-intro',
+            'middleware-doc/doc/signing-at-rksv/rksv-sign-api',
             {
               type: 'link',
               label: 'RKSV.Sign API samples',

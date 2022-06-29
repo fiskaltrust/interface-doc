@@ -28,7 +28,11 @@ This table expands on the values provided in the table [ftChargeItemCase in Gene
 | `0x4D4500000000001D` | Other services (unknown VAT) <br />VAT rate from the `VatRate` property is directly passed to the _central invoice service_) | custom | 1.3- |
 | `0x4D45000000000020` | Cash deposit into the till | - | 1.3- |
 | `0x4D45000000000021` | Cash withdrawal from the till | - | 1.3- |
-
+| `0x4D45000000000022` | Discount (normal VAT rate). | 21 % | 1.3- |
+| `0x4D45000000000023` | Discount (reduced VAT rate) | 7 %   | 1.3- |
+| `0x4D45000000000024` | Discount (not taxable/exempt from VAT) | - | 1.3- |
+| `0x4D45000000000025` | Discount (zero) | 0% | 1.3- |
+| `0x4D45000000000026` | Discount (unknown VAT) <br />VAT rate from the `VatRate` property is directly passed to the _central invoice service_) | custom | 1.3- |
 
 ## ftChargeItemCaseFlag
 

@@ -9,7 +9,7 @@ This table expands on the values provided in the table [ftChargeItemCase in Gene
 
 
 | **Value** | **Description** | **VAT rate** | **Middleware version** |
-|---|---|---|---|---|
+|---|---|---|---|
 | `0x4D45000000000000` | Unknown type of service for ME (VAT rate from the `VatRate` property is directly passed to the _central invoice service_) | custom | 1.3- |
 | `0x4D45000000000001` | Undefined type of service for ME (normal VAT rate). | 21 % | 1.3- |
 | `0x4D45000000000002` | Undefined type of service for ME (reduced VAT rate) | 7 %   | 1.3- |

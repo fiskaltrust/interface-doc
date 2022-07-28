@@ -5,7 +5,7 @@ title: 'Type of receipt: ftReceiptCase'
 
 # Type of Receipt: ftReceiptCase
 
-The `ftReceiptCase` indicates the receipt type and defines how the fiskaltrust.SecurityMechanism should process it following Montenegran law.
+The `ftReceiptCase` indicates the receipt type and defines how the fiskaltrust.SecurityMechanism should process it following Montenegrin law.
 
 For Montenegro (ME), the country code is `0x4D45`. Thus, the value of an unknown `ftReceiptCase` in Montenegro is `0x4D45000000000000`.
 
@@ -27,6 +27,6 @@ This table expands on the values provided in table [ftReceiptCaseFlag in General
 | Value | Description | Middleware-Version |
 |-------|-------------|--------------------|
 | 0x0000000000010000 | **Failed receipt** <br />Common behaviour, see [general part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag). | 1.3- |
-| 0x0000000000040000 | **Reverse/voided receipt(complete).** <br />To cancel a complete receipt, resend it with this flag added to the ftReceiptCase. The field cbReceiptReference has to have a new refernce and in cbPreviousReceiptReference the receipt to cancel.| 1.3- |
-| 0x0000000000050000 | **Reverse/voided receipt(partial).** <br />To cancel a partial receipt, resend it with this flag added to the ftReceiptCase. The field cbReceiptReference has to have a new refernce and in cbPreviousReceiptReference the receipt to cancel. All charge- and payitems for invoicing have to be included in the receipt. | 1.3- |
+| 0x0000000000040000 | **Reverse/voided receipt(complete).** <br />To cancel a complete receipt, resend it with this flag added to the ftReceiptCase. The field cbReceiptReference has to have a new reference and in cbPreviousReceiptReference the receipt to cancel.| 1.3- |
+| 0x0000000000050000 | **Reverse/voided receipt(partial).** <br />To cancel a partial receipt, resend it with this flag added to the ftReceiptCase. The field cbReceiptReference has to have a new reference and in cbPreviousReceiptReference the receipt to cancel. All charge- and payitems for invoicing have to be included in the receipt. | 1.3- |
 | 0x0000800000000000 | **Receipt request.** <br />Common behavior, see [general part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag). | 1.3- |

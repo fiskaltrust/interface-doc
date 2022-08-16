@@ -7,6 +7,7 @@ title: Linux
 
 Starting with version 1.3.3, it's possible to run the German Middleware on Linux, using [Mono](https://www.mono-project.com/). Just configure a CashBox and download the Linux launcher via the respective button in the CashBox overview. Like on Windows, the downloaded zip file contains scripts to install and test the Middleware.
 
+
 ## Requirements
 
 In general, it's possible to run the Middleware on each Linux distribution that is supported by Mono (_Ubuntu_, _Debian_, _Raspbian_, _CentOS_ and _Fedora_, including their derivatives). Most testing at fiskaltrust is performed with Ubuntu and Debian, and we hence recommend to use these distributions.
@@ -40,6 +41,14 @@ Both Entity Framework and SQLite queues can be launched on Linux, starting from 
 | [fiskaly Cloud-TSE](../scu/fiskaly.md)                    | **tested**                                                   | **tested**                                                   | should work (not tested)                                     |
 | [Swissbit Hardware TSE](../scu/swissbit.md)               | **tested**                                                   | **tested**                                                   | should work (not tested)                                     |
 | [Swissbit Cloud TSE](../scu/swissbit-cloud.md)            | Ubuntu LTS 20.04 certified, not tested                       | not tested                                                   |                                                              |
+
+### Specification for ARM processor
+
+:::info
+
+Starting with version 1.3.38 it is possible to run the German Middleware with ARM processors.Just configure a CashBox with a SQLITE queue and a DeutscheFiskal or SwissbitCloud SCU, and download the Linux launcher via the respective button in the CashBox overview. Like on Windows, the downloaded zip file contains scripts to install and test the Middleware.
+
+:::
 
 ## Limitations
 

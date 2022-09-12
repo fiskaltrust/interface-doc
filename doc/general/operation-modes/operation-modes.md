@@ -96,7 +96,7 @@ For detailed information on supported platforms and its restrictions, please ref
 
 From version 1.3.39 it is now possible to run the the fiskaltrust.Middleware on ARM processors.
 
- SCU                          | ARM 64 bit                                        | ARM 86  |
+ SCU                          | ARM 64 bit                                        | ARM 32 bit  |
 | --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | **A-Trust Cloud TSE**             | supported but not tested |supported but not tested |
 | **Deutsche Fiskal Cloud-TSE**     | supported but not tested  | supported but not tested |

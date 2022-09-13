@@ -92,6 +92,20 @@ For detailed information on supported platforms and its restrictions, please ref
 | **Linux/macOS** | **supported** | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/linux.md) | **supported** |
 | **Windows**     | **supported** | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/windows.md) | **supported** |
 
+#### ARM Processor
+
+From version 1.3.39 it is now possible to run the the fiskaltrust.Middleware on ARM processors.
+
+ SCU                          | ARM 64 bit                                        | ARM 32 bit  |
+| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **A-Trust Cloud TSE**             | supported but not tested |supported but not tested |
+| **Deutsche Fiskal Cloud-TSE**     | supported but not tested  | supported but not tested |
+| **Diebold-Nixdorf Hardware-TSE**  | not supported| not supported |
+| **Epson Hardware-TSE**            |not supported | not supported |
+| **fiskaly Cloud-TSE**             | supported but not tested |supported but not tested  |
+| **Swissbit Cloud-TSE**            |supported and tested | supported and tested|
+| **Swissbit Hardware-TSE**         | unsupported | supported and tested |
+
 #### Launcher
 
 The Launcher is a software (file) named `fiskaltrust.exe`, which is used only for the on-premise installed products (e.g. AT product fiskaltrust.SignatureCloud). For Windows, it is a .NET command-line application and a .NET Windows service. For Linux and Mac, the launcher can be executed via Mono, version 3.2.8 or higher, or used as daemon.

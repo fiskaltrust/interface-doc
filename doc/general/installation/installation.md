@@ -18,7 +18,7 @@ The components of the Middleware which should be operated as an on-premise Middl
 More information on the configuration options of the components can be found in the according market-appendices:
 
 - Austria
-- [Germany](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware#the-cashbox-as-a-configuration-container)
+- [Germany](https://docs.fiskaltrust.cloud/docs/posdealers/technical-operations/rollout-scenarios)
 - France
 
 At the end of this configuration process, a so-called "Launcher" including the CashBox-configuration needs to be downloaded.

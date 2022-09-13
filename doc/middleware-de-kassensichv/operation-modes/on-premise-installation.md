@@ -61,7 +61,7 @@ Following local data storage options can be configured in the queue:
 
 ## Configuration Scenarios
 
-For configuration scenarios for operating the fiskaltrust.Middleware, please refer to the [Rollout documentation](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware).
+For configuration scenarios for operating the fiskaltrust.Middleware, please refer to the [Rollout documentation](https://docs.fiskaltrust.cloud/docs/posdealers/technical-operations/rollout-scenarios).
 
 ## Installation
 

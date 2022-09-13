@@ -24,7 +24,7 @@ Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 14
 
 ### Client registration
 
-The Deutsche Fiskal Cloud-SCU is limited to a single client registration (only one queue can be registered at the TSE). Possible [rollout scenarios](https://docs.fiskaltrust.cloud/docs/posdealers/technical-operations/rollout-scenarios) are limited to those cases in which exact one queue is operated per SCU.
+The Deutsche Fiskal Cloud-SCU is limited to a single client registration (only one queue can be registered at the TSE). Possible [rollout scenarios](https://docs.fiskaltrust.cloud/docs/posdealers/buy-resell/rollout-plans) are limited to those cases in which exact one queue is operated per SCU.
 
 ## Signature Creation Unit
 

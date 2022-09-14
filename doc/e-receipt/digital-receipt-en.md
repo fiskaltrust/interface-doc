@@ -30,8 +30,6 @@ In the basic and carefree versions we could develop over an existing integration
 
 For technical connections without  using the fiskaltrust middleware, a specific API is intended, however this is not available yet at the moment . 
 
-The precondition for the utilization as a POSOperator is an active contract of use and corresponding database. The database including the logo have to be assigned to the respective Queue and the respective outlet. The database must contain the necessary minimum information for the receipts, to get a productive useable system. 
-
 ## Basic Version of the digital receipt
 
 The basic version is free of charge and contains the transmission of the digital receipt via the QR-code. The QR-code should contain a URL in the following format: 

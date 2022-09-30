@@ -125,6 +125,8 @@ A full example containing all three options could e.g. look like this:
 
 ```
 
+More examples can be found in our [Postman collection](https://middleware-samples.docs.fiskaltrust.cloud/).
+
 :::caution
 
 Please keep in mind that in a real use case, only **one** of the three mentioned ways to inject the link into the receipt request should be used, depending on what fits the POS software's internal flows best.

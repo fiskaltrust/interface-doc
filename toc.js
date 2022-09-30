@@ -142,6 +142,7 @@ module.exports = {
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/reference-tables/reference-tables',
           ]
         },
+        'middleware-doc/doc/digital-receipt/digital-receipt-overview',
         {
           type: 'link',
           label: 'Middleware API samples',

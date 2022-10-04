@@ -25,8 +25,7 @@ More details for ft Recipts cases, ft PayItems cases and ft ChargeItems cases ca
 |Cash withdrawal||||`0x4D45000000000008`|
 |Cash sales / POS-receipt / Ticket|`0x4154000000000001`|`0x4445000100000001`|`0x4652000000000001`||
 |Archives|||`0x4652000000000015`||
-|
-|**ftPayItems cases** ||||||
+|**ftPayItems cases** |||||
 |Credit card payment|`0x4154000000000005`|`0x4445000000000005`|`0x4652000000000005`|`0x4D45000000000005`|
-|**ftChargeItems cases**|
+|**ftChargeItems cases**| | | | |
 |Unknown type of service/product|`0x4154000000000000`|`0x4445000000000000`|`0x4652000000000000`|`0x4D4500000000000`|

@@ -1,8 +1,8 @@
 ---
-slug: /poscreators/interface-doc/cash-register-integration/multi-markets-implementation
+slug: /poscreators/interface-doc/cash-register-integration/multi-markets-integration-guide
 title: Multi-markets implementation
 ---
-### Multi-market implementation
+### Multi-market integration
 
 #### Mapping Table
 The table below shows a comparison of the different business cases (e.g. ftRecipt cases, ftChargeItem cases and ftPayItem cases) for every market.
@@ -26,7 +26,7 @@ More details for ft Recipts cases, ft PayItems cases and ft ChargeItems cases ca
 |Cash sales / POS-receipt / Ticket|`0x4154000000000001`|`0x4445000100000001`|`0x4652000000000001`||
 |Archives|||`0x4652000000000015`||
 |
-|**ftPayItems cases**||
+|**ftPayItems cases** ||||||
 |Credit card payment|`0x4154000000000005`|`0x4445000000000005`|`0x4652000000000005`|`0x4D45000000000005`|
 |**ftChargeItems cases**|
 |Unknown type of service/product|`0x4154000000000000`|`0x4445000000000000`|`0x4652000000000000`|`0x4D4500000000000`|

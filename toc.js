@@ -16,9 +16,9 @@ module.exports = {
               type: 'category',
               label: 'Cash register integration',
               items: [
-                'middleware-doc/doc/general/cash-register-integration/multi-markets-integration-guide',
                 'middleware-doc/doc/general/cash-register-integration/cash-register-integration-regular-workflow',
-                'middleware-doc/doc/general/cash-register-integration/cash-register-integration-failure-scenarios'
+                'middleware-doc/doc/general/cash-register-integration/cash-register-integration-failure-scenarios',
+                'middleware-doc/doc/general/cash-register-integration/multi-markets-integration-guide'
               ]
             },
             'middleware-doc/doc/general/data-structures/data-structures',

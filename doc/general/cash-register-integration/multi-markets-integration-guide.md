@@ -4,8 +4,12 @@ title: Multi-markets implementation
 ---
 ### Multi-market integration
 This guide provides a guideline of which business cases should be implemented in which market.
-For business cases which are only differing by the Country Code we recommend to use a mapping table in your POS Software.
-![](./images/12-market-mapping.png)
+For business cases which are only differing by the Country Code we recommend to use a mapping table in your POS Software. <br>
+
+#### Typical sign flow
+- generate generic receipt requests
+- depending on the market, set the chargeitem-, payitem- and receiptcases (not every operation may have an e.g. receiptcase in each market -> in that case, do nothing. example: order in AT and FR)
+![](./images/12-multi-market-mapping.png)
 
 #### Mapping Table
 The table below shows a comparison of common business cases (e.g. ftReceiptcases, ftChargeItemcases and ftPayItemcases) for every market.

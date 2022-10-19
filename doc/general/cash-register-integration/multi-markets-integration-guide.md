@@ -7,7 +7,10 @@ This guide provides a guideline of which business cases should be implemented in
 For business cases which are only differing by the Country Code we recommend to use a mapping table in your POS Software. <br>
 
 #### Typical sign flow
-- generate generic receipt requests
+- generate generic receipt requests <br>
+The typical sign flow happens when a cash register transfers the data of a receipt request to the fiskaltrust.Middleware using the ReceiptRequest data structure, which will be then processed by the fiskaltrust.SecurtityMechanism.
+After being processed by the fiskaltrust.SecurtityMechanism, the data will be added to the fiskaltrust.ReceiptResponse, which will be sent to the database of the cash register enabling the receipt to be printed either on paper or digitally.
+For more detailed information, please visit the [PosCreators documentation](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/general/cash-register-integration#workflow---regular-operation)
 - depending on the market, set the chargeitem-, payitem- and receiptcases (not every operation may have an e.g. receiptcase in each market -> in that case, do nothing. example: order in AT and FR)
 ![](./images/12-multi-market-mapping.png)
 
@@ -18,7 +21,7 @@ More details for ftReceiptcases, ftPayItemcases and ft ChargeItemcases can be fo
 |**business cases** | **AT** | **DE** |**FR** |**ME**|
 |----------------------|-----------|-----------------------|--------------------------------------|-----------------------------|
 |**ftReceiptcase**||||||
-|Cash sales / POS-receipt / Ticket|`0x4154000000000001`|`0x4445000100000001`|`0x4652000000000001`||
+|Cash sales / POS-receipt / Ticket|`0x4154000000000001`|`0x4445000100000001`|`0x4652000000000001`|`0x4D45000000000001`|
 |Zero receipt|`0x4154000000000002`|`0x4445000000000002`|`0x465200000000000F`|`0x4D45000000000002`|
 |Initial operation/start receipt|`0x415400000000000`|`0x4445000000000003`|`0x4652000000000010`|`0x4D45000000000003`|
 |Out of operation/stop receipt|`0x4154000000000004`|`0x4445000000000004`|`0x4652000000000011`|`0x4D45000000000004`|
@@ -33,10 +36,16 @@ More details for ftReceiptcases, ftPayItemcases and ft ChargeItemcases can be fo
 |Initiate SCU switch||`0x4445000000000017`|||
 |Finish SCU switch||`0x4445000000000018`|||
 |Archives|||`0x4652000000000015`||
+
+|**business cases** | **AT** | **DE** |**FR** |**ME**|
+|----------------------|-----------|-----------------------|--------------------------------------|-----------------------------|
 |**ftChargeItemcase**| | | | |
 |Unknown type of service/product normal|`0x4154000000000003`|`0x4445000000000001`|`0x465200000000003`|`0x4D45000000000001`|
 |Unknown type of service/product discounted-1|`0x4154000000000001`|`0x4445000000000002`|`0x465200000000001`|`0x4D45000000000002`|
 |Unknown type of service/product discounted-2|`0x4154000000000002`||`0x465200000000002`||
+
+|**business cases** | **AT** | **DE** |**FR** |**ME**|
+|----------------------|-----------|-----------------------|--------------------------------------|-----------------------------|
 |**ftPayItemcase** |||||
 |Cash payment in national currency|`0x4154000000000001`|`0x4445000000000001`|`0x4652000000000001`|`0x4D45000000000001`|
 |Cash payment in foreign currency|`0x4154000000000002`|`0x4445000000000002`|`0x4652000000000002`|`0x4D45000000000002`|

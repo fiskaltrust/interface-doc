@@ -65,5 +65,3 @@ When using REST, the HTTP endpoint slightly differs from the Windows version, as
 Please also note that the `content-type` must be set:
 - to `application/json` when calling the _sign_ or _echo_ endpoints
 - to `text/plain` when calling the _journal_ endpoint
-
-In addition, if REST is used, a gRPC endpoint needs to be configured as the **primary** endpoint of the Queue and the SCU, so it can be properly used by our packages.

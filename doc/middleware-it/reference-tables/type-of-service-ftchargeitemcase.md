@@ -10,7 +10,7 @@ This table expands on the values provided in the table [ftChargeItemCase in Gene
 
 | **Value**            | **Description**                                                                                        | **Middleware Version** |
 | -------------------- | -------------- | ---------------------- |
-| `0x4954000000000000` | **Unknown type of service for ES**<br />With the help of the VAT-rates table saved within fiskaltrust.SecurityMechanisms, an allocation to standard /reduced-1 /reduced-2 / super-reduced/zero is attempted. | TBD  |
+| `0x4954000000000000` | **Unknown type of service for IT**<br />With the help of the VAT-rates table saved within fiskaltrust.SecurityMechanisms, an allocation to standard /reduced-1 /reduced-2 / super-reduced/zero is attempted. | TBD  |
 | `0x4954000000000001` | **Undefined type of service for IT reduced-1**<br />(as of 1.1.2022, this is calculated with 5%). | TBD   |
 | `0x4954000000000002` | **Undefined type of service for IT reduced-2**<br />(as of 1.1.2022, this is calculated with 10%). | TBD   |
 | `0x4954000000000003` | **Undefined type of service for IT normal**<br />(as of 1.1.2022, this is 22%. | TBD |

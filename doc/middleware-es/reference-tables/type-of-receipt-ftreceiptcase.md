@@ -7,7 +7,7 @@ title: 'Type of receipt: ftReceiptCase'
 
 The `ftReceiptCase` indicates the receipt type and defines how the fiskaltrust.SecurityMechanism should process it following Spanish law.
 
-For Spain (ES), the country code is `0x4553`. Thus, the value of an unknown `ftReceiptCase` in Germany is `0x4553000000000000`.
+For Spain (ES), the country code is `0x4553`. Thus, the value of an unknown `ftReceiptCase` in Spain is `0x4553000000000000`.
 
 | **Value** | **Description** | **Middleware version** |
 |-----------|-----------------|-------------------------|
@@ -21,7 +21,7 @@ For Spain (ES), the country code is `0x4553`. Thus, the value of an unknown `ftR
 | `0x4553000000000006` | **Daily-closing**<br /><br />This is a zero-receipt. It is recommended to send this receipt at the end of each day to define the time of the POS system closure. | TBD |
 
 ## ftReceiptCaseFlag
-This table expands on the values provided in table [ftReceiptCaseFlag in General Part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag) with values applicable to the German market.
+This table expands on the values provided in table [ftReceiptCaseFlag in General Part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag) with values applicable to the Spanish market.
 
 | Value | Description | Middleware-Version |
 |-------|-------------|--------------------|

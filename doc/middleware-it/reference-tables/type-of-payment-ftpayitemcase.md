@@ -9,7 +9,7 @@ This table expands on the values provided in table [ftPayItemCase in General Par
 
 | **Value**            | **Description**                                                                                | **Middleware version** |
 | -------------------- | ---------------------------------------------------------------------------------------------- | ---------------------- |
-| `0x4954000000000000` | **Unknown payment type for ES**<br />This is handled like a cash payment in national currency. | TBD                    |
+| `0x4954000000000000` | **Unknown payment type for IT**<br />This is handled like a cash payment in national currency. | TBD                    |
 | `0x4954000000000001` | **Cash payment in national currency**<br />cash                                                | TBD                    |
 | `0x4954000000000002` | **Cash payment in foreign currency**<br />cash                                                 | TBD                    |
 | `0x4954000000000003` | **Crossed cheque**<br />cash                                                                   | TBD                    |

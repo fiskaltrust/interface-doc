@@ -24,6 +24,12 @@ Fields from the receipt request that need special handling for the German market
 
 Examples of using `cbReceiptReference` and `cbPreviousReceiptReference` to connect requests representing a business action can be found in our Postman collection.
 
+:::caution
+
+If using `cbPreviousReceiptReference`, as per DSFinV-K it must have a maximum length of 50 characters. Exceeding this length will result in export errors (e.g., DATEV MeinFiskal).
+
+:::
+
 #### Customer data `cbCustomer`
 
 If you need to provide customer data in your request, you can send it in via the field `cbCustomer` by filling it JSON format with following fields:

@@ -23,24 +23,24 @@ This table expands on the values provided in the table [ftChargeItemCase in Gene
 | `0x495400000000000A` | **Delivery reduced-2 Vat 5%**<br />For processing, see (`0x4954000000000003`)                          | TBD |
 | `0x495400000000000B` | **Delivery reduced special Vat 4%**<br />For processing, see (`0x4954000000000004`)                    | TBD |
 | `0x495400000000000C` | **Delivery zero**<br />For processing, see (`0x4954000000000005`)                                      | TBD |
-| `0x495400000000000D` | **Other services reduced-1**<br />For processing, see (`0x4954000000000001`)                           | TBD |
-| `0x495400000000000E` | **Other services reduced-2**<br />For processing, see (`0x4954000000000002`)                           | TBD |
-| `0x495400000000000F` | **Other services normal**<br />For processing, see (`0x4954000000000003`)                              | TBD |
+| `0x495400000000000D` | **Other services normal**<br />For processing, see (`0x4954000000000001`)                           | TBD |
+| `0x495400000000000E` | **Other services reduced-1**<br />For processing, see (`0x4954000000000002`)                           | TBD |
+| `0x495400000000000F` | **Other services reduced-2**<br />For processing, see (`0x4954000000000003`)                              | TBD |
 | `0x4954000000000010` | **Other services special**<br />For processing, see (`0x4954000000000004`)                             | TBD |
 | `0x4954000000000011` | **Other services zero**<br />For processing, see (`0x4954000000000005`)                                | TBD |
-| `0x4954000000000012` | **Catalogue services reduced-1**<br />For processing, see (`0x4954000000000001`)                       | TBD |
-| `0x4954000000000013` | **Catalogue services reduced-2**<br />For processing, see (`0x4954000000000002`)                       | TBD |
-| `0x4954000000000014` | **Catalogue services normal**<br />For processing, see (`0x4954000000000003`)                          | TBD |
+| `0x4954000000000012` | **Catalogue services normal**<br />For processing, see (`0x4954000000000001`)                       | TBD |
+| `0x4954000000000013` | **Catalogue services reduced-1**<br />For processing, see (`0x4954000000000002`)                       | TBD |
+| `0x4954000000000014` | **Catalogue services reduced-2**<br />For processing, see (`0x4954000000000003`)                          | TBD |
 | `0x4954000000000015` | **Catalogue services special**<br />For processing, see (`0x4954000000000004`)                         | TBD |
 | `0x4954000000000016` | **Catalogue services zero**<br />For processing, see (`0x4954000000000005`)                            | TBD | 
-| `0x4954000000000017` | **Own consumption reduced-1**<br />For processing, see (`0x4954000000000001`)                          | TBD |
-| `0x4954000000000018` | **Own consumption reduced-2**<br />For processing, see (`0x4954000000000002`)                          | TBD |
-| `0x4954000000000019` | **Own consumption normal**<br />For processing, see (`0x4954000000000003`)                             | TBD |
+| `0x4954000000000017` | **Own consumption normal**<br />For processing, see (`0x4954000000000001`)                          | TBD |
+| `0x4954000000000018` | **Own consumption reduced-1**<br />For processing, see (`0x4954000000000002`)                          | TBD |
+| `0x4954000000000019` | **Own consumption reduced-2**<br />For processing, see (`0x4954000000000003`)                             | TBD |
 | `0x495400000000001A` | **Own consumption special**<br />For processing, see (`0x4954000000000004`)                            | TBD |
 | `0x495400000000001B` | **Own consumption zero**<br />For processing, see (`0x4954000000000005`)                               | TBD |
-| `0x495400000000001C` | **Prepayment reduced-1**<br />For processing, see (`0x4954000000000001`)                               | TBD |
-| `0x495400000000001D` | **Prepayment reduced-2**<br />For processing, see (`0x4954000000000002`)                               | TBD |
-| `0x495400000000001E` | **Prepayment normal**<br />For processing, see (`0x4954000000000003`)                                  | TBD |
+| `0x495400000000001C` | **Prepayment normal**<br />For processing, see (`0x4954000000000001`)                               | TBD |
+| `0x495400000000001D` | **Prepayment reduced-1**<br />For processing, see (`0x4954000000000002`)                               | TBD |
+| `0x495400000000001E` | **Prepayment reduced-2**<br />For processing, see (`0x4954000000000003`)                                  | TBD |
 | `0x495400000000001F` | **Prepayment special**<br />For processing, see (`0x4954000000000004`)                                 | TBD |
 | `0x4954000000000020` | **Prepayment zero**<br />For processing, see (`0x4954000000000005`)                                    | TBD |
 | `0x4954000000000021` | **Account of a third party/ third party name/ collection**<br />For processing, see (`0x4954000000000007`)| TBD |

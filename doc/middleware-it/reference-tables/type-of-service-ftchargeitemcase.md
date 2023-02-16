@@ -45,16 +45,16 @@ This table expands on the values provided in the table [ftChargeItemCase in Gene
 | `0x4954000000000020` | **Prepayment zero**<br />For processing, see (`0x4954000000000005`)                                    | TBD |
 | `0x4954000000000021` | **Account of a third party/ third party name/ collection**<br />For processing, see (`0x4954000000000007`)| TBD |
 | `0x4954000000000022` | **Obligation**                                                                                         | TBD |
-| `0x4954000000000023` | **Discount Vat 22%**<br /> | TBD |
-| `0x4954000000000024` | **Discount Vat 10%**<br /> | TBD |
-| `0x4954000000000025` | **Discount Vat  5%**<br /> | TBD |
-| `0x4954000000000026` | **Discount Vat  4%**<br /> | TBD |
-| `0x4954000000000027` | **Discount Vat  0%**<br /> | TBD |
-| `0x4954000000000028` | **Surcharge Vat 22%**<br /> | TBD |
-| `0x4954000000000029` | **Surcharge Vat 10%**<br /> | TBD |
-| `0x495400000000003A` | **Surcharge Vat  5%**<br /> | TBD |
-| `0x495400000000003B` | **Surcharge Vat  4%**<br /> | TBD |
-| `0x495400000000003C` | **Surcharge Vat  0%**<br /> | TBD |
+| `0x4954000000000023` | **Discount normal Vat 22%**<br /> | TBD |
+| `0x4954000000000024` | **Discount reduced-1 Vat 10%**<br /> | TBD |
+| `0x4954000000000025` | **Discount reduced-2 Vat  5%**<br /> | TBD |
+| `0x4954000000000026` | **Discount special Vat  4%**<br /> | TBD |
+| `0x4954000000000027` | **Discount zero Vat  0%**<br /> | TBD |
+| `0x4954000000000028` | **Surcharge normal Vat 22%**<br /> | TBD |
+| `0x4954000000000029` | **Surcharge reduced-1 Vat 10%**<br /> | TBD |
+| `0x495400000000003A` | **Surcharge reduced-2 Vat  5%**<br /> | TBD |
+| `0x495400000000003B` | **Surcharge special Vat  4%**<br /> | TBD |
+| `0x495400000000003C` | **Surcharge zero Vat  0%**<br /> | TBD |
 ## ftChargeItemCaseFlag
 This table shows flags that can be added to each `ftChargeItemCase` with values applicable to the Italian market. 
 

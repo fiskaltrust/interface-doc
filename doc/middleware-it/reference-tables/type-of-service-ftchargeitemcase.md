@@ -11,17 +11,17 @@ This table expands on the values provided in the table [ftChargeItemCase in Gene
 | **Value**            | **Description**                                                                                        | **Middleware Version** |
 | -------------------- | -------------- | ---------------------- |
 | `0x4954000000000000` | **Unknown type of service for IT**<br />With the help of the VAT-rates table saved within fiskaltrust.SecurityMechanisms, an allocation to standard /reduced-1 /reduced-2 / super-reduced/zero is attempted. | TBD  |
-| `0x4954000000000001` | **Undefined type of service for IT normal**<br />(as of 1.1.2022, this is 22%. | TBD |
+| `0x4954000000000001` | **Undefined type of service for IT normal**<br />(as of 1.1.2022, this is 22%). | TBD |
 | `0x4954000000000002` | **Undefined type of service for IT reduced-2**<br />(as of 1.1.2022, this is calculated with 10%). | TBD   |
 | `0x4954000000000003` | **Undefined type of service for IT reduced-1**<br />(as of 1.1.2022, this is calculated with 5%). | TBD   |
 | `0x4954000000000004` | **Undefined type of service for IT special (super-reduced)**<br />Includes all rates that are not contained in the previous ones (as of 1.1.2022, this is 4%). | TBD |
 | `0x4954000000000005` | **Undefined type of service for IT zero**<br />Includes data indicated with 0% sales tax and data where the sales tax is unknown, for example, about an outgoing invoice. Also, in cases where the sales tax should not be apparent, for example, in differential taxation, the data can be issued with this code. | TBD |
 | `0x4954000000000006` | **Reverse charge**<br />Reversal of tax liability.                                                     | TBD |
 | `0x4954000000000007` | **Not own sales**<br />In the data, a VAT-rate can be indicated.                                       | TBD |
-| `0x4954000000000008` | **Delivery reduced-1**<br />For processing, see (`0x4954000000000001`)                                 | TBD |
-| `0x4954000000000009` | **Delivery reduced-2**<br />For processing, see (`0x4954000000000002`)                                 | TBD |
-| `0x495400000000000A` | **Delivery normal**<br />For processing, see (`0x4954000000000003`)                                    | TBD |
-| `0x495400000000000B` | **Delivery special**<br />For processing, see (`0x4954000000000004`)                                   | TBD |
+| `0x4954000000000008` | **Delivery normal Vat 22%**<br />For processing, see (`0x4954000000000001`)                            | TBD |
+| `0x4954000000000009` | **Delivery reduced-1 Vat 10%**<br />For processing, see (`0x4954000000000002`)                         | TBD |
+| `0x495400000000000A` | **Delivery reduced-2 Vat 5%**<br />For processing, see (`0x4954000000000003`)                          | TBD |
+| `0x495400000000000B` | **Delivery reduced special Vat 4%**<br />For processing, see (`0x4954000000000004`)                    | TBD |
 | `0x495400000000000C` | **Delivery zero**<br />For processing, see (`0x4954000000000005`)                                      | TBD |
 | `0x495400000000000D` | **Other services reduced-1**<br />For processing, see (`0x4954000000000001`)                           | TBD |
 | `0x495400000000000E` | **Other services reduced-2**<br />For processing, see (`0x4954000000000002`)                           | TBD |
@@ -45,6 +45,10 @@ This table expands on the values provided in the table [ftChargeItemCase in Gene
 | `0x4954000000000020` | **Prepayment zero**<br />For processing, see (`0x4954000000000005`)                                    | TBD |
 | `0x4954000000000021` | **Account of a third party/ third party name/ collection**<br />For processing, see (`0x4954000000000007`)| TBD |
 | `0x4954000000000022` | **Obligation**                                                                                         | TBD |
+| `0x4954000000000031` | **Surcharge Vat 22%**<br /> | TBD |
+| `0x4954000000000032` | **Surcharge Vat 10%**<br /> | TBD |
+| `0x4954000000000033` | **Surcharge Vat  5%**<br /> | TBD |
+| `0x4954000000000034` | **Surcharge Vat  4%**<br /> | TBD |
 
 ## ftChargeItemCaseFlag
 This table shows flags that can be added to each `ftChargeItemCase` with values applicable to the Italian market. 

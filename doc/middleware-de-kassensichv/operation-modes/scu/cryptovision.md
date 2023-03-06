@@ -7,7 +7,7 @@ title: Cryptovision-TSE
 
 ### State of certification
 
-Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://link.fiskaltrust.cloud/de/legal/146a-ao):
+Token are valid until the end of July 2023
 
 | Certification-ID                                             | Test item                               | Applicant            | Date       |
 | :----------------------------------------------------------- | :-------------------------------------- | :------------------- | :--------- |

@@ -7,7 +7,7 @@ title: Cryptovision-TSE
 
 ### State of certification
 
-Token are valid until the end of July 2023
+Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Weitere_Steuerthemen/Abgabenordnung/AO-Anwendungserlass/2021-11-04-aenderung-des-anwendungserlasses-zur-abgabenordnung-AEAO.pdf?__blob=publicationFile&v=2):
 
 | Certification-ID                                             | Test item                               | Applicant            | Date       |
 | :----------------------------------------------------------- | :-------------------------------------- | :------------------- | :--------- |

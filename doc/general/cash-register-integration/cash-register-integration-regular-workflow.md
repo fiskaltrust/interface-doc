@@ -52,7 +52,7 @@ There are several receipt requirements fulfilled by the fiskaltrust.Middleware i
 
 This section describes the receipt types used for those special functions. For further information on how to fulfil the requirements of national laws, please refer to the appropriate appendix.
 
-#### Zero Receipt<
+#### Zero Receipt
 
 A zero receipt is a universal data carrier and storage. The cash register sends a receipt with an empty charge items block (ftChargeItem) and an empty pay items block (ftPayItem) which logically contain a total amount of "0".
 

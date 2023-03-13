@@ -54,5 +54,7 @@ This table expands on the values provided in the table [ftChargeItemCase in Gene
 ## ftChargeItemCaseFlag
 This table shows flags that can be added to each `ftChargeItemCase` with values applicable to the Italian market. 
 
-| Value              | Description              | Middleware-Version |
-| ------------------ | ------------------------ | ------------------ |
+| Value                | Description              | Middleware-Version |
+| `0x4954000000010000` | On void receipt, Operationtype: Acconto | TBD |
+| `0x4954000000020000` | On void receipt, Operationtype: Free Of Charge | TBD |
+| `0x4954000000030000` | On void receipt, Operationtype: Single Use Voucher | TBD |

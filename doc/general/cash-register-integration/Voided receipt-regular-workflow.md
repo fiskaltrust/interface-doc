@@ -14,4 +14,4 @@ The main things that should be changed on the voided or cancelled receipt:
 
 - Also the field cbPreviousReceiptReference should be added, the value entered should be set to the ReceiptReference of the Receipt which should be voided.
 
-- The amount <strong>or </strong> quantity has to be negative. Set only one of the two as negative.
+- The quantity has to be negative.

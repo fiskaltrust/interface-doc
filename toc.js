@@ -17,7 +17,8 @@ module.exports = {
               label: 'Cash register integration',
               items: [
                 'middleware-doc/doc/general/cash-register-integration/cash-register-integration-regular-workflow',
-                'middleware-doc/doc/general/cash-register-integration/cash-register-integration-failure-scenarios'
+                'middleware-doc/doc/general/cash-register-integration/cash-register-integration-failure-scenarios',
+                'middleware-doc/doc/general/cash-register-integration/multi-markets-integration-guide'
               ]
             },
             'middleware-doc/doc/general/data-structures/data-structures',
@@ -142,6 +143,7 @@ module.exports = {
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/reference-tables/reference-tables',
           ]
         },
+        'middleware-doc/doc/digital-receipt/digital-receipt-overview',
         {
           type: 'link',
           label: 'Middleware API samples',

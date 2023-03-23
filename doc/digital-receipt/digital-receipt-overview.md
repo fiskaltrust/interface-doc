@@ -9,9 +9,9 @@ fiskaltrust offers functionalities for providing different types of digital rece
 We offer four different types of digital receipt, tailored to enable different use-cases, depending on the user need and the operational environment of the POS system.
 
 1. Basic
-2. Give-away
-3. Promotion
-4. Carefree
+2. Carefree
+3. Give-away
+4. Promotion/ReceiptHero
 
 In the basic and in the carefree variant, a digital receipt can be provided via an existing integration of the fiskaltrust.Middleware without any additional implementation effort or change. For more advanced concepts such as "Give-Away" and "Promotion", additional meta data is required, which can be transferred to the Middleware via the existing function and data structure (see examples below).
 
@@ -39,7 +39,10 @@ The advantage of this basic version is that it can be used without any further i
 - The POS software extracts the `ftQueueId` and `ftQueueItemId` properties from the response, and generates the link from this data.
 - The POS system displays a QR code that contains this link on the customer display.
 - The customer or consumer scans the QR code via their smartphone, opens the link, and is displayed the digital receipt.
-  
+
+## Carefree version of the digital receipt 
+This includes all functionalities of the digital receipt (Basic, Give-away and Promotion). 
+
 ## Give-away version of the digital receipt
 From the fiskaltrust.Portal, prefabricated adhesive labels or give-away products (such as small gummy bear bags) can be purchased to be resold, which then serve as carriers of a QR code for the digital receipt. There are no delays due to the interaction of the cash register or the operating personnel with the consumer, because the consumer receives a give-away and can retrieve the digital receipt later, regardless of time and location.
 
@@ -133,11 +136,22 @@ Please keep in mind that in a real use case, only **one** of the three mentioned
 
 :::
 
-## Promotion version of the digital receipt 
+## Promotion/ReceiptHero version of the digital receipt 
 _Coming soon_
 
-## Carefree version of the digital receipt 
-_Coming soon_
+## Availability of the digital receipt 
+First production ready functionalities of the digital receipt (April 2023)
+-	Configuration of logo and address for the digital receipt to be done in the fiskaltrust.Portal for the markets AUT, GER, FRA
+-	Receipt layouts for the markets AUT, GER, FRA containing legally required contents derived from single receipt cases 
+-	Logging the issued and called receipts, including statistics and exports 
+-	POS-API/print and POS/API/response endpoints without breaking changes within one version
 
-## Third party API 
-_Coming soon_
+Additional functionalities to be released at a later stage: 
+-	Different receipt layouts, including customization
+-	Capturing additional information on receipts, such as hospitality receipt, cancellation reason etc.
+-	Feedback functionality
+-	POS-API-Helper with SOAP/GRPC/REST for zero-integration
+-	InStore App
+-	QR-Label / Give-Away and production of QR-codes before POS-API/print call
+-	Share-button
+-	Apple-Wallet and Google-Wallet

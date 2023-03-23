@@ -41,7 +41,7 @@ The advantage of this basic version is that it can be used without any further i
 - The customer or consumer scans the QR code via their smartphone, opens the link, and is displayed the digital receipt.
 
 ## Carefree version of the digital receipt 
-This includes the all functionalities of the digital receipt (Basic, Give-away and Promotion). 
+This includes all functionalities of the digital receipt (Basic, Give-away and Promotion). 
 
 ## Give-away version of the digital receipt
 From the fiskaltrust.Portal, prefabricated adhesive labels or give-away products (such as small gummy bear bags) can be purchased to be resold, which then serve as carriers of a QR code for the digital receipt. There are no delays due to the interaction of the cash register or the operating personnel with the consumer, because the consumer receives a give-away and can retrieve the digital receipt later, regardless of time and location.

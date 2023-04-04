@@ -9,7 +9,7 @@ This chapter expands more on describing the ways to communicate with the fiskalt
 ## Supported protocols
 The Italian Middleware natively supports REST, gRPC and WCF communication without the requirement to use any helper packages. gRPC communication is described in the following section, please refer to the [general part](../../general/communication/communication.md) for more details about REST and WCF.
 
-#### gRPC
+### gRPC
 [gRPC](https://grpc.io) is a modern open source high performance _Remote Procedure Call (RPC)_ framework that can run in any environment. It can be used in most programming language and is generally known to be fast, reliable and efficient.
 
 gRPC uses protocol buffers (i.e. _.proto_ files), a platform-independent standard, to statically describe interfaces. The _.proto_ files of the fiskaltrust.Middleware can be downloaded [here](https://github.com/fiskaltrust/interface-doc/tree/master/dist/protos/).

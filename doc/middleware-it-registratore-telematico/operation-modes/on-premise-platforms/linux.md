@@ -5,7 +5,7 @@ title: Linux
 
 # fiskaltrust.Middleware for Linux and macOs
 
-Starting with version 1.3.45, it's possible to run the Italian Middleware on Linux. Just configure a CashBox and download the launcher via the respective button in the CashBox overview. Like on Windows, the downloaded zip file contains scripts to install and test the Middleware. Other than that, no specific software needs to be installed as the Italian Middleware is running on the Launcher 2.0 which is self-contained and has no external dependencies.
+Starting with version 1.3.45, it's possible to run the Italian Middleware on Linux. Just configure a CashBox and download the Launcher via the respective button in the CashBox overview. Like on Windows, the downloaded zip file contains scripts to install and test the Middleware. Other than that, no specific software needs to be installed as the Italian Middleware is running on the Launcher 2.0 which is self-contained and has no external dependencies.
 
 ## Requirements
 

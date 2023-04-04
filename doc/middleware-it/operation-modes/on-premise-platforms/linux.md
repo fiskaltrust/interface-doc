@@ -20,7 +20,7 @@ In general, it's possible to run the Middleware on each Linux distribution (_Ubu
 
 ### Local data storage/Linux distribution support matrix
 
-|                                                                 | Ubuntu     | Debian     | Other distributions running Mono |
+|                                                                 | Ubuntu     | Debian     | Other distributions              |
 |-----------------------------------------------------------------|------------|------------|----------------------------------|
 | local [SQLite-Storage](../on-premise-databases/sqlite.md)       | **tested** | **tested** | should work (not tested)         |
 

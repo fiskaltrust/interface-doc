@@ -6,7 +6,7 @@ title: Communication
 # Communication
 This chapter expands more on describing the ways to communicate with the fiskaltrust.Middleware covered in the [Communication](../../general/communication/communication.md) chapter of the General Part, with country-specific information applicable to the Italian market.
 
-### Supported protocols
+## Supported protocols
 The Italian Middleware natively supports REST, gRPC and WCF communication without the requirement to use any helper packages. gRPC communication is described in the following section, please refer to the [general part](../../general/communication/communication.md) for more details about REST and WCF.
 
 #### gRPC

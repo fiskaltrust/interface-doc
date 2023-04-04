@@ -9,7 +9,7 @@ This chapter expands on the descriptions of the country-specific Data Structures
 
 ## Receipt Request
 
-#### Single fields
+### Single fields
 
 Fields from the receipt request that need special handling for the Italian market are listed below:
 

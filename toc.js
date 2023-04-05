@@ -181,7 +181,9 @@ module.exports = {
                   type: 'category',
                   label: 'On-premise databases',
                   items: [
-                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-databases/sqlite'
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-databases/sqlite',
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-databases/entity-framework',
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-databases/mysql'
                   ]
                 },
               ]

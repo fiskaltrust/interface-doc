@@ -22,9 +22,11 @@ In general, it's possible to run the Middleware on each Linux distribution (_Ubu
 
 |                                                                 | Ubuntu     | Debian     | Other distributions              |
 |-----------------------------------------------------------------|------------|------------|----------------------------------|
-| local [SQLite-Storage](../on-premise-databases/sqlite.md)       | **tested** | **tested** | should work (not tested)         |
+| **[SQLite-Storage](../on-premise-databases/sqlite.md)**         | **tested** | **tested** | should work (not tested)         |
+| **[MySQL-storage](on-premise-databases/mysql.md)**              | **tested** | **tested** | should work (not tested)         |
+| **[EF-storage](on-premise-databases/entity-framework.md)**      | not tested | not tested |                                  |
 
 
-SQLite queues can be launched on Linux, starting from version 1.3.45. 
+Both Entity Framework and SQLite queues can be launched on Linux, starting from version 1.3.45.
 
 If you haven't already decided for a communication technology, we strongly recommend gRPC, as it provides a cleaner, more stable interface. Please refer to our demo project (currently available in [C#](https://github.com/fiskaltrust/middleware-demo-dotnet), [Java](https://github.com/fiskaltrust/middleware-demo-java), [Node.js](https://github.com/fiskaltrust/middleware-demo-node) and [others](https://github.com/fiskaltrust)) for sample implementations.

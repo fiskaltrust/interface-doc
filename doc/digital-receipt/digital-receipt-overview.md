@@ -28,6 +28,13 @@ The basic version is free of charge and provides the digital receipt via a link 
 ```
 https://receipts.fiskaltrust.cloud/v0/[QueueId]/[QueueItemId]
 ```
+:::caution
+
+For Sandbox environment the URL should contain following format:
+
+https://receipts-sandbox.fiskaltrust.cloud/v0/[QueueId]/[QueueItemId]
+
+:::
 
 This code (and the respective link) can be generated individually from any POS system, based on the data returned by the `/Sign` method of the fiskaltrust.Middleware (which is used to fiscalize receipts).
 

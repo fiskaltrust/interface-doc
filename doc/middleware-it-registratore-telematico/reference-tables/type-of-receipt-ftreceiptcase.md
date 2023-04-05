@@ -26,4 +26,4 @@ This table expands on the values provided in table [ftReceiptCaseFlag in General
 | Value | Description | Middleware-Version |
 |-------|-------------|--------------------|
 | 0x0000800000000000 | **Receipt request.** <br />Common behavior, see [general part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag). | TBD |
-| 0x0000000000040000 | **Reverse/voided receipt.** <br />Common behavior, see [general part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag). | TBD |
+| 0x0000000000040000 | **Reverse/voided receipt.** <br />The Receipt Reference of the selling Receipt has to be set in cbPreviousReceiptReference. Common behavior, see [general part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag). | TBD |

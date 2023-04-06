@@ -157,7 +157,7 @@ module.exports = {
             'middleware-doc/doc/middleware-it-registratore-telematico/terminology/terminology',
             'middleware-doc/doc/middleware-it-registratore-telematico/installation/installation',
             'middleware-doc/doc/middleware-it-registratore-telematico/cash-register-integration/cash-register-integration',
-            'middleware-doc/doc/middleware-it-registratore-telematico/communication/communicaton',
+            'middleware-doc/doc/middleware-it-registratore-telematico/communication/communication',
             'middleware-doc/doc/middleware-it-registratore-telematico/data-structures/data-structures',
             {
               type: 'category',

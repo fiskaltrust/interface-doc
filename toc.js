@@ -143,12 +143,6 @@ module.exports = {
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/reference-tables/reference-tables',
           ]
         },
-        'middleware-doc/doc/digital-receipt/digital-receipt-overview',
-        {
-          type: 'link',
-          label: 'Middleware API samples',
-          href: 'https://middleware-samples.docs.fiskaltrust.cloud/'
-        },
         {
           type: 'category',
           label: 'Italy (Registratore Telematico)',
@@ -190,10 +184,29 @@ module.exports = {
                 },
               ]
             },
-      
+            {
+              type: 'category',
+              label: 'Reference Tables',
+              items: [
+                'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/reference-tables',
+                'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/service-status-ftstate',
+                'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/type-of-receipt-ftreceiptcase',
+                'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/type-of-service-ftchargeitemcase',
+                'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/type-of-payment-ftpayitemcase',
+                'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/type-of-signature-ftsignaturetype',
+                'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/type-of-signature-ftsignatureformat',
+                'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/type-of-journal-ftjournaltype',
+              ]
+            }
           ]
         },
       ]
+    },
+    'middleware-doc/doc/digital-receipt/digital-receipt-overview',
+    {
+      type: 'link',
+      label: 'Middleware API samples',
+      href: 'https://middleware-samples.docs.fiskaltrust.cloud/'
     },
     {
       type: 'category',

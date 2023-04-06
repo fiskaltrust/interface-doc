@@ -148,7 +148,51 @@ module.exports = {
           type: 'link',
           label: 'Middleware API samples',
           href: 'https://middleware-samples.docs.fiskaltrust.cloud/'
-        }
+        },
+        {
+          type: 'category',
+          label: 'Italy (Registratore Telematico)',
+          items: [
+            'middleware-doc/doc/middleware-it-registratore-telematico/appendix-it-registratore-telematico',
+            'middleware-doc/doc/middleware-it-registratore-telematico/terminology/terminology',
+            'middleware-doc/doc/middleware-it-registratore-telematico/installation/installation',
+            'middleware-doc/doc/middleware-it-registratore-telematico/cash-register-integration/cash-register-integration',
+            'middleware-doc/doc/middleware-it-registratore-telematico/communication/communicaton',
+            'middleware-doc/doc/middleware-it-registratore-telematico/data-structures/data-structures',
+            {
+              type: 'category',
+              label: 'Operation modes',
+              items: [
+                'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-installation',
+                {
+                  type: 'category',
+                  label: 'On-premise platforms',
+                  items: [
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-platforms/linux',
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-platforms/windows',
+                  ]
+                },
+                {
+                  type: 'category',
+                  label: 'Signature Creation Devices',
+                  items: [
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/scu/epson'
+                  ]
+                },
+                {
+                  type: 'category',
+                  label: 'On-premise databases',
+                  items: [
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-databases/sqlite',
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-databases/entity-framework',
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-databases/mysql'
+                  ]
+                },
+              ]
+            },
+      
+          ]
+        },
       ]
     },
     {

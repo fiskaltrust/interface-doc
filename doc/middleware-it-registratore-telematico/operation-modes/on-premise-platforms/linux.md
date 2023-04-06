@@ -23,8 +23,8 @@ In general, it's possible to run the Middleware on each Linux distribution (_Ubu
 |                                                                 | Ubuntu     | Debian     | Other distributions              |
 |-----------------------------------------------------------------|------------|------------|----------------------------------|
 | **[SQLite-Storage](../on-premise-databases/sqlite.md)**         | **tested** | **tested** | should work (not tested)         |
-| **[MySQL-storage](on-premise-databases/mysql.md)**              | **tested** | **tested** | should work (not tested)         |
-| **[EF-storage](on-premise-databases/entity-framework.md)**      | not tested | not tested |                                  |
+| **[MySQL-storage](../on-premise-databases/mysql.md)**              | **tested** | **tested** | should work (not tested)         |
+| **[EF-storage](../on-premise-databases/entity-framework.md)**      | not tested | not tested |                                  |
 
 
 Both Entity Framework and SQLite queues can be launched on Linux, starting from version 1.3.45.

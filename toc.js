@@ -150,7 +150,14 @@ module.exports = {
             'middleware-doc/doc/middleware-it-registratore-telematico/appendix-it-registratore-telematico',
             'middleware-doc/doc/middleware-it-registratore-telematico/terminology/terminology',
             'middleware-doc/doc/middleware-it-registratore-telematico/installation/installation',
-            'middleware-doc/doc/middleware-it-registratore-telematico/cash-register-integration/cash-register-integration',
+            {
+              type: 'category',
+              label: 'Cash register integration',
+              items: [
+                'middleware-doc/doc/middleware-it-registratore-telematico/cash-register-integration/cash-register-integration',
+                'middleware-doc/doc/middleware-it-registratore-telematico/cash-register-integration/cash-register-integration-failure-scenarios',
+              ]
+            },            
             'middleware-doc/doc/middleware-it-registratore-telematico/communication/communication',
             'middleware-doc/doc/middleware-it-registratore-telematico/data-structures/data-structures',
             {

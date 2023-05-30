@@ -50,6 +50,11 @@ This table expands on the values provided in the table [ftChargeItemCase in Gene
 | `0x4954000000000025` | **Discount/Surcharge negativ value is discount, positiv value surcharge: reduced-2 Vat  5%**<br /> | 1.3.45 |
 | `0x4954000000000026` | **Discount/Surcharge negativ value is discount, positiv value surcharge: special Vat  4%**<br /> | 1.3.45 |
 | `0x4954000000000027` | **Discount/Surcharge negativ value is discount, positiv value surcharge: zero Vat  0%**<br /> | 1.3.45 |
+| `0x4954000000000028` | **Single use voucher: normal Vat 22%**<br /> | 1.3.47-rc1 |
+| `0x4954000000000029` | **Single use voucher: reduced-1 Vat 10%**<br /> | 1.3.47-rc1 |
+| `0x4954000000000030` | **Single use voucher: reduced-2 Vat  5%**<br /> | 1.3.47-rc1|
+| `0x4954000000000031` | **Single use voucher: special Vat  4%**<br /> | 1.3.47-rc1 |
+| `0x4954000000000032` | **Single use voucherv: zero Vat  0%**<br /> | 1.3.47-rc1 |
 
 ## ftChargeItemCaseFlag
 This table shows flags that can be added to each `ftChargeItemCase` with values applicable to the Italian market. 

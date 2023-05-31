@@ -52,14 +52,14 @@ This table expands on the values provided in the table [ftChargeItemCase in Gene
 | `0x4954000000000027` | **Discount/Surcharge negativ value is discount, positiv value surcharge: zero Vat  0%**<br /> | 1.3.45 |
 | `0x4954000000000028` | **Coupon sales Single use voucher: normal Vat 22%**<br /> | 1.3.47-rc1 |
 | `0x4954000000000029` | **Coupon sales Single use voucher: reduced-1 Vat 10%**<br /> | 1.3.47-rc1 |
-| `0x4954000000000030` | **Coupon sales Single use voucher: reduced-2 Vat  5%**<br /> | 1.3.47-rc1|
-| `0x4954000000000031` | **Coupon sales Single use voucher: special Vat  4%**<br /> | 1.3.47-rc1 |
-| `0x4954000000000032` | **Coupon sales Single use voucherv: zero Vat  0%**<br /> | 1.3.47-rc1 |
-| `0x4954000000000033` | **Coupon redeem Single use voucher: normal Vat 22%**<br /> | 1.3.47-rc1 |
-| `0x4954000000000034` | **Coupon redeem Single use voucher: reduced-1 Vat 10%**<br /> | 1.3.47-rc1 |
-| `0x4954000000000035` | **Coupon redeem Single use voucher: reduced-2 Vat  5%**<br /> | 1.3.47-rc1|
-| `0x4954000000000036` | **Coupon redeem Single use voucher: special Vat  4%**<br /> | 1.3.47-rc1 |
-| `0x4954000000000037` | **Coupon redeem Single use voucherv: zero Vat  0%**<br /> | 1.3.47-rc1 |
+| `0x495400000000002A` | **Coupon sales Single use voucher: reduced-2 Vat  5%**<br /> | 1.3.47-rc1|
+| `0x495400000000002B` | **Coupon sales Single use voucher: special Vat  4%**<br /> | 1.3.47-rc1 |
+| `0x495400000000002C` | **Coupon sales Single use voucher: zero Vat  0%**<br /> | 1.3.47-rc1 |
+| `0x495400000000002D` | **Coupon redeem Single use voucher: normal Vat 22%**<br /> | 1.3.47-rc1 |
+| `0x495400000000002E` | **Coupon redeem Single use voucher: reduced-1 Vat 10%**<br /> | 1.3.47-rc1 |
+| `0x495400000000002F` | **Coupon redeem Single use voucher: reduced-2 Vat  5%**<br /> | 1.3.47-rc1|
+| `0x4954000000000030` | **Coupon redeem Single use voucher: special Vat  4%**<br /> | 1.3.47-rc1 |
+| `0x4954000000000031` | **Coupon redeem Single use voucher: zero Vat  0%**<br /> | 1.3.47-rc1 |
 
 ## ftChargeItemCaseFlag
 This table shows flags that can be added to each `ftChargeItemCase` with values applicable to the Italian market. 

@@ -38,6 +38,8 @@ https://receipts-sandbox.fiskaltrust.cloud/v0/[QueueId]/[QueueItemId]
 
 This code (and the respective link) can be generated individually from any POS system, based on the data returned by the `/Sign` method of the fiskaltrust.Middleware (which is used to fiscalize receipts).
 
+The digital receipt visualisation behind the generated URL is with the basic version 3 months available after fiscalisation. 
+
 The advantage of this basic version is that it can be used without any further implementation efforts in the POS software. On the other hand, this approach can only be used with POS systems that have a customer display, and lacks other advantages of the options described below.
 
 ### Process flow
@@ -50,12 +52,16 @@ The advantage of this basic version is that it can be used without any further i
 ## Carefree version of the digital receipt 
 This includes all functionalities of the digital receipt (Basic, Give-away and Promotion). 
 
+The digital receipt visualisation behind the generated URL is with the carefree version 7 years available in Austria and 10 years available in Germany after fiscalisation. 
+
 ## Give-away version of the digital receipt
 From the fiskaltrust.Portal, prefabricated adhesive labels or give-away products (such as small gummy bear bags) can be purchased to be resold, which then serve as carriers of a QR code for the digital receipt. There are no delays due to the interaction of the cash register or the operating personnel with the consumer, because the consumer receives a give-away and can retrieve the digital receipt later, regardless of time and location.
 
 The cashier can flexibly scan the QR code on the give-away during the production process or during the payment process and thus establish the connection to the receipt created. If the consumer is interested in the receipt and scans it with their own smartphone after the purchase, they are taken to a web-based view of the receipt without having to install a separate app. In this view, the consumer can also provide feedback on the purchased goods or on the operating personnel at the moment of purchase. This feedback can be evaluated by the PosOperator, the seller of the service, and can easily be put in context with the time of service and the items sold.
 
 The operator's PosDealer can participate by means of placing orders and intermediary in support and billing for each transaction of the POS operator. This applies to every single receipt issued, as the giveaway is issued regardless of how it is viewed and used by the consumer. Since the cost of a QR code label for the digital receipt is less than one third of an 80/80/12 thermal roll at an average length of 20cm per receipt, the margin to be achieved for the PosDealer is higher than for thermal paper (if the PosDealer does not want to contribute an additional investment for giveaways in consumer satisfaction).
+
+The digital receipt visualisation behind the generated URL is with the give-away version 3 months available after fiscalisation. When a carefree package is booked, the receipts are 7 years available in Austria and 10 years available in Germany after fiscalisation.
 
 ### Process flow
 - The POS system scans the giveaway QR code and saves it.
@@ -148,8 +154,8 @@ _Coming soon_
 
 ## Availability of the digital receipt 
 First production ready functionalities of the digital receipt (April 2023)
--	Configuration of logo and address for the digital receipt to be done in the fiskaltrust.Portal for the markets AUT, GER, FRA
--	Receipt layouts for the markets AUT, GER, FRA containing legally required contents derived from single receipt cases 
+-	Configuration of logo and address for the digital receipt to be done in the fiskaltrust.Portal for the markets AUT and GER
+-	Receipt layouts for the markets AUT and GER containing legally required contents derived from single receipt cases 
 -	Logging the issued and called receipts, including statistics and exports 
 -	POS-API/print and POS/API/response endpoints without breaking changes within one version
 

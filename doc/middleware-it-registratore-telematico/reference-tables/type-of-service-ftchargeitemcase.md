@@ -60,6 +60,8 @@ This table expands on the values provided in the table [ftChargeItemCase in Gene
 | `0x495400000000002F` | **Coupon redeem Single use voucher: reduced-2 Vat  5%**<br /> | 1.3.47-rc1|
 | `0x4954000000000030` | **Coupon redeem Single use voucher: special Vat  4%**<br /> | 1.3.47-rc1 |
 | `0x4954000000000031` | **Coupon redeem Single use voucher: zero Vat  0%**<br /> | 1.3.47-rc1 |
+| `0x4954000000000032` | **Voucher sale not taxable (Multi use Voucher)**<br /> | 1.3.47-rc1 |
+
 
 ## ftChargeItemCaseFlag
 This table shows flags that can be added to each `ftChargeItemCase` with values applicable to the Italian market. 

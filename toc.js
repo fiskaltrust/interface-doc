@@ -202,6 +202,7 @@ module.exports = {
         },
       ]
     },
+    {
           type: 'category',
           label: 'Digital Receipt',
           items: [
@@ -212,6 +213,7 @@ module.exports = {
             'middleware-doc/doc/digital-receipt/France/digital-receipt-france.md',
             'middleware-doc/doc/digital-receipt/Instore-App/digital-receipt-instore-app.md',
             ]
+    },
         {
       type: 'link',
       label: 'Middleware API samples',

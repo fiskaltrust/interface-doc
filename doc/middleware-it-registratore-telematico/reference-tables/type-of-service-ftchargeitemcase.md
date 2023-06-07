@@ -55,7 +55,7 @@ This table expands on the values provided in the table [ftChargeItemCase in Gene
 | `0x495400000000002A` | **Coupon Single use voucher: negativ value to redeem, positiv value for sale: reduced-2 Vat  5%**<br /> | 1.3.47-rc1|
 | `0x495400000000002B` | **Coupon Single use voucher: negativ value to redeem, positiv value for sale: special Vat  4%**<br /> | 1.3.47-rc1 |
 | `0x495400000000002C` | **Coupon Single use voucher: negativ value to redeem, positiv value for sale: zero Vat  0%**<br /> | 1.3.47-rc1 |
-| `0x495400000000002D` | **Voucher sale not taxable (Multi use Voucher)**<br /> | 1.3.47-rc1 |
+| `0x495400000000002D` | **Voucher (Multi use Voucher): negativ value to redeem, positiv value for sale not taxable**<br /> | 1.3.47-rc1 |
 
 
 ## ftChargeItemCaseFlag

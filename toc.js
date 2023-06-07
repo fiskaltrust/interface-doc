@@ -202,8 +202,17 @@ module.exports = {
         },
       ]
     },
-    'middleware-doc/doc/digital-receipt/digital-receipt-overview',
-    {
+          type: 'category',
+          label: 'Digital Receipt',
+          items: [
+            'middleware-doc/doc/digital-receipt/Introduction/digital-receipt-introduction.md',
+            'middleware-doc/doc/digital-receipt/General/digital-receipt-general.md',
+            'middleware-doc/doc/digital-receipt/Austria/digital-receipt-austria.md',
+            'middleware-doc/doc/digital-receipt/Germany/digital-receipt-germany.md',
+            'middleware-doc/doc/digital-receipt/France/digital-receipt-france.md',
+            'middleware-doc/doc/digital-receipt/Instore-App/digital-receipt-instore-app.md',
+            ]
+        {
       type: 'link',
       label: 'Middleware API samples',
       href: 'https://middleware-samples.docs.fiskaltrust.cloud/'

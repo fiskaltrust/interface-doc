@@ -1,6 +1,6 @@
 ---
 slug: /poscreators/middleware-doc/digital-receipt/general
-title: 'Digital Receipt: General'
+title: 'General'
 ---
 
 # Overview 

@@ -1,6 +1,6 @@
 ---
 slug: /poscreators/middleware-doc/digital-receipt/InStore-App
-title: 'Digital Receipt: InStore-App'
+title: 'InStore-App'
 ---
 
 Coming soon

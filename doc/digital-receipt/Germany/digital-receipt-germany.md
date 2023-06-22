@@ -1,6 +1,6 @@
 ---
 slug: /poscreators/middleware-doc/digital-receipt/germany
-title: 'Digital Receipt: Germany'
+title: 'Germany'
 ---
 
 # Compliance DE

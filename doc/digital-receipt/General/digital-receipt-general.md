@@ -1,6 +1,6 @@
 ---
 slug: /poscreators/middleware-doc/digital-receipt/general
-title: 'Digital Receipt: General'
+title: 'General'
 ---
 
 # Overview 
@@ -29,8 +29,12 @@ The advantage of this basic version is that it can be used without any further i
 - The POS system displays a QR code that contains this link on the customer display.
 - The customer or consumer scans the QR code via their smartphone, opens the link, and is displayed the digital receipt.
 
+The digital receipt is available for 3 months after creating the receipt.
+
 ## Carefree version of the digital receipt 
 This includes all functionalities of the digital receipt (Basic, Give-away and Promotion). 
+
+The digital receipt is available for 7 years in Austria and 10 years in Germany after creating the receipt. 
 
 ## Give-away version of the digital receipt
 From the fiskaltrust.Portal, prefabricated adhesive labels or give-away products (such as small gummy bear bags) can be purchased to be resold, which then serve as carriers of a QR code for the digital receipt. There are no delays due to the interaction of the cash register or the operating personnel with the consumer, because the consumer receives a give-away and can retrieve the digital receipt later, regardless of time and location.
@@ -125,12 +129,15 @@ Please keep in mind that in a real use case, only **one** of the three mentioned
 
 :::
 
+### Transaction data from card payment
+For payment terminals who are connected to the POS system, transaction data from the card payment can be visualized on the digital receipt.
+
+| Field Name          | Data Type             | Default Value<br />Mandatory Field | Description                                                                                                           | Version |
+|---------------------|-----------------------|------------------------------------|-----------------------------------------------------------------------------------------------------------------------|---------|
+| `ftPayItemCaseData` | `String`<br />Max 64k | empty-string<br />optional         | Additional data about the payment, currently accepted only in JSON format.                                            | 0-      |
+
+The returned data from Payment Service Provider (PSP) can look like following example from Hobex. Please note that any transaction data, regardless of which PSP is used can be send. 
+"{"cbPayItemLines":["VU 123456789 TID 1234567-1\r\n\r\n KUNDENBELEG\r\n01.01.2023 12:00:00\r\n Beleg#: 123456\r\n Genehmigungs#: 123456\r\n Crypto: XXXXXXXXXXXXXXXX\r\n\r\nKAUF\r\nDEBIT MASTERCARD\r\nA0000000000000\r\nXXXXXXXXXXXX0000 12/25\r\nNO CVM Contactless\r\nSVC000 0000000000000000\r\n\r\nBETRAG EUR 10,00\r\n ============\r\n\r\n TX genehmigt!\r\n (RC 0000)\r\n\r\n www.hobex.at\r\n ECR V1.6.4\r\n\r\n"]}"
+
 ## Promotion/ReceiptHero version of the digital receipt 
 _Coming soon_
-
-## Availability of the digital receipt 
-First production ready functionalities of the digital receipt (April 2023)
--	Configuration of logo and address for the digital receipt to be done in the fiskaltrust.Portal for the markets AUT, GER, FRA
--	Receipt layouts for the markets AUT, GER, FRA containing legally required contents derived from single receipt cases 
--	Logging the issued and called receipts, including statistics and exports 
--	POS-API/print and POS/API/response endpoints without breaking changes within one version

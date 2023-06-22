@@ -1,6 +1,6 @@
 ---
 slug: /poscreators/middleware-doc/digital-receipt/introduction
-title: 'Digital Receipt: Introduction'
+title: 'Introduction'
 ---
 
 # Introduction 

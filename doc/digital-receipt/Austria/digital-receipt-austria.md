@@ -1,6 +1,6 @@
 ---
 slug: /poscreators/middleware-doc/digital-receipt/austria
-title: 'Digital Receipt: Austria'
+title: 'Austria'
 ---
 
 # Compliance AT

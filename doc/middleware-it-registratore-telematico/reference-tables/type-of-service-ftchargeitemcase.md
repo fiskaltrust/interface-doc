@@ -50,12 +50,13 @@ This table expands on the values provided in the table [ftChargeItemCase in Gene
 | `0x4954000000000025` | **Discount/Surcharge negativ value is discount, positiv value surcharge: reduced-2 Vat  5%**<br /> | 1.3.45 |
 | `0x4954000000000026` | **Discount/Surcharge negativ value is discount, positiv value surcharge: special Vat  4%**<br /> | 1.3.45 |
 | `0x4954000000000027` | **Discount/Surcharge negativ value is discount, positiv value surcharge: zero Vat  0%**<br /> | 1.3.45 |
+| `0x4954000000000028` | **Coupon Single use voucher: negativ value to redeem, positiv value for sale: normal Vat 22%**<br /> | 1.3.47-rc1 |
+| `0x4954000000000029` | **Coupon Single use voucher: negativ value to redeem, positiv value for sale: reduced-1 Vat 10%**<br /> | 1.3.47-rc1 |
+| `0x495400000000002A` | **Coupon Single use voucher: negativ value to redeem, positiv value for sale: reduced-2 Vat  5%**<br /> | 1.3.47-rc1|
+| `0x495400000000002B` | **Coupon Single use voucher: negativ value to redeem, positiv value for sale: special Vat  4%**<br /> | 1.3.47-rc1 |
+| `0x495400000000002C` | **Coupon Single use voucher: negativ value to redeem, positiv value for sale: zero Vat  0%**<br /> | 1.3.47-rc1 |
+| `0x495400000000002D` | **Voucher (Multi use Voucher): negativ value to redeem, positiv value for sale not taxable**<br /> | 1.3.47-rc1 |
+
 
 ## ftChargeItemCaseFlag
 This table shows flags that can be added to each `ftChargeItemCase` with values applicable to the Italian market. 
-
-| **Value**            | **Description**                                                                                        | **Middleware Version** |
-| -------------------- | -------------- | ---------------------- |
-| `0x4954000000010000` | On void receipt, Operationtype: Acconto | 1.3.45 |
-| `0x4954000000020000` | On void receipt, Operationtype: Free Of Charge | 1.3.45 |
-| `0x4954000000030000` | On void receipt, Operationtype: Single Use Voucher | 1.3.45 |

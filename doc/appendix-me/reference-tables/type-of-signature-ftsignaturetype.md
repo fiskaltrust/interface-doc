@@ -10,9 +10,9 @@ The `ftSignatureType` indicates the type and origin of the signature. The data t
 
 | **Value**            | **Description**          | **Middleware version** |
 |----------------------|--------------------------|------------------------|
-| `0x4D45000000000001` | QR code content | 1.3 |
-| `0x4D45000000000002` | Archiving required | 1.3 |
-| `0x4D45000000000003` | Taxpayer identifying code (IIC/IKOF) | 1.3 |
+| `0x4D45000000000001` | QR code content | 1.3.40- |
+| `0x4D45000000000002` | Archiving required | 1.3.40- |
+| `0x4D45000000000003` | Taxpayer identifying code (IIC/IKOF) | 1.3.40- |
 
 :::note
 

@@ -22,11 +22,11 @@ For Montenegro (ME), the country code is `0x4D45`. Thus, the value of an unknown
 | `0x4D45000000000008` | **Cash withdrawal**<br /><br />Used to register cash withdrawals from the till (e.g. in the evening when closing the store). It is **mandatory** to send this receipt in Montenegro whenever cash is withdrawn, as this data has to be sent to the _central invoice register_. | 1.3- |
 
 ## ftReceiptCaseFlag
-This table expands on the values provided in table [ftReceiptCaseFlag in General Part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag) with values applicable to the German market.
+This table expands on the values provided in table [ftReceiptCaseFlag in General Part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag) with values applicable to the Montenegrin market.
 
 | Value | Description | Middleware-Version |
 |-------|-------------|--------------------|
-| 0x0000000000010000 | **Failed receipt** <br />Common behaviour, see [general part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag). | 1.3- |
-| 0x0000000000040000 | **Reverse/voided receipt(complete).** <br />To cancel a complete receipt, resend it with this flag added to the ftReceiptCase. The field cbReceiptReference has to have a new reference and in cbPreviousReceiptReference the receipt to cancel.| 1.3- |
-| 0x0000000000050000 | **Reverse/voided receipt(partial).** <br />To cancel a partial receipt, resend it with this flag added to the ftReceiptCase. The field cbReceiptReference has to have a new reference and in cbPreviousReceiptReference the receipt to cancel. All charge- and payitems for invoicing have to be included in the receipt. | 1.3- |
-| 0x0000800000000000 | **Receipt request.** <br />Common behavior, see [general part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag). | 1.3- |
+| 0x0000000000010000 | **Failed receipt** <br />Common behaviour, see [general part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag). | 1.3.40- |
+| 0x0000000000040000 | **Reverse/voided receipt(complete).** <br />To cancel a complete receipt, resend it with this flag added to the ftReceiptCase. The field cbReceiptReference has to have a new reference and in cbPreviousReceiptReference the receipt to cancel.| 1.3.40- |
+| 0x0000000000050000 | **Reverse/voided receipt(partial).** <br />To cancel a partial receipt, resend it with this flag added to the ftReceiptCase. The field cbReceiptReference has to have a new reference and in cbPreviousReceiptReference the receipt to cancel. All charge- and payitems for invoicing have to be included in the receipt. | 1.3.40- |
+| 0x0000800000000000 | **Receipt request.** <br />Common behavior, see [general part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag). | 1.3.40- |

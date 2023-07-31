@@ -16,7 +16,7 @@ The `ftSignatureType` indicates the type and origin of the signature. The data t
 
 :::note
 
-The Types `0x4D45000000000001` "QR code content" and `0x4D45000000000003` "Taxpayer identifying code (IIC/IKOF)" are also returned if the government fiscalization service is not reachable and thus the receipt could not be signed. This different to Germany and Austria where e.g. the QR code is only returned when the rceipt could be signed.
+The Types `0x4D45000000000001` "QR code content" and `0x4D45000000000003` "Taxpayer identifying code (IIC/IKOF)" are also returned if the government fiscalization service is not reachable and thus the receipt could not be signed. This is different to Germany where e.g. the QR code is only returned when the receipt could be signed.
 
 :::
 

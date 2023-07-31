@@ -7,7 +7,7 @@ title: 'Service Status: ftState'
 
 The country-specific code is made of the country's code value following the ISO-3166-1-ALPHA-2 standard, converted from ASCII into hex. For Montenegro (ME) this is `0x4D45`, which results in `0x4D45000000000000` as the value for the "ready" status.
 
-The table below describes its supported statuses for the `ftState` field following Montenegran law. These codes can be added through the logic operator `OR`.
+The table below describes its supported statuses for the `ftState` field following Montenegrin law. These codes can be added through the logic operator `OR`.
 
 | **Value**            | **Description**                                                                                     | **Middleware version** |
 |----------------------|-----------------------------------------------------------------------------------------------------|---------------------|

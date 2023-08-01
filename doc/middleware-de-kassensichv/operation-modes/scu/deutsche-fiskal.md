@@ -7,14 +7,15 @@ title: Deutsche Fiskal Cloud-TSE
 
 ### Environmental protection
 
-Please note that this TSE places strict requirements on environmental protection (i.e. the operating system used and its configuration). You can find more detailed information in the official documents of the manufacturer in the [download area of the fiskaltrust portal](https://portal.fiskaltrust.de/AccountProfile/Download).
+Please note that this TSE places strict requirements on environmental protection (i.e. the operating system used and its configuration). You can find more detailed information in the official documents of the manufacturer in the [download area of the fiskaltrust portal](https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Weitere_Steuerthemen/Abgabenordnung/AO-Anwendungserlass/2021-11-04-aenderung-des-anwendungserlasses-zur-abgabenordnung-AEAO.pdf?__blob=publicationFile&v=2).
 
 ### State of certification
 
-Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://link.fiskaltrust.cloud/de/legal/146a-ao):
+Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 146a AO](https://www.bundesfinanzministerium.de/Content/DE/Downloads/BMF_Schreiben/Weitere_Steuerthemen/Abgabenordnung/AO-Anwendungserlass/2021-11-04-aenderung-des-anwendungserlasses-zur-abgabenordnung-AEAO.pdf?__blob=publicationFile&v=2):
 
 | Certification-ID                                                                                                                    | Test item                   | Applicant    | Date       |
 |:------------------------------------------------------------------------------------------------------------------------------------|:----------------------------|:-------------|:-----------|
+| [BSI-K-TR-0474-2021](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0474-2021.html) | D-TRUST TSE Web Version 3.0 | D-TRUST GmbH | 10.12.2021 |
 | [BSI-K-TR-0457-2021](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0457-2021.html) | D-TRUST TSE Web Version 2.0 | D-TRUST GmbH | 18.02.2021 |
 | [BSI-K-TR-0369-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0369-2020.html) | D-TRUST TSE Web Version 1.0 | D-TRUST GmbH | 30.09.2020 |
 

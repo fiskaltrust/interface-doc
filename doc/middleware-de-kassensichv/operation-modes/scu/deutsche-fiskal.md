@@ -15,6 +15,7 @@ Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 14
 
 | Certification-ID                                                                                                                    | Test item                   | Applicant    | Date       |
 |:------------------------------------------------------------------------------------------------------------------------------------|:----------------------------|:-------------|:-----------|
+| [BSI-K-TR-0474-2021](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0474-2021.html) | D-TRUST TSE Web Version 3.0 | D-TRUST GmbH | 10.12.2021 |
 | [BSI-K-TR-0457-2021](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0457-2021.html) | D-TRUST TSE Web Version 2.0 | D-TRUST GmbH | 18.02.2021 |
 | [BSI-K-TR-0369-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0369-2020.html) | D-TRUST TSE Web Version 1.0 | D-TRUST GmbH | 30.09.2020 |
 

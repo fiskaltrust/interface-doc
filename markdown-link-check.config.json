@@ -9,6 +9,6 @@
     { "pattern": "^https?://helipad\\.fiskaltrust\\.cloud/?$" },
     { "pattern": "^https?://packages\\.fiskaltrust\\.cloud/?$" },
     { "pattern": "^https?://eur-lex\\.europa\\.eu.*" },
-    { "pattern": "^https?://www.bundesfinanzministerium\\.de.*" },
+    { "pattern": "^https?://www.bundesfinanzministerium\\.de.*" }
   ]
 }

@@ -13,12 +13,12 @@ After reading this, you understand the concept of the InStore App and configure 
 
 ## Introduction
 
-The fiskaltrust instore app can be used on a touch-enabled device with integrated thermal printer. The fiskaltrust instore app can listen to receipt issuing of multiple CashBoxes filtered by provided terminal-identification by each CashBox. Each time a receipt is issued by a related CashBox, the fiskaltrust instore app pops up on the consumer facing touch screen and shows the following elements: 
+The fiskaltrust instore app can be used on a touch-enabled device with an integrated thermal printer. The fiskaltrust InStore App can listen to receipt issuing of multiple CashBoxes filtered by provided terminal-identification by each CashBox. Each time a related CashBox issues a receipt, the fiskaltrust InStore App pops up on the consumer facing touch screen and shows the following elements: 
 
 * Number, moment of creation and total amount of the receipt 
-* QR-Code with the https-receipt-link to hand over receipt to consumer 
+* QR-Code with the https-receipt-link to hand over receipt to the consumer 
 * Accept button to manually acknowledge received receipt 
-* Print button with countdown to print receipt
+* Print button with a countdown to print receipt
 
 When the QR-Code is scanned and the https-receipt-link is used to download the https-receipt-document, then in the background there is an acknowledgement logged for receiving the receipt by the consumer and the current receipt display is closed. 
 
@@ -28,7 +28,7 @@ When the print button is pressed by the consumer, or when the timeout/countdown 
 
 Setting up the InStore App requires no implementation into the Point of Sale software. The configuration process, encompassing POS-API Helper configuration and the steps for pairing the CashBox with the device, can be effortlessly completed within the fiskaltrust.Portal.
 
-Since all operations within the app (Including QR-Code scanning, accepting and printing) are meticulously logged in the fiskaltrust.Portal, the InStore App attains complete compliance with Austria's "Belegausgabepflicht" and "Belegannahmepflicht", as well as Germany's "Belegausgabepflicht". Furthermore the app ensures, that the receipt will always be issued to the consumer. fiskaltrust appointed Markus Knasmüller from BMD to create an external assessment about the conformity of the digital receipt in Austria. The final assessment can be requested here: https://forms.office.com/e/0PcMDYWC2B  
+Since all operations within the app (Including QR-Code scanning, accepting and printing) are meticulously logged in the fiskaltrust.Portal, the InStore App attains complete compliance with Austria's "Belegausgabepflicht" and "Belegannahmepflicht", as well as Germany's "Belegausgabepflicht". Furthermore, the app ensures that the receipt will always be issued to the consumer. fiskaltrust appointed Markus Knasmüller from BMD to create an external assessment about the conformity of the digital receipt in Austria. The final assessment can be requested here: https://forms.office.com/e/0PcMDYWC2B  
 
 :::caution
 The fiskaltrust InStore App requires a permanent and stable connection to the internet.

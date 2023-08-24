@@ -13,7 +13,7 @@ After reading this, you understand the concept of the InStore App and configure 
 
 ## Introduction
 
-The fiskaltrust instore app can be used on a touch-enabled device with integrated thermal printer. The fiskaltrust instore app can listen to receipt issuing of multiple cashboxes filtered by provided terminal-identification by each cashbox. Each time a receipt is issued by a related cashbox, the fiskaltrust instore app pops up on the consumer facing touch screen and shows the following elements: 
+The fiskaltrust instore app can be used on a touch-enabled device with integrated thermal printer. The fiskaltrust instore app can listen to receipt issuing of multiple CashBoxes filtered by provided terminal-identification by each CashBox. Each time a receipt is issued by a related CashBox, the fiskaltrust instore app pops up on the consumer facing touch screen and shows the following elements: 
 
 * Number, moment of creation and total amount of the receipt 
 * QR-Code with the https-receipt-link to hand over receipt to consumer 

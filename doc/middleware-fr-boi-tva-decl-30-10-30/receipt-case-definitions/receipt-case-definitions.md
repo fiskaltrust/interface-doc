@@ -20,3 +20,14 @@ An agency business can be displayed with the ftChargeItemCase (`0x46520000000000
 #### Delivery Note
 
 #### Tips
+
+Tips are defined in the [General part](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/general/receipt-case-definitions#tips)
+
+#### Duplicata
+
+A duplicata or copy of a document is printed, this must be done as a separate document. The layout and the information contained is the same as for the original document. 
+Starting August 1st 2023, a new anti-waste law is enforced, about the ban of systematic printing of the receipt. 
+
+The general rule is that if a receipt is printed at the time of the transaction, then the receipt printed is the original.  
+
+If the receipt is printed after the time of the transaction is considered a duplicata. 

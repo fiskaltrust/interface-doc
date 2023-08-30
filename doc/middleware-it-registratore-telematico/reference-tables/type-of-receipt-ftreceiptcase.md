@@ -18,7 +18,7 @@ For Italy (IT), the country code is `0x4954`. Thus, the value of an unknown `ftR
 | `0x4954000000000004` | **Out of operation receipt / stop-receipt**<br /><br />The request is only valid with the same property requirements as a zero-receipt. It is disabling the fiskaltrust.SecurityMechanism. <br /><br />On successful deactivation, a notification is created which includes the Queue ID, SCU ID, and all locally relevant additional information.<br /><br />The request is only valid when the charge items block (`ftChargeItems`) and the pay items block (`ftPayItems`) in the `ftReceiptRequest` are empty arrays.<br /><br /> | 1.3.45 |
 | `0x4954000000000005` | **Monthly-closing**<br /><br />This is a zero-receipt. It is recommended to send this receipt at the end of each month to define the time of the accounting closure. | 1.3.45 |
 | `0x4954000000000006` | **Yearly-closing**<br /><br />This is a zero-receipt. It is recommended to send this receipt at the end of each year to define the time of the accounting closure. | 1.3.45 |
-| `0x4954000000000006` | **Daily-closing**<br /><br />This is a zero-receipt. It is recommended to send this receipt at the end of each day to define the time of the POS system closure. | 1.3.45 |
+| `0x4954000000000007` | **Daily-closing**<br /><br />This is a zero-receipt. It is recommended to send this receipt at the end of each day to define the time of the POS system closure. | 1.3.45 |
 
 ## ftReceiptCaseFlag
 This table expands on the values provided in table [ftReceiptCaseFlag in General Part](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag) with values applicable to the Italian market.

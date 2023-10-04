@@ -60,21 +60,32 @@ Please visit following link to see configuration steps for the master data:
 
 https://docs.fiskaltrust.cloud/de/docs/posdealers/buy-resell/products/digital-receipt#introduction
 
-### Configure POS-API Helper
+### Configure POS-API Helper / implement POS-API
+
+fiskaltrust offers two transportation methods to seamlessly transfer data from your local Queue to the digital receipt backend. To ensure a smooth digital receipt process, a switch to direct receipt uploads is necessary.
+
+The first method, requiring no additional implementation effort, involves the utilization of the POS-API Helper, which can be configured within the fiskaltrust.Portal. The role of the POS-API Helper is to facilitate the seamless and direct transfer of the receipt data from the local Queue to the digital receipt endpoint. To take advantage of this capability, the POS-API Helper needs to be configured in the fiskaltrust.Portal and assigned to each CashBox utilizing the InStore App. Failure to not configure the POS-API Helper results in digital receipt visualization delays of up to five minutes. To gain insights into the configuration steps for the POS-API Helper, please refer to the section configure POS-API Helper of this document.
+
+The second method to change the upload behavior entails the integration of the POS-API's print endpoint directly into your Point of Sale software. Particularly recommended for scaling installations, this approach enhances efficiency, because no configuration needs to be done in the fiskaltrust.Portal. Distinguishing itself from the POS-Helper, the POS-API offers a broader range of advanced features. Comprehensive instructions for implementing the POS-API can found in the section implement POS-API of this document.
 
 Please visit following link to see configuration steps for the POS-API Helper:
 
 https://docs.fiskaltrust.cloud/de/docs/posdealers/technical-operations/middleware/helper#pos-api-helper-example
+
+Please visit following link to see configuration steps for the POS-API: 
+
+https://docs.fiskaltrust.cloud/de/apis/pos-api#tag/POS-API/paths/~1v0~1print/post
 
 ### Install the InStore App
 
 The fiskaltrust InStore App is now available in the following app stores. It necessitates a minimum of Android 7, touchscreen and a integrated printer device to run the application.
 
 Search for "fiskaltrust InStore App" at following app stores, to download the app:
-* APK – upon request 
-* SUNMI App Store
-* Google Play Store - soon
-* MAXSTORE (PAX) – soon
+
+* APK (via App Center) – (https://install.appcenter.ms/orgs/fiskaltrust/apps/in-store/distribution_groups/stable)
+* SUNMI App Store - Approved and available for: P2 PRO, P2, V1, V2, & V2 PRO
+* Google Play Store - coming soon
+* MAXSTORE (PAX) - Approved and available for: A35, A80 & A920Pro
 
 ### Pair InStore App
 

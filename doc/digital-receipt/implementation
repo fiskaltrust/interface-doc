@@ -1,0 +1,14 @@
+---
+slug: /poscreators/middleware-doc/digital-receipt/implementation
+title: 'Implementation'
+---
+
+# Getting started
+
+In this section of this guide, the implementation steps are described for PosCreators to achieve and ensure a complete integration into your Point of Sale software. 
+
+Please note, that currently the digital receipt can only be implemented into existing middleware integrations. An own standalone digital receipt API is not available yet. 
+
+This high level overview shows you the steps on how to implement and configuration steps for the digital receipt onto your Point of Sale software. 
+
+Bild getting started einfügen 

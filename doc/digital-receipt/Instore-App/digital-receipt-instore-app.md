@@ -1,5 +1,5 @@
 ---
-slug: /poscreators/middleware-doc/digital-receipt/InStore-App
+slug: /poscreators/middleware-doc/digital-receipt/instore-app
 title: 'InStore App'
 ---
 

@@ -80,12 +80,20 @@ https://docs.fiskaltrust.cloud/de/apis/pos-api#tag/POS-API/paths/~1v0~1print/pos
 
 The fiskaltrust InStore App is now available in the following app stores. It necessitates a minimum of Android 7, touchscreen and a integrated printer device to run the application.
 
-Search for "fiskaltrust InStore App" at following app stores, to download the app:
+Search for "fiskaltrust InStore App" at following app stores, to download the app (Production):
 
 * APK (via App Center) – (https://install.appcenter.ms/orgs/fiskaltrust/apps/in-store/distribution_groups/stable)
 * SUNMI App Store - Approved and available for: P2 PRO, P2, V1, V2, & V2 PRO
 * Google Play Store - coming soon
 * MAXSTORE (PAX) - Approved and available for: A35, A80 & A920Pro
+
+:::caution
+For Sandbox environment a separate InStore App is required!
+:::
+
+fiskaltrust InStore App for Sandbox environment can be downloaded here:
+
+* APK (via App Center) - https://install.appcenter.ms/orgs/fiskaltrust/apps/in-store/distribution_groups/preview 
 
 ### Pair InStore App
 
@@ -94,5 +102,5 @@ After installing the InStore App on your Android device, establishing a connecti
 | Step  | Description |
 | ------------- | ------------- |
 | 1  | Log in to your fiskaltrust.Portal account and proceed to the CashBox you want to pair with the InStore App.  |
-| 2  | Extend the overview of the CashBox. Klick `unhide` to generate a new, temporary pairing pin.![portal](https://github.com/fiskaltrust/interface-doc/assets/124153755/9e7c7b22-f3ef-4276-85e7-860375c853ca) The pairing pin is valid for five minutes. After the pin expired, you need to generate a new pin, by clicking `unhide` to generate a new pin.   |
+| 2  | Extend the overview of the CashBox. Klick `unhide` to generate a new, temporary pairing pin.<br/>![portal](https://github.com/fiskaltrust/interface-doc/assets/124153755/9e7c7b22-f3ef-4276-85e7-860375c853ca) The pairing pin is valid for five minutes. After the pin expired, you need to generate a new pin, by clicking `unhide` to generate a new pin.   |
 | 3  | ![pairing_pin](https://github.com/fiskaltrust/interface-doc/assets/124153755/ce1010a1-469f-4747-b368-fe3192f3cae7) <br/>Enter the four-digit pin into your InStore App, confirm the connection by clicking `Pair`. You can pair multiple InStore App installations with one CashBox. To open the paring to CashBox mask or to pair with a different CashBox, press the touchscreen one second.   |

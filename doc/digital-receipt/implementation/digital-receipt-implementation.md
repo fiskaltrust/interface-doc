@@ -1,6 +1,6 @@
 ---
-slug: /poscreators/middleware-doc/digital-receipt/implementation/qr-code-version
-title: 'Implementation'
+slug: /poscreators/middleware-doc/digital-receipt/implementation/digital-receipt-implementation
+title: 'Digital receipt implementation'
 ---
 
 # Qr-Code version (QR-Code on display) 

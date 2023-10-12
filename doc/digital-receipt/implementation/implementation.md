@@ -1,6 +1,6 @@
 ---
-slug: /poscreators/middleware-doc/digital-receipt/implementation
-title: 'Implementation'
+slug: /poscreators/middleware-doc/digital-receipt/getting-started
+title: 'Getting started'
 ---
 
 # Getting started

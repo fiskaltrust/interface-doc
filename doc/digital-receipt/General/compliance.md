@@ -1,5 +1,5 @@
 ---
-slug: /poscreators/middleware-doc/digital-receipt/compliance 
+slug: /poscreators/middleware-doc/digital-receipt/general/compliance 
 title: 'Compliance'
 ---
 

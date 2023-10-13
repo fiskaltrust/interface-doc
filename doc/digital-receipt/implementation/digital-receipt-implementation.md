@@ -3,7 +3,7 @@ slug: /poscreators/middleware-doc/digital-receipt/implementation/digital-receipt
 title: 'Digital receipt implementation'
 ---
 
-# Qr-Code version (QR-Code on display) 
+# QR-Code version (QR-Code on display) 
 
 This method provides the digital receipt via a link that should be distributed as a QR-Code (e.g. on the customer display of the POS system, handheld or self-service terminal), which should contain a URL in the following format:
 
@@ -24,7 +24,7 @@ Response details:
 "ftCashBoxID":"124358e8-9cbd-4332-9076-7ed8b72306ac"
 "ftQueueID":"c719b59a-9ff0-891a-98a1-030776d8c46f"
 "ftQueueItemID":"f838d7c8-3113-4c3a-914a-46d7de555d11"
-"ftQueueRow":41
+"ftQueueRow":"41"
 "cbTerminalID":"T2"
 "cbReceiptReference":"pos-action-identification-02"
 "ftCashBoxIdentification":"bonstart"
@@ -296,14 +296,32 @@ cbChargeItems (List of services or items sold)
 | Amount  | 3.2  | mandatory  | yes  | Gross total price of service(s). The gross individual price, net total price, and net individual price, have to be calculated using the amount and either VAT rate or VAT amount  |
 | VATRate  | 20  | mandatory  | yes  | VAT rate as percentage  |
 | ftChargeItemCase  | 0x4154000000000003  | mandatory  | no  | Type of service or item according to the reference table in the appendix. It is used in order to determine the processing logic for the corresponding business transaction  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  |
-| Content Cell  | Content Cell  | Content Cell  | Content Cell  | Content Cell  |
+| ftChargeItemCaseData  | "{\"ftChargeItemCaseData\":[\"Mit Hafermilch\\r\\nund Zucker\"]}"  | optional  | currently not*  | Additional data about the service, currently accepted only in JSON format  |
+| VATAmount  | 0.5333333333333333  | optional  | yes  | If the VAT amount is indicated, it can be used to calculate the net amount in order to avoid rounding errors which are especially likely to appear in row-based net price additions  |
+| AccountNumber  | 1234  | optional  | no  | Account number for transfer into bookkeeping  |
+| CostCenter  | 1  | optional  | no  | Indicator for transfer into cost accounting (type, center, and payer)  |
+| ProductGroup  | Kaffee  | optional  | no  | This value allows the customer the logical grouping of products  |
+| ProductNumber  | 123  | optional  | no  | Value used to identify the product  |
+| ProductBarcode  | 16514646137  | optional  | currently not*  | Product’s barcode  |
+| Unit  | Stk  | optional  | no  | Unit of measurement  |
+| UnitQuantity  |   | optional  | no  | Quantity of the service(s) of receipt entry, displayed in indicated units  |
+| UnitPrice  | 2.56  | optional  | no  | ross price per indicated unit  |
+| Moment  | 2023-08-01T07:47:53.68Z  | mandatory  | no  | Time of service (year, month, day, hour, minute, second). Must be provided in UTC  |
+
+cbPayItems (List of payment received)
+
+| Field name  | Sample data | Mandatory field | Visualized on receipt | Description |
+| ------------- | ------------- | ------------- | ------------- | ------------- |
+| Quantity  | 1  | mandatory  | no  | Number of payments. This value will be set to 1 in most of the cases. It can be greater than 1 e.g. when paying with multiple vouchers of the same value  |
+| Description  | Hobex   | mandatory  | yes  |Name or description of payment  |
+| Amount  | 3.2  | mandatory  | yes  | Total amount of payment  |
+| ftChargeItemCase  | 0x4154000000000003  | mandatory  | no  | Type of service or item according to the refer-ence table in the appendix. It is used in order to determine the processing logic for the corresponding business transaction  |
+| ftPayItemCaseData  | "ftPayItemCaseData":<br/>"{\"cbPayItemLines\":[\"* *  Kundenbeleg  * *\\r\\nTest\\r\\nMusterstr. 1\\r\\n5020 Salzburg\\r\\nDatum: 05.07.2023\\r\\nUhrzeit: 08:46:26 Uhr\\r\\nBeleg-Nr. 0001\\r\\nTrace-Nr. 000123\\r\\nKartenzahlung\\r\\nContactless\\r\\ngirocard\\r\\nNr.\\r\\n###############7123 0000\\r\\nGenehmigungs-Nr. 880123\\r\\nTerminal-ID 52051123\\r\\nPos-Info 00 075 01\\r\\nAS-Zeit 05.07. 08:46 Uhr\\r\\nWeitere Daten 0000000001\\r\\n/////1F0312//\\r\\nBetrag EUR 8,60\\r\\nZahlung erfolgt\\r\\nBitte Beleg aufbewahren\\r\\n\"]}","Moment":"2023-08-09T07:12:46.0000000Z"}]}"  | optional  | yes  | Additional data about the payment transaction data, only accepted in JSON format. This can be the transaction data from card payment data from your PSP or the remaining value of a voucher  |
+| CostCenter  | 1  | optional  | no  | Indicator for transfer into cost accounting (type, center and payer)  |
+| MoneyGroup  | 1  | optional  | no  | This value allows the logical grouping of payment types  |
+| MoneyNumber  | 1  | optional  | no  | This value identifies the payment type  |
+| ftReceiptCase  | 0x4154000000000001  | mandatory  | no  | The ftReceiptCase indicates the receipt type and defines how it should be processed by the fiskaltrust.SecurityMechanism in accordance with the local law  |
+| cbReceiptAmount  | 3.2  | optional  | yes  | Total receipt amount incl. taxes (gross receipt amount). If it is not provided, it can be calculated with the sum of the amounts of the cbChargeItems. It can be useful and important for systems working with net amounts, as it helps to apply different methods of calculation and rounding  |
+| cbUser  | Hr. Müller  | optional  | currently not*  | Identification of the user, who creates the receipt. Although all string values are supported, we suggest using data structures serialized into JSON format  |
+
+*Implementation for visualization on the digital receipt planned, but not yet available  

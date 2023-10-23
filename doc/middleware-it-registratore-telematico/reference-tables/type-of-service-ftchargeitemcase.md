@@ -7,56 +7,72 @@ title: 'Type of service: ftChargeItemCase'
 
 This table expands on the values provided in the table [ftChargeItemCase in General Part](../../general/reference-tables/reference-tables.md#type-of-service-ftchargeitemcase), with country-specific values applicable to the Italian market.
 
+## Format
+_CCCC_vlll_gggg_NNSV_ 
+
+
+#### V - VAT  
+https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm 
+
+| **Value**            | **Description**| **Middleware Version** |
+| -------------------- | -------------- | ---------------------- |
+| `0` | **Unknown type of service for IT**<br />With the help of the VAT-rates table saved within fiskaltrust.SecurityMechanisms. | 1.3.45  |
+| `1` | **Discounted-1 VAT rate**<br />(as of 1.1.2022, this is 22%). | 1.3.45 |
+| `2` | **Discounted 2 VAT rate**<br />(as of 1.1.2022, this is calculated with 10%). | 1.3.45   |
+| `3` | **Normal VAT rate**<br />(as of 1.1.2022, this is calculated with 5%). | 1.3.45  |
+| `4` | **Super reduced 1 VAT rate**<br /> | 1.3.45 |
+| `5` | **Super reduced 2 VAT rate**<br /> | 1.3.45 |
+| `6` | **Parking VAT rate**<br />Reversal of tax liability. | 1.3.45 |
+| `7` | **Zero VAT rate**<br />In the data, a VAT-rate can be indicated. | 1.3.45 |
+| `8` | **Not Taxable**<br />For processing, see (`0x4954000000000001`) | 1.3.45 |
+
+
+#### S - Type of Service  
 
 | **Value**            | **Description**                                                                                        | **Middleware Version** |
 | -------------------- | -------------- | ---------------------- |
-| `0x4954000000000000` | **Unknown type of service for IT**<br />With the help of the VAT-rates table saved within fiskaltrust.SecurityMechanisms, an allocation to standard /reduced-1 /reduced-2 / super-reduced/zero is attempted. | 1.3.45  |
-| `0x4954000000000001` | **Undefined type of service for IT normal**<br />(as of 1.1.2022, this is 22%). | 1.3.45 |
-| `0x4954000000000002` | **Undefined type of service for IT reduced-1**<br />(as of 1.1.2022, this is calculated with 10%). | 1.3.45   |
-| `0x4954000000000003` | **Undefined type of service for IT reduced-2**<br />(as of 1.1.2022, this is calculated with 5%). | 1.3.45  |
-| `0x4954000000000004` | **Undefined type of service for IT special (super-reduced)**<br />Includes all rates that are not contained in the previous ones (as of 1.1.2022, this is 4%). | 1.3.45 |
-| `0x4954000000000005` | **Undefined type of service for IT zero**<br />Includes data indicated with 0% sales tax and data where the sales tax is unknown, for example, about an outgoing invoice. Also, in cases where the sales tax should not be apparent, for example, in differential taxation, the data can be issued with this code. | 1.3.45 |
-| `0x4954000000000006` | **Reverse charge**<br />Reversal of tax liability.                                                     | 1.3.45 |
-| `0x4954000000000007` | **Not own sales**<br />In the data, a VAT-rate can be indicated.                                       | 1.3.45 |
-| `0x4954000000000008` | **Delivery normal Vat 22%**<br />For processing, see (`0x4954000000000001`)                            | 1.3.45 |
-| `0x4954000000000009` | **Delivery reduced-1 Vat 10%**<br />For processing, see (`0x4954000000000002`)                         | 1.3.45 |
-| `0x495400000000000A` | **Delivery reduced-2 Vat 5%**<br />For processing, see (`0x4954000000000003`)                          | 1.3.45 |
-| `0x495400000000000B` | **Delivery reduced special Vat 4%**<br />For processing, see (`0x4954000000000004`)                    | 1.3.45 |
-| `0x495400000000000C` | **Delivery zero**<br />For processing, see (`0x4954000000000005`)                                      | 1.3.45 |
-| `0x495400000000000D` | **Other services normal**<br />For processing, see (`0x4954000000000001`)                           | 1.3.45 |
-| `0x495400000000000E` | **Other services reduced-1**<br />For processing, see (`0x4954000000000002`)                           | 1.3.45 |
-| `0x495400000000000F` | **Other services reduced-2**<br />For processing, see (`0x4954000000000003`)                              | 1.3.45 |
-| `0x4954000000000010` | **Other services special**<br />For processing, see (`0x4954000000000004`)                             | 1.3.45 |
-| `0x4954000000000011` | **Other services zero**<br />For processing, see (`0x4954000000000005`)                                | 1.3.45 |
-| `0x4954000000000012` | **Catalogue services normal**<br />For processing, see (`0x4954000000000001`)                       | 1.3.45 |
-| `0x4954000000000013` | **Catalogue services reduced-1**<br />For processing, see (`0x4954000000000002`)                       | 1.3.45 |
-| `0x4954000000000014` | **Catalogue services reduced-2**<br />For processing, see (`0x4954000000000003`)                          | 1.3.45 |
-| `0x4954000000000015` | **Catalogue services special**<br />For processing, see (`0x4954000000000004`)                         | 1.3.45 |
-| `0x4954000000000016` | **Catalogue services zero**<br />For processing, see (`0x4954000000000005`)                            | 1.3.45 | 
-| `0x4954000000000017` | **Own consumption normal**<br />For processing, see (`0x4954000000000001`)                          | 1.3.45 |
-| `0x4954000000000018` | **Own consumption reduced-1**<br />For processing, see (`0x4954000000000002`)                          | 1.3.45 |
-| `0x4954000000000019` | **Own consumption reduced-2**<br />For processing, see (`0x4954000000000003`)                             | 1.3.45 |
-| `0x495400000000001A` | **Own consumption special**<br />For processing, see (`0x4954000000000004`)                            | 1.3.45 |
-| `0x495400000000001B` | **Own consumption zero**<br />For processing, see (`0x4954000000000005`)                               | 1.3.45 |
-| `0x495400000000001C` | **Prepayment normal**<br />For processing, see (`0x4954000000000001`)                               | 1.3.45 |
-| `0x495400000000001D` | **Prepayment reduced-1**<br />For processing, see (`0x4954000000000002`)                               | 1.3.45 |
-| `0x495400000000001E` | **Prepayment reduced-2**<br />For processing, see (`0x4954000000000003`)                                  | 1.3.45 |
-| `0x495400000000001F` | **Prepayment special**<br />For processing, see (`0x4954000000000004`)                                 | 1.3.45 |
-| `0x4954000000000020` | **Prepayment zero**<br />For processing, see (`0x4954000000000005`)                                    | 1.3.45 |
-| `0x4954000000000021` | **Account of a third party/ third party name/ collection**<br />For processing, see (`0x4954000000000007`)| 1.3.45 |
-| `0x4954000000000022` | **Obligation**                                                                                         | 1.3.45 |
-| `0x4954000000000023` | **Discount/Surcharge negativ value is discount, positiv value surcharge: normal Vat 22%**<br /> | 1.3.45 |
-| `0x4954000000000024` | **Discount/Surcharge negativ value is discount, positiv value surcharge: reduced-1 Vat 10%**<br /> | 1.3.45 |
-| `0x4954000000000025` | **Discount/Surcharge negativ value is discount, positiv value surcharge: reduced-2 Vat  5%**<br /> | 1.3.45 |
-| `0x4954000000000026` | **Discount/Surcharge negativ value is discount, positiv value surcharge: special Vat  4%**<br /> | 1.3.45 |
-| `0x4954000000000027` | **Discount/Surcharge negativ value is discount, positiv value surcharge: zero Vat  0%**<br /> | 1.3.45 |
-| `0x4954000000000028` | **Coupon Single use voucher: negativ value to redeem, positiv value for sale: normal Vat 22%**<br /> | 1.3.47-rc1 |
-| `0x4954000000000029` | **Coupon Single use voucher: negativ value to redeem, positiv value for sale: reduced-1 Vat 10%**<br /> | 1.3.47-rc1 |
-| `0x495400000000002A` | **Coupon Single use voucher: negativ value to redeem, positiv value for sale: reduced-2 Vat  5%**<br /> | 1.3.47-rc1|
-| `0x495400000000002B` | **Coupon Single use voucher: negativ value to redeem, positiv value for sale: special Vat  4%**<br /> | 1.3.47-rc1 |
-| `0x495400000000002C` | **Coupon Single use voucher: negativ value to redeem, positiv value for sale: zero Vat  0%**<br /> | 1.3.47-rc1 |
-| `0x495400000000002D` | **Voucher (Multi use Voucher): negativ value to redeem, positiv value for sale not taxable**<br /> | 1.3.47-rc1 |
+| `0` | **Unknown type of service**<br />With the help of the VAT-rates table saved within fiskaltrust.SecurityMechanisms. | 1.3.45  |
+| `1` | **Delivery (supply of goods)**<br />| 1.3.45 |
+| `2` | **Other service (supply of service)**<br />| 1.3.45   |
+| `3` | **Tip**<br /> For owner use V=0 to 7, related to total amount <br /> For Employee use V=8, Not Taxable(as of 1.1.2022, this is calculated with 5%). | 1.3.45  |
+| `4` | **Voucher**<br /> For Single-Use-Voucher use V=0 to 7<br />For Multi-Use-Voucher use V=8, Not Taxable<br />Voucher Sales is positive (+) amount.<br />Voucher Redeem is negative (-) amount.<br />IsVoid can be applied to reverse amounts. <br />Avoid to use this for Multi-Use-Voucher, use PayItem instead, with ShowInChargeItems flag. For Single-Use-Voucher apply ShowInPayItems flag to visualize it similar to a payment and to keep total amount unreduced. | 1.3.45 |
+| `5` | **Catalog service**<br /> | 1.3.45 |
+| `6` | **Not own sales / Agency business**<br />| 1.3.45 |
+| `7` | **Own Consumption**<br />| 1.3.45 |
+| `8` | **Grant**<br />For Unreal Grant use V=0 to 7<br />For Real Grant use V=8  |1.3.45| 
+| `9` | **Receivable**<br />Receiveable creation is negative (-) amount<br />Receiveable reduction is positive (+) amount.<br />IsVoid can be applied to reverse amounts.<br />Avoid to use this, use PayItem instead.  |1.3.45|   
+| `A` | **Cash Transfer**<br />Cash Transfer to till is positive (+) amount<br />Cash Transfer from till is negative (-) amount.<br />Only useable with V=8, Not Taxable. <br />IsVoid can be applied to reverse amounts|1.3.45|    
 
+#### NN - nature of VAT  
+
+| **Value**            | **Description**                                                                                        | **Middleware Version** |
+| -------------------- | -------------- | ---------------------- |
+| `00` | **usual VAT applies**<br />| 1.3.45  |
+| `10` | **Not Taxable**<br />1x can be used to specify more country specific details. For example, IGL| 1.3.45 |
+| `20` | **Not Subject**<br />2x can be used to specify more country specific details.| 1.3.45   |
+| `30` | **Exempt**<br /> 3x| 1.3.45  |
+| `40` | **Margin scheme**<br /> Do not print/show VAT rate and amount on receipt/invoice.<br />4x can be used to specify more country specific details. | 1.3.45 |
+| `50` | **Reverse charge**<br /> 5x | 1.3.45 |
+| `60` | **VAT paid in other EU country** <br />6x| 1.3.45 |
+| `70` | **VAT distribution**<br />7x | 1.3.45 |
+| `80` | **Excluded**<br /> 8x| 1.3.45 |
+
+
+#### lll - local taggin/flag
+
+TBD
+
+#### gggg - global tagging/flag 
+
+| **Value**            | **Description**                                                                                        | **Middleware Version** |
+| -------------------- | -------------- | ---------------------- |
+| `0001` | **IsVoid**<br />Marks ChargeItem as Void previous position. Quantity and amount are inverted, related to original item. | 1.3.45  |
+| `0002` | **IsReturn/IsRefund**<br />Marks ChargeItem as Return of good or service. Quantity and amount are inverted, related to original item. | 1.3.45 |
+| `0004` | **Discount**<br />Marks ChargeItem as Discount/Extra for previous position. <br />Positive (+) amount is extra. <br />Negative (-) amount is discount<br />IsVoid or IsReturn/IsRefund will invert this behavior.| 1.3.45  |
+| `0008` | **Downpayment**<br /> Marks ChargeItem as a downpayment.<br />Positive (+) amount is the creation of downpayment.<br />Negative (-) amount is reduction of downpayment.<br />IsVoid or IsReturn/IsRefund will invert this behavior. | 1.3.45 |
+| `0010` | **Returnable**<br /> Marks ChargeItem as a returnable.<br />Positive (+) amount/quantity is handout.<br />Negative (-) amount/quantity is reverse.<br />IsVoid or IsReturn/IsRefund will invert this behavior.| 1.3.45 |
+| `0020` | **TakeAway** <br />Marks ChargeItem as TakeAway item to prove special VAT application | 1.3.45 |
+| `8000` | **ShowInPayments**<br />Visualize the item after Total Amount. This inverts amount and does not include the amount into the visualized total amount on the receipt.  | 1.3.45 |
 
 ## ftChargeItemCaseFlag
 This table shows flags that can be added to each `ftChargeItemCase` with values applicable to the Italian market. 

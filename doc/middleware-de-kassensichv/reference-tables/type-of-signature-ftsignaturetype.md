@@ -1,5 +1,5 @@
 ---
-slug: /poscreators/middleware-doc/germany/reference-tables/ftsignaturetype
+slug: /poscreators/middleware-doc/italy/reference-tables/ftsignaturetype
 title: 'Type of signature: ftSignatureType'
 ---
 

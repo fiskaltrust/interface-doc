@@ -82,6 +82,7 @@ The fiskaltrust InStore App is now available in the following app stores. It nec
 
 Search for "fiskaltrust InStore App" at following app stores, to download the app:
 
+<!-- markdown-link-check-disable-next-line -->
 * APK (via App Center) – (https://install.appcenter.ms/orgs/fiskaltrust/apps/in-store/distribution_groups/stable)
 * SUNMI App Store - Approved and available for: P2 PRO, P2, V1, V2, & V2 PRO
 * Google Play Store - coming soon

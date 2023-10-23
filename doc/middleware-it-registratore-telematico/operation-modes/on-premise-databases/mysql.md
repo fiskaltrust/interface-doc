@@ -1,5 +1,5 @@
 ---
-slug: /poscreators/middleware-doc/germany/databases/mysql
+slug: /poscreators/middleware-doc/italy/databases/mysql
 title: MySQL
 ---
 
@@ -15,6 +15,6 @@ This storage provider is particularly suitable for setting up fail-safe systems 
 
 ## Parameters
 
-| Name                        | Description                                                                                                      | **Default Value**<br />**Mandatory Field** |
-| --------------------------- | ---------------------------------------------------------------------------------------------------------------- | ------------------------------------------ |
-| _connectionstring_          | MySQL connection string to the database system                                                                   | mandatory                                  |
+| Name               | Description                                    | **Default Value**<br />**Mandatory Field** |
+|--------------------|------------------------------------------------|--------------------------------------------|
+| _connectionstring_ | MySQL connection string to the database system | mandatory                                  |

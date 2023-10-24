@@ -82,7 +82,7 @@ Once the consumer accepted the consent on the consumer application and sent a re
 
 *Consumer Application in development. Currently only available in sandbox environment. 
 
-<img width="119" alt="Consumer_Application_Preview" src="https://github.com/fiskaltrust/interface-doc/assets/124153755/59083c75-025c-4705-9ff1-3189da4a9e3f">
+<img width="119" alt="Consumer_Application_Preview" src="https://github.com/fiskaltrust/interface-doc/assets/124153755/59083c75-025c-4705-9ff1-3189da4a9e3f" / >
 
 | Number  | Description |
 | ------------- | ------------- |

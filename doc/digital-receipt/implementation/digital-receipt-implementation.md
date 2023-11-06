@@ -3,17 +3,21 @@ slug: /poscreators/middleware-doc/digital-receipt/implementation/digital-receipt
 title: 'Digital receipt implementation'
 ---
 
-# QR-Code version (QR-Code on display) 
+# Digital receipt transmission 
 
-This method provides the digital receipt via a link that should be distributed as a QR-Code (e.g. on the customer display of the POS system, handheld or self-service terminal), which should contain a URL in the following format:
+Before start implementing, please read the getting started section first to make sure you are choosing the best suiting transmitting method for your Point of Sales software. 
 
-https://receipts.fiskaltrust.cloud/v0/[QueueId]/[QueueItemId]
+fiskaltrust provides two distinct approaches for transmitting receipt requests to the fiskaltrust.Middleware. The first approach is the POS API Helper, which is primarily recommended for testing environments (Sandbox) and the InStore App. Configuring the POS API Helper within the fiskaltrust.Portal requires minimal implementation effort at your Point of Sale software.
 
-For Sandbox environment the URL should contain following format:
+However, it's important to highlight that the POS API Helper does not log the delivery statuses of the digital receipt, as mentioned in the section Evaluation of document retrievals for financial administration (Finanzverwaltung). The absence of these logs prevents a tax auditor from reviewing the statuses of printing, acceptance, and submission in the event of an audit. This could result in non-compliance, particularly in Austria, due to the lack of logged records for "Belegausgabepflicht" and "Belegannahmepflicht," rendering verification impossible.
 
-https://receipts-sandbox.fiskaltrust.cloud/v0/[QueueId]/[QueueItemId] 
+To address this, the POS API provides comprehensive logging of digital receipt interactions, encompassing printing, acceptance, submission, and delivery statuses. This logging fulfills the requirements for "Belegausgabepflicht" and "Belegannahmepflicht" in Austria, as well as "Belegausgabepflicht" in Germany.
+
+It's worth noting that employing the InStore App alongside the POS API Helper guarantees full compliance. The app features built-in capabilities to effectively log events, ensuring adherence to regulatory standards.
 
 # Extract the [QueueID] and [QueueItemID]
+
+Only required when POS API Helper will be uses: The Point of Sale software calls the Middleware's sign endpoint with a regular receipt request. The request is processed by the Middleware. After that, the POS software receives the receipt response from the fiskaltrust.Middleware (which also contains the data for creating a printed receipt). The Point of Sale software extracts the ftQueueId and ftQueueItemId properties from the response, and generates the link out of this data. Final step is the visualization of the QR-Code containing the URL to the digital receipt on the customer display, handheld, self-checkout or any other suitable devices.
 
 The Point of Sale software calls the Middleware's /sign endpoint + POS API Helper or POS API with a regular receipt request. The request is processed by the Middleware. After that, the POS software receives the receipt response from the fiskaltrust.Middleware (which also contains the data for creating a printed receipt). The Point of Sale software extracts the ftQueueId and ftQueueItemId properties from the response, and generates the link out of this data. Final step is the visualization of the QR-Code containing the URL to the digital receipt on the customer display, handheld, self-checkout or any other suitable devices.
 
@@ -32,16 +36,6 @@ Response details:
 "ftReceiptMoment":"2023-08-03T13:12:56.3989064Z"
 }"
 ```
-
-# Digital receipt transmission
-
-fiskaltrust provides two distinct approaches for transmitting receipt requests to the fiskaltrust.Middleware. The first approach is the POS-API Helper, which is primarily recommended for testing environments (Sandbox) and the InStore App. Configuring the POS-API Helper within the fiskaltrust.Portal requires minimal implementation effort at your Point of Sale software.
-
-However, it's important to highlight that the POS-API Helper does not log the delivery statuses of the digital receipt, as mentioned in the section Evaluation of document retrievals for financial administration (Finanzverwaltung). The absence of these logs prevents a tax auditor from reviewing the statuses of printing, acceptance, and submission in the event of an audit. This could result in non-compliance, particularly in Austria, due to the lack of logged records for "Belegausgabepflicht" and "Belegannahmepflicht," rendering verification impossible.
-
-To address this, the POS-API provides comprehensive logging of digital receipt interactions, encompassing printing, acceptance, submission, and delivery statuses. This logging fulfills the requirements for "Belegausgabepflicht" and "Belegannahmepflicht" in Austria, as well as "Belegausgabepflicht" in Germany.
-
-It's worth noting that employing the InStore App alongside the POS-API Helper guarantees full compliance. The app features built-in capabilities to effectively log events, ensuring adherence to regulatory standards.
 
 # Create receipts with /sign endpoint + POS-API Helper
 
@@ -102,7 +96,7 @@ To proceed with the configuration, login to your fiskaltrust.Portal account firs
 
 Restart the fiskaltrust.Middleware to apply changes. 
 
-# Create receipts with /print endpoint – receive receipt /response via POS-API 
+# Create receipts with /print endpoint – receive receipt /response via POS-API (preferred) 
 
 The POS-API is the latest addition to the digital receipt ecosystem. The POS API is a superset of the Middleware's "original" IPOS interface, and uses the same models for /sign, /journal and /echo. The core features of this API provides a variety of different functionalities for Point of Sales software and is the central entry point to the fiskaltrust.Middleware. For the digital receipt the /print endpoint is required, to digitally print digital receipts.
 
@@ -122,15 +116,267 @@ The exact same endpoints will also be added to the on-premise Launcher (natively
 
 ## Authentication
 
-Authentication is handled via the headers cashboxid and accesstoken, which are mandatory for each request. Those values can be obtained by creating a CashBox in the one of the country-specific fiskaltrust.Portal.
+Authentication is handled via the headers CashBoxID and Accesstoken, which are mandatory for each request. Those values can be obtained by creating a CashBox in the one of the country-specific fiskaltrust.Portal.
+
+## Operation flow (digital receipt)
+
+Typically, a full receipt flow when using digital receipt (sign, print and response) would look like this:
+
+1. Call the /sign endpoint and asynchronously wait for the result
+2. If the signing was successful, call the /print endpoint and asynchronously wait for the result
+3. If the printing was successful, call the /response endpoint and asynchronously wait for the result
+4. Call the /print endpoint to get the digital receipt status
+
+## Asynchronously signs a receipt, according to local regulations
+
+This method can be used to sign different types of receipts according to the local fiscalization regulations. After signing the receipt according to the fiscal law, this method asynchronously returns the data that will be visualized on the digital receipt. The format of the receipt request is documented in the Middleware API docs, and the exact behavior of the method is determined by the cases sent within the properties (e.g. ftReceiptCase, ftChargeItemCase and ftPayItemCase).
+
+POST:
+
+https://pos-api-sandbox.fiskaltrust.cloud/v0/sign
+
+https://pos-api.fiskaltrust.cloud/v0/sign
+
+Header parameters:
+
+cashboxid (required): string 
+accesstoken (required): string
+
+Request body schema (JSON):
+
+```
+{
+  "ftCashBoxID": "string",
+  "ftQueueID": "string",
+  "ftPosSystemId": "string",
+  "cbTerminalID": "string",
+  "cbReceiptReference": "string",
+  "cbReceiptMoment": "2019-08-24T14:15:22Z",
+  "cbChargeItems": [
+    {
+      "position": 0,
+      "quantity": 0,
+      "description": "string",
+      "amount": 0,
+      "vatRate": 0,
+      "ftChargeItemCase": 0,
+      "ftChargeItemCaseData": "string",
+      "vatAmount": 0,
+      "accountNumber": "string",
+      "costCenter": "string",
+      "productGroup": "string",
+      "productNumber": "string",
+      "productBarcode": "string",
+      "unit": "string",
+      "unitQuantity": 0,
+      "unitPrice": 0,
+      "moment": "2019-08-24T14:15:22Z"
+    }
+  ],
+  "cbPayItems": [
+    {
+      "position": 0,
+      "quantity": 0,
+      "description": "string",
+      "amount": 0,
+      "ftPayItemCase": 0,
+      "ftPayItemCaseData": "string",
+      "accountNumber": "string",
+      "costCenter": "string",
+      "moneyGroup": "string",
+      "moneyNumber": "string",
+      "moment": "2019-08-24T14:15:22Z"
+    }
+  ],
+  "ftReceiptCase": 0,
+  "ftReceiptCaseData": "string",
+  "cbReceiptAmount": 0,
+  "cbUser": "string",
+  "cbArea": "string",
+  "cbCustomer": "string",
+  "cbSettlement": "string",
+  "cbPreviousReceiptReference": "string"
+}
+```
+
+Responses:
+
+200 - Returns a unique identifier, which can be used to obtain the result of the operation via the response endpoint.
+
+Response sample (JSON):
+
+```
+{
+  "type": "sign",
+  "identifier": "fdf2a983-0c30-4d40-bda3-e4e339551e5e"
+}
+```
+
+400 - Bad request (Please check the request)
+
+401 - Unauthorized (No or qrong Accesstoken or CashBoxID in header)
 
 ## Asynchronously create a digital receipt
 
-This method is used to "print" a digital receipt, based on the receipt-request and -response pair from signing a receipt via the sign endpoint. The asynchronously created response contains the ftQueuID and ftQueuitemID. To extract and create the URL/QR-Code to digital receipt see chapter: Extract the [QueueID] and [QueueItemID] and QR-Code version (QR-Code on display) of this document. 
+This method is used to "print" a digital receipt, based on the receipt request and response pair from signing a receipt via the sign endpoint. The asynchronously created response contains the URL to the digital receipt. 
 
-Please find following link for further implementation details (/print endpoint):
+POST:
 
-https://docs.fiskaltrust.cloud/de/apis/pos-api#tag/POS-API/paths/~1v0~1print/post 
+https://pos-api-sandbox.fiskaltrust.cloud/v0/print
+
+https://pos-api.fiskaltrust.cloud/v0/print
+
+Header parameters:
+
+cashboxid (required): string 
+accesstoken (required): string 
+
+Request body schema (JSON):
+
+```
+{
+  "request": {
+    "ftCashBoxID": "string",
+    "ftQueueID": "string",
+    "ftPosSystemId": "string",
+    "cbTerminalID": "string",
+    "cbReceiptReference": "string",
+    "cbReceiptMoment": "2019-08-24T14:15:22Z",
+    "cbChargeItems": [
+      {
+        "position": 0,
+        "quantity": 0,
+        "description": "string",
+        "amount": 0,
+        "vatRate": 0,
+        "ftChargeItemCase": 0,
+        "ftChargeItemCaseData": "string",
+        "vatAmount": 0,
+        "accountNumber": "string",
+        "costCenter": "string",
+        "productGroup": "string",
+        "productNumber": "string",
+        "productBarcode": "string",
+        "unit": "string",
+        "unitQuantity": 0,
+        "unitPrice": 0,
+        "moment": "2019-08-24T14:15:22Z"
+      }
+    ],
+    "cbPayItems": [
+      {
+        "position": 0,
+        "quantity": 0,
+        "description": "string",
+        "amount": 0,
+        "ftPayItemCase": 0,
+        "ftPayItemCaseData": "string",
+        "accountNumber": "string",
+        "costCenter": "string",
+        "moneyGroup": "string",
+        "moneyNumber": "string",
+        "moment": "2019-08-24T14:15:22Z"
+      }
+    ],
+    "ftReceiptCase": 0,
+    "ftReceiptCaseData": "string",
+    "cbReceiptAmount": 0,
+    "cbUser": "string",
+    "cbArea": "string",
+    "cbCustomer": "string",
+    "cbSettlement": "string",
+    "cbPreviousReceiptReference": "string"
+  },
+  "response": {
+    "ftCashBoxID": "string",
+    "ftQueueID": "string",
+    "ftQueueItemID": "string",
+    "ftQueueRow": 0,
+    "cbTerminalID": "string",
+    "cbReceiptReference": "string",
+    "ftCashBoxIdentification": "string",
+    "ftReceiptIdentification": "string",
+    "ftReceiptMoment": "2019-08-24T14:15:22Z",
+    "ftReceiptHeader": [
+      "string"
+    ],
+    "ftChargeItems": [
+      {
+        "position": 0,
+        "quantity": 0,
+        "description": "string",
+        "amount": 0,
+        "vatRate": 0,
+        "ftChargeItemCase": 0,
+        "ftChargeItemCaseData": "string",
+        "vatAmount": 0,
+        "accountNumber": "string",
+        "costCenter": "string",
+        "productGroup": "string",
+        "productNumber": "string",
+        "productBarcode": "string",
+        "unit": "string",
+        "unitQuantity": 0,
+        "unitPrice": 0,
+        "moment": "2019-08-24T14:15:22Z"
+      }
+    ],
+    "ftChargeLines": [
+      "string"
+    ],
+    "ftPayItems": [
+      {
+        "position": 0,
+        "quantity": 0,
+        "description": "string",
+        "amount": 0,
+        "ftPayItemCase": 0,
+        "ftPayItemCaseData": "string",
+        "accountNumber": "string",
+        "costCenter": "string",
+        "moneyGroup": "string",
+        "moneyNumber": "string",
+        "moment": "2019-08-24T14:15:22Z"
+      }
+    ],
+    "ftPayLines": [
+      "string"
+    ],
+    "ftSignatures": [
+      {
+        "ftSignatureFormat": 0,
+        "ftSignatureType": 0,
+        "caption": "string",
+        "data": "string"
+      }
+    ],
+    "ftReceiptFooter": [
+      "string"
+    ],
+    "ftState": 0,
+    "ftStateData": "string"
+  }
+}
+```
+
+Responses:
+
+200 - Returns a unique identifier, which can be used to obtain the result of the operation via the response endpoint.
+
+Response sample (JSON):
+
+```
+{
+    "type": "print",
+    "identifier": "0ccf5ada-7d0d-4531-bc2c-9c602d26e4fe"
+}
+```
+
+400 - Bad request "not supported" (Please check the request) 
+
+401 – Unauthorized (No or wrong Accesstoken or CashBoxID in header)
+
+
 
 ## Return the /response of a previous async call
 

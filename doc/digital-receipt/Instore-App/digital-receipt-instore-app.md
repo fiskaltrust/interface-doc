@@ -35,6 +35,7 @@ The fiskaltrust InStore App requires a permanent and stable connection to the in
 :::
 
 ### InStore App visualization
+<br/>
 
 ![InStore-App](https://github.com/fiskaltrust/interface-doc/assets/124153755/6187c0d1-301c-4296-9948-1873d30088fd)
 
@@ -46,13 +47,25 @@ The fiskaltrust InStore App requires a permanent and stable connection to the in
 | 3  | `Accept button` |
 | 4  | `Print button` |
 
+## Download the InStore App 
+
+The fiskaltrust InStore App is now available on the following app stores. It necessitates a minimum of Android 7 to run the application. 
+Search for "fiskaltrust InStore App" at following app stores, to download the production release app:
+
+* SUNMI App Store Approved and available for: P2 PRO, P2, V1, V2, & V2 PRO
+* Google Play Store - soon
+* MAXSTORE (PAX) Approved and available for: A35, A80 & A920Pro
+* APK - https://install.appcenter.ms/orgs/fiskaltrust/apps/in-store/distribution_groups/stable (Microsoft App Center)
+
+* APK (Sandbox) - https://install.appcenter.ms/orgs/fiskaltrust/apps/in-store/distribution_groups/preview (Microsoft App Center)
+
 ## Configuration 
 
-The fiskaltrust InStore App requires a four step configuration process. It is descibed in the following graphic.
+This high level overview shows you the steps on how to implement and configure the InStore App into your Point of Sales software.
 
-![InStore-App_get_started](https://github.com/fiskaltrust/interface-doc/assets/124153755/c23419df-4780-4500-9d95-297056f65275)
+<br/>
 
-The fiskaltrust InStore-App requires a permanent and stable connection to the internet.
+![Bild1](https://github.com/fiskaltrust/interface-doc/assets/124153755/3386890a-bb68-4a75-832d-706c7b7fa33f)
 
 ### Configure master data
 
@@ -66,7 +79,7 @@ fiskaltrust offers two transportation methods to seamlessly transfer data from y
 
 The first method, requiring no additional implementation effort, involves the utilization of the POS-API Helper, which can be configured within the fiskaltrust.Portal. The role of the POS-API Helper is to facilitate the seamless and direct transfer of the receipt data from the local Queue to the digital receipt endpoint. To take advantage of this capability, the POS-API Helper needs to be configured in the fiskaltrust.Portal and assigned to each CashBox utilizing the InStore App. Failure to not configure the POS-API Helper results in digital receipt visualization delays of up to five minutes. To gain insights into the configuration steps for the POS-API Helper, please refer to the section configure POS-API Helper of this document.
 
-The second method to change the upload behavior entails the integration of the POS-API's print endpoint directly into your Point of Sale software. Particularly recommended for scaling installations, this approach enhances efficiency, because no configuration needs to be done in the fiskaltrust.Portal. Distinguishing itself from the POS-Helper, the POS-API offers a broader range of advanced features. Comprehensive instructions for implementing the POS-API can found in the section implement POS-API of this document.
+The second method to change the upload behavior entails the integration of the POS-API's print endpoint directly into your Point of Sale software. Particularly recommended for scaling installations, this approach enhances efficiency, because no configuration needs to be done in the fiskaltrust.Portal. Distinguishing itself from the POS-Helper, the POS-API offers a broader range of advanced features.
 
 Please visit following link to see configuration steps for the POS-API Helper:
 
@@ -76,25 +89,6 @@ Please visit following link to see configuration steps for the POS-API:
 
 https://docs.fiskaltrust.cloud/de/apis/pos-api#tag/POS-API/paths/~1v0~1print/post
 
-### Install the InStore App
-
-The fiskaltrust InStore App is now available in the following app stores. It necessitates a minimum of Android 7, touchscreen and a integrated printer device to run the application.
-
-Search for "fiskaltrust InStore App" at following app stores, to download the app (Production):
-
-* APK (via App Center) – (https://install.appcenter.ms/orgs/fiskaltrust/apps/in-store/distribution_groups/stable)
-* SUNMI App Store - Approved and available for: P2 PRO, P2, V1, V2, & V2 PRO
-* Google Play Store - coming soon
-* MAXSTORE (PAX) - Approved and available for: A35, A80 & A920Pro
-
-:::caution
-For Sandbox environment a separate InStore App is required!
-:::
-
-fiskaltrust InStore App for Sandbox environment can be downloaded here:
-
-* APK (via App Center) - https://install.appcenter.ms/orgs/fiskaltrust/apps/in-store/distribution_groups/preview 
-
 ### Pair InStore App
 
 After installing the InStore App on your Android device, establishing a connection with your preferred CashBox is essential. Here's how:
@@ -103,4 +97,4 @@ After installing the InStore App on your Android device, establishing a connecti
 | ------------- | ------------- |
 | 1  | Log in to your fiskaltrust.Portal account and proceed to the CashBox you want to pair with the InStore App.  |
 | 2  | Extend the overview of the CashBox. Klick `unhide` to generate a new, temporary pairing pin.<br/>![portal](https://github.com/fiskaltrust/interface-doc/assets/124153755/9e7c7b22-f3ef-4276-85e7-860375c853ca) The pairing pin is valid for five minutes. After the pin expired, you need to generate a new pin, by clicking `unhide` to generate a new pin.   |
-| 3  | ![pairing_pin](https://github.com/fiskaltrust/interface-doc/assets/124153755/ce1010a1-469f-4747-b368-fe3192f3cae7) <br/>Enter the four-digit pin into your InStore App, confirm the connection by clicking `Pair`. You can pair multiple InStore App installations with one CashBox. To open the paring to CashBox mask or to pair with a different CashBox, press the touchscreen one second.   |
+| 3  | ![pairing_pin](https://github.com/fiskaltrust/interface-doc/assets/124153755/ce1010a1-469f-4747-b368-fe3192f3cae7) <br/> Enter the four-digit pin into your InStore App, confirm the connection by clicking `Pair`. You can pair multiple InStore App installations with one CashBox. To open the paring to CashBox mask or to pair with a different CashBox, press the touchscreen one second.   |

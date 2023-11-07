@@ -3,26 +3,32 @@ slug: /poscreators/middleware-doc/digital-receipt/implementation/digital-receipt
 title: 'Digital receipt implementation'
 ---
 
-# Digital receipt transmission 
+# Digital receipt transmission
 
-Before start implementing, please read the getting started section first to make sure you are choosing the best suiting transmitting method for your Point of Sales software. 
+>[!IMPORTANT]
+>Before start implementing, please read the getting started section first to make sure you are choosing the best suiting transmitting method for your Point of Sales software. 
 
-fiskaltrust provides two distinct approaches for transmitting receipt requests to the fiskaltrust.Middleware. The first approach is the POS API Helper, which is primarily recommended for testing environments (Sandbox) and the InStore App. Configuring the POS API Helper within the fiskaltrust.Portal requires minimal implementation effort at your Point of Sale software.
+fiskaltrust provides two distinct approaches for transmitting receipt requests to the fiskaltrust.Middleware. The first approach is the POS API Helper, which is primarily recommended for testing/sandbox environments and the InStore App. Configuring the POS API Helper within the fiskaltrust.Portal requires minimal implementation effort in your Point of Sale software.
 
 However, it's important to highlight that the POS API Helper does not log the delivery statuses of the digital receipt, as mentioned in the section Evaluation of document retrievals for financial administration (Finanzverwaltung). The absence of these logs prevents a tax auditor from reviewing the statuses of printing, acceptance, and submission in the event of an audit. This could result in non-compliance, particularly in Austria, due to the lack of logged records for "Belegausgabepflicht" and "Belegannahmepflicht," rendering verification impossible.
 
 To address this, the POS API provides comprehensive logging of digital receipt interactions, encompassing printing, acceptance, submission, and delivery statuses. This logging fulfills the requirements for "Belegausgabepflicht" and "Belegannahmepflicht" in Austria, as well as "Belegausgabepflicht" in Germany.
 
-It's worth noting that employing the InStore App alongside the POS API Helper guarantees full compliance. The app features built-in capabilities to effectively log events, ensuring adherence to regulatory standards.
+Employing the InStore App alongside the POS API Helper guarantees full compliance with the relevant regulations.
 
-# Extract the [QueueID] and [QueueItemID]
+# Create receipts with /sign endpoint + POS API Helper (Dispreferred)
 
-Only required when POS API Helper will be uses: The Point of Sale software calls the Middleware's sign endpoint with a regular receipt request. The request is processed by the Middleware. After that, the POS software receives the receipt response from the fiskaltrust.Middleware (which also contains the data for creating a printed receipt). The Point of Sale software extracts the ftQueueId and ftQueueItemId properties from the response, and generates the link out of this data. Final step is the visualization of the QR-Code containing the URL to the digital receipt on the customer display, handheld, self-checkout or any other suitable devices.
+This sequence diagram describes the process of generating a digital receipt with the sign endpoint and the POS API Helper. The participants in the process are the Point of Sale software, fiskaltrst.Middleware, POS API Helper, fiskaltrust and the consumer. 
 
-The Point of Sale software calls the Middleware's /sign endpoint + POS API Helper or POS API with a regular receipt request. The request is processed by the Middleware. After that, the POS software receives the receipt response from the fiskaltrust.Middleware (which also contains the data for creating a printed receipt). The Point of Sale software extracts the ftQueueId and ftQueueItemId properties from the response, and generates the link out of this data. Final step is the visualization of the QR-Code containing the URL to the digital receipt on the customer display, handheld, self-checkout or any other suitable devices.
+![sign+pos-api-helper](https://github.com/fiskaltrust/interface-doc/assets/124153755/b4496ff6-5040-4d5f-90ae-45d03abab862)
 
-Response details:
+The Point of Sale software calls the Middleware's sign endpoint with a regular receipt request - the request will be processed by the fiskaltrust.Middleware. After this step, the POS software receives the receipt response from the fiskaltrust.Middleware (which also contains the data for creating a printed receipt). The Point of Sale software extracts the ftQueueId and ftQueueItemId properties from the receipt response and generates the link for the QR-Code out of this dataset. Final step is the visualization of the QR-Code containing the URL to the digital receipt on the customer display, handheld, self-checkout or any other suitable devices.
 
+The consumer accesses the receipt by scanning the QR-Code displayed on the customer-facing display/device with their mobile phone. The consumer requests the receipt from fiskaltrust and receives an HTML document as the receipt. 
+
+<details>
+<summary>Response details (shortened):</summary> 
+  
 ```
 "{
 "ftCashBoxID":"124358e8-9cbd-4332-9076-7ed8b72306ac"
@@ -36,28 +42,17 @@ Response details:
 "ftReceiptMoment":"2023-08-03T13:12:56.3989064Z"
 }"
 ```
+</details>
 
-# Create receipts with /sign endpoint + POS-API Helper
+## Configure POS API Helper 
 
-![sign+pos-api-helper](https://github.com/fiskaltrust/interface-doc/assets/124153755/b4496ff6-5040-4d5f-90ae-45d03abab862)
-
-This sequence diagram describes the process of generating a digital receipt with the /sign endpoint and the POS-API Helper using the fiskaltrust receipt solution. The participants in the process are the POS software, Middleware, POS-API Helper, fiskaltrust and the consumer. 
-
-In store, the POS software processes the payment or checkout. Then the POS software sends a sign message to the middleware for fiscalization purposes. The POS-API Helper receives the request, to send asynchronous the receipt to the fiskaltrust backend. Once the receipt received at the fiskaltrust backend fully fiscalized. The POS software gets the receipt response, containing the ftQueueID and ftQueueItemID. Then the POS shows a QR-Code on a customer-facing display/device, which can be scanned by the consumer using their mobile phone. 
-
-The consumer accesses the receipt by scanning the QR-Code displayed on the customer-facing display/device with their mobile phone. The consumer requests the receipt from fiskaltrust and receives an HTML document as the receipt. 
-
-# Configure POS-API Helper 
-
-The POS API Helper is available in all countries. This Helper is responsible for uploading data from the local Queue to the digital receipt endpoint. This Helper is configured in the fiskaltrust.Portal and assigned to each CashBox that uses digital receipts. You can add the POS API Helper to change to a direct upload behavior of digital receipts within seconds.
-
-## Configuration
+The POS API Helper is available in all countries. This Helper is responsible for uploading data from the local Queue to the digital receipt endpoint. This Helper is configured in the fiskaltrust.Portal and assigned to each CashBox that uses digital receipts. The POS API Helper changes to an direct upload behavior of the digital receipts.
 
 To proceed with the configuration, login to your fiskaltrust.Portal account first. 
 
 ### Queue 
 
-| Steps  | Description |
+| Step  | Description |
 | ------------- | ------------- |
 | 1  | Navigate to the configuration section and go to Queue  |
 | 2  | Configure Queue  |
@@ -68,7 +63,7 @@ To proceed with the configuration, login to your fiskaltrust.Portal account firs
 
 ### Helper 
 
-| Steps  | Description |
+| Step  | Description |
 | ------------- | ------------- |
 | 1  | Navigate to Helper  |
 | 2  | Create new helper  |
@@ -83,7 +78,7 @@ To proceed with the configuration, login to your fiskaltrust.Portal account firs
 
 ### CashBox 
 
-| Steps  | Description |
+| Step  | Description |
 | ------------- | ------------- |
 | 1  | Navigate to CashBox   |
 | 2  | Select your CashBox and click edit by list  |
@@ -94,7 +89,7 @@ To proceed with the configuration, login to your fiskaltrust.Portal account firs
 
 ### Restart
 
-Restart the fiskaltrust.Middleware to apply changes. 
+Restart the fiskaltrust.Middleware to apply the changes. 
 
 # Create receipts with /print endpoint – receive receipt /response via POS-API (preferred) 
 
@@ -106,13 +101,19 @@ As most operations especially /print requests may take an extended amount of tim
 
 A general sample of this process flow is illustrated in the picture below:
 
-![pos-api](https://github.com/fiskaltrust/interface-doc/assets/124153755/384e56b2-b17e-41e1-b8fe-49a7879763d2)
+![Screenshot 2023-11-07 152951](https://github.com/fiskaltrust/interface-doc/assets/124153755/bd976d8c-3119-47b1-852d-abb678aea01d)
+
 
 ## Availability
 
-The production API can be reached at https://pos-api.fiskaltrust.cloud; as for all fiskaltrust services, the sandbox instance should be used for development and testing: https://pos-api-sandbox.fiskaltrust.cloud.
+The production API can be reached at https://pos-api.fiskaltrust.cloud as for all fiskaltrust services, the sandbox instance should be used for development and testing: https://pos-api-sandbox.fiskaltrust.cloud.
 
 The exact same endpoints will also be added to the on-premise Launcher (natively in version 2.0, and via additional Helper packages for the versions below).
+
+>[!IMPORTANT]
+> - **Sign** endpoint is only available in Austria with the Cloud CashBox
+> - **Print** Endpoint is available in Austria and Germany
+> - **Pay** endpoint in not yet available 
 
 ## Authentication
 
@@ -131,19 +132,20 @@ Typically, a full receipt flow when using digital receipt (sign, print and respo
 
 This method can be used to sign different types of receipts according to the local fiscalization regulations. After signing the receipt according to the fiscal law, this method asynchronously returns the data that will be visualized on the digital receipt. The format of the receipt request is documented in the Middleware API docs, and the exact behavior of the method is determined by the cases sent within the properties (e.g. ftReceiptCase, ftChargeItemCase and ftPayItemCase).
 
-POST:
+**POST:**
 
-https://pos-api-sandbox.fiskaltrust.cloud/v0/sign
+https://pos-api.fiskaltrust.cloud/v0/sign (Production)
 
-https://pos-api.fiskaltrust.cloud/v0/sign
+https://pos-api-sandbox.fiskaltrust.cloud/v0/sign (Sandbox) 
 
-Header parameters:
+**Header parameters:**
 
-cashboxid (required): string 
+cashboxid (required): string <br/>
 accesstoken (required): string
 
-Request body schema (JSON):
-
+<details>
+<summary>Request body schema (JSON):</summary>
+  
 ```
 {
   "ftCashBoxID": "string",
@@ -199,39 +201,44 @@ Request body schema (JSON):
 }
 ```
 
-Responses:
+</details>
+
+**Responses:**
 
 200 - Returns a unique identifier, which can be used to obtain the result of the operation via the response endpoint.
 
-Response sample (JSON):
-
+<details>
+<summary>Response sample (JSON):</summary>
+  
 ```
 {
   "type": "sign",
   "identifier": "fdf2a983-0c30-4d40-bda3-e4e339551e5e"
 }
 ```
+</details>
 
 400 - Bad request (Please check the request)
 
-401 - Unauthorized (No or qrong Accesstoken or CashBoxID in header)
+401 - Unauthorized (No or wrong Accesstoken or CashBoxID in header)
 
 ## Asynchronously create a digital receipt
 
 This method is used to "print" a digital receipt, based on the receipt request and response pair from signing a receipt via the sign endpoint. The asynchronously created response contains the URL to the digital receipt. 
 
-POST:
+**POST:**
 
 https://pos-api-sandbox.fiskaltrust.cloud/v0/print
 
 https://pos-api.fiskaltrust.cloud/v0/print
 
-Header parameters:
+**Header parameters:**
 
-cashboxid (required): string 
+cashboxid (required): string <br/>
 accesstoken (required): string 
 
-Request body schema (JSON):
+<details>
+<summary>Request body schema (JSON):</summary>
 
 ```
 {
@@ -358,12 +365,14 @@ Request body schema (JSON):
   }
 }
 ```
+</details>
 
-Responses:
+**Responses:**
 
 200 - Returns a unique identifier, which can be used to obtain the result of the operation via the response endpoint.
 
-Response sample (JSON):
+<details>
+<summary>Response sample (JSON):</summary>
 
 ```
 {
@@ -371,12 +380,11 @@ Response sample (JSON):
     "identifier": "0ccf5ada-7d0d-4531-bc2c-9c602d26e4fe"
 }
 ```
+</details>
 
 400 - Bad request "not supported" (Please check the request) 
 
 401 – Unauthorized (No or wrong Accesstoken or CashBoxID in header)
-
-
 
 ## Return the /response of a previous async call
 
@@ -384,40 +392,117 @@ This method is used to obtain the result of a previously executed asynchronous o
 
 The response type of this methos depends on the type of the referenced asynchronous operation. For the digital receipt the PrintResponse can be used to obtain the URL to the digital receipt:
 
-Request sample for print operation:
+<details>
+<summary>Request sample for print operation:</summary>
+
 ```
 {
   "type": "print",
   "identifier": "fdf2a983-0c30-4d40-bda3-e4e339551e5e"
 }
 ```
-Response sample:
+</details>
+
+**Responses:**
+
+200 - Returns the URL to the digital receipt
+
+<details>
+<summary>Response sample:</summary>
+  
 ```
 {
     "message": "Receipt published for processing",
     "receiptUrl": "https://receipts-sandbox.fiskaltrust.cloud/60914be9-fd1a-49f1-a541-2698b923ae39/4b1c7efc-d6af-41cd-9517-83e4e90238e2"
 }
 ```
+</details>
 
-Please find further implementation details for the response endpoint:
+204 - The operation has not been finished yet
 
-https://docs.fiskaltrust.cloud/de/apis/pos-api#tag/POS-API/paths/~1v0~1response/post 
+400 - Bad request (Please check the request)
+
+401 - Unauthorized (No or wrong Accesstoken or CashBoxID in header)
+
+404 - he referenced operation could not be found 
+
+## Request the digital receipt status 
+
+This method is used to obtain the result of the current digital receipt status. Callers should pass the result object from this referenced operation into the body and the method will return the requested response.
+
+**GET:** 
+
+https://receipts.fiskaltrust.cloud/v0/print/{ftQueueID}/{ftQueueItemID} (Production)
+
+https://receipts-sandbox.fiskaltrust.cloud/v0/print/{ftQueueID}/{ftQueueItemID} (Sandbox)
+
+**Header parameters:**
+
+cashboxid (required): string <br/>
+accesstoken (required): string 
+
+**Responses:**
+
+200 - Digital receipt has been viewed on consumers device. Timestamp is in UTC. This result can be used to close the QR-Code visualization on your Point of Sale device. 
+
+<details>
+<summary>Response sample (JSON):</summary>
+
+```
+{
+    "state": "Printed",
+    "message": "Receipt was delivered to Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.61 via http://receipts-sandbox.fiskaltrust.cloud/60914be9-fd1a-49f1-a541-2698b923ae39/1c62eb05-4aa6-4576-a1ce-0e9b87e2cded at 10/24/2023 09:58:21"
+}
+```  
+</details>
+
+200 - Receipt submitted for printing (URL to digital receipt has been provided by fiskaltrust)  
+
+<details>
+<summary>Response sample (JSON):</summary>
+
+```  
+{
+    "state": "Submitted",
+    "message": "Receipt submitted for printing"
+}
+```  
+</details>
+
+400 - None (Please check the request)
+
+401 - Unauthorized (No or wrong Accesstoken or CashBoxID in header)
+
+# QR-Code version (QR-Code on display)
+
+This method provides the digital receipt via a link from POS API that should be distributed as a QR-Code (e.g. on the customer display of the POS system, handheld or self-service terminal), which should contain the URL to the digital receipt in the following format:
+
+https://receipts.fiskaltrust.cloud/v0/[QueueId]/[QueueItemId]
+
+For Sandbox environment the URL should contain following format:
+
+https://receipts-sandbox.fiskaltrust.cloud/v0/[QueueId]/[QueueItemId]
 
 # Give away version (QR-Label)
 
 This method provides the digital receipt via QR-Label, a receipt tag that should be distributed via an barcode scanner from the Point of Sale into the Middleware. There are three options in following JSON format available. 
 For this implementation the POS-API Helper or POS API is required to change the upload behavior  for the digital. 
 
+
+<details>
+<summary>Request body schema (JSON):</summary>
+  
 ```
 "ftReceiptCaseData":  "{ \"ReceiptTag\": \"https://receipts.fiskaltrust.cloud?tag=abc123456789\" }"
 
 "ftChargeItemCaseData": "{ \"ReceiptTag\": "https://receipts.fiskaltrust.cloud?tag=abc123456789\" }"
 
 "ftPayItemCaseData": "{ \"ReceiptTag\": \"https://receipts.fiskaltrust.cloud?tag=abc123456789\" }"
-
 ```
+</details>
 
-A full example containing all three options could e.g. look like this:
+<details>
+<summary>Full request body schema (JSON), containing all three options could e.g. look like this:</summary>
 
 ```
 {
@@ -473,7 +558,10 @@ A full example containing all three options could e.g. look like this:
     "ftReceiptCaseData": "{ \"ReceiptTag\": \"https://receipts.fiskaltrust.cloud?tag=abclökaejölasjf\" }"
 }
 ```
-Please keep in mind that in a real use case, only one of the three mentioned ways to inject the link into the receipt request should be used, depending on what fits the POS software's internal flows best.
+</details>
+
+> [!IMPORTANT]
+> Please keep in mind that in a real use case, only one of the three mentioned ways to inject the link into the receipt request should be used, depending on what fits the POS software's internal flows best.
 
 # Failure or disruption of internet connection
 

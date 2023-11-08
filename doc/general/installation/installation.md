@@ -18,7 +18,7 @@ The components of the Middleware which should be operated as an on-premise Middl
 More information on the configuration options of the components can be found in the according market-appendices:
 
 - Austria
-- [Germany](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware#the-cashbox-as-a-configuration-container)
+- [Germany](https://docs.fiskaltrust.cloud/docs/posdealers/technical-operations/rollout-scenarios)
 - France
 
 At the end of this configuration process, a so-called "Launcher" including the CashBox-configuration needs to be downloaded.
@@ -126,7 +126,7 @@ For development, integration and testing purpose we recommend to run the Middlew
 In Windows, it is necessary to run the `cmd.exe` as administrator. The launcher `fiskaltrust.exe` can be then executed as a command line program through the call parameter `–test`.
 
 In Linux, the following command should be used:
-`sudo mono fiskaltrust.exe -test`.
+`sudo mono fiskaltrust.exe -test -cashboxid <cashboxid> -accesstoken <accesstoken> <other options>`.
 
 A static configuration can be enforced via the configuration.json file in the `fiskaltrust.exe` folder in connection with `-useoffline=true`.
 
@@ -148,7 +148,7 @@ Once successfully completed, the service will appear in the list of running serv
 
 For Linux, the fiskaltrust.SecurityMechanism can be installed as Daemon.
 
-Mono is the prerequisite, and can be installed following the manual of the [mono-project](http://www.mono-project.com/download/#download-lin) (install complete).
+Mono is the prerequisite, and can be installed following the manual of the [mono-project](http://www.mono-project.com/download/#download-lin) (install complete). Also the `mono-service` utlility needs to be installed (On Ubuntu this can be done using the command `sudo apt update && sudo apt install mono-4.0-service`).
 
 Once the installation is completed, a file named `fiskaltrust` with the following content has to be saved in the index `/etc/init.d`:
 

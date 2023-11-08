@@ -2,8 +2,13 @@
   "ignorePatterns": [
     { "pattern": "^https?://signaturcloud\\.fiskaltrust\\.at/?$" },
     { "pattern": "^https?://signaturcloud\\.fiskaltrust\\.fr/?$" },
+    { "pattern": "^https?://signing\\.fiskaltrust\\.at.*" },
+    { "pattern": "^https?://signing-sandbox\\.fiskaltrust\\.at.*" },
+    { "pattern": "^https?://rksv\\.fiskaltrust\\.at.*" },
+    { "pattern": "^https?://rksv-sandbox\\.fiskaltrust\\.at.*" },
     { "pattern": "^https?://helipad\\.fiskaltrust\\.cloud/?$" },
     { "pattern": "^https?://packages\\.fiskaltrust\\.cloud/?$" },
-    { "pattern": "^https?://eur-lex\\.europa\\.eu.*" }
+    { "pattern": "^https?://eur-lex\\.europa\\.eu.*" },
+    { "pattern": "^https?://www.bundesfinanzministerium\\.de.*" }
   ]
 }

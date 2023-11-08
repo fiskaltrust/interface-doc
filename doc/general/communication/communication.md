@@ -19,7 +19,7 @@ Depending on the version of the Middleware, different protocols are supported (f
 :::
 
 ### gRPC
-The gRPC protocol is currently only available in the Middleware for Germany, please see the [German appendix](../../appendix-de-kassensichv/communication/communication.md) for further information.
+The gRPC protocol is currently only available in the Middleware for Germany, please see the [German appendix](../../middleware-de-kassensichv/communication/communication.md) for further information.
 
 We recommend using gRPC for new implementations, as it has several advantages (including performance, reliability, asynchronous streams, and static message contracts) and is supported by most programming frameworks.
 
@@ -35,7 +35,7 @@ XSD files which describe the REST interface of the fiskaltrust.Middleware are av
 We recommend using REST in case you're already familiar with its principles and don't want to use gRPC for any reasons.
 
 #### Country specifics
-In Austria and France, REST can currently only be used by adding a _helper_ package provided by fiskaltrust. Please refer to the [Austrian appendix](../../appendix-at-rksv/communication/communication.md) for more details. In Germany, the Middleware natively supports REST without using a helper.
+In Austria and France, REST can currently only be used by adding a _helper_ package provided by fiskaltrust. Please refer to the [Austrian appendix](../../middleware-at-rksv/communication/communication.md) for more details. In Germany, the Middleware natively supports REST without using a helper.
 
 ### WCF Web Service
 The _Windows Communication Foundation_ (WCF) is used to access the fiskaltrust.Middleware with SOAP calls, either via a network or a pipes based communication approach. Further information on this subject can be found in the [official Microsoft docs](https://docs.microsoft.com/en-us/dotnet/framework/wcf/bindings).

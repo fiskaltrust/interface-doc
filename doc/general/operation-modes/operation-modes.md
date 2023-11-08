@@ -64,7 +64,7 @@ For specific information regarding supported Signature Creation Units and platfo
 
 - Austria
 
-- [Germany](../../appendix-de-kassensichv/operation-modes/on-premise-installation.md)
+- [Germany](../../middleware-de-kassensichv/operation-modes/on-premise-installation.md)
 - France
 
 #### Helipad Helper
@@ -88,9 +88,23 @@ For detailed information on supported platforms and its restrictions, please ref
 
 | Platform        | AT            | DE                                                           | FR            |
 | --------------- | ------------- | ------------------------------------------------------------ | ------------- |
-| **Android**     | not supported | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/android.md) | not supported |
-| **Linux/macOS** | **supported** | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/linux.md) | **supported** |
-| **Windows**     | **supported** | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/windows.md) | **supported** |
+| **Android**     | not supported | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/android.md) | not supported |
+| **Linux/macOS** | **supported** | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/linux.md) | **supported** |
+| **Windows**     | **supported** | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/windows.md) | **supported** |
+
+#### ARM Processor
+
+From version 1.3.39 it is now possible to run the the fiskaltrust.Middleware on ARM processors.
+
+ SCU                          | ARM 64 bit                                        | ARM 32 bit  |
+| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **A-Trust Cloud TSE**             | supported but not tested |supported but not tested |
+| **Deutsche Fiskal Cloud-TSE**     | supported but not tested  | supported but not tested |
+| **Diebold-Nixdorf Hardware-TSE**  | not supported| not supported |
+| **Epson Hardware-TSE**            |not supported | not supported |
+| **fiskaly Cloud-TSE**             | supported but not tested |supported but not tested  |
+| **Swissbit Cloud-TSE**            |supported and tested | supported and tested|
+| **Swissbit Hardware-TSE**         | unsupported | supported and tested |
 
 #### Launcher
 

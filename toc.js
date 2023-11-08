@@ -207,7 +207,7 @@ module.exports = {
       label: 'Digital Receipt',
       items: [
         'middleware-doc/doc/digital-receipt/Introduction/digital-receipt-introduction',
-        'middleware-doc/doc/digital-receipt/General/introduction',
+        'middleware-doc/doc/digital-receipt/General/Introduction',
         'middleware-doc/doc/digital-receipt/Austria/digital-receipt-austria',
         'middleware-doc/doc/digital-receipt/Germany/digital-receipt-germany',
         'middleware-doc/doc/digital-receipt/France/digital-receipt-france',

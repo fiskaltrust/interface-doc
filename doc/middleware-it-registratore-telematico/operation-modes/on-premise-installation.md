@@ -18,16 +18,16 @@ TBD
 For the German market, depending on the platform, following communication services are available:
 
 |          | Windows       | Linux, macOS  |
-| -------- | ------------- | ------------- |
+|----------|---------------|---------------|
 | **gRPC** | **supported** | **supported** |
 | **REST** | **supported** | **supported** |
 | **WCF**  | **supported** | not supported |
 
 ## SCU/characteristics & platform support matrix
 
-|                                                              | Type,Form factor |Windows| Linux, macOS| Android|
-| ------------------------------------------------------------ | -----------------|------ |------------ |------- |
-| [epson printer](scu/epson.md)                                | Hardware printer |**supported**|**supported**|**supported**                          |
+|                               | Type,Form factor | Windows       | Linux, macOS  | Android       |
+|-------------------------------|------------------|---------------|---------------|---------------|
+| [epson printer](scu/epson.md) | Hardware printer | **supported** | **supported** | **supported** |
 
 ## Hardware requirements
 
@@ -38,7 +38,7 @@ For hardware requirements, please refer to the [general part](../../general/oper
 Following local data storage options can be configured in the queue:
 
 |                                                            | Windows       | Linux, macOS  |
-| ---------------------------------------------------------- | ------------- | ------------- |
+|------------------------------------------------------------|---------------|---------------|
 | **[SQLite-storage](on-premise-databases/sqlite.md)**       | **supported** | **supported** |
 | **[MySQL-storage](on-premise-databases/mysql.md)**         | **supported** | **supported** |
 | **[EF-storage](on-premise-databases/entity-framework.md)** | **supported** | **supported** |
@@ -51,6 +51,7 @@ Following local data storage options can be configured in the queue:
 
 ## Configuration Scenarios
 
+<!-- markdown-link-check-disable-next-line -->
 For configuration scenarios for operating the fiskaltrust.Middleware, please refer to the [Rollout documentation](https://docs.fiskaltrust.cloud/docs/posdealers/buy-resell/rollout-plans).
 
 ## Installation

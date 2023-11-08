@@ -143,13 +143,81 @@ module.exports = {
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/reference-tables/reference-tables',
           ]
         },
-        'middleware-doc/doc/digital-receipt/digital-receipt-overview',
         {
-          type: 'link',
-          label: 'Middleware API samples',
-          href: 'https://middleware-samples.docs.fiskaltrust.cloud/'
-        }
+          type: 'category',
+          label: 'Italy (Registratore Telematico)',
+          items: [
+            'middleware-doc/doc/middleware-it-registratore-telematico/appendix-it-registratore-telematico',
+            'middleware-doc/doc/middleware-it-registratore-telematico/terminology/terminology',
+            'middleware-doc/doc/middleware-it-registratore-telematico/installation/installation',
+            'middleware-doc/doc/middleware-it-registratore-telematico/cash-register-integration/cash-register-integration',
+            'middleware-doc/doc/middleware-it-registratore-telematico/communication/communication',
+            'middleware-doc/doc/middleware-it-registratore-telematico/data-structures/data-structures',
+            {
+              type: 'category',
+              label: 'Operation modes',
+              items: [
+                'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-installation',
+                {
+                  type: 'category',
+                  label: 'On-premise platforms',
+                  items: [
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-platforms/linux',
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-platforms/windows',
+                  ]
+                },
+                {
+                  type: 'category',
+                  label: 'Signature Creation Devices',
+                  items: [
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/scu/epson'
+                  ]
+                },
+                {
+                  type: 'category',
+                  label: 'On-premise databases',
+                  items: [
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-databases/sqlite',
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-databases/entity-framework',
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-databases/mysql'
+                  ]
+                },
+              ]
+            },
+            {
+              type: 'category',
+              label: 'Reference Tables',
+              items: [
+                'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/reference-tables',
+                'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/service-status-ftstate',
+                'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/type-of-receipt-ftreceiptcase',
+                'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/type-of-service-ftchargeitemcase',
+                'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/type-of-payment-ftpayitemcase',
+                'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/type-of-signature-ftsignaturetype',
+                'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/type-of-signature-ftsignatureformat',
+                'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/type-of-journal-ftjournaltype',
+              ]
+            }
+          ]
+        },
       ]
+    },
+    {
+      type: 'category',
+      label: 'Digital Receipt',
+      items: [
+        'middleware-doc/doc/digital-receipt/Introduction/digital-receipt-introduction',
+        'middleware-doc/doc/digital-receipt/General/Introduction',
+        'middleware-doc/doc/digital-receipt/Austria/digital-receipt-austria',
+        'middleware-doc/doc/digital-receipt/Germany/digital-receipt-germany',
+        'middleware-doc/doc/digital-receipt/France/digital-receipt-france',
+        'middleware-doc/doc/digital-receipt/Instore-App/digital-receipt-instore-app',
+      ]
+    },
+    {
+      type: 'link',
+      label: 'Middleware API samples',
+      href: 'https://middleware-samples.docs.fiskaltrust.cloud/'
     },
     {
       type: 'category',
@@ -168,8 +236,8 @@ module.exports = {
               href: 'https://rksvsign-samples.docs.fiskaltrust.cloud/'
             }
           ]
-        },     
-        
+        },
+
       ]
     }
   ]

@@ -91,9 +91,9 @@ To proceed with the configuration, login to your fiskaltrust.Portal account firs
 
 Restart the fiskaltrust.Middleware to apply the changes. 
 
-# Create receipts with /print endpoint – receive receipt /response via POS-API (preferred) 
+# Create receipts with the print endpoint – receive receipt with response via POS API (preferred) 
 
-The POS-API is the latest addition to the digital receipt ecosystem. The POS API is a superset of the Middleware's "original" IPOS interface, and uses the same models for /sign, /journal and /echo. The core features of this API provides a variety of different functionalities for Point of Sales software and is the central entry point to the fiskaltrust.Middleware. For the digital receipt the /print endpoint is required, to digitally print digital receipts.
+The POS API is the latest addition to the digital receipt ecosystem. The POS API is a superset of the Middleware's "original" IPOS interface, and uses the same models for /sign, /journal and /echo. The core features of this API provides a variety of different functionalities for Point of Sales software and is the central entry point to the fiskaltrust.Middleware. For the digital receipt the /print endpoint is required, to digitally print digital receipts.
 
 This means that existing implementations can very easily be reused by adjusting them to the asynchronous flow. The IPOS interface will continue to be fully supported by the Middleware.
 
@@ -128,7 +128,7 @@ Typically, a full receipt flow when using digital receipt (sign, print and respo
 3. If the printing was successful, call the /response endpoint and asynchronously wait for the result
 4. Call the /print endpoint to get the digital receipt status
 
-## Asynchronously signs a receipt, according to local regulations
+## Asynchronously sign a receipt according to local regulations (Sign endpoint)
 
 This method can be used to sign different types of receipts according to the local fiscalization regulations. After signing the receipt according to the fiscal law, this method asynchronously returns the data that will be visualized on the digital receipt. The format of the receipt request is documented in the Middleware API docs, and the exact behavior of the method is determined by the cases sent within the properties (e.g. ftReceiptCase, ftChargeItemCase and ftPayItemCase).
 
@@ -222,15 +222,15 @@ accesstoken (required): string
 
 401 - Unauthorized (No or wrong Accesstoken or CashBoxID in header)
 
-## Asynchronously create a digital receipt
+## Asynchronously create a digital receipt (Print endpoint) 
 
 This method is used to "print" a digital receipt, based on the receipt request and response pair from signing a receipt via the sign endpoint. The asynchronously created response contains the URL to the digital receipt. 
 
 **POST:**
 
-https://pos-api-sandbox.fiskaltrust.cloud/v0/print
+https://pos-api.fiskaltrust.cloud/v0/print (Production)
 
-https://pos-api.fiskaltrust.cloud/v0/print
+https://pos-api-sandbox.fiskaltrust.cloud/v0/print (Sandbox)
 
 **Header parameters:**
 
@@ -386,7 +386,7 @@ accesstoken (required): string
 
 401 – Unauthorized (No or wrong Accesstoken or CashBoxID in header)
 
-## Return the /response of a previous async call
+## Return the response of a previous async call (Response endpoint) 
 
 This method is used to obtain the result of a previously executed asynchronous operation. Callers should pass the result object from this referenced operation into the body, and the method will either return the requested response, or HTTP 204 in case the operation has not finished yet.
 
@@ -424,7 +424,7 @@ The response type of this methos depends on the type of the referenced asynchron
 
 401 - Unauthorized (No or wrong Accesstoken or CashBoxID in header)
 
-404 - he referenced operation could not be found 
+404 - The referenced operation could not be found 
 
 ## Request the digital receipt status 
 
@@ -486,7 +486,7 @@ https://receipts-sandbox.fiskaltrust.cloud/v0/[QueueId]/[QueueItemId]
 # Give away version (QR-Label)
 
 This method provides the digital receipt via QR-Label, a receipt tag that should be distributed via an barcode scanner from the Point of Sale into the Middleware. There are three options in following JSON format available. 
-For this implementation the POS-API Helper or POS API is required to change the upload behavior  for the digital. 
+For this implementation the POS API Helper or POS API is required to change to an direct upload behavior, required for the digital receipt. 
 
 
 <details>
@@ -577,8 +577,9 @@ The country-specific code is made of the country's code value following the ISO-
 | 0x4154000000000001  | "out of service" No RKSV signatures are generated or sent back. No RKSV-DEP is written, as nothing is being signed. The E131-DEP records requests and responses.  | 1.0  |
 | 0x4154000000000004  | "SSCD permanently out of service" The status "SSCD temporary out of service" was activated more than 48h ago. Thus a FinanzOnline notification has been generated. For conduct and termination of this mode, see "SSCD temporary out of service".  | 1.0  |
 
-The following example shows how to extract the value of a flag into the ftState property.
-
+<details>
+<summary>The following example shows how to extract the value of a flag into the ftState property.</summary>
+  
 ```
 if ((ReceiptResponse.ftState & 0x4154000000000001) != 0) 
 { 
@@ -589,6 +590,7 @@ if ((ReceiptResponse.ftState & 0x4154000000000004) != 0)
     //your code in case of SSCD permanently out of service condition
  }
 ```
+</details>
 
 ## Germany 
 
@@ -601,6 +603,9 @@ In the event of a failure or disruption of the internet connection, we recommend
 
 The following example shows how to extract the value of a flag into the ftState property.
 
+<details>
+<summary>The following example shows how to extract the value of a flag into the ftState property.</summary>
+
 ```
 if ((ReceiptResponse.ftState & 0x4445000000000002) != 0)
 { 
@@ -611,6 +616,7 @@ if ((ReceiptResponse.ftState & 0x4445000000000100) != 0)
     //your code in case of SSCD permanently out of service condition
  }
 ```
+</details>
 
 # Mandatory fields for digital receipt visualization 
 

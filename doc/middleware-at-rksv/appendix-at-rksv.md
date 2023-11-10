@@ -13,8 +13,8 @@ The links to regulations and further information, can be found at:
 
 Further literature can be found at:
 
-https://www.lindeverlag.at/onlineprodukt/swk-spezial-registrierkassen-und-belegerteilungspflicht-1378
+https://www.lindeverlag.at/onlineprodukt/handbuch-registrierkassen-und-belegerteilungspflicht-2989
 
-Ritz/Koran/Kutschera, SWK-Spezial Registrierkassen- und Belegerteilungspflicht, 1. Auflage 2016, Linde Verlag Wien. ISBN: 9783707333763
+Ritz/Koran/Kutschera/Knasmüller, Handbuch Registrierkassen- und Belegerteilungspflicht, 2. Auflage 2019, Linde Verlag Wien. ISBN: 9783707335910
 
 <div class="alert alert--warning" role="alert">Please note that this information is only complete when combined with the <b>General</b> part. To implement the Middleware, users should get themselves familiar with the general information first and then refer to the country-specific details listed here.</div>

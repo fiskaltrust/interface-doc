@@ -39,7 +39,9 @@ The visualization of the digital receipt variates from the markets legal require
 
 ## Austria 
 
-![Digital_Receipt_Austria](https://github.com/fiskaltrust/interface-doc/assets/124153755/57825728-c5b5-496e-bdcc-3db8bdced13f)
+
+
+![digital-receipt-sample-at](/doc/digital-receipt/General/digita_receipt_sample_at.png)
 
 | Number  | Description |
 | ------------- | ------------- |
@@ -54,12 +56,12 @@ The visualization of the digital receipt variates from the markets legal require
 | 9  | National compliance requirements for Austria (QR-Code only)   |
 | 10  | Transaction details from card payment or voucher   |
 
-Digital receipt demo: https://receipts-sandbox.fiskaltrust.cloud/v0/1cb802fb-e694-4036-a857-6328842cb06f/8aecf05d-5d57-4905-9bef-458ad16d3ea9
+Digital receipt demo: <br/>
+https://receipts-sandbox.fiskaltrust.cloud/v0/1cb802fb-e694-4036-a857-6328842cb06f/8aecf05d-5d57-4905-9bef-458ad16d3ea9
 
 ## Germany 
 
-![Digital_Receipt_Germany](https://github.com/fiskaltrust/interface-doc/assets/124153755/4906f448-e596-49b1-a0f4-ada82e0e504d)
-
+![digital-receipt-sample-de](/doc/digital-receipt/General/digita_receipt_sample_de.png)
 
 | Number  | Description |
 | ------------- | ------------- |
@@ -84,7 +86,7 @@ Once the consumer accepted the consent on the consumer application and sent a re
 
 *Consumer Application in development. Currently only available in sandbox environment. 
 
-<img width="119" alt="Consumer_Application_Preview" src="https://github.com/fiskaltrust/interface-doc/assets/124153755/59083c75-025c-4705-9ff1-3189da4a9e3f">
+![consumer-application-preview](/doc/digital-receipt/General/consumer_application.png)
 
 | Number  | Description |
 | ------------- | ------------- |

@@ -41,7 +41,7 @@ The visualization of the digital receipt variates from the markets legal require
 
 
 
-![digital-receipt-sample-at](/doc/digital-receipt/General/digita_receipt_sample_at.png)
+![digital-receipt-sample-at](/doc/digital-receipt/Introduction/images/digita_receipt_sample_at.png)
 
 | Number  | Description |
 | ------------- | ------------- |
@@ -61,7 +61,7 @@ https://receipts-sandbox.fiskaltrust.cloud/v0/1cb802fb-e694-4036-a857-6328842cb0
 
 ## Germany 
 
-![digital-receipt-sample-de](/doc/digital-receipt/General/digita_receipt_sample_de.png)
+![digital-receipt-sample-de](/doc/digital-receipt/Introduction/images/digita_receipt_sample_de.png)
 
 | Number  | Description |
 | ------------- | ------------- |
@@ -86,7 +86,7 @@ Once the consumer accepted the consent on the consumer application and sent a re
 
 *Consumer Application in development. Currently only available in sandbox environment. 
 
-![consumer-application-preview](/doc/digital-receipt/General/consumer_application.png)
+![consumer-application-preview](/doc/digital-receipt/Introduction/images/consumer_application.png)
 
 | Number  | Description |
 | ------------- | ------------- |

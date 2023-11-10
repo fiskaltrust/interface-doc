@@ -9,7 +9,7 @@ There are various ways receipts are provided and transported towards the consume
 
 ## With customer facing display/device 
 
-![receive_display-device](https://github.com/fiskaltrust/interface-doc/assets/124153755/d2c1e2eb-c966-4e56-8776-ad1f5fea17af)
+![qr-code_on_display](/doc/digital-receipt/General/images/sequenz_diagramm_qr-code_display.png)
 
 This sequence diagram describes the process of generating a digital receipt with a customer display, handheld or self-checkout device using the fiskaltrust digital receipt solution. The participants in the process are the merchant, fiskaltrust and the consumer. 
 
@@ -21,7 +21,7 @@ Overall, this diagram illustrates the process of generating a digital receipt wi
 
 ## With Give-Away (QR-Label)
 
-![receive_qr-label](https://github.com/fiskaltrust/interface-doc/assets/124153755/206b3904-38d7-4fd5-a307-e1f9f86dcd4e)
+![give-away](/doc/digital-receipt/General/images/sequenz_diagramm_give-awaypng.png)
 
 This sequence diagram describes the process of generating a digital receipt with Give-Away (QR-Labels) using the fiskaltrust digital receipt solution. The participants in the process are the merchant, fiskaltrust and the consumer. 
 
@@ -35,7 +35,7 @@ The merchants PosDealer can participate by means of placing orders and intermedi
 
 ## With InStore App
 
-![receive_instore-app](https://github.com/fiskaltrust/interface-doc/assets/124153755/a576a9d3-2498-437f-9dcb-c8e2114d0d7a)
+![give-away](/doc/digital-receipt/General/images/sequenze_diagramm_instore_app.png)
 
 This sequence diagram describes the process of generating a digital receipt with the InStore App. The participants in the process are the merchant, fiskaltrust, consumer and the InStore App. 
 

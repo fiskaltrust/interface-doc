@@ -14,12 +14,12 @@ This high level overview shows you the implementation and configuration steps, w
 
 <br/>
 
-![Screenshot 2023-11-06 145343](https://github.com/fiskaltrust/interface-doc/assets/124153755/c448df73-f9cd-4dac-bf86-35827e38bb7c)
+![getting_started_qr-code](/doc/digital-receipt/implementation/images/getting_started_qr-code.png)
 
 <br/>
 
-![Screenshot 2023-11-06 145420](https://github.com/fiskaltrust/interface-doc/assets/124153755/0a6f9e39-c6ab-4d8f-81fd-c34ebbdb7ecf)
+![getting_started_give-away](/doc/digital-receipt/implementation/images/getting_started_give-away.png)
 
 <br/>
 
-![Bild1](https://github.com/fiskaltrust/interface-doc/assets/124153755/54611f76-dd18-4c01-a38a-7d432140a798)
+![getting_started_InStore_App](/doc/digital-receipt/implementation/images/getting_started_InStore_App.png)

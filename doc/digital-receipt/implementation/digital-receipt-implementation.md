@@ -5,22 +5,24 @@ title: 'Digital receipt implementation'
 
 # Digital receipt transmission
 
->[!IMPORTANT]
->Before start implementing, please read the getting started section first to make sure you are choosing the best suiting transmitting method for your Point of Sales software. 
+:::note
 
-fiskaltrust provides two distinct approaches for transmitting receipt requests to the fiskaltrust.Middleware. The first approach is the POS API Helper, which is primarily recommended for testing/sandbox environments and the InStore App. Configuring the POS API Helper within the fiskaltrust.Portal requires minimal implementation effort in your Point of Sale software.
+Before start implementing, please read the getting started section first.
 
-However, it's important to highlight that the POS API Helper does not log the delivery statuses of the digital receipt, as mentioned in the section Evaluation of document retrievals for financial administration (Finanzverwaltung). The absence of these logs prevents a tax auditor from reviewing the statuses of printing, acceptance, and submission in the event of an audit. This could result in non-compliance, particularly in Austria, due to the lack of logged records for "Belegausgabepflicht" and "Belegannahmepflicht," rendering verification impossible.
+:::
 
-To address this, the POS API provides comprehensive logging of digital receipt interactions, encompassing printing, acceptance, submission, and delivery statuses. This logging fulfills the requirements for "Belegausgabepflicht" and "Belegannahmepflicht" in Austria, as well as "Belegausgabepflicht" in Germany.
 
-Employing the InStore App alongside the POS API Helper guarantees full compliance with the relevant regulations.
+fiskaltrust provides two implementing methods for the digital receipt via QR-Code and via Give-Away (QR-Label). The first approach is the POS API Helper, which is primarily recommended for testing/sandbox environments and the InStore App. Configuring the POS API Helper within the fiskaltrust.Portal requires no implementation effort in your Point of Sale software.
+
+However, it's important to highlight that the POS API Helper does not log the delivery statuses of the digital receipt, as mentioned in the section Evaluation of document retrievals for financial administration ("Finanzverwaltung"). The absence of these logs prevents a tax auditor from reviewing the statuses of printing, acceptance, and submission in the event of an audit. This could result in non-compliance, particularly in Austria, due to the lack of logged records for the obligation to issue receipts ("Belegausgabepflicht") and the obligation to accept receipts ("Belegannahmepflicht"), rendering verification impossible.
+
+To address this, the POS API provides comprehensive logging of digital receipt interactions: "printing" a digital receipt and the retrival status. This logging fulfills the requirements for the obligation to issue receipts ("Belegausgabepflicht") and the obligation to accept receipts ("Belegannahmepflicht") in Austria, as well as the obligation to issue receipts ("Belegausgabepflicht") in Germany.
 
 # Create receipts with /sign endpoint + POS API Helper (Dispreferred)
 
 This sequence diagram describes the process of generating a digital receipt with the sign endpoint and the POS API Helper. The participants in the process are the Point of Sale software, fiskaltrst.Middleware, POS API Helper, fiskaltrust and the consumer. 
 
-![sign+pos-api-helper](https://github.com/fiskaltrust/interface-doc/assets/124153755/b4496ff6-5040-4d5f-90ae-45d03abab862)
+![pos_api_helper_sequence](/doc/digital-receipt/implementation/images/POS_API_Helper_sequence.png)
 
 The Point of Sale software calls the Middleware's sign endpoint with a regular receipt request - the request will be processed by the fiskaltrust.Middleware. After this step, the POS software receives the receipt response from the fiskaltrust.Middleware (which also contains the data for creating a printed receipt). The Point of Sale software extracts the ftQueueId and ftQueueItemId properties from the receipt response and generates the link for the QR-Code out of this dataset. Final step is the visualization of the QR-Code containing the URL to the digital receipt on the customer display, handheld, self-checkout or any other suitable devices.
 

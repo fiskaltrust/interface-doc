@@ -19,7 +19,3 @@ This high level overview shows you the implementation and configuration steps, w
 <br/>
 
 ![getting_started_give-away](/doc/digital-receipt/implementation/images/getting_started_give-away.png)
-
-<br/>
-
-![getting_started_InStore_App](/doc/digital-receipt/implementation/images/getting_started_InStore_App.png)

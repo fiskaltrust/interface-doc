@@ -7,13 +7,13 @@ title: 'InStore App'
 
 :::info summary
 
-After reading this, you understand the concept of the InStore App and configure an own InStore App installation.
+After reading this, you understand the concept of the InStore App, the configuration- and implementation steps of the InStore App.
 
 :::
 
 ## Introduction
 
-The fiskaltrust instore app can be used on a touch-enabled device with an integrated thermal printer. The fiskaltrust InStore App can listen to receipt issuing of multiple CashBoxes filtered by provided terminal-identification by each CashBox. Each time a related CashBox issues a receipt, the fiskaltrust InStore App pops up on the consumer facing touch screen and shows the following elements: 
+The fiskaltrust InStore app can be used on a touch-enabled devices with an integrated thermal printer. The fiskaltrust InStore App can listen to receipt issuing of multiple CashBoxes filtered by provided terminal-identification by each CashBox. Each time a related CashBox issues a receipt, the fiskaltrust InStore App pops up on the consumer facing touch screen and shows the following elements: 
 
 * Number, moment of creation and total amount of the receipt 
 * QR-Code with the https-receipt-link to hand over receipt to the consumer 
@@ -26,19 +26,17 @@ When the accept button is pressed by the consumer, then a manual acknowledgement
 
 When the print button is pressed by the consumer, or when the timeout/countdown is exceeded, then a paper receipt is printed and printing is logged for analytics. The current receipt display is closed after successful printing.
 
-Setting up the InStore App requires no implementation into the Point of Sale software. The configuration process, encompassing POS-API Helper configuration and the steps for pairing the CashBox with the device, can be effortlessly completed within the fiskaltrust.Portal.
+Setting up the InStore App requires no implementation into the Point of Sale software.
 
-Since all operations within the app (Including QR-Code scanning, accepting and printing) are meticulously logged in the fiskaltrust.Portal, the InStore App attains complete compliance with Austria's "Belegausgabepflicht" and "Belegannahmepflicht", as well as Germany's "Belegausgabepflicht". Furthermore, the app ensures that the receipt will always be issued to the consumer. fiskaltrust appointed Markus Knasmüller from BMD to create an external assessment about the conformity of the digital receipt in Austria. The final assessment can be requested here: https://forms.office.com/e/0PcMDYWC2B  
+Since all operations within the app (Including QR-Code scanning, accepting and printing) are meticulously logged in the fiskaltrust.Portal, the InStore App attains complete compliance with Austria's obligation to issue receipts ("Belegausgabepflicht") and the obligation to accept receipts ("Belegannahmepflicht"), as well as Germany's obligation to issue receipts ("Belegausgabepflicht"). Furthermore, the app ensures that the receipt will always be issued to the consumer. 
 
-:::caution
-The fiskaltrust InStore App requires a permanent and stable connection to the internet.
-:::
+fiskaltrust appointed Dr. Markus Knasmüller from BMD to create an external assessment about the conformity of the digital receipt in Austria. The final assessment can be requested here: https://forms.office.com/e/0PcMDYWC2B  
 
 ## Receiving receipts with InStore App
 
-![InStore-App_sequence](/doc/digital-receipt/General/images/sequenze_diagramm_instore_app.png)
-
 This sequence diagram describes the process of generating a digital receipt with the InStore App. The participants in the process are the merchant, fiskaltrust, consumer and the InStore App. 
+
+![InStore-App_sequence](/doc/digital-receipt/General/images/sequenze_diagramm_instore_app.png)
 
 The InStore App offers three options: scan QR-Code to receive digital receipt on mobile phone, accept button to manually acknowledge received receipt and print receipt on thermal paper.
 
@@ -82,29 +80,357 @@ This high level overview shows you the steps on how to implement and configure t
 
 ![InStore_App_implementation_overview](/doc/digital-receipt/Instore-App/images/InStore_App_implementation_overview.png)
 
-### Configure master data
+## Configure master data
 
-Please visit following link to see configuration steps for the master data:
+Please visit following link to see the configuration steps for the master data:
 
 https://docs.fiskaltrust.cloud/de/docs/posdealers/buy-resell/products/digital-receipt#introduction
 
-### Configure POS-API Helper / implement POS-API
+# Implementation 
 
-fiskaltrust offers two transportation methods to seamlessly transfer data from your local Queue to the digital receipt backend. To ensure a smooth digital receipt process, a switch to direct receipt uploads is necessary.
+fiskaltrust provides for the InStore App two implemenation methods. The first approach is via the POS API Helper, which is recommended for testing/sandbox environments and for small installations. Configuring the POS API Helper within the fiskaltrust.Portal requires no implementation effort in your Point of Sale software.
 
-The first method, requiring no additional implementation effort, involves the utilization of the POS-API Helper, which can be configured within the fiskaltrust.Portal. The role of the POS-API Helper is to facilitate the seamless and direct transfer of the receipt data from the local Queue to the digital receipt endpoint. To take advantage of this capability, the POS-API Helper needs to be configured in the fiskaltrust.Portal and assigned to each CashBox utilizing the InStore App. Failure to not configure the POS-API Helper results in digital receipt visualization delays of up to five minutes. To gain insights into the configuration steps for the POS-API Helper, please refer to the section configure POS-API Helper of this document.
+The POS API is the latest addition to the digital receipt ecosystem. The POS API is a superset of the Middleware's "original" IPOS interface, and uses the same models for /sign, /journal and /echo. The core features of this API provides a variety of different functionalities for Point of Sales software and is the central entry point to the fiskaltrust.Middleware. For the InStore App the /print endpoint is required, to digitally print digital receipts.
 
-The second method to change the upload behavior entails the integration of the POS-API's print endpoint directly into your Point of Sale software. Particularly recommended for scaling installations, this approach enhances efficiency, because no configuration needs to be done in the fiskaltrust.Portal. Distinguishing itself from the POS-Helper, the POS-API offers a broader range of advanced features.
+This means that existing implementations can very easily be reused by adjusting them to the asynchronous flow. The IPOS interface will continue to be fully supported by the Middleware.
 
-Please visit following link to see configuration steps for the POS-API Helper:
+As most operations especially /print requests may take an extended amount of time, this API is designed in a completely asynchronous way. After sending a request to the /print endpoint, the InStore App immediately visualizes the QR-Code. Please note: The /sign operation does not necessary needs to be implemented for the InStore App. 
 
-https://docs.fiskaltrust.cloud/de/docs/posdealers/technical-operations/middleware/helper#pos-api-helper-example
+A general sample of this process flow is illustrated in the picture below:
 
-Please visit following link to see configuration steps for the POS-API: 
+![Screenshot 2023-11-07 152951](https://github.com/fiskaltrust/interface-doc/assets/124153755/bd976d8c-3119-47b1-852d-abb678aea01d)
 
-https://docs.fiskaltrust.cloud/de/apis/pos-api#tag/POS-API/paths/~1v0~1print/post
+::warning
+The fiskaltrust InStore App requires a permanent and stable connection to the internet.
+:::
 
-### Pair InStore App
+## Availability
+
+The production API can be reached at https://pos-api.fiskaltrust.cloud as for all fiskaltrust services, the sandbox instance should be used for development and testing: https://pos-api-sandbox.fiskaltrust.cloud.
+
+The exact same endpoints will also be added to the on-premise Launcher (natively in version 2.0, and via additional Helper packages for the versions below).
+
+>[!IMPORTANT]
+> - **Sign** endpoint is only available in Austria with the Cloud CashBox
+> - **Print** Endpoint is available in Austria and Germany
+
+## Authentication
+
+Authentication is handled via the headers CashBoxID and Accesstoken, which are mandatory for each request. Those values can be obtained by creating a CashBox in the one of the country-specific fiskaltrust.Portal.
+
+## Operation flow (digital receipt)
+
+Typically, a full receipt flow when using digital receipt (sign, print and response) would look like this:
+
+1. Call the /sign endpoint and asynchronously wait for the result
+2. If the signing was successful, call the /print endpoint and the InStore App will visualize the QR-Code to the digital receipt 
+
+## Asynchronously sign a receipt according to local regulations (Sign endpoint)
+
+This method can be used to sign different types of receipts according to the local fiscalization regulations. After signing the receipt according to the fiscal law, this method asynchronously returns the data that will be visualized on the digital receipt. The format of the receipt request is documented in the Middleware API docs, and the exact behavior of the method is determined by the cases sent within the properties (e.g. ftReceiptCase, ftChargeItemCase and ftPayItemCase).
+
+**POST:**
+
+https://pos-api.fiskaltrust.cloud/v0/sign (Production)
+
+https://pos-api-sandbox.fiskaltrust.cloud/v0/sign (Sandbox) 
+
+**Header parameters:**
+
+cashboxid (required): string <br/>
+accesstoken (required): string
+
+<details>
+<summary>Request body schema (JSON):</summary>
+  
+```
+{
+  "ftCashBoxID": "string",
+  "ftQueueID": "string",
+  "ftPosSystemId": "string",
+  "cbTerminalID": "string",
+  "cbReceiptReference": "string",
+  "cbReceiptMoment": "2019-08-24T14:15:22Z",
+  "cbChargeItems": [
+    {
+      "position": 0,
+      "quantity": 0,
+      "description": "string",
+      "amount": 0,
+      "vatRate": 0,
+      "ftChargeItemCase": 0,
+      "ftChargeItemCaseData": "string",
+      "vatAmount": 0,
+      "accountNumber": "string",
+      "costCenter": "string",
+      "productGroup": "string",
+      "productNumber": "string",
+      "productBarcode": "string",
+      "unit": "string",
+      "unitQuantity": 0,
+      "unitPrice": 0,
+      "moment": "2019-08-24T14:15:22Z"
+    }
+  ],
+  "cbPayItems": [
+    {
+      "position": 0,
+      "quantity": 0,
+      "description": "string",
+      "amount": 0,
+      "ftPayItemCase": 0,
+      "ftPayItemCaseData": "string",
+      "accountNumber": "string",
+      "costCenter": "string",
+      "moneyGroup": "string",
+      "moneyNumber": "string",
+      "moment": "2019-08-24T14:15:22Z"
+    }
+  ],
+  "ftReceiptCase": 0,
+  "ftReceiptCaseData": "string",
+  "cbReceiptAmount": 0,
+  "cbUser": "string",
+  "cbArea": "string",
+  "cbCustomer": "string",
+  "cbSettlement": "string",
+  "cbPreviousReceiptReference": "string"
+}
+```
+
+</details>
+
+**Responses:**
+
+200 - Returns a unique identifier, which can be used to obtain the result of the operation via the response endpoint.
+
+<details>
+<summary>Response sample (JSON):</summary>
+  
+```
+{
+  "type": "sign",
+  "identifier": "fdf2a983-0c30-4d40-bda3-e4e339551e5e"
+}
+```
+</details>
+
+400 - Bad request (Please check the request)
+
+401 - Unauthorized (No or wrong Accesstoken or CashBoxID in header)
+
+## Asynchronously create a digital receipt (Print endpoint) 
+
+This method is used to "print" a digital receipt, based on the receipt request and response pair from signing a receipt via the sign endpoint. The asynchronously created response contains the URL to the digital receipt. 
+
+**POST:**
+
+https://pos-api.fiskaltrust.cloud/v0/print (Production)
+
+https://pos-api-sandbox.fiskaltrust.cloud/v0/print (Sandbox)
+
+**Header parameters:**
+
+cashboxid (required): string <br/>
+accesstoken (required): string 
+
+<details>
+<summary>Request body schema (JSON):</summary>
+
+```
+{
+  "request": {
+    "ftCashBoxID": "string",
+    "ftQueueID": "string",
+    "ftPosSystemId": "string",
+    "cbTerminalID": "string",
+    "cbReceiptReference": "string",
+    "cbReceiptMoment": "2019-08-24T14:15:22Z",
+    "cbChargeItems": [
+      {
+        "position": 0,
+        "quantity": 0,
+        "description": "string",
+        "amount": 0,
+        "vatRate": 0,
+        "ftChargeItemCase": 0,
+        "ftChargeItemCaseData": "string",
+        "vatAmount": 0,
+        "accountNumber": "string",
+        "costCenter": "string",
+        "productGroup": "string",
+        "productNumber": "string",
+        "productBarcode": "string",
+        "unit": "string",
+        "unitQuantity": 0,
+        "unitPrice": 0,
+        "moment": "2019-08-24T14:15:22Z"
+      }
+    ],
+    "cbPayItems": [
+      {
+        "position": 0,
+        "quantity": 0,
+        "description": "string",
+        "amount": 0,
+        "ftPayItemCase": 0,
+        "ftPayItemCaseData": "string",
+        "accountNumber": "string",
+        "costCenter": "string",
+        "moneyGroup": "string",
+        "moneyNumber": "string",
+        "moment": "2019-08-24T14:15:22Z"
+      }
+    ],
+    "ftReceiptCase": 0,
+    "ftReceiptCaseData": "string",
+    "cbReceiptAmount": 0,
+    "cbUser": "string",
+    "cbArea": "string",
+    "cbCustomer": "string",
+    "cbSettlement": "string",
+    "cbPreviousReceiptReference": "string"
+  },
+  "response": {
+    "ftCashBoxID": "string",
+    "ftQueueID": "string",
+    "ftQueueItemID": "string",
+    "ftQueueRow": 0,
+    "cbTerminalID": "string",
+    "cbReceiptReference": "string",
+    "ftCashBoxIdentification": "string",
+    "ftReceiptIdentification": "string",
+    "ftReceiptMoment": "2019-08-24T14:15:22Z",
+    "ftReceiptHeader": [
+      "string"
+    ],
+    "ftChargeItems": [
+      {
+        "position": 0,
+        "quantity": 0,
+        "description": "string",
+        "amount": 0,
+        "vatRate": 0,
+        "ftChargeItemCase": 0,
+        "ftChargeItemCaseData": "string",
+        "vatAmount": 0,
+        "accountNumber": "string",
+        "costCenter": "string",
+        "productGroup": "string",
+        "productNumber": "string",
+        "productBarcode": "string",
+        "unit": "string",
+        "unitQuantity": 0,
+        "unitPrice": 0,
+        "moment": "2019-08-24T14:15:22Z"
+      }
+    ],
+    "ftChargeLines": [
+      "string"
+    ],
+    "ftPayItems": [
+      {
+        "position": 0,
+        "quantity": 0,
+        "description": "string",
+        "amount": 0,
+        "ftPayItemCase": 0,
+        "ftPayItemCaseData": "string",
+        "accountNumber": "string",
+        "costCenter": "string",
+        "moneyGroup": "string",
+        "moneyNumber": "string",
+        "moment": "2019-08-24T14:15:22Z"
+      }
+    ],
+    "ftPayLines": [
+      "string"
+    ],
+    "ftSignatures": [
+      {
+        "ftSignatureFormat": 0,
+        "ftSignatureType": 0,
+        "caption": "string",
+        "data": "string"
+      }
+    ],
+    "ftReceiptFooter": [
+      "string"
+    ],
+    "ftState": 0,
+    "ftStateData": "string"
+  }
+}
+```
+</details>
+
+**Responses:**
+
+200 - Returns a unique identifier, which can be used to obtain the result of the operation via the response endpoint.
+
+<details>
+<summary>Response sample (JSON):</summary>
+
+```
+{
+    "type": "print",
+    "identifier": "0ccf5ada-7d0d-4531-bc2c-9c602d26e4fe"
+}
+```
+</details>
+
+400 - Bad request "not supported" (Please check the request) 
+
+401 – Unauthorized (No or wrong Accesstoken or CashBoxID in header)
+
+## Configure POS API Helper 
+
+The POS API Helper is available in all countries. This Helper is responsible for uploading data from the local Queue to the digital receipt endpoint. This Helper is configured in the fiskaltrust.Portal and assigned to each CashBox that uses digital receipts. The POS API Helper changes to an direct upload behavior of the digital receipts.
+
+To proceed with the configuration, login to your fiskaltrust.Portal account first. 
+
+### Queue 
+
+| Step  | Description |
+| ------------- | ------------- |
+| 1  | Navigate to the configuration section and go to Queue  |
+| 2  | Configure Queue  |
+| 3  | Copy the URLs to your local machine (Required for CashBox configuration later)   |
+| 4  | For all countries: Change port to the next free port (+1) and <br/> a.	if no suffix exists after the port: add the suffix "/name_queue" to the URL ("name" can be freely chosen) <br/> b.	if suffix already exists: add the suffix "_queue" to the URL  |
+| 5  | Germany & France only: Change grpc port to the next free port (if port is free no need to go up to the next free port) and add the suffix "/name_queue" to the URL ("name" can be freely chosen)  |
+| 6  | Save changes  |
+
+### Helper 
+
+| Step  | Description |
+| ------------- | ------------- |
+| 1  | Navigate to Helper  |
+| 2  | Create new helper  |
+| 3  | Add description  |
+| 4  | Select  package name "fiskaltrust.service.helper.posapi"   |
+| 5  | Select latest package version   |
+| 6  | Select the outlet of CashBox    |
+| 7  | Save configuration   |
+| 8  | Klick configure helper   |
+| 9  | All Counties: Insert the previously saved Queue URLs to the Helper URLs and add the suffix "/name" to the URL (analogue to the naming in queue configuration). Germany & France only: Add also GRPC URL with next free port and add the suffix "/name" to the URL (analogue to the naming in queue configuration).   |
+| 10  | Save configuration and close   |
+
+### CashBox 
+
+| Step  | Description |
+| ------------- | ------------- |
+| 1  | Navigate to CashBox   |
+| 2  | Select your CashBox and click edit by list  |
+| 3  | Navigate to Helpers  |
+| 4  | Activate the POS API Helper  |
+| 5  | Save configuration  |
+| 6  | Klick rebuild configuration  |
+
+### Restart
+
+Restart the fiskaltrust.Middleware to apply the changes. 
+
+## Pair InStore App
 
 After installing the InStore App on your Android device, establishing a connection with your preferred CashBox is essential. Here's how:
 

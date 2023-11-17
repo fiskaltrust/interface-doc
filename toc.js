@@ -213,9 +213,9 @@ module.exports = {
           type: 'category',
           label: 'General',
           items: [
-            'middleware-doc/doc/digital-receipt/general/receive-receipts',
-            'middleware-doc/doc/digital-receipt/general/bundles',
-            'middleware-doc/doc/digital-receipt/general/compliance',
+            'middleware-doc/doc/digital-receipt/General/receive-receipts',
+            'middleware-doc/doc/digital-receipt/General/bundles',
+            'middleware-doc/doc/digital-receipt/General/compliance',
             {
               type: 'category',
               label: 'Implementation',

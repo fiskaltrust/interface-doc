@@ -8,10 +8,10 @@
     { "pattern": "^https?://rksv-sandbox\\.fiskaltrust\\.at.*" },
     { "pattern": "^https?://helipad\\.fiskaltrust\\.cloud/?$" },
     { "pattern": "^https?://packages\\.fiskaltrust\\.cloud/?$" },
-    { "pattern": "^https?://pos-api\\.fiskaltrust\\.cloud/?$" },
-    { "pattern": "^https?://pos-api-sandbox\\.fiskaltrust\\.cloud/?$" },
-    { "pattern": "^https?://receipts\\.fiskaltrust\\.cloud/?$" },
-    { "pattern": "^https?://receipts-sandbox\\.fiskaltrust\\.cloud/?$" },
+    { "pattern": "^https?://pos-api\\.fiskaltrust\\.cloud.*" },
+    { "pattern": "^https?://pos-api-sandbox\\.fiskaltrust\\.cloud.*" },
+    { "pattern": "^https?://receipts\\.fiskaltrust\\.cloud.*" },
+    { "pattern": "^https?://receipts-sandbox\\.fiskaltrust\\.cloud.*" },
     { "pattern": "^https?://eur-lex\\.europa\\.eu.*" },
     { "pattern": "^https?://www.bundesfinanzministerium\\.de.*" }
   ]

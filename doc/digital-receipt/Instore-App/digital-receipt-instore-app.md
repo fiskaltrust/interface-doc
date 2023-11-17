@@ -36,7 +36,7 @@ fiskaltrust appointed Dr. Markus Knasmüller from BMD to create an external asse
 
 This sequence diagram describes the process of generating a digital receipt with the InStore App. The participants in the process are the merchant, fiskaltrust, consumer and the InStore App. 
 
-![InStore-App_sequence](/doc/digital-receipt/General/images/sequenze_diagramm_instore_app.png)
+![InStore-App_sequence](./images/sequenze_diagramm_instore_app.png)
 
 The InStore App offers three options: scan QR-Code to receive digital receipt on mobile phone, accept button to manually acknowledge received receipt and print receipt on thermal paper.
 
@@ -51,7 +51,7 @@ In store, the merchant collects items and processes the payment or checkout. The
 ## InStore App visualization
 <br/>
 
-![InStore_App_show_receipt](/doc/digital-receipt/Instore-App/images/InStore_App_show_receipt.png)
+![InStore_App_show_receipt](./images/InStore_App_show_receipt.png)
 
 | Number  | Description |
 | ------------- | ------------- |
@@ -78,7 +78,7 @@ This high level overview shows you the steps on how to implement and configure t
 
 <br/>
 
-![InStore_App_implementation_overview](/doc/digital-receipt/Instore-App/images/InStore_App_implementation_overview.png)
+![InStore_App_implementation_overview](./images/InStore_App_implementation_overview.png)
 
 ## Configure master data
 
@@ -437,5 +437,5 @@ After installing the InStore App on your Android device, establishing a connecti
 | Step  | Description |
 | ------------- | ------------- |
 | 1  | Log in to your fiskaltrust.Portal account and proceed to the CashBox you want to pair with the InStore App.  |
-| 2  | Extend the overview of the CashBox. Klick `unhide` to generate a new, temporary pairing pin.<br/>![fiskaltrust.Portal_pairing_pin](/doc/digital-receipt/Instore-App/images/fiskaltrust.Portal_pairing_pin.png) The pairing pin is valid for five minutes. After the pin expired, you need to generate a new pin, by clicking `unhide` to generate a new pin.   |
-| 3  | ![InStore_App_pairing_pin](/doc/digital-receipt/Instore-App/images/InStore_App_pair_device.jpg) <br/> Enter the four-digit pin into your InStore App, confirm the connection by clicking `Pair`. You can pair multiple InStore App installations with one CashBox. To open the paring to CashBox mask or to pair with a different CashBox, press the touchscreen one second.   |
+| 2  | Extend the overview of the CashBox. Klick `unhide` to generate a new, temporary pairing pin.<br/>![fiskaltrust.Portal_pairing_pin](./images/fiskaltrust.Portal_pairing_pin.png) The pairing pin is valid for five minutes. After the pin expired, you need to generate a new pin, by clicking `unhide` to generate a new pin.   |
+| 3  | ![InStore_App_pairing_pin](./images/InStore_App_pair_device.jpg) <br/> Enter the four-digit pin into your InStore App, confirm the connection by clicking `Pair`. You can pair multiple InStore App installations with one CashBox. To open the paring to CashBox mask or to pair with a different CashBox, press the touchscreen one second.   |

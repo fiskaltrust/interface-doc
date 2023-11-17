@@ -14,8 +14,8 @@ This high level overview shows you the implementation and configuration steps, w
 
 <br/>
 
-![getting_started_qr-code](/doc/digital-receipt/implementation/images/getting_started_qr-code.png)
+![getting_started_qr-code](./images/getting_started_qr-code.png)
 
 <br/>
 
-![getting_started_give-away](/doc/digital-receipt/implementation/images/getting_started_give-away.png)
+![getting_started_give-away](./images/getting_started_give-away.png)

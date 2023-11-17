@@ -203,38 +203,34 @@ module.exports = {
       ]
     },
     {
+      type: 'category',
+      collapsed: false,
+      label: 'Digital Receipt',
+      items: [
+        'middleware-doc/doc/digital-receipt/Introduction/digital-receipt-introduction',
+        'middleware-doc/doc/digital-receipt/Instore-App/digital-receipt-instore-app',
+        {
           type: 'category',
-          collapsed: false,
-          label: 'Digital Receipt',
+          label: 'General',
           items: [
-            'middleware-doc/doc/digital-receipt/Introduction/digital-receipt-introduction',
-            'middleware-doc/doc/digital-receipt/Instore-App/digital-receipt-instore-app,
-                 ]
+            'middleware-doc/doc/digital-receipt/general/receive-receipts',
+            'middleware-doc/doc/digital-receipt/general/bundles',
+            'middleware-doc/doc/digital-receipt/general/compliance',
             {
-              type: 'category',
-              label: 'General',
-              items: [
-                'middleware-doc/doc/digital-receipt/general/receive-receipts',
-                'middleware-doc/doc/digital-receipt/general/bundles',
-                'middleware-doc/doc/digital-receipt/general/compliance',
-                     ]
-               {
               type: 'category',
               label: 'Implementation',
               items: [
                 'middleware-doc/doc/digital-receipt/implementation/getting-started',
                 'middleware-doc/doc/digital-receipt/implementation/digital-receipt-implementation',
-                      ]
-                {
-                  type: 'category',
-                  label: 'InStore App'
-                  items: [
-                    'middleware-doc/doc/digital-receipt/Instore-App/digital-receipt-instore-app',
-                    ]
-                }
-              }
+
+              ]
+            },
+            'middleware-doc/doc/digital-receipt/Instore-App/digital-receipt-instore-app'
+          ]
+        }
+      ]
     },
-        {
+    {
       type: 'link',
       label: 'Middleware API samples',
       href: 'https://middleware-samples.docs.fiskaltrust.cloud/'
@@ -256,8 +252,8 @@ module.exports = {
               href: 'https://rksvsign-samples.docs.fiskaltrust.cloud/'
             }
           ]
-        },     
-        
+        },
+
       ]
     }
   ]

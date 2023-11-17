@@ -36,7 +36,7 @@ fiskaltrust appointed Dr. Markus Knasmüller from BMD to create an external asse
 
 This sequence diagram describes the process of generating a digital receipt with the InStore App. The participants in the process are the merchant, fiskaltrust, consumer and the InStore App. 
 
-![InStore-App_sequence](./images/sequenze_diagramm_instore_app.png)
+![InStore-App_sequence](../General/images/sequenze_diagramm_instore_app.png)
 
 The InStore App offers three options: scan QR-Code to receive digital receipt on mobile phone, accept button to manually acknowledge received receipt and print receipt on thermal paper.
 

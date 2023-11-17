@@ -30,8 +30,9 @@ The consumer accesses the receipt by scanning the QR-Code displayed on the custo
 
 <details>
 <summary>Response details (shortened):</summary> 
-  
-```
+
+
+```json
 "{
 "ftCashBoxID":"124358e8-9cbd-4332-9076-7ed8b72306ac"
 "ftQueueID":"c719b59a-9ff0-891a-98a1-030776d8c46f"
@@ -44,6 +45,8 @@ The consumer accesses the receipt by scanning the QR-Code displayed on the custo
 "ftReceiptMoment":"2023-08-03T13:12:56.3989064Z"
 }"
 ```
+
+
 </details>
 
 ## Configure POS API Helper 
@@ -147,8 +150,9 @@ accesstoken (required): string
 
 <details>
 <summary>Request body schema (JSON):</summary>
-  
-```
+
+
+```json
 {
   "ftCashBoxID": "string",
   "ftQueueID": "string",
@@ -203,6 +207,7 @@ accesstoken (required): string
 }
 ```
 
+
 </details>
 
 **Responses:**
@@ -211,13 +216,16 @@ accesstoken (required): string
 
 <details>
 <summary>Response sample (JSON):</summary>
-  
-```
+
+
+```json
 {
   "type": "sign",
   "identifier": "fdf2a983-0c30-4d40-bda3-e4e339551e5e"
 }
 ```
+
+
 </details>
 
 400 - Bad request (Please check the request)
@@ -242,7 +250,8 @@ accesstoken (required): string
 <details>
 <summary>Request body schema (JSON):</summary>
 
-```
+
+```json
 {
   "request": {
     "ftCashBoxID": "string",
@@ -367,6 +376,8 @@ accesstoken (required): string
   }
 }
 ```
+
+
 </details>
 
 **Responses:**
@@ -376,12 +387,15 @@ accesstoken (required): string
 <details>
 <summary>Response sample (JSON):</summary>
 
-```
+
+```json
 {
     "type": "print",
     "identifier": "0ccf5ada-7d0d-4531-bc2c-9c602d26e4fe"
 }
 ```
+
+
 </details>
 
 400 - Bad request "not supported" (Please check the request) 
@@ -397,12 +411,15 @@ The response type of this methos depends on the type of the referenced asynchron
 <details>
 <summary>Request sample for print operation:</summary>
 
-```
+
+```json
 {
   "type": "print",
   "identifier": "fdf2a983-0c30-4d40-bda3-e4e339551e5e"
 }
 ```
+
+
 </details>
 
 **Responses:**
@@ -411,13 +428,16 @@ The response type of this methos depends on the type of the referenced asynchron
 
 <details>
 <summary>Response sample:</summary>
-  
-```
+
+
+```json
 {
     "message": "Receipt published for processing",
     "receiptUrl": "https://receipts-sandbox.fiskaltrust.cloud/60914be9-fd1a-49f1-a541-2698b923ae39/4b1c7efc-d6af-41cd-9517-83e4e90238e2"
 }
 ```
+
+
 </details>
 
 204 - The operation has not been finished yet
@@ -450,12 +470,15 @@ accesstoken (required): string
 <details>
 <summary>Response sample (JSON):</summary>
 
-```
+
+```json
 {
     "state": "Printed",
     "message": "Receipt was delivered to Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/118.0.0.0 Safari/537.36 Edg/118.0.2088.61 via http://receipts-sandbox.fiskaltrust.cloud/60914be9-fd1a-49f1-a541-2698b923ae39/1c62eb05-4aa6-4576-a1ce-0e9b87e2cded at 10/24/2023 09:58:21"
 }
-```  
+```
+
+
 </details>
 
 200 - Receipt submitted for printing (URL to digital receipt has been provided by fiskaltrust)  
@@ -463,12 +486,15 @@ accesstoken (required): string
 <details>
 <summary>Response sample (JSON):</summary>
 
-```  
+
+```json
 {
     "state": "Submitted",
     "message": "Receipt submitted for printing"
 }
-```  
+```
+
+
 </details>
 
 400 - None (Please check the request)
@@ -493,20 +519,24 @@ For this implementation the POS API Helper or POS API is required to change to a
 
 <details>
 <summary>Request body schema (JSON):</summary>
-  
-```
+
+
+```json
 "ftReceiptCaseData":  "{ \"ReceiptTag\": \"https://receipts.fiskaltrust.cloud?tag=abc123456789\" }"
 
 "ftChargeItemCaseData": "{ \"ReceiptTag\": "https://receipts.fiskaltrust.cloud?tag=abc123456789\" }"
 
 "ftPayItemCaseData": "{ \"ReceiptTag\": \"https://receipts.fiskaltrust.cloud?tag=abc123456789\" }"
 ```
+
+
 </details>
 
 <details>
 <summary>Full request body schema (JSON), containing all three options could e.g. look like this:</summary>
 
-```
+
+```json
 {
     "ftCashBoxID": "00000000-0000-0000-0000-000000000000",
     "ftPosSystemID": "00000000-0000-0000-0000-000000000000",
@@ -560,6 +590,8 @@ For this implementation the POS API Helper or POS API is required to change to a
     "ftReceiptCaseData": "{ \"ReceiptTag\": \"https://receipts.fiskaltrust.cloud?tag=abclökaejölasjf\" }"
 }
 ```
+
+
 </details>
 
 > [!IMPORTANT]
@@ -581,8 +613,9 @@ The country-specific code is made of the country's code value following the ISO-
 
 <details>
 <summary>The following example shows how to extract the value of a flag into the ftState property.</summary>
-  
-```
+
+
+```json
 if ((ReceiptResponse.ftState & 0x4154000000000001) != 0) 
 { 
     //your code in case of out of service condition 
@@ -592,6 +625,8 @@ if ((ReceiptResponse.ftState & 0x4154000000000004) != 0)
     //your code in case of SSCD permanently out of service condition
  }
 ```
+
+
 </details>
 
 ## Germany 
@@ -608,7 +643,8 @@ The following example shows how to extract the value of a flag into the ftState 
 <details>
 <summary>The following example shows how to extract the value of a flag into the ftState property.</summary>
 
-```
+
+```json
 if ((ReceiptResponse.ftState & 0x4445000000000002) != 0)
 { 
     //your code in case of out of service condition 
@@ -618,6 +654,8 @@ if ((ReceiptResponse.ftState & 0x4445000000000100) != 0)
     //your code in case of SSCD permanently out of service condition
  }
 ```
+
+
 </details>
 
 # Mandatory fields for digital receipt visualization 

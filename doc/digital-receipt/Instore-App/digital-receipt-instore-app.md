@@ -142,8 +142,9 @@ accesstoken (required): string
 
 <details>
 <summary>Request body schema (JSON):</summary>
-  
-```
+
+
+```json
 {
   "ftCashBoxID": "string",
   "ftQueueID": "string",
@@ -198,6 +199,7 @@ accesstoken (required): string
 }
 ```
 
+
 </details>
 
 **Responses:**
@@ -206,13 +208,16 @@ accesstoken (required): string
 
 <details>
 <summary>Response sample (JSON):</summary>
-  
-```
+
+
+```json
 {
   "type": "sign",
   "identifier": "fdf2a983-0c30-4d40-bda3-e4e339551e5e"
 }
 ```
+
+
 </details>
 
 400 - Bad request (Please check the request)
@@ -237,7 +242,8 @@ accesstoken (required): string
 <details>
 <summary>Request body schema (JSON):</summary>
 
-```
+
+```json
 {
   "request": {
     "ftCashBoxID": "string",
@@ -362,6 +368,8 @@ accesstoken (required): string
   }
 }
 ```
+
+
 </details>
 
 **Responses:**
@@ -371,12 +379,15 @@ accesstoken (required): string
 <details>
 <summary>Response sample (JSON):</summary>
 
-```
+
+```json
 {
     "type": "print",
     "identifier": "0ccf5ada-7d0d-4531-bc2c-9c602d26e4fe"
 }
 ```
+
+
 </details>
 
 400 - Bad request "not supported" (Please check the request) 

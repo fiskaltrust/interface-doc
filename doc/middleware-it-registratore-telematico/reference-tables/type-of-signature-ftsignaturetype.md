@@ -1,5 +1,5 @@
 ---
-slug: /poscreators/middleware-doc/germany/reference-tables/ftsignaturetype
+slug: /poscreators/middleware-doc/italy/reference-tables/ftsignaturetype
 title: 'Type of signature: ftSignatureType'
 ---
 
@@ -10,9 +10,9 @@ The `ftSignatureType` indicates the type and origin of the signature. The data t
 
 For definitions regarding national laws, please refer to the appropriate appendix<span id="t-type-of-signature-ftsignaturetype-127">.</span>
 
-| **Value**            | **Description**          | **Middleware-Version** |
-|----------------------|--------------------------|---------------------|
-| TBD|TBD|TBD|
+| **Value** | **Description** | **Middleware-Version** |
+|-----------|-----------------|------------------------|
+| TBD       | TBD             | TBD                    |
 
 
 

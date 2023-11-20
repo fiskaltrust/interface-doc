@@ -100,8 +100,10 @@ A general sample of this process flow is illustrated in the picture below:
 
 ![Screenshot 2023-11-07 152951](https://github.com/fiskaltrust/interface-doc/assets/124153755/bd976d8c-3119-47b1-852d-abb678aea01d)
 
-::warning
+:::warning
+
 The fiskaltrust InStore App requires a permanent and stable connection to the internet.
+
 :::
 
 ## Availability
@@ -110,9 +112,12 @@ The production API can be reached at https://pos-api.fiskaltrust.cloud as for al
 
 The exact same endpoints will also be added to the on-premise Launcher (natively in version 2.0, and via additional Helper packages for the versions below).
 
->[!IMPORTANT]
-> - **Sign** endpoint is only available in Austria with the Cloud CashBox
-> - **Print** Endpoint is available in Austria and Germany
+:::info
+
+- **Sign** endpoint is only available in Austria with the Cloud CashBox
+- **Print** Endpoint is available in Austria and Germany
+
+:::
 
 ## Authentication
 

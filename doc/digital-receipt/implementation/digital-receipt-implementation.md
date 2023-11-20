@@ -115,10 +115,13 @@ The production API can be reached at https://pos-api.fiskaltrust.cloud as for al
 
 The exact same endpoints will also be added to the on-premise Launcher (natively in version 2.0, and via additional Helper packages for the versions below).
 
->[!IMPORTANT]
-> - **Sign** endpoint is only available in Austria with the Cloud CashBox
-> - **Print** Endpoint is available in Austria and Germany
-> - **Pay** endpoint in not yet available 
+:::note
+
+- **Sign** endpoint is only available in Austria with the Cloud CashBox
+- **Print** Endpoint is available in Austria and Germany
+- **Pay** endpoint in not yet available
+
+:::
 
 ## Authentication
 
@@ -594,8 +597,11 @@ For this implementation the POS API Helper or POS API is required to change to a
 
 </details>
 
-> [!IMPORTANT]
-> Please keep in mind that in a real use case, only one of the three mentioned ways to inject the link into the receipt request should be used, depending on what fits the POS software's internal flows best.
+:::info
+
+Please keep in mind that in a real use case, only one of the three mentioned ways to inject the link into the receipt request should be used, depending on what fits the POS software's internal flows best.
+
+:::
 
 # Failure or disruption of internet connection
 
@@ -625,7 +631,6 @@ if ((ReceiptResponse.ftState & 0x4154000000000004) != 0)
     //your code in case of SSCD permanently out of service condition
  }
 ```
-
 
 </details>
 
@@ -668,7 +673,8 @@ This chart shows the required data fields to visualize the hole dataset of the d
 | cbReceiptReference  | 7657a361-ffe1-4633-86d8-500ee4d1cb0a  | mandatory  | no  | Reference number send by the cash register  |
 | cbReceiptMoment  | 2023-08-01T08:17:32.003Z  | mandatory  | yes  | The time of receipt creation. Must be provided in UTC  |
 
-cbChargeItems (List of services or items sold)
+**cbChargeItems (List of services or items sold)**
+
 | Field name  | Sample data | Mandatory field | Visualized on receipt | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- |
 | Quantity  | 1  | mandatory  | yes  | Amount or volume (number) of service(s) or items of the entry  |
@@ -684,11 +690,11 @@ cbChargeItems (List of services or items sold)
 | ProductNumber  | 123  | optional  | no  | Value used to identify the product  |
 | ProductBarcode  | 16514646137  | optional  | currently not*  | Product’s barcode  |
 | Unit  | Stk  | optional  | no  | Unit of measurement  |
-| UnitQuantity  |   | optional  | no  | Quantity of the service(s) of receipt entry, displayed in indicated units  |
+| UnitQuantity  |  -  |  optional  | no  | Quantity of the service(s) of receipt entry, displayed in indicated units  |
 | UnitPrice  | 2.56  | optional  | no  | ross price per indicated unit  |
 | Moment  | 2023-08-01T07:47:53.68Z  | mandatory  | no  | Time of service (year, month, day, hour, minute, second). Must be provided in UTC  |
 
-cbPayItems (List of payment received)
+**cbPayItems (List of payment received)**
 
 | Field name  | Sample data | Mandatory field | Visualized on receipt | Description |
 | ------------- | ------------- | ------------- | ------------- | ------------- |

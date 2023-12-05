@@ -202,7 +202,33 @@ module.exports = {
         },
       ]
     },
-    'middleware-doc/doc/digital-receipt/digital-receipt-overview',
+    {
+      type: 'category',
+      collapsed: false,
+      label: 'Digital Receipt',
+      items: [
+        'middleware-doc/doc/digital-receipt/Introduction/digital-receipt-introduction',
+        {
+          type: 'category',
+          label: 'General',
+          items: [
+            'middleware-doc/doc/digital-receipt/General/receive-receipts',
+            'middleware-doc/doc/digital-receipt/General/bundles',
+            'middleware-doc/doc/digital-receipt/General/compliance',
+            'middleware-doc/doc/digital-receipt/Instore-App/digital-receipt-instore-app',
+            {
+              type: 'category',
+              label: 'Implementation',
+              items: [
+                'middleware-doc/doc/digital-receipt/implementation/getting-started',
+                'middleware-doc/doc/digital-receipt/implementation/digital-receipt-implementation',
+
+              ]
+            },
+          ]
+        }
+      ]
+    },
     {
       type: 'link',
       label: 'Middleware API samples',
@@ -225,8 +251,8 @@ module.exports = {
               href: 'https://rksvsign-samples.docs.fiskaltrust.cloud/'
             }
           ]
-        },     
-        
+        },
+
       ]
     }
   ]

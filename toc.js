@@ -204,14 +204,29 @@ module.exports = {
     },
     {
       type: 'category',
+      collapsed: false,
       label: 'Digital Receipt',
       items: [
         'middleware-doc/doc/digital-receipt/Introduction/digital-receipt-introduction',
-        'middleware-doc/doc/digital-receipt/General/Introduction',
-        'middleware-doc/doc/digital-receipt/Austria/digital-receipt-austria',
-        'middleware-doc/doc/digital-receipt/Germany/digital-receipt-germany',
-        'middleware-doc/doc/digital-receipt/France/digital-receipt-france',
-        'middleware-doc/doc/digital-receipt/Instore-App/digital-receipt-instore-app',
+        {
+          type: 'category',
+          label: 'General',
+          items: [
+            'middleware-doc/doc/digital-receipt/General/receive-receipts',
+            'middleware-doc/doc/digital-receipt/General/bundles',
+            'middleware-doc/doc/digital-receipt/General/compliance',
+            'middleware-doc/doc/digital-receipt/Instore-App/digital-receipt-instore-app',
+            {
+              type: 'category',
+              label: 'Implementation',
+              items: [
+                'middleware-doc/doc/digital-receipt/implementation/getting-started',
+                'middleware-doc/doc/digital-receipt/implementation/digital-receipt-implementation',
+
+              ]
+            },
+          ]
+        }
       ]
     },
     {

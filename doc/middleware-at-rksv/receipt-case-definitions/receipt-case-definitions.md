@@ -7,11 +7,11 @@ title: Receipt case definitions
 
 This chapter expands on the definitions of Receipt Cases covered in Chapter ["Receipt Case Definitions"](../../general/receipt-case-definitions/receipt-case-definitions.md) of the General Part, with country-specific information applicable to the Austrian market.
 
-### Voucher (Service/Product)
+### Voucher Service/Product (Mehrzweckgutschein)
 
 The issuance is a process with RKSV requirement and determines the time of sale. The redemption of a voucher, and thus the distribution of the goods, constitutes a process without RKSV requirement but has to be recorded according to §131 BAO. A data set with ftReceiptCase "delivery note" or "protocol data" can be issued to process this recording.
 
-### Voucher (Value)
+### Voucher Value (Einzweckgutschein)
 
 A voucher with a specific value constitutes a means of payment, and its issuance is thus a process without RKSV requirement. Once a business transaction is made and paid for by redeeming a voucher, it constitutes a process with RKSV requirement - therefore, (value) voucher can usually be found in the pay items block. If however, it is for technical reasons necessary to enter a (value) voucher obligations in the pay items block, then respective obligations should be transferred as ftChargeItemCase: for issuance, this is (`0x4154000000000023`), and for intake (redemption) this is (`0x4154000000000022`).
 

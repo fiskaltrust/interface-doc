@@ -32,7 +32,7 @@ Both Entity Framework and SQLite queues can be launched on Linux, starting from 
 
 |                                                           | Ubuntu                                                       | Debian                                                       | Other distributions running Mono                             |
 | --------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| [A-Trust Cloud TSE](../scu/a-trust.md)                    | Update 06.08.2021: Paused by a-trust. [Link](https://www.a-trust-tse.de/de/kassensichv/news/news/status-update-august/) | Update 06.08.2021: Paused by a-trust. [Link](https://www.a-trust-tse.de/de/kassensichv/news/news/status-update-august/) | Update 06.08.2021: Paused by a-trust. [Link](https://www.a-trust-tse.de/de/kassensichv/news/news/status-update-august/) |
+| [A-Trust Cloud TSE](../scu/a-trust.md)                    | Update 06.08.2021: Paused by a-trust.| Update 06.08.2021: Paused by a-trust.| Update 06.08.2021: Paused by a-trust. |
 | [Cryptovision Hardware-TSE](../scu/cryptovision.md)       | **tested**                                                   | **tested**                                                   | should work (not tested)                                     |
 | [Deutsche Fiskal Cloud-TSE](../scu/deutsche-fiskal.md)    | Ubuntu LTS 20.04 certified, not tested                       | not tested                                                   |                                                              |
 | [Diebold-Nixdorf Hardware-TSE](../scu/diebold-nixdorf.md) | not tested                                                   | not tested                                                   |                                                              |
@@ -65,5 +65,3 @@ When using REST, the HTTP endpoint slightly differs from the Windows version, as
 Please also note that the `content-type` must be set:
 - to `application/json` when calling the _sign_ or _echo_ endpoints
 - to `text/plain` when calling the _journal_ endpoint
-
-In addition, if REST is used, a gRPC endpoint needs to be configured as the **primary** endpoint of the Queue and the SCU, so it can be properly used by our packages.

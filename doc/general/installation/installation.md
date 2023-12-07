@@ -148,7 +148,7 @@ Once successfully completed, the service will appear in the list of running serv
 
 For Linux, the fiskaltrust.SecurityMechanism can be installed as Daemon.
 
-Mono is the prerequisite, and can be installed following the manual of the [mono-project](http://www.mono-project.com/download/#download-lin) (install complete).
+Mono is the prerequisite, and can be installed following the manual of the [mono-project](http://www.mono-project.com/download/#download-lin) (install complete). Also the `mono-service` utlility needs to be installed (On Ubuntu this can be done using the command `sudo apt update && sudo apt install mono-4.0-service`).
 
 Once the installation is completed, a file named `fiskaltrust` with the following content has to be saved in the index `/etc/init.d`:
 

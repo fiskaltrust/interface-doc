@@ -215,7 +215,7 @@ module.exports = {
             'middleware-doc/doc/digital-receipt/General/receive-receipts',
             'middleware-doc/doc/digital-receipt/General/bundles',
             'middleware-doc/doc/digital-receipt/General/compliance',
-            'middleware-doc/doc/digital-receipt/Instore-App/digital-receipt-instore-app'
+            'middleware-doc/doc/digital-receipt/Instore-App/digital-receipt-instore-app',
             {
               type: 'category',
               label: 'Implementation',

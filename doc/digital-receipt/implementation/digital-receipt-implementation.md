@@ -345,7 +345,7 @@ accesstoken (required): string
     "ftChargeLines": [
       "string"
     ],
-    "cbPayItems": [
+    "ftPayItems": [
       {
         "position": 0,
         "quantity": 0,

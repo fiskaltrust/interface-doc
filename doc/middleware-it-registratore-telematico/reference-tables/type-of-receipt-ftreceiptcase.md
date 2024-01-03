@@ -27,7 +27,7 @@ version 2
 | **Value** | **Category** | **Description** |
 |-----------|-----------------|-------------------------|
 | `0` | Receipt  | A basic receipt that is generated as part of a POS sale. A receipt usually serves as proof of payment. The receipt is used after the transaction is done (if goods are received). This is the usual process that is done at a POS.  |
-| `1` | Invoice  | An invoice is generated for those cases where payment isn�t handled immediately.  |
+| `1` | Invoice  | An invoice is generated for those cases where payment isn't handled immediately.  |
 | `2` | DailyOperations  | This category contains receipt cases that the Middleware requires for various downstream processes (e.g. book keeping)  |
 | `3` | Log  | Logs can be used for storing / securing events that need are needed for additional processing or downstream processes. (e.g. log for cash drawer opened)  |
 | `4` | Lifecycle  | These operations are used for changing the overall state of the Middleware. Depending on the local regulations these receipts are handed over as part of a notification (e.g. FinanzOnline) |

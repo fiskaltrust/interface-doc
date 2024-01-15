@@ -148,7 +148,7 @@ Once successfully completed, the service will appear in the list of running serv
 
 For Linux, the fiskaltrust.SecurityMechanism can be installed as Daemon.
 
-Mono is the prerequisite, and can be installed following the manual of the [mono-project](http://www.mono-project.com/download/#download-lin) (install complete).
+Mono is the prerequisite, and can be installed following the manual of the [mono-project](http://www.mono-project.com/download/#download-lin) (install complete). Also the `mono-service` utlility needs to be installed (On Ubuntu this can be done using the command `sudo apt update && sudo apt install mono-4.0-service`).
 
 Once the installation is completed, a file named `fiskaltrust` with the following content has to be saved in the index `/etc/init.d`:
 
@@ -228,6 +228,6 @@ Once completed, the service should appear in the running daemon list.
 
 The fiskaltrust.Middleware for Android is currently available for the German market only. For details about the platform specific installation, please refer to the [platform documentation for Android](https://docs.fiskaltrust.cloud/docs/product-description/germany/products-and-services/caas/features/platforms/android).
 
-## Migration of the Middleware instance to a different hardware
+## Migration of the fiskaltrust.Middleware instance to a different hardware
 
 We do not recommend to migrate an active instance of the fiskaltrust.Middleware to another hardware. If possible, please set the queue [out of operation](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/reference-tables/ftreceiptcase) and configure and install a new Middleware instance on the new machine.

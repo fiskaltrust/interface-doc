@@ -10,7 +10,8 @@ title: Function structures
 #### Echo Function
 
 There are no special requirements or laws for the French market.
-In case of the French product ChaîneCloud, there is a special condition when the echo-Function is called with null as a Message, which forces to reinitialize the fiskaltrust.Queue in the fiskaltrust.Middleware.
+In case of the French product ChaîneCloud, there is a special condition when the echo-Function is called with an empty string as a Message, which forces to reinitialize the fiskaltrust.Queue in the fiskaltrust.Middleware.
+There is an example in our Postman Collection ["Echo null"](https://middleware-samples.docs.fiskaltrust.cloud/#a6bcafe6-08e1-49a9-b10e-725d1404365e)
 
 #### Sign Function
 

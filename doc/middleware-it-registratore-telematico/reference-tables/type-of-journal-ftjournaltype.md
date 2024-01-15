@@ -9,4 +9,5 @@ This table expands on the values provided in table of Chapter ["Type of Journal:
 
 | **Value**            | **Description**                | **Version** |
 |----------------------|--------------------------------|-------------|
-|TBD|TBD|TBD|
+| `000` | Status Information QueueIT |  1.3.45 |
+

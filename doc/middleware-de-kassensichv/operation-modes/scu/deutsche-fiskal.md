@@ -64,7 +64,7 @@ The _fiskaltrust.Middleware.SCU.DE.DeutscheFiskal_-package package handles updat
 | _CertificationIdAddition_               |           in progress                     | `null`<br />optional                                   |
 | _ServiceFolder_               |          Sets folder containing the service files.                   | `null`<br />optional                                   |
 | _FCCversion_               |             If the currently installed FCC version is lower than this, the Middleware will automatically download and update the newer FCC. This should enable users that have already installed previous versions to profit from the latest improvements in this external dependency.          | `3.2.3`<br />optional                                   |
-
+| _EnableFccMetrics_ | Enables FCC Metrics |  `false`<br />optional    |
 
 
 ## Troubleshooting

@@ -80,7 +80,7 @@ For the operation of the installed components of the fiskaltrust.Middleware foll
 
 | Hardware                          | Minimum requirements                                         |
 | --------------------------------- | ------------------------------------------------------------ |
-| **General hardware requirements** | The fiskaltrust.Middleware can be generally operated on a [Raspberry PI 2](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/). |
+| **General hardware requirements** | The fiskaltrust.Middleware can be generally operated on a [Raspberry PI 2](https://www.raspberrypi.com/products/raspberry-pi-2-model-b/). |
 | **Local storage**                 | Around 500 MB (200 MB for the Middleware components + 200 MB reserved for update-packages); optional: storage for SQLite db (around 8-10Kb/receipt) |
 | **Hardware connectivity**         | For the German market: USB, SD, Micro-SD or COM port for a local hardware-based security device (Technische Sicherheitseinrichtung, TSE).<br />For the Austrian market: USB port<br />|For the French market: not required |
 | **Internet connectivity**         | Optional, but strongly recommended: (WIFI)modem for Internet connectivity to use software-security-, data as a service-, backup,- or configuration-/update services. |

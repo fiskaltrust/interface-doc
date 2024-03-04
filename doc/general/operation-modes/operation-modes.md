@@ -67,6 +67,8 @@ For specific information regarding supported Signature Creation Units and platfo
 - [Germany](../../middleware-de-kassensichv/operation-modes/on-premise-installation.md)
 - France
 
+- Italy
+
 #### Helipad Helper
 
 The Helipad Helper is used to support updates and configurations.
@@ -86,11 +88,11 @@ For the operation of the installed components of the fiskaltrust.Middleware foll
 
 For detailed information on supported platforms and its restrictions, please refer to the linked appendices of the applicable markets in the table below:
 
-| Platform        | AT            | DE                                                           | FR            |
-| --------------- | ------------- | ------------------------------------------------------------ | ------------- |
-| **Android**     | not supported | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/android.md) | not supported |
-| **Linux/macOS** | **supported** | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/linux.md) | **supported** |
-| **Windows**     | **supported** | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/windows.md) | **supported** |
+| Platform        | AT            | DE                                                           | FR            | IT            |
+| --------------- | ------------- | ------------------------------------------------------------ | ------------- |------------- |
+| **Android**     | not supported | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/android.md) | not supported | [**supported**](../../middleware-it-registratore-telematico/operation-modes/on-premise-platforms/android.md) | 
+| **Linux/macOS** | **supported** | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/linux.md) | **supported** | [**supported**](../../middleware-it-registratore-telematico/operation-modes/on-premise-platforms/linux.md) |
+| **Windows**     | **supported** | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/windows.md) | **supported** | [**supported**](../../middleware-it-registratore-telematico/operation-modes/on-premise-platforms/windows.md) |
 
 #### ARM Processor
 

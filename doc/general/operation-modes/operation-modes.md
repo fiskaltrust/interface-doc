@@ -65,9 +65,10 @@ For specific information regarding supported Signature Creation Units and platfo
 - Austria
 
 - [Germany](../../middleware-de-kassensichv/operation-modes/on-premise-installation.md)
+
 - France
 
-- Italy
+- [Italy](../../middleware-it-registratore-telematico/operation-modes/on-premise-installation.md)
 
 #### Helipad Helper
 

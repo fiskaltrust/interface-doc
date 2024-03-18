@@ -11,7 +11,7 @@ This interface is a communication channel for interacting with the fiskaltrust.M
 #### Echo Function
 This function provides fast and easy communication checks. The transferred message is sent back directly.
 
-**Asynchronous _Echo_ call (v1 - Germany):**
+**Asynchronous _Echo_ call (v1 - Germany and Italy):**
 ```cs
 var request = new ifPOS.v1.EchoRequest { Message = "Message" };
 ifPOS.v1.EchoResponse response = await proxy.EchoAsync(request);
@@ -25,7 +25,7 @@ string result = proxy.Echo("Message");
 #### Sign Function
 This is the key function of the fiskaltrust.Middleware. Once the sign function is called, the receipt data is transferred for processing. The result of the processing is then sent back as receipt response.
 
-**Asynchronous _Sign_ call (v1 - Germany):**
+**Asynchronous _Sign_ call (v1 - Germany and Italy):**
 ```cs
 var request = new ifPOS.v1.ReceiptRequest();
 // Fill the properties of the request
@@ -42,7 +42,7 @@ ifPOS.v0.ReceiptResponse response = proxy.Sign(request);
 #### Journal Function
 With this function, a variety of information can be retrieved from the fiskaltrust.Middleware, ranging from the status information to a general notifications protocol.
 
-**Asynchronous _Journal_ call (v1 - Germany):**
+**Asynchronous _Journal_ call (v1 - Germany and Italy):**
 ```cs
 var request = new ifPOS.v1.JournalRequest();
 // Fill the properties of the request

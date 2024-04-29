@@ -100,7 +100,7 @@ The following table highlights fields of the charge item that need special handl
 | `VATAmount`               | `decimal (5)` | mandatory for special cases       | In some special cases of taxation (e.g. car spare part in the car repair shop), the VAT is not a percentage of the net-price (NETTO) or the gross-price. For these cases, the field  `VATAmount` is mandatory and a `ftChargeItemCase` that maps to DSFinV-K UST_SCHLUESSEL 7 should be used. The value of the field `VATRate` should be set to `0.0`. | 1.3         |
 
 ### Payload and Export Amount Calculation
-To get a positive Amount: Amount and Quantity have to be positiv. This is relevant with credit notes including rabatt, which must be positiv.
+To get a positive Amount: Amount and Quantity have to be positive. This is relevant e.g. for credit notes including a discount, which must be positive.
 
 | **Calculated Amount**  | **Receipt Amount** | **Receipt Quantity** | 
 | -------- | ------- |  ------- |

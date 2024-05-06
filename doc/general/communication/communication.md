@@ -50,12 +50,12 @@ With the Middleware's _helper_ topology, it is possible to connect the Middlewar
 ### Summary
 The following table displays which protocols are currently available in which country:
 
-| Communication service | AT                         | DE            | FR                         |
-|-----------------------|----------------------------|---------------|----------------------------|
-| **gRPC**              | not yet supported          | **supported** | not yet supported          |
-| **REST**              | **supported (via helper)** | **supported** | **supported (via helper)** |
-| **WCF**               | **supported**              | **supported** | **supported**              |
-| **serial/TCP**        | **supported (via helper)** | not supported | not supported              |
+| Communication service | AT                         | DE            | FR                         |IT                         |
+|-----------------------|----------------------------|---------------|----------------------------|----------------------------|
+| **gRPC**              | not yet supported          | **supported** | not yet supported          | **supported** |
+| **REST**              | **supported (via helper)** | **supported** | **supported (via helper)** | **supported** |
+| **WCF**               | **supported**              | **supported** | **supported**              | **supported** |
+| **serial/TCP**        | **supported (via helper)** | not supported | not supported              | not supported |
 
 As mentioned above, the Middleware versions will be unified in the upcoming version 2.0. 
 

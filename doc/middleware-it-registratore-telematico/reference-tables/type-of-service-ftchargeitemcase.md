@@ -10,6 +10,8 @@ This table expands on the values provided in the table [ftChargeItemCase in Gene
 ## Format
 _CCCC_vlll_gggg_NNSV_ 
 
+#### v - version
+version 2
 
 #### V - VAT  
 https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm 
@@ -17,9 +19,9 @@ https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm
 | **Value**            | **Description**| **Middleware Version** |
 | -------------------- | -------------- | ---------------------- |
 | `0` | **Unknown type of service for IT**<br />With the help of the VAT-rates table saved within fiskaltrust.SecurityMechanisms. | 1.3.45  |
-| `1` | **Discounted-1 VAT rate**<br />(as of 1.1.2022, this is 22%). | 1.3.45 |
-| `2` | **Discounted 2 VAT rate**<br />(as of 1.1.2022, this is calculated with 10%). | 1.3.45   |
-| `3` | **Normal VAT rate**<br />(as of 1.1.2022, this is calculated with 5%). | 1.3.45  |
+| `1` | **Discounted-1 VAT rate**<br />(as of 1.1.2022, this is 10%). | 1.3.45 |
+| `2` | **Discounted 2 VAT rate**<br />(as of 1.1.2022, this is calculated with 5%). | 1.3.45   |
+| `3` | **Normal VAT rate**<br />(as of 1.1.2022, this is calculated with 22%). | 1.3.45  |
 | `4` | **Super reduced 1 VAT rate**<br /> | 1.3.45 |
 | `5` | **Super reduced 2 VAT rate**<br /> | 1.3.45 |
 | `6` | **Parking VAT rate**<br />Reversal of tax liability. | 1.3.45 |
@@ -35,7 +37,7 @@ https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm
 | `1` | **Delivery (supply of goods)**<br />| 1.3.45 |
 | `2` | **Other service (supply of service)**<br />| 1.3.45   |
 | `3` | **Tip**<br /> For owner use V=0 to 7, related to total amount <br /> For Employee use V=8, Not Taxable(as of 1.1.2022, this is calculated with 5%). | 1.3.45  |
-| `4` | **Voucher**<br /> For Single-Use-Voucher use V=0 to 7<br />For Multi-Use-Voucher use V=8, Not Taxable<br />Voucher Sales is positive (+) amount.<br />Voucher Redeem is negative (-) amount.<br />IsVoid can be applied to reverse amounts. <br />Avoid to use this for Multi-Use-Voucher, use PayItem instead, with ShowInChargeItems flag. For Single-Use-Voucher apply ShowInPayItems flag to visualize it similar to a payment and to keep total amount unreduced. | 1.3.45 |
+| `4` | **Voucher**<br /> For Single-Use-Voucher use V=0 to 7<br />For Multi-Use-Voucher use V=8, Not Taxable<br />Voucher Sale is a positive (+) amount.<br />Voucher Redeem is a negative (-) amount.<br />IsVoid can be applied to reverse amounts.<br />Avoid to use this for Multi-Use-Voucher, use PayItem instead, with ShowInChargeItems flag. For Single-Use-Voucher, apply the ShowInPayItems flag to visualize it similar to payment and to keep the total amount unreduced. | 1.3.45 |
 | `5` | **Catalog service**<br /> | 1.3.45 |
 | `6` | **Not own sales / Agency business**<br />| 1.3.45 |
 | `7` | **Own Consumption**<br />| 1.3.45 |
@@ -45,17 +47,17 @@ https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm
 
 #### NN - nature of VAT  
 
-| **Value**            | **Description**                                                                                        | **Middleware Version** |
-| -------------------- | -------------- | ---------------------- |
-| `00` | **usual VAT applies**<br />| 1.3.45  |
-| `10` | **Not Taxable**<br />1x can be used to specify more country specific details. For example, IGL| 1.3.45 |
-| `20` | **Not Subject**<br />2x can be used to specify more country specific details.| 1.3.45   |
-| `30` | **Exempt**<br /> 3x| 1.3.45  |
-| `40` | **Margin scheme**<br /> Do not print/show VAT rate and amount on receipt/invoice.<br />4x can be used to specify more country specific details. | 1.3.45 |
-| `50` | **Reverse charge**<br /> 5x | 1.3.45 |
-| `60` | **VAT paid in other EU country** <br />6x| 1.3.45 |
-| `70` | **VAT distribution**<br />7x | 1.3.45 |
-| `80` | **Excluded**<br /> 8x| 1.3.45 |
+| **Value**            | **Description**                                                                                        | **Spec. for Italian reg.** | **Middleware Version** |
+| -------------------- | -------------- |  -------------- | ---------------------- |
+| `00` | **usual VAT applies**<br />| | 1.3.45  |
+| `10` | **Not Taxable**<br />1x can be used to specify more country specific details. For example, IGL|*NI (N3) marker mandatory<br />[10] not taxable - exports<br />[11] non-taxable - intra-community supplies<br />[12] non-taxable - transfers to San Marino<br />[13] non-taxable - transactions assimilated to export supplies<br />[14] non-taxable - following declarations of intent<br />[15] non-taxable - other operations which do not contribute to the formation of the ceiling | 1.3.45 |
+| `20` | **Not Subject**<br />2x can be used to specify more country specific details.| *NS (N2) marker mandatory<br />[20] not subject to VAT pursuant to articles from 7 to 7-septies of Presidential Decree 633/72<br />[21] not subject, other cases| 1.3.45   |
+| `30` | **Exempt**<br /> 3x| *ES (N4) marker mandatory<br />[30] exempt | 1.3.45  |
+| `40` | **Margin scheme**<br /> Do not print/show VAT rate and amount on receipt/invoice.<br />4x can be used to specify more country specific details. | *RM (N5) marker mandatory<br />[40] margin scheme / VAT not shown on the invoice | 1.3.45 |
+| `50` | **Reverse charge**<br /> 5x | *AL (N6) marker mandatory<br />[50] reverse charge - disposal of scrap and other salvage materials<br />[51] reverse charge - sale of gold and silver pursuant to law 7/2000 as well as used jewelery to OPO<br />[52] reverse charge - subcontracting in the construction sector<br />[53] reverse charge - sale of buildings<br />[54] reverse charge - supply of mobile phones<br />[55] reverse charge - supply of electronic products<br />[56] reverse charge - performance in the construction sector and related sectors<br />[57] reverse charge - energy sector transactions<br />[58] reverse charge - other cases | 1.3.45 |
+| `60` | **VAT paid in other EU country** <br />6x| (N7) marker mandatory<br />[60] paid in another EU country (provision of telecommunications, broadcasting and electronic services pursuant to art. 7-octies, paragraph 1 letter a, b, art. 74-sexies of Presidential Decree 633/72) | 1.3.45 |
+| `70` | **VAT distribution**<br />7x | *VI (VI) is a fiscal VAT (IVA) regime that certain retailers can adopt. It allows the global registration of the daily takings amount without distinguishing the individual VAT rates. It only ever applies to goods. | 1.3.45 |
+| `80` | **Excluded**<br /> 8x| *EE (N1) marker mandatory<br />[80] excluded pursuant to art. 15 of Presidential Decree 633/72 | 1.3.45 |
 
 
 #### lll - local taggin/flag

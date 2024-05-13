@@ -13,7 +13,7 @@ Like in all other supported countries, the German Middleware returns all complia
 We generally recommend using QR codes wherever possible to reduce the amount of required paper. 
 
 ### Printing receipts with QR codes
-As the Middleware returns additional data in the `ftSignatures` field that is e.g. used by ourselves to create the DSFinV-K, we introduced a flag for the `ftSignatureFormat` field that signalizes if a signature needs to be printed or is optional. More details about this flag are describede [here](../reference-tables/type-of-ftsignatureformat.md)
+As the Middleware returns additional data in the `ftSignatures` field that is e.g. used by ourselves to create the DSFinV-K, we introduced a flag for the `ftSignatureFormat` field that signalizes if a signature needs to be printed or is optional. More details about this flag are describede [here](../reference-tables/type-of-signature-ftsignatureformat.md)
 
 Hence, when printing QR codes, all returned signatures should be printed that **do not** have the _ftSignatureFormatFlag_ `0x0000000000010000` ("printing is optional").
 

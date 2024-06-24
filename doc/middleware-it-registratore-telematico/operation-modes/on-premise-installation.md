@@ -12,6 +12,7 @@ TBD
 
 - [Windows](on-premise-platforms/windows.md)
 - [Linux, macOs](on-premise-platforms/linux.md)
+- [Android](on-premise-platforms/android.md)
 
 ## Communication services/platform support matrix
 
@@ -37,11 +38,11 @@ For hardware requirements, please refer to the [general part](../../general/oper
 
 Following local data storage options can be configured in the queue:
 
-|                                                            | Windows       | Linux, macOS  |
-|------------------------------------------------------------|---------------|---------------|
-| **[SQLite-storage](on-premise-databases/sqlite.md)**       | **supported** | **supported** |
-| **[MySQL-storage](on-premise-databases/mysql.md)**         | **supported** | **supported** |
-| **[EF-storage](on-premise-databases/entity-framework.md)** | **supported** | **supported** |
+|                                                            | Windows       | Linux, macOS  | Android       |
+|------------------------------------------------------------|---------------|---------------|---------------|
+| **[SQLite-storage](on-premise-databases/sqlite.md)**       | **supported** | **supported** | **supported** |
+| **[MySQL-storage](on-premise-databases/mysql.md)**         | **supported** | **supported** | **supported** |
+| **[EF-storage](on-premise-databases/entity-framework.md)** | **supported** | **supported** | not supported |
 
 ## Local data export
 

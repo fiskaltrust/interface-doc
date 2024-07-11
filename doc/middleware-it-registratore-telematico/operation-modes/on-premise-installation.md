@@ -7,7 +7,8 @@ title: On-premise installation
 
 The illustration below shows the components available for the premise installation of the fiskaltrust.Middleware for the German market. For the operation modes available and the description of the components please refer to the [general part](../../general/operation-modes/operation-modes.md) .
 
-TBD
+![middleware-en](images/middleware-en-market-it.png)
+
 ## Supported software platforms
 
 - [Windows](on-premise-platforms/windows.md)
@@ -16,7 +17,7 @@ TBD
 
 ## Communication services/platform support matrix
 
-For the German market, depending on the platform, following communication services are available:
+For the Italian market, depending on the platform, following communication services are available:
 
 |          | Windows       | Linux, macOS  |
 |----------|---------------|---------------|
@@ -28,7 +29,10 @@ For the German market, depending on the platform, following communication servic
 
 |                               | Type,Form factor | Windows       | Linux, macOS  | Android       |
 |-------------------------------|------------------|---------------|---------------|---------------|
-| [epson printer](scu/epson.md) | Hardware printer | **supported** | **supported** | **supported** |
+| [Epson RT Printer](scu/epsonprinter.md) | Hardware printer | **supported** | **supported** | **supported** |
+| [Custom RT Printer](scu/customprinter.md) | Hardware printer | **supported** | **supported** | **supported** |
+| [Custom RT Server](scu/customserver.md) | Hardware server | **supported** | **supported** | **supported** |
+| [Documento Commerciale Online](scu/documentocommercialeonline.md) | Government web | **supported** | **supported** | **supported** |
 
 ## Hardware requirements
 

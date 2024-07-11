@@ -1,9 +1,9 @@
 ---
-slug: /poscreators/middleware-doc/italy/scu/epson
+slug: /poscreators/middleware-doc/italy/scu/epsonprinter
 title: Epson-Printer
 ---
 
-# Epson-Printer
+# Epson Printer
 
 ## Signature Creation Unit
 
@@ -13,7 +13,7 @@ title: Epson-Printer
 
 **Stable from version:** TBD
 
-The _fiskaltrust.Middleware.SCU.IT.Epson_ package connects the middleware with a Epson-Printer.
+The _fiskaltrust.Middleware.SCU.IT.EpsonRTPrinter_ package connects the middleware with a Epson-Printer.
 
 ### Parameters
 

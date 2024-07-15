@@ -40,7 +40,7 @@ version 2
 | `0000` | **Unknown type for country-code "IT"**<br /><br />This receipt case is handled like a "pos-receipt" (`0001 `). See below: | 1.3.45 |
 | `0001` | **POS receipt**<br /><br />Represents the main kind of receipt processed by a POS system. Creates a turnover and/or a change in the amount of cash in the till or similar operations. <br /><br />Use the `ftChargeItems` and `ftPayItems` to hand over details about goods, services and payments for processing. The `ftChargeItems` and `ftPayItems` should contain the full final state of the receipt. | 1.3.45 |
 | `0002` | **Payment transfer receipt type**<br /><br />| 1.3.45 |
-| `0003` | **Point-Of-Sale receipt without fiscalization**<br /><br />	Obligation or with exeption on fiskalization regulation | 1.3.45 |
+| `0003` | **Point-Of-Sale receipt without fiscalization**<br /><br />	Obligation or with exeption on fiscalization regulation | 1.3.45 |
 | `0004` | **E-Commerce receipt type**<br /><br />| 1.3.45 |
 | `0005` | **Delivery Note**<br /><br />| 1.3.45 |
 | `1000` | **Unknown invoice type**<br /><br />| 1.3.45 |
@@ -72,7 +72,11 @@ version 2
 | `0002` | **Training Receipt**  | 1.3.45 |
 | `0004` | **IsVoid**<br /><br />Marks Receipt as Void to previous one. Mark lineitems also as IsVoid to signal clear data.  | 1.3.45 |
 | `0008` | **Process as Handwritten Receipt**<br /><br />During a power outage, the Cash register will not work, and the merchant hands out handwritten receipts. These handwritten receipts need to be sent to the Security Mechanism by using this flag.  | 1.3.45 |
-| `0010` | **IssurIsSmallBusiness**<br /><br />Businesses below a country-specific size in revenue need not declare VAT.<br />With this marker, the receipt shows no VAT, all prices are gross, and a country-specific hint must be printed.  | 1.3.45 |
+| `0010` | **IssuerIsSmallBusiness**<br /><br />Businesses below a country-specific size in revenue need not declare VAT.<br />With this marker, the receipt shows no VAT, all prices are gross, and a country-specific hint must be printed.  | 1.3.45 |
+| `0020` | **ReceiverIsBusiness **<br /><br />Specific data need to be placed onto the receipt. | 1.3.45 |
+| `0040` | **ReceiverIsKnown**<br /><br />Characteristics related to VAT taxes are given. For example, Name, Adress, VAT-ID, other local info.  | 1.3.45 |
+| `0080` | **IsSaleInForeignCountry**<br /><br />  | 1.3.45 |
+| `0100` | **IsReturn/IsRefund**<br /><br />Marks Receipt as Return of good or service. | 1.3.45 |
 | `0800` | **Group by Position-Number / 100**<br /><br />100 = first position, 101 first subitem, 102 second subitem.<br />The sum of all chargeitems within a position must count toward the total receipt amount.<br />If the quantity and amount are 0,00, the quantity and amount will not be visualized for this line on the digital receipt. Independent if main our subitem.  | 1.3.45 |
 | `8000` | **ReceiptRequest**<br /><br />If you don’t receive a response, try this flag first before taking any other action.<br />This will return a stored result for example in case of a timeout when cashregister calls queue. | 1.3.45 |
 

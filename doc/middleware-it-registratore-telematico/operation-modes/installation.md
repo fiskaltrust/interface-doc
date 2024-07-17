@@ -1,13 +1,21 @@
 ---
-slug: /poscreators/middleware-doc/italy/operation-modes/on-premise-installation
-title: On-premise installation
+slug: /poscreators/middleware-doc/italy/operation-modes/installation
+title: Installation
 ---
 
-# On-premise installation
+# Installation
 
-The illustration below shows the components available for the premise installation of the fiskaltrust.Middleware for the German market. For the operation modes available and the description of the components please refer to the [general part](../../general/operation-modes/operation-modes.md) .
+## On-Premise
 
-![middleware-en](images/middleware-en-market-it.png)
+The illustration below shows the components available for the premise installation of the fiskaltrust.Middleware for the Italian market. For the operation modes available and the description of the components please refer to the [general part](../../general/operation-modes/operation-modes.md) .
+
+![middleware-en](images/middleware-onpremise-en-market-it.png)
+
+## Cloud Solution
+
+The illustration below shows the components available for the cloud solution of the fiskaltrust.Middleware for the Italian market. For the operation modes available and the description of the components please refer to the [general part](../../general/operation-modes/operation-modes.md) .
+
+![middleware-en](images/middleware-cloudsolution-en-market-it.png)
 
 ## Supported software platforms
 

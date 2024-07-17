@@ -9,9 +9,7 @@ title: Epson-Printer
 
 ### Support
 
-**Alpha from version:** 1.3.45
-
-**Stable from version:** TBD
+**Stable from version:** 1.3.45
 
 The _fiskaltrust.Middleware.SCU.IT.EpsonRTPrinter_ package connects the middleware with a Epson-Printer.
 
@@ -25,10 +23,3 @@ The _fiskaltrust.Middleware.SCU.IT.EpsonRTPrinter_ package connects the middlewa
 
 Please pay attention to the case-sensitive use of the parameters.
 
-### Configuration
-
-TBD
-
-## Troubleshooting:
-
-TBD

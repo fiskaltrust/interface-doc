@@ -9,10 +9,6 @@ title: Documento Commerciale Online
 
 ### Support
 
-**Alpha from version:** 1.3.45
-
-**Stable from version:** TBD
-
 The _fiskaltrust.Middleware.SCU.IT.DocumentoCommercialeOnline_ package connects the middleware with the government service Documento Commerciale Online.
 
 ### Parameters

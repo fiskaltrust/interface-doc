@@ -21,6 +21,7 @@ version 2
 |t|ReceiptCaseType|
 |txcc|ReceiptCase|
 |gggg|global tagging/flag|
+|lll|local tagging/flag|
 
 #### t - ReceiptCaseType
 
@@ -80,3 +81,9 @@ version 2
 | `0800` | **Group by Position-Number / 100**<br /><br />100 = first position, 101 first subitem, 102 second subitem.<br />The sum of all chargeitems within a position must count toward the total receipt amount.<br />If the quantity and amount are 0,00, the quantity and amount will not be visualized for this line on the digital receipt. Independent if main our subitem.  | 1.3.45 |
 | `8000` | **ReceiptRequest**<br /><br />If you don’t receive a response, try this flag first before taking any other action.<br />This will return a stored result for example in case of a timeout when cashregister calls queue. | 1.3.45 |
 
+
+#### lll - local tagging/flag 
+
+| **Value** | **Description** | **Middleware version** |
+|-----------|-----------------|-------------------------|
+| `001` | **X Report**<br /><br />(Only for RT Devices - only for Zero receipts) Prints the X report containing the snapshot of sales totals and activities  | 1.3.45 |

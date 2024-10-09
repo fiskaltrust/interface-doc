@@ -129,6 +129,22 @@ For French law fulfilment, a net-amount by line is required. This is added by a 
 
 There are no special requirements or laws for the French market.
 
+#### #### Customer data `cbCustomer`
+
+If you need to provide customer data in your request, you can send it in via the field `cbCustomer` by filling it JSON format with following fields:
+
+| **Field name**    | **Data type**                   | **Default Value Mandatory Field** | **Description**                                                                                                                                                                                                                       | **Version** |
+|-------------------|---------------------------------|-----------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
+| `CustomerName`    | `string (50)`                   | Optional                          | **Name of beneficiary customer.** <br />Send via `cbCustomer` in JSON format by adding the key value pair `CustomerName` e.g. `"cbCustomer":"{"CustomerName":"Martin Dupont",...}"`                                                | 1.2         |
+| `CustomerId`      | `string (50)`                   | Optional                          | **ID of the beneficiary customer.** <br />Send via `cbCustomer` in JSON format by adding the key value pair `CustomerId ` e.g. `"cbCustomer":"{"customerName":"Martin Dupont", "CustomerId":"PX9819822", ...}"`                      | 1.2         |
+| `CustomerType`    | `string (50)`                   | Optional                          | **Type of the beneficiary customer** (e.g. employee). <br />Send via `cbCustomer` in JSON format by adding the key value pair `CustomerType` e.g. `"cbCustomer":"{..., "CustomerId":"Martin Dupont", "CustomerType":"Particulier", ...}"` | 1.2         |
+| `CustomerStreet`  | `string (60)`                   | Optional                          | S**treet and house number of the beneficiary customer.** <br />Send via `cbCustomer` in JSON format by adding the key value pair `CustomerStreet` e.g. `"cbCustomer":"{..., "CustomerStreet":"Rue de la Paix 1", ...}"`                | 1.2         |
+| `CustomerZip`     | `string (10)`                   | Optional                          | **Zip of the beneficiary customer.** <br />Send via `cbCustomer` in JSON format by adding the key value pair `CustomerZip` e.g. `"cbCustomer":"{..., "CustomerZip":"75009", ...}"`                                                    | 1.2         |
+| `CustomerCity`    | `string (62)`                   | Optional                          | **City of the beneficiary customer**. <br />Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCity` e.g. `"cbCustomer":"{..., "CustomerCity":"Paris", ...}"`                                               | 1.2        |
+| `CustomerCountry` | `ISO 3166 ALPHA-3 country code` | Optional                          | **Country of the beneficiary customer.** <br />Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCountry` e.g. `"cbCustomer":"{..., "CustomerCountry":"FRANCE", ...}"`                                          | 1.2         |
+| `CustomerVATId`   | `string(15)`                    | Optional                          | **VAT-ID of the beneficiary customer.**<br />Send via `cbCustomer` in JSON format by adding the key value pair `CustomerVATId` e.g. `"cbCustomer":"{..., "CustomerVATId":"FR12345678901", ...}"`                                        | 1.2         |
+
+
 ### Signature Entry
 
 A Signature Entry can include an electronic signature for printing on the receipt and further information regarding the operational state of the fiskaltrust.SecurityMechanism. Furthermore, but only when receipts with special functions are used, the previous state of the totalizers (in case of a temporal closure), can also be sent back in this block.

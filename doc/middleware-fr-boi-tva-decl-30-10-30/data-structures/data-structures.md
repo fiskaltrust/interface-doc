@@ -129,7 +129,7 @@ For French law fulfilment, a net-amount by line is required. This is added by a 
 
 There are no special requirements or laws for the French market.
 
-#### #### Customer data `cbCustomer`
+#### Customer data `cbCustomer`
 
 If you need to provide customer data in your request, you can send it in via the field `cbCustomer` by filling it JSON format with following fields:
 

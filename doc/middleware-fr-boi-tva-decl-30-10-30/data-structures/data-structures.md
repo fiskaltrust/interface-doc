@@ -143,7 +143,9 @@ If you need to provide customer data in your request, you can send it in via the
 | `CustomerCity`    | `string (62)`                   | Optional                          | **City of the beneficiary customer**. <br />Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCity` e.g. `"cbCustomer":"{..., "CustomerCity":"Paris", ...}"`                                               | 1.2        |
 | `CustomerCountry` | `ISO 3166 ALPHA-3 country code` | Optional                          | **Country of the beneficiary customer.** <br />Send via `cbCustomer` in JSON format by adding the key value pair `CustomerCountry` e.g. `"cbCustomer":"{..., "CustomerCountry":"FRANCE", ...}"`                                          | 1.2         |
 | `CustomerVATId`   | `string(15)`                    | Optional                          | **VAT-ID of the beneficiary customer.**<br />Send via `cbCustomer` in JSON format by adding the key value pair `CustomerVATId` e.g. `"cbCustomer":"{..., "CustomerVATId":"FR12345678901", ...}"`                                        | 1.2         |
-
+| `CustomerSIRET`   | `string(15)`                    | Optional                          | **VAT-ID of the beneficiary customer.**<br />Send via `cbCustomer` in JSON format by adding the key value pair `CustomerSIRET` e.g. `"cbCustomer":"{..., "CustomerSIRET":"12345678900012", ...}"`                                        | 1.2         |
+| `CustomerSIREN`   | `string(15)`                    | Optional                          | **VAT-ID of the beneficiary customer.**<br />Send via `cbCustomer` in JSON format by adding the key value pair `CustomerSIREN` e.g. `"cbCustomer":"{..., "CustomerSIREN":"123456789 ", ...}"`                                        | 1.2         |
+| `CustomerRCS`   | `string(15)`                    | Optional                          | **VAT-ID of the beneficiary customer.**<br />Send via `cbCustomer` in JSON format by adding the key value pair `CustomerRCS` e.g. `"cbCustomer":"{..., "CustomerRCS":"RCS: Paris B 123 456 789 ", ...}"`                                        | 1.2         |
 
 ### Signature Entry
 

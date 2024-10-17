@@ -28,9 +28,12 @@ Tips are defined in the [General part](https://docs.fiskaltrust.cloud/docs/poscr
 A duplicata or copy of a document is printed, this must be done as a separate document. The layout and the information contained is the same as for the original document. 
 Starting August 1st 2023, a new anti-waste law is enforced, about the ban of systematic printing of the receipt. 
 
-The general rule is that if a receipt is printed at the time of the transaction, then the receipt printed is the original.  
+##### General Rules:
 
-If the receipt is printed after the time of the transaction is considered a duplicata. 
+- If a receipt is printed at the time of the transaction, it is considered the original.
+- If a receipt is printed after the transaction, it is classified as a duplicata.
+
+These regulations also apply to digital formats such as PDFs.
 
 #### Advance deposit invoice (Facture d'accompte)
 

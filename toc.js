@@ -133,7 +133,14 @@ module.exports = {
           items: [
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/appendix-fr-boi-tva-decl-30-10-30',
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/terminology/terminology',
-            'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/cash-register-integration/cash-register-integration',
+            {
+              type: 'category',
+              label: 'Cash register integration',
+              items: [
+                'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/cash-register-integration/cash-register-integration',
+                'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/cash-register-integration/failure-scenario',
+              ]
+            },
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/data-structures/data-structures',
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/function-structures/function-structures',
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/communication/communication',
@@ -142,7 +149,7 @@ module.exports = {
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/receipt-case-definitions/receipt-case-definitions',
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/reference-tables/reference-tables',
           ]
-        },
+        },        
         {
           type: 'category',
           label: 'Italy (Registratore Telematico)',

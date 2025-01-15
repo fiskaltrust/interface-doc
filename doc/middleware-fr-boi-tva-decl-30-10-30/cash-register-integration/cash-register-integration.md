@@ -72,6 +72,8 @@ The results will be shown, and the content will be available for download on a d
 
 The procedure archives the requested period. An archive can contain a maximum of 12 months from the start of the queue or from the last archive date, up to the receipt's date.  If the archiving period is longer than 12 months, multiple archive receipts have to be sent with the start date of each consecutive receipt beginning right after the end date of the previous one.
 
+Every time an archive receipt is sent to the middleware, a hash recalculation is performed. If any discrepancies are found in the hashes, an error message will be displayed in the portal, under (Configuration-\> Queues\>ActionJournal)
+
 ### Receipt structure
 
 This chapter describes the receipt structure applicable to the French market.

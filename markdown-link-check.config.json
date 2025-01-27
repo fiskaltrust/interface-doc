@@ -16,6 +16,6 @@
     { "pattern": "^https?://www.bundesfinanzministerium\\.de.*" },
     { "pattern": "^https?://bofip\\.impots\\.gouv\\.fr.*" },
     { "pattern": "^https?://install\\.appcenter\\.ms.*" },
-    { "pattern": "^https?://play\\.google\\.com\\*" }
+    { "pattern": "^https?://play\\.google\\.com.*" }
   ]
 }

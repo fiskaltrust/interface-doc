@@ -57,7 +57,7 @@ module.exports = {
           type: 'category',
           label: 'Belgium (Closed Beta)',
           items: [
-            'middleware-doc/doc/middleware-be/appendix-gr',
+            'middleware-doc/doc/middleware-be/appendix-be',
             'middleware-doc/doc/middleware-be/terminology/terminology',
             'middleware-doc/doc/middleware-be/cash-register-integration/cash-register-integration',
             'middleware-doc/doc/middleware-be/data-structures/data-structures',

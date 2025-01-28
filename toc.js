@@ -55,6 +55,30 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Belgium (Closed Beta)',
+          items: [
+            'middleware-doc/doc/middleware-be/appendix-gr',
+            'middleware-doc/doc/middleware-be/terminology/terminology',
+            'middleware-doc/doc/middleware-be/cash-register-integration/cash-register-integration',
+            'middleware-doc/doc/middleware-be/data-structures/data-structures',
+            {
+              type: 'category',
+              label: 'Reference Tables',
+              items: [
+                'middleware-doc/doc/middleware-be/reference-tables/reference-tables',
+                'middleware-doc/doc/middleware-be/reference-tables/service-status-ftstate',
+                'middleware-doc/doc/middleware-be/reference-tables/type-of-receipt-ftreceiptcase',
+                'middleware-doc/doc/middleware-be/reference-tables/type-of-service-ftchargeitemcase',
+                'middleware-doc/doc/middleware-be/reference-tables/type-of-payment-ftpayitemcase',
+                'middleware-doc/doc/middleware-be/reference-tables/type-of-signature-ftsignaturetype',
+                'middleware-doc/doc/middleware-be/reference-tables/type-of-signature-ftsignatureformat',
+                'middleware-doc/doc/middleware-be/reference-tables/type-of-journal-ftjournaltype',
+              ]
+            }
+          ]
+        },
+        {
+          type: 'category',
           label: 'Germany (KassenSichV)',
           items: [
             'middleware-doc/doc/middleware-de-kassensichv/appendix-de-kassensichv',
@@ -129,11 +153,42 @@ module.exports = {
         },
         {
           type: 'category',
+          label: 'Spain (Open Beta)',
+          items: [
+            'middleware-doc/doc/middleware-es/appendix-es',
+            'middleware-doc/doc/middleware-es/terminology/terminology',
+            'middleware-doc/doc/middleware-es/cash-register-integration/cash-register-integration',
+            'middleware-doc/doc/middleware-es/data-structures/data-structures',
+            {
+              type: 'category',
+              label: 'Reference Tables',
+              items: [
+                'middleware-doc/doc/middleware-es/reference-tables/reference-tables',
+                'middleware-doc/doc/middleware-es/reference-tables/service-status-ftstate',
+                'middleware-doc/doc/middleware-es/reference-tables/type-of-receipt-ftreceiptcase',
+                'middleware-doc/doc/middleware-es/reference-tables/type-of-service-ftchargeitemcase',
+                'middleware-doc/doc/middleware-es/reference-tables/type-of-payment-ftpayitemcase',
+                'middleware-doc/doc/middleware-es/reference-tables/type-of-signature-ftsignaturetype',
+                'middleware-doc/doc/middleware-es/reference-tables/type-of-signature-ftsignatureformat',
+                'middleware-doc/doc/middleware-es/reference-tables/type-of-journal-ftjournaltype',
+              ]
+            }
+          ]
+        },
+        {
+          type: 'category',
           label: 'France (BOI-TVA-DECLA-30-10-30)',
           items: [
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/appendix-fr-boi-tva-decl-30-10-30',
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/terminology/terminology',
-            'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/cash-register-integration/cash-register-integration',
+            {
+              type: 'category',
+              label: 'Cash register integration',
+              items: [
+                'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/cash-register-integration/cash-register-integration',
+                'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/cash-register-integration/failure-scenario',
+              ]
+            },
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/data-structures/data-structures',
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/function-structures/function-structures',
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/communication/communication',
@@ -141,6 +196,30 @@ module.exports = {
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/installation/installation',
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/receipt-case-definitions/receipt-case-definitions',
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/reference-tables/reference-tables',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Greece (Closed Beta)',
+          items: [
+            'middleware-doc/doc/middleware-gr/appendix-gr',
+            'middleware-doc/doc/middleware-gr/terminology/terminology',
+            'middleware-doc/doc/middleware-gr/cash-register-integration/cash-register-integration',
+            'middleware-doc/doc/middleware-gr/data-structures/data-structures',
+            {
+              type: 'category',
+              label: 'Reference Tables',
+              items: [
+                'middleware-doc/doc/middleware-gr/reference-tables/reference-tables',
+                'middleware-doc/doc/middleware-gr/reference-tables/service-status-ftstate',
+                'middleware-doc/doc/middleware-gr/reference-tables/type-of-receipt-ftreceiptcase',
+                'middleware-doc/doc/middleware-gr/reference-tables/type-of-service-ftchargeitemcase',
+                'middleware-doc/doc/middleware-gr/reference-tables/type-of-payment-ftpayitemcase',
+                'middleware-doc/doc/middleware-gr/reference-tables/type-of-signature-ftsignaturetype',
+                'middleware-doc/doc/middleware-gr/reference-tables/type-of-signature-ftsignatureformat',
+                'middleware-doc/doc/middleware-gr/reference-tables/type-of-journal-ftjournaltype',
+              ]
+            }
           ]
         },
         {
@@ -196,6 +275,30 @@ module.exports = {
                 'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/type-of-signature-ftsignaturetype',
                 'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/type-of-signature-ftsignatureformat',
                 'middleware-doc/doc/middleware-it-registratore-telematico/reference-tables/type-of-journal-ftjournaltype',
+              ]
+            }
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Portugal (Closed Beta)',
+          items: [
+            'middleware-doc/doc/middleware-pt/appendix-pt',
+            'middleware-doc/doc/middleware-pt/terminology/terminology',
+            'middleware-doc/doc/middleware-pt/cash-register-integration/cash-register-integration',
+            'middleware-doc/doc/middleware-pt/data-structures/data-structures',
+            {
+              type: 'category',
+              label: 'Reference Tables',
+              items: [
+                'middleware-doc/doc/middleware-pt/reference-tables/reference-tables',
+                'middleware-doc/doc/middleware-pt/reference-tables/service-status-ftstate',
+                'middleware-doc/doc/middleware-pt/reference-tables/type-of-receipt-ftreceiptcase',
+                'middleware-doc/doc/middleware-pt/reference-tables/type-of-service-ftchargeitemcase',
+                'middleware-doc/doc/middleware-pt/reference-tables/type-of-payment-ftpayitemcase',
+                'middleware-doc/doc/middleware-pt/reference-tables/type-of-signature-ftsignaturetype',
+                'middleware-doc/doc/middleware-pt/reference-tables/type-of-signature-ftsignatureformat',
+                'middleware-doc/doc/middleware-pt/reference-tables/type-of-journal-ftjournaltype',
               ]
             }
           ]

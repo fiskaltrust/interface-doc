@@ -28,6 +28,14 @@ Tips are defined in the [General part](https://docs.fiskaltrust.cloud/docs/poscr
 A duplicata or copy of a document is printed, this must be done as a separate document. The layout and the information contained is the same as for the original document. 
 Starting August 1st 2023, a new anti-waste law is enforced, about the ban of systematic printing of the receipt. 
 
-The general rule is that if a receipt is printed at the time of the transaction, then the receipt printed is the original.  
+##### General Rules:
 
-If the receipt is printed after the time of the transaction is considered a duplicata. 
+- If a receipt is printed at the time of the transaction, it is considered the original.
+- If a receipt is printed after the transaction, it is classified as a duplicata.
+
+These regulations also apply to digital formats such as PDFs.
+
+#### Advance deposit invoice (Facture d'accompte)
+
+When a deposit or prepayment is made, VAT must be applied immediately, even if the goods or services have not yet been delivered. This is stated in [Article 269 of the General Tax Code (CGI)](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044983827#:~:text=La%20taxe%20est%20exigible%20%3A,%C3%A0%20concurrence%20du%20montant%20encaiss%C3%A9.). This means that a deposit invoice must be issued at the time the payment is made. 
+Be aware that different sectors (e.g.construction) may have specific rules for deposits and their invoices.

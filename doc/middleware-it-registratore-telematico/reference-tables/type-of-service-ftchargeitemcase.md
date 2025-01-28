@@ -62,7 +62,7 @@ https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm
 
 #### lll - local taggin/flag
 
-TBD
+None
 
 #### gggg - global tagging/flag 
 

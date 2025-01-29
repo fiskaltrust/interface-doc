@@ -1,13 +1,13 @@
 ---
-slug: /poscreators/middleware-doc/italy/reference-tables/ftreceiptcase
+slug: /poscreators/middleware-doc/belgium/reference-tables/ftreceiptcase
 title: 'Type of receipt: ftReceiptCase'
 ---
 
 # Type of Receipt: ftReceiptCase
 
-The `ftReceiptCase` indicates the receipt type and defines how the fiskaltrust.SecurityMechanism should process it following Italian law.
+The `ftReceiptCase` indicates the receipt type and defines how the fiskaltrust.SecurityMechanism should process it following Belgian law.
 
-For Italy (IT), the country code is `0x4954`. Thus, the value of an unknown `ftReceiptCase` in Italy is `0x4954000000000000`.
+For Belgium (BE), the country code is `0x4245`. Thus, the value of an unknown `ftReceiptCase` in Belgium is `0x4245000000000000`.
 
 ## Format
 
@@ -38,7 +38,7 @@ version 2
 
 | **Value** | **Description** | **Middleware version** |
 |-----------|-----------------|-------------------------|
-| `0000` | **Unknown type for country-code "IT"**<br /><br />This receipt case is handled like a "pos-receipt" (`0001 `). See below: | 1.3.45 |
+| `0000` | **Unknown type for country-code "BE"**<br /><br />This receipt case is handled like a "pos-receipt" (`0001 `). See below: | 1.3.45 |
 | `0001` | **POS receipt**<br /><br />Represents the main kind of receipt processed by a POS system. Creates a turnover and/or a change in the amount of cash in the till or similar operations. <br /><br />Use the `ftChargeItems` and `ftPayItems` to hand over details about goods, services and payments for processing. The `ftChargeItems` and `ftPayItems` should contain the full final state of the receipt. | 1.3.45 |
 | `0002` | **Payment transfer receipt type**<br /><br />| 1.3.45 |
 | `0003` | **Point-Of-Sale receipt without fiscalization**<br /><br />	Obligation or with exeption on fiscalization regulation | 1.3.45 |
@@ -86,6 +86,4 @@ version 2
 
 | **Value** | **Description** | **Middleware version** |
 |-----------|-----------------|-------------------------|
-| `001` | **X Report**<br /><br />(Only for RT Devices - only for Zero receipts) Prints the X report containing the snapshot of sales totals and activities  | 1.3.45 |
-| `002` | **Print as non fiscal document**<br /><br />(Only for RT Devices - only for Protocol receipts) Prints the protcol receipt  | 1.3.67 |
-
+|TBD|TBD|TBD|

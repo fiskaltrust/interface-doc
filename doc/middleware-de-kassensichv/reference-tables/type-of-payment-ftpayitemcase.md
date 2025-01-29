@@ -34,3 +34,12 @@ This table expands on the values provided in table [ftPayItemCase in General Par
 | `0x4445000000000016` | Cash transfer from/to cash book <br />not taxable <br />DSFinV-K transformation required. Negative amount gets converted to GV_TYP=Einzahlung. Positive amount gets converted to GV_TYP=Auszahlung. amount=-amount.  In case of void-receipt everything is returned | Keine | 1.3- |
 | `0x4445000000000017` | Cash amount difference from/to till<br />not taxable<br />DSFinV-K transformation required. UST_Schluessel=5. GV_TYP=DifferenzSollIst. amount=-amount. Cash transfer from till is positive amount, cash transfer to till is negative amount. | Keine | 1.3- |
 
+## ftPayItemCaseFlag
+
+This table shows flags that can be added to each `ftPayItemCase` with values applicable to the German market. 
+
+| Value | Description | Middleware-Version |
+|---|---|---|
+| 0x0000000000020000 | **Position cancellation flag** <br />When this flag is sent: Only the amount is used for calculating the sums in the Middleware, the DSFinV-K and the DFKA (instead of our common approach with the Quantity-based calculation). Sets the STORNO field in the DSFinV-K and the DFKA | 1.3.1- |
+
+

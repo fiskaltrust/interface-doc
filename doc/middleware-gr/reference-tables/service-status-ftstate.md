@@ -5,6 +5,10 @@ title: 'Service Status: ftState'
 
 # Service Status: ftState
 
+The table below describes it supported statuses for the ftState field following the Greek implementation. The ftState from this reference table and the general part of this documentation can be combined through the logic operator "OR". For example 0x4752_2000_0000_0010 (monthly report due) and 0x4752_2000_0000_0008 combined through OR results in 0x4752_2000_0000_0018.
+
+The country-specific code is made of the country's code value following the ISO-3166-1-ALPHA-2 standard, converted from ASCII into hex. For Greece (GR) this is 0x4752, which results in 0x4752_2000_0000_0000 as the value for the "ready" status.
+
 ## Format
 
 _CCCC_vlll_gggg_gggg_ 
@@ -15,6 +19,7 @@ version 2
 #### gggg_gggg - global tagging/flag
 | **Value**            | **Description**                                                                                     | **Middleware Version** |
 |----------------------|-----------------------------------------------------------------------------------------------------|---------------------|
+| `0000_0000 ` | Ready status.  | 1.3.45                 |
 | `0000_0001 ` | **Security Mechanism is out Out of Operation** <br />Queue is not started or already stopped.  | 1.3.45                 |
 | `0000_0002 ` | **SCU (Signature Creation Unit) temporary out of service**<br />For at least one receipt, it was not possible to receive the signature from an allocated SCU, therefore the security mechanism has been put into "signature creation device out of service" mode. Regardless of whether an allocated SCU is available again or not, the mode remains in place until a ZeroReceipt cleans up the state and takes the market specific action required.| 1.3.45                 |
 | `0000_0008 ` | **Deferred Queue Mode / Late Signing Mode is active**<br />When the cash register doesn’t reach the queue, it queues up the receipt requests while continuing to do business. Also, with a major failure of the cash register or a power outage, handwritten paper receipts are queued up while continuing to do business. After getting back to a full functional state, these queued-up ReceiptRequests are sent to the queue, having the original cbReceiptMoment of the business case and ReceiptCase tagged/flagged with 0001 (Deferred Queue / Late Signing) or 0008 (Handwritten). <br />A result of this is a marker within the ftState, which can be resolved via ZeroReceipt. The reason for the marker is a mismatch between processed time along the receipt chain and a manual event to clean up the state and maybe notify 3rd parties of an outage. | 1.3.45                 |

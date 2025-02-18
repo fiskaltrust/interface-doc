@@ -21,6 +21,9 @@ have the **fiskaltrust Instore App** installed on your device. To access the set
 4. In the **Settings** section, scroll down to find **Printer Settings**. All the printing-
     related configurations, including printer setup, delay, paper width, and test
     options, are located here.
+
+---
+
 **1. Printer Setup**
 
 **Steps to Set Up Your Printer**
@@ -32,8 +35,7 @@ fiskaltrust Instore App.
 
 - **Bluetooth Printers** :
     1. Ensure Bluetooth is enabled on your device.
-    2. Pair your device with the Bluetooth printer. This can typically be done from
-       your device's Bluetooth settings.
+    2. Pair your device with the Bluetooth printer. This can typically be done from your device's Bluetooth settings.
     3. Ensure that the printer is within range and is powered on.
 - **Wi-Fi Printers** :
     1. Ensure that both your printer and device are connected to the same Wi-Fi
@@ -66,7 +68,11 @@ configure it within the fiskaltrust Instore App.
 3. In the Printer Settings section, scroll down to find **Printers**.
 4. Select the type of printer you have (Bluetooth, Wi-Fi, or USB).
 5. Choose your printer from the list of available devices.
+
+---
+
 **2. Supported Printer Types**
+
 
 The fiskaltrust Instore App supports the following printer types:
 
@@ -96,6 +102,8 @@ Follow these steps to test your printer:
 This test print will verify that the printer is working correctly with your device and the
 fiskaltrust Instore App.
 
+---
+
 **4. Printer Configuration Options**
 
 In addition to connecting and selecting your printer, the **Printer Settings** section allows
@@ -118,6 +126,9 @@ you to configure other important settings for your printer. These include:
 
 **Note:** Both **Delay** and **Paper Width** settings are adjustable by scrolling down in the
 **Printer Settings** section.
+
+---
+
 
 **5. FAQ and Troubleshooting**
 

@@ -333,6 +333,42 @@ module.exports = {
       ]
     },
     {
+      type: 'category',
+      collapsed: false,
+      label: 'InStore App',
+      items: [
+        'middleware-doc/doc/instore-app',
+        {
+          type: 'category',
+          label: 'Introduction',
+          items: [
+            'middleware-doc/doc/instore-app/Introduction/digital-receipt-introduction',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Setup-guide',
+          items: [
+            'middleware-doc/doc/instore-app/Setup-guide/guide',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Printer-guide',
+          items: [
+            'middleware-doc/doc/instore-app/Printer-guide/guide',
+          ]
+        },
+        {
+          type: 'category',
+          label: 'Multiterminal-support',
+          items: [
+            'middleware-doc/doc/instore-app/Multiterminal-support/guide',
+          ]
+        },
+      ]
+    },
+    {
       type: 'link',
       label: 'Middleware API samples',
       href: 'https://middleware-samples.docs.fiskaltrust.cloud/'

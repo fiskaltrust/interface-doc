@@ -1,5 +1,5 @@
 ---
-slug: /poscreators/middleware-doc/instore-app/multiterminal-support
+slug: /poscreators/middleware-doc/instore-app/multiterminal-support/guide
 title: 'Multiterminal Support'
 ---
 

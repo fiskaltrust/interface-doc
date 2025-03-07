@@ -11,6 +11,11 @@ After reading this, you understand the concept of the InStore App, the configura
 
 :::
 
+
+## Supported Stores
+- Sunmi
+- MaxStore
+
 ## Introduction
 
 The fiskaltrust InStore app can be used on a touch-enabled devices with an integrated thermal printer. The fiskaltrust InStore App can listen to receipt issuing of multiple CashBoxes filtered by provided terminal-identification by each CashBox. Each time a related CashBox issues a receipt, the fiskaltrust InStore App pops up on the consumer facing touch screen and shows the following elements: 

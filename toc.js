@@ -337,35 +337,10 @@ module.exports = {
       collapsed: false,
       label: 'InStore App',
       items: [
-        'middleware-doc/doc/instore-app',
-        {
-          type: 'category',
-          label: 'Introduction',
-          items: [
-            'middleware-doc/doc/instore-app/Introduction/digital-receipt-introduction',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Setup-guide',
-          items: [
-            'middleware-doc/doc/instore-app/Setup-guide/guide',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Printer-guide',
-          items: [
-            'middleware-doc/doc/instore-app/Printer-guide/guide',
-          ]
-        },
-        {
-          type: 'category',
-          label: 'Multiterminal-support',
-          items: [
-            'middleware-doc/doc/instore-app/Multiterminal-support/guide',
-          ]
-        },
+        'middleware-doc/doc/instore-app/Introduction/digital-receipt-introduction',
+        'middleware-doc/doc/instore-app/Setup-guide/guide',
+        'middleware-doc/doc/instore-app/Printer-guide/guide',
+        'middleware-doc/doc/instore-app/Multiterminal-support/guide'
       ]
     },
     {

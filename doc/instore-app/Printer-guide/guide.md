@@ -1,5 +1,5 @@
 ---
-slug: /poscreators/middleware-doc/instore-app/printer-guide
+slug: /poscreators/middleware-doc/instore-app/printer-guide/guide
 title: 'Printer Guide'
 ---
 

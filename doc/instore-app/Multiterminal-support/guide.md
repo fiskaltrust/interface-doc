@@ -1,3 +1,8 @@
+---
+slug: /poscreators/middleware-doc/instore-app/multiterminal-support
+title: 'Multiterminal Support'
+---
+
 
 # Instore App – multi terminal settings
 

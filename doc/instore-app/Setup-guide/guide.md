@@ -51,7 +51,7 @@ Make sure to select the correct country within the portal to match your region.
 **5. Select Your Cashbox**
 - Once in the portal, select your **Cashbox**. This is the virtual cash register you will connect to the app.
        <p align="left">
-           <img src="./images/Cashbox.png" width="30%" />
+       <img src="./images/Cashbox.png" width="30%" />
        </p>
 
 

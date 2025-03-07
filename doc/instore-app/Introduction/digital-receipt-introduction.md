@@ -1,5 +1,5 @@
 ---
-slug: /poscreators/middleware-doc/instore-app/introduction
+slug: /poscreators/middleware-doc/instore-app/introduction/digital-receipt-introduction
 title: 'Introduction'
 ---
 

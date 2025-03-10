@@ -17,12 +17,12 @@ Please follow the steps below in the given order.
     - [Download the App](https://install.appcenter.ms/orgs/fiskaltrust/apps/in-store/distribution_groups/stable)
  
     <p align="left">
-           <img src="./images/QRCode.png" width="30%" />
-       </p>
+    <img src="./images/QRCode.png" width="30%" />
+    </p>
 - It should look like this:
     <p align="left">
-           <img src="./images/Appcenter.jpg" width="30%" />
-       </p>
+    <img src="./images/Appcenter.jpg" width="30%" />
+    </p>
 - Download the LATEST RELEASE
 
 
@@ -35,10 +35,10 @@ Please follow the steps below in the given order.
 - If prompted, enable the option **"Display over other apps"** (this allows the app to stay in the foreground while you work in other apps).
     - _Tip:_ If this option is disabled, a prompt will appear asking you to enable it.
              Please confirm this setting.
-             <p align="left">
-           <img src="./images/DisplayOverApps.png" width="30%" />
+       <p align="left">
+       <img src="./images/DisplayOverApps.png" width="30%" />
        </p>
-             
+       
 **4. Access the Fiskaltrust Portal**
 - If you want to **test** your setup in the **Sandbox environment** , open the **Fiskaltrust Sandbox Portal** for your country in your web browser:
     - [**Open Fiskaltrust Sandbox Portal**](https://portal-sandbox.fiskaltrust.at/)

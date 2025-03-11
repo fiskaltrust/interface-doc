@@ -335,7 +335,7 @@ module.exports = {
     {
       type: 'category',
       collapsed: false,
-      label: 'InStore App',
+      label: 'InStore-App',
       items: [
         'middleware-doc/doc/instore-app/Introduction/digital-receipt-introduction',
         'middleware-doc/doc/instore-app/Setup-guide/guide',

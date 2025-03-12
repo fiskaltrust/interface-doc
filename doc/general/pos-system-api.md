@@ -557,4 +557,551 @@ https://possystem-api.fiskaltrust.eu/v2
 ### Support Channels
 - Technical Support: support@fiskaltrust.cloud
 - API Questions: api@fiskaltrust.cloud
-- Security Issues: security@fiskaltrust.cloud 
+- Security Issues: security@fiskaltrust.cloud
+
+## Advanced Use Cases
+
+### 1. Daily Closing Receipt
+```json
+{
+  "ftCashBoxID": "UUID",
+  "ftPosSystemId": "UUID",
+  "cbTerminalID": "T1",
+  "cbReceiptReference": "CLOSE-1238",
+  "cbReceiptMoment": "2024-03-29T23:59:59.000Z",
+  "ftReceiptCase": "0x4954200000000003",
+  "cbChargeItems": [
+    {
+      "Description": "Daily Total",
+      "Amount": 5000.00,
+      "VATRate": 22.00,
+      "ftChargeItemCase": "0x495420000000301"
+    },
+    {
+      "Description": "Daily Total Reduced",
+      "Amount": 1000.00,
+      "VATRate": 10.00,
+      "ftChargeItemCase": "0x495420000000102"
+    }
+  ],
+  "cbPayItems": [
+    {
+      "Description": "Cash Total",
+      "Amount": 3000.00,
+      "ftPayItemCase": "0x495420000000001"
+    },
+    {
+      "Description": "Card Total",
+      "Amount": 3000.00,
+      "ftPayItemCase": "0x495420000000005"
+    }
+  ]
+}
+```
+
+### 2. Training Mode Receipt
+```json
+{
+  "ftCashBoxID": "UUID",
+  "ftPosSystemId": "UUID",
+  "cbTerminalID": "T1",
+  "cbReceiptReference": "TRAIN-1239",
+  "cbReceiptMoment": "2024-03-29T14:30:00.000Z",
+  "ftReceiptCase": "0x4954200000000010",
+  "cbChargeItems": [
+    {
+      "Quantity": 1.0,
+      "Description": "Training Item",
+      "Amount": 100.00,
+      "VATRate": 22.00,
+      "ftChargeItemCase": "0x495420000000301"
+    }
+  ],
+  "cbPayItems": [
+    {
+      "Description": "Training Payment",
+      "Amount": 100.00,
+      "ftPayItemCase": "0x495420000000001"
+    }
+  ]
+}
+```
+
+### 3. Pre-Authorization Flow
+```json
+{
+  "ftCashBoxID": "UUID",
+  "ftPosSystemId": "UUID",
+  "cbTerminalID": "T1",
+  "cbReceiptReference": "AUTH-1240",
+  "cbReceiptMoment": "2024-03-29T15:00:00.000Z",
+  "ftReceiptCase": "0x4954200000000020",
+  "cbChargeItems": [
+    {
+      "Description": "Hotel Stay Deposit",
+      "Amount": 500.00,
+      "VATRate": 22.00,
+      "ftChargeItemCase": "0x495420000000301"
+    }
+  ],
+  "cbPayItems": [
+    {
+      "Description": "Card Pre-Authorization",
+      "Amount": 500.00,
+      "ftPayItemCase": "0x495420000000005",
+      "ftPayItemCaseData": {
+        "Provider": {
+          "Protocol": "hobex_zvt",
+          "Action": "pre_authorization",
+          "ProtocolVersion": "1.0"
+        }
+      }
+    }
+  ]
+}
+```
+
+## Implementation Guidelines
+
+### 1. Queue Management
+- Implement persistent storage for queued items
+- Monitor queue length and processing time
+- Handle queue overflow scenarios
+- Implement retry mechanism with backoff
+
+### 2. Receipt Lifecycle
+1. **Receipt Creation**
+   - Generate unique reference
+   - Validate business rules
+   - Calculate totals
+
+2. **Processing**
+   - Send to middleware
+   - Handle responses
+   - Store signatures
+
+3. **Archival**
+   - Store receipt data
+   - Backup signatures
+   - Maintain audit trail
+
+### 3. Error Recovery Patterns
+
+#### Network Issues
+```javascript
+async function sendReceiptWithRetry(receipt, maxRetries = 3) {
+  let attempt = 0;
+  const operationId = generateUUID();
+  
+  while (attempt < maxRetries) {
+    try {
+      const response = await sendReceipt(receipt, operationId);
+      return response;
+    } catch (error) {
+      if (error.status === 422) {
+        // Duplicate operation, check status
+        const status = await checkReceiptStatus(operationId);
+        if (status.completed) return status;
+      }
+      
+      attempt++;
+      if (attempt < maxRetries) {
+        await wait(Math.pow(2, attempt) * 1000); // Exponential backoff
+      }
+    }
+  }
+  throw new Error('Max retries exceeded');
+}
+```
+
+#### Device Recovery
+```javascript
+async function handleDeviceFailure(error) {
+  if (error.code === 'device_not_reachable') {
+    // 1. Log incident
+    await logDeviceIssue(error);
+    
+    // 2. Check device status
+    const status = await checkDeviceStatus();
+    
+    // 3. Attempt recovery
+    if (status.needsReboot) {
+      await initiateDeviceReboot();
+      await waitForDeviceOnline();
+    }
+    
+    // 4. Verify recovery
+    const health = await checkDeviceHealth();
+    return health.isHealthy;
+  }
+  throw error;
+}
+```
+
+### 4. Performance Optimization
+
+#### Batch Processing
+```javascript
+async function processBatchReceipts(receipts) {
+  // 1. Group by receipt type
+  const groups = groupReceiptsByType(receipts);
+  
+  // 2. Process in parallel with limits
+  const results = await Promise.all(
+    Object.entries(groups).map(([type, items]) =>
+      processReceiptGroup(type, items, {
+        maxConcurrent: 5,
+        intervalMs: 100
+      })
+    )
+  );
+  
+  return results.flat();
+}
+```
+
+#### Caching Strategy
+```javascript
+class ReceiptCache {
+  constructor() {
+    this.cache = new Map();
+    this.ttl = 3600000; // 1 hour
+  }
+
+  async getReceipt(reference) {
+    const cached = this.cache.get(reference);
+    if (cached && Date.now() - cached.timestamp < this.ttl) {
+      return cached.data;
+    }
+    
+    const receipt = await fetchReceipt(reference);
+    this.cache.set(reference, {
+      data: receipt,
+      timestamp: Date.now()
+    });
+    
+    return receipt;
+  }
+}
+```
+
+## Security Guidelines
+
+### 1. Credential Management
+```javascript
+class CredentialManager {
+  constructor() {
+    this.keyStore = new SecureKeyStore();
+  }
+
+  async rotateAccessToken() {
+    const currentToken = await this.keyStore.getAccessToken();
+    const newToken = await requestNewToken(currentToken);
+    await this.keyStore.setAccessToken(newToken);
+    return newToken;
+  }
+
+  async getEncryptedCredentials() {
+    const credentials = await this.keyStore.getCredentials();
+    return encryptCredentials(credentials);
+  }
+}
+```
+
+### 2. Request Signing
+```javascript
+async function signRequest(request) {
+  const timestamp = new Date().toISOString();
+  const payload = `${request.method}${request.path}${timestamp}`;
+  const signature = await generateHMAC(payload, getSecretKey());
+  
+  return {
+    ...request,
+    headers: {
+      ...request.headers,
+      'x-request-signature': signature,
+      'x-request-timestamp': timestamp
+    }
+  };
+}
+```
+
+## Monitoring and Logging
+
+### 1. Health Checks
+```javascript
+async function performHealthCheck() {
+  const checks = [
+    checkMiddlewareConnection(),
+    checkDeviceStatus(),
+    checkQueueHealth(),
+    checkDatabaseConnection()
+  ];
+  
+  const results = await Promise.all(checks);
+  return {
+    healthy: results.every(r => r.status === 'healthy'),
+    details: results
+  };
+}
+```
+
+### 2. Audit Logging
+```javascript
+class AuditLogger {
+  async logOperation(operation) {
+    const entry = {
+      timestamp: new Date().toISOString(),
+      operationId: operation.id,
+      type: operation.type,
+      user: operation.user,
+      details: operation.details,
+      status: operation.status
+    };
+    
+    await this.store.save(entry);
+    await this.notifyMonitoring(entry);
+  }
+}
+```
+
+## Italian Fiscal Requirements
+
+### Receipt Types (ftReceiptCase)
+
+| Receipt Case | Value | Description | RT Signature Required |
+|-------------|-------|-------------|----------------------|
+| `0x4954200000000001` | POS Receipt | Standard point-of-sale receipt | Yes |
+| `0x4954200000000003` | Daily Closing | End-of-day closing receipt (Chiusura giornaliera) | Yes |
+| `0x4954200000000010` | Training Mode | Training/demo mode receipt | No |
+| `0x4954200000100001` | Void/Refund | Void or refund receipt (Reso) | Yes |
+| `0x4954200000201002` | Invoice | Electronic invoice (Fattura elettronica) | Yes |
+| `0x4954200000000020` | Pre-Authorization | Payment pre-authorization | No |
+
+### VAT Rates and Nature Codes
+
+| VAT Rate | Nature Code | Description | ftChargeItemCase |
+|----------|-------------|-------------|------------------|
+| 22% | - | Standard rate | `0x495420000000301` |
+| 10% | - | Reduced rate | `0x495420000000102` |
+| 5% | - | Super-reduced rate | `0x495420000000101` |
+| 4% | - | Special reduced rate | `0x495420000000100` |
+| 0% | N1 | Excluded Art. 15 | `0x495420000000401` |
+| 0% | N2 | Not subject | `0x495420000000402` |
+| 0% | N3 | Not taxable | `0x495420000000403` |
+| 0% | N4 | Exempt | `0x495420000000404` |
+| 0% | N5 | Margin scheme | `0x495420000000405` |
+
+### Payment Methods (ftPayItemCase)
+
+| Code | Description | RT Requirements |
+|------|-------------|-----------------|
+| `0x495420000000001` | Cash | Standard reporting |
+| `0x495420000000005` | Credit/Debit Card | Electronic payment |
+| `0x495420000000007` | Mobile Payment | Electronic payment |
+| `0x49542000000000A` | Bank Transfer | Bank transaction |
+| `0x49542000000000B` | Voucher | Special handling |
+
+### RT Device Integration
+
+#### Device States
+```json
+{
+  "ftState": {
+    "0x4954200000000000": "Ready",
+    "0x4954200000000001": "Processing",
+    "0x4954200000000002": "Error",
+    "0x4954200000000003": "Offline",
+    "0x4954200000000004": "Maintenance"
+  }
+}
+```
+
+#### Signature Format
+```json
+{
+  "ftSignatures": [
+    {
+      "ftSignatureFormat": "0x4954200000000001",
+      "ftSignatureType": "0x4954200000000001",
+      "Caption": "RT Device",
+      "Data": {
+        "rtSerialNumber": "RT12345678",
+        "zRepNumber": "0001",
+        "documentNumber": "1234",
+        "signature": "MEUCIQDJsJ3..."
+      }
+    }
+  ]
+}
+```
+
+### Italian-Specific Examples
+
+#### 1. Electronic Invoice Receipt
+```json
+{
+  "ftCashBoxID": "UUID",
+  "ftPosSystemId": "UUID",
+  "cbTerminalID": "T1",
+  "cbReceiptReference": "FT-2024-1234",
+  "cbReceiptMoment": "2024-03-29T10:15:00.000Z",
+  "ftReceiptCase": "0x4954200000201002",
+  "cbCustomer": {
+    "Name": "ACME SRL",
+    "Address": "Via Roma 123, 00184 Roma RM",
+    "VATId": "IT12345678901",
+    "FiscalCode": "ABCDEF12G34H567I",
+    "PEC": "acme@pec.it",
+    "SDICode": "SUBM70N"
+  },
+  "cbChargeItems": [
+    {
+      "Quantity": 1.0,
+      "Description": "Professional Services",
+      "Amount": 1000.00,
+      "VATRate": 22.00,
+      "ftChargeItemCase": "0x495420000000301",
+      "VATNature": "",
+      "ProductNumber": "SERV-001"
+    },
+    {
+      "Quantity": 1.0,
+      "Description": "Exempt Service",
+      "Amount": 500.00,
+      "VATRate": 0.00,
+      "ftChargeItemCase": "0x495420000000404",
+      "VATNature": "N4",
+      "ProductNumber": "SERV-002"
+    }
+  ],
+  "cbPayItems": [
+    {
+      "Description": "Bank Transfer",
+      "Amount": 1500.00,
+      "ftPayItemCase": "0x49542000000000A",
+      "PaymentReference": "BON-2024-1234"
+    }
+  ]
+}
+```
+
+#### 2. Daily Closing with Lottery
+```json
+{
+  "ftCashBoxID": "UUID",
+  "ftPosSystemId": "UUID",
+  "cbTerminalID": "T1",
+  "cbReceiptReference": "CLOSE-2024-0123",
+  "cbReceiptMoment": "2024-03-29T23:59:59.000Z",
+  "ftReceiptCase": "0x4954200000000003",
+  "cbChargeItems": [
+    {
+      "Description": "Daily Total Standard VAT",
+      "Amount": 10000.00,
+      "VATRate": 22.00,
+      "ftChargeItemCase": "0x495420000000301"
+    },
+    {
+      "Description": "Daily Total Reduced VAT",
+      "Amount": 5000.00,
+      "VATRate": 10.00,
+      "ftChargeItemCase": "0x495420000000102"
+    },
+    {
+      "Description": "Daily Total Exempt",
+      "Amount": 1000.00,
+      "VATRate": 0.00,
+      "ftChargeItemCase": "0x495420000000404"
+    }
+  ],
+  "cbPayItems": [
+    {
+      "Description": "Cash Total",
+      "Amount": 8000.00,
+      "ftPayItemCase": "0x495420000000001"
+    },
+    {
+      "Description": "Electronic Payments Total",
+      "Amount": 8000.00,
+      "ftPayItemCase": "0x495420000000005"
+    }
+  ],
+  "ftLotteryData": {
+    "dailyTotalTickets": 50,
+    "validTransmissions": 48,
+    "pendingTransmissions": 2
+  }
+}
+```
+
+### RT Device Error Handling
+
+#### Common RT Device Errors
+```json
+{
+  "error": "rt_device_error",
+  "message": "RT device error occurred",
+  "details": {
+    "errorCode": "RT-001",
+    "description": "Paper end",
+    "severity": "warning",
+    "action": "Replace paper roll"
+  }
+}
+```
+
+#### RT Connection Issues
+```javascript
+async function handleRTDeviceError(error) {
+  if (error.code === 'rt_device_error') {
+    // 1. Check RT status
+    const rtStatus = await checkRTDeviceStatus();
+    
+    // 2. Handle specific RT errors
+    switch (rtStatus.errorCode) {
+      case 'RT-001': // Paper end
+        await notifyOperator('Replace paper roll');
+        break;
+      case 'RT-002': // Communication error
+        await reconnectRTDevice();
+        break;
+      case 'RT-003': // Memory almost full
+        await performDataTransmission();
+        break;
+      default:
+        await notifyTechnicalSupport(rtStatus);
+    }
+    
+    // 3. Verify RT recovery
+    return await verifyRTDeviceStatus();
+  }
+  throw error;
+}
+```
+
+### Italian Compliance Guidelines
+
+1. **RT Device Management**
+   - Regular status checks
+   - Paper level monitoring
+   - Memory usage tracking
+   - Automatic data transmission
+
+2. **Receipt Requirements**
+   - Unique progressive numbering
+   - RT serial number inclusion
+   - Proper VAT calculation
+   - Correct nature codes
+
+3. **Daily Operations**
+   - End-of-day closing
+   - Data transmission verification
+   - Lottery data management
+   - Error log maintenance
+
+4. **Data Retention**
+   - Electronic storage requirements
+   - Backup procedures
+   - Archive management
+   - Access control 

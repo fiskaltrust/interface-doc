@@ -1,18 +1,109 @@
-# fiskaltrust interface documentation
+# fiskaltrust Interface Documentation
 _Welcome to the open-source documentation of the fiskaltrust interface!_
 
-This repository aims to provide a detailed technical specification of the fiskaltrust data interface used by POS-Systems to interact with the fiskaltrust.Middleware, so that PosCreators can integrate the fiskaltrust.Middleware into their systems without further support in most cases.
+This repository provides a comprehensive technical specification of the fiskaltrust data interface used by POS-Systems to interact with the fiskaltrust.Middleware. Our goal is to enable PosCreators to integrate the fiskaltrust.Middleware into their systems efficiently and independently.
 
-The technical specification of the data interface described in this document provides information regarding the following areas:
-1. Access to the fiskaltrust.Middleware
-2. Integration into the receipt based cash register workflow
-3. The data structure
-4. Function structure of the interface
-5. Types of communication with fiskaltrust.Middleware
-6. Operating categories
-Interface specification is provided by fiskaltrust.Interface NuGet package, which can be found at https://www.nuget.org/packages/fiskaltrust.interface
+## Quick Links
+- [Getting Started Guide](doc/general/getting-started.md)
+- [POS System API](doc/general/pos-system-api.md)
+- [API Reference](doc/general/api-reference.md)
+- [Troubleshooting Guide](doc/general/troubleshooting.md)
+- [Style Guide](doc/templates/style-guide.md)
 
-Official PDF documents that are built from the source in this repository can be found on the [Releases page](https://github.com/fiskaltrust/interface-doc/releases).
+## Documentation Structure
+
+### General Documentation
+- Installation and Setup
+- Configuration Options
+- Security Guidelines
+- Performance Optimization
+- Testing and Certification
+
+### API Documentation
+- [POS System API](doc/general/pos-system-api.md)
+  - Receipt Signing
+  - Journal Operations
+  - Configuration Management
+  - Error Handling
+- Integration Patterns
+- Authentication
+- Versioning
+
+### Country-Specific Documentation
+- [Austria (AT-RKSV)](doc/middleware-at-rksv/)
+- [Germany (DE-KassenSichV)](doc/middleware-de-kassensichv/)
+- [France (FR-BOI-TVA-DECL)](doc/middleware-fr-boi-tva-decl-30-10-30/)
+- [Italy (IT-RT)](doc/middleware-it-registratore-telematico/)
+
+### Technical Reference
+- API Specifications
+- Data Structures
+- Integration Patterns
+- Error Handling
+- Compliance Requirements
+
+## Contributing
+
+We welcome contributions from the community! Please follow these steps:
+
+1. Read our [Style Guide](doc/templates/style-guide.md)
+2. Fork the repository
+3. Create a feature branch
+4. Make your changes
+5. Submit a pull request
+
+### Documentation Standards
+- Use clear, concise language
+- Include practical examples
+- Provide complete code samples
+- Keep content up-to-date
+- Follow the style guide
+
+## Building the Documentation
+
+### Prerequisites
+- Node.js 14+
+- DocFX
+- PowerShell 5.1+
+
+### Build Steps
+1. Clone the repository
+   ```bash
+   git clone https://github.com/fiskaltrust/interface-doc.git
+   ```
+
+2. Install dependencies
+   ```bash
+   npm install
+   ```
+
+3. Build the documentation
+   ```bash
+   npm run build
+   ```
+
+### Testing Links
+```bash
+npm run test:links
+```
+
+## Support and Community
+
+- [GitHub Issues](https://github.com/fiskaltrust/interface-doc/issues)
+- [Support Portal](https://portal.fiskaltrust.cloud)
+- [Community Forum](https://forum.fiskaltrust.cloud)
+
+## License
+
+This documentation is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
+
+## Version History
+
+| Version | Release Date | Major Changes |
+|---------|--------------|---------------|
+| 1.3     | 2024-01-01  | Added new country support |
+| 1.2     | 2023-06-01  | Enhanced API documentation |
+| 1.1     | 2023-01-01  | Initial release |
 
 ## Contributions
 By reviewing this README file in order to understand its structure and which tools are being used, you are contributing to improving this documentation.

@@ -1,41 +1,34 @@
 ---
 slug: /pos-system-api
-title: POS System API Documentation
+title: POS System API Documentation v2.0
 ---
 
 # POS System API Documentation
 
 ## Overview
 
-The POS System API is the central entry point to the fiskaltrust.Middleware, providing functionalities for:
+The POS System API (v2.1) is the central entry point to the fiskaltrust.Middleware, providing:
 - Receipt fiscalization (signing)
 - Payment processing
 - Digital receipt handling
 - Data export capabilities
 
-### API Design Principles
+## API Design Principles
 
 The POS System API follows a processual principle with state machine-like behavior to ensure:
-- Frictionless process execution
-- Safe replay capabilities
-- Idempotent operations
-- State-based process handling
+- **Idempotent Operations**: Each call is safe to replay
+- **Stateful Processing**: Processes are handled as state machines
+- **Frictionless Execution**: Optimized for reliable transaction processing
 
-## Authentication
+### Authentication
 
-### Prerequisites
-- CashBox credentials from the fiskaltrust.Portal
-- CashBoxId and AccessToken
+The API requires CashBox credentials from the fiskaltrust.Portal:
+- `CashBoxId`
+- `AccessToken`
 
-### Configuration
-```json
-{
-    "CashBoxId": "your-cashbox-id",
-    "AccessToken": "your-access-token"
-}
-```
+These credentials can be found on the CashBox Configuration page in the portal.
 
-## API Versioning
+### Versioning
 
 The API uses semantic versioning:
 - Major version changes contain breaking changes
@@ -43,76 +36,41 @@ The API uses semantic versioning:
 - Latest version is used by default
 - Explicit version can be specified in URL
 
+### Common Headers
+
+| Header | Required | Description |
+|--------|----------|-------------|
+| x-operation-id | Yes | Idempotency key for safe retries |
+| x-operation-lifetime | No | Operation timeout in milliseconds |
+| x-terminal-id | No | Terminal identifier |
+| x-possystem-id | No | POS system identifier |
+
 ## Endpoints
 
 ### Echo
 
 Used for health checks and communication testing.
 
-#### Request
 ```http
 POST /v2/echo
 Content-Type: application/json
 x-operation-id: ea4279ee-8684-412f-b8eb-32b5dea52811
 ```
 
-#### Headers
-| Name | Required | Description |
-|------|----------|-------------|
-| x-operation-id | Yes | Idempotency key for safe retries |
-| x-operation-lifetime | No | Operation timeout in ms |
-| x-terminal-id | No | Terminal identifier |
-| x-possystem-id | No | POS system identifier |
-
-#### Response
-```json
-{
-    "status": "success"
-}
-```
-
 ### Sign
 
 Fiscalizes (signs) receipts through the middleware.
 
-#### Request
 ```http
 POST /v2/sign
 Content-Type: application/json
 x-operation-id: unique-operation-id
 ```
 
-```json
-{
-    "ftCashBoxID": "your-cashbox-id",
-    "ftPosSystemId": "your-pos-id",
-    "cbTerminalID": "T1",
-    "cbReceiptReference": "receipt-001",
-    "ftReceiptCase": "0x4445000000000001",
-    "cbPayItems": [
-        {
-            "Quantity": 1.0,
-            "Description": "Article 1",
-            "Amount": 119.00,
-            "VATRate": 19.00
-        }
-    ]
-}
-```
-
-#### Response
-```json
-{
-    "ftSignature": "signature-data",
-    "ftTransactionId": "transaction-id"
-}
-```
-
 ### Journal
 
 Retrieves journal entries and exports.
 
-#### Request
 ```http
 GET /v2/PeekJournalItem/{QueueId}/{StorageType}/{Id}
 ```
@@ -124,39 +82,29 @@ Parameters:
 
 ### Configuration
 
-Handles configuration and pairing operations.
-
 #### Pair Request
 ```http
 POST /v2/pair
 Content-Type: application/json
-```
 
-```json
 {
     "Pin": "your-pin"
 }
 ```
 
-#### Response
+## Response Handling
+
+### Success Response
 ```json
 {
-    "CashBoxID": "assigned-cashbox-id",
-    "AccessToken": "your-access-token"
+    "ftCashBoxID": "IT-SCU-1234567",
+    "ftQueueID": "queue-id",
+    "ftQueueItemID": "item-id",
+    "ftState": 0x4954200000000000
 }
 ```
 
-## Error Handling
-
-### Common Error Codes
-| Code | Description | Resolution |
-|------|-------------|------------|
-| 400 | Malformed request | Check request format |
-| 401 | Invalid credentials | Verify CashBoxId and AccessToken |
-| 422 | Unprocessable Content | Check for duplicate operation-id |
-| 500 | Server error | Contact support |
-
-### Error Response Format
+### Error Response
 ```json
 {
     "error": "error_code",
@@ -168,22 +116,28 @@ Content-Type: application/json
 }
 ```
 
-## Best Practices
+## Status Codes
 
-### Idempotency
-1. Always include x-operation-id header
-2. Use UUID for operation IDs
-3. Implement retry logic with same operation ID
+| Code | Description |
+|------|-------------|
+| 200 | Operation successful |
+| 201 | Operation created successfully |
+| 400 | Malformed request |
+| 401 | Invalid credentials |
+| 422 | Unprocessable Content (duplicate operation-id) |
+| 500 | Server error |
 
-### Performance
-1. Use batch operations where possible
-2. Implement proper error handling
-3. Monitor response times
+## Environments
 
-### Security
-1. Store credentials securely
-2. Use HTTPS for all requests
-3. Rotate access tokens periodically
+### Sandbox
+```
+https://possystem-api-sandbox.fiskaltrust.eu/v2
+```
+
+### Production
+```
+https://possystem-api.fiskaltrust.eu/v2
+```
 
 ## Integration Patterns
 
@@ -202,21 +156,47 @@ try {
 }
 ```
 
-### Asynchronous Flow
+### Asynchronous Flow with Callbacks
 ```csharp
 var client = new FiskaltrustClient(config);
 var operationId = Guid.NewGuid().ToString();
 
-// Submit request
-await client.SubmitAsync(request, operationId);
+// Configure callback
+var callbackUrl = "https://your-callback-url";
+await client.SignAsync(request, operationId, callbackUrl);
 
-// Poll for result
-var result = await client.GetResult(operationId);
-while (result.Status == "processing") {
-    await Task.Delay(1000);
-    result = await client.GetResult(operationId);
+// Callback will receive:
+public class CallbackPayload {
+    public string OperationID { get; set; }
+    public string QueueID { get; set; }
+    public string State { get; set; }
+    public string StateMessage { get; set; }
+    public string StateData { get; set; }
 }
 ```
+
+## Additional Resources
+
+- [API Documentation](https://docs.fiskaltrust.eu/apis/pos-system-api)
+- [OpenAPI Specification](https://docs.fiskaltrust.cloud/downloads/apis/pos-system-api.yaml)
+- [Support](https://support.fiskaltrust.cloud)
+
+## Best Practices
+
+### Idempotency
+1. Always include x-operation-id header
+2. Use UUID for operation IDs
+3. Implement retry logic with same operation ID
+
+### Performance
+1. Use batch operations where possible
+2. Implement proper error handling
+3. Monitor response times
+
+### Security
+1. Store credentials securely
+2. Use HTTPS for all requests
+3. Rotate access tokens periodically
 
 ## Testing
 

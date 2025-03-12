@@ -29,14 +29,30 @@ Where:
 
 ### Receipt Cases
 
-| Code | Description | Details |
-|------|-------------|---------|
-| 0001 | Point-Of-Sale receipt | Standard sales receipt |
-| 0002 | Payment transfer | Cash management |
-| 1001 | B2C invoice | Consumer invoice |
-| 1002 | B2B invoice | Business invoice |
-| 2011 | Daily Closing | End of day processing |
-| 4001 | Queue-Start-Receipt | Initial operations |
+| Code | Description | Details | RT Requirements |
+|------|-------------|---------|-----------------|
+| 0001 | Point-Of-Sale receipt | Standard sales receipt | Requires RT signature |
+| 0002 | Payment transfer | Cash management | Requires RT signature |
+| 0003 | Non-fiscal receipt | No fiscalization required | No RT signature |
+| 0004 | E-Commerce receipt | Online transaction | Requires RT signature |
+| 1001 | B2C invoice | Consumer invoice | Requires RT signature |
+| 1002 | B2B invoice | Business invoice | Requires RT signature |
+| 2011 | Daily Closing | End of day processing | Requires RT signature |
+| 3001 | Technical event | System event logging | No RT signature |
+| 4001 | Queue-Start-Receipt | Initial operations | Requires RT signature |
+
+### Global Flags (gggg)
+
+| Flag | Description |
+|------|-------------|
+| 0001 | Late signing |
+| 0002 | Training mode |
+| 0004 | Void receipt |
+| 0008 | Handwritten receipt |
+| 0010 | Small business |
+| 0020 | Business customer |
+| 0040 | Known customer |
+| 0100 | Return/Refund |
 
 ## Charge Items (ftChargeItemCase)
 
@@ -53,23 +69,39 @@ Where:
 
 ### VAT Types for Italy
 
-| Code | Description | Rate |
-|------|-------------|------|
-| 3 | Normal VAT rate | 22% |
-| 1 | Reduced VAT rate 1 | 10% |
-| 2 | Reduced VAT rate 2 | 5% |
-| 4 | Super reduced | 4% |
-| 7 | Zero VAT rate | 0% |
+| Code | Description | Rate | Marker |
+|------|-------------|------|---------|
+| 3 | Normal VAT rate | 22% | A |
+| 1 | Reduced VAT rate 1 | 10% | B |
+| 2 | Reduced VAT rate 2 | 5% | C |
+| 4 | Super reduced | 4% | D |
+| 7 | Zero VAT rate | 0% | H |
 
 ### Nature of VAT Codes
 
-| Code | Description | Marker |
-|------|-------------|--------|
-| 10 | Not Taxable | NI (N3) |
-| 20 | Not Subject | NS (N2) |
-| 30 | Exempt | ES (N4) |
-| 40 | Margin scheme | RM (N5) |
-| 50 | Reverse charge | AL (N6) |
+| Code | Description | Marker | Details |
+|------|-------------|---------|---------|
+| 10 | Not Taxable | NI (N3) | Exports and similar transactions |
+| 11 | Non-taxable - intra-community | NI (N3.1) | EU transactions |
+| 12 | Non-taxable - San Marino | NI (N3.2) | San Marino transactions |
+| 20 | Not Subject | NS (N2) | Out of scope |
+| 21 | Not subject - other | NS (N2.2) | Other cases |
+| 30 | Exempt | ES (N4) | Art. 10 DPR 633/72 |
+| 40 | Margin scheme | RM (N5) | Used goods, art, antiques |
+| 50 | Reverse charge | AL (N6) | Construction sector |
+| 51 | Reverse charge - other | AL (N6.1) | Other sectors |
+
+### Service Types (S)
+
+| Code | Description | Requirements |
+|------|-------------|--------------|
+| 1 | Goods delivery | Standard VAT rules |
+| 2 | Services | Standard VAT rules |
+| 3 | Tip | Special handling |
+| 4 | Voucher | Special rules based on type |
+| 5 | Catalog service | Standard VAT rules |
+| 6 | Agency business | Special documentation |
+| 7 | Own consumption | Special VAT rules |
 
 ## Payment Types (ftPayItemCase)
 
@@ -80,59 +112,50 @@ Where:
 - `4954`: Country code for Italy
 - `2000`: Version 2.0
 - `gggg`: Global flags
-- `xx`: Reserved
 - `PP`: Payment type
 
 ### Payment Types
 
-| Code | Description |
-|------|-------------|
-| 01 | Cash |
-| 02 | Non-Cash |
-| 04 | Debit Card |
-| 05 | Credit Card |
-| 06 | Voucher |
-| 07 | Online |
+| Code | Description | RT Requirements |
+|------|-------------|-----------------|
+| 01 | Cash | Must be reported |
+| 02 | Non-Cash | Must be reported |
+| 04 | Debit Card | Must be reported |
+| 05 | Credit Card | Must be reported |
+| 06 | Voucher | Special handling |
+| 07 | Online | Must be reported |
+| 08 | Loyalty program | Special handling |
+| 09 | Account receivable | Must be reported |
+| 0C | Internal transfer | Special handling |
 
 ## Signature Types (ftSignatureType)
 
 ### Format
 `_4954_2000_gggg_tsss`
 
-Where:
-- `4954`: Country code for Italy
-- `2000`: Version 2.0
-- `gggg`: Global flags
-- `t`: Type category
-- `sss`: Signature case
-
 ### Signature Cases for Italy
 
-| Code | Description | Details |
-|------|-------------|---------|
-| 001 | RT Fiscalization | Primary fiscal signature |
-| 010 | RT Serial Number | Device identification |
-| 011 | RT Z-Number | Daily counter |
-| 012 | RT Document Number | Receipt counter |
-| 013 | RT Document Moment | Timestamp |
-| 014 | RT Document Type | Transaction type |
-| 015 | RT Lottery ID | Receipt lottery code |
-| 016 | RT Customer ID | Customer identification |
-| 017 | RT SHA Metadata | Security hash |
+| Code | Description | Format | Required |
+|------|-------------|---------|----------|
+| 001 | RT Fiscalization | QR Code | Yes |
+| 010 | RT Serial Number | Text | Yes |
+| 011 | RT Z-Number | Text | Yes |
+| 012 | RT Document Number | Text | Yes |
+| 013 | RT Document Moment | Text | Yes |
+| 014 | RT Document Type | Text | Yes |
+| 015 | RT Lottery ID | Text | Optional |
+| 016 | RT Customer ID | Text | Conditional |
+| 017 | RT SHA Metadata | Base64 | Yes |
 
-## State Flags (ftState)
+### Signature Formats
 
-### Format
-`_4954_2000_gggg_gggg`
-
-### Local State Flags for Italy
-
-| Code | Description |
-|------|-------------|
-| 001 | RT device not reachable |
-| 002 | Daily closing required |
-| 004 | Network error |
-| 008 | Paper low/end |
+| Format | Description |
+|--------|-------------|
+| 0001 | Text |
+| 0002 | URL |
+| 0003 | QR Code |
+| 0004 | Code128 |
+| 000D | Base64 |
 
 ## Journal Types (ftJournalType)
 
@@ -141,9 +164,26 @@ Where:
 
 ### Journal Cases for Italy
 
-| Code | Description |
-|------|-------------|
-| 000 | Queue Status |
-| 001 | RT Export |
-| 002 | Daily Report |
-| 003 | Monthly Report | 
+| Code | Description | Period |
+|------|-------------|---------|
+| 000 | Queue Status | On demand |
+| 001 | RT Export | Daily |
+| 002 | Daily Report | Daily |
+| 003 | Monthly Report | Monthly |
+| 004 | Annual Report | Yearly |
+
+## State Flags (ftState)
+
+### Format
+`_4954_2000_gggg_gggg`
+
+### Local State Flags for Italy
+
+| Code | Description | Action Required |
+|------|-------------|----------------|
+| 001 | RT device not reachable | Check connection |
+| 002 | Daily closing required | Perform closing |
+| 004 | Network error | Check network |
+| 008 | Paper low/end | Replace paper |
+| 010 | Memory almost full | Perform export |
+| 020 | Time drift detected | Sync time | 

@@ -1105,3 +1105,384 @@ async function handleRTDeviceError(error) {
    - Backup procedures
    - Archive management
    - Access control 
+
+## Advanced Implementation Examples
+
+### 1. Lottery Receipt Integration
+```json
+{
+  "ftCashBoxID": "UUID",
+  "ftPosSystemId": "UUID",
+  "cbTerminalID": "T1",
+  "cbReceiptReference": "LOT-2024-001",
+  "cbReceiptMoment": "2024-03-29T14:30:00.000Z",
+  "ftReceiptCase": "0x4954200000000001",
+  "cbChargeItems": [
+    {
+      "Quantity": 1.0,
+      "Description": "Eligible Product",
+      "Amount": 100.00,
+      "VATRate": 22.00,
+      "ftChargeItemCase": "0x495420000000301"
+    }
+  ],
+  "cbPayItems": [
+    {
+      "Description": "Card Payment",
+      "Amount": 100.00,
+      "ftPayItemCase": "0x495420000000005"
+    }
+  ],
+  "ftLotteryData": {
+    "customerCode": "ABCD1234EFGH5678",
+    "eligibleAmount": 100.00,
+    "transmissionState": "pending"
+  }
+}
+```
+
+### 2. Split Payment with Multiple VAT Rates
+```json
+{
+  "ftCashBoxID": "UUID",
+  "ftPosSystemId": "UUID",
+  "cbTerminalID": "T1",
+  "cbReceiptReference": "SPLIT-2024-001",
+  "cbReceiptMoment": "2024-03-29T15:45:00.000Z",
+  "ftReceiptCase": "0x4954200000000001",
+  "cbChargeItems": [
+    {
+      "Quantity": 1.0,
+      "Description": "Standard Rate Item",
+      "Amount": 122.00,
+      "VATRate": 22.00,
+      "ftChargeItemCase": "0x495420000000301"
+    },
+    {
+      "Quantity": 1.0,
+      "Description": "Reduced Rate Item",
+      "Amount": 110.00,
+      "VATRate": 10.00,
+      "ftChargeItemCase": "0x495420000000102"
+    },
+    {
+      "Quantity": 1.0,
+      "Description": "Exempt Item",
+      "Amount": 50.00,
+      "VATRate": 0.00,
+      "ftChargeItemCase": "0x495420000000404",
+      "VATNature": "N4"
+    }
+  ],
+  "cbPayItems": [
+    {
+      "Description": "Cash Payment",
+      "Amount": 150.00,
+      "ftPayItemCase": "0x495420000000001"
+    },
+    {
+      "Description": "Card Payment",
+      "Amount": 132.00,
+      "ftPayItemCase": "0x495420000000005",
+      "ftPayItemCaseData": {
+        "Provider": {
+          "Protocol": "worldline_wpi_2",
+          "Action": "payment"
+        }
+      }
+    }
+  ]
+}
+```
+
+### 3. Advanced Error Recovery Patterns
+
+#### Timeout Handling
+```javascript
+async function handleReceiptTimeout(receipt, operationId) {
+  // 1. Check operation status
+  const status = await checkOperationStatus(operationId);
+  
+  if (status.state === 'unknown') {
+    // 2. Verify RT device state
+    const rtStatus = await checkRTDeviceStatus();
+    
+    if (rtStatus.lastReceipt?.reference === receipt.cbReceiptReference) {
+      // Receipt was processed but response was lost
+      return await retrieveReceiptData(receipt.cbReceiptReference);
+    }
+    
+    // 3. Receipt was not processed, retry with same operationId
+    return await sendReceipt(receipt, operationId);
+  }
+  
+  return status;
+}
+```
+
+#### Queue Management with Persistence
+```javascript
+class PersistentQueue {
+  constructor() {
+    this.storage = new LocalStorage('receipt-queue');
+    this.maxRetries = 3;
+  }
+
+  async enqueue(receipt) {
+    const queueItem = {
+      id: generateUUID(),
+      receipt,
+      attempts: 0,
+      status: 'pending',
+      created: new Date().toISOString()
+    };
+    
+    await this.storage.save(queueItem);
+    return queueItem.id;
+  }
+
+  async processQueue() {
+    const items = await this.storage.getPending();
+    
+    for (const item of items) {
+      try {
+        if (item.attempts >= this.maxRetries) {
+          await this.markFailed(item.id);
+          continue;
+        }
+        
+        const result = await sendReceipt(item.receipt, item.id);
+        await this.markCompleted(item.id, result);
+      } catch (error) {
+        await this.incrementAttempts(item.id, error);
+      }
+    }
+  }
+}
+```
+
+### 4. RT Device State Management
+
+#### Device Health Monitoring
+```javascript
+class RTDeviceMonitor {
+  constructor() {
+    this.healthCheckInterval = 60000; // 1 minute
+    this.criticalErrors = new Set(['RT-002', 'RT-003']);
+  }
+
+  async startMonitoring() {
+    setInterval(async () => {
+      try {
+        const health = await this.checkDeviceHealth();
+        await this.processHealthStatus(health);
+      } catch (error) {
+        await this.handleMonitoringError(error);
+      }
+    }, this.healthCheckInterval);
+  }
+
+  async processHealthStatus(health) {
+    if (!health.isHealthy) {
+      if (this.criticalErrors.has(health.errorCode)) {
+        await this.notifyTechnicalSupport(health);
+      }
+      
+      await this.logDeviceStatus({
+        timestamp: new Date().toISOString(),
+        status: health.status,
+        errorCode: health.errorCode,
+        lastContact: health.lastContact
+      });
+    }
+  }
+}
+```
+
+#### Automatic Recovery Procedures
+```javascript
+class RTDeviceRecovery {
+  async attemptRecovery(device) {
+    const procedures = [
+      this.checkConnection,
+      this.resetCommunication,
+      this.checkPaper,
+      this.checkMemory,
+      this.rebootDevice
+    ];
+    
+    for (const procedure of procedures) {
+      try {
+        const result = await procedure(device);
+        if (result.success) {
+          await this.logRecovery(device, procedure.name);
+          return result;
+        }
+      } catch (error) {
+        await this.logRecoveryAttempt(device, procedure.name, error);
+      }
+    }
+    
+    throw new Error('Recovery failed after all attempts');
+  }
+
+  async checkMemory(device) {
+    const memory = await device.getMemoryStatus();
+    
+    if (memory.usedPercentage > 80) {
+      await this.performDataTransmission(device);
+    }
+    
+    return { success: memory.usedPercentage < 90 };
+  }
+}
+```
+
+### 5. Data Transmission Management
+
+#### Automated Data Export
+```javascript
+class DataTransmissionManager {
+  constructor() {
+    this.transmissionSchedule = {
+      daily: '23:50',
+      backup: '12:00'
+    };
+  }
+
+  async scheduleDailyTransmission() {
+    const now = new Date();
+    const scheduledTime = this.parseTime(this.transmissionSchedule.daily);
+    
+    if (now >= scheduledTime) {
+      await this.performDataTransmission();
+    }
+  }
+
+  async performDataTransmission() {
+    const data = await this.collectTransmissionData();
+    
+    try {
+      const result = await this.sendToAuthority(data);
+      await this.logTransmission(result);
+      
+      if (result.status === 'success') {
+        await this.updateLastTransmission(result);
+      }
+    } catch (error) {
+      await this.handleTransmissionError(error);
+    }
+  }
+}
+```
+
+#### Transmission Verification
+```javascript
+class TransmissionVerification {
+  async verifyTransmission(transmissionId) {
+    const verification = {
+      transmissionId,
+      timestamp: new Date().toISOString(),
+      checks: []
+    };
+    
+    // 1. Check local data
+    const localData = await this.getLocalData(transmissionId);
+    verification.checks.push({
+      type: 'local_data',
+      status: localData ? 'success' : 'failed'
+    });
+    
+    // 2. Check authority receipt
+    const authorityReceipt = await this.getAuthorityReceipt(transmissionId);
+    verification.checks.push({
+      type: 'authority_receipt',
+      status: authorityReceipt ? 'success' : 'failed',
+      receiptNumber: authorityReceipt?.number
+    });
+    
+    // 3. Compare checksums
+    const checksumMatch = await this.compareChecksums(
+      localData?.checksum,
+      authorityReceipt?.checksum
+    );
+    verification.checks.push({
+      type: 'checksum',
+      status: checksumMatch ? 'success' : 'failed'
+    });
+    
+    return verification;
+  }
+}
+```
+
+### 6. Security Implementation Examples
+
+#### Access Token Management
+```javascript
+class TokenManager {
+  constructor() {
+    this.tokenStorage = new SecureStorage('ft-tokens');
+    this.refreshThreshold = 300000; // 5 minutes
+  }
+
+  async getValidToken() {
+    const current = await this.tokenStorage.get();
+    
+    if (!current || this.isExpiringSoon(current)) {
+      return await this.refreshToken(current);
+    }
+    
+    return current;
+  }
+
+  async refreshToken(currentToken) {
+    const newToken = await this.requestNewToken(currentToken);
+    await this.tokenStorage.save(newToken);
+    return newToken;
+  }
+
+  isExpiringSoon(token) {
+    const expiresAt = new Date(token.expiresAt).getTime();
+    const now = Date.now();
+    return expiresAt - now < this.refreshThreshold;
+  }
+}
+```
+
+#### Request Encryption
+```javascript
+class RequestEncryption {
+  constructor(publicKey) {
+    this.publicKey = publicKey;
+  }
+
+  async encryptSensitiveData(data) {
+    const sessionKey = await this.generateSessionKey();
+    const encryptedData = await this.encryptWithSessionKey(data, sessionKey);
+    const encryptedKey = await this.encryptSessionKey(sessionKey);
+    
+    return {
+      data: encryptedData,
+      key: encryptedKey,
+      algorithm: 'AES-256-GCM',
+      iv: this.generateIV()
+    };
+  }
+
+  async encryptWithSessionKey(data, key) {
+    const encoder = new TextEncoder();
+    const encoded = encoder.encode(JSON.stringify(data));
+    
+    const encrypted = await crypto.subtle.encrypt(
+      {
+        name: 'AES-GCM',
+        iv: this.iv
+      },
+      key,
+      encoded
+    );
+    
+    return Buffer.from(encrypted).toString('base64');
+  }
+} 

@@ -87,3 +87,5 @@ version 2
 | **Value** | **Description** | **Middleware version** |
 |-----------|-----------------|-------------------------|
 | `001` | **X Report**<br /><br />(Only for RT Devices - only for Zero receipts) Prints the X report containing the snapshot of sales totals and activities  | 1.3.45 |
+| `002` | **Print as non fiscal document**<br /><br />(Only for RT Devices - only for Protocol receipts) Prints the protcol receipt  | 1.3.67 |
+

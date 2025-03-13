@@ -104,6 +104,7 @@ This table describes additional fields of the ChargeItems Entry applicable to th
 | **Field Name**         | **Data Type**         | **Default Value Mandatory Field** | **Description**                                                       | **Version** |
 |------------------------|-----------------------|-----------------------------------|-----------------------------------------------------------------------|-------------|
 | `Description`          | `string`              | mandatory          | Name or description of customary indication or type of other service.                | 1.2         |
+| `Amount`          | `Decimal`              | mandatory          | Total sum, including Value Added Tax (VAT)                | 1.2         |
 | `VATAmount`            | `Decimal`             | 0.0<br />mandatory | For French law fulfilment the VAT amount is required. It is used to calculate the net amount in order to avoid rounding errors which are especially likely to appear in row-based net price additions. | 1.2          |
 | `ftChargeItemCaseData` | `string`<br />Max 64k | mandatory          | Additional data about the service in JSON format.                                    | 1.2         |
 | `Unit`                 | `string`<br />Max 1k  | mandatory          | Unit of measurement, e. g. pièce, kg, litre, room, nuit, ...                         | 1.2         |
@@ -121,7 +122,7 @@ For French law fulfilment, a net-amount by line is required. This is added by a 
 ##### Example
 
 ```...
-{"ftChargeItemCaseData": \"NetAmount\" : 7.43}
+"ftChargeItemCaseData": "{\"NetAmount\": 54.93}"
 ...
 ```
 

@@ -236,7 +236,7 @@ module.exports = {
               type: 'category',
               label: 'Operation modes',
               items: [
-                'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/on-premise-installation',
+                'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/installation',
                 {
                   type: 'category',
                   label: 'On-premise platforms',
@@ -249,7 +249,10 @@ module.exports = {
                   type: 'category',
                   label: 'Signature Creation Devices',
                   items: [
-                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/scu/epson'
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/scu/epsonprinter',
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/scu/customprinter',
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/scu/customserver',
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/scu/ivaservizi',
                   ]
                 },
                 {
@@ -335,7 +338,7 @@ module.exports = {
     {
       type: 'category',
       collapsed: false,
-      label: 'InStore App',
+      label: 'InStore-App',
       items: [
         'middleware-doc/doc/instore-app/Introduction/digital-receipt-introduction',
         'middleware-doc/doc/instore-app/Setup-guide/guide',

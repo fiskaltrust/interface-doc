@@ -18,8 +18,9 @@ The components of the Middleware which should be operated as an on-premise Middl
 More information on the configuration options of the components can be found in the according market-appendices:
 
 - Austria
-- [Germany](https://docs.fiskaltrust.cloud/docs/posdealers/rollout-doc/middleware#the-cashbox-as-a-configuration-container)
+- [Germany](https://docs.fiskaltrust.cloud/docs/posdealers/technical-operations/rollout-scenarios)
 - France
+- [Italy](https://docs.fiskaltrust.cloud/docs/posdealers/technical-operations/rollout-scenarios)
 
 At the end of this configuration process, a so-called "Launcher" including the CashBox-configuration needs to be downloaded.
 
@@ -27,12 +28,12 @@ At the end of this configuration process, a so-called "Launcher" including the C
 
 After configuring the CashBox in the portal, following so-called "Launchers" are available for download:
 
-| Icon                                             | Launcher                                | Description                                                  | AT        | DE         | FR        |
-| ------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------ | --------- | ---------- | --------- |
-| ![launcher-net](images/launcher-net.png)         | .NET Launcher<br />(*default launcher*) | **For starting the Middleware on Windows with Internet connection.**<br />The launcher loads the configuration file and its needed packages during the start from the fiskaltrust packages-server. | supported | supported  | supported |
-| ![launcher-offline](images/launcher-offline.png) | .NET Offline Launcher                   | **For starting the Middleware on Windows without Internet connection.** <br />A static configuration and its needed packages for operation is included. The regular package update mechanisms are not supported with the offline launcher. | supported | supported  | supported |
-| ![launcher-mono](images/launcher-mono.png)       | Mono Launcher                           | **For starting the Middleware on Linux/macOS with Internet connection.**<br />The launcher loads the configuration file and its needed packages during the start from the fiskaltrust packages-server. | supported | supported  | supported |
-| ![launcher-android](images/launcher-android.png) | Android Launcher                        | **For starting the Middleware on Android with Internet connection.**<br />The needed packages for operation are already included. The launcher loads the configuration file during the start from the fiskaltrust packages-server.<br />The configuration options are limited to keep the package sizes small. |           | supported* |           |
+| Icon                                             | Launcher                                | Description                                                  | AT        | DE         | FR        | IT        |
+| ------------------------------------------------ | --------------------------------------- | ------------------------------------------------------------ | --------- | ---------- | --------- | --------- |
+| ![launcher-net](images/launcher-net.png)         | .NET Launcher<br />(*default launcher*) | **For starting the Middleware on Windows with Internet connection.**<br />The launcher loads the configuration file and its needed packages during the start from the fiskaltrust packages-server. | supported | supported  | supported | supported |
+| ![launcher-offline](images/launcher-offline.png) | .NET Offline Launcher                   | **For starting the Middleware on Windows without Internet connection.** <br />A static configuration and its needed packages for operation is included. The regular package update mechanisms are not supported with the offline launcher. | supported | supported  | supported | supported |
+| ![launcher-mono](images/launcher-mono.png)       | Mono Launcher                           | **For starting the Middleware on Linux/macOS with Internet connection.**<br />The launcher loads the configuration file and its needed packages during the start from the fiskaltrust packages-server. | supported | supported  | supported | supported |
+| ![launcher-android](images/launcher-android.png) | Android Launcher                        | **For starting the Middleware on Android with Internet connection.**<br />The needed packages for operation are already included. The launcher loads the configuration file during the start from the fiskaltrust packages-server.<br />The configuration options are limited to keep the package sizes small. |           | supported* |           | supported* |
 
 *availability dependent on the CashBox configuration. For more details, see the [platform documentation for Android](https://docs.fiskaltrust.cloud/docs/product-description/germany/products-and-services/caas/features/platforms/android).
 
@@ -126,7 +127,7 @@ For development, integration and testing purpose we recommend to run the Middlew
 In Windows, it is necessary to run the `cmd.exe` as administrator. The launcher `fiskaltrust.exe` can be then executed as a command line program through the call parameter `–test`.
 
 In Linux, the following command should be used:
-`sudo mono fiskaltrust.exe -test`.
+`sudo mono fiskaltrust.exe -test -cashboxid <cashboxid> -accesstoken <accesstoken> <other options>`.
 
 A static configuration can be enforced via the configuration.json file in the `fiskaltrust.exe` folder in connection with `-useoffline=true`.
 
@@ -148,7 +149,7 @@ Once successfully completed, the service will appear in the list of running serv
 
 For Linux, the fiskaltrust.SecurityMechanism can be installed as Daemon.
 
-Mono is the prerequisite, and can be installed following the manual of the [mono-project](http://www.mono-project.com/download/#download-lin) (install complete).
+Mono is the prerequisite, and can be installed following the manual of the [mono-project](http://www.mono-project.com/download/#download-lin) (install complete). Also the `mono-service` utlility needs to be installed (On Ubuntu this can be done using the command `sudo apt update && sudo apt install mono-4.0-service`).
 
 Once the installation is completed, a file named `fiskaltrust` with the following content has to be saved in the index `/etc/init.d`:
 
@@ -228,6 +229,6 @@ Once completed, the service should appear in the running daemon list.
 
 The fiskaltrust.Middleware for Android is currently available for the German market only. For details about the platform specific installation, please refer to the [platform documentation for Android](https://docs.fiskaltrust.cloud/docs/product-description/germany/products-and-services/caas/features/platforms/android).
 
-## Migration of the Middleware instance to a different hardware
+## Migration of the fiskaltrust.Middleware instance to a different hardware
 
 We do not recommend to migrate an active instance of the fiskaltrust.Middleware to another hardware. If possible, please set the queue [out of operation](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/germany/reference-tables/ftreceiptcase) and configure and install a new Middleware instance on the new machine.

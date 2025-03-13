@@ -11,10 +11,10 @@ steps:
 - task: NodeTool@0
   inputs:
     checkLatest: true
-    versionSpec: '>=12.x'
+    versionSpec: '20.17.0'
   displayName: 'Install Node.js'
 
-- script: 'npm install -g markdown-link-check'
+- script: 'npm install -g markdown-link-check@3.11.2'
   displayName: 'Install markdown-link-check'
    
 - powershell: |

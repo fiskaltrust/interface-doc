@@ -22,5 +22,8 @@ Configuration scenarios are highly dependent on local market regulation and the 
 
 - Austria
 
-- [Germany](../../appendix-de-kassensichv/operation-modes/on-premise-installation.md)
+- [Germany](../../middleware-de-kassensichv/operation-modes/on-premise-installation.md)
+
 - France
+
+- [Italy](../../middleware-it-registratore-telematico/operation-modes/on-premise-installation.md)

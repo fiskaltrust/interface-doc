@@ -20,11 +20,11 @@ Identification of the operational environment from the perspective of a POS oper
 
 Availability of supported operational environments is dependent on the market as shown in the following table:
 
-| operation mode                                   | AT                                                           | DE                                               | FR                                                           |
-| ------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------------------ |
-| **on- & off-premise**                            | **available**                                                | **available**                                    | **available**                                                |
-| **private Cloud**<br />*operated by a 3rd party* | **available**                                                | **available**                                    | not available<br />*generally supported, but not offered*    |
-| **private Cloud**<br />*operated by fiskaltrust* | **available**<br />*(by the fiskaltrust product SignatureCloud)* | not available<br />*due to legal restrictions* * | **available**<br />*(by the fiskaltrust product ChaîneCloud)* |
+| operation mode                                   | AT                                                           | DE                                               | FR                                                           | IT                                                           |
+| ------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **on- & off-premise**                            | **available**                                                | **available**                                    | **available**                                                | **available**                                                |
+| **private Cloud**<br />*operated by a 3rd party* | **available**                                                | **available**                                    | not available<br />*generally supported, but not offered*    | **available**                                                |
+| **private Cloud**<br />*operated by fiskaltrust* | **available**<br />*(by the fiskaltrust product SignatureCloud)* | not available<br />*due to legal restrictions* * | **available**<br />*(by the fiskaltrust product ChaîneCloud)* | **available**                                                |
 
 *In Germany, the fiskaltrust.Middleware must always be operated as a local component of the electronic recording system. For example, if the electronic recording system runs on a local Windows based cash register, the fiskaltrust.Middleware has to be operated on the same operational environment (this could be the same machine, or a local network server). If the electronic recording system is a SaaS solution operated in the Cloud, the fiskaltrust.Middleware has to be operated in the same data center.
 
@@ -64,8 +64,11 @@ For specific information regarding supported Signature Creation Units and platfo
 
 - Austria
 
-- [Germany](../../appendix-de-kassensichv/operation-modes/on-premise-installation.md)
+- [Germany](../../middleware-de-kassensichv/operation-modes/on-premise-installation.md)
+
 - France
+
+- [Italy](../../middleware-it-registratore-telematico/operation-modes/on-premise-installation.md)
 
 #### Helipad Helper
 
@@ -77,7 +80,7 @@ For the operation of the installed components of the fiskaltrust.Middleware foll
 
 | Hardware                          | Minimum requirements                                         |
 | --------------------------------- | ------------------------------------------------------------ |
-| **General hardware requirements** | The fiskaltrust.Middleware can be generally operated on a [Raspberry PI 2](https://www.raspberrypi.org/products/raspberry-pi-2-model-b/). |
+| **General hardware requirements** | The fiskaltrust.Middleware can be generally operated on a [Raspberry PI 2](https://www.raspberrypi.com/products/raspberry-pi-2-model-b/). | <!-- markdown-link-check-disable-line -->
 | **Local storage**                 | Around 500 MB (200 MB for the Middleware components + 200 MB reserved for update-packages); optional: storage for SQLite db (around 8-10Kb/receipt) |
 | **Hardware connectivity**         | For the German market: USB, SD, Micro-SD or COM port for a local hardware-based security device (Technische Sicherheitseinrichtung, TSE).<br />For the Austrian market: USB port<br />|For the French market: not required |
 | **Internet connectivity**         | Optional, but strongly recommended: (WIFI)modem for Internet connectivity to use software-security-, data as a service-, backup,- or configuration-/update services. |
@@ -86,11 +89,25 @@ For the operation of the installed components of the fiskaltrust.Middleware foll
 
 For detailed information on supported platforms and its restrictions, please refer to the linked appendices of the applicable markets in the table below:
 
-| Platform        | AT            | DE                                                           | FR            |
-| --------------- | ------------- | ------------------------------------------------------------ | ------------- |
-| **Android**     | not supported | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/android.md) | not supported |
-| **Linux/macOS** | **supported** | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/linux.md) | **supported** |
-| **Windows**     | **supported** | [**supported**](../../appendix-de-kassensichv/operation-modes/on-premise-platforms/windows.md) | **supported** |
+| Platform        | AT            | DE                                                           | FR            | IT            |
+| --------------- | ------------- | ------------------------------------------------------------ | ------------- |------------- |
+| **Android**     | not supported | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/android.md) | not supported | [**supported**](../../middleware-it-registratore-telematico/operation-modes/on-premise-platforms/android.md) | 
+| **Linux/macOS** | **supported** | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/linux.md) | **supported** | [**supported**](../../middleware-it-registratore-telematico/operation-modes/on-premise-platforms/linux.md) |
+| **Windows**     | **supported** | [**supported**](../../middleware-de-kassensichv/operation-modes/on-premise-platforms/windows.md) | **supported** | [**supported**](../../middleware-it-registratore-telematico/operation-modes/on-premise-platforms/windows.md) |
+
+#### ARM Processor
+
+From version 1.3.39 it is now possible to run the the fiskaltrust.Middleware on ARM processors.
+
+ SCU                          | ARM 64 bit                                        | ARM 32 bit  |
+| --------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| **A-Trust Cloud TSE**             | supported but not tested |supported but not tested |
+| **Deutsche Fiskal Cloud-TSE**     | supported but not tested  | supported but not tested |
+| **Diebold-Nixdorf Hardware-TSE**  | not supported| not supported |
+| **Epson Hardware-TSE**            |not supported | not supported |
+| **fiskaly Cloud-TSE**             | supported but not tested |supported but not tested  |
+| **Swissbit Cloud-TSE**            |supported and tested | supported and tested|
+| **Swissbit Hardware-TSE**         | unsupported | supported and tested |
 
 #### Launcher
 
@@ -116,4 +133,4 @@ The components for the SaaS solution are the same as for the local solution; exc
 
 ### Private cloud (operated by fiskaltrust) installed components
 
-No installation or configuration is required for the client and any platform can use this service. This service is currently available in Austria and France.
+No installation or configuration is required for the client and any platform can use this service. For more details, please refer to the [Product and service part](https://docs.fiskaltrust.cloud/docs/posdealers/buy-resell/products/middleware#country-specific-variants)

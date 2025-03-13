@@ -252,7 +252,7 @@ module.exports = {
                     'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/scu/epsonprinter',
                     'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/scu/customprinter',
                     'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/scu/customserver',
-                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/scu/ivazervizi',
+                    'middleware-doc/doc/middleware-it-registratore-telematico/operation-modes/scu/ivaservizi',
                   ]
                 },
                 {

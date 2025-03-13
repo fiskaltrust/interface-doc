@@ -37,5 +37,6 @@ These regulations also apply to digital formats such as PDFs.
 
 #### Advance deposit invoice (Facture d'accompte)
 
+<!-- markdown-link-check-disable-next-line -->
 When a deposit or prepayment is made, VAT must be applied immediately, even if the goods or services have not yet been delivered. This is stated in [Article 269 of the General Tax Code (CGI)](https://www.legifrance.gouv.fr/codes/article_lc/LEGIARTI000044983827#:~:text=La%20taxe%20est%20exigible%20%3A,%C3%A0%20concurrence%20du%20montant%20encaiss%C3%A9.). This means that a deposit invoice must be issued at the time the payment is made. 
 Be aware that different sectors (e.g.construction) may have specific rules for deposits and their invoices.

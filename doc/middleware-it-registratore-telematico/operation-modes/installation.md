@@ -1,13 +1,22 @@
 ---
-slug: /poscreators/middleware-doc/italy/operation-modes/on-premise-installation
-title: On-premise installation
+slug: /poscreators/middleware-doc/italy/operation-modes/installation
+title: Installation
 ---
 
-# On-premise installation
+# Installation
 
-The illustration below shows the components available for the premise installation of the fiskaltrust.Middleware for the German market. For the operation modes available and the description of the components please refer to the [general part](../../general/operation-modes/operation-modes.md) .
+## On-Premise
 
-TBD
+The illustration below shows the components available for the premise installation of the fiskaltrust.Middleware for the Italian market. For the operation modes available and the description of the components please refer to the [general part](../../general/operation-modes/operation-modes.md) .
+
+![middleware-en](images/middleware-onpremise-en-market-it.png)
+
+## Cloud Solution
+
+The illustration below shows the components available for the cloud solution of the fiskaltrust.Middleware for the Italian market. For the operation modes available and the description of the components please refer to the [general part](../../general/operation-modes/operation-modes.md) .
+
+![middleware-en](images/middleware-cloudsolution-en-market-it.png)
+
 ## Supported software platforms
 
 - [Windows](on-premise-platforms/windows.md)
@@ -16,7 +25,7 @@ TBD
 
 ## Communication services/platform support matrix
 
-For the German market, depending on the platform, following communication services are available:
+For the Italian market, depending on the platform, following communication services are available:
 
 |          | Windows       | Linux, macOS  |
 |----------|---------------|---------------|
@@ -28,7 +37,10 @@ For the German market, depending on the platform, following communication servic
 
 |                               | Type,Form factor | Windows       | Linux, macOS  | Android       |
 |-------------------------------|------------------|---------------|---------------|---------------|
-| [epson printer](scu/epson.md) | Hardware printer | **supported** | **supported** | **supported** |
+| [Epson RT Printer](scu/epsonprinter.md) | Hardware printer | **supported** | **supported** | **supported** |
+| [Custom RT Printer](scu/customprinter.md) | Hardware printer | **supported** | **supported** | **supported** |
+| [Custom RT Server](scu/customserver.md) | Hardware server | **supported** | **supported** | **supported** |
+| [IVA Servizi](scu/ivaservizi.md) | Government web | **supported  via CloudCashBox** | **supported via CloudCashBox** | ** supported  via CloudCashBox** |
 
 ## Hardware requirements
 

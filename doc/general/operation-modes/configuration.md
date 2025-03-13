@@ -26,4 +26,4 @@ Configuration scenarios are highly dependent on local market regulation and the 
 
 - France
 
-- [Italy](../../middleware-it-registratore-telematico/operation-modes/on-premise-installation.md)
+- [Italy](../../middleware-it-registratore-telematico/operation-modes/installation.md)

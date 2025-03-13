@@ -40,7 +40,7 @@ For the Italian market, depending on the platform, following communication servi
 | [Epson RT Printer](scu/epsonprinter.md) | Hardware printer | **supported** | **supported** | **supported** |
 | [Custom RT Printer](scu/customprinter.md) | Hardware printer | **supported** | **supported** | **supported** |
 | [Custom RT Server](scu/customserver.md) | Hardware server | **supported** | **supported** | **supported** |
-| [Documento Commerciale Online](scu/documentocommercialeonline.md) | Government web | **supported** | **supported** | **supported** |
+| [IVA Servizi](scu/ivaservizi.md) | Government web | **supported  via CloudCashBox** | **supported via CloudCashBox** | ** supported  via CloudCashBox** |
 
 ## Hardware requirements
 

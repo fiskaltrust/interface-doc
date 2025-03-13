@@ -333,6 +333,17 @@ module.exports = {
       ]
     },
     {
+      type: 'category',
+      collapsed: false,
+      label: 'InStore App',
+      items: [
+        'middleware-doc/doc/instore-app/Introduction/digital-receipt-introduction',
+        'middleware-doc/doc/instore-app/Setup-guide/guide',
+        'middleware-doc/doc/instore-app/Printer-guide/guide',
+        'middleware-doc/doc/instore-app/Multiterminal-support/guide'
+      ]
+    },
+    {
       type: 'link',
       label: 'Middleware API samples',
       href: 'https://middleware-samples.docs.fiskaltrust.cloud/'

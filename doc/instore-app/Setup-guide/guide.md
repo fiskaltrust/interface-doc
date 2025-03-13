@@ -14,15 +14,15 @@ Please follow the steps below in the given order.
 **1. Download the App**
 - Open **Web Explorer** or any other web browser on your device.
 - Visit the following website to download the latest version of the Fiskaltrust app:
-    - [Download the App](https://install.appcenter.ms/orgs/fiskaltrust/apps/in-store/distribution_groups/stable)
- 
+  - [Download the App](https://install.appcenter.ms/orgs/fiskaltrust/apps/in-store/distribution_groups/stable)
     <p align="left">
-    <img src="./images/QRCode.png" width="30%" />
+      <img src="./images/QRCode.png" width="30%" />
     </p>
 - It should look like this:
-    <p align="left">
+  <p align="left">
     <img src="./images/Appcenter.jpg" width="30%" />
-    </p>
+  </p>
+
 - Download the LATEST RELEASE
 
 
@@ -33,44 +33,43 @@ Please follow the steps below in the given order.
 **3. Open the App and Grant Permissions**
 - Once installed, launch the app.
 - If prompted, enable the option **"Display over other apps"** (this allows the app to stay in the foreground while you work in other apps).
-    - _Tip:_ If this option is disabled, a prompt will appear asking you to enable it.
-             Please confirm this setting.
-       <p align="left">
-       <img src="./images/DisplayOverApps.png" width="30%" />
-       </p>
-       
+
+  - _Tip:_ If this option is disabled, a prompt will appear asking you to enable it.  
+    Please confirm this setting.
+    <p align="left">
+      <img src="./images/DisplayOverApps.png" width="30%" />
+    </p>
+
 **4. Access the Fiskaltrust Portal**
 - If you want to **test** your setup in the **Sandbox environment** , open the **Fiskaltrust Sandbox Portal** for your country in your web browser:
-    - [**Open Fiskaltrust Sandbox Portal**](https://portal-sandbox.fiskaltrust.at/)
-- If you’re ready to go live in **production** , make sure to use the **production link** for
-       your country:
-    - [**Open Fiskaltrust Production Portal**](https://portal.fiskaltrust.at/Account/Login?returnUrl=%2fCashBox#/)
+  - [**Open Fiskaltrust Sandbox Portal**](https://portal-sandbox.fiskaltrust.at/)
+- If you’re ready to go live in **production** , make sure to use the **production link** for your country:
+  - [**Open Fiskaltrust Production Portal**](https://portal.fiskaltrust.at/Account/Login?returnUrl=%2fCashBox#/)
 
 Make sure to select the correct country within the portal to match your region.
 
 **5. Select Your Cashbox**
 - Once in the portal, select your **Cashbox**. This is the virtual cash register you will connect to the app.
-       <p align="left">
-           <img src="./images/Cashbox.png" width="30%" />
-       </p>
+  <p align="left">
+    <img src="./images/Cashbox.png" width="30%" />
+  </p>
 
 
 **6. Copy the PAIR CODE**
 - In the Cashbox overview, you will find your **PAIR CODE**. This code is used to pair your app with the Cashbox.
-    - **Example PAIR CODE:** 8639
-      
-Copy this code.
-<p align="left">
-           <img src="./images/PINforInstoreApp.png" width="30%" />
-       </p>
+  - **Example PAIR CODE:** 8639  
+    Copy this code.
+    <p align="left">
+      <img src="./images/PINforInstoreApp.png" width="30%" />
+    </p>
 
 
 **7. Enter the PAIR CODE in the App**
 - Now, open the Fiskaltrust app on your device and paste the previously copied **PAIR CODE** into the designated field.
 - Click **"Pair"** to connect the app with your Cashbox.
-<p align="left">
-           <img src="./images/PairDevice.png" width="30%" />
-       </p>
+  <p align="left">
+    <img src="./images/PairDevice.png" width="30%" />
+  </p>
        
 ---
 

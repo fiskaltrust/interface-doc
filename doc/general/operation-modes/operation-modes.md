@@ -68,8 +68,6 @@ For specific information regarding supported Signature Creation Units and platfo
 
 - France
 
-- [Italy](../../middleware-it-registratore-telematico/operation-modes/on-premise-installation.md)
-
 #### Helipad Helper
 
 The Helipad Helper is used to support updates and configurations.

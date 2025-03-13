@@ -197,7 +197,7 @@ module.exports = {
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/receipt-case-definitions/receipt-case-definitions',
             'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/reference-tables/reference-tables',
           ]
-        },
+        },        
         {
           type: 'category',
           label: 'Greece (Closed Beta)',

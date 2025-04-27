@@ -1,3 +1,7 @@
+---
+slug: /poscreators/middleware-doc/digital-receipt/multiterminal-settings
+title: 'Multinerminal Settings'
+---
 
 # Instore App – multi terminal settings
 

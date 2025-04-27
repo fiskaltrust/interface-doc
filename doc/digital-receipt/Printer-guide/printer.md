@@ -1,5 +1,5 @@
 ---
-slug: /poscreators/middleware-doc/digital-receipt/instore-app
+slug: /poscreators/middleware-doc/digital-receipt/printer-guide
 title: 'Printer Guide'
 ---
 

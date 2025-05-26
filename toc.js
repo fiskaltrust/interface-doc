@@ -343,7 +343,7 @@ module.exports = {
         'middleware-doc/doc/instore-app/Introduction/digital-receipt-introduction',
         'middleware-doc/doc/instore-app/setup-guide/setup',
         'middleware-doc/doc/instore-app/printer-guide/printer',
-        'middleware-doc/doc/instore-app/multiterminal-settings/multiterminal'
+        'middleware-doc/doc/instore-app/multiterminal-support/multiterminal'
       ]
     },
     {

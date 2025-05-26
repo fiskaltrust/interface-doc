@@ -1,5 +1,5 @@
 ---
-slug: /poscreators/middleware-doc/digital-receipt/multiterminal-settings
+slug: /poscreators/middleware-doc/instore-app/multiterminal-settings
 title: 'Multinerminal Settings'
 ---
 

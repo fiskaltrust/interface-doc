@@ -341,9 +341,9 @@ module.exports = {
       label: 'InStore-App',
       items: [
         'middleware-doc/doc/instore-app/Introduction/digital-receipt-introduction',
-        'middleware-doc/doc/instore-app/Setup-guide/setup',
-        'middleware-doc/doc/instore-app/Printer-guide/printer',
-        'middleware-doc/doc/instore-app/Multiterminal-settings/multiterminal'
+        'middleware-doc/doc/instore-app/setup-guide/setup',
+        'middleware-doc/doc/instore-app/printer-guide/printer',
+        'middleware-doc/doc/instore-app/multiterminal-support/multiterminal'
       ]
     },
     {

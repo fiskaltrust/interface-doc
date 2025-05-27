@@ -1,5 +1,9 @@
+---
+slug: /poscreators/middleware-doc/instore-app/multiterminal-settings
+title: 'Multinerminal Settings'
+---
 
-# Instore App – multi terminal settings
+# Multi terminal settings
 
 To configure multi-terminal support, the following settings should be applied:
 

@@ -20,9 +20,9 @@ https://europa.eu/youreurope/business/taxation/vat/vat-rules-rates/index_en.htm
 | -------------------- | -------------- | ---------------------- |
 | `0` | **Unknown type of service for IT**<br />With the help of the VAT-rates table saved within fiskaltrust.SecurityMechanisms. | 1.3.45  |
 | `1` | **Discounted-1 VAT rate**<br />(as of 1.1.2022, this is 10%). | 1.3.45 |
-| `2` | **Discounted 2 VAT rate**<br />(as of 1.1.2022, this is calculated with 4%). | 1.3.45   |
+| `2` | **Super reduced 1 VAT rate**<br />(as of 1.1.2022, this is calculated with 4%). | 1.3.45   |
 | `3` | **Normal VAT rate**<br />(as of 1.1.2022, this is calculated with 22%). | 1.3.45  |
-| `4` | **Super reduced 1 VAT rate**<br />(as of 1.1.2022, this is calculated with 5%). | 1.3.45 |
+| `4` | **Discounted 2 VAT rate**<br />(as of 1.1.2022, this is calculated with 5%). | 1.3.45 |
 | `5` | **Super reduced 2 VAT rate**<br /> | 1.3.45 |
 | `6` | **Parking VAT rate**<br />Reversal of tax liability. | 1.3.45 |
 | `7` | **Zero VAT rate**<br />In the data, a VAT-rate can be indicated. | 1.3.45 |

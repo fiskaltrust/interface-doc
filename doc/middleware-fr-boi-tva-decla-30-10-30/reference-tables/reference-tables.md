@@ -51,7 +51,7 @@ The country-specific code is made of the country's code value following the ISO-
 | `0x4652000000000015` | **Archive**<br />Has to be Signed<br />Sign: Yes<br />Chain and national numbering: A<br />Details: Will trigger a daily closing automatically.<br />Creates an archive starting with the first receipt of the queue (or the last archive receipt) until the last receipt before this request. It must not contain more than 365 days.<br />To retrieve the export as a zip-file (containing the certificate, ReceiptJournals and QueueItems), a normal `/journal`request has to be sent to the `ftJournalType`: `0x4652000000010010`. The value of `ftQueueRow` in the response of this ReceiptCase has to be sent in the `from`-parameter.<br />The content of the retrieved zip-file can be verified with the _ExportTool_ for France. It can be downloaded [here](https://github.com/fiskaltrust/interface-doc/files/10928504/fiskaltrust.TaxAuditorTool.zip) | 1.2                    |
 | `0x4652000000000016` | **Copy**<br />Has to be Signed<br />Sign: Yes<br />Chain and national numbering: C<br />Details: in a request the `cbPreviousReceiptReference` is mandatory. It contains the receipt number which was handed out as a copy, issued by the original cash register. When a copy of a receipt is requested, the phrase "duplicata" is returned with the fiskaltrust signature and must be printed on the receipt. Every time the receipt is reprinted, an up-counting number denoting how many times the receipt has been printed, is returned. It must be printed on the receipt and is then recorded in the journal.The layout and the information contained shall be the same as in the original document.                                                                                                                                                        | 1.2                    |
 
-<span id="_Toc527986685" class="anchor"></span>*Table 33. Type of Receipt: ftReceiptCase (FR – BOI-TVA-DECL 30-10-30)*
+<span id="_Toc527986685" class="anchor"></span>*Table 33. Type of Receipt: ftReceiptCase (FR – BOI-TVA-DECLA 30-10-30)*
 
 ### ftReceiptCaseFlag
 
@@ -66,7 +66,7 @@ According to French law and regulations, various business transactions can resul
 
 <span id="_Toc527986686" class="anchor"></span>
 
-*Table 34. Type of Receipt: ftReceiptCase Flags (FR – BOI-TVA-DECL 30-10-30)*
+*Table 34. Type of Receipt: ftReceiptCase Flags (FR – BOI-TVA-DECLA 30-10-30)*
 
 ## Type of Service: ftChargeItemCase
 
@@ -114,7 +114,7 @@ For France (FR), the country code is 0x4652. Thus, the value for an unknown `ftC
 
 <span id="_Toc527986687" class="anchor"></span>
 
-*Table 35. Type of Service: ftChargeItemCase (FR – BOI-TVA-DECL 30-10-30)*
+*Table 35. Type of Service: ftChargeItemCase (FR – BOI-TVA-DECLA 30-10-30)*
 
 In the following there are further guidelines for using ftChargeItemCase.
 
@@ -147,7 +147,7 @@ The `ftPayItemCase` defines the type of payment within the pay items block and h
 
 <span id="_Toc527986688" class="anchor"></span>
 
-*Table 36. Type of Payment: ftPayItemCase (FR - BOI-TVA-DECL 30-10-30)*
+*Table 36. Type of Payment: ftPayItemCase (FR - BOI-TVA-DECLA 30-10-30)*
 
 ## Type of Signature: ftSignatureType
 
@@ -166,7 +166,7 @@ The `ftSignatureType` indicates the type and origin of the signature.
 
 <span id="_Toc527986689" class="anchor"></span>
 
-*Table 37. Type of Signature: ftSignatureType (FR - BOI-TVA-DECL 30-10-30)*
+*Table 37. Type of Signature: ftSignatureType (FR - BOI-TVA-DECLA 30-10-30)*
 
 ## Type of Journal: ftJournalType
 
@@ -186,7 +186,7 @@ The `ftJournalType` is used in connection with the journal function and defines 
 | `0x465200000000000B` | Training ("X" group) export         | 1.2         |
 | `0x4652000000000010` | Export (in conjunction with Archiv) | 1.2         |
 
-*Table 38. Type of Journal: ftJournalType (FR - BOI-TVA-DECL 30-10-30)*
+*Table 38. Type of Journal: ftJournalType (FR - BOI-TVA-DECLA 30-10-30)*
 
 ### ftJournalTypeFlag
 

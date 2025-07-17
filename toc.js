@@ -179,23 +179,23 @@ module.exports = {
           type: 'category',
           label: 'France (BOI-TVA-DECLA-30-10-30)',
           items: [
-            'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/appendix-fr-boi-tva-decl-30-10-30',
-            'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/terminology/terminology',
+            'middleware-doc/doc/middleware-fr-boi-tva-decla-30-10-30/appendix-fr-boi-tva-decla-30-10-30',
+            'middleware-doc/doc/middleware-fr-boi-tva-decla-30-10-30/terminology/terminology',
             {
               type: 'category',
               label: 'Cash register integration',
               items: [
-                'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/cash-register-integration/cash-register-integration',
-                'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/cash-register-integration/failure-scenario',
+                'middleware-doc/doc/middleware-fr-boi-tva-decla-30-10-30/cash-register-integration/cash-register-integration',
+                'middleware-doc/doc/middleware-fr-boi-tva-decla-30-10-30/cash-register-integration/failure-scenario',
               ]
             },
-            'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/data-structures/data-structures',
-            'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/function-structures/function-structures',
-            'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/communication/communication',
-            'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/operation-modes/operation-modes',
-            'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/installation/installation',
-            'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/receipt-case-definitions/receipt-case-definitions',
-            'middleware-doc/doc/middleware-fr-boi-tva-decl-30-10-30/reference-tables/reference-tables',
+            'middleware-doc/doc/middleware-fr-boi-tva-decla-30-10-30/data-structures/data-structures',
+            'middleware-doc/doc/middleware-fr-boi-tva-decla-30-10-30/function-structures/function-structures',
+            'middleware-doc/doc/middleware-fr-boi-tva-decla-30-10-30/communication/communication',
+            'middleware-doc/doc/middleware-fr-boi-tva-decla-30-10-30/operation-modes/operation-modes',
+            'middleware-doc/doc/middleware-fr-boi-tva-decla-30-10-30/installation/installation',
+            'middleware-doc/doc/middleware-fr-boi-tva-decla-30-10-30/receipt-case-definitions/receipt-case-definitions',
+            'middleware-doc/doc/middleware-fr-boi-tva-decla-30-10-30/reference-tables/reference-tables',
           ]
         },        
         {

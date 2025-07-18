@@ -21,7 +21,7 @@ By reviewing this README file in order to understand its structure and which too
 The repository is built using [docusaurus](https://docusaurus.io/).
 All documentation files are stored within the `/doc` folder in this repository (markdown, images, other static content).
 
-You need to add a `slug` and `title` in the yaml fromtmatter of your files and possibly adapt the [`toc.js`](.toc.js) file.
+You need to add a `slug` and `title` in the yaml fromtmatter of your files and possibly adapt the [`toc.js`](./toc.js) file.
 
 #### References
 A reference to a markdown file can be created like this: `[Reference Text](./path-to-file/filename.md)`.

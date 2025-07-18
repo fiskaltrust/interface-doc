@@ -18,11 +18,11 @@ If a cash register cannot communicate with the fiskaltrust.Middleware it is most
 If the cash register doesn’t receive a response from the Middleware (e.g., due to a network or server outage), the following steps should be taken:
 
 
-  -The cash register or input station  must automatically generate a receipt and a copy of it.
+  - The cash register or input station  must automatically generate a receipt and a copy of it.
   - The receipt should be labeled with "mode dégradé" (degraded mode) and include the current failure counter.
-  -The receipt copy should be stored until the problem is resolved. The cash register can store this copy electronically.
+  - The receipt copy should be stored until the problem is resolved. The cash register can store this copy electronically.
   - Once the Middleware is reachable again, send all receipts marked as "receipt copy, electronic recording system failed" to the Middleware.
-  - Mark these receipts with the "failed receipt" flag to indicate the issue.  The flag can be found in the [Reference Table Chapter - ftReceiptCaseFlag](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/general/reference-tables#ftreceiptcaseflag).
+  - Mark these receipts with the "failed receipt" flag to indicate the issue. The flag can be found in the [Reference Table Chapter - ftReceiptCaseFlag](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag).
   The Middleware will respond with a "Late Signing Mode" status.
 
 ![late-signing-mode](./images/08-late-signing-mode.png)
@@ -33,6 +33,6 @@ Mark these receipts with the "failed receipt" code to indicate the issue. The Mi
 
 :::tip
 
-We recommend re-sending the first failed receipt with the receipt request flag 0x0000800000000000. This ensures that if the receipt was already sent but the response was lost (e.g., due to a network issue), the Middleware will retrieve and return the original receipt. More details about this flag can be found [here](https://docs.fiskaltrust.cloud/docs/poscreators/middleware-doc/general/reference-tables#ftreceiptcaseflag)
+We recommend re-sending the first failed receipt with the receipt request flag 0x0000800000000000. This ensures that if the receipt was already sent but the response was lost (e.g., due to a network issue), the Middleware will retrieve and return the original receipt. More details about this flag can be found [here](../../general/reference-tables//reference-tables.md#ftreceiptcaseflag)
 
 :::

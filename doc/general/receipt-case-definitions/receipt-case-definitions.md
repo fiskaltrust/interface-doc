@@ -44,6 +44,6 @@ For further information, refer to the appropriate Appendix for the specific coun
 Tips are to be divided into two categories:
 
   - Tips that go to the company are normal sales.
-  - Tips that do not go to the company, are to be treated like obligations or not own sales in the charge items block
+  - Tips that do not go to the company, are to be treated like obligations or not own sales in the charge items block.
 
 For further information, refer to the appropriate Appendix for the specific country.

@@ -34,9 +34,9 @@ In accordance with the Official Bulletin BOI-CF-COM-10-80-20160803 from August 3
 
 #### Start Receipt (Initial Receipt)
 
-9.  #### Stop Receipt (Closing Receipt)
+#### Stop Receipt (Closing Receipt)
 
-10. #### End of Failure Receipt (Collective Failure Report)
+#### End of Failure Receipt (Collective Failure Report)
 
 #### Daily Receipt
 

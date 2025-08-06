@@ -13,17 +13,8 @@ Please follow the steps below in the given order.
 
 **1. Download the App**
 - Open **Web Explorer** or any other web browser on your device.
-- Visit the following website to download the latest version of the Fiskaltrust app:
-  - [Download the App](https://install.appcenter.ms/orgs/fiskaltrust/apps/in-store/distribution_groups/stable)
-    <p align="left">
-      <img src="./images/QRCode.png" width="30%" />
-    </p>
-- It should look like this:
-  <p align="left">
-    <img src="./images/Appcenter.jpg" width="30%" />
-  </p>
-- Download the LATEST RELEASE
-
+- Visit the following website to download the latest version of the Fiskaltrust Instore-app:
+- [Download the App](https://link.fiskaltrust.eu/downloads/instoreapp/stable)
 
 **2. Install the App**
 - After the download is complete, open the downloaded file to start the installation.
@@ -34,9 +25,8 @@ Please follow the steps below in the given order.
 - If prompted, enable the option **"Display over other apps"** (this allows the app to stay in the foreground while you work in other apps).
   - _Tip:_ If this option is disabled, a prompt will appear asking you to enable it.  
     Please confirm this setting.
-    <p align="left">
-      <img src="./images/DisplayOverApps.png" width="30%" />
-    </p>
+    
+![DisplayOverApps](./images/DisplayOverApps.png)
              
 **4. Access the Fiskaltrust Portal**
 - If you want to **test** your setup in the **Sandbox environment** , open the **Fiskaltrust Sandbox Portal** for your country in your web browser:
@@ -48,26 +38,22 @@ Make sure to select the correct country within the portal to match your region.
 
 **5. Select Your Cashbox**
 - Once in the portal, select your **Cashbox**. This is the virtual cash register you will connect to the app.
-  <p align="left">
-    <img src="./images/Cashbox.png" width="30%" />
-  </p>
+  
+![Cashbox](./images/Cashbox.png)
 
 
 **6. Copy the PAIR CODE**
 - In the Cashbox overview, you will find your **PAIR CODE**. This code is used to pair your app with the Cashbox.
   - **Example PAIR CODE:** 8639  
     Copy this code.
-    <p align="left">
-      <img src="./images/PINforInstoreApp.png" width="30%" />
-    </p>
-
+    
+![PINforInstoreApp](./images/PINforInstoreApp.png)
 
 **7. Enter the PAIR CODE in the App**
 - Now, open the Fiskaltrust app on your device and paste the previously copied **PAIR CODE** into the designated field.
 - Click **"Pair"** to connect the app with your Cashbox.
-  <p align="left">
-    <img src="./images/PairDevice.png" width="30%" />
-  </p>
+  
+![PairDevice](./images/PairDevice.png)
        
 ---
 

@@ -1,6 +1,6 @@
 ---
 slug: /poscreators/middleware-doc/instore-app/multiterminal-settings
-title: 'Multinerminal Settings'
+title: 'Multiterminal Settings'
 ---
 
 # Multi terminal settings

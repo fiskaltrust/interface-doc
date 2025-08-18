@@ -42,4 +42,4 @@ This table shows flags that can be added to each `ftPayItemCase` with values app
 |---|---|---|
 | 0x0000000000200000<sup>1</sup> | **Position cancellation flag** <br />When this flag is sent: Only the amount is used for calculating the sums in the Middleware, the DSFinV-K and the DFKA (instead of our common approach with the Quantity-based calculation). Sets the STORNO field in the DSFinV-K and the DFKA | 1.3.1- |
 
-<sup>1</sup> Previous documentation contained a typo regarding this flag. The documentation has been corrected to align with the middleware implementation.
+<sup>1</sup> Previous documentation contained a typo regarding this flag. The documentation has been corrected to align with the [middleware implementation](https://docs.fiskaltrust.eu/changelog/middleware/1.3.66#-feature-support-line-cancellations).

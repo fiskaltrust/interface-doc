@@ -138,7 +138,7 @@ This table shows flags that can be added to each `ftChargeItemCase` with values 
 | Value | Description | Middleware-Version |
 |---|---|---|
 | 0x0000000000010000 | **Take away marker.** <br />For some cases, it is necessary to differ for the same good from in-house-consumption and take away. This flag signals a take away situation or in other words, a not-in-house-consumption if it is set. | 1.3.1- |
-| 0x0000000000020000 | **Position cancellation flag** <br />When this flag is sent: Only the amount is used for calculating the sums in the Middleware, the DSFinV-K and the DFKA (instead of our common approach with the Quantity-based calculation). Sets the STORNO field in the DSFinV-K and the DFKA | 1.3.1- |
+| 0x0000000000200000 | **Position cancellation flag** <br />When this flag is sent: Only the amount is used for calculating the sums in the Middleware, the DSFinV-K and the DFKA (instead of our common approach with the Quantity-based calculation). Sets the STORNO field in the DSFinV-K and the DFKA | 1.3.1- |
 
 
 #### Table with vat rate reference numbers defined in DSFinV-K

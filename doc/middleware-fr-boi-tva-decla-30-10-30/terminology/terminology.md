@@ -17,6 +17,6 @@ This table expands on the descriptions of all general terms and abbreviations pr
 
 <span id="_Toc510009106" class="anchor">
 
-*Table 29. Definition of Terms and Abbreviations (FR – BOI-TVA-DECL 30-10-30)*
+*Table 29. Definition of Terms and Abbreviations (FR – BOI-TVA-DECLA 30-10-30)*
 
 </span>

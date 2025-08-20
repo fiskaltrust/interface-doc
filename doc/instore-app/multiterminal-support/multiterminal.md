@@ -16,11 +16,8 @@ To configure multi-terminal support, the following settings should be applied:
 3. **Use Local Configuration** :
     It is recommended to enable the **Use Local Configuration** setting if local
     adjustments are necessary. This allows terminals to operate with specific
-    settings while still connecting to the main configuration from the backend.
-4. **Enable NFS** :
-    Activate the NFC feature if required for payment processing. This setting should
-    be consistent across all terminals.
-5. **Printers** :
+    settings while still connecting to the main configuration from the backend..
+4. **Printers** :
     Configure each terminal to use the same printer settings or ensure network
     printers are set up properly for seamless printing across all devices.
 

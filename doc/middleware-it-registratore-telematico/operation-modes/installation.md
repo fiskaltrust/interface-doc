@@ -53,8 +53,9 @@ Following local data storage options can be configured in the queue:
 |                                                            | Windows       | Linux, macOS  | Android       |
 |------------------------------------------------------------|---------------|---------------|---------------|
 | **[SQLite-storage](on-premise-databases/sqlite.md)**       | **supported** | **supported** | **supported** |
-| **[MySQL-storage](on-premise-databases/mysql.md)**         | **supported** | **supported** | **supported** |
 | **[EF-storage](on-premise-databases/entity-framework.md)** | **supported** | **supported** | not supported |
+| **[MySQL-storage](on-premise-databases/mysql.md)**         | **supported** | not supported | **supported** |
+
 
 ## Local data export
 

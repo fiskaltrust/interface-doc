@@ -23,6 +23,24 @@ To configure multi-terminal support, the following settings should be applied:
 
 ---
 
+
+## Receipt Display in Multi-Terminal Setups
+
+The display of receipts on connected devices is determined by the Terminal ID configuration.  
+The following rules apply:
+
+| **Scenario** | **Behavior** |
+|--------------|--------------|
+| POS has Terminal ID “A1”, none of the devices have a Terminal ID | All devices display the receipt |
+| POS has Terminal ID “A1”, one device has Terminal ID “A1” | All devices display the receipt |
+| POS has Terminal ID “A1”, multiple (but not all) devices have Terminal ID “A1” | All devices display the receipt |
+| POS has Terminal ID “A1”, all devices have Terminal ID “A1” | All devices display the receipt |
+| POS has Terminal ID “A1”, all devices have different Terminal IDs (e.g., “B1”) | No device displays the receipt |
+| POS has no Terminal ID, one device has Terminal ID “A1” (others have none) | All devices without a Terminal ID display the receipt; the device with “A1” does not |
+| POS has no Terminal ID, all devices have Terminal IDs (e.g., “A1”, “B1”) | No device displays the receipt |
+
+---
+
 **Use Cases**
 
 1. **Retail Environment** :

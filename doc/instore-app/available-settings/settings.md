@@ -40,7 +40,7 @@ Closes the app gracefully and persists configuration changes.
 
 ### Terminal ID Filter
 Filters receipts and data for a specific terminal within the CashBox.  
-For advanced multi-terminal options, see [Multiterminal Settings](https://docs.fiskaltrust.eu/docs/poscreators/middleware-doc/instore-app)
+For advanced multi-terminal options, see [Multiterminal Settings](https://docs.fiskaltrust.eu/docs/poscreators/middleware-doc/instore-app/multiterminal-settings)
 
 ### Operation Mode
 Defines which features are available in the UI. Some options and sections appear or hide based on this selection:
@@ -80,8 +80,11 @@ Enables **receipt transmission via NFC**.
 **Preview:** This feature currently works **only on fiskaltrust‑provided devices**.
 
 ### Enable running in Foreground
-Runs the app as a **foreground service** so it stays active for continuous use (e.g., receipt and payment flows).  
-When this is enabled, the app **auto‑starts after device boot** so staff do not need to launch it manually.
+Runs the app as an  **Android foreground service** also displaying a notification in the Android status bar (when notifications are enabled in Android settings) and takes care that the service is run at all times.
+
+When enabled it results in the following behaviour:
+- Even if the InStoreApp is not in foreground (e.g., the user is working with the POS app on the same device), it continues to run in the background.
+- The InStoreApp **auto‑starts after device boot** so no manual start is required after boot. This means even without ever starting the InStoreApp manually it will start in the background automatically and can process actions (like trigger payments or show receipts).
 
 ---
 
@@ -97,14 +100,16 @@ Some options depend on the selected mode.
 Shows all available printers (USB, Bluetooth, or Network). Select the one you want to use.
 
 #### Print Delay
-Delay before printing starts (0–99 seconds).  
+Defines the delay before an issued receipt will get printed automatically if the guest/customer is not receiving the receipt in another way like scanning the QR code with their phone, just accepting it by pressing OK or another method.
+
+Default: 30s.
 **Available only in Consumer mode.**
 
 #### Paper width
 Set the receipt width: **48 mm**, **72 mm**, or **80 mm**.
 
 #### Print Demo
-Prints a test receipt to check basic printer functionality (not the full layout).
+Executes a simple "demo" test print to check basic printer functionality.
 
 #### Enable Network Print Server
 Opens a network print server on port **9100** so other systems can print through this device.
@@ -165,7 +170,7 @@ Use this when giving the device to a different store/location or if a clean setu
 
 ## Best practices
 
-- Keep **Use local configuration** **off** if you manage settings centrally—this prevents drift from backend policies.
+- Keep **Use local configuration** **off** if you manage settings centrally — this prevents drift from backend policies.
 - After changing **Middleware URL**, tap **Stop Middleware** → update the URL → **Start Middleware**.
 - For **Network Print Server**, consider setting a **static IP** or DHCP reservation; otherwise clients can lose the printer when the IP changes.
 - For **Hobex ECR**, use **Test Communication** before going live.

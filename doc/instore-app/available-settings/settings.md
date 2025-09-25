@@ -52,8 +52,24 @@ Defines which features are available in the UI. Some options and sections appear
 
 
 ### Use local configuration
-If enabled, local device settings override the backend.  
+
+If enabled, local device settings override the backend configuration.
+
 If disabled, the app follows centrally managed (backend) settings.
+
+:::info Note
+
+Currently, this setting can only be configured by internal staff via the backend. Customers do not yet have the ability to change this setting themselves.
+
+:::
+
+
+Once the setting is disabled and the app is restarted, the configuration stored in the backend will be loaded into the app.
+
+This configuration can be applied:
+- **Per device**: A specific configuration for each individual device.
+- **Per cashbox**: A shared configuration for all devices connected to a particular cashbox.
+
 
 ---
 

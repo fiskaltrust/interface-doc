@@ -24,9 +24,10 @@ To configure multi-terminal support, the following settings should be applied:
 ---
 
 
-## Receipt Display in Multi-Terminal Setups
+## Rules for Multi-Terminal Setups
 
-The display of receipts on connected devices is determined by the Terminal ID configuration.  
+To execute actions on connected devices, like executing a payment or display a receipt, the devices, on which an action is executed, are determined by the Terminal ID configuration which acts as a filter. 
+
 The following rules apply:
 
 | **Scenario** | **Behavior** |

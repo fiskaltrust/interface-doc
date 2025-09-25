@@ -3,27 +3,6 @@ slug: /poscreators/middleware-doc/instore-app/multiterminal-settings
 title: 'Multiterminal Settings'
 ---
 
-# Multi terminal settings
-
-To configure multi-terminal support, the following settings should be applied:
-
-1. **Terminal ID** :
-    Ensure that all terminals are associated with the same Terminal ID. This ID links
-    the transactions to a single cash management system.
-2. **Operation Mode** :
-    Set the operation mode to **Merchant** on each terminal to ensure they operate
-    connected within the multi-terminal environment.
-3. **Use Local Configuration** :
-    It is recommended to enable the **Use Local Configuration** setting if local
-    adjustments are necessary. This allows terminals to operate with specific
-    settings while still connecting to the main configuration from the backend..
-4. **Printers** :
-    Configure each terminal to use the same printer settings or ensure network
-    printers are set up properly for seamless printing across all devices.
-
----
-
-
 ## Rules for Multi-Terminal Setups
 
 To execute actions on connected devices, like executing a payment or display a receipt, the devices, on which an action is executed, are determined by the Terminal ID configuration which acts as a filter. 

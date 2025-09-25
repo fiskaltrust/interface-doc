@@ -3,23 +3,21 @@ slug: /poscreators/middleware-doc/instore-app/multiterminal-settings
 title: 'Multiterminal Settings'
 ---
 
-# Multi terminal settings
+## Rules for Multi-Terminal Setups
 
-To configure multi-terminal support, the following settings should be applied:
+To execute actions on connected devices, like executing a payment or display a receipt, the devices, on which an action is executed, are determined by the Terminal ID configuration which acts as a filter. 
 
-1. **Terminal ID** :
-    Ensure that all terminals are associated with the same Terminal ID. This ID links
-    the transactions to a single cash management system.
-2. **Operation Mode** :
-    Set the operation mode to **Merchant** on each terminal to ensure they operate
-    connected within the multi-terminal environment.
-3. **Use Local Configuration** :
-    It is recommended to enable the **Use Local Configuration** setting if local
-    adjustments are necessary. This allows terminals to operate with specific
-    settings while still connecting to the main configuration from the backend..
-4. **Printers** :
-    Configure each terminal to use the same printer settings or ensure network
-    printers are set up properly for seamless printing across all devices.
+The following rules apply:
+
+| **Scenario** | **Behavior** |
+|--------------|--------------|
+| POS has Terminal ID “A1”, none of the devices have a Terminal ID | All devices display the receipt |
+| POS has Terminal ID “A1”, one device has Terminal ID “A1” | All devices display the receipt |
+| POS has Terminal ID “A1”, multiple (but not all) devices have Terminal ID “A1” | All devices display the receipt |
+| POS has Terminal ID “A1”, all devices have Terminal ID “A1” | All devices display the receipt |
+| POS has Terminal ID “A1”, all devices have different Terminal IDs (e.g., “B1”) | No device displays the receipt |
+| POS has no Terminal ID, one device has Terminal ID “A1” (others have none) | All devices without a Terminal ID display the receipt; the device with “A1” does not |
+| POS has no Terminal ID, all devices have Terminal IDs (e.g., “A1”, “B1”) | No device displays the receipt |
 
 ---
 

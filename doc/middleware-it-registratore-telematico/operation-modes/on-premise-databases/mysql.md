@@ -13,6 +13,12 @@ The use of the MySQL storage provider enables the middleware to be operated with
 
 This storage provider is particularly suitable for setting up fail-safe systems or for integrating middleware into existing system architectures.
 
+::: info
+
+This storage is only supported for use within bring your own datacenter and not for local operation.
+
+:::
+
 ## Parameters
 
 | Name               | Description                                    | **Default Value**<br />**Mandatory Field** |

@@ -50,7 +50,7 @@ Following local data storage options can be configured in the queue:
 | ---------------------------------------------------------- | ------------- | ------------- | ------------- |
 | **[EF-storage](on-premise-databases/entity-framework.md)** | **supported** | **supported** | not supported |
 | **In-memory storage**                                      |               |               |               |
-| **[MySQL-storage](on-premise-databases/mysql.md)**         | **supported** | **supported** | **supported** |
+| **[MySQL-storage](on-premise-databases/mysql.md)**         | **supported** | not supported | **supported** |
 | **[SQLite-storage](on-premise-databases/sqlite.md)**       | **supported** | **supported** | **supported** |
 
 ## Local data export

@@ -32,7 +32,7 @@ The CashBox the app is paired with. It links the app to the correct fiscal/payme
 Disconnects the current CashBox to pair another one (e.g., when moving the device to a new store).
 
 ### Refresh DeviceConfiguration
-Pulls the latest configuration from the backend and applies it on the device.
+This button updates your device with the current backend configuration without requiring an app restart.
 
 ### End App
 Closes the app gracefully and persists configuration changes.  

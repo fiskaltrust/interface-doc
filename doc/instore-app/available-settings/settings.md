@@ -150,16 +150,6 @@ Stops the live connection (use before changing URL, switching networks, or durin
 
 ---
 
-## Update settings
-
-### Use prerelease
-If enabled, the updater considers **prerelease** builds in addition to stable releases (for early access and testing).
-
-### Check For Update
-Runs an update check immediately and offers the newest version available for your selected track.
-
----
-
 ## Danger Zone
 
 ### Factory reset

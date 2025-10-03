@@ -13,8 +13,11 @@ After reading this, you understand the concept of the InStore App, the configura
 
 
 ## Supported Stores
-- Sunmi
-- MaxStore
+- [PAX](https://www.pax.com/)
+- [PAX GP](https://www.globalpayments.com)
+- [PAX Italia](https://www.paxitalia.com/)
+- [Orderman](https://www.orderman.com)
+- [Sunmi](https://www.sunmi.com)
 
 ## Introduction
 

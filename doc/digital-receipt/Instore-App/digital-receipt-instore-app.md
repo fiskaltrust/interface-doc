@@ -13,11 +13,10 @@ After reading this, you understand the concept of the InStore App, the configura
 
 
 ## Supported Stores
-- [PAX](https://www.pax.com/)
-- [PAX GP](https://www.globalpayments.com)
-- [PAX Italia](https://www.paxitalia.com/)
-- [Orderman](https://www.orderman.com)
-- [Sunmi](https://www.sunmi.com)
+- [PAX GP](https://www.whatspos.com)
+- [PAX Italia](https://paxitalia.whatspos.com)
+- [Orderman](https://next.orderman.com)
+- [Sunmi](https://partner.sunmi.com)
 
 ## Introduction
 

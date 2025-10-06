@@ -13,8 +13,10 @@ After reading this, you understand the concept of the InStore App, the configura
 
 
 ## Supported Stores
-- Sunmi
-- MaxStore
+- [PAX GP](https://www.whatspos.com)
+- [PAX Italia](https://paxitalia.whatspos.com)
+- [Orderman](https://next.orderman.com) <!-- markdown-link-check-disable-line -->
+- [Sunmi](https://partner.sunmi.com)
 
 ## Introduction
 

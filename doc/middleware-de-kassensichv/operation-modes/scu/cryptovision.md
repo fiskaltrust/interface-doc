@@ -11,7 +11,7 @@ Certification-ID of TSE according to chapter 9.2.2 of [Anwendungserlass zu § 14
 
 | Certification-ID                                             | Test item                               | Applicant            | Date       |
 | :----------------------------------------------------------- | :-------------------------------------- | :------------------- | :--------- |
-| [BSI-K-TR-0374-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0374-2020.html) | Bundesdruckerei D-TRUST TSE Version 1.0 | cv cryptovision GmbH | 14.04.2020 |
+| [BSI-K-TR-0374-2020](https://www.bsi.bund.de/SharedDocs/Zertifikate_TR/Technische_Sicherheitseinrichtungen/BSI-K-TR-0374-2020.html) | Bundesdruckerei D-TRUST TSE Version 1.0 | cv cryptovision GmbH | 14.04.2020 | <!-- markdown-link-check-disable-line -->
 
 #### Certification identification
 

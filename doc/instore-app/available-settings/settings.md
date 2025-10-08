@@ -125,7 +125,7 @@ The UI first asks you to pick a **Payment** method. Depending on the method, add
 :::
 
 #### Payment
-Select the payment provider to use on this device (e.g., **Hobex ECR**, **Softpay.io**, **Viva Wallet**, etc.).  
+Select the payment provider to use on this device (e.g., **Hobex ECR**, **Hobex POSit**, **Softpay.io**, **Viva Wallet**, **GP tom**, **GP Pay**, **Shift4**).  
 After selection, provider‑specific options appear as needed.
 
 ##### Hobex ECR (example of provider‑specific fields)
@@ -134,6 +134,12 @@ After selection, provider‑specific options appear as needed.
 - **Hobex ECR Host** – Hostname or IP of the ECR endpoint.
 - **Hobex ECR Port** – TCP port of the ECR endpoint.
 - **Test Communication** – Checks connectivity with the configured ECR endpoint before going live.
+
+##### Shift4
+
+- **Auth Token** - The merchant auth token which will be provided by merchant's Lighthouse Transaction Manager Account Administrator. For further help please refer to Shift4 support.
+- **CE Host** - The Commerce Engine Host address to connect to and process payment requests. If not otherwise provided by fiskaltrust support please use *127.0.0.1:8085*
+- **Test Communication** - Checks connectivity with the configured Shift4 Commerce Engine host. Connection check has a timeout of 60s.
 
 ---
 

@@ -7,7 +7,7 @@ title: 'Available settings'
 
 :::info Important
 
-All settings and options described here apply **only** to version **1.2.6** of the InStoreApp.  
+All settings and options described here apply **only** to version **1.2.6** of the InStore App.  
 If you are using an older version, some settings may differ or may not be available at all.
 
 :::
@@ -83,8 +83,8 @@ Enables **receipt transmission via NFC**.
 Runs the app as an  **Android foreground service** also displaying a notification in the Android status bar (when notifications are enabled in Android settings) and takes care that the service is run at all times.
 
 When enabled it results in the following behaviour:
-- Even if the InStoreApp is not in foreground (e.g., the user is working with the POS app on the same device), it continues to run in the background.
-- The InStoreApp **auto‑starts after device boot** so no manual start is required after boot. This means even without ever starting the InStoreApp manually it will start in the background automatically and can process actions (like trigger payments or show receipts).
+- Even if the InStore App is not in foreground (e.g., the user is working with the POS app on the same device), it continues to run in the background.
+- The InStore App **auto‑starts after device boot** so no manual start is required after boot. This means even without ever starting the InStore App manually it will start in the background automatically and can process actions (like trigger payments or show receipts).
 
 ---
 

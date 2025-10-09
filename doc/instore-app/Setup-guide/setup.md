@@ -13,7 +13,7 @@ Please follow the steps below in the given order.
 
 **1. Download the App**
 - Open **Web Explorer** or any other web browser on your device.
-- Visit the following website to download the latest version of the Fiskaltrust Instore-app:
+- Visit the following website to download the latest version of the Fiskaltrust InStore App:
 - [Download the App](https://link.fiskaltrust.eu/downloads/instoreapp/stable)
 
 **2. Install the App**
@@ -47,7 +47,7 @@ Make sure to select the correct country within the portal to match your region.
   - **Example PAIR CODE:** 8639  
     Copy this code.
     
-![PINforInstoreApp](./images/PINforInstoreApp.png)
+![PIN for InStore App](./images/PINforInstoreApp.png)
 
 **7. Enter the PAIR CODE in the App**
 - Now, open the Fiskaltrust app on your device and paste the previously copied **PAIR CODE** into the designated field.

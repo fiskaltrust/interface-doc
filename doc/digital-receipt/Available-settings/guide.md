@@ -1,4 +1,4 @@
-# Instore App – available settings
+# InStore App – available settings
 
 **CashBoxId**
 

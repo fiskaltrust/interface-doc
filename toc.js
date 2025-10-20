@@ -350,8 +350,6 @@ module.exports = {
           label: 'Installation Guides',
           items: [
             'middleware-doc/doc/instore-app/installation-guides/Orderman/orderman-guide',
-            'middleware-doc/doc/instore-app/installation-guides/PaxGlobal/paxgp-guide',
-            'middleware-doc/doc/instore-app/installation-guides/PaxItalia/paxitalia-guide',
             'middleware-doc/doc/instore-app/installation-guides/Sunmi/sunmi-guide'
           ]
         }

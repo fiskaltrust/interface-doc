@@ -20,12 +20,12 @@ Before starting, ensure you have:
 
 1. Open the fiskaltrust InStore App
 2. Navigate to **Settings**
-3. Select **Payment Configuration**
+3. Select **Payment** under the "Payment Settings" categorie, to open the list of available payment options
+4. Select **HobexECR** from the payment options list
 
 ### Step 2: Configure Hobex ECR
 
-1. Select **Hobex ECR** as payment provider
-2. Enter the **Terminal ID**
+1. Enter the **Terminal ID**
 3. Enter the **Password**
 4. Configure the **Host** (IP address or hostname)
 5. Configure the **Port**

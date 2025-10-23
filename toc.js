@@ -345,10 +345,12 @@ module.exports = {
         'middleware-doc/doc/instore-app/Setup-guide/setup',
         'middleware-doc/doc/instore-app/printer-guide/printer',
         'middleware-doc/doc/instore-app/multiterminal-settings/multiterminal',
+        'middleware-doc/doc/instore-app/installation-guides/installation-guides',
         {
           type: 'category',
           label: 'Installation Guides',
           items: [
+            'middleware-doc/doc/instore-app/installation-guides/manual/manual-guide',
             'middleware-doc/doc/instore-app/installation-guides/Orderman/orderman-guide',
             'middleware-doc/doc/instore-app/installation-guides/Sunmi/sunmi-guide'
           ]

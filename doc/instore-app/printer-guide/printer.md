@@ -12,8 +12,7 @@ This guide will walk you through the process of setting up and configuring a pri
 the **fiskaltrust InStore App**. Whether you are using a Bluetooth, Wi-Fi, or USB printer,
 follow the instructions carefully to ensure your printer works seamlessly with the app.
 
-**Note:** Before you can access the settings to configure your printer, make sure that you
-have the **fiskaltrust InStore App** installed on your device. To access the settings:
+**Note:** Before you can access the settings to configure your printer, make sure that you have the **fiskaltrust InStore App** installed on your device. To access the settings:
 
 1. Open the **fiskaltrust InStore App**.
 2. Swipe right to navigate to the main menu.
@@ -68,6 +67,9 @@ configure it within the fiskaltrust InStore App.
 3. In the Printer Settings section, scroll down to find **Printers**.
 4. Select the type of printer you have (Bluetooth, Wi-Fi, or USB).
 5. Choose your printer from the list of available devices.
+6. If you are using a **Wi-Fi/Network Printer**, you will need to manually enter the printer's **IP address** and **port number**:
+    - **IP Address**: Enter the IP address of your network printer (e.g., 192.168.1.100). You can find this information in your printer's network settings or by printing a network configuration page.
+    - **Port**: Enter the port number used by your printer (typically 9100 for most network printers, but check your printer's documentation for the correct port).
 
 ---
 
@@ -77,7 +79,7 @@ configure it within the fiskaltrust InStore App.
 The fiskaltrust InStore App supports the following printer types:
 
 - **Bluetooth Printers** : Wireless printers that connect to your device via Bluetooth.
-- **Wi-Fi Printers** : Printers that connect to your device via a shared Wi-Fi network.
+- **Wi-Fi/LAN Printers** : Printers that connect to your device via a shared Wi-Fi network or through a LAN cable (Ethernet connection).
 - **USB Printers** : Printers that connect directly to your device via a USB cable.
 
 **Note:** Ensure your printer is compatible with the fiskaltrust InStore App before starting
@@ -114,7 +116,9 @@ you to configure other important settings for your printer. These include:
 - If you notice that the printed output is delayed or not appearing immediately, you
     can adjust the **Delay** setting in the **Printer Settings**.
 - This is useful if you are using a printer that requires a slight delay between
-    commands for proper print alignment or other technical reasons.
+    - If you notice that the printed output is delayed or not appearing immediately, you can adjust the **Delay** setting in the **Printer Settings**.
+    - This is useful if you are using a printer that requires a slight delay between commands for proper print alignment or other technical reasons.
+    - **Note:** The **Delay** setting can only be modified in **Consumer mode**.
 
 **4.2 Paper Width**
 

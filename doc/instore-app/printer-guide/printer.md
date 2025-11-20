@@ -9,7 +9,7 @@ title: 'Printer Guide'
 **Introduction**
 
 This guide will walk you through the process of setting up and configuring a printer with
-the **fiskaltrust InStore App**. Whether you are using a Bluetooth, Wi-Fi, or USB printer,
+the **fiskaltrust InStore App**. Whether you are using a Bluetooth, Wi-Fi/LAN, or USB printer,
 follow the instructions carefully to ensure your printer works seamlessly with the app.
 
 **Note:** Before you can access the settings to configure your printer, make sure that you have the **fiskaltrust InStore App** installed on your device. To access the settings:
@@ -36,10 +36,10 @@ fiskaltrust InStore App.
     1. Ensure Bluetooth is enabled on your device.
     2. Pair your device with the Bluetooth printer. This can typically be done from your device's Bluetooth settings.
     3. Ensure that the printer is within range and is powered on.
-- **Wi-Fi Printers** :
-    1. Ensure that both your printer and device are connected to the same Wi-Fi
+- **Wi-Fi/LAN Printers** :
+    1. Ensure that both your printer and device are connected to the same Wi-Fi/LAN
        network.
-    2. Confirm the printer's Wi-Fi settings, either through the printer's display or
+    2. Confirm the printer's Wi-Fi/LAN settings, either through the printer's display or
        by printing a configuration page (refer to the printer's manual for
        instructions).
 
@@ -66,7 +66,7 @@ configure it within the fiskaltrust InStore App.
 2. Navigate to **Settings** > **Printer Settings**.
 3. Scroll down to find the **Printer Settings** section and click on **Printers** to open the list of available printer options.
 4. Select the type of printer you want to use from the list.
-5. If you select **ESC POS Network Printer** which allows printing via the local network (Wi-Fi/Ethernet), you will need to manually enter the printer's **IP address** and **port number**:
+5. If you select **ESC POS Network Printer** which allows printing via the local network (Wi-Fi/LAN), you will need to manually enter the printer's **IP address** and **port number**:
     - **IP Address**: Enter the IP address of your network printer (e.g., 192.168.1.100). You can find this information in your printer's network settings or by printing a network configuration page.
     - **Port**: Enter the port number used by your printer (typically 9100 for most network printers, but check your printer's documentation for the correct port).
 
@@ -76,10 +76,8 @@ configure it within the fiskaltrust InStore App.
 
 
 The fiskaltrust InStore App supports the following printer types:
-
-- **Bluetooth Printers** : Wireless printers that connect to your device via Bluetooth.
-- **Wi-Fi/LAN Printers** : Printers that connect to your device via a shared Wi-Fi network or through a LAN cable (Ethernet connection).
-- **USB Printers** : Printers that connect directly to your device via a USB cable.
+- **External printers** connected to the InStore App via Bluetooth, USB cable or the local Wi-Fi or Ethernet network.
+- **Device internal printers** which have special integration but sometimes also show up as USB or Bluetooth printers similar to the external printers. Please check the supported device list to get an understanding which internal printers are supported.
 
 **Note:** Ensure your printer is compatible with the fiskaltrust InStore App before starting
 the setup process. If you are unsure, please refer to your printer's documentation.
@@ -110,14 +108,11 @@ fiskaltrust InStore App.
 In addition to connecting and selecting your printer, the **Printer Settings** section allows
 you to configure other important settings for your printer. These include:
 
-**4.1 Delay**
+**4.1 Print Delay (only available in Consumer mode)**
+In Consumer mode the idea is, that the consumer will handle the receipt interaction on the device independently of any staff member. The consumer has multiple options to choose how to receive the receipt.
 
-- If you notice that the printed output is delayed or not appearing immediately, you
-    can adjust the **Delay** setting in the **Printer Settings**.
-- This is useful if you are using a printer that requires a slight delay between
-    - If you notice that the printed output is delayed or not appearing immediately, you can adjust the **Delay** setting in the **Printer Settings**.
-    - This is useful if you are using a printer that requires a slight delay between commands for proper print alignment or other technical reasons.
-    - **Note:** The **Delay** setting can only be modified in **Consumer mode**.
+The **Print Delay** is the time in seconds until the receipt gets printed automatically on the configured printer. So it is the time the consumer has to choose for a different option (like send per SMS or MAIL) until the printed receipt is forced.
+Default: 30s
 
 **4.2 Paper Width**
 
@@ -137,74 +132,50 @@ you to configure other important settings for your printer. These include:
 
 **5.1 Frequently Asked Questions (FAQ)**
 
-**Q1: How do I set up my printer with the fiskaltrust InStore App?**
+**Q1: Which printer types are compatible with the fiskaltrust InStore App?**
 
-**A:** Follow the steps in the Printer Setup section to connect and configure your printer.
-Depending on the type of printer (Bluetooth, Wi-Fi, or USB), you will need to perform
-different setup actions.
+**A:** See section 2 "Supported Printer Types" for details on external and device internal printers.
 
-
-**Q2: Which printer types are compatible with the fiskaltrust InStore App?**
-
-**A:** The fiskaltrust InStore App supports the following printer types:
-
-- **Bluetooth Printers**
-- **Wi-Fi Printers**
-- **USB Printers**
-
-**Q3: My printer is not appearing in the app, what should I do?**
+**Q2: My printer is not appearing in the app, what should I do?**
 
 **A:** Ensure your printer is powered on and properly connected. For Bluetooth printers,
-ensure Bluetooth is enabled on your device and the printer is paired. For Wi-Fi printers,
-make sure both your printer and device are connected to the same Wi-Fi network. For
+ensure Bluetooth is enabled on your device and the printer is paired. For Wi-Fi/LAN printers,
+make sure both your printer and device are connected to the same Wi-Fi/LAN network. For
 USB printers, check that the USB connection is secure.
 
-**Q4: How do I test if my printer is working correctly?**
-
-**A:** You can perform a test print by going to **Settings** > **Printer Settings** in the fiskaltrust
-InStore App. Scroll down to the **Print Demo** button and select it to check if the printer is
-functioning properly. Ensure that the printer is selected as the default printer before
-testing.
-
-**Q5: My prints are faded or blank, how can I fix this?**
+**Q3: My prints are faded or blank, how can I fix this?**
 
 **A:** Check the ink or toner levels in your printer. If the ink or toner is low, replace the
 cartridge. Additionally, check if the print head needs cleaning. If the issue persists, refer
 to your printer's manual for further troubleshooting steps.
 
-**Q6: What should I do if my Wi-Fi printer is not connecting to the network?**
+**Q4: What should I do if my Wi-Fi/LAN printer is not connecting to the network?**
 
-**A:** First, check that both the printer and your device are connected to the same Wi-Fi
+**A:** First, check that both the printer and your device are connected to the same Wi-Fi/LAN
 network. If the printer is not appearing in the list of available devices, restart both the
 printer and the device. If the issue persists, consult your printer's manual for network
 troubleshooting steps.
 
-**Q7: Do I need to install any special drivers for my printer?**
+**Q5: Do I need to install any special drivers for my printer?**
 
 **A:** Some printers may require additional drivers. If the app prompts you to install drivers,
 follow the on-screen instructions or download them from the manufacturer's website.
 Generally, the fiskaltrust InStore App will work with printers that are supported by your
 device's operating system.
 
-**Q8: Why is my Bluetooth printer not connecting to my device?**
+**Q6: Why is my Bluetooth printer not connecting to my device?**
 
 **A:** Make sure Bluetooth is enabled on both your device and the printer. Check that the
 printer is within range of the device and properly paired. If needed, unpair and then re-
 pair the devices to ensure a fresh connection.
 
-
-**Q9: Can I use a printer with the fiskaltrust InStore App if it is not listed in the
+**Q7: Can I use a printer with the fiskaltrust InStore App if it is not listed in the
 supported types?**
 
-**A:** The fiskaltrust InStore App is designed to work with **Bluetooth** , **Wi-Fi** , and **USB**
-printers. If your printer does not fall under one of these categories, it may not be
-compatible with the app. Please refer to your printer's manual or contact fiskaltrust
-support for further guidance.
+**A:** See section 2 "Supported Printer Types" for compatibility details. If your printer is not covered, contact fiskaltrust support for guidance.
 
-**Q10: How do I select a default printer in the fiskaltrust InStore App?**
+**Q8: How do I select a default printer in the fiskaltrust InStore App?**
 
 **A:** After configuring your printer in the app, navigate to **Settings** > **Printer Settings**.
 Scroll down and select the desired printer from the list and mark it as the default printer.
 This will ensure that all print jobs are sent to the correct printer automatically.
-
-

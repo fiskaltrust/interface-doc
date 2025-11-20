@@ -66,7 +66,7 @@ configure it within the fiskaltrust InStore App.
 2. Navigate to **Settings** > **Printer Settings**.
 3. Scroll down to find the **Printer Settings** section and click on **Printers** to open the list of available printer options.
 4. Select the type of printer you want to use from the list.
-6. If you are using a **Wi-Fi/Network Printer**, you will need to manually enter the printer's **IP address** and **port number**:
+5. If you select **ESC POS Network Printer** which allows printing via the local network (Wi-Fi/Ethernet), you will need to manually enter the printer's **IP address** and **port number**:
     - **IP Address**: Enter the IP address of your network printer (e.g., 192.168.1.100). You can find this information in your printer's network settings or by printing a network configuration page.
     - **Port**: Enter the port number used by your printer (typically 9100 for most network printers, but check your printer's documentation for the correct port).
 

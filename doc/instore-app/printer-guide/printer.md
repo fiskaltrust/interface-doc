@@ -9,7 +9,7 @@ title: 'Printer Guide'
 **Introduction**
 
 This guide will walk you through the process of setting up and configuring a printer with
-the **fiskaltrust InStore App**. Whether you are using a Bluetooth, Wi-Fi/LAN, or USB printer,
+the **fiskaltrust InStore App**. Whether you are using a Bluetooth, ESC POS Network printing, or USB printer,
 follow the instructions carefully to ensure your printer works seamlessly with the app.
 
 **Note:** Before you can access the settings to configure your printer, make sure that you have the **fiskaltrust InStore App** installed on your device. To access the settings:
@@ -36,12 +36,12 @@ fiskaltrust InStore App.
     1. Ensure Bluetooth is enabled on your device.
     2. Pair your device with the Bluetooth printer. This can typically be done from your device's Bluetooth settings.
     3. Ensure that the printer is within range and is powered on.
-- **Wi-Fi/LAN Printers** :
-    1. Ensure that both your printer and device are connected to the same Wi-Fi/LAN
-       network.
-    2. Confirm the printer's Wi-Fi/LAN settings, either through the printer's display or
-       by printing a configuration page (refer to the printer's manual for
-       instructions).
+- **ESC POS Network Printing** :
+    1. Ensure that both your printer and device are connected to the **same network** (Wi-Fi or LAN).
+    2. Note down the printer's IP address and port number. You can find this information
+       through the printer's display or by printing a configuration page (refer to the
+       printer's manual for instructions).
+    3. You will need to enter these details (IP address and port) in the InStore App settings.
 
 
 - **USB Printers** :
@@ -139,8 +139,8 @@ Default: 30s
 **Q2: My printer is not appearing in the app, what should I do?**
 
 **A:** Ensure your printer is powered on and properly connected. For Bluetooth printers,
-ensure Bluetooth is enabled on your device and the printer is paired. For Wi-Fi/LAN printers,
-make sure both your printer and device are connected to the same Wi-Fi/LAN network. For
+ensure Bluetooth is enabled on your device and the printer is paired. For ESC POS Network printing,
+make sure both your printer and device are connected to the **same network** and you have entered the correct IP address and port number in the InStore App. For
 USB printers, check that the USB connection is secure.
 
 **Q3: My prints are faded or blank, how can I fix this?**
@@ -149,12 +149,12 @@ USB printers, check that the USB connection is secure.
 cartridge. Additionally, check if the print head needs cleaning. If the issue persists, refer
 to your printer's manual for further troubleshooting steps.
 
-**Q4: What should I do if my Wi-Fi/LAN printer is not connecting to the network?**
+**Q4: What should I do if my ESC POS Network printer is not connecting?**
 
-**A:** First, check that both the printer and your device are connected to the same Wi-Fi/LAN
-network. If the printer is not appearing in the list of available devices, restart both the
-printer and the device. If the issue persists, consult your printer's manual for network
-troubleshooting steps.
+**A:** First, check that both the printer and your device are connected to the **same network**.
+Verify that you have entered the correct IP address and port number in the InStore App settings.
+If the connection still fails, restart both the printer and the device. If the issue persists,
+consult your printer's manual for network troubleshooting steps.
 
 **Q5: Do I need to install any special drivers for my printer?**
 

@@ -38,7 +38,7 @@ We recommend using REST in case you're already familiar with its principles and 
 In Austria and France, REST can currently only be used by adding a _helper_ package provided by fiskaltrust. Please refer to the [Austrian appendix](../../middleware-at-rksv/communication/communication.md) for more details. In Germany, the Middleware natively supports REST without using a helper.
 
 ### WCF Web Service
-The _Windows Communication Foundation_ (WCF) is used to access the fiskaltrust.Middleware with SOAP calls, either via a network or a pipes based communication approach. Further information on this subject can be found in the [official Microsoft docs](https://docs.microsoft.com/en-us/dotnet/framework/wcf/bindings).
+The _Windows Communication Foundation_ (WCF) is used to access the fiskaltrust.Middleware with SOAP calls, either via a network or a pipes based communication approach. Further information on this subject can be found in the [official Microsoft docs](https://docs.microsoft.com/en-us/dotnet/framework/wcf/bindings)<!-- markdown-link-check-disable-line -->.
 
 WCF supports different underlying protocols: _http, https, net.tcp_ and _net.pipe_ (which is most interesting in cases where the system's configuration prevents opening TCP ports). For configuring a custom message size and a custom time out, it is possible to specify the parameter `messagesize` (in bytes) and the parameter `timeout` (in seconds) on the configuration page.
 

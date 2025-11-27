@@ -62,7 +62,7 @@ A list with possible values for the request parameter ftJournalType is provided 
 
 ##### Timestamps
 
-The journal function expects the timestamps to be [.NET Ticks](https://docs.microsoft.com/en-us/dotnet/api/system.datetime.ticks?view=net-5.0#remarks).
+The journal function expects the timestamps to be [.NET Ticks](https://docs.microsoft.com/en-us/dotnet/api/system.datetime.ticks?view=net-5.0#remarks)<!-- markdown-link-check-disable-line -->.
 
 The following conversion formulas can be used to convert between unix time and .NET Ticks:
 

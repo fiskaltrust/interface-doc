@@ -5,7 +5,7 @@ title: 'Type of service: ftChargeItemCase'
 
 # Type of Service: ftChargeItemCase
 
-This table expands on the values provided in the table [ftChargeItemCase in General Part](../../general/reference-tables/reference-tables.md#type-of-service-ftchargeitemcase), with country-specific values applicable to the Italian market.
+This table expands on the values provided in the table [ftChargeItemCase in General Part](../../general/reference-tables/reference-tables.md#type-of-service-ftchargeitemcase), with country-specific values applicable to the Austrian market.
 
 ## Format
 _CCCC_vlll_gggg_NNSV_ 
@@ -72,4 +72,4 @@ None
 | `8000` | **ShowInPayments**<br />Visualize the item after Total Amount. This inverts amount and does not include the amount into the visualized total amount on the receipt.  | 1.3.45 |
 
 ## ftChargeItemCaseFlag
-This table shows flags that can be added to each `ftChargeItemCase` with values applicable to the Italian market. 
+This table shows flags that can be added to each `ftChargeItemCase` with values applicable to the Austrian market. 

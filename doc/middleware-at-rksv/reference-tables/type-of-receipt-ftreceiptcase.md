@@ -5,7 +5,7 @@ title: 'Type of receipt: ftReceiptCase'
 
 # Type of Receipt: ftReceiptCase
 
-The `ftReceiptCase` indicates the receipt type and defines how the fiskaltrust.SecurityMechanism should process it following Italian law.
+The `ftReceiptCase` indicates the receipt type and defines how the fiskaltrust.SecurityMechanism should process it following Austrian law.
 
 For Austria (AT), the country code is `0x4154`. Thus, the value of an unknown `ftReceiptCase` in Austria is `0x4154000000000000`.
 

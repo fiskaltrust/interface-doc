@@ -1,6 +1,7 @@
 ---
 slug: /poscreators/middleware-doc/austria/reference-tables
 title: Reference tables v2
+title: Reference tables v2
 ---
 
 # Reference tables
@@ -17,6 +18,22 @@ The overall format is built up of 4 sections:
 _4154_2000_0010_0001 
 
 _CCCC_vIII_gggg_xxxx 
+
+| **Value**            | **Description**                                                                                     |
+|----------------------|-----------------------------------------------------------------------------------------------------|
+|CCCC|(e.g 4154): ASCII of two letter ISO country code (https://en.wikipedia.org/wiki/ISO_3166-1) (e.g. AT = 4154) |
+|vIII|(e.g. 2000): This section is for versioning the tagging system (currently v2) and for future use  |
+|gggg|(e.g. 0010): These items are used for flags. Flags can change the basic behavior of a given type, but will live the overall semantical meaning of a type the same. (e.g. voiding of a receipt)|
+|xxxx|(e.g. 0001): The last category is usually case specific but always consists of 4 numbers |
+
+ 
+
+ 
+
+   
+
+ 
+
 
 | **Value**            | **Description**                                                                                     |
 |----------------------|-----------------------------------------------------------------------------------------------------|

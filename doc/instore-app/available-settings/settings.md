@@ -3,11 +3,11 @@ slug: /poscreators/middleware-doc/instore-app/available-settings
 title: 'Available settings'
 ---
 
-## InStore App – Available Settings (v1.2.6)
+## InStore App – Available Settings (v1.2.7)
 
 :::info Important
 
-All settings and options described here apply **only** to version **1.2.6** of the InStoreApp.  
+All settings and options described here apply **only** to version **1.2.7** of the InStore App.  
 If you are using an older version, some settings may differ or may not be available at all.
 
 :::
@@ -20,6 +20,12 @@ Displays the device model/type (e.g., terminal vendor and model). Useful to iden
 
 ### IP Address
 Shows the current IP address of the device on your network. Use it when setting up network printing or firewall rules. *(Read‑only.)*
+
+:::info Note
+
+This setting only appears when the device is connected via **LAN/WLAN**. When using **mobile data**, the IP Address field is hidden.
+
+:::
 
 ---
 
@@ -79,12 +85,12 @@ This configuration can be applied:
 Enables **receipt transmission via NFC**.  
 **Preview:** This feature currently works **only on fiskaltrust‑provided devices**.
 
-### Enable running in Foreground
-Runs the app as an  **Android foreground service** also displaying a notification in the Android status bar (when notifications are enabled in Android settings) and takes care that the service is run at all times.
+### Enable running in Background
+Runs the app as an  **Android foreground service** also displaying a notification in the Android status bar (when notifications are enabled in Android settings) that shows "InStore App is running in the background". The service takes care that the app is run at all times.
 
 When enabled it results in the following behaviour:
-- Even if the InStoreApp is not in foreground (e.g., the user is working with the POS app on the same device), it continues to run in the background.
-- The InStoreApp **auto‑starts after device boot** so no manual start is required after boot. This means even without ever starting the InStoreApp manually it will start in the background automatically and can process actions (like trigger payments or show receipts).
+- Even if the InStore App is not in foreground (e.g., the user is working with the POS app on the same device), it continues to run in the background.
+- The InStore App **auto‑starts after device boot** so no manual start is required after boot. This means even without ever starting the InStore App manually it will start in the background automatically and can process actions (like trigger payments or show receipts).
 
 ---
 
@@ -97,7 +103,7 @@ Some options depend on the selected mode.
 :::
 
 #### Printers
-Shows all available printers (USB, Bluetooth, or Network). Select the one you want to use.
+Shows all available printers (USB, Bluetooth, or ESC POS Network printing). Select the one you want to use.
 
 #### Print Delay
 Defines the delay before an issued receipt will get printed automatically if the guest/customer is not receiving the receipt in another way like scanning the QR code with their phone, just accepting it by pressing OK or another method.

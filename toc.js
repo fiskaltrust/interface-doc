@@ -50,7 +50,20 @@ module.exports = {
             'middleware-doc/doc/middleware-at-rksv/operation-modes/operation-modes',
             'middleware-doc/doc/middleware-at-rksv/installation/installation',
             'middleware-doc/doc/middleware-at-rksv/receipt-case-definitions/receipt-case-definitions',
-            'middleware-doc/doc/middleware-at-rksv/reference-tables/reference-tables',
+            'middleware-doc/doc/middleware-at-rksv/reference-tables/reference-tables-v0',
+            {
+              type: 'category',
+              label: 'Reference Tables v2',
+              items: [
+                'middleware-doc/doc/middleware-at-rksv/reference-tables/reference-tables',
+                'middleware-doc/doc/middleware-at-rksv/reference-tables/service-status-ftstate',
+                'middleware-doc/doc/middleware-at-rksv/reference-tables/type-of-receipt-ftreceiptcase',
+                'middleware-doc/doc/middleware-at-rksv/reference-tables/type-of-service-ftchargeitemcase',
+                'middleware-doc/doc/middleware-at-rksv/reference-tables/type-of-payment-ftpayitemcase',
+                'middleware-doc/doc/middleware-at-rksv/reference-tables/type-of-signature-ftsignatureformat',
+                'middleware-doc/doc/middleware-at-rksv/reference-tables/type-of-journal-ftjournaltype',
+              ]
+            }
           ]
         },
         {

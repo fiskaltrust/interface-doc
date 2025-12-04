@@ -62,18 +62,22 @@ The following rules apply:
 ## FAQ
 
 **Q: Can I use different types of cash registers with multi-terminal support?**
+
 A: Yes, as long as all cash registers are connected to the same Terminal ID and
 configured correctly, you can use different types of cash registers.
 
 **Q: What happens if one terminal goes offline?**
+
 A: If a terminal goes offline, it may not process transactions until it reconnects. However,
 other terminals can continue operating normally as long as they are connected.
 
 **Q: Is there a limit to how many terminals can be connected?**
+
 A: While there is no specified limit to the number of terminals that can be connected,
 performance may vary based on network capacity and backend server capabilities.
 
 **Q: Can I manage settings for multiple terminals simultaneously?**
+
 A: Yes, if you enable local configuration, you can manage specific settings for each
 terminal independently while still maintaining connection to the main configuration.
 

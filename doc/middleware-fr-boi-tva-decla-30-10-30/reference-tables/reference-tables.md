@@ -163,6 +163,7 @@ The `ftSignatureType` indicates the type and origin of the signature.
 | `0x4652000000000005` | Year Closing Sum    | 1.2         |
 | `0x4652000000000006` | Archive Totals Sum  | 1.2         |
 | `0x4652000000000007` | Perpetual Total Sum | 1.2         |
+| `0x4652000000000008` | Signature Excerpt | 1.2         |
 
 <span id="_Toc527986689" class="anchor"></span>
 

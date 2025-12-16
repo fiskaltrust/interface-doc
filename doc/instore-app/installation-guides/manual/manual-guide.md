@@ -8,7 +8,6 @@ title: 'Manual Installation Guide'
 - Open **Web Explorer** or any other web browser on your device.
 - Visit the following website to download the latest version of the Fiskaltrust InStore App:
 - [Download the App](https://link.fiskaltrust.eu/downloads/instoreapp/stable)
-- Or download it from the [Google Play Store](https://play.google.com/store/apps/details?id=eu.fiskaltrust.instore.app)
 
 ## Install the App
 

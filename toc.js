@@ -351,6 +351,7 @@ module.exports = {
           label: 'Installation Guides',
           items: [
             'middleware-doc/doc/instore-app/installation-guides/manual/manual-guide',
+            'middleware-doc/doc/instore-app/installation-guides/GooglePlay/googleplay-guide',
             'middleware-doc/doc/instore-app/installation-guides/Orderman/orderman-guide',
             'middleware-doc/doc/instore-app/installation-guides/Sunmi/sunmi-guide'
           ]

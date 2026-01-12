@@ -16,5 +16,6 @@ The `fiskaltrust InStore App` can be installed directly via app download or via 
 
 For the following protals please refer to the partners documentation and support on how to install the `fiskaltrust InStore App`:
 
+- [PAX Viva Wallet](https://vivawallet.whatspos.com)
 - [PAX GP](https://www.whatspos.com)
 - [PAX Italia](https://paxitalia.whatspos.com)

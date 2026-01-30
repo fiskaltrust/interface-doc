@@ -1,0 +1,16 @@
+.*%7B.*%7D
+
+https?://receipts(-sandbox)?\.fiskaltrust\.cloud/.*
+https?://pos-api(-sandbox)?\.fiskaltrust\.cloud/.*
+https?://helipad(-sandbox)?\.fiskaltrust\.cloud/.*
+https?://packages(-sandbox)?\.fiskaltrust\.cloud/.*
+https?://signaturcloud(-sandbox)?\.fiskaltrust\.../.*
+https?://rksv(-sandbox)?\.fiskaltrust\.at/.*
+https?://signing(-sandbox)?\.fiskaltrust\.at/.*
+# https?://portal(-sandbox)?\.fiskaltrust\...
+# https?://portal(-sandbox)?\.fiskaltrust\...
+
+https?://github\.com/fiskaltrust/fiskaltrust-instore-app/
+https?://github\.com/fiskaltrust/service-possystem-api/
+
+https?://next\.orderman\.com

@@ -38,7 +38,6 @@ usage:
 ```
 lychee ./general/general.md
 ```
-> Please note that this tool does not find dead references inside a file. Only dead references to nonexisting files / unreachable URLs.
 
 ## Further public fiskaltrust repositories
 

@@ -67,3 +67,13 @@ In this case, the following steps _may_ be taken:
 - While the cash register is offline (e.g. due to a power outage, system failure, etc.) handwritten receipts should be created, and the receipts should be tracked (e.g. in a notebook) - depending on the local requirements.
 - When the cash register is operational again, the receipts may be tracked in the cash-register.
 - When this happens, the receipts should be sent to the Middleware as well, including the _ftReceiptCaseFlag_ `0x0000000000080000` to mark that this is a handwritten receipt.
+
+:::warning
+
+In case of re-signing failed receipts, these must be signed in the same order they were originally created in. Particularly this means that values sent under the **cbReceiptMoment** field in the individual sign requests must be sequential (ascending order). 
+
+Wrong re-signing example:
+1. Receipt Nr.1: cbReceiptMoment: "2026-01-01T12:00:05Z"
+2. Receipt Nr.2: cbReceiptMoment: "2026-01-01T12:00:00Z"
+
+:::

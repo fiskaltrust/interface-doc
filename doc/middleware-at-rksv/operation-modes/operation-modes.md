@@ -7,11 +7,11 @@ title: Operation modes
 
 ### Components of the fiskaltrust.Middleware
 
-#### ASP.<span></span>net 5/Core Web App
+#### ASP.net 5/Core Web App
 
-An ASP.<span></span>NET application provides the functionality of a queue via the REST service. It is available at:
+An ASP.NET application provides the functionality of a queue via the REST service. It is available at:
 
-<https://signaturcloud.fiskaltrust.at>
+https://signaturcloud.fiskaltrust.at
 
 This application is the bridge between the queue nutshell and fiskaltrust.SignatureCloud. Thanks to the ASP.NET Core, the fiskaltrust.SignatureCloud can be used across platforms and can, after release, be run directly in a computing centre or on a server. As a signature creation device, an HSM, or another software signature creation device, can provide an overall closed system.
 
@@ -58,7 +58,7 @@ curl -X GET https://signaturcloud.fiskaltrust.at/api/version -H 'service-version
 
 All configuration settings, as well as the relevant extensions, are managed via the online fiskaltrust.Portal, which for Austrian market is available at:
 
-<https://portal.fiskaltrust.at>
+https://portal.fiskaltrust.at
 
 #### Signature Creation Device (SSCD)
 

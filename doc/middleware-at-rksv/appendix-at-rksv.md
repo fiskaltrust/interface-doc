@@ -9,7 +9,7 @@ This appendix expands on the information provided in the General Part section, b
 
 The links to regulations and further information, can be found at:
 
-<https://www.fiskaltrust.at/rechtsgrundlagen>
+https://www.fiskaltrust.at/rechtsgrundlagen
 
 Further literature can be found at:
 

@@ -17,7 +17,7 @@ title: Operation modes
 
 All configuration settings, as well as relevant extensions, are managed via the fiskaltrust.Portal, which for the French market is available at:
 
-<https://portal.fiskaltrust.fr>
+https://portal.fiskaltrust.fr
 
 #### Queue
 

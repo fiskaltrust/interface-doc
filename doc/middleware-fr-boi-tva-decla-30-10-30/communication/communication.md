@@ -7,7 +7,7 @@ title: Communication
 
 ## REST service
 
-The fiskaltrust.Middleware which directly implements the REST communication protocol is a product called fiskaltrust.ChaîneCloud. Communication with this service is implemented via the URL <https://signaturcloud.fiskaltrust.fr/> followed by xml/ or json/ depending on the content serialisation type, and then followed by the method name in lowercase letters (echo, sign, journal).
+The fiskaltrust.Middleware which directly implements the REST communication protocol is a product called fiskaltrust.ChaîneCloud. Communication with this service is implemented via the URL https://signaturcloud.fiskaltrust.fr/ followed by xml/ or json/ depending on the content serialisation type, and then followed by the method name in lowercase letters (echo, sign, journal).
 
 Depending on the serialisation type, the content-type will be "application/json;charset=utf-8" (for JSON) and "application/xml;charset=utf-8" (for XML). The method is POST, and the headers must contain the "cashboxid" and the "accesstoken" with the corresponding value related to the configured CashBox on the fiskaltrust.Portal.
 

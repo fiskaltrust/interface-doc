@@ -9,7 +9,7 @@ This appendix expands on the [General Part](https://docs.fiskaltrust.eu/docs/pos
 
 The link to the relevant paragraph in the French law regarding the secured cash desk software:
 
-<http://bofip.impots.gouv.fr/bofip/10693-PGP?branch=2>
+http://bofip.impots.gouv.fr/bofip/10693-PGP?branch=2
 
 
 The technical specification of the data interface described in this document provides information regarding the following areas:

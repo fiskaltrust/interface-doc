@@ -1,0 +1,27 @@
+name: Build
+
+on:
+  pull_request_target:
+    types: [opened, synchronize, reopened]
+
+jobs:
+  check-links:
+    runs-on: ubuntu-latest
+    permissions:
+      pull-requests: write
+      contents: read
+    steps:
+      - uses: actions/checkout@v5
+
+      - uses: lycheeverse/lychee-action@v2
+        id: lychee
+        with:
+          fail: true
+
+  build:
+    uses: fiskaltrust/service-docs-ui/.github/workflows/build.yml@main
+    needs: check-links
+    with:
+      changelog_ref: ${{ github.event.pull_request.head.sha }}
+    secrets:
+      DOCS_REPOS_READ_TOKEN: ${{ secrets.DOCS_REPOS_READ_TOKEN }}

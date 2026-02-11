@@ -22,6 +22,6 @@ jobs:
     uses: fiskaltrust/service-docs-ui/.github/workflows/build.yml@main
     needs: check-links
     with:
-      changelog_ref: ${{ github.event.pull_request.head.sha }}
+      middleware_doc_ref: ${{ github.event.pull_request.head.sha }}
     secrets:
       DOCS_REPOS_READ_TOKEN: ${{ secrets.DOCS_REPOS_READ_TOKEN }}

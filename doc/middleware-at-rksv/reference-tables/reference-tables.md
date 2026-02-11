@@ -62,7 +62,7 @@ For Austria (AT) the country code is `0x4154`. Thus, the value for an unknown ft
 
 #### ftReceiptCaseFlag
 
-This table expands on the values provided in the table ["Type of Receipt: ftReceiptCaseFlag"](../../general/reference-tables/reference-tables.md#t-type-of-receipt-ftreceiptcaseflag-64) of with values applicable to the Austrian market.
+This table expands on the values provided in the table ["Type of Receipt: ftReceiptCaseFlag"](../../general/reference-tables/reference-tables.md#ftreceiptcaseflag) of with values applicable to the Austrian market.
 
 | Value                | Description                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | Middleware-Version |
 |----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|--------------------|
@@ -81,7 +81,7 @@ This table expands on the values provided in the table ["Type of Receipt: ftRece
 
 ### Type of Service: ftChargeItemCase
 
-This table expands on the values provided in the table ["Type of Service: ftChargeItemCase"](../../general/reference-tables/reference-tables.md#t-type-of-service-ftchargeitemcase) with values applicable to the Austrian market.
+This table expands on the values provided in the table ["Type of Service: ftChargeItemCase"](../../general/reference-tables/reference-tables.md#format-of-signature-ftsignatureformat) with values applicable to the Austrian market.
 
 | **Value**            | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | **Middleware-Version** |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
@@ -128,7 +128,7 @@ This table expands on the values provided in the table ["Type of Service: ftChar
 
 ### Type of Payment: ftPayItemCase
 
-This table expands on the values provided in the table ["Type of Payment: ftPayItemCase"](../../general/reference-tables/reference-tables.md#t-type-of-payment-ftpayitemcase-90) with values applicable to the Austrian market.
+This table expands on the values provided in the table ["Type of Payment: ftPayItemCase"](../../general/reference-tables/reference-tables.md#type-of-payment-ftpayitemcase) with values applicable to the Austrian market.
 
 | **Value**            | **Description**                                                                                                                   | **Middleware-Version** |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------|------------------------|
@@ -159,7 +159,7 @@ This table expands on the values provided in the table ["Type of Payment: ftPayI
 
 ### Type of Signature: ftSignatureFormat
 
-This table expands on the values provided in the table ["Format of Signature: ftSignatureFormat"](../../general/reference-tables/reference-tables.md#t-type-of-signature-ftsignatureformat-112) with values applicable to the Austrian market.
+This table expands on the values provided in the table ["Format of Signature: ftSignatureFormat"](../../general/reference-tables/reference-tables.md#format-of-signature-ftsignatureformat) with values applicable to the Austrian market.
 
 According to the RKSV, there is one exception: if the fiskaltrust.SecurityMechanism responds with a QR code but the printer, through which the receipt is supposed to be printed (or electronically issued), cannot display QR codes, it is allowed to convert the signature value and display it as bar code, link, or in OCR typeface on the receipt. This requirement and a sample code can be found in the Chapter ["Printing of QR-Code not supported"](#printing-of-qr-code-not-supported).
 
@@ -185,7 +185,7 @@ According to the RKSV, there is one exception: if the fiskaltrust.SecurityMechan
 
 ### Type of Signature: ftSignatureType
 
-This table expands on the values provided in the table ["Type of Signature: ftSignatureType"](../../general/reference-tables/reference-tables.md#t-type-of-signature-ftsignaturetype-127) with values applicable to the Austrian market.
+This table expands on the values provided in the table ["Type of Signature: ftSignatureType"](../../general/reference-tables/reference-tables.md#type-of-signature-ftsignaturetype) with values applicable to the Austrian market.
 
 | **Value**            | **Description**                                                                                                                                       | **Version** |
 |----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------|-------------|
@@ -200,7 +200,7 @@ This table expands on the values provided in the table ["Type of Signature: ftSi
 
 ### Type of Journal: ftJournalType
 
-This table expands on the values provided in the table of Chapter ["Type of Journal: ftJournalType"](../../general/reference-tables/reference-tables.md#c-type-of-journal-ftjournaltype-129) of the General part with values applicable to the Austrian market<span id="t-type-of-journal-ftjournaltype-190">.</span>
+This table expands on the values provided in the table of Chapter ["Type of Journal: ftJournalType"](../../general/reference-tables/reference-tables.md#type-of-journal-ftjournaltype) of the General part with values applicable to the Austrian market.
 
 | **Value**            | **Description**                | **Version** |
 |----------------------|--------------------------------|-------------|

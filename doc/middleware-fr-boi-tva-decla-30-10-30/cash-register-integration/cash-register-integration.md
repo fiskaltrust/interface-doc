@@ -26,7 +26,7 @@ The regular workflow of the fiskaltrust.SecurityMechanism in the French market d
 
 ### Receipt for special functions
 
-This section expands on the descriptions from the Chapter ["Receipt for special functions"](../../general/cash-register-integration/cash-register-integration-regular-workflow.md#c-receipt-for-special-functions-54) of the general part and describes the receipt types used for special functions on the French market.
+This section expands on the descriptions from the Chapter ["Receipt for special functions"](../../general/cash-register-integration/cash-register-integration-regular-workflow.md#receipt-for-special-functions) of the general part and describes the receipt types used for special functions on the French market.
 
 In accordance with the Official Bulletin BOI-CF-COM-10-80-20160803 from August 3, 2016, and paragraph 3 bis of Article 286 of the French Tax Code, the proof of payment of a non-taxable person to a taxable person for a sale or service must be signed electronically and chained to ensure unalterability. There are additional requirements specified by law, which can be fulfilled by creating the following special receipts.
 

@@ -5,7 +5,7 @@ title: Terminology
 
 # Terminology
 
-This table expands on the descriptions of all general terms and abbreviations provided in the table ["Definition of Terms and Abbreviations"](../../general/terminology/terminology.md#t-definition-of-terms-and-abbreviations-21) of the General Part with information specific to the French market.
+This table expands on the descriptions of all general terms and abbreviations provided in the table ["Definition of Terms and Abbreviations"](../../general/terminology/terminology.md) of the General Part with information specific to the French market.
 
 | Term              | Description                                                                                                                                                                                       |
 |-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|

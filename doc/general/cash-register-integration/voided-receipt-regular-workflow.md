@@ -1,5 +1,5 @@
 ---
-slug: /poscreators/middleware-doc/general/cash-register-integration
+slug: /poscreators/middleware-doc/general/cash-register-integration/voided-receipt-workflow
 title: Voided receipt regular workflow
 ---
 

@@ -11,7 +11,7 @@ The ftState is returned with every receipt response. Through this status, fiskal
 
 The value `0xXXXX000000000000` indicates that the fiskaltrust.Middleware is available without reporting problems or notifications - it’s a kind of a "ready" state. The XXXX contains the country specific code for which the service has been configured. The country specific code, is made of the country’s code value following the ISO-3166-1-ALPHA-2 standard, converted from ASCII into hex.
 
-The table below describes supported statuses for the ftState field. Those codes can be combined by using the logic operator `OR`<span id="t-service-status-ftstate-22">.</span>
+The table below describes supported statuses for the ftState field. Those codes can be combined by using the logic operator `OR`.
 
 | **Value**            | **Description**                                                                                     | **Middleware Version** |
 |----------------------|-----------------------------------------------------------------------------------------------------|------------------------|
@@ -42,7 +42,7 @@ if ((ReceiptResponse.ftState & 0x0000000000000040) != 0)
 
 ### Type of Receipt: ftReceiptCase
 
-The ftReceiptCase indicates the receipt type and defines how it should be processed by the fiskaltrust.SecurityMechanism. The data type is `Int64` and contains the country specific code, which is a value following the ISO-3166-1-ALPHA-2 standard converted from ASCII into hex and used as byte 8 and 7. For definitions regarding national laws, please refer to the appropriate appendix<span id="t-type-of-receipt-ftreceiptcase-49">.</span>
+The ftReceiptCase indicates the receipt type and defines how it should be processed by the fiskaltrust.SecurityMechanism. The data type is `Int64` and contains the country specific code, which is a value following the ISO-3166-1-ALPHA-2 standard converted from ASCII into hex and used as byte 8 and 7. For definitions regarding national laws, please refer to the appropriate appendix.
 
 | **Value**            | **Description**                                                                                                                                      | **Middleware Version** |
 |----------------------|------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
@@ -50,11 +50,11 @@ The ftReceiptCase indicates the receipt type and defines how it should be proces
 
 #### ftReceiptCaseFlag
 
-Business transactions can result in combinations of receipt types, which would be indicated using codes in bytes 6, 5, 4 and 3. These codes can be combined using the logic operator `OR`<span id="t-type-of-receipt-ftreceiptcaseflag-64">.</span>
+Business transactions can result in combinations of receipt types, which would be indicated using codes in bytes 6, 5, 4 and 3. These codes can be combined using the logic operator `OR`.
 
 | **Value**            | **Description**                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | **Middleware Version** |
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
-| `0x0000000000010000` | "failed receipt"<br /> If a ReceiptRequest includes this flag, it  sets the fiskaltrust.Middleware in a "late signing mode". In order to leave this mode, an "end of failure" Receipt Request has to be made by the cash register terminal using a Zero Receipt. This can be necessary e.g. after a power or server outage.<br />["Zero Receipt"](../cash-register-integration/cash-register-integration-regular-workflow.md#c-zero-receipt-60) section. | 1.0                    |
+| `0x0000000000010000` | "failed receipt"<br /> If a ReceiptRequest includes this flag, it  sets the fiskaltrust.Middleware in a "late signing mode". In order to leave this mode, an "end of failure" Receipt Request has to be made by the cash register terminal using a Zero Receipt. This can be necessary e.g. after a power or server outage.<br />["Zero Receipt"](../cash-register-integration/cash-register-integration-regular-workflow.md#zero-receipt) section. | 1.0                    |
 | `0x0000000000020000` | "training receipt"<br />Used to separate the normal usage of the cash register system from the training mode. This flag can be added to each Receipt Request when training/testing is performed. This receipt will not produce any tax relevant changes.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                             | 1.0                    |
 | `0x0000000000040000` | "reverse receipt" or "voided receipt"<br />Used to separate regular receipts from the receipts which were voided by setting the negative values for **both** Amount **and** Quantity in Chargeitems and Payitems of the receipt. The cbPreviousReceiptReference should be set to the ReceiptReference of the Receipt which should be voided. |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | 1.0                    |
 | `0x0000000000080000` | "handwritten receipt "<br />The transferred receipt contains data which has been collected in a handwritten receipt. There is no requirement for a precise time annotation on a handwritten receipt; we recommend using 12:00 for this purpose.                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                      | 1.0                    |
@@ -67,7 +67,7 @@ These flags are based on national laws and regulations, for further information 
 
 The ftChargeItemCase defines the type of service or item in the charge item block and thus how the fiskaltrust.SecurityMechanism processes the individual receipts with regards to receipt generation. The data type is `Int64` and contains a country specific code which is a value following the ISO-3166-1-ALPHA-2 standard, converted from ASCII into hex and used as byte 8 and 7.
 
-For definitions regarding national laws, please refer to the appropriate country specific appendix<span id="t-type-of-service-ftchargeitemcase">.</span>
+For definitions regarding national laws, please refer to the appropriate country specific appendix.
 
 | **Value**            | **Description**                                                                                                                                 | **Middleware-Version** |
 |----------------------|-------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
@@ -77,7 +77,7 @@ For definitions regarding national laws, please refer to the appropriate country
 
 The ftPayItemCase indicates the type of payment within the pay items block and defines how the fiskaltrust.SecurityMechanism processes the individual payment in terms of the receipt. The data type is `Int64` and contains a country specific code which is a value following the ISO-3166-1-ALPHA-2 standard, converted from ASCII into hex and used as byte 8 and 7.
 
-For definitions regarding national laws, please refer to the appropriate appendix<span id="t-type-of-payment-ftpayitemcase-90">.</span>
+For definitions regarding national laws, please refer to the appropriate appendix.
 
 | **Value**            | **Description**                                                                                                                              | **Middleware Version** |
 |----------------------|----------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
@@ -85,7 +85,7 @@ For definitions regarding national laws, please refer to the appropriate appendi
 
 ### Format of Signature: ftSignatureFormat
 
-The ftSignatureFormat tells the cash register or input station which display format is required for the signature block section on the receipt<span id="t-type-of-signature-ftsignatureformat-112">.</span>
+The ftSignatureFormat tells the cash register or input station which display format is required for the signature block section on the receipt.
 
 | **Value** | **Description**                                                 | **Middleware Version** |
 |-----------|-----------------------------------------------------------------|------------------------|
@@ -109,7 +109,7 @@ The ftSignatureFormat tells the cash register or input station which display for
 
 The ftSignatureType indicates type and origin of the signature. The data type is `Int64` and can contain a country specific code which is a value following the ISO-3166-1-ALPHA-2 standard, converted from ASCII into hex and used as byte 8 and 7.
 
-For definitions regarding national laws, please refer to the appropriate appendix<span id="t-type-of-signature-ftsignaturetype-127">.</span>
+For definitions regarding national laws, please refer to the appropriate appendix.
 
 | **Value**            | **Description**          | **Middleware-Version** |
 |----------------------|--------------------------|------------------------|

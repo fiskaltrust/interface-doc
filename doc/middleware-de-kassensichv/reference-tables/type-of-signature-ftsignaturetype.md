@@ -15,7 +15,7 @@ The German Middleware returns multiple additional signature items that are later
 
 
 
-For definitions regarding national laws, please refer to the appropriate appendix<span id="t-type-of-signature-ftsignaturetype-127">.</span>
+For definitions regarding national laws, please refer to the appropriate appendix.
 
 | **Value**            | **Description**                                                                                                                                                                         | **Middleware-Version** |
 |----------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|------------------------|
@@ -42,6 +42,3 @@ For definitions regarding national laws, please refer to the appropriate appendi
 | `0x4445000000000021` | Update-transaction-result                                                                                                                                                               | 1.3.16                 |
 | `0x4445000000000022` | Certification identification (e.g. BSI-K-TR-1234-5678). Also contains information about the certification state (for non certified TSEs) and the state of the environmental protection. | 1.3.16                 |
 | `0x4445000000000023` | TSE Serial Number                                                                                                                                                                       | 1.3.49                 |
-
-
-

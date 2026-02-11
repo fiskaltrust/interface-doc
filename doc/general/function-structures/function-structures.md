@@ -58,7 +58,7 @@ await foreach (var response in proxy.JournalAsync(request))
 Stream stream = proxy.Journal(ftJournalType, 0, DateTime.UtcNow.Ticks);
 ```
 
-A list with possible values for the request parameter ftJournalType is provided in the reference table ["Type of Journal: ftJournalType"](../reference-tables/reference-tables.md#t-type-of-signature-ftsignaturetype-127). The journal depends on national requirements and therefore the function has to run in the appropriate mode: exporting data in chunks, or as a whole.
+A list with possible values for the request parameter ftJournalType is provided in the reference table ["Type of Journal: ftJournalType"](../reference-tables/reference-tables.md#type-of-signature-ftsignaturetype). The journal depends on national requirements and therefore the function has to run in the appropriate mode: exporting data in chunks, or as a whole.
 
 ##### Timestamps
 

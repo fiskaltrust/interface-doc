@@ -1,3 +1,7 @@
+ > # The docs have been moved to the [docs](https://github.com/fiskaltrust/docs) repository.
+
+---
+
 # fiskaltrust interface documentation
 _Welcome to the open-source documentation of the fiskaltrust interface!_
 

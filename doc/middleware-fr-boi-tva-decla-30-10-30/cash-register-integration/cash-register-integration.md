@@ -72,7 +72,12 @@ The results will be shown, and the content will be available for download on a d
 
 The procedure archives the requested period. An archive can contain a maximum of 12 months from the start of the queue or from the last archive date, up to the receipt's date.  If the archiving period is longer than 12 months, multiple archive receipts have to be sent with the start date of each consecutive receipt beginning right after the end date of the previous one.
 
-Every time an archive receipt is sent to the middleware, a hash recalculation is performed. If any discrepancies are found in the hashes, an error message will be displayed in the portal, under (Configuration-\> Queues\>ActionJournal)
+Every time an archive receipt is sent to the middleware, a hash recalculation is performed. If any discrepancies are found in the hashes, an error message starting by `Code 90` will be displayed in the portal, under (Configuration-\> Queues\>ActionJournal)
+
+
+For NF525 compliant cash registers, this error message must be checked after each archive request by calling the journal endpoint.
+
+The action journal request call is type 1, and will respond with a list of entries. If one or more entries's message starts by "Code 90" : `"Message": "Code 90 , \\NF525\\ Detection of an integrity flaw in secured data or a tax archive"`, the cash register must send a Technical Event Log receipt request to the middleware including : `"ftReceiptCaseData" : "{\"Code\": \"90\", \"Message\": \"Detection of an integrity flaw in secured data or a tax archive\"}"`
 
 ### Receipt structure
 
